@@ -90,13 +90,7 @@ if devices.Response != nil {
 
 | SDK versions | Cisco Catalyst Center version supported |
 |--------------|------------------------------------|
-| 0.y.z        |  2.1.2                             |
-| 1.y.z        |  2.1.2                             |
-| 2.y.z        |  2.2.2.3                           |
-| 3.y.z        |  2.2.3.3                           |
-| 4.y.z        |  2.3.3.0                           |
-| 5.y.z        |  2.3.5.3                           |
-| 6.y.z        |  2.3.7.6                           |
+| 1.y.z        |  2.3.7.6                           |
 
 ## Changelog
 
