@@ -1,6 +1,6 @@
 # catalystcenter-go-sdk
 
-catalystcenter-go-sdk is a Go client library for [Catalyst Center Platform](https://developer.cisco.com/dnacenter/).
+catalystcenter-go-sdk is a Go client library for [Catalyst Center Platform](https://developer.cisco.com/catalyst-center/).
 
 ## Usage
 
