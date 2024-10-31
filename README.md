@@ -1,6 +1,6 @@
 # catalystcenter-go-sdk
 
-catalystcenter-go-sdk is a Go client library for [Catalyst Center Platform](https://developer.cisco.com/dnacenter/).
+catalystcenter-go-sdk is a Go client library for [Catalyst Center Platform](https://developer.cisco.com/catalyst-center/).
 
 ## Usage
 
@@ -12,7 +12,7 @@ import catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/sdk"
 
 The catalystcenter-go-sdk makes it easier to work with the Cisco Catalyst Center Platform RESTFul APIs from Go.
 
-It supports version 2.3.5.3, but it is backward compatible with other versions as long as those versions use the same URLs and options as version 2.3.5.3.
+It supports version 2.3.7.6, but it is backward compatible with other versions as long as those versions use the same URLs and options as version 2.3.7.6.
 
 ## Getting started
 
