@@ -65,6 +65,6 @@ Delete services for Cisco Catalyst Center 2.3.7.6's API:
 - CiscoDnaCenterSystem *CiscoDnaCenterSystemService
 
 
-[1.0.0]: https://github.com/cisco-en-programmability/catalystcenter-go-sdk/commits/v1.0.1
+[1.0.1]: https://github.com/cisco-en-programmability/catalystcenter-go-sdk/commits/v1.0.1
 [1.0.0]: https://github.com/cisco-en-programmability/catalystcenter-go-sdk/commits/v1.0.0
 [Unreleased]: https://github.com/cisco-en-programmability/catalystcenter-go-sdk/compare/v1.0.0...main
