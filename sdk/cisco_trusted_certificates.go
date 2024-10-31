@@ -9,14 +9,14 @@ import (
 
 type CiscoTrustedCertificatesService service
 
-//ImportTrustedCertificate Import Trusted Certificate - 65bd-0ac7-465a-8bbc
+//ImportTrustedCertificateV1 Import Trusted Certificate - 65bd-0ac7-465a-8bbc
 /* Imports trusted certificate into a truststore. Accepts .pem or .der file as input.
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!import-trusted-certificate
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!import-trusted-certificate-v1
 */
-func (s *CiscoTrustedCertificatesService) ImportTrustedCertificate() (*resty.Response, error) {
+func (s *CiscoTrustedCertificatesService) ImportTrustedCertificateV1() (*resty.Response, error) {
 	path := "/dna/intent/api/v1/trustedCertificates/import"
 
 	response, err := s.client.R().
@@ -33,12 +33,17 @@ func (s *CiscoTrustedCertificatesService) ImportTrustedCertificate() (*resty.Res
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.ImportTrustedCertificate()
+			return s.ImportTrustedCertificateV1()
 		}
 
-		return response, fmt.Errorf("error with operation ImportTrustedCertificate")
+		return response, fmt.Errorf("error with operation ImportTrustedCertificateV1")
 	}
 
 	return response, err
 
+}
+
+// Alias Function
+func (s *CiscoTrustedCertificatesService) ImportTrustedCertificate() (*resty.Response, error) {
+	return s.ImportTrustedCertificateV1()
 }

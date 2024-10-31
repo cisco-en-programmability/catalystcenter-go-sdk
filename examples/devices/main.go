@@ -21,7 +21,7 @@ func main() {
 	}
 
 	fmt.Println("Getting device count")
-	devicesCount, _, err := Client.Devices.GetDeviceCount2(nil)
+	devicesCount, _, err := Client.Devices.GetDeviceCountKnowYourNetworkV1(nil)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -29,7 +29,7 @@ func main() {
 
 	fmt.Println("Printing device list ...")
 
-	getDeviceListQueryParams := &catalyst.GetDeviceListQueryParams{}
+	getDeviceListQueryParams := &catalyst.GetDeviceListV1QueryParams{}
 	devices, _, err := Client.Devices.GetDeviceList(getDeviceListQueryParams)
 	if err != nil {
 		fmt.Println(err)
@@ -40,7 +40,7 @@ func main() {
 		}
 	}
 
-	getDeviceListQueryParams = &catalyst.GetDeviceListQueryParams{
+	getDeviceListQueryParams = &catalyst.GetDeviceListV1QueryParams{
 		//PlatformID: []string{"C9300-24UX"},
 	}
 

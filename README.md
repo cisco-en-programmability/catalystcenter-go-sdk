@@ -89,8 +89,8 @@ if devices.Response != nil {
 ## Compatibility matrix
 
 | SDK versions | Cisco Catalyst Center version supported |
-|--------------|------------------------------------|
-| 1.y.z        |  2.3.7.6                           |
+|--------------|-----------------------------------------|
+| 1.y.z        |  2.3.7.6                                |
 
 ## Changelog
 

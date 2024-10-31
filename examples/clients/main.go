@@ -20,7 +20,7 @@ func main() {
 		return
 	}
 
-	getClientEnrichmentDetailsHeaderParams := &catalyst.GetClientEnrichmentDetailsHeaderParams{
+	getClientEnrichmentDetailsHeaderParams := &catalyst.GetClientEnrichmentDetailsV1HeaderParams{
 		EntityType:    "network_user_id",
 		EntityValue:   "test",
 		IssueCategory: "test",

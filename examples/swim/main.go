@@ -37,7 +37,7 @@ func main() {
 	r = f
 
 	nResponse, _, err := client.SoftwareImageManagementSwim.ImportLocalSoftwareImage(
-		&catalyst.ImportLocalSoftwareImageQueryParams{},
+		&catalyst.ImportLocalSoftwareImageV1QueryParams{},
 		&catalyst.ImportLocalSoftwareImageMultipartFields{
 			File:     r,
 			FileName: "dnac_2-2-3-3_v2.zip",

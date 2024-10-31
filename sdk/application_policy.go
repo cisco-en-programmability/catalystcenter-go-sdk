@@ -11,127 +11,127 @@ import (
 
 type ApplicationPolicyService service
 
-type GetApplicationPolicyQueryParams struct {
+type GetApplicationPolicyV1QueryParams struct {
 	PolicyScope string `url:"policyScope,omitempty"` //policy scope name
 }
-type GetApplicationPolicyQueuingProfileQueryParams struct {
+type GetApplicationPolicyQueuingProfileV1QueryParams struct {
 	Name string `url:"name,omitempty"` //queuing profile name
 }
-type GetApplicationSetsQueryParams struct {
+type GetApplicationSetsV1QueryParams struct {
 	Offset float64 `url:"offset,omitempty"` //
 	Limit  float64 `url:"limit,omitempty"`  //
 	Name   string  `url:"name,omitempty"`   //
 }
-type DeleteApplicationSet2QueryParams struct {
+type DeleteApplicationSetV1QueryParams struct {
 	ID string `url:"id,omitempty"` //
 }
-type DeleteApplication2QueryParams struct {
+type DeleteApplicationV1QueryParams struct {
 	ID string `url:"id,omitempty"` //Application's Id
 }
-type GetApplications2QueryParams struct {
+type GetApplicationsV1QueryParams struct {
 	Offset float64 `url:"offset,omitempty"` //The offset of the first application to be returned
 	Limit  float64 `url:"limit,omitempty"`  //The maximum number of applications to be returned
 	Name   string  `url:"name,omitempty"`   //Application's name
 }
-type GetQosDeviceInterfaceInfoQueryParams struct {
+type GetQosDeviceInterfaceInfoV1QueryParams struct {
 	NetworkDeviceID string `url:"networkDeviceId,omitempty"` //network device id
 }
-type GetApplicationSets2QueryParams struct {
+type GetApplicationSetsV2QueryParams struct {
 	Attributes string  `url:"attributes,omitempty"` //Attributes to retrieve, valid value applicationSet
 	Name       string  `url:"name,omitempty"`       //Application set name
 	Offset     float64 `url:"offset,omitempty"`     //The starting point or index from where the paginated results should begin.
 	Limit      float64 `url:"limit,omitempty"`      //The limit which is the maximum number of items to include in a single page of results, max value 500
 }
-type GetApplicationSetCountQueryParams struct {
+type GetApplicationSetCountV2QueryParams struct {
 	ScalableGroupType string `url:"scalableGroupType,omitempty"` //Scalable group type to retrieve, valid value APPLICATION_GROUP
 }
-type GetApplicationsQueryParams struct {
+type GetApplicationsV2QueryParams struct {
 	Attributes string  `url:"attributes,omitempty"` //Attributes to retrieve, valid value application
 	Name       string  `url:"name,omitempty"`       //The application name
 	Offset     float64 `url:"offset,omitempty"`     //The starting point or index from where the paginated results should begin.
 	Limit      float64 `url:"limit,omitempty"`      //The limit which is the maximum number of items to include in a single page of results, max value 500
 }
-type GetApplicationCountQueryParams struct {
+type GetApplicationCountV2QueryParams struct {
 	ScalableGroupType string `url:"scalableGroupType,omitempty"` //scalable group type to retrieve, valid value APPLICATION
 }
 
-type ResponseApplicationPolicyGetApplicationPolicy struct {
-	Response *[]ResponseApplicationPolicyGetApplicationPolicyResponse `json:"response,omitempty"` //
-	Version  string                                                   `json:"version,omitempty"`  // Version
+type ResponseApplicationPolicyGetApplicationPolicyV1 struct {
+	Response *[]ResponseApplicationPolicyGetApplicationPolicyV1Response `json:"response,omitempty"` //
+	Version  string                                                     `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyGetApplicationPolicyResponse struct {
-	ID                  string                                                                    `json:"id,omitempty"`                  // Id of Group based policy
-	InstanceID          *int                                                                      `json:"instanceId,omitempty"`          // Instance id
-	DisplayName         string                                                                    `json:"displayName,omitempty"`         // Display name
-	InstanceCreatedOn   *int                                                                      `json:"instanceCreatedOn,omitempty"`   // Instance created on
-	InstanceUpdatedOn   *int                                                                      `json:"instanceUpdatedOn,omitempty"`   // Instance updated on
-	InstanceVersion     *float64                                                                  `json:"instanceVersion,omitempty"`     // Instance version
-	CreateTime          *int                                                                      `json:"createTime,omitempty"`          // Create time
-	Deployed            *bool                                                                     `json:"deployed,omitempty"`            // Deployed
-	IsSeeded            *bool                                                                     `json:"isSeeded,omitempty"`            // Is seeded
-	IsStale             *bool                                                                     `json:"isStale,omitempty"`             // Is stale
-	LastUpdateTime      *int                                                                      `json:"lastUpdateTime,omitempty"`      // Last update time
-	Name                string                                                                    `json:"name,omitempty"`                // Concatination of <polcy name>_<application-set-name> or <polcy name>_global_policy_configuration or <polcy name>_queuing_customization
-	Namespace           string                                                                    `json:"namespace,omitempty"`           // Namespace
-	ProvisioningState   string                                                                    `json:"provisioningState,omitempty"`   // Provisioning state
-	Qualifier           string                                                                    `json:"qualifier,omitempty"`           // Qualifier
-	ResourceVersion     *float64                                                                  `json:"resourceVersion,omitempty"`     // Resource version
-	TargetIDList        *[]ResponseApplicationPolicyGetApplicationPolicyResponseTargetIDList      `json:"targetIdList,omitempty"`        // Target id list
-	Type                string                                                                    `json:"type,omitempty"`                // Type
-	CfsChangeInfo       *[]ResponseApplicationPolicyGetApplicationPolicyResponseCfsChangeInfo     `json:"cfsChangeInfo,omitempty"`       // Cfs change info
-	CustomProvisions    *[]ResponseApplicationPolicyGetApplicationPolicyResponseCustomProvisions  `json:"customProvisions,omitempty"`    // Custom provisions
-	DeletePolicyStatus  string                                                                    `json:"deletePolicyStatus,omitempty"`  // NONE: deployed policy to devices, DELETED: delete policy from devices, RESTORED: restored to original configuration
-	Internal            *bool                                                                     `json:"internal,omitempty"`            // Internal
-	IsDeleted           *bool                                                                     `json:"isDeleted,omitempty"`           // Is deleted
-	IsEnabled           *bool                                                                     `json:"isEnabled,omitempty"`           // Is enabled
-	IsScopeStale        *bool                                                                     `json:"isScopeStale,omitempty"`        // Is scope stale
-	IseReserved         *bool                                                                     `json:"iseReserved,omitempty"`         // Is reserved
-	PolicyScope         string                                                                    `json:"policyScope,omitempty"`         // Policy name
-	PolicyStatus        string                                                                    `json:"policyStatus,omitempty"`        // Policy status
-	Priority            *int                                                                      `json:"priority,omitempty"`            // Priority
-	Pushed              *bool                                                                     `json:"pushed,omitempty"`              // Pushed
-	AdvancedPolicyScope *ResponseApplicationPolicyGetApplicationPolicyResponseAdvancedPolicyScope `json:"advancedPolicyScope,omitempty"` //
-	ContractList        *[]ResponseApplicationPolicyGetApplicationPolicyResponseContractList      `json:"contractList,omitempty"`        // Contract list
-	ExclusiveContract   *ResponseApplicationPolicyGetApplicationPolicyResponseExclusiveContract   `json:"exclusiveContract,omitempty"`   //
-	IDentitySource      *ResponseApplicationPolicyGetApplicationPolicyResponseIDentitySource      `json:"identitySource,omitempty"`      //
-	Producer            *ResponseApplicationPolicyGetApplicationPolicyResponseProducer            `json:"producer,omitempty"`            //
-	Consumer            *ResponseApplicationPolicyGetApplicationPolicyResponseConsumer            `json:"consumer,omitempty"`            //
+type ResponseApplicationPolicyGetApplicationPolicyV1Response struct {
+	ID                  string                                                                      `json:"id,omitempty"`                  // Id of Group based policy
+	InstanceID          *int                                                                        `json:"instanceId,omitempty"`          // Instance id
+	DisplayName         string                                                                      `json:"displayName,omitempty"`         // Display name
+	InstanceCreatedOn   *int                                                                        `json:"instanceCreatedOn,omitempty"`   // Instance created on
+	InstanceUpdatedOn   *int                                                                        `json:"instanceUpdatedOn,omitempty"`   // Instance updated on
+	InstanceVersion     *float64                                                                    `json:"instanceVersion,omitempty"`     // Instance version
+	CreateTime          *int                                                                        `json:"createTime,omitempty"`          // Create time
+	Deployed            *bool                                                                       `json:"deployed,omitempty"`            // Deployed
+	IsSeeded            *bool                                                                       `json:"isSeeded,omitempty"`            // Is seeded
+	IsStale             *bool                                                                       `json:"isStale,omitempty"`             // Is stale
+	LastUpdateTime      *int                                                                        `json:"lastUpdateTime,omitempty"`      // Last update time
+	Name                string                                                                      `json:"name,omitempty"`                // Concatination of <polcy name>_<application-set-name> or <polcy name>_global_policy_configuration or <polcy name>_queuing_customization
+	Namespace           string                                                                      `json:"namespace,omitempty"`           // Namespace
+	ProvisioningState   string                                                                      `json:"provisioningState,omitempty"`   // Provisioning state
+	Qualifier           string                                                                      `json:"qualifier,omitempty"`           // Qualifier
+	ResourceVersion     *float64                                                                    `json:"resourceVersion,omitempty"`     // Resource version
+	TargetIDList        *[]ResponseApplicationPolicyGetApplicationPolicyV1ResponseTargetIDList      `json:"targetIdList,omitempty"`        // Target id list
+	Type                string                                                                      `json:"type,omitempty"`                // Type
+	CfsChangeInfo       *[]ResponseApplicationPolicyGetApplicationPolicyV1ResponseCfsChangeInfo     `json:"cfsChangeInfo,omitempty"`       // Cfs change info
+	CustomProvisions    *[]ResponseApplicationPolicyGetApplicationPolicyV1ResponseCustomProvisions  `json:"customProvisions,omitempty"`    // Custom provisions
+	DeletePolicyStatus  string                                                                      `json:"deletePolicyStatus,omitempty"`  // NONE: deployed policy to devices, DELETED: delete policy from devices, RESTORED: restored to original configuration
+	Internal            *bool                                                                       `json:"internal,omitempty"`            // Internal
+	IsDeleted           *bool                                                                       `json:"isDeleted,omitempty"`           // Is deleted
+	IsEnabled           *bool                                                                       `json:"isEnabled,omitempty"`           // Is enabled
+	IsScopeStale        *bool                                                                       `json:"isScopeStale,omitempty"`        // Is scope stale
+	IseReserved         *bool                                                                       `json:"iseReserved,omitempty"`         // Is reserved
+	PolicyScope         string                                                                      `json:"policyScope,omitempty"`         // Policy name
+	PolicyStatus        string                                                                      `json:"policyStatus,omitempty"`        // Policy status
+	Priority            *int                                                                        `json:"priority,omitempty"`            // Priority
+	Pushed              *bool                                                                       `json:"pushed,omitempty"`              // Pushed
+	AdvancedPolicyScope *ResponseApplicationPolicyGetApplicationPolicyV1ResponseAdvancedPolicyScope `json:"advancedPolicyScope,omitempty"` //
+	ContractList        *[]ResponseApplicationPolicyGetApplicationPolicyV1ResponseContractList      `json:"contractList,omitempty"`        // Contract list
+	ExclusiveContract   *ResponseApplicationPolicyGetApplicationPolicyV1ResponseExclusiveContract   `json:"exclusiveContract,omitempty"`   //
+	IDentitySource      *ResponseApplicationPolicyGetApplicationPolicyV1ResponseIDentitySource      `json:"identitySource,omitempty"`      //
+	Producer            *ResponseApplicationPolicyGetApplicationPolicyV1ResponseProducer            `json:"producer,omitempty"`            //
+	Consumer            *ResponseApplicationPolicyGetApplicationPolicyV1ResponseConsumer            `json:"consumer,omitempty"`            //
 }
-type ResponseApplicationPolicyGetApplicationPolicyResponseTargetIDList interface{}
-type ResponseApplicationPolicyGetApplicationPolicyResponseCfsChangeInfo interface{}
-type ResponseApplicationPolicyGetApplicationPolicyResponseCustomProvisions interface{}
-type ResponseApplicationPolicyGetApplicationPolicyResponseAdvancedPolicyScope struct {
-	ID                         string                                                                                                `json:"id,omitempty"`                         // Id of Advanced policy scope
-	InstanceID                 *int                                                                                                  `json:"instanceId,omitempty"`                 // Instance id
-	DisplayName                string                                                                                                `json:"displayName,omitempty"`                // Display name
-	InstanceCreatedOn          *int                                                                                                  `json:"instanceCreatedOn,omitempty"`          // Instance created on
-	InstanceUpdatedOn          *int                                                                                                  `json:"instanceUpdatedOn,omitempty"`          // Instance updated on
-	InstanceVersion            *float64                                                                                              `json:"instanceVersion,omitempty"`            // Instance version
-	Name                       string                                                                                                `json:"name,omitempty"`                       // Policy name
-	AdvancedPolicyScopeElement *[]ResponseApplicationPolicyGetApplicationPolicyResponseAdvancedPolicyScopeAdvancedPolicyScopeElement `json:"advancedPolicyScopeElement,omitempty"` //
+type ResponseApplicationPolicyGetApplicationPolicyV1ResponseTargetIDList interface{}
+type ResponseApplicationPolicyGetApplicationPolicyV1ResponseCfsChangeInfo interface{}
+type ResponseApplicationPolicyGetApplicationPolicyV1ResponseCustomProvisions interface{}
+type ResponseApplicationPolicyGetApplicationPolicyV1ResponseAdvancedPolicyScope struct {
+	ID                         string                                                                                                  `json:"id,omitempty"`                         // Id of Advanced policy scope
+	InstanceID                 *int                                                                                                    `json:"instanceId,omitempty"`                 // Instance id
+	DisplayName                string                                                                                                  `json:"displayName,omitempty"`                // Display name
+	InstanceCreatedOn          *int                                                                                                    `json:"instanceCreatedOn,omitempty"`          // Instance created on
+	InstanceUpdatedOn          *int                                                                                                    `json:"instanceUpdatedOn,omitempty"`          // Instance updated on
+	InstanceVersion            *float64                                                                                                `json:"instanceVersion,omitempty"`            // Instance version
+	Name                       string                                                                                                  `json:"name,omitempty"`                       // Policy name
+	AdvancedPolicyScopeElement *[]ResponseApplicationPolicyGetApplicationPolicyV1ResponseAdvancedPolicyScopeAdvancedPolicyScopeElement `json:"advancedPolicyScopeElement,omitempty"` //
 }
-type ResponseApplicationPolicyGetApplicationPolicyResponseAdvancedPolicyScopeAdvancedPolicyScopeElement struct {
-	ID                string                                                                                                    `json:"id,omitempty"`                // Id of Advanced policy scope element
-	InstanceID        *int                                                                                                      `json:"instanceId,omitempty"`        // Instance id
-	DisplayName       string                                                                                                    `json:"displayName,omitempty"`       // Display name
-	InstanceCreatedOn *int                                                                                                      `json:"instanceCreatedOn,omitempty"` // Instance created on
-	InstanceUpdatedOn *int                                                                                                      `json:"instanceUpdatedOn,omitempty"` // Instance updated on
-	InstanceVersion   *float64                                                                                                  `json:"instanceVersion,omitempty"`   // Instance version
-	GroupID           []string                                                                                                  `json:"groupId,omitempty"`           // Group id
-	SSID              *[]ResponseApplicationPolicyGetApplicationPolicyResponseAdvancedPolicyScopeAdvancedPolicyScopeElementSSID `json:"ssid,omitempty"`              // Ssid
+type ResponseApplicationPolicyGetApplicationPolicyV1ResponseAdvancedPolicyScopeAdvancedPolicyScopeElement struct {
+	ID                string                                                                                                      `json:"id,omitempty"`                // Id of Advanced policy scope element
+	InstanceID        *int                                                                                                        `json:"instanceId,omitempty"`        // Instance id
+	DisplayName       string                                                                                                      `json:"displayName,omitempty"`       // Display name
+	InstanceCreatedOn *int                                                                                                        `json:"instanceCreatedOn,omitempty"` // Instance created on
+	InstanceUpdatedOn *int                                                                                                        `json:"instanceUpdatedOn,omitempty"` // Instance updated on
+	InstanceVersion   *float64                                                                                                    `json:"instanceVersion,omitempty"`   // Instance version
+	GroupID           []string                                                                                                    `json:"groupId,omitempty"`           // Group id
+	SSID              *[]ResponseApplicationPolicyGetApplicationPolicyV1ResponseAdvancedPolicyScopeAdvancedPolicyScopeElementSSID `json:"ssid,omitempty"`              // Ssid
 }
-type ResponseApplicationPolicyGetApplicationPolicyResponseAdvancedPolicyScopeAdvancedPolicyScopeElementSSID interface{}
-type ResponseApplicationPolicyGetApplicationPolicyResponseContractList interface{}
-type ResponseApplicationPolicyGetApplicationPolicyResponseExclusiveContract struct {
-	ID                string                                                                          `json:"id,omitempty"`                // Id of Exclusive contract
-	InstanceID        *int                                                                            `json:"instanceId,omitempty"`        // Instance id
-	DisplayName       string                                                                          `json:"displayName,omitempty"`       // Display name
-	InstanceCreatedOn *int                                                                            `json:"instanceCreatedOn,omitempty"` // Instance created on
-	InstanceUpdatedOn *int                                                                            `json:"instanceUpdatedOn,omitempty"` // Instance updated on
-	InstanceVersion   *float64                                                                        `json:"instanceVersion,omitempty"`   // Instance version
-	Clause            *[]ResponseApplicationPolicyGetApplicationPolicyResponseExclusiveContractClause `json:"clause,omitempty"`            //
+type ResponseApplicationPolicyGetApplicationPolicyV1ResponseAdvancedPolicyScopeAdvancedPolicyScopeElementSSID interface{}
+type ResponseApplicationPolicyGetApplicationPolicyV1ResponseContractList interface{}
+type ResponseApplicationPolicyGetApplicationPolicyV1ResponseExclusiveContract struct {
+	ID                string                                                                            `json:"id,omitempty"`                // Id of Exclusive contract
+	InstanceID        *int                                                                              `json:"instanceId,omitempty"`        // Instance id
+	DisplayName       string                                                                            `json:"displayName,omitempty"`       // Display name
+	InstanceCreatedOn *int                                                                              `json:"instanceCreatedOn,omitempty"` // Instance created on
+	InstanceUpdatedOn *int                                                                              `json:"instanceUpdatedOn,omitempty"` // Instance updated on
+	InstanceVersion   *float64                                                                          `json:"instanceVersion,omitempty"`   // Instance version
+	Clause            *[]ResponseApplicationPolicyGetApplicationPolicyV1ResponseExclusiveContractClause `json:"clause,omitempty"`            //
 }
-type ResponseApplicationPolicyGetApplicationPolicyResponseExclusiveContractClause struct {
+type ResponseApplicationPolicyGetApplicationPolicyV1ResponseExclusiveContractClause struct {
 	ID                    string   `json:"id,omitempty"`                    // Id of Business relevance or Application policy knobs clause
 	InstanceID            *int     `json:"instanceId,omitempty"`            // Instance id
 	DisplayName           string   `json:"displayName,omitempty"`           // Display name
@@ -144,7 +144,7 @@ type ResponseApplicationPolicyGetApplicationPolicyResponseExclusiveContractClaus
 	DeviceRemovalBehavior string   `json:"deviceRemovalBehavior,omitempty"` // Device removal behavior
 	HostTrackingEnabled   *bool    `json:"hostTrackingEnabled,omitempty"`   // Host tracking enabled
 }
-type ResponseApplicationPolicyGetApplicationPolicyResponseIDentitySource struct {
+type ResponseApplicationPolicyGetApplicationPolicyV1ResponseIDentitySource struct {
 	ID                string   `json:"id,omitempty"`                // Id of Identity source
 	InstanceID        *int     `json:"instanceId,omitempty"`        // Instance id
 	DisplayName       string   `json:"displayName,omitempty"`       // Display name
@@ -154,83 +154,83 @@ type ResponseApplicationPolicyGetApplicationPolicyResponseIDentitySource struct 
 	State             string   `json:"state,omitempty"`             // State
 	Type              string   `json:"type,omitempty"`              // Type
 }
-type ResponseApplicationPolicyGetApplicationPolicyResponseProducer struct {
-	ID                string                                                                        `json:"id,omitempty"`                // Id of Producer
-	InstanceID        *int                                                                          `json:"instanceId,omitempty"`        // Instance id
-	DisplayName       string                                                                        `json:"displayName,omitempty"`       // Display name
-	InstanceCreatedOn *int                                                                          `json:"instanceCreatedOn,omitempty"` // Instance created on
-	InstanceUpdatedOn *int                                                                          `json:"instanceUpdatedOn,omitempty"` // Instance updated on
-	InstanceVersion   *float64                                                                      `json:"instanceVersion,omitempty"`   // Instance version
-	ScalableGroup     *[]ResponseApplicationPolicyGetApplicationPolicyResponseProducerScalableGroup `json:"scalableGroup,omitempty"`     //
+type ResponseApplicationPolicyGetApplicationPolicyV1ResponseProducer struct {
+	ID                string                                                                          `json:"id,omitempty"`                // Id of Producer
+	InstanceID        *int                                                                            `json:"instanceId,omitempty"`        // Instance id
+	DisplayName       string                                                                          `json:"displayName,omitempty"`       // Display name
+	InstanceCreatedOn *int                                                                            `json:"instanceCreatedOn,omitempty"` // Instance created on
+	InstanceUpdatedOn *int                                                                            `json:"instanceUpdatedOn,omitempty"` // Instance updated on
+	InstanceVersion   *float64                                                                        `json:"instanceVersion,omitempty"`   // Instance version
+	ScalableGroup     *[]ResponseApplicationPolicyGetApplicationPolicyV1ResponseProducerScalableGroup `json:"scalableGroup,omitempty"`     //
 }
-type ResponseApplicationPolicyGetApplicationPolicyResponseProducerScalableGroup struct {
+type ResponseApplicationPolicyGetApplicationPolicyV1ResponseProducerScalableGroup struct {
 	IDRef string `json:"idRef,omitempty"` // Id ref to application-set or application Scalable group
 }
-type ResponseApplicationPolicyGetApplicationPolicyResponseConsumer struct {
-	ID                string                                                                        `json:"id,omitempty"`                // Id of Consumer
-	InstanceID        *int                                                                          `json:"instanceId,omitempty"`        // Instance id
-	DisplayName       string                                                                        `json:"displayName,omitempty"`       // Display name
-	InstanceCreatedOn *int                                                                          `json:"instanceCreatedOn,omitempty"` // Instance created on
-	InstanceUpdatedOn *int                                                                          `json:"instanceUpdatedOn,omitempty"` // Instance updated on
-	InstanceVersion   *float64                                                                      `json:"instanceVersion,omitempty"`   // Instance version
-	ScalableGroup     *[]ResponseApplicationPolicyGetApplicationPolicyResponseConsumerScalableGroup `json:"scalableGroup,omitempty"`     //
+type ResponseApplicationPolicyGetApplicationPolicyV1ResponseConsumer struct {
+	ID                string                                                                          `json:"id,omitempty"`                // Id of Consumer
+	InstanceID        *int                                                                            `json:"instanceId,omitempty"`        // Instance id
+	DisplayName       string                                                                          `json:"displayName,omitempty"`       // Display name
+	InstanceCreatedOn *int                                                                            `json:"instanceCreatedOn,omitempty"` // Instance created on
+	InstanceUpdatedOn *int                                                                            `json:"instanceUpdatedOn,omitempty"` // Instance updated on
+	InstanceVersion   *float64                                                                        `json:"instanceVersion,omitempty"`   // Instance version
+	ScalableGroup     *[]ResponseApplicationPolicyGetApplicationPolicyV1ResponseConsumerScalableGroup `json:"scalableGroup,omitempty"`     //
 }
-type ResponseApplicationPolicyGetApplicationPolicyResponseConsumerScalableGroup struct {
+type ResponseApplicationPolicyGetApplicationPolicyV1ResponseConsumerScalableGroup struct {
 	IDRef string `json:"idRef,omitempty"` // Id ref to application Scalable group
 }
-type ResponseApplicationPolicyGetApplicationPolicyDefault struct {
-	Response *[]ResponseApplicationPolicyGetApplicationPolicyDefaultResponse `json:"response,omitempty"` //
-	Version  string                                                          `json:"version,omitempty"`  // Version
+type ResponseApplicationPolicyGetApplicationPolicyDefaultV1 struct {
+	Response *[]ResponseApplicationPolicyGetApplicationPolicyDefaultV1Response `json:"response,omitempty"` //
+	Version  string                                                            `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyGetApplicationPolicyDefaultResponse struct {
-	ID                 string                                                                          `json:"id,omitempty"`                 // Id of Group based policy
-	InstanceID         *int                                                                            `json:"instanceId,omitempty"`         // Instance id
-	DisplayName        string                                                                          `json:"displayName,omitempty"`        // Display name
-	InstanceCreatedOn  *int                                                                            `json:"instanceCreatedOn,omitempty"`  // Instance created on
-	InstanceUpdatedOn  *int                                                                            `json:"instanceUpdatedOn,omitempty"`  // Instance updated on
-	InstanceVersion    *float64                                                                        `json:"instanceVersion,omitempty"`    // Instance version
-	CreateTime         *int                                                                            `json:"createTime,omitempty"`         // Create time
-	Deployed           *bool                                                                           `json:"deployed,omitempty"`           // Deployed
-	IsSeeded           *bool                                                                           `json:"isSeeded,omitempty"`           // Is seeded
-	IsStale            *bool                                                                           `json:"isStale,omitempty"`            // Is stale
-	LastUpdateTime     *int                                                                            `json:"lastUpdateTime,omitempty"`     // Last update time
-	Name               string                                                                          `json:"name,omitempty"`               // Concatination of <polcy name>_<application-set-name> or <polcy name>_global_policy_configuration or <polcy name>_queuing_customization
-	Namespace          string                                                                          `json:"namespace,omitempty"`          // Namespace
-	ProvisioningState  string                                                                          `json:"provisioningState,omitempty"`  // Provisioning state
-	Qualifier          string                                                                          `json:"qualifier,omitempty"`          // Qualifier
-	ResourceVersion    *float64                                                                        `json:"resourceVersion,omitempty"`    // Resource version
-	TargetIDList       *[]ResponseApplicationPolicyGetApplicationPolicyDefaultResponseTargetIDList     `json:"targetIdList,omitempty"`       // Target id list
-	Type               string                                                                          `json:"type,omitempty"`               // Type
-	CfsChangeInfo      *[]ResponseApplicationPolicyGetApplicationPolicyDefaultResponseCfsChangeInfo    `json:"cfsChangeInfo,omitempty"`      // Cfs change info
-	CustomProvisions   *[]ResponseApplicationPolicyGetApplicationPolicyDefaultResponseCustomProvisions `json:"customProvisions,omitempty"`   // Custom provisions
-	DeletePolicyStatus string                                                                          `json:"deletePolicyStatus,omitempty"` // NONE: deployed policy to devices, DELETED: delete policy from devices, RESTORED: restored to original configuration
-	Internal           *bool                                                                           `json:"internal,omitempty"`           // Internal
-	IsDeleted          *bool                                                                           `json:"isDeleted,omitempty"`          // Is deleted
-	IsEnabled          *bool                                                                           `json:"isEnabled,omitempty"`          // Is enabled
-	IsScopeStale       *bool                                                                           `json:"isScopeStale,omitempty"`       // Is scope stale
-	IseReserved        *bool                                                                           `json:"iseReserved,omitempty"`        // Is reserved
-	PolicyStatus       string                                                                          `json:"policyStatus,omitempty"`       // Policy status
-	Priority           *int                                                                            `json:"priority,omitempty"`           // Priority
-	Pushed             *bool                                                                           `json:"pushed,omitempty"`             // Pushed
-	ContractList       *[]ResponseApplicationPolicyGetApplicationPolicyDefaultResponseContractList     `json:"contractList,omitempty"`       // Contract list
-	ExclusiveContract  *ResponseApplicationPolicyGetApplicationPolicyDefaultResponseExclusiveContract  `json:"exclusiveContract,omitempty"`  //
-	IDentitySource     *ResponseApplicationPolicyGetApplicationPolicyDefaultResponseIDentitySource     `json:"identitySource,omitempty"`     //
-	Producer           *ResponseApplicationPolicyGetApplicationPolicyDefaultResponseProducer           `json:"producer,omitempty"`           //
+type ResponseApplicationPolicyGetApplicationPolicyDefaultV1Response struct {
+	ID                 string                                                                            `json:"id,omitempty"`                 // Id of Group based policy
+	InstanceID         *int                                                                              `json:"instanceId,omitempty"`         // Instance id
+	DisplayName        string                                                                            `json:"displayName,omitempty"`        // Display name
+	InstanceCreatedOn  *int                                                                              `json:"instanceCreatedOn,omitempty"`  // Instance created on
+	InstanceUpdatedOn  *int                                                                              `json:"instanceUpdatedOn,omitempty"`  // Instance updated on
+	InstanceVersion    *float64                                                                          `json:"instanceVersion,omitempty"`    // Instance version
+	CreateTime         *int                                                                              `json:"createTime,omitempty"`         // Create time
+	Deployed           *bool                                                                             `json:"deployed,omitempty"`           // Deployed
+	IsSeeded           *bool                                                                             `json:"isSeeded,omitempty"`           // Is seeded
+	IsStale            *bool                                                                             `json:"isStale,omitempty"`            // Is stale
+	LastUpdateTime     *int                                                                              `json:"lastUpdateTime,omitempty"`     // Last update time
+	Name               string                                                                            `json:"name,omitempty"`               // Concatination of <polcy name>_<application-set-name> or <polcy name>_global_policy_configuration or <polcy name>_queuing_customization
+	Namespace          string                                                                            `json:"namespace,omitempty"`          // Namespace
+	ProvisioningState  string                                                                            `json:"provisioningState,omitempty"`  // Provisioning state
+	Qualifier          string                                                                            `json:"qualifier,omitempty"`          // Qualifier
+	ResourceVersion    *float64                                                                          `json:"resourceVersion,omitempty"`    // Resource version
+	TargetIDList       *[]ResponseApplicationPolicyGetApplicationPolicyDefaultV1ResponseTargetIDList     `json:"targetIdList,omitempty"`       // Target id list
+	Type               string                                                                            `json:"type,omitempty"`               // Type
+	CfsChangeInfo      *[]ResponseApplicationPolicyGetApplicationPolicyDefaultV1ResponseCfsChangeInfo    `json:"cfsChangeInfo,omitempty"`      // Cfs change info
+	CustomProvisions   *[]ResponseApplicationPolicyGetApplicationPolicyDefaultV1ResponseCustomProvisions `json:"customProvisions,omitempty"`   // Custom provisions
+	DeletePolicyStatus string                                                                            `json:"deletePolicyStatus,omitempty"` // NONE: deployed policy to devices, DELETED: delete policy from devices, RESTORED: restored to original configuration
+	Internal           *bool                                                                             `json:"internal,omitempty"`           // Internal
+	IsDeleted          *bool                                                                             `json:"isDeleted,omitempty"`          // Is deleted
+	IsEnabled          *bool                                                                             `json:"isEnabled,omitempty"`          // Is enabled
+	IsScopeStale       *bool                                                                             `json:"isScopeStale,omitempty"`       // Is scope stale
+	IseReserved        *bool                                                                             `json:"iseReserved,omitempty"`        // Is reserved
+	PolicyStatus       string                                                                            `json:"policyStatus,omitempty"`       // Policy status
+	Priority           *int                                                                              `json:"priority,omitempty"`           // Priority
+	Pushed             *bool                                                                             `json:"pushed,omitempty"`             // Pushed
+	ContractList       *[]ResponseApplicationPolicyGetApplicationPolicyDefaultV1ResponseContractList     `json:"contractList,omitempty"`       // Contract list
+	ExclusiveContract  *ResponseApplicationPolicyGetApplicationPolicyDefaultV1ResponseExclusiveContract  `json:"exclusiveContract,omitempty"`  //
+	IDentitySource     *ResponseApplicationPolicyGetApplicationPolicyDefaultV1ResponseIDentitySource     `json:"identitySource,omitempty"`     //
+	Producer           *ResponseApplicationPolicyGetApplicationPolicyDefaultV1ResponseProducer           `json:"producer,omitempty"`           //
 }
-type ResponseApplicationPolicyGetApplicationPolicyDefaultResponseTargetIDList interface{}
-type ResponseApplicationPolicyGetApplicationPolicyDefaultResponseCfsChangeInfo interface{}
-type ResponseApplicationPolicyGetApplicationPolicyDefaultResponseCustomProvisions interface{}
-type ResponseApplicationPolicyGetApplicationPolicyDefaultResponseContractList interface{}
-type ResponseApplicationPolicyGetApplicationPolicyDefaultResponseExclusiveContract struct {
-	ID                string                                                                                 `json:"id,omitempty"`                // Id of Exclusive contract
-	InstanceID        *int                                                                                   `json:"instanceId,omitempty"`        // Instance id
-	DisplayName       string                                                                                 `json:"displayName,omitempty"`       // Display name
-	InstanceCreatedOn *int                                                                                   `json:"instanceCreatedOn,omitempty"` // Instance created on
-	InstanceUpdatedOn *int                                                                                   `json:"instanceUpdatedOn,omitempty"` // Instance updated on
-	InstanceVersion   *float64                                                                               `json:"instanceVersion,omitempty"`   // Instance version
-	Clause            *[]ResponseApplicationPolicyGetApplicationPolicyDefaultResponseExclusiveContractClause `json:"clause,omitempty"`            //
+type ResponseApplicationPolicyGetApplicationPolicyDefaultV1ResponseTargetIDList interface{}
+type ResponseApplicationPolicyGetApplicationPolicyDefaultV1ResponseCfsChangeInfo interface{}
+type ResponseApplicationPolicyGetApplicationPolicyDefaultV1ResponseCustomProvisions interface{}
+type ResponseApplicationPolicyGetApplicationPolicyDefaultV1ResponseContractList interface{}
+type ResponseApplicationPolicyGetApplicationPolicyDefaultV1ResponseExclusiveContract struct {
+	ID                string                                                                                   `json:"id,omitempty"`                // Id of Exclusive contract
+	InstanceID        *int                                                                                     `json:"instanceId,omitempty"`        // Instance id
+	DisplayName       string                                                                                   `json:"displayName,omitempty"`       // Display name
+	InstanceCreatedOn *int                                                                                     `json:"instanceCreatedOn,omitempty"` // Instance created on
+	InstanceUpdatedOn *int                                                                                     `json:"instanceUpdatedOn,omitempty"` // Instance updated on
+	InstanceVersion   *float64                                                                                 `json:"instanceVersion,omitempty"`   // Instance version
+	Clause            *[]ResponseApplicationPolicyGetApplicationPolicyDefaultV1ResponseExclusiveContractClause `json:"clause,omitempty"`            //
 }
-type ResponseApplicationPolicyGetApplicationPolicyDefaultResponseExclusiveContractClause struct {
+type ResponseApplicationPolicyGetApplicationPolicyDefaultV1ResponseExclusiveContractClause struct {
 	ID                string   `json:"id,omitempty"`                // Id of Business relevance clause
 	InstanceID        *int     `json:"instanceId,omitempty"`        // Instance id
 	DisplayName       string   `json:"displayName,omitempty"`       // Display name
@@ -241,7 +241,7 @@ type ResponseApplicationPolicyGetApplicationPolicyDefaultResponseExclusiveContra
 	Type              string   `json:"type,omitempty"`              // Type
 	RelevanceLevel    string   `json:"relevanceLevel,omitempty"`    // Relevance level
 }
-type ResponseApplicationPolicyGetApplicationPolicyDefaultResponseIDentitySource struct {
+type ResponseApplicationPolicyGetApplicationPolicyDefaultV1ResponseIDentitySource struct {
 	ID                string   `json:"id,omitempty"`                // Id of Identity source
 	InstanceID        *int     `json:"instanceId,omitempty"`        // Instance id
 	DisplayName       string   `json:"displayName,omitempty"`       // Display name
@@ -251,87 +251,87 @@ type ResponseApplicationPolicyGetApplicationPolicyDefaultResponseIDentitySource 
 	State             string   `json:"state,omitempty"`             // State
 	Type              string   `json:"type,omitempty"`              // Type
 }
-type ResponseApplicationPolicyGetApplicationPolicyDefaultResponseProducer struct {
-	ID                string                                                                               `json:"id,omitempty"`                // Id of Producer
-	InstanceID        *int                                                                                 `json:"instanceId,omitempty"`        // Instance id
-	DisplayName       string                                                                               `json:"displayName,omitempty"`       // Display name
-	InstanceCreatedOn *int                                                                                 `json:"instanceCreatedOn,omitempty"` // Instance created on
-	InstanceUpdatedOn *int                                                                                 `json:"instanceUpdatedOn,omitempty"` // Instance updated on
-	InstanceVersion   *float64                                                                             `json:"instanceVersion,omitempty"`   // Instance version
-	ScalableGroup     *[]ResponseApplicationPolicyGetApplicationPolicyDefaultResponseProducerScalableGroup `json:"scalableGroup,omitempty"`     //
+type ResponseApplicationPolicyGetApplicationPolicyDefaultV1ResponseProducer struct {
+	ID                string                                                                                 `json:"id,omitempty"`                // Id of Producer
+	InstanceID        *int                                                                                   `json:"instanceId,omitempty"`        // Instance id
+	DisplayName       string                                                                                 `json:"displayName,omitempty"`       // Display name
+	InstanceCreatedOn *int                                                                                   `json:"instanceCreatedOn,omitempty"` // Instance created on
+	InstanceUpdatedOn *int                                                                                   `json:"instanceUpdatedOn,omitempty"` // Instance updated on
+	InstanceVersion   *float64                                                                               `json:"instanceVersion,omitempty"`   // Instance version
+	ScalableGroup     *[]ResponseApplicationPolicyGetApplicationPolicyDefaultV1ResponseProducerScalableGroup `json:"scalableGroup,omitempty"`     //
 }
-type ResponseApplicationPolicyGetApplicationPolicyDefaultResponseProducerScalableGroup struct {
+type ResponseApplicationPolicyGetApplicationPolicyDefaultV1ResponseProducerScalableGroup struct {
 	IDRef string `json:"idRef,omitempty"` // Id ref to application-set or application Scalable group
 }
-type ResponseApplicationPolicyApplicationPolicyIntent struct {
-	Response *ResponseApplicationPolicyApplicationPolicyIntentResponse `json:"response,omitempty"` //
-	Version  string                                                    `json:"version,omitempty"`  // Version
+type ResponseApplicationPolicyApplicationPolicyIntentV1 struct {
+	Response *ResponseApplicationPolicyApplicationPolicyIntentV1Response `json:"response,omitempty"` //
+	Version  string                                                      `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyApplicationPolicyIntentResponse struct {
+type ResponseApplicationPolicyApplicationPolicyIntentV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task id
 	URL    string `json:"url,omitempty"`    // Task url
 }
-type ResponseApplicationPolicyGetApplicationPolicyQueuingProfile struct {
-	Response *[]ResponseApplicationPolicyGetApplicationPolicyQueuingProfileResponse `json:"response,omitempty"` //
-	Version  string                                                                 `json:"version,omitempty"`  // Version
+type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1 struct {
+	Response *[]ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1Response `json:"response,omitempty"` //
+	Version  string                                                                   `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileResponse struct {
-	ID                 string                                                                                   `json:"id,omitempty"`                 // Id of Queueing profile
-	InstanceID         *int                                                                                     `json:"instanceId,omitempty"`         // Instance id
-	DisplayName        string                                                                                   `json:"displayName,omitempty"`        // Display name
-	InstanceCreatedOn  *int                                                                                     `json:"instanceCreatedOn,omitempty"`  // Instance created on
-	InstanceUpdatedOn  *int                                                                                     `json:"instanceUpdatedOn,omitempty"`  // Instance updated on
-	InstanceVersion    *float64                                                                                 `json:"instanceVersion,omitempty"`    // Instance version
-	CreateTime         *int                                                                                     `json:"createTime,omitempty"`         // Create time
-	Deployed           *bool                                                                                    `json:"deployed,omitempty"`           // Deployed
-	Description        string                                                                                   `json:"description,omitempty"`        // Free test description
-	IsSeeded           *bool                                                                                    `json:"isSeeded,omitempty"`           // Is seeded
-	IsStale            *bool                                                                                    `json:"isStale,omitempty"`            // Is stale
-	LastUpdateTime     *int                                                                                     `json:"lastUpdateTime,omitempty"`     // Last update time
-	Name               string                                                                                   `json:"name,omitempty"`               // Queueing profile name
-	Namespace          string                                                                                   `json:"namespace,omitempty"`          // Namespace
-	ProvisioningState  string                                                                                   `json:"provisioningState,omitempty"`  // Provisioning State
-	Qualifier          string                                                                                   `json:"qualifier,omitempty"`          // Qualifier
-	ResourceVersion    *float64                                                                                 `json:"resourceVersion,omitempty"`    // Resource version
-	TargetIDList       *[]ResponseApplicationPolicyGetApplicationPolicyQueuingProfileResponseTargetIDList       `json:"targetIdList,omitempty"`       // Target id list
-	Type               string                                                                                   `json:"type,omitempty"`               // Type
-	CfsChangeInfo      *[]ResponseApplicationPolicyGetApplicationPolicyQueuingProfileResponseCfsChangeInfo      `json:"cfsChangeInfo,omitempty"`      // Cfs change info
-	CustomProvisions   *[]ResponseApplicationPolicyGetApplicationPolicyQueuingProfileResponseCustomProvisions   `json:"customProvisions,omitempty"`   // Custom provisions
-	GenID              *float64                                                                                 `json:"genId,omitempty"`              // Gen id
-	Internal           *bool                                                                                    `json:"internal,omitempty"`           // Internal
-	IsDeleted          *bool                                                                                    `json:"isDeleted,omitempty"`          // Is deleted
-	IseReserved        *bool                                                                                    `json:"iseReserved,omitempty"`        // Is reserved
-	Pushed             *bool                                                                                    `json:"pushed,omitempty"`             // Pushed
-	Clause             *[]ResponseApplicationPolicyGetApplicationPolicyQueuingProfileResponseClause             `json:"clause,omitempty"`             //
-	ContractClassifier *[]ResponseApplicationPolicyGetApplicationPolicyQueuingProfileResponseContractClassifier `json:"contractClassifier,omitempty"` // Contract classifier
+type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1Response struct {
+	ID                 string                                                                                     `json:"id,omitempty"`                 // Id of Queueing profile
+	InstanceID         *int                                                                                       `json:"instanceId,omitempty"`         // Instance id
+	DisplayName        string                                                                                     `json:"displayName,omitempty"`        // Display name
+	InstanceCreatedOn  *int                                                                                       `json:"instanceCreatedOn,omitempty"`  // Instance created on
+	InstanceUpdatedOn  *int                                                                                       `json:"instanceUpdatedOn,omitempty"`  // Instance updated on
+	InstanceVersion    *float64                                                                                   `json:"instanceVersion,omitempty"`    // Instance version
+	CreateTime         *int                                                                                       `json:"createTime,omitempty"`         // Create time
+	Deployed           *bool                                                                                      `json:"deployed,omitempty"`           // Deployed
+	Description        string                                                                                     `json:"description,omitempty"`        // Free test description
+	IsSeeded           *bool                                                                                      `json:"isSeeded,omitempty"`           // Is seeded
+	IsStale            *bool                                                                                      `json:"isStale,omitempty"`            // Is stale
+	LastUpdateTime     *int                                                                                       `json:"lastUpdateTime,omitempty"`     // Last update time
+	Name               string                                                                                     `json:"name,omitempty"`               // Queueing profile name
+	Namespace          string                                                                                     `json:"namespace,omitempty"`          // Namespace
+	ProvisioningState  string                                                                                     `json:"provisioningState,omitempty"`  // Provisioning State
+	Qualifier          string                                                                                     `json:"qualifier,omitempty"`          // Qualifier
+	ResourceVersion    *float64                                                                                   `json:"resourceVersion,omitempty"`    // Resource version
+	TargetIDList       *[]ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1ResponseTargetIDList       `json:"targetIdList,omitempty"`       // Target id list
+	Type               string                                                                                     `json:"type,omitempty"`               // Type
+	CfsChangeInfo      *[]ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1ResponseCfsChangeInfo      `json:"cfsChangeInfo,omitempty"`      // Cfs change info
+	CustomProvisions   *[]ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1ResponseCustomProvisions   `json:"customProvisions,omitempty"`   // Custom provisions
+	GenID              *float64                                                                                   `json:"genId,omitempty"`              // Gen id
+	Internal           *bool                                                                                      `json:"internal,omitempty"`           // Internal
+	IsDeleted          *bool                                                                                      `json:"isDeleted,omitempty"`          // Is deleted
+	IseReserved        *bool                                                                                      `json:"iseReserved,omitempty"`        // Is reserved
+	Pushed             *bool                                                                                      `json:"pushed,omitempty"`             // Pushed
+	Clause             *[]ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1ResponseClause             `json:"clause,omitempty"`             //
+	ContractClassifier *[]ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1ResponseContractClassifier `json:"contractClassifier,omitempty"` // Contract classifier
 }
-type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileResponseTargetIDList interface{}
-type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileResponseCfsChangeInfo interface{}
-type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileResponseCustomProvisions interface{}
-type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileResponseClause struct {
-	ID                                string                                                                                                     `json:"id,omitempty"`                                // Id
-	InstanceID                        *int                                                                                                       `json:"instanceId,omitempty"`                        // Instance id
-	DisplayName                       string                                                                                                     `json:"displayName,omitempty"`                       // Display name
-	InstanceCreatedOn                 *int                                                                                                       `json:"instanceCreatedOn,omitempty"`                 // Instance created on
-	InstanceUpdatedOn                 *int                                                                                                       `json:"instanceUpdatedOn,omitempty"`                 // Instance updated on
-	InstanceVersion                   *float64                                                                                                   `json:"instanceVersion,omitempty"`                   // Instance version
-	Priority                          *int                                                                                                       `json:"priority,omitempty"`                          // Priority
-	Type                              string                                                                                                     `json:"type,omitempty"`                              // Type
-	IsCommonBetweenAllInterfaceSpeeds *bool                                                                                                      `json:"isCommonBetweenAllInterfaceSpeeds,omitempty"` // Is common between all interface speeds
-	InterfaceSpeedBandwidthClauses    *[]ResponseApplicationPolicyGetApplicationPolicyQueuingProfileResponseClauseInterfaceSpeedBandwidthClauses `json:"interfaceSpeedBandwidthClauses,omitempty"`    //
-	TcDscpSettings                    *[]ResponseApplicationPolicyGetApplicationPolicyQueuingProfileResponseClauseTcDscpSettings                 `json:"tcDscpSettings,omitempty"`                    //
+type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1ResponseTargetIDList interface{}
+type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1ResponseCfsChangeInfo interface{}
+type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1ResponseCustomProvisions interface{}
+type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1ResponseClause struct {
+	ID                                string                                                                                                       `json:"id,omitempty"`                                // Id
+	InstanceID                        *int                                                                                                         `json:"instanceId,omitempty"`                        // Instance id
+	DisplayName                       string                                                                                                       `json:"displayName,omitempty"`                       // Display name
+	InstanceCreatedOn                 *int                                                                                                         `json:"instanceCreatedOn,omitempty"`                 // Instance created on
+	InstanceUpdatedOn                 *int                                                                                                         `json:"instanceUpdatedOn,omitempty"`                 // Instance updated on
+	InstanceVersion                   *float64                                                                                                     `json:"instanceVersion,omitempty"`                   // Instance version
+	Priority                          *int                                                                                                         `json:"priority,omitempty"`                          // Priority
+	Type                              string                                                                                                       `json:"type,omitempty"`                              // Type
+	IsCommonBetweenAllInterfaceSpeeds *bool                                                                                                        `json:"isCommonBetweenAllInterfaceSpeeds,omitempty"` // Is common between all interface speeds
+	InterfaceSpeedBandwidthClauses    *[]ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1ResponseClauseInterfaceSpeedBandwidthClauses `json:"interfaceSpeedBandwidthClauses,omitempty"`    //
+	TcDscpSettings                    *[]ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1ResponseClauseTcDscpSettings                 `json:"tcDscpSettings,omitempty"`                    //
 }
-type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileResponseClauseInterfaceSpeedBandwidthClauses struct {
-	ID                  string                                                                                                                        `json:"id,omitempty"`                  // Id
-	InstanceID          *int                                                                                                                          `json:"instanceId,omitempty"`          // Instance id
-	DisplayName         string                                                                                                                        `json:"displayName,omitempty"`         // Display name
-	InstanceCreatedOn   *int                                                                                                                          `json:"instanceCreatedOn,omitempty"`   // Instance created on
-	InstanceUpdatedOn   *int                                                                                                                          `json:"instanceUpdatedOn,omitempty"`   // Instance updated on
-	InstanceVersion     *float64                                                                                                                      `json:"instanceVersion,omitempty"`     // Instance version
-	InterfaceSpeed      string                                                                                                                        `json:"interfaceSpeed,omitempty"`      // Interface speed
-	TcBandwidthSettings *[]ResponseApplicationPolicyGetApplicationPolicyQueuingProfileResponseClauseInterfaceSpeedBandwidthClausesTcBandwidthSettings `json:"tcBandwidthSettings,omitempty"` //
+type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1ResponseClauseInterfaceSpeedBandwidthClauses struct {
+	ID                  string                                                                                                                          `json:"id,omitempty"`                  // Id
+	InstanceID          *int                                                                                                                            `json:"instanceId,omitempty"`          // Instance id
+	DisplayName         string                                                                                                                          `json:"displayName,omitempty"`         // Display name
+	InstanceCreatedOn   *int                                                                                                                            `json:"instanceCreatedOn,omitempty"`   // Instance created on
+	InstanceUpdatedOn   *int                                                                                                                            `json:"instanceUpdatedOn,omitempty"`   // Instance updated on
+	InstanceVersion     *float64                                                                                                                        `json:"instanceVersion,omitempty"`     // Instance version
+	InterfaceSpeed      string                                                                                                                          `json:"interfaceSpeed,omitempty"`      // Interface speed
+	TcBandwidthSettings *[]ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1ResponseClauseInterfaceSpeedBandwidthClausesTcBandwidthSettings `json:"tcBandwidthSettings,omitempty"` //
 }
-type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileResponseClauseInterfaceSpeedBandwidthClausesTcBandwidthSettings struct {
+type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1ResponseClauseInterfaceSpeedBandwidthClausesTcBandwidthSettings struct {
 	ID                  string   `json:"id,omitempty"`                  // Id
 	InstanceID          *int     `json:"instanceId,omitempty"`          // Instance id
 	DisplayName         string   `json:"displayName,omitempty"`         // Display name
@@ -341,7 +341,7 @@ type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileResponseClauseIn
 	BandwidthPercentage *int     `json:"bandwidthPercentage,omitempty"` // Bandwidth percentage
 	TrafficClass        string   `json:"trafficClass,omitempty"`        // Traffic Class
 }
-type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileResponseClauseTcDscpSettings struct {
+type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1ResponseClauseTcDscpSettings struct {
 	ID                string   `json:"id,omitempty"`                // Id
 	InstanceID        *int     `json:"instanceId,omitempty"`        // Instance id
 	DisplayName       string   `json:"displayName,omitempty"`       // Display name
@@ -351,100 +351,100 @@ type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileResponseClauseTc
 	Dscp              string   `json:"dscp,omitempty"`              // Dscp value
 	TrafficClass      string   `json:"trafficClass,omitempty"`      // Traffic Class
 }
-type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileResponseContractClassifier interface{}
-type ResponseApplicationPolicyUpdateApplicationPolicyQueuingProfile struct {
-	Response *ResponseApplicationPolicyUpdateApplicationPolicyQueuingProfileResponse `json:"response,omitempty"` //
-	Version  string                                                                  `json:"version,omitempty"`  // Version
+type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1ResponseContractClassifier interface{}
+type ResponseApplicationPolicyUpdateApplicationPolicyQueuingProfileV1 struct {
+	Response *ResponseApplicationPolicyUpdateApplicationPolicyQueuingProfileV1Response `json:"response,omitempty"` //
+	Version  string                                                                    `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyUpdateApplicationPolicyQueuingProfileResponse struct {
+type ResponseApplicationPolicyUpdateApplicationPolicyQueuingProfileV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task id
 	URL    string `json:"url,omitempty"`    // Task url
 }
-type ResponseApplicationPolicyCreateApplicationPolicyQueuingProfile struct {
-	Response *ResponseApplicationPolicyCreateApplicationPolicyQueuingProfileResponse `json:"response,omitempty"` //
-	Version  string                                                                  `json:"version,omitempty"`  // Version
+type ResponseApplicationPolicyCreateApplicationPolicyQueuingProfileV1 struct {
+	Response *ResponseApplicationPolicyCreateApplicationPolicyQueuingProfileV1Response `json:"response,omitempty"` //
+	Version  string                                                                    `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyCreateApplicationPolicyQueuingProfileResponse struct {
+type ResponseApplicationPolicyCreateApplicationPolicyQueuingProfileV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task id
 	URL    string `json:"url,omitempty"`    // Task url
 }
-type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileCount struct {
+type ResponseApplicationPolicyGetApplicationPolicyQueuingProfileCountV1 struct {
 	Response *int   `json:"response,omitempty"` // Total number of Queueing Profile
 	Version  string `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyDeleteApplicationPolicyQueuingProfile struct {
-	Response *ResponseApplicationPolicyDeleteApplicationPolicyQueuingProfileResponse `json:"response,omitempty"` //
-	Version  string                                                                  `json:"version,omitempty"`  // Version
+type ResponseApplicationPolicyDeleteApplicationPolicyQueuingProfileV1 struct {
+	Response *ResponseApplicationPolicyDeleteApplicationPolicyQueuingProfileV1Response `json:"response,omitempty"` //
+	Version  string                                                                    `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyDeleteApplicationPolicyQueuingProfileResponse struct {
+type ResponseApplicationPolicyDeleteApplicationPolicyQueuingProfileV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task id
 	URL    string `json:"url,omitempty"`    // Task url
 }
-type ResponseApplicationPolicyGetApplicationSets struct {
-	Response *[]ResponseApplicationPolicyGetApplicationSetsResponse `json:"response,omitempty"` //
+type ResponseApplicationPolicyGetApplicationSetsV1 struct {
+	Response *[]ResponseApplicationPolicyGetApplicationSetsV1Response `json:"response,omitempty"` //
 }
-type ResponseApplicationPolicyGetApplicationSetsResponse struct {
-	ID             string                                                             `json:"id,omitempty"`             // Id
-	IDentitySource *ResponseApplicationPolicyGetApplicationSetsResponseIDentitySource `json:"identitySource,omitempty"` //
-	Name           string                                                             `json:"name,omitempty"`           // Name
+type ResponseApplicationPolicyGetApplicationSetsV1Response struct {
+	ID             string                                                               `json:"id,omitempty"`             // Id
+	IDentitySource *ResponseApplicationPolicyGetApplicationSetsV1ResponseIDentitySource `json:"identitySource,omitempty"` //
+	Name           string                                                               `json:"name,omitempty"`           // Name
 }
-type ResponseApplicationPolicyGetApplicationSetsResponseIDentitySource struct {
+type ResponseApplicationPolicyGetApplicationSetsV1ResponseIDentitySource struct {
 	ID   string `json:"id,omitempty"`   // Id
 	Type string `json:"type,omitempty"` // Type
 }
-type ResponseApplicationPolicyDeleteApplicationSet2 struct {
-	Response *ResponseApplicationPolicyDeleteApplicationSet2Response `json:"response,omitempty"` //
-	Version  string                                                  `json:"version,omitempty"`  // Version
+type ResponseApplicationPolicyDeleteApplicationSetV1 struct {
+	Response *ResponseApplicationPolicyDeleteApplicationSetV1Response `json:"response,omitempty"` //
+	Version  string                                                   `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyDeleteApplicationSet2Response struct {
+type ResponseApplicationPolicyDeleteApplicationSetV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task Id
 	URL    string `json:"url,omitempty"`    // Url
 }
-type ResponseApplicationPolicyCreateApplicationSet struct {
-	Response *ResponseApplicationPolicyCreateApplicationSetResponse `json:"response,omitempty"` //
-	Version  string                                                 `json:"version,omitempty"`  // Version
+type ResponseApplicationPolicyCreateApplicationSetV1 struct {
+	Response *ResponseApplicationPolicyCreateApplicationSetV1Response `json:"response,omitempty"` //
+	Version  string                                                   `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyCreateApplicationSetResponse struct {
+type ResponseApplicationPolicyCreateApplicationSetV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task Id
 	URL    string `json:"url,omitempty"`    // Url
 }
-type ResponseApplicationPolicyGetApplicationSetsCount struct {
+type ResponseApplicationPolicyGetApplicationSetsCountV1 struct {
 	Response string `json:"response,omitempty"` // Response
 	Version  string `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyCreateApplication struct {
-	Response *ResponseApplicationPolicyCreateApplicationResponse `json:"response,omitempty"` //
+type ResponseApplicationPolicyCreateApplicationV1 struct {
+	Response *ResponseApplicationPolicyCreateApplicationV1Response `json:"response,omitempty"` //
+	Version  string                                                `json:"version,omitempty"`  // Version
+}
+type ResponseApplicationPolicyCreateApplicationV1Response struct {
+	TaskID string `json:"taskId,omitempty"` // Task Id
+	URL    string `json:"url,omitempty"`    // Url
+}
+type ResponseApplicationPolicyEditApplicationV1 struct {
+	Response *ResponseApplicationPolicyEditApplicationV1Response `json:"response,omitempty"` //
 	Version  string                                              `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyCreateApplicationResponse struct {
+type ResponseApplicationPolicyEditApplicationV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task Id
 	URL    string `json:"url,omitempty"`    // Url
 }
-type ResponseApplicationPolicyEditApplication struct {
-	Response *ResponseApplicationPolicyEditApplicationResponse `json:"response,omitempty"` //
-	Version  string                                            `json:"version,omitempty"`  // Version
+type ResponseApplicationPolicyDeleteApplicationV1 struct {
+	Response *ResponseApplicationPolicyDeleteApplicationV1Response `json:"response,omitempty"` //
+	Version  string                                                `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyEditApplicationResponse struct {
+type ResponseApplicationPolicyDeleteApplicationV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task Id
 	URL    string `json:"url,omitempty"`    // Url
 }
-type ResponseApplicationPolicyDeleteApplication2 struct {
-	Response *ResponseApplicationPolicyDeleteApplication2Response `json:"response,omitempty"` //
-	Version  string                                               `json:"version,omitempty"`  // Version
+type ResponseApplicationPolicyGetApplicationsV1 []ResponseItemApplicationPolicyGetApplicationsV1 // Array of ResponseApplicationPolicyGetApplicationsV1
+type ResponseItemApplicationPolicyGetApplicationsV1 struct {
+	ID                  string                                                               `json:"id,omitempty"`                  // Id
+	Name                string                                                               `json:"name,omitempty"`                // Name
+	NetworkApplications *[]ResponseItemApplicationPolicyGetApplicationsV1NetworkApplications `json:"networkApplications,omitempty"` //
+	NetworkIDentity     *[]ResponseItemApplicationPolicyGetApplicationsV1NetworkIDentity     `json:"networkIdentity,omitempty"`     //
+	ApplicationSet      *ResponseItemApplicationPolicyGetApplicationsV1ApplicationSet        `json:"applicationSet,omitempty"`      //
 }
-type ResponseApplicationPolicyDeleteApplication2Response struct {
-	TaskID string `json:"taskId,omitempty"` // Task Id
-	URL    string `json:"url,omitempty"`    // Url
-}
-type ResponseApplicationPolicyGetApplications2 []ResponseItemApplicationPolicyGetApplications2 // Array of ResponseApplicationPolicyGetApplications2
-type ResponseItemApplicationPolicyGetApplications2 struct {
-	ID                  string                                                              `json:"id,omitempty"`                  // Id
-	Name                string                                                              `json:"name,omitempty"`                // Name
-	NetworkApplications *[]ResponseItemApplicationPolicyGetApplications2NetworkApplications `json:"networkApplications,omitempty"` //
-	NetworkIDentity     *[]ResponseItemApplicationPolicyGetApplications2NetworkIDentity     `json:"networkIdentity,omitempty"`     //
-	ApplicationSet      *ResponseItemApplicationPolicyGetApplications2ApplicationSet        `json:"applicationSet,omitempty"`      //
-}
-type ResponseItemApplicationPolicyGetApplications2NetworkApplications struct {
+type ResponseItemApplicationPolicyGetApplicationsV1NetworkApplications struct {
 	ID                 string `json:"id,omitempty"`                 // Id
 	AppProtocol        string `json:"appProtocol,omitempty"`        // App Protocol
 	ApplicationSubType string `json:"applicationSubType,omitempty"` // Application Sub Type
@@ -463,7 +463,7 @@ type ResponseItemApplicationPolicyGetApplications2NetworkApplications struct {
 	Dscp               string `json:"dscp,omitempty"`               // Dscp
 	IgnoreConflict     string `json:"ignoreConflict,omitempty"`     // Ignore Conflict
 }
-type ResponseItemApplicationPolicyGetApplications2NetworkIDentity struct {
+type ResponseItemApplicationPolicyGetApplicationsV1NetworkIDentity struct {
 	ID          string `json:"id,omitempty"`          // Id
 	DisplayName string `json:"displayName,omitempty"` // Display Name
 	LowerPort   string `json:"lowerPort,omitempty"`   // Lower Port
@@ -471,47 +471,47 @@ type ResponseItemApplicationPolicyGetApplications2NetworkIDentity struct {
 	Protocol    string `json:"protocol,omitempty"`    // Protocol
 	UpperPort   string `json:"upperPort,omitempty"`   // Upper Port
 }
-type ResponseItemApplicationPolicyGetApplications2ApplicationSet struct {
+type ResponseItemApplicationPolicyGetApplicationsV1ApplicationSet struct {
 	IDRef string `json:"idRef,omitempty"` // Id Ref
 }
-type ResponseApplicationPolicyGetApplicationsCount struct {
+type ResponseApplicationPolicyGetApplicationsCountV1 struct {
 	Response string `json:"response,omitempty"` // Response
 	Version  string `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyGetQosDeviceInterfaceInfo struct {
-	Response *[]ResponseApplicationPolicyGetQosDeviceInterfaceInfoResponse `json:"response,omitempty"` //
-	Version  string                                                        `json:"version,omitempty"`  // Version
+type ResponseApplicationPolicyGetQosDeviceInterfaceInfoV1 struct {
+	Response *[]ResponseApplicationPolicyGetQosDeviceInterfaceInfoV1Response `json:"response,omitempty"` //
+	Version  string                                                          `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyGetQosDeviceInterfaceInfoResponse struct {
-	ID                     string                                                                              `json:"id,omitempty"`                     // Id of Qos device info
-	InstanceID             *int                                                                                `json:"instanceId,omitempty"`             // Instance id
-	DisplayName            string                                                                              `json:"displayName,omitempty"`            // Display name
-	InstanceCreatedOn      *int                                                                                `json:"instanceCreatedOn,omitempty"`      // Instance created on
-	InstanceUpdatedOn      *int                                                                                `json:"instanceUpdatedOn,omitempty"`      // Instance updated on
-	InstanceVersion        *int                                                                                `json:"instanceVersion,omitempty"`        // Instance version
-	CreateTime             *int                                                                                `json:"createTime,omitempty"`             // Create time
-	Deployed               *bool                                                                               `json:"deployed,omitempty"`               // Deployed
-	IsSeeded               *bool                                                                               `json:"isSeeded,omitempty"`               // Is seeded
-	IsStale                *bool                                                                               `json:"isStale,omitempty"`                // Is stale
-	LastUpdateTime         *int                                                                                `json:"lastUpdateTime,omitempty"`         // Last update time
-	Name                   string                                                                              `json:"name,omitempty"`                   // Device name
-	Namespace              string                                                                              `json:"namespace,omitempty"`              // Namespace
-	ProvisioningState      string                                                                              `json:"provisioningState,omitempty"`      // Provisioning state
-	Qualifier              string                                                                              `json:"qualifier,omitempty"`              // Qualifier
-	ResourceVersion        *int                                                                                `json:"resourceVersion,omitempty"`        // Resource version
-	TargetIDList           *[]ResponseApplicationPolicyGetQosDeviceInterfaceInfoResponseTargetIDList           `json:"targetIdList,omitempty"`           // Target id list
-	Type                   string                                                                              `json:"type,omitempty"`                   // Type
-	CfsChangeInfo          *[]ResponseApplicationPolicyGetQosDeviceInterfaceInfoResponseCfsChangeInfo          `json:"cfsChangeInfo,omitempty"`          // Cfs change info
-	CustomProvisions       *[]ResponseApplicationPolicyGetQosDeviceInterfaceInfoResponseCustomProvisions       `json:"customProvisions,omitempty"`       // Custom provisions
-	ExcludedInterfaces     []string                                                                            `json:"excludedInterfaces,omitempty"`     // excluded interfaces ids
-	IsExcluded             *bool                                                                               `json:"isExcluded,omitempty"`             // Is excluded
-	NetworkDeviceID        string                                                                              `json:"networkDeviceId,omitempty"`        // Network device id
-	QosDeviceInterfaceInfo *[]ResponseApplicationPolicyGetQosDeviceInterfaceInfoResponseQosDeviceInterfaceInfo `json:"qosDeviceInterfaceInfo,omitempty"` //
+type ResponseApplicationPolicyGetQosDeviceInterfaceInfoV1Response struct {
+	ID                     string                                                                                `json:"id,omitempty"`                     // Id of Qos device info
+	InstanceID             *int                                                                                  `json:"instanceId,omitempty"`             // Instance id
+	DisplayName            string                                                                                `json:"displayName,omitempty"`            // Display name
+	InstanceCreatedOn      *int                                                                                  `json:"instanceCreatedOn,omitempty"`      // Instance created on
+	InstanceUpdatedOn      *int                                                                                  `json:"instanceUpdatedOn,omitempty"`      // Instance updated on
+	InstanceVersion        *int                                                                                  `json:"instanceVersion,omitempty"`        // Instance version
+	CreateTime             *int                                                                                  `json:"createTime,omitempty"`             // Create time
+	Deployed               *bool                                                                                 `json:"deployed,omitempty"`               // Deployed
+	IsSeeded               *bool                                                                                 `json:"isSeeded,omitempty"`               // Is seeded
+	IsStale                *bool                                                                                 `json:"isStale,omitempty"`                // Is stale
+	LastUpdateTime         *int                                                                                  `json:"lastUpdateTime,omitempty"`         // Last update time
+	Name                   string                                                                                `json:"name,omitempty"`                   // Device name
+	Namespace              string                                                                                `json:"namespace,omitempty"`              // Namespace
+	ProvisioningState      string                                                                                `json:"provisioningState,omitempty"`      // Provisioning state
+	Qualifier              string                                                                                `json:"qualifier,omitempty"`              // Qualifier
+	ResourceVersion        *int                                                                                  `json:"resourceVersion,omitempty"`        // Resource version
+	TargetIDList           *[]ResponseApplicationPolicyGetQosDeviceInterfaceInfoV1ResponseTargetIDList           `json:"targetIdList,omitempty"`           // Target id list
+	Type                   string                                                                                `json:"type,omitempty"`                   // Type
+	CfsChangeInfo          *[]ResponseApplicationPolicyGetQosDeviceInterfaceInfoV1ResponseCfsChangeInfo          `json:"cfsChangeInfo,omitempty"`          // Cfs change info
+	CustomProvisions       *[]ResponseApplicationPolicyGetQosDeviceInterfaceInfoV1ResponseCustomProvisions       `json:"customProvisions,omitempty"`       // Custom provisions
+	ExcludedInterfaces     []string                                                                              `json:"excludedInterfaces,omitempty"`     // excluded interfaces ids
+	IsExcluded             *bool                                                                                 `json:"isExcluded,omitempty"`             // Is excluded
+	NetworkDeviceID        string                                                                                `json:"networkDeviceId,omitempty"`        // Network device id
+	QosDeviceInterfaceInfo *[]ResponseApplicationPolicyGetQosDeviceInterfaceInfoV1ResponseQosDeviceInterfaceInfo `json:"qosDeviceInterfaceInfo,omitempty"` //
 }
-type ResponseApplicationPolicyGetQosDeviceInterfaceInfoResponseTargetIDList interface{}
-type ResponseApplicationPolicyGetQosDeviceInterfaceInfoResponseCfsChangeInfo interface{}
-type ResponseApplicationPolicyGetQosDeviceInterfaceInfoResponseCustomProvisions interface{}
-type ResponseApplicationPolicyGetQosDeviceInterfaceInfoResponseQosDeviceInterfaceInfo struct {
+type ResponseApplicationPolicyGetQosDeviceInterfaceInfoV1ResponseTargetIDList interface{}
+type ResponseApplicationPolicyGetQosDeviceInterfaceInfoV1ResponseCfsChangeInfo interface{}
+type ResponseApplicationPolicyGetQosDeviceInterfaceInfoV1ResponseCustomProvisions interface{}
+type ResponseApplicationPolicyGetQosDeviceInterfaceInfoV1ResponseQosDeviceInterfaceInfo struct {
 	ID                 string   `json:"id,omitempty"`                 // Id of Qos device interface info
 	InstanceID         *int     `json:"instanceId,omitempty"`         // Instance id
 	DisplayName        string   `json:"displayName,omitempty"`        // Display name
@@ -526,117 +526,117 @@ type ResponseApplicationPolicyGetQosDeviceInterfaceInfoResponseQosDeviceInterfac
 	Role               string   `json:"role,omitempty"`               // Interface role
 	UploadBW           *int     `json:"uploadBW,omitempty"`           // Upload bandwidth
 }
-type ResponseApplicationPolicyUpdateQosDeviceInterfaceInfo struct {
-	Response *ResponseApplicationPolicyUpdateQosDeviceInterfaceInfoResponse `json:"response,omitempty"` //
-	Version  string                                                         `json:"version,omitempty"`  // Version
+type ResponseApplicationPolicyUpdateQosDeviceInterfaceInfoV1 struct {
+	Response *ResponseApplicationPolicyUpdateQosDeviceInterfaceInfoV1Response `json:"response,omitempty"` //
+	Version  string                                                           `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyUpdateQosDeviceInterfaceInfoResponse struct {
+type ResponseApplicationPolicyUpdateQosDeviceInterfaceInfoV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task id
 	URL    string `json:"url,omitempty"`    // Task url
 }
-type ResponseApplicationPolicyCreateQosDeviceInterfaceInfo struct {
-	Response *ResponseApplicationPolicyCreateQosDeviceInterfaceInfoResponse `json:"response,omitempty"` //
-	Version  string                                                         `json:"version,omitempty"`  // Version
+type ResponseApplicationPolicyCreateQosDeviceInterfaceInfoV1 struct {
+	Response *ResponseApplicationPolicyCreateQosDeviceInterfaceInfoV1Response `json:"response,omitempty"` //
+	Version  string                                                           `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyCreateQosDeviceInterfaceInfoResponse struct {
+type ResponseApplicationPolicyCreateQosDeviceInterfaceInfoV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task id
 	URL    string `json:"url,omitempty"`    // Task url
 }
-type ResponseApplicationPolicyGetQosDeviceInterfaceInfoCount struct {
+type ResponseApplicationPolicyGetQosDeviceInterfaceInfoCountV1 struct {
 	Response *int   `json:"response,omitempty"` // Total number of Qos Device Interface Info
 	Version  string `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyDeleteQosDeviceInterfaceInfo struct {
-	Response *ResponseApplicationPolicyDeleteQosDeviceInterfaceInfoResponse `json:"response,omitempty"` //
-	Version  string                                                         `json:"version,omitempty"`  // Version
+type ResponseApplicationPolicyDeleteQosDeviceInterfaceInfoV1 struct {
+	Response *ResponseApplicationPolicyDeleteQosDeviceInterfaceInfoV1Response `json:"response,omitempty"` //
+	Version  string                                                           `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyDeleteQosDeviceInterfaceInfoResponse struct {
+type ResponseApplicationPolicyDeleteQosDeviceInterfaceInfoV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task id
 	URL    string `json:"url,omitempty"`    // Task url
 }
-type ResponseApplicationPolicyCreateApplicationSets struct {
-	Response *ResponseApplicationPolicyCreateApplicationSetsResponse `json:"response,omitempty"` //
-	Version  string                                                  `json:"version,omitempty"`  // Version
+type ResponseApplicationPolicyCreateApplicationSetsV2 struct {
+	Response *ResponseApplicationPolicyCreateApplicationSetsV2Response `json:"response,omitempty"` //
+	Version  string                                                    `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyCreateApplicationSetsResponse struct {
+type ResponseApplicationPolicyCreateApplicationSetsV2Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task id
 	URL    string `json:"url,omitempty"`    // Task url
 }
-type ResponseApplicationPolicyGetApplicationSets2 struct {
-	Response *[]ResponseApplicationPolicyGetApplicationSets2Response `json:"response,omitempty"` //
-	Version  string                                                  `json:"version,omitempty"`  // Version
+type ResponseApplicationPolicyGetApplicationSetsV2 struct {
+	Response *[]ResponseApplicationPolicyGetApplicationSetsV2Response `json:"response,omitempty"` //
+	Version  string                                                   `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyGetApplicationSets2Response struct {
-	ID                          string                                                              `json:"id,omitempty"`                          // Id of Application Set
-	InstanceID                  *int                                                                `json:"instanceId,omitempty"`                  // Instance id
-	DisplayName                 string                                                              `json:"displayName,omitempty"`                 // Display name
-	InstanceVersion             *float64                                                            `json:"instanceVersion,omitempty"`             // Instance version
-	DefaultBusinessRelevance    string                                                              `json:"defaultBusinessRelevance,omitempty"`    // Default business relevance
-	IDentitySource              *ResponseApplicationPolicyGetApplicationSets2ResponseIDentitySource `json:"identitySource,omitempty"`              //
-	Name                        string                                                              `json:"name,omitempty"`                        // Application Set name
-	Namespace                   string                                                              `json:"namespace,omitempty"`                   // Namespace, valid value scalablegroup:application
-	ScalableGroupExternalHandle string                                                              `json:"scalableGroupExternalHandle,omitempty"` // Scalable group external handle, should be equal to Application Set name
-	ScalableGroupType           string                                                              `json:"scalableGroupType,omitempty"`           // Scalable group type, valid value APPLICATION_GROUP
-	Type                        string                                                              `json:"type,omitempty"`                        // Type, valid value scalablegroup
+type ResponseApplicationPolicyGetApplicationSetsV2Response struct {
+	ID                          string                                                               `json:"id,omitempty"`                          // Id of Application Set
+	InstanceID                  *int                                                                 `json:"instanceId,omitempty"`                  // Instance id
+	DisplayName                 string                                                               `json:"displayName,omitempty"`                 // Display name
+	InstanceVersion             *float64                                                             `json:"instanceVersion,omitempty"`             // Instance version
+	DefaultBusinessRelevance    string                                                               `json:"defaultBusinessRelevance,omitempty"`    // Default business relevance
+	IDentitySource              *ResponseApplicationPolicyGetApplicationSetsV2ResponseIDentitySource `json:"identitySource,omitempty"`              //
+	Name                        string                                                               `json:"name,omitempty"`                        // Application Set name
+	Namespace                   string                                                               `json:"namespace,omitempty"`                   // Namespace, valid value scalablegroup:application
+	ScalableGroupExternalHandle string                                                               `json:"scalableGroupExternalHandle,omitempty"` // Scalable group external handle, should be equal to Application Set name
+	ScalableGroupType           string                                                               `json:"scalableGroupType,omitempty"`           // Scalable group type, valid value APPLICATION_GROUP
+	Type                        string                                                               `json:"type,omitempty"`                        // Type, valid value scalablegroup
 }
-type ResponseApplicationPolicyGetApplicationSets2ResponseIDentitySource struct {
+type ResponseApplicationPolicyGetApplicationSetsV2ResponseIDentitySource struct {
 	ID   string `json:"id,omitempty"`   // Id
 	Type string `json:"type,omitempty"` // Type of identify source. NBAR: build in Application Set, APIC_EM: custom Application Set
 }
-type ResponseApplicationPolicyGetApplicationSetCount struct {
+type ResponseApplicationPolicyGetApplicationSetCountV2 struct {
 	Response *int   `json:"response,omitempty"` // Total number of Application Set
 	Version  string `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyDeleteApplicationSet struct {
-	Response *ResponseApplicationPolicyDeleteApplicationSetResponse `json:"response,omitempty"` //
-	Version  string                                                 `json:"version,omitempty"`  // Version
+type ResponseApplicationPolicyDeleteApplicationSetV2 struct {
+	Response *ResponseApplicationPolicyDeleteApplicationSetV2Response `json:"response,omitempty"` //
+	Version  string                                                   `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyDeleteApplicationSetResponse struct {
+type ResponseApplicationPolicyDeleteApplicationSetV2Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task id
 	URL    string `json:"url,omitempty"`    // Task url
 }
-type ResponseApplicationPolicyEditApplications struct {
-	Response *ResponseApplicationPolicyEditApplicationsResponse `json:"response,omitempty"` //
-	Version  string                                             `json:"version,omitempty"`  // Version
-}
-type ResponseApplicationPolicyEditApplicationsResponse struct {
-	TaskID string `json:"taskId,omitempty"` // Task id
-	URL    string `json:"url,omitempty"`    // Task url
-}
-type ResponseApplicationPolicyCreateApplications struct {
-	Response *ResponseApplicationPolicyCreateApplicationsResponse `json:"response,omitempty"` //
+type ResponseApplicationPolicyEditApplicationsV2 struct {
+	Response *ResponseApplicationPolicyEditApplicationsV2Response `json:"response,omitempty"` //
 	Version  string                                               `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyCreateApplicationsResponse struct {
+type ResponseApplicationPolicyEditApplicationsV2Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task id
 	URL    string `json:"url,omitempty"`    // Task url
 }
-type ResponseApplicationPolicyGetApplications struct {
-	Response *[]ResponseApplicationPolicyGetApplicationsResponse `json:"response,omitempty"` //
-	Version  string                                              `json:"version,omitempty"`  // Version
+type ResponseApplicationPolicyCreateApplicationsV2 struct {
+	Response *ResponseApplicationPolicyCreateApplicationsV2Response `json:"response,omitempty"` //
+	Version  string                                                 `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyGetApplicationsResponse struct {
-	ID                          string                                                                       `json:"id,omitempty"`                          // Id of Application
-	InstanceID                  *int                                                                         `json:"instanceId,omitempty"`                  // Instance id
-	DisplayName                 string                                                                       `json:"displayName,omitempty"`                 // Display name
-	InstanceVersion             *float64                                                                     `json:"instanceVersion,omitempty"`             // Instance version
-	IDentitySource              *ResponseApplicationPolicyGetApplicationsResponseIDentitySource              `json:"identitySource,omitempty"`              //
-	IndicativeNetworkIDentity   *[]ResponseApplicationPolicyGetApplicationsResponseIndicativeNetworkIDentity `json:"indicativeNetworkIdentity,omitempty"`   //
-	Name                        string                                                                       `json:"name,omitempty"`                        // Application name
-	Namespace                   string                                                                       `json:"namespace,omitempty"`                   // Namespace, valid value scalablegroup:application
-	NetworkApplications         *[]ResponseApplicationPolicyGetApplicationsResponseNetworkApplications       `json:"networkApplications,omitempty"`         //
-	NetworkIDentity             *[]ResponseApplicationPolicyGetApplicationsResponseNetworkIDentity           `json:"networkIdentity,omitempty"`             //
-	ParentScalableGroup         *ResponseApplicationPolicyGetApplicationsResponseParentScalableGroup         `json:"parentScalableGroup,omitempty"`         //
-	Qualifier                   string                                                                       `json:"qualifier,omitempty"`                   // Qualifier, valid value application
-	ScalableGroupExternalHandle string                                                                       `json:"scalableGroupExternalHandle,omitempty"` // Scalable group external handle, should be equal to Application name
-	ScalableGroupType           string                                                                       `json:"scalableGroupType,omitempty"`           // Scalable group type, valid value APPLICATION
-	Type                        string                                                                       `json:"type,omitempty"`                        // Type, valid value scalablegroup
+type ResponseApplicationPolicyCreateApplicationsV2Response struct {
+	TaskID string `json:"taskId,omitempty"` // Task id
+	URL    string `json:"url,omitempty"`    // Task url
 }
-type ResponseApplicationPolicyGetApplicationsResponseIDentitySource struct {
+type ResponseApplicationPolicyGetApplicationsV2 struct {
+	Response *[]ResponseApplicationPolicyGetApplicationsV2Response `json:"response,omitempty"` //
+	Version  string                                                `json:"version,omitempty"`  // Version
+}
+type ResponseApplicationPolicyGetApplicationsV2Response struct {
+	ID                          string                                                                         `json:"id,omitempty"`                          // Id of Application
+	InstanceID                  *int                                                                           `json:"instanceId,omitempty"`                  // Instance id
+	DisplayName                 string                                                                         `json:"displayName,omitempty"`                 // Display name
+	InstanceVersion             *float64                                                                       `json:"instanceVersion,omitempty"`             // Instance version
+	IDentitySource              *ResponseApplicationPolicyGetApplicationsV2ResponseIDentitySource              `json:"identitySource,omitempty"`              //
+	IndicativeNetworkIDentity   *[]ResponseApplicationPolicyGetApplicationsV2ResponseIndicativeNetworkIDentity `json:"indicativeNetworkIdentity,omitempty"`   //
+	Name                        string                                                                         `json:"name,omitempty"`                        // Application name
+	Namespace                   string                                                                         `json:"namespace,omitempty"`                   // Namespace, valid value scalablegroup:application
+	NetworkApplications         *[]ResponseApplicationPolicyGetApplicationsV2ResponseNetworkApplications       `json:"networkApplications,omitempty"`         //
+	NetworkIDentity             *[]ResponseApplicationPolicyGetApplicationsV2ResponseNetworkIDentity           `json:"networkIdentity,omitempty"`             //
+	ParentScalableGroup         *ResponseApplicationPolicyGetApplicationsV2ResponseParentScalableGroup         `json:"parentScalableGroup,omitempty"`         //
+	Qualifier                   string                                                                         `json:"qualifier,omitempty"`                   // Qualifier, valid value application
+	ScalableGroupExternalHandle string                                                                         `json:"scalableGroupExternalHandle,omitempty"` // Scalable group external handle, should be equal to Application name
+	ScalableGroupType           string                                                                         `json:"scalableGroupType,omitempty"`           // Scalable group type, valid value APPLICATION
+	Type                        string                                                                         `json:"type,omitempty"`                        // Type, valid value scalablegroup
+}
+type ResponseApplicationPolicyGetApplicationsV2ResponseIDentitySource struct {
 	ID   string `json:"id,omitempty"`   // Id
 	Type string `json:"type,omitempty"` // Type of identify source. NBAR: build in Application, APIC_EM: custom Application
 }
-type ResponseApplicationPolicyGetApplicationsResponseIndicativeNetworkIDentity struct {
+type ResponseApplicationPolicyGetApplicationsV2ResponseIndicativeNetworkIDentity struct {
 	ID          string   `json:"id,omitempty"`          // Id
 	DisplayName string   `json:"displayName,omitempty"` // Display name
 	LowerPort   *float64 `json:"lowerPort,omitempty"`   // Lower port
@@ -644,7 +644,7 @@ type ResponseApplicationPolicyGetApplicationsResponseIndicativeNetworkIDentity s
 	Protocol    string   `json:"protocol,omitempty"`    // Protocol
 	UpperPort   *float64 `json:"upperPort,omitempty"`   // Upper port
 }
-type ResponseApplicationPolicyGetApplicationsResponseNetworkApplications struct {
+type ResponseApplicationPolicyGetApplicationsV2ResponseNetworkApplications struct {
 	ID                 string   `json:"id,omitempty"`                 // Id
 	AppProtocol        string   `json:"appProtocol,omitempty"`        // App protocol
 	ApplicationSubType string   `json:"applicationSubType,omitempty"` // Application sub type, LEARNED: discovered application, NONE: nbar and custom application
@@ -663,197 +663,196 @@ type ResponseApplicationPolicyGetApplicationsResponseNetworkApplications struct 
 	URL                string   `json:"url,omitempty"`                // Url
 	TrafficClass       string   `json:"trafficClass,omitempty"`       // Traffic class
 }
-type ResponseApplicationPolicyGetApplicationsResponseNetworkIDentity struct {
-	ID          string                                                                       `json:"id,omitempty"`          // Id
-	DisplayName string                                                                       `json:"displayName,omitempty"` // Display name
-	IPv4Subnet  []string                                                                     `json:"ipv4Subnet,omitempty"`  // Ipv4 subnet
-	IPv6Subnet  *[]ResponseApplicationPolicyGetApplicationsResponseNetworkIDentityIPv6Subnet `json:"ipv6Subnet,omitempty"`  // Ipv6 subnet
-	LowerPort   *float64                                                                     `json:"lowerPort,omitempty"`   // Lower port
-	Ports       string                                                                       `json:"ports,omitempty"`       // Ports
-	Protocol    string                                                                       `json:"protocol,omitempty"`    // Protocol
-	UpperPort   *float64                                                                     `json:"upperPort,omitempty"`   // Upper port
+type ResponseApplicationPolicyGetApplicationsV2ResponseNetworkIDentity struct {
+	ID          string                                                                         `json:"id,omitempty"`          // Id
+	DisplayName string                                                                         `json:"displayName,omitempty"` // Display name
+	IPv4Subnet  []string                                                                       `json:"ipv4Subnet,omitempty"`  // Ipv4 subnet
+	IPv6Subnet  *[]ResponseApplicationPolicyGetApplicationsV2ResponseNetworkIDentityIPv6Subnet `json:"ipv6Subnet,omitempty"`  // Ipv6 subnet
+	LowerPort   *float64                                                                       `json:"lowerPort,omitempty"`   // Lower port
+	Ports       string                                                                         `json:"ports,omitempty"`       // Ports
+	Protocol    string                                                                         `json:"protocol,omitempty"`    // Protocol
+	UpperPort   *float64                                                                       `json:"upperPort,omitempty"`   // Upper port
 }
-type ResponseApplicationPolicyGetApplicationsResponseNetworkIDentityIPv6Subnet interface{}
-type ResponseApplicationPolicyGetApplicationsResponseParentScalableGroup struct {
+type ResponseApplicationPolicyGetApplicationsV2ResponseNetworkIDentityIPv6Subnet interface{}
+type ResponseApplicationPolicyGetApplicationsV2ResponseParentScalableGroup struct {
 	ID    string `json:"id,omitempty"`    // Id
 	IDRef string `json:"idRef,omitempty"` // Id reference to parent application set
 }
-type ResponseApplicationPolicyGetApplicationCount struct {
+type ResponseApplicationPolicyGetApplicationCountV2 struct {
 	Response *int   `json:"response,omitempty"` // Total number of Application
 	Version  string `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyDeleteApplication struct {
-	Response *ResponseApplicationPolicyDeleteApplicationResponse `json:"response,omitempty"` //
-	Version  string                                              `json:"version,omitempty"`  // Version
+type ResponseApplicationPolicyDeleteApplicationV2 struct {
+	Response *ResponseApplicationPolicyDeleteApplicationV2Response `json:"response,omitempty"` //
+	Version  string                                                `json:"version,omitempty"`  // Version
 }
-type ResponseApplicationPolicyDeleteApplicationResponse struct {
+type ResponseApplicationPolicyDeleteApplicationV2Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task id
 	URL    string `json:"url,omitempty"`    // Task url
 }
-type RequestApplicationPolicyApplicationPolicyIntent struct {
-	CreateList *[]RequestApplicationPolicyApplicationPolicyIntentCreateList `json:"createList,omitempty"` //
-	UpdateList *[]RequestApplicationPolicyApplicationPolicyIntentUpdateList `json:"updateList,omitempty"` //
-	DeleteList []string                                                     `json:"deleteList,omitempty"` // Delete list of Group Based Policy ids
+type RequestApplicationPolicyApplicationPolicyIntentV1 struct {
+	CreateList *[]RequestApplicationPolicyApplicationPolicyIntentV1CreateList `json:"createList,omitempty"` //
+	UpdateList *[]RequestApplicationPolicyApplicationPolicyIntentV1UpdateList `json:"updateList,omitempty"` //
+	DeleteList []string                                                       `json:"deleteList,omitempty"` // Delete list of Group Based Policy ids
 }
-type RequestApplicationPolicyApplicationPolicyIntentCreateList struct {
-	Name                string                                                                        `json:"name,omitempty"`                // Concatination of <polcy name>_<application-set-name> or <polcy name>_global_policy_configuration or <polcy name>_queuing_customization
-	DeletePolicyStatus  string                                                                        `json:"deletePolicyStatus,omitempty"`  // NONE: deployed policy to devices, DELETED: delete policy from devices, RESTORED: restored to original configuration
-	PolicyScope         string                                                                        `json:"policyScope,omitempty"`         // Policy name
-	Priority            string                                                                        `json:"priority,omitempty"`            // Set to 4095 while producer refer to application Scalable group otherwise 100
-	AdvancedPolicyScope *RequestApplicationPolicyApplicationPolicyIntentCreateListAdvancedPolicyScope `json:"advancedPolicyScope,omitempty"` //
-	ExclusiveContract   *RequestApplicationPolicyApplicationPolicyIntentCreateListExclusiveContract   `json:"exclusiveContract,omitempty"`   //
-	Contract            *RequestApplicationPolicyApplicationPolicyIntentCreateListContract            `json:"contract,omitempty"`            //
-	Producer            *RequestApplicationPolicyApplicationPolicyIntentCreateListProducer            `json:"producer,omitempty"`            //
-	Consumer            *RequestApplicationPolicyApplicationPolicyIntentCreateListConsumer            `json:"consumer,omitempty"`            //
+type RequestApplicationPolicyApplicationPolicyIntentV1CreateList struct {
+	Name                string                                                                          `json:"name,omitempty"`                // Concatination of <polcy name>_<application-set-name> or <polcy name>_global_policy_configuration or <polcy name>_queuing_customization
+	DeletePolicyStatus  string                                                                          `json:"deletePolicyStatus,omitempty"`  // NONE: deployed policy to devices, DELETED: delete policy from devices, RESTORED: restored to original configuration
+	PolicyScope         string                                                                          `json:"policyScope,omitempty"`         // Policy name
+	Priority            string                                                                          `json:"priority,omitempty"`            // Set to 4095 while producer refer to application Scalable group otherwise 100
+	AdvancedPolicyScope *RequestApplicationPolicyApplicationPolicyIntentV1CreateListAdvancedPolicyScope `json:"advancedPolicyScope,omitempty"` //
+	ExclusiveContract   *RequestApplicationPolicyApplicationPolicyIntentV1CreateListExclusiveContract   `json:"exclusiveContract,omitempty"`   //
+	Contract            *RequestApplicationPolicyApplicationPolicyIntentV1CreateListContract            `json:"contract,omitempty"`            //
+	Producer            *RequestApplicationPolicyApplicationPolicyIntentV1CreateListProducer            `json:"producer,omitempty"`            //
+	Consumer            *RequestApplicationPolicyApplicationPolicyIntentV1CreateListConsumer            `json:"consumer,omitempty"`            //
 }
-type RequestApplicationPolicyApplicationPolicyIntentCreateListAdvancedPolicyScope struct {
-	Name                       string                                                                                                    `json:"name,omitempty"`                       // Policy name
-	AdvancedPolicyScopeElement *[]RequestApplicationPolicyApplicationPolicyIntentCreateListAdvancedPolicyScopeAdvancedPolicyScopeElement `json:"advancedPolicyScopeElement,omitempty"` //
+type RequestApplicationPolicyApplicationPolicyIntentV1CreateListAdvancedPolicyScope struct {
+	Name                       string                                                                                                      `json:"name,omitempty"`                       // Policy name
+	AdvancedPolicyScopeElement *[]RequestApplicationPolicyApplicationPolicyIntentV1CreateListAdvancedPolicyScopeAdvancedPolicyScopeElement `json:"advancedPolicyScopeElement,omitempty"` //
 }
-type RequestApplicationPolicyApplicationPolicyIntentCreateListAdvancedPolicyScopeAdvancedPolicyScopeElement struct {
+type RequestApplicationPolicyApplicationPolicyIntentV1CreateListAdvancedPolicyScopeAdvancedPolicyScopeElement struct {
 	GroupID []string `json:"groupId,omitempty"` // The site(s) ID where the Application QoS Policy will be deployed.
 	SSID    []string `json:"ssid,omitempty"`    // Ssid
 }
-type RequestApplicationPolicyApplicationPolicyIntentCreateListExclusiveContract struct {
-	Clause *[]RequestApplicationPolicyApplicationPolicyIntentCreateListExclusiveContractClause `json:"clause,omitempty"` //
+type RequestApplicationPolicyApplicationPolicyIntentV1CreateListExclusiveContract struct {
+	Clause *[]RequestApplicationPolicyApplicationPolicyIntentV1CreateListExclusiveContractClause `json:"clause,omitempty"` //
 }
-type RequestApplicationPolicyApplicationPolicyIntentCreateListExclusiveContractClause struct {
+type RequestApplicationPolicyApplicationPolicyIntentV1CreateListExclusiveContractClause struct {
 	Type                  string `json:"type,omitempty"`                  // Type
 	RelevanceLevel        string `json:"relevanceLevel,omitempty"`        // Relevance level
 	DeviceRemovalBehavior string `json:"deviceRemovalBehavior,omitempty"` // Device eemoval behavior
 	HostTrackingEnabled   *bool  `json:"hostTrackingEnabled,omitempty"`   // Is host tracking enabled
 }
-type RequestApplicationPolicyApplicationPolicyIntentCreateListContract struct {
+type RequestApplicationPolicyApplicationPolicyIntentV1CreateListContract struct {
 	IDRef string `json:"idRef,omitempty"` // Id ref to Queueing profile
 }
-type RequestApplicationPolicyApplicationPolicyIntentCreateListProducer struct {
-	ScalableGroup *[]RequestApplicationPolicyApplicationPolicyIntentCreateListProducerScalableGroup `json:"scalableGroup,omitempty"` //
+type RequestApplicationPolicyApplicationPolicyIntentV1CreateListProducer struct {
+	ScalableGroup *[]RequestApplicationPolicyApplicationPolicyIntentV1CreateListProducerScalableGroup `json:"scalableGroup,omitempty"` //
 }
-type RequestApplicationPolicyApplicationPolicyIntentCreateListProducerScalableGroup struct {
+type RequestApplicationPolicyApplicationPolicyIntentV1CreateListProducerScalableGroup struct {
 	IDRef string `json:"idRef,omitempty"` // Id ref to application-set or application Scalable group
 }
-type RequestApplicationPolicyApplicationPolicyIntentCreateListConsumer struct {
-	ScalableGroup *[]RequestApplicationPolicyApplicationPolicyIntentCreateListConsumerScalableGroup `json:"scalableGroup,omitempty"` //
+type RequestApplicationPolicyApplicationPolicyIntentV1CreateListConsumer struct {
+	ScalableGroup *[]RequestApplicationPolicyApplicationPolicyIntentV1CreateListConsumerScalableGroup `json:"scalableGroup,omitempty"` //
 }
-type RequestApplicationPolicyApplicationPolicyIntentCreateListConsumerScalableGroup struct {
+type RequestApplicationPolicyApplicationPolicyIntentV1CreateListConsumerScalableGroup struct {
 	IDRef string `json:"idRef,omitempty"` // Id ref to application Scalable group
 }
-type RequestApplicationPolicyApplicationPolicyIntentUpdateList struct {
-	ID                  string                                                                        `json:"id,omitempty"`                  // Id of Group based policy
-	Name                string                                                                        `json:"name,omitempty"`                // Concatination of <polcy name>_<application-set-name> or <polcy name>_global_policy_configuration or <polcy name>_queuing_customization
-	DeletePolicyStatus  string                                                                        `json:"deletePolicyStatus,omitempty"`  // NONE: deployed policy to devices, DELETED: delete policy from devices, RESTORED: restored to original configuration
-	PolicyScope         string                                                                        `json:"policyScope,omitempty"`         // Policy name
-	Priority            string                                                                        `json:"priority,omitempty"`            // Set to 4095 while producer refer to application Scalable group otherwise 100
-	AdvancedPolicyScope *RequestApplicationPolicyApplicationPolicyIntentUpdateListAdvancedPolicyScope `json:"advancedPolicyScope,omitempty"` //
-	ExclusiveContract   *RequestApplicationPolicyApplicationPolicyIntentUpdateListExclusiveContract   `json:"exclusiveContract,omitempty"`   //
-	Contract            *RequestApplicationPolicyApplicationPolicyIntentUpdateListContract            `json:"contract,omitempty"`            //
-	Producer            *RequestApplicationPolicyApplicationPolicyIntentUpdateListProducer            `json:"producer,omitempty"`            //
-	Consumer            *RequestApplicationPolicyApplicationPolicyIntentUpdateListConsumer            `json:"consumer,omitempty"`            //
+type RequestApplicationPolicyApplicationPolicyIntentV1UpdateList struct {
+	ID                  string                                                                          `json:"id,omitempty"`                  // Id of Group based policy
+	Name                string                                                                          `json:"name,omitempty"`                // Concatination of <polcy name>_<application-set-name> or <polcy name>_global_policy_configuration or <polcy name>_queuing_customization
+	DeletePolicyStatus  string                                                                          `json:"deletePolicyStatus,omitempty"`  // NONE: deployed policy to devices, DELETED: delete policy from devices, RESTORED: restored to original configuration
+	PolicyScope         string                                                                          `json:"policyScope,omitempty"`         // Policy name
+	Priority            string                                                                          `json:"priority,omitempty"`            // Set to 4095 while producer refer to application Scalable group otherwise 100
+	AdvancedPolicyScope *RequestApplicationPolicyApplicationPolicyIntentV1UpdateListAdvancedPolicyScope `json:"advancedPolicyScope,omitempty"` //
+	ExclusiveContract   *RequestApplicationPolicyApplicationPolicyIntentV1UpdateListExclusiveContract   `json:"exclusiveContract,omitempty"`   //
+	Contract            *RequestApplicationPolicyApplicationPolicyIntentV1UpdateListContract            `json:"contract,omitempty"`            //
+	Producer            *RequestApplicationPolicyApplicationPolicyIntentV1UpdateListProducer            `json:"producer,omitempty"`            //
+	Consumer            *RequestApplicationPolicyApplicationPolicyIntentV1UpdateListConsumer            `json:"consumer,omitempty"`            //
 }
-type RequestApplicationPolicyApplicationPolicyIntentUpdateListAdvancedPolicyScope struct {
-	ID                         string                                                                                                    `json:"id,omitempty"`                         // Id of Advance policy scope
-	Name                       string                                                                                                    `json:"name,omitempty"`                       // Policy name
-	AdvancedPolicyScopeElement *[]RequestApplicationPolicyApplicationPolicyIntentUpdateListAdvancedPolicyScopeAdvancedPolicyScopeElement `json:"advancedPolicyScopeElement,omitempty"` //
+type RequestApplicationPolicyApplicationPolicyIntentV1UpdateListAdvancedPolicyScope struct {
+	ID                         string                                                                                                      `json:"id,omitempty"`                         // Id of Advance policy scope
+	Name                       string                                                                                                      `json:"name,omitempty"`                       // Policy name
+	AdvancedPolicyScopeElement *[]RequestApplicationPolicyApplicationPolicyIntentV1UpdateListAdvancedPolicyScopeAdvancedPolicyScopeElement `json:"advancedPolicyScopeElement,omitempty"` //
 }
-type RequestApplicationPolicyApplicationPolicyIntentUpdateListAdvancedPolicyScopeAdvancedPolicyScopeElement struct {
+type RequestApplicationPolicyApplicationPolicyIntentV1UpdateListAdvancedPolicyScopeAdvancedPolicyScopeElement struct {
 	ID      string   `json:"id,omitempty"`      // Id of Advance policy scope element
 	GroupID []string `json:"groupId,omitempty"` // The site(s) ID where the Application QoS Policy will be deployed.
 	SSID    []string `json:"ssid,omitempty"`    // Ssid
 }
-type RequestApplicationPolicyApplicationPolicyIntentUpdateListExclusiveContract struct {
-	ID     string                                                                              `json:"id,omitempty"`     // Id of Exclusive contract
-	Clause *[]RequestApplicationPolicyApplicationPolicyIntentUpdateListExclusiveContractClause `json:"clause,omitempty"` //
+type RequestApplicationPolicyApplicationPolicyIntentV1UpdateListExclusiveContract struct {
+	ID     string                                                                                `json:"id,omitempty"`     // Id of Exclusive contract
+	Clause *[]RequestApplicationPolicyApplicationPolicyIntentV1UpdateListExclusiveContractClause `json:"clause,omitempty"` //
 }
-type RequestApplicationPolicyApplicationPolicyIntentUpdateListExclusiveContractClause struct {
+type RequestApplicationPolicyApplicationPolicyIntentV1UpdateListExclusiveContractClause struct {
 	ID                    string `json:"id,omitempty"`                    // Id of Business relevance or Application policy knobs clause
 	Type                  string `json:"type,omitempty"`                  // Type
 	RelevanceLevel        string `json:"relevanceLevel,omitempty"`        // Relevance level
 	DeviceRemovalBehavior string `json:"deviceRemovalBehavior,omitempty"` // Device removal behavior
 	HostTrackingEnabled   *bool  `json:"hostTrackingEnabled,omitempty"`   // Host tracking enabled
 }
-type RequestApplicationPolicyApplicationPolicyIntentUpdateListContract struct {
+type RequestApplicationPolicyApplicationPolicyIntentV1UpdateListContract struct {
 	IDRef string `json:"idRef,omitempty"` // Id ref to Queueing profile
 }
-type RequestApplicationPolicyApplicationPolicyIntentUpdateListProducer struct {
-	ID            string                                                                            `json:"id,omitempty"`            // Id of Producer
-	ScalableGroup *[]RequestApplicationPolicyApplicationPolicyIntentUpdateListProducerScalableGroup `json:"scalableGroup,omitempty"` //
+type RequestApplicationPolicyApplicationPolicyIntentV1UpdateListProducer struct {
+	ID            string                                                                              `json:"id,omitempty"`            // Id of Producer
+	ScalableGroup *[]RequestApplicationPolicyApplicationPolicyIntentV1UpdateListProducerScalableGroup `json:"scalableGroup,omitempty"` //
 }
-type RequestApplicationPolicyApplicationPolicyIntentUpdateListProducerScalableGroup struct {
+type RequestApplicationPolicyApplicationPolicyIntentV1UpdateListProducerScalableGroup struct {
 	IDRef string `json:"idRef,omitempty"` // Id ref to application-set or application Scalable group
 }
-type RequestApplicationPolicyApplicationPolicyIntentUpdateListConsumer struct {
-	ID            string                                                                            `json:"id,omitempty"`            // Id of Consumer
-	ScalableGroup *[]RequestApplicationPolicyApplicationPolicyIntentUpdateListConsumerScalableGroup `json:"scalableGroup,omitempty"` //
+type RequestApplicationPolicyApplicationPolicyIntentV1UpdateListConsumer struct {
+	ID            string                                                                              `json:"id,omitempty"`            // Id of Consumer
+	ScalableGroup *[]RequestApplicationPolicyApplicationPolicyIntentV1UpdateListConsumerScalableGroup `json:"scalableGroup,omitempty"` //
 }
-type RequestApplicationPolicyApplicationPolicyIntentUpdateListConsumerScalableGroup struct {
+type RequestApplicationPolicyApplicationPolicyIntentV1UpdateListConsumerScalableGroup struct {
 	IDRef string `json:"idRef,omitempty"` // Id ref to application Scalable group
 }
-type RequestApplicationPolicyUpdateApplicationPolicyQueuingProfile []RequestItemApplicationPolicyUpdateApplicationPolicyQueuingProfile // Array of RequestApplicationPolicyUpdateApplicationPolicyQueuingProfile
-type RequestItemApplicationPolicyUpdateApplicationPolicyQueuingProfile struct {
-	ID          string                                                                     `json:"id,omitempty"`          // Id of Queueing profile
-	Description string                                                                     `json:"description,omitempty"` // Free test description
-	Name        string                                                                     `json:"name,omitempty"`        // Queueing profile name
-	Clause      *[]RequestItemApplicationPolicyUpdateApplicationPolicyQueuingProfileClause `json:"clause,omitempty"`      //
+type RequestApplicationPolicyUpdateApplicationPolicyQueuingProfileV1 []RequestItemApplicationPolicyUpdateApplicationPolicyQueuingProfileV1 // Array of RequestApplicationPolicyUpdateApplicationPolicyQueuingProfileV1
+type RequestItemApplicationPolicyUpdateApplicationPolicyQueuingProfileV1 struct {
+	ID          string                                                                       `json:"id,omitempty"`          // Id of Queueing profile
+	Description string                                                                       `json:"description,omitempty"` // Free test description
+	Name        string                                                                       `json:"name,omitempty"`        // Queueing profile name
+	Clause      *[]RequestItemApplicationPolicyUpdateApplicationPolicyQueuingProfileV1Clause `json:"clause,omitempty"`      //
 }
-type RequestItemApplicationPolicyUpdateApplicationPolicyQueuingProfileClause struct {
-	InstanceID                        *int                                                                                                     `json:"instanceId,omitempty"`                        // Instance id
-	Type                              string                                                                                                   `json:"type,omitempty"`                              // The allowed clause types are: BANDWIDTH, DSCP_CUSTOMIZATION
-	IsCommonBetweenAllInterfaceSpeeds *bool                                                                                                    `json:"isCommonBetweenAllInterfaceSpeeds,omitempty"` // Is common between all interface speeds
-	InterfaceSpeedBandwidthClauses    *[]RequestItemApplicationPolicyUpdateApplicationPolicyQueuingProfileClauseInterfaceSpeedBandwidthClauses `json:"interfaceSpeedBandwidthClauses,omitempty"`    //
-	TcDscpSettings                    *[]RequestItemApplicationPolicyUpdateApplicationPolicyQueuingProfileClauseTcDscpSettings                 `json:"tcDscpSettings,omitempty"`                    //
+type RequestItemApplicationPolicyUpdateApplicationPolicyQueuingProfileV1Clause struct {
+	InstanceID                        *int                                                                                                       `json:"instanceId,omitempty"`                        // Instance id
+	Type                              string                                                                                                     `json:"type,omitempty"`                              // The allowed clause types are: BANDWIDTH, DSCP_CUSTOMIZATION
+	IsCommonBetweenAllInterfaceSpeeds *bool                                                                                                      `json:"isCommonBetweenAllInterfaceSpeeds,omitempty"` // Is common between all interface speeds
+	InterfaceSpeedBandwidthClauses    *[]RequestItemApplicationPolicyUpdateApplicationPolicyQueuingProfileV1ClauseInterfaceSpeedBandwidthClauses `json:"interfaceSpeedBandwidthClauses,omitempty"`    //
+	TcDscpSettings                    *[]RequestItemApplicationPolicyUpdateApplicationPolicyQueuingProfileV1ClauseTcDscpSettings                 `json:"tcDscpSettings,omitempty"`                    //
 }
-type RequestItemApplicationPolicyUpdateApplicationPolicyQueuingProfileClauseInterfaceSpeedBandwidthClauses struct {
-	InstanceID          *int                                                                                                                        `json:"instanceId,omitempty"`          // Instance id
-	InterfaceSpeed      string                                                                                                                      `json:"interfaceSpeed,omitempty"`      // Interface speed
-	TcBandwidthSettings *[]RequestItemApplicationPolicyUpdateApplicationPolicyQueuingProfileClauseInterfaceSpeedBandwidthClausesTcBandwidthSettings `json:"tcBandwidthSettings,omitempty"` //
+type RequestItemApplicationPolicyUpdateApplicationPolicyQueuingProfileV1ClauseInterfaceSpeedBandwidthClauses struct {
+	InstanceID          *int                                                                                                                          `json:"instanceId,omitempty"`          // Instance id
+	InterfaceSpeed      string                                                                                                                        `json:"interfaceSpeed,omitempty"`      // Interface speed
+	TcBandwidthSettings *[]RequestItemApplicationPolicyUpdateApplicationPolicyQueuingProfileV1ClauseInterfaceSpeedBandwidthClausesTcBandwidthSettings `json:"tcBandwidthSettings,omitempty"` //
 }
-type RequestItemApplicationPolicyUpdateApplicationPolicyQueuingProfileClauseInterfaceSpeedBandwidthClausesTcBandwidthSettings struct {
+type RequestItemApplicationPolicyUpdateApplicationPolicyQueuingProfileV1ClauseInterfaceSpeedBandwidthClausesTcBandwidthSettings struct {
 	InstanceID          *int   `json:"instanceId,omitempty"`          // Instance id
 	BandwidthPercentage *int   `json:"bandwidthPercentage,omitempty"` // Bandwidth percentage
 	TrafficClass        string `json:"trafficClass,omitempty"`        // Traffic Class
 }
-type RequestItemApplicationPolicyUpdateApplicationPolicyQueuingProfileClauseTcDscpSettings struct {
+type RequestItemApplicationPolicyUpdateApplicationPolicyQueuingProfileV1ClauseTcDscpSettings struct {
 	InstanceID   *int   `json:"instanceId,omitempty"`   // Instance id
 	Dscp         string `json:"dscp,omitempty"`         // Dscp value
 	TrafficClass string `json:"trafficClass,omitempty"` // Traffic Class
 }
-type RequestApplicationPolicyCreateApplicationPolicyQueuingProfile []RequestItemApplicationPolicyCreateApplicationPolicyQueuingProfile // Array of RequestApplicationPolicyCreateApplicationPolicyQueuingProfile
-type RequestItemApplicationPolicyCreateApplicationPolicyQueuingProfile struct {
-	Description string                                                                     `json:"description,omitempty"` // Free test description
-	Name        string                                                                     `json:"name,omitempty"`        // Queueing profile name
-	Clause      *[]RequestItemApplicationPolicyCreateApplicationPolicyQueuingProfileClause `json:"clause,omitempty"`      //
+type RequestApplicationPolicyCreateApplicationPolicyQueuingProfileV1 []RequestItemApplicationPolicyCreateApplicationPolicyQueuingProfileV1 // Array of RequestApplicationPolicyCreateApplicationPolicyQueuingProfileV1
+type RequestItemApplicationPolicyCreateApplicationPolicyQueuingProfileV1 struct {
+	Description string                                                                       `json:"description,omitempty"` // Free test description
+	Name        string                                                                       `json:"name,omitempty"`        // Queueing profile name
+	Clause      *[]RequestItemApplicationPolicyCreateApplicationPolicyQueuingProfileV1Clause `json:"clause,omitempty"`      //
 }
-type RequestItemApplicationPolicyCreateApplicationPolicyQueuingProfileClause struct {
-	Type                              string                                                                                                   `json:"type,omitempty"`                              // The allowed clause types are: BANDWIDTH, DSCP_CUSTOMIZATION
-	IsCommonBetweenAllInterfaceSpeeds *bool                                                                                                    `json:"isCommonBetweenAllInterfaceSpeeds,omitempty"` // Is common between all interface speeds
-	InterfaceSpeedBandwidthClauses    *[]RequestItemApplicationPolicyCreateApplicationPolicyQueuingProfileClauseInterfaceSpeedBandwidthClauses `json:"interfaceSpeedBandwidthClauses,omitempty"`    //
-	TcDscpSettings                    *[]RequestItemApplicationPolicyCreateApplicationPolicyQueuingProfileClauseTcDscpSettings                 `json:"tcDscpSettings,omitempty"`                    //
+type RequestItemApplicationPolicyCreateApplicationPolicyQueuingProfileV1Clause struct {
+	Type                              string                                                                                                     `json:"type,omitempty"`                              // The allowed clause types are: BANDWIDTH, DSCP_CUSTOMIZATION
+	IsCommonBetweenAllInterfaceSpeeds *bool                                                                                                      `json:"isCommonBetweenAllInterfaceSpeeds,omitempty"` // Is common between all interface speeds
+	InterfaceSpeedBandwidthClauses    *[]RequestItemApplicationPolicyCreateApplicationPolicyQueuingProfileV1ClauseInterfaceSpeedBandwidthClauses `json:"interfaceSpeedBandwidthClauses,omitempty"`    //
+	TcDscpSettings                    *[]RequestItemApplicationPolicyCreateApplicationPolicyQueuingProfileV1ClauseTcDscpSettings                 `json:"tcDscpSettings,omitempty"`                    //
 }
-type RequestItemApplicationPolicyCreateApplicationPolicyQueuingProfileClauseInterfaceSpeedBandwidthClauses struct {
-	InterfaceSpeed      string                                                                                                                      `json:"interfaceSpeed,omitempty"`      // Interface speed
-	TcBandwidthSettings *[]RequestItemApplicationPolicyCreateApplicationPolicyQueuingProfileClauseInterfaceSpeedBandwidthClausesTcBandwidthSettings `json:"tcBandwidthSettings,omitempty"` //
+type RequestItemApplicationPolicyCreateApplicationPolicyQueuingProfileV1ClauseInterfaceSpeedBandwidthClauses struct {
+	InterfaceSpeed      string                                                                                                                        `json:"interfaceSpeed,omitempty"`      // Interface speed
+	TcBandwidthSettings *[]RequestItemApplicationPolicyCreateApplicationPolicyQueuingProfileV1ClauseInterfaceSpeedBandwidthClausesTcBandwidthSettings `json:"tcBandwidthSettings,omitempty"` //
 }
-type RequestItemApplicationPolicyCreateApplicationPolicyQueuingProfileClauseInterfaceSpeedBandwidthClausesTcBandwidthSettings struct {
+type RequestItemApplicationPolicyCreateApplicationPolicyQueuingProfileV1ClauseInterfaceSpeedBandwidthClausesTcBandwidthSettings struct {
 	BandwidthPercentage *int   `json:"bandwidthPercentage,omitempty"` // Bandwidth percentage
 	TrafficClass        string `json:"trafficClass,omitempty"`        // Traffic Class
 }
-type RequestItemApplicationPolicyCreateApplicationPolicyQueuingProfileClauseTcDscpSettings struct {
+type RequestItemApplicationPolicyCreateApplicationPolicyQueuingProfileV1ClauseTcDscpSettings struct {
 	Dscp         string `json:"dscp,omitempty"`         // Dscp value
 	TrafficClass string `json:"trafficClass,omitempty"` // Traffic Class
 }
-type RequestApplicationPolicyCreateApplicationSet []RequestItemApplicationPolicyCreateApplicationSet // Array of RequestApplicationPolicyCreateApplicationSet
-type RequestItemApplicationPolicyCreateApplicationSet struct {
+type RequestApplicationPolicyCreateApplicationSetV1 []RequestItemApplicationPolicyCreateApplicationSetV1 // Array of RequestApplicationPolicyCreateApplicationSetV1
+type RequestItemApplicationPolicyCreateApplicationSetV1 struct {
 	Name string `json:"name,omitempty"` // Name
 }
-type RequestApplicationPolicyCreateApplication []RequestItemApplicationPolicyCreateApplication // Array of RequestApplicationPolicyCreateApplication
-type RequestItemApplicationPolicyCreateApplication struct {
-	Name                      string                                                                    `json:"name,omitempty"`                      // Name
-	NetworkApplications       *[]RequestItemApplicationPolicyCreateApplicationNetworkApplications       `json:"networkApplications,omitempty"`       //
-	NetworkIDentity           *[]RequestItemApplicationPolicyCreateApplicationNetworkIDentity           `json:"networkIdentity,omitempty"`           //
-	ApplicationSet            *RequestItemApplicationPolicyCreateApplicationApplicationSet              `json:"applicationSet,omitempty"`            //
-	IndicativeNetworkIDentity *[]RequestItemApplicationPolicyCreateApplicationIndicativeNetworkIDentity `json:"indicativeNetworkIdentity,omitempty"` //
+type RequestApplicationPolicyCreateApplicationV1 []RequestItemApplicationPolicyCreateApplicationV1 // Array of RequestApplicationPolicyCreateApplicationV1
+type RequestItemApplicationPolicyCreateApplicationV1 struct {
+	Name                string                                                                `json:"name,omitempty"`                // Name
+	NetworkApplications *[]RequestItemApplicationPolicyCreateApplicationV1NetworkApplications `json:"networkApplications,omitempty"` //
+	NetworkIDentity     *[]RequestItemApplicationPolicyCreateApplicationV1NetworkIDentity     `json:"networkIdentity,omitempty"`     //
+	ApplicationSet      *RequestItemApplicationPolicyCreateApplicationV1ApplicationSet        `json:"applicationSet,omitempty"`      //
 }
-type RequestItemApplicationPolicyCreateApplicationNetworkApplications struct {
+type RequestItemApplicationPolicyCreateApplicationV1NetworkApplications struct {
 	AppProtocol        string `json:"appProtocol,omitempty"`        // App Protocol
 	ApplicationSubType string `json:"applicationSubType,omitempty"` // Application Sub Type
 	ApplicationType    string `json:"applicationType,omitempty"`    // Application Type
@@ -871,33 +870,25 @@ type RequestItemApplicationPolicyCreateApplicationNetworkApplications struct {
 	Dscp               string `json:"dscp,omitempty"`               // Dscp
 	IgnoreConflict     string `json:"ignoreConflict,omitempty"`     // Ignore Conflict
 }
-type RequestItemApplicationPolicyCreateApplicationNetworkIDentity struct {
+type RequestItemApplicationPolicyCreateApplicationV1NetworkIDentity struct {
 	DisplayName string `json:"displayName,omitempty"` // Display Name
 	LowerPort   string `json:"lowerPort,omitempty"`   // Lower Port
 	Ports       string `json:"ports,omitempty"`       // Ports
 	Protocol    string `json:"protocol,omitempty"`    // Protocol
 	UpperPort   string `json:"upperPort,omitempty"`   // Upper Port
 }
-type RequestItemApplicationPolicyCreateApplicationApplicationSet struct {
+type RequestItemApplicationPolicyCreateApplicationV1ApplicationSet struct {
 	IDRef string `json:"idRef,omitempty"` // Id Ref
 }
-type RequestItemApplicationPolicyCreateApplicationIndicativeNetworkIDentity struct {
-	ID          string `json:"id,omitempty"`          // id
-	DisplayName string `json:"displayName,omitempty"` // displayName
-	LowerPort   *int   `json:"lowerPort,omitempty"`   // lowerPort
-	Ports       string `json:"ports,omitempty"`       // ports
-	Protocol    string `json:"protocol,omitempty"`    // protocol
-	UpperPort   *int   `json:"upperPort,omitempty"`   // upperPort
+type RequestApplicationPolicyEditApplicationV1 []RequestItemApplicationPolicyEditApplicationV1 // Array of RequestApplicationPolicyEditApplicationV1
+type RequestItemApplicationPolicyEditApplicationV1 struct {
+	ID                  string                                                              `json:"id,omitempty"`                  // Id
+	Name                string                                                              `json:"name,omitempty"`                // Name
+	NetworkApplications *[]RequestItemApplicationPolicyEditApplicationV1NetworkApplications `json:"networkApplications,omitempty"` //
+	NetworkIDentity     *[]RequestItemApplicationPolicyEditApplicationV1NetworkIDentity     `json:"networkIdentity,omitempty"`     //
+	ApplicationSet      *RequestItemApplicationPolicyEditApplicationV1ApplicationSet        `json:"applicationSet,omitempty"`      //
 }
-type RequestApplicationPolicyEditApplication []RequestItemApplicationPolicyEditApplication // Array of RequestApplicationPolicyEditApplication
-type RequestItemApplicationPolicyEditApplication struct {
-	ID                  string                                                            `json:"id,omitempty"`                  // Id
-	Name                string                                                            `json:"name,omitempty"`                // Name
-	NetworkApplications *[]RequestItemApplicationPolicyEditApplicationNetworkApplications `json:"networkApplications,omitempty"` //
-	NetworkIDentity     *[]RequestItemApplicationPolicyEditApplicationNetworkIDentity     `json:"networkIdentity,omitempty"`     //
-	ApplicationSet      *RequestItemApplicationPolicyEditApplicationApplicationSet        `json:"applicationSet,omitempty"`      //
-}
-type RequestItemApplicationPolicyEditApplicationNetworkApplications struct {
+type RequestItemApplicationPolicyEditApplicationV1NetworkApplications struct {
 	ID                 string `json:"id,omitempty"`                 // Id
 	AppProtocol        string `json:"appProtocol,omitempty"`        // App Protocol
 	ApplicationSubType string `json:"applicationSubType,omitempty"` // Application Sub Type
@@ -916,7 +907,7 @@ type RequestItemApplicationPolicyEditApplicationNetworkApplications struct {
 	Dscp               string `json:"dscp,omitempty"`               // Dscp
 	IgnoreConflict     string `json:"ignoreConflict,omitempty"`     // Ignore Conflict
 }
-type RequestItemApplicationPolicyEditApplicationNetworkIDentity struct {
+type RequestItemApplicationPolicyEditApplicationV1NetworkIDentity struct {
 	ID          string `json:"id,omitempty"`          // Id
 	DisplayName string `json:"displayName,omitempty"` // Display Name
 	LowerPort   string `json:"lowerPort,omitempty"`   // Lower Port
@@ -924,18 +915,18 @@ type RequestItemApplicationPolicyEditApplicationNetworkIDentity struct {
 	Protocol    string `json:"protocol,omitempty"`    // Protocol
 	UpperPort   string `json:"upperPort,omitempty"`   // Upper Port
 }
-type RequestItemApplicationPolicyEditApplicationApplicationSet struct {
+type RequestItemApplicationPolicyEditApplicationV1ApplicationSet struct {
 	IDRef string `json:"idRef,omitempty"` // Id Ref
 }
-type RequestApplicationPolicyUpdateQosDeviceInterfaceInfo []RequestItemApplicationPolicyUpdateQosDeviceInterfaceInfo // Array of RequestApplicationPolicyUpdateQosDeviceInterfaceInfo
-type RequestItemApplicationPolicyUpdateQosDeviceInterfaceInfo struct {
-	ID                     string                                                                            `json:"id,omitempty"`                     // Id of Qos device info
-	Name                   string                                                                            `json:"name,omitempty"`                   // Device name
-	ExcludedInterfaces     []string                                                                          `json:"excludedInterfaces,omitempty"`     // Excluded interfaces ids
-	NetworkDeviceID        string                                                                            `json:"networkDeviceId,omitempty"`        // Network device id
-	QosDeviceInterfaceInfo *[]RequestItemApplicationPolicyUpdateQosDeviceInterfaceInfoQosDeviceInterfaceInfo `json:"qosDeviceInterfaceInfo,omitempty"` //
+type RequestApplicationPolicyUpdateQosDeviceInterfaceInfoV1 []RequestItemApplicationPolicyUpdateQosDeviceInterfaceInfoV1 // Array of RequestApplicationPolicyUpdateQosDeviceInterfaceInfoV1
+type RequestItemApplicationPolicyUpdateQosDeviceInterfaceInfoV1 struct {
+	ID                     string                                                                              `json:"id,omitempty"`                     // Id of Qos device info
+	Name                   string                                                                              `json:"name,omitempty"`                   // Device name
+	ExcludedInterfaces     []string                                                                            `json:"excludedInterfaces,omitempty"`     // Excluded interfaces ids
+	NetworkDeviceID        string                                                                              `json:"networkDeviceId,omitempty"`        // Network device id
+	QosDeviceInterfaceInfo *[]RequestItemApplicationPolicyUpdateQosDeviceInterfaceInfoV1QosDeviceInterfaceInfo `json:"qosDeviceInterfaceInfo,omitempty"` //
 }
-type RequestItemApplicationPolicyUpdateQosDeviceInterfaceInfoQosDeviceInterfaceInfo struct {
+type RequestItemApplicationPolicyUpdateQosDeviceInterfaceInfoV1QosDeviceInterfaceInfo struct {
 	InstanceID         *int   `json:"instanceId,omitempty"`         // Instance id
 	DmvpnRemoteSitesBw *[]int `json:"dmvpnRemoteSitesBw,omitempty"` // Dmvpn remote sites bandwidth
 	InterfaceID        string `json:"interfaceId,omitempty"`        // Interface id
@@ -944,14 +935,14 @@ type RequestItemApplicationPolicyUpdateQosDeviceInterfaceInfoQosDeviceInterfaceI
 	Role               string `json:"role,omitempty"`               // Interface role
 	UploadBW           *int   `json:"uploadBW,omitempty"`           // Upload bandwidth
 }
-type RequestApplicationPolicyCreateQosDeviceInterfaceInfo []RequestItemApplicationPolicyCreateQosDeviceInterfaceInfo // Array of RequestApplicationPolicyCreateQosDeviceInterfaceInfo
-type RequestItemApplicationPolicyCreateQosDeviceInterfaceInfo struct {
-	Name                   string                                                                            `json:"name,omitempty"`                   // Device name
-	ExcludedInterfaces     []string                                                                          `json:"excludedInterfaces,omitempty"`     // Excluded interfaces ids
-	NetworkDeviceID        string                                                                            `json:"networkDeviceId,omitempty"`        // Network device id
-	QosDeviceInterfaceInfo *[]RequestItemApplicationPolicyCreateQosDeviceInterfaceInfoQosDeviceInterfaceInfo `json:"qosDeviceInterfaceInfo,omitempty"` //
+type RequestApplicationPolicyCreateQosDeviceInterfaceInfoV1 []RequestItemApplicationPolicyCreateQosDeviceInterfaceInfoV1 // Array of RequestApplicationPolicyCreateQosDeviceInterfaceInfoV1
+type RequestItemApplicationPolicyCreateQosDeviceInterfaceInfoV1 struct {
+	Name                   string                                                                              `json:"name,omitempty"`                   // Device name
+	ExcludedInterfaces     []string                                                                            `json:"excludedInterfaces,omitempty"`     // Excluded interfaces ids
+	NetworkDeviceID        string                                                                              `json:"networkDeviceId,omitempty"`        // Network device id
+	QosDeviceInterfaceInfo *[]RequestItemApplicationPolicyCreateQosDeviceInterfaceInfoV1QosDeviceInterfaceInfo `json:"qosDeviceInterfaceInfo,omitempty"` //
 }
-type RequestItemApplicationPolicyCreateQosDeviceInterfaceInfoQosDeviceInterfaceInfo struct {
+type RequestItemApplicationPolicyCreateQosDeviceInterfaceInfoV1QosDeviceInterfaceInfo struct {
 	DmvpnRemoteSitesBw *[]int `json:"dmvpnRemoteSitesBw,omitempty"` // Dmvpn remote sites bandwidth
 	InterfaceID        string `json:"interfaceId,omitempty"`        // Interface id
 	InterfaceName      string `json:"interfaceName,omitempty"`      // Interface name
@@ -959,8 +950,8 @@ type RequestItemApplicationPolicyCreateQosDeviceInterfaceInfoQosDeviceInterfaceI
 	Role               string `json:"role,omitempty"`               // Interface role
 	UploadBW           *int   `json:"uploadBW,omitempty"`           // Upload bandwidth
 }
-type RequestApplicationPolicyCreateApplicationSets []RequestItemApplicationPolicyCreateApplicationSets // Array of RequestApplicationPolicyCreateApplicationSets
-type RequestItemApplicationPolicyCreateApplicationSets struct {
+type RequestApplicationPolicyCreateApplicationSetsV2 []RequestItemApplicationPolicyCreateApplicationSetsV2 // Array of RequestApplicationPolicyCreateApplicationSetsV2
+type RequestItemApplicationPolicyCreateApplicationSetsV2 struct {
 	Name                        string `json:"name,omitempty"`                        // Application Set name
 	ScalableGroupType           string `json:"scalableGroupType,omitempty"`           // Scalable group type, should be set to APPLICATION_GROUP
 	DefaultBusinessRelevance    string `json:"defaultBusinessRelevance,omitempty"`    // Default business relevance
@@ -969,24 +960,24 @@ type RequestItemApplicationPolicyCreateApplicationSets struct {
 	Type                        string `json:"type,omitempty"`                        // Type, should be set to scalablegroup
 	ScalableGroupExternalHandle string `json:"scalableGroupExternalHandle,omitempty"` // Scalable group external handle, should be set to application set name
 }
-type RequestApplicationPolicyEditApplications []RequestItemApplicationPolicyEditApplications // Array of RequestApplicationPolicyEditApplications
-type RequestItemApplicationPolicyEditApplications struct {
-	ID                          string                                                                   `json:"id,omitempty"`                          // Application id
-	InstanceID                  *int                                                                     `json:"instanceId,omitempty"`                  // Instance id
-	DisplayName                 string                                                                   `json:"displayName,omitempty"`                 // Display name
-	InstanceVersion             *float64                                                                 `json:"instanceVersion,omitempty"`             // Instance version
-	IndicativeNetworkIDentity   *[]RequestItemApplicationPolicyEditApplicationsIndicativeNetworkIDentity `json:"indicativeNetworkIdentity,omitempty"`   //
-	Name                        string                                                                   `json:"name,omitempty"`                        // Application name
-	Namespace                   string                                                                   `json:"namespace,omitempty"`                   // Namespace
-	NetworkApplications         *[]RequestItemApplicationPolicyEditApplicationsNetworkApplications       `json:"networkApplications,omitempty"`         //
-	NetworkIDentity             *[]RequestItemApplicationPolicyEditApplicationsNetworkIDentity           `json:"networkIdentity,omitempty"`             //
-	ParentScalableGroup         *RequestItemApplicationPolicyEditApplicationsParentScalableGroup         `json:"parentScalableGroup,omitempty"`         //
-	Qualifier                   string                                                                   `json:"qualifier,omitempty"`                   // Qualifier, valid value application
-	ScalableGroupExternalHandle string                                                                   `json:"scalableGroupExternalHandle,omitempty"` // Scalable group external handle, should be equal to Application name
-	ScalableGroupType           string                                                                   `json:"scalableGroupType,omitempty"`           // Scalable group type, valid value APPLICATION
-	Type                        string                                                                   `json:"type,omitempty"`                        // Type, valid value scalablegroup
+type RequestApplicationPolicyEditApplicationsV2 []RequestItemApplicationPolicyEditApplicationsV2 // Array of RequestApplicationPolicyEditApplicationsV2
+type RequestItemApplicationPolicyEditApplicationsV2 struct {
+	ID                          string                                                                     `json:"id,omitempty"`                          // Application id
+	InstanceID                  *int                                                                       `json:"instanceId,omitempty"`                  // Instance id
+	DisplayName                 string                                                                     `json:"displayName,omitempty"`                 // Display name
+	InstanceVersion             *float64                                                                   `json:"instanceVersion,omitempty"`             // Instance version
+	IndicativeNetworkIDentity   *[]RequestItemApplicationPolicyEditApplicationsV2IndicativeNetworkIDentity `json:"indicativeNetworkIdentity,omitempty"`   //
+	Name                        string                                                                     `json:"name,omitempty"`                        // Application name
+	Namespace                   string                                                                     `json:"namespace,omitempty"`                   // Namespace
+	NetworkApplications         *[]RequestItemApplicationPolicyEditApplicationsV2NetworkApplications       `json:"networkApplications,omitempty"`         //
+	NetworkIDentity             *[]RequestItemApplicationPolicyEditApplicationsV2NetworkIDentity           `json:"networkIdentity,omitempty"`             //
+	ParentScalableGroup         *RequestItemApplicationPolicyEditApplicationsV2ParentScalableGroup         `json:"parentScalableGroup,omitempty"`         //
+	Qualifier                   string                                                                     `json:"qualifier,omitempty"`                   // Qualifier, valid value application
+	ScalableGroupExternalHandle string                                                                     `json:"scalableGroupExternalHandle,omitempty"` // Scalable group external handle, should be equal to Application name
+	ScalableGroupType           string                                                                     `json:"scalableGroupType,omitempty"`           // Scalable group type, valid value APPLICATION
+	Type                        string                                                                     `json:"type,omitempty"`                        // Type, valid value scalablegroup
 }
-type RequestItemApplicationPolicyEditApplicationsIndicativeNetworkIDentity struct {
+type RequestItemApplicationPolicyEditApplicationsV2IndicativeNetworkIDentity struct {
 	ID          string   `json:"id,omitempty"`          // Id
 	DisplayName string   `json:"displayName,omitempty"` // Display name
 	LowerPort   *float64 `json:"lowerPort,omitempty"`   // Lower port
@@ -994,7 +985,7 @@ type RequestItemApplicationPolicyEditApplicationsIndicativeNetworkIDentity struc
 	Protocol    string   `json:"protocol,omitempty"`    // Protocol
 	UpperPort   *float64 `json:"upperPort,omitempty"`   // Upper port
 }
-type RequestItemApplicationPolicyEditApplicationsNetworkApplications struct {
+type RequestItemApplicationPolicyEditApplicationsV2NetworkApplications struct {
 	ID                 string   `json:"id,omitempty"`                 // Id
 	ApplicationSubType string   `json:"applicationSubType,omitempty"` // Application sub type, LEARNED: discovered application, NONE: nbar and custom application
 	ApplicationType    string   `json:"applicationType,omitempty"`    // Application type, DEFAULT: nbar application, DEFAULT_MODIFIED: nbar modified application, CUSTOM: custom application
@@ -1014,31 +1005,31 @@ type RequestItemApplicationPolicyEditApplicationsNetworkApplications struct {
 	TrafficClass       string   `json:"trafficClass,omitempty"`       // Traffic class
 	IgnoreConflict     *bool    `json:"ignoreConflict,omitempty"`     // Ignore conflict, true or false
 }
-type RequestItemApplicationPolicyEditApplicationsNetworkIDentity struct {
-	ID          string                                                                   `json:"id,omitempty"`          // Id
-	DisplayName string                                                                   `json:"displayName,omitempty"` // Display name
-	IPv4Subnet  []string                                                                 `json:"ipv4Subnet,omitempty"`  // Ipv4 subnet
-	IPv6Subnet  *[]RequestItemApplicationPolicyEditApplicationsNetworkIDentityIPv6Subnet `json:"ipv6Subnet,omitempty"`  // Ipv6 subnet
-	LowerPort   *float64                                                                 `json:"lowerPort,omitempty"`   // Lower port
-	Ports       string                                                                   `json:"ports,omitempty"`       // Ports
-	Protocol    string                                                                   `json:"protocol,omitempty"`    // Protocol
-	UpperPort   *float64                                                                 `json:"upperPort,omitempty"`   // Upper port
+type RequestItemApplicationPolicyEditApplicationsV2NetworkIDentity struct {
+	ID          string                                                                     `json:"id,omitempty"`          // Id
+	DisplayName string                                                                     `json:"displayName,omitempty"` // Display name
+	IPv4Subnet  []string                                                                   `json:"ipv4Subnet,omitempty"`  // Ipv4 subnet
+	IPv6Subnet  *[]RequestItemApplicationPolicyEditApplicationsV2NetworkIDentityIPv6Subnet `json:"ipv6Subnet,omitempty"`  // Ipv6 subnet
+	LowerPort   *float64                                                                   `json:"lowerPort,omitempty"`   // Lower port
+	Ports       string                                                                     `json:"ports,omitempty"`       // Ports
+	Protocol    string                                                                     `json:"protocol,omitempty"`    // Protocol
+	UpperPort   *float64                                                                   `json:"upperPort,omitempty"`   // Upper port
 }
-type RequestItemApplicationPolicyEditApplicationsNetworkIDentityIPv6Subnet interface{}
-type RequestItemApplicationPolicyEditApplicationsParentScalableGroup struct {
+type RequestItemApplicationPolicyEditApplicationsV2NetworkIDentityIPv6Subnet interface{}
+type RequestItemApplicationPolicyEditApplicationsV2ParentScalableGroup struct {
 	IDRef string `json:"idRef,omitempty"` // Id reference to parent application set
 }
-type RequestApplicationPolicyCreateApplications []RequestItemApplicationPolicyCreateApplications // Array of RequestApplicationPolicyCreateApplications
-type RequestItemApplicationPolicyCreateApplications struct {
-	Name                      string                                                                     `json:"name,omitempty"`                      // Application name
-	NetworkApplications       *[]RequestItemApplicationPolicyCreateApplicationsNetworkApplications       `json:"networkApplications,omitempty"`       //
-	ParentScalableGroup       *RequestItemApplicationPolicyCreateApplicationsParentScalableGroup         `json:"parentScalableGroup,omitempty"`       //
-	NetworkIDentity           *[]RequestItemApplicationPolicyCreateApplicationsNetworkIDentity           `json:"networkIdentity,omitempty"`           //
-	IndicativeNetworkIDentity *[]RequestItemApplicationPolicyCreateApplicationsIndicativeNetworkIDentity `json:"indicativeNetworkIdentity,omitempty"` //
-	ScalableGroupType         string                                                                     `json:"scalableGroupType,omitempty"`         // Scalable group type, valid value APPLICATION
-	Type                      string                                                                     `json:"type,omitempty"`                      // Type, valid value scalablegroup
+type RequestApplicationPolicyCreateApplicationsV2 []RequestItemApplicationPolicyCreateApplicationsV2 // Array of RequestApplicationPolicyCreateApplicationsV2
+type RequestItemApplicationPolicyCreateApplicationsV2 struct {
+	Name                      string                                                                       `json:"name,omitempty"`                      // Application name
+	NetworkApplications       *[]RequestItemApplicationPolicyCreateApplicationsV2NetworkApplications       `json:"networkApplications,omitempty"`       //
+	ParentScalableGroup       *RequestItemApplicationPolicyCreateApplicationsV2ParentScalableGroup         `json:"parentScalableGroup,omitempty"`       //
+	NetworkIDentity           *[]RequestItemApplicationPolicyCreateApplicationsV2NetworkIDentity           `json:"networkIdentity,omitempty"`           //
+	IndicativeNetworkIDentity *[]RequestItemApplicationPolicyCreateApplicationsV2IndicativeNetworkIDentity `json:"indicativeNetworkIdentity,omitempty"` //
+	ScalableGroupType         string                                                                       `json:"scalableGroupType,omitempty"`         // Scalable group type, valid value APPLICATION
+	Type                      string                                                                       `json:"type,omitempty"`                      // Type, valid value scalablegroup
 }
-type RequestItemApplicationPolicyCreateApplicationsNetworkApplications struct {
+type RequestItemApplicationPolicyCreateApplicationsV2NetworkApplications struct {
 	HelpString      string `json:"helpString,omitempty"`      // Help string
 	ApplicationType string `json:"applicationType,omitempty"` // Application type
 	Type            string `json:"type,omitempty"`            // Custom application type
@@ -1052,17 +1043,17 @@ type RequestItemApplicationPolicyCreateApplicationsNetworkApplications struct {
 	Rank            *int   `json:"rank,omitempty"`            // Rank, should be set to 1
 	EngineID        *int   `json:"engineId,omitempty"`        // Engine id, should be set to 6
 }
-type RequestItemApplicationPolicyCreateApplicationsParentScalableGroup struct {
+type RequestItemApplicationPolicyCreateApplicationsV2ParentScalableGroup struct {
 	IDRef string `json:"idRef,omitempty"` // Id reference to parent application set
 }
-type RequestItemApplicationPolicyCreateApplicationsNetworkIDentity struct {
+type RequestItemApplicationPolicyCreateApplicationsV2NetworkIDentity struct {
 	Protocol   string   `json:"protocol,omitempty"`   // Protocol
 	Ports      string   `json:"ports,omitempty"`      // Ports
 	IPv4Subnet []string `json:"ipv4Subnet,omitempty"` // Ipv4 subnet
 	LowerPort  *float64 `json:"lowerPort,omitempty"`  // Lower port
 	UpperPort  *float64 `json:"upperPort,omitempty"`  // Upper port
 }
-type RequestItemApplicationPolicyCreateApplicationsIndicativeNetworkIDentity struct {
+type RequestItemApplicationPolicyCreateApplicationsV2IndicativeNetworkIDentity struct {
 	Protocol   string   `json:"protocol,omitempty"`   // Protocol
 	Ports      string   `json:"ports,omitempty"`      // Ports
 	IPv4Subnet []string `json:"ipv4Subnet,omitempty"` // Ipv4 subnet
@@ -1071,23 +1062,23 @@ type RequestItemApplicationPolicyCreateApplicationsIndicativeNetworkIDentity str
 	UpperPort  *float64 `json:"upperPort,omitempty"`  // The maximum port when used as a port range. For single port number, ports attribute should be used.
 }
 
-//GetApplicationPolicy Get Application Policy - 3d9f-6b17-4879-8e45
+//GetApplicationPolicyV1 Get Application Policy - 3d9f-6b17-4879-8e45
 /* Get all existing application policies
 
 
-@param GetApplicationPolicyQueryParams Filtering parameter
+@param GetApplicationPolicyV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-application-policy
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-application-policy-v1
 */
-func (s *ApplicationPolicyService) GetApplicationPolicy(GetApplicationPolicyQueryParams *GetApplicationPolicyQueryParams) (*ResponseApplicationPolicyGetApplicationPolicy, *resty.Response, error) {
+func (s *ApplicationPolicyService) GetApplicationPolicyV1(GetApplicationPolicyV1QueryParams *GetApplicationPolicyV1QueryParams) (*ResponseApplicationPolicyGetApplicationPolicyV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/app-policy"
 
-	queryString, _ := query.Values(GetApplicationPolicyQueryParams)
+	queryString, _ := query.Values(GetApplicationPolicyV1QueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyGetApplicationPolicy{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyGetApplicationPolicyV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1098,30 +1089,30 @@ func (s *ApplicationPolicyService) GetApplicationPolicy(GetApplicationPolicyQuer
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetApplicationPolicy(GetApplicationPolicyQueryParams)
+			return s.GetApplicationPolicyV1(GetApplicationPolicyV1QueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetApplicationPolicy")
+		return nil, response, fmt.Errorf("error with operation GetApplicationPolicyV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyGetApplicationPolicy)
+	result := response.Result().(*ResponseApplicationPolicyGetApplicationPolicyV1)
 	return result, response, err
 
 }
 
-//GetApplicationPolicyDefault Get Application Policy Default - 21a2-4b5d-4f98-a730
+//GetApplicationPolicyDefaultV1 Get Application Policy Default - 21a2-4b5d-4f98-a730
 /* Get default application policy
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-application-policy-default
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-application-policy-default-v1
 */
-func (s *ApplicationPolicyService) GetApplicationPolicyDefault() (*ResponseApplicationPolicyGetApplicationPolicyDefault, *resty.Response, error) {
+func (s *ApplicationPolicyService) GetApplicationPolicyDefaultV1() (*ResponseApplicationPolicyGetApplicationPolicyDefaultV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/app-policy-default"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseApplicationPolicyGetApplicationPolicyDefault{}).
+		SetResult(&ResponseApplicationPolicyGetApplicationPolicyDefaultV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1132,33 +1123,33 @@ func (s *ApplicationPolicyService) GetApplicationPolicyDefault() (*ResponseAppli
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetApplicationPolicyDefault()
+			return s.GetApplicationPolicyDefaultV1()
 		}
-		return nil, response, fmt.Errorf("error with operation GetApplicationPolicyDefault")
+		return nil, response, fmt.Errorf("error with operation GetApplicationPolicyDefaultV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyGetApplicationPolicyDefault)
+	result := response.Result().(*ResponseApplicationPolicyGetApplicationPolicyDefaultV1)
 	return result, response, err
 
 }
 
-//GetApplicationPolicyQueuingProfile Get Application Policy Queuing Profile - 1698-39cc-4bdb-8ed9
+//GetApplicationPolicyQueuingProfileV1 Get Application Policy Queuing Profile - 1698-39cc-4bdb-8ed9
 /* Get all or by name, existing application policy queuing profiles
 
 
-@param GetApplicationPolicyQueuingProfileQueryParams Filtering parameter
+@param GetApplicationPolicyQueuingProfileV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-application-policy-queuing-profile
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-application-policy-queuing-profile-v1
 */
-func (s *ApplicationPolicyService) GetApplicationPolicyQueuingProfile(GetApplicationPolicyQueuingProfileQueryParams *GetApplicationPolicyQueuingProfileQueryParams) (*ResponseApplicationPolicyGetApplicationPolicyQueuingProfile, *resty.Response, error) {
+func (s *ApplicationPolicyService) GetApplicationPolicyQueuingProfileV1(GetApplicationPolicyQueuingProfileV1QueryParams *GetApplicationPolicyQueuingProfileV1QueryParams) (*ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/app-policy-queuing-profile"
 
-	queryString, _ := query.Values(GetApplicationPolicyQueuingProfileQueryParams)
+	queryString, _ := query.Values(GetApplicationPolicyQueuingProfileV1QueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyGetApplicationPolicyQueuingProfile{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1169,30 +1160,30 @@ func (s *ApplicationPolicyService) GetApplicationPolicyQueuingProfile(GetApplica
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetApplicationPolicyQueuingProfile(GetApplicationPolicyQueuingProfileQueryParams)
+			return s.GetApplicationPolicyQueuingProfileV1(GetApplicationPolicyQueuingProfileV1QueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetApplicationPolicyQueuingProfile")
+		return nil, response, fmt.Errorf("error with operation GetApplicationPolicyQueuingProfileV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyGetApplicationPolicyQueuingProfile)
+	result := response.Result().(*ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1)
 	return result, response, err
 
 }
 
-//GetApplicationPolicyQueuingProfileCount Get Application Policy Queuing Profile Count - efa2-4afa-4578-88e9
+//GetApplicationPolicyQueuingProfileCountV1 Get Application Policy Queuing Profile Count - efa2-4afa-4578-88e9
 /* Get the number of all existing  application policy queuing profile
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-application-policy-queuing-profile-count
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-application-policy-queuing-profile-count-v1
 */
-func (s *ApplicationPolicyService) GetApplicationPolicyQueuingProfileCount() (*ResponseApplicationPolicyGetApplicationPolicyQueuingProfileCount, *resty.Response, error) {
+func (s *ApplicationPolicyService) GetApplicationPolicyQueuingProfileCountV1() (*ResponseApplicationPolicyGetApplicationPolicyQueuingProfileCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/app-policy-queuing-profile-count"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseApplicationPolicyGetApplicationPolicyQueuingProfileCount{}).
+		SetResult(&ResponseApplicationPolicyGetApplicationPolicyQueuingProfileCountV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1203,33 +1194,33 @@ func (s *ApplicationPolicyService) GetApplicationPolicyQueuingProfileCount() (*R
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetApplicationPolicyQueuingProfileCount()
+			return s.GetApplicationPolicyQueuingProfileCountV1()
 		}
-		return nil, response, fmt.Errorf("error with operation GetApplicationPolicyQueuingProfileCount")
+		return nil, response, fmt.Errorf("error with operation GetApplicationPolicyQueuingProfileCountV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyGetApplicationPolicyQueuingProfileCount)
+	result := response.Result().(*ResponseApplicationPolicyGetApplicationPolicyQueuingProfileCountV1)
 	return result, response, err
 
 }
 
-//GetApplicationSets Get Application Sets - cb86-8b21-4289-8159
+//GetApplicationSetsV1 Get Application Sets - cb86-8b21-4289-8159
 /* Get appllication-sets by offset/limit or by name
 
 
-@param GetApplicationSetsQueryParams Filtering parameter
+@param GetApplicationSetsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-application-sets
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-application-sets-v1
 */
-func (s *ApplicationPolicyService) GetApplicationSets(GetApplicationSetsQueryParams *GetApplicationSetsQueryParams) (*ResponseApplicationPolicyGetApplicationSets, *resty.Response, error) {
+func (s *ApplicationPolicyService) GetApplicationSetsV1(GetApplicationSetsV1QueryParams *GetApplicationSetsV1QueryParams) (*ResponseApplicationPolicyGetApplicationSetsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/application-policy-application-set"
 
-	queryString, _ := query.Values(GetApplicationSetsQueryParams)
+	queryString, _ := query.Values(GetApplicationSetsV1QueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyGetApplicationSets{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyGetApplicationSetsV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1240,30 +1231,30 @@ func (s *ApplicationPolicyService) GetApplicationSets(GetApplicationSetsQueryPar
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetApplicationSets(GetApplicationSetsQueryParams)
+			return s.GetApplicationSetsV1(GetApplicationSetsV1QueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetApplicationSets")
+		return nil, response, fmt.Errorf("error with operation GetApplicationSetsV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyGetApplicationSets)
+	result := response.Result().(*ResponseApplicationPolicyGetApplicationSetsV1)
 	return result, response, err
 
 }
 
-//GetApplicationSetsCount Get Application Sets Count - cfa0-49a6-44bb-8a07
+//GetApplicationSetsCountV1 Get Application Sets Count - cfa0-49a6-44bb-8a07
 /* Get the number of existing application-sets
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-application-sets-count
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-application-sets-count-v1
 */
-func (s *ApplicationPolicyService) GetApplicationSetsCount() (*ResponseApplicationPolicyGetApplicationSetsCount, *resty.Response, error) {
+func (s *ApplicationPolicyService) GetApplicationSetsCountV1() (*ResponseApplicationPolicyGetApplicationSetsCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/application-policy-application-set-count"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseApplicationPolicyGetApplicationSetsCount{}).
+		SetResult(&ResponseApplicationPolicyGetApplicationSetsCountV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1274,33 +1265,33 @@ func (s *ApplicationPolicyService) GetApplicationSetsCount() (*ResponseApplicati
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetApplicationSetsCount()
+			return s.GetApplicationSetsCountV1()
 		}
-		return nil, response, fmt.Errorf("error with operation GetApplicationSetsCount")
+		return nil, response, fmt.Errorf("error with operation GetApplicationSetsCountV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyGetApplicationSetsCount)
+	result := response.Result().(*ResponseApplicationPolicyGetApplicationSetsCountV1)
 	return result, response, err
 
 }
 
-//GetApplications2 Get Applications - 8893-b834-445b-b29c
+//GetApplicationsV1 Get Applications - 8893-b834-445b-b29c
 /* Get applications by offset/limit or by name
 
 
-@param GetApplications2QueryParams Filtering parameter
+@param GetApplicationsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-applications2
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-applications-v1
 */
-func (s *ApplicationPolicyService) GetApplications2(GetApplications2QueryParams *GetApplications2QueryParams) (*ResponseApplicationPolicyGetApplications2, *resty.Response, error) {
+func (s *ApplicationPolicyService) GetApplicationsV1(GetApplicationsV1QueryParams *GetApplicationsV1QueryParams) (*ResponseApplicationPolicyGetApplicationsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/applications"
 
-	queryString, _ := query.Values(GetApplications2QueryParams)
+	queryString, _ := query.Values(GetApplicationsV1QueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyGetApplications2{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyGetApplicationsV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1311,30 +1302,30 @@ func (s *ApplicationPolicyService) GetApplications2(GetApplications2QueryParams 
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetApplications2(GetApplications2QueryParams)
+			return s.GetApplicationsV1(GetApplicationsV1QueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetApplications2")
+		return nil, response, fmt.Errorf("error with operation GetApplicationsV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyGetApplications2)
+	result := response.Result().(*ResponseApplicationPolicyGetApplicationsV1)
 	return result, response, err
 
 }
 
-//GetApplicationsCount Get Applications Count - 039d-e8b1-47a9-8690
+//GetApplicationsCountV1 Get Applications Count - 039d-e8b1-47a9-8690
 /* Get the number of all existing applications
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-applications-count
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-applications-count-v1
 */
-func (s *ApplicationPolicyService) GetApplicationsCount() (*ResponseApplicationPolicyGetApplicationsCount, *resty.Response, error) {
+func (s *ApplicationPolicyService) GetApplicationsCountV1() (*ResponseApplicationPolicyGetApplicationsCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/applications-count"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseApplicationPolicyGetApplicationsCount{}).
+		SetResult(&ResponseApplicationPolicyGetApplicationsCountV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1345,33 +1336,33 @@ func (s *ApplicationPolicyService) GetApplicationsCount() (*ResponseApplicationP
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetApplicationsCount()
+			return s.GetApplicationsCountV1()
 		}
-		return nil, response, fmt.Errorf("error with operation GetApplicationsCount")
+		return nil, response, fmt.Errorf("error with operation GetApplicationsCountV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyGetApplicationsCount)
+	result := response.Result().(*ResponseApplicationPolicyGetApplicationsCountV1)
 	return result, response, err
 
 }
 
-//GetQosDeviceInterfaceInfo Get Qos Device Interface Info - 42a6-e9eb-46bb-a197
+//GetQosDeviceInterfaceInfoV1 Get Qos Device Interface Info - 42a6-e9eb-46bb-a197
 /* Get all or by network device id, existing qos device interface infos
 
 
-@param GetQosDeviceInterfaceInfoQueryParams Filtering parameter
+@param GetQosDeviceInterfaceInfoV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-qos-device-interface-info
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-qos-device-interface-info-v1
 */
-func (s *ApplicationPolicyService) GetQosDeviceInterfaceInfo(GetQosDeviceInterfaceInfoQueryParams *GetQosDeviceInterfaceInfoQueryParams) (*ResponseApplicationPolicyGetQosDeviceInterfaceInfo, *resty.Response, error) {
+func (s *ApplicationPolicyService) GetQosDeviceInterfaceInfoV1(GetQosDeviceInterfaceInfoV1QueryParams *GetQosDeviceInterfaceInfoV1QueryParams) (*ResponseApplicationPolicyGetQosDeviceInterfaceInfoV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/qos-device-interface-info"
 
-	queryString, _ := query.Values(GetQosDeviceInterfaceInfoQueryParams)
+	queryString, _ := query.Values(GetQosDeviceInterfaceInfoV1QueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyGetQosDeviceInterfaceInfo{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyGetQosDeviceInterfaceInfoV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1382,30 +1373,30 @@ func (s *ApplicationPolicyService) GetQosDeviceInterfaceInfo(GetQosDeviceInterfa
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetQosDeviceInterfaceInfo(GetQosDeviceInterfaceInfoQueryParams)
+			return s.GetQosDeviceInterfaceInfoV1(GetQosDeviceInterfaceInfoV1QueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetQosDeviceInterfaceInfo")
+		return nil, response, fmt.Errorf("error with operation GetQosDeviceInterfaceInfoV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyGetQosDeviceInterfaceInfo)
+	result := response.Result().(*ResponseApplicationPolicyGetQosDeviceInterfaceInfoV1)
 	return result, response, err
 
 }
 
-//GetQosDeviceInterfaceInfoCount Get Qos Device Interface Info Count - 729a-98e1-4a3b-91f2
+//GetQosDeviceInterfaceInfoCountV1 Get Qos Device Interface Info Count - 729a-98e1-4a3b-91f2
 /* Get the number of all existing qos device interface infos group by network device id
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-qos-device-interface-info-count
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-qos-device-interface-info-count-v1
 */
-func (s *ApplicationPolicyService) GetQosDeviceInterfaceInfoCount() (*ResponseApplicationPolicyGetQosDeviceInterfaceInfoCount, *resty.Response, error) {
+func (s *ApplicationPolicyService) GetQosDeviceInterfaceInfoCountV1() (*ResponseApplicationPolicyGetQosDeviceInterfaceInfoCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/qos-device-interface-info-count"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseApplicationPolicyGetQosDeviceInterfaceInfoCount{}).
+		SetResult(&ResponseApplicationPolicyGetQosDeviceInterfaceInfoCountV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1416,33 +1407,33 @@ func (s *ApplicationPolicyService) GetQosDeviceInterfaceInfoCount() (*ResponseAp
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetQosDeviceInterfaceInfoCount()
+			return s.GetQosDeviceInterfaceInfoCountV1()
 		}
-		return nil, response, fmt.Errorf("error with operation GetQosDeviceInterfaceInfoCount")
+		return nil, response, fmt.Errorf("error with operation GetQosDeviceInterfaceInfoCountV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyGetQosDeviceInterfaceInfoCount)
+	result := response.Result().(*ResponseApplicationPolicyGetQosDeviceInterfaceInfoCountV1)
 	return result, response, err
 
 }
 
-//GetApplicationSets2 Get Application Set/s - 00ac-d849-43aa-bc75
+//GetApplicationSetsV2 Get Application Set/s - 00ac-d849-43aa-bc75
 /* Get application set/s by offset/limit or by name
 
 
-@param GetApplicationSets2QueryParams Filtering parameter
+@param GetApplicationSetsV2QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-application-sets2
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-application-sets-v2
 */
-func (s *ApplicationPolicyService) GetApplicationSets2(GetApplicationSets2QueryParams *GetApplicationSets2QueryParams) (*ResponseApplicationPolicyGetApplicationSets2, *resty.Response, error) {
+func (s *ApplicationPolicyService) GetApplicationSetsV2(GetApplicationSetsV2QueryParams *GetApplicationSetsV2QueryParams) (*ResponseApplicationPolicyGetApplicationSetsV2, *resty.Response, error) {
 	path := "/dna/intent/api/v2/application-policy-application-set"
 
-	queryString, _ := query.Values(GetApplicationSets2QueryParams)
+	queryString, _ := query.Values(GetApplicationSetsV2QueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyGetApplicationSets2{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyGetApplicationSetsV2{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1453,33 +1444,33 @@ func (s *ApplicationPolicyService) GetApplicationSets2(GetApplicationSets2QueryP
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetApplicationSets2(GetApplicationSets2QueryParams)
+			return s.GetApplicationSetsV2(GetApplicationSetsV2QueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetApplicationSets2")
+		return nil, response, fmt.Errorf("error with operation GetApplicationSetsV2")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyGetApplicationSets2)
+	result := response.Result().(*ResponseApplicationPolicyGetApplicationSetsV2)
 	return result, response, err
 
 }
 
-//GetApplicationSetCount Get Application Set Count - 798c-fa61-432b-a67e
+//GetApplicationSetCountV2 Get Application Set Count - 798c-fa61-432b-a67e
 /* Get the number of all existing application sets
 
 
-@param GetApplicationSetCountQueryParams Filtering parameter
+@param GetApplicationSetCountV2QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-application-set-count
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-application-set-count-v2
 */
-func (s *ApplicationPolicyService) GetApplicationSetCount(GetApplicationSetCountQueryParams *GetApplicationSetCountQueryParams) (*ResponseApplicationPolicyGetApplicationSetCount, *resty.Response, error) {
+func (s *ApplicationPolicyService) GetApplicationSetCountV2(GetApplicationSetCountV2QueryParams *GetApplicationSetCountV2QueryParams) (*ResponseApplicationPolicyGetApplicationSetCountV2, *resty.Response, error) {
 	path := "/dna/intent/api/v2/application-policy-application-set-count"
 
-	queryString, _ := query.Values(GetApplicationSetCountQueryParams)
+	queryString, _ := query.Values(GetApplicationSetCountV2QueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyGetApplicationSetCount{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyGetApplicationSetCountV2{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1490,33 +1481,33 @@ func (s *ApplicationPolicyService) GetApplicationSetCount(GetApplicationSetCount
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetApplicationSetCount(GetApplicationSetCountQueryParams)
+			return s.GetApplicationSetCountV2(GetApplicationSetCountV2QueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetApplicationSetCount")
+		return nil, response, fmt.Errorf("error with operation GetApplicationSetCountV2")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyGetApplicationSetCount)
+	result := response.Result().(*ResponseApplicationPolicyGetApplicationSetCountV2)
 	return result, response, err
 
 }
 
-//GetApplications Get Application/s - a395-8970-43bb-bedd
+//GetApplicationsV2 Get Application/s - a395-8970-43bb-bedd
 /* Get application/s by offset/limit or by name
 
 
-@param GetApplicationsQueryParams Filtering parameter
+@param GetApplicationsV2QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-applications
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-applications-v2
 */
-func (s *ApplicationPolicyService) GetApplications(GetApplicationsQueryParams *GetApplicationsQueryParams) (*ResponseApplicationPolicyGetApplications, *resty.Response, error) {
+func (s *ApplicationPolicyService) GetApplicationsV2(GetApplicationsV2QueryParams *GetApplicationsV2QueryParams) (*ResponseApplicationPolicyGetApplicationsV2, *resty.Response, error) {
 	path := "/dna/intent/api/v2/applications"
 
-	queryString, _ := query.Values(GetApplicationsQueryParams)
+	queryString, _ := query.Values(GetApplicationsV2QueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyGetApplications{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyGetApplicationsV2{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1527,33 +1518,33 @@ func (s *ApplicationPolicyService) GetApplications(GetApplicationsQueryParams *G
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetApplications(GetApplicationsQueryParams)
+			return s.GetApplicationsV2(GetApplicationsV2QueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetApplications")
+		return nil, response, fmt.Errorf("error with operation GetApplicationsV2")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyGetApplications)
+	result := response.Result().(*ResponseApplicationPolicyGetApplicationsV2)
 	return result, response, err
 
 }
 
-//GetApplicationCount Get Application Count - cfa3-7a5c-4c08-b24e
+//GetApplicationCountV2 Get Application Count - cfa3-7a5c-4c08-b24e
 /* Get the number of all existing applications
 
 
-@param GetApplicationCountQueryParams Filtering parameter
+@param GetApplicationCountV2QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-application-count
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-application-count-v2
 */
-func (s *ApplicationPolicyService) GetApplicationCount(GetApplicationCountQueryParams *GetApplicationCountQueryParams) (*ResponseApplicationPolicyGetApplicationCount, *resty.Response, error) {
+func (s *ApplicationPolicyService) GetApplicationCountV2(GetApplicationCountV2QueryParams *GetApplicationCountV2QueryParams) (*ResponseApplicationPolicyGetApplicationCountV2, *resty.Response, error) {
 	path := "/dna/intent/api/v2/applications-count"
 
-	queryString, _ := query.Values(GetApplicationCountQueryParams)
+	queryString, _ := query.Values(GetApplicationCountV2QueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyGetApplicationCount{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyGetApplicationCountV2{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1564,31 +1555,31 @@ func (s *ApplicationPolicyService) GetApplicationCount(GetApplicationCountQueryP
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetApplicationCount(GetApplicationCountQueryParams)
+			return s.GetApplicationCountV2(GetApplicationCountV2QueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetApplicationCount")
+		return nil, response, fmt.Errorf("error with operation GetApplicationCountV2")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyGetApplicationCount)
+	result := response.Result().(*ResponseApplicationPolicyGetApplicationCountV2)
 	return result, response, err
 
 }
 
-//ApplicationPolicyIntent Application Policy Intent - aea4-bb7b-4329-bd06
+//ApplicationPolicyIntentV1 Application Policy Intent - aea4-bb7b-4329-bd06
 /* Create/Update/Delete application policy
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!application-policy-intent
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!application-policy-intent-v1
 */
-func (s *ApplicationPolicyService) ApplicationPolicyIntent(requestApplicationPolicyApplicationPolicyIntent *RequestApplicationPolicyApplicationPolicyIntent) (*ResponseApplicationPolicyApplicationPolicyIntent, *resty.Response, error) {
+func (s *ApplicationPolicyService) ApplicationPolicyIntentV1(requestApplicationPolicyApplicationPolicyIntentV1 *RequestApplicationPolicyApplicationPolicyIntentV1) (*ResponseApplicationPolicyApplicationPolicyIntentV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/app-policy-intent"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestApplicationPolicyApplicationPolicyIntent).
-		SetResult(&ResponseApplicationPolicyApplicationPolicyIntent{}).
+		SetBody(requestApplicationPolicyApplicationPolicyIntentV1).
+		SetResult(&ResponseApplicationPolicyApplicationPolicyIntentV1{}).
 		SetError(&Error).
 		Post(path)
 
@@ -1600,32 +1591,32 @@ func (s *ApplicationPolicyService) ApplicationPolicyIntent(requestApplicationPol
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.ApplicationPolicyIntent(requestApplicationPolicyApplicationPolicyIntent)
+			return s.ApplicationPolicyIntentV1(requestApplicationPolicyApplicationPolicyIntentV1)
 		}
 
-		return nil, response, fmt.Errorf("error with operation ApplicationPolicyIntent")
+		return nil, response, fmt.Errorf("error with operation ApplicationPolicyIntentV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyApplicationPolicyIntent)
+	result := response.Result().(*ResponseApplicationPolicyApplicationPolicyIntentV1)
 	return result, response, err
 
 }
 
-//CreateApplicationPolicyQueuingProfile Create Application Policy Queuing Profile - 78b7-ba71-4959-bbd2
+//CreateApplicationPolicyQueuingProfileV1 Create Application Policy Queuing Profile - 78b7-ba71-4959-bbd2
 /* Create new custom application queuing profile
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-application-policy-queuing-profile
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-application-policy-queuing-profile-v1
 */
-func (s *ApplicationPolicyService) CreateApplicationPolicyQueuingProfile(requestApplicationPolicyCreateApplicationPolicyQueuingProfile *RequestApplicationPolicyCreateApplicationPolicyQueuingProfile) (*ResponseApplicationPolicyCreateApplicationPolicyQueuingProfile, *resty.Response, error) {
+func (s *ApplicationPolicyService) CreateApplicationPolicyQueuingProfileV1(requestApplicationPolicyCreateApplicationPolicyQueuingProfileV1 *RequestApplicationPolicyCreateApplicationPolicyQueuingProfileV1) (*ResponseApplicationPolicyCreateApplicationPolicyQueuingProfileV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/app-policy-queuing-profile"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestApplicationPolicyCreateApplicationPolicyQueuingProfile).
-		SetResult(&ResponseApplicationPolicyCreateApplicationPolicyQueuingProfile{}).
+		SetBody(requestApplicationPolicyCreateApplicationPolicyQueuingProfileV1).
+		SetResult(&ResponseApplicationPolicyCreateApplicationPolicyQueuingProfileV1{}).
 		SetError(&Error).
 		Post(path)
 
@@ -1637,32 +1628,32 @@ func (s *ApplicationPolicyService) CreateApplicationPolicyQueuingProfile(request
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateApplicationPolicyQueuingProfile(requestApplicationPolicyCreateApplicationPolicyQueuingProfile)
+			return s.CreateApplicationPolicyQueuingProfileV1(requestApplicationPolicyCreateApplicationPolicyQueuingProfileV1)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateApplicationPolicyQueuingProfile")
+		return nil, response, fmt.Errorf("error with operation CreateApplicationPolicyQueuingProfileV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyCreateApplicationPolicyQueuingProfile)
+	result := response.Result().(*ResponseApplicationPolicyCreateApplicationPolicyQueuingProfileV1)
 	return result, response, err
 
 }
 
-//CreateApplicationSet Create Application Set - 3e94-cb1b-485b-8b0e
+//CreateApplicationSetV1 Create Application Set - 3e94-cb1b-485b-8b0e
 /* Create new custom application-set/s
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-application-set
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-application-set-v1
 */
-func (s *ApplicationPolicyService) CreateApplicationSet(requestApplicationPolicyCreateApplicationSet *RequestApplicationPolicyCreateApplicationSet) (*ResponseApplicationPolicyCreateApplicationSet, *resty.Response, error) {
+func (s *ApplicationPolicyService) CreateApplicationSetV1(requestApplicationPolicyCreateApplicationSetV1 *RequestApplicationPolicyCreateApplicationSetV1) (*ResponseApplicationPolicyCreateApplicationSetV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/application-policy-application-set"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestApplicationPolicyCreateApplicationSet).
-		SetResult(&ResponseApplicationPolicyCreateApplicationSet{}).
+		SetBody(requestApplicationPolicyCreateApplicationSetV1).
+		SetResult(&ResponseApplicationPolicyCreateApplicationSetV1{}).
 		SetError(&Error).
 		Post(path)
 
@@ -1674,32 +1665,32 @@ func (s *ApplicationPolicyService) CreateApplicationSet(requestApplicationPolicy
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateApplicationSet(requestApplicationPolicyCreateApplicationSet)
+			return s.CreateApplicationSetV1(requestApplicationPolicyCreateApplicationSetV1)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateApplicationSet")
+		return nil, response, fmt.Errorf("error with operation CreateApplicationSetV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyCreateApplicationSet)
+	result := response.Result().(*ResponseApplicationPolicyCreateApplicationSetV1)
 	return result, response, err
 
 }
 
-//CreateApplication Create Application - fb9b-f80f-491a-9851
+//CreateApplicationV1 Create Application - fb9b-f80f-491a-9851
 /* Create new Custom application
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-application
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-application-v1
 */
-func (s *ApplicationPolicyService) CreateApplication(requestApplicationPolicyCreateApplication *RequestApplicationPolicyCreateApplication) (*ResponseApplicationPolicyCreateApplication, *resty.Response, error) {
+func (s *ApplicationPolicyService) CreateApplicationV1(requestApplicationPolicyCreateApplicationV1 *RequestApplicationPolicyCreateApplicationV1) (*ResponseApplicationPolicyCreateApplicationV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/applications"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestApplicationPolicyCreateApplication).
-		SetResult(&ResponseApplicationPolicyCreateApplication{}).
+		SetBody(requestApplicationPolicyCreateApplicationV1).
+		SetResult(&ResponseApplicationPolicyCreateApplicationV1{}).
 		SetError(&Error).
 		Post(path)
 
@@ -1711,32 +1702,32 @@ func (s *ApplicationPolicyService) CreateApplication(requestApplicationPolicyCre
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateApplication(requestApplicationPolicyCreateApplication)
+			return s.CreateApplicationV1(requestApplicationPolicyCreateApplicationV1)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateApplication")
+		return nil, response, fmt.Errorf("error with operation CreateApplicationV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyCreateApplication)
+	result := response.Result().(*ResponseApplicationPolicyCreateApplicationV1)
 	return result, response, err
 
 }
 
-//CreateQosDeviceInterfaceInfo Create Qos Device Interface Info - 3889-59af-4cf8-9fde
+//CreateQosDeviceInterfaceInfoV1 Create Qos Device Interface Info - 3889-59af-4cf8-9fde
 /* Create qos device interface infos associate with network device id to allow the user to mark specific interfaces as WAN, to associate WAN interfaces with specific SP Profile and to be able to define a shaper on WAN interfaces
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-qos-device-interface-info
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-qos-device-interface-info-v1
 */
-func (s *ApplicationPolicyService) CreateQosDeviceInterfaceInfo(requestApplicationPolicyCreateQosDeviceInterfaceInfo *RequestApplicationPolicyCreateQosDeviceInterfaceInfo) (*ResponseApplicationPolicyCreateQosDeviceInterfaceInfo, *resty.Response, error) {
+func (s *ApplicationPolicyService) CreateQosDeviceInterfaceInfoV1(requestApplicationPolicyCreateQosDeviceInterfaceInfoV1 *RequestApplicationPolicyCreateQosDeviceInterfaceInfoV1) (*ResponseApplicationPolicyCreateQosDeviceInterfaceInfoV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/qos-device-interface-info"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestApplicationPolicyCreateQosDeviceInterfaceInfo).
-		SetResult(&ResponseApplicationPolicyCreateQosDeviceInterfaceInfo{}).
+		SetBody(requestApplicationPolicyCreateQosDeviceInterfaceInfoV1).
+		SetResult(&ResponseApplicationPolicyCreateQosDeviceInterfaceInfoV1{}).
 		SetError(&Error).
 		Post(path)
 
@@ -1748,32 +1739,32 @@ func (s *ApplicationPolicyService) CreateQosDeviceInterfaceInfo(requestApplicati
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateQosDeviceInterfaceInfo(requestApplicationPolicyCreateQosDeviceInterfaceInfo)
+			return s.CreateQosDeviceInterfaceInfoV1(requestApplicationPolicyCreateQosDeviceInterfaceInfoV1)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateQosDeviceInterfaceInfo")
+		return nil, response, fmt.Errorf("error with operation CreateQosDeviceInterfaceInfoV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyCreateQosDeviceInterfaceInfo)
+	result := response.Result().(*ResponseApplicationPolicyCreateQosDeviceInterfaceInfoV1)
 	return result, response, err
 
 }
 
-//CreateApplicationSets Create Application Set/s - e4bf-ca74-45f9-a374
+//CreateApplicationSetsV2 Create Application Set/s - e4bf-ca74-45f9-a374
 /* Create new custom application set/s
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-application-sets
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-application-sets-v2
 */
-func (s *ApplicationPolicyService) CreateApplicationSets(requestApplicationPolicyCreateApplicationSets *RequestApplicationPolicyCreateApplicationSets) (*ResponseApplicationPolicyCreateApplicationSets, *resty.Response, error) {
+func (s *ApplicationPolicyService) CreateApplicationSetsV2(requestApplicationPolicyCreateApplicationSetsV2 *RequestApplicationPolicyCreateApplicationSetsV2) (*ResponseApplicationPolicyCreateApplicationSetsV2, *resty.Response, error) {
 	path := "/dna/intent/api/v2/application-policy-application-set"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestApplicationPolicyCreateApplicationSets).
-		SetResult(&ResponseApplicationPolicyCreateApplicationSets{}).
+		SetBody(requestApplicationPolicyCreateApplicationSetsV2).
+		SetResult(&ResponseApplicationPolicyCreateApplicationSetsV2{}).
 		SetError(&Error).
 		Post(path)
 
@@ -1785,32 +1776,32 @@ func (s *ApplicationPolicyService) CreateApplicationSets(requestApplicationPolic
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateApplicationSets(requestApplicationPolicyCreateApplicationSets)
+			return s.CreateApplicationSetsV2(requestApplicationPolicyCreateApplicationSetsV2)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateApplicationSets")
+		return nil, response, fmt.Errorf("error with operation CreateApplicationSetsV2")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyCreateApplicationSets)
+	result := response.Result().(*ResponseApplicationPolicyCreateApplicationSetsV2)
 	return result, response, err
 
 }
 
-//CreateApplications Create Application/s - b4a6-dae7-4b29-992c
+//CreateApplicationsV2 Create Application/s - b4a6-dae7-4b29-992c
 /* Create new custom application/s
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-applications
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-applications-v2
 */
-func (s *ApplicationPolicyService) CreateApplications(requestApplicationPolicyCreateApplications *RequestApplicationPolicyCreateApplications) (*ResponseApplicationPolicyCreateApplications, *resty.Response, error) {
+func (s *ApplicationPolicyService) CreateApplicationsV2(requestApplicationPolicyCreateApplicationsV2 *RequestApplicationPolicyCreateApplicationsV2) (*ResponseApplicationPolicyCreateApplicationsV2, *resty.Response, error) {
 	path := "/dna/intent/api/v2/applications"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestApplicationPolicyCreateApplications).
-		SetResult(&ResponseApplicationPolicyCreateApplications{}).
+		SetBody(requestApplicationPolicyCreateApplicationsV2).
+		SetResult(&ResponseApplicationPolicyCreateApplicationsV2{}).
 		SetError(&Error).
 		Post(path)
 
@@ -1822,30 +1813,30 @@ func (s *ApplicationPolicyService) CreateApplications(requestApplicationPolicyCr
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateApplications(requestApplicationPolicyCreateApplications)
+			return s.CreateApplicationsV2(requestApplicationPolicyCreateApplicationsV2)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateApplications")
+		return nil, response, fmt.Errorf("error with operation CreateApplicationsV2")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyCreateApplications)
+	result := response.Result().(*ResponseApplicationPolicyCreateApplicationsV2)
 	return result, response, err
 
 }
 
-//UpdateApplicationPolicyQueuingProfile Update Application Policy Queuing Profile - da98-38ea-44aa-8024
+//UpdateApplicationPolicyQueuingProfileV1 Update Application Policy Queuing Profile - da98-38ea-44aa-8024
 /* Update existing custom application queuing profile
 
 
  */
-func (s *ApplicationPolicyService) UpdateApplicationPolicyQueuingProfile(requestApplicationPolicyUpdateApplicationPolicyQueuingProfile *RequestApplicationPolicyUpdateApplicationPolicyQueuingProfile) (*ResponseApplicationPolicyUpdateApplicationPolicyQueuingProfile, *resty.Response, error) {
+func (s *ApplicationPolicyService) UpdateApplicationPolicyQueuingProfileV1(requestApplicationPolicyUpdateApplicationPolicyQueuingProfileV1 *RequestApplicationPolicyUpdateApplicationPolicyQueuingProfileV1) (*ResponseApplicationPolicyUpdateApplicationPolicyQueuingProfileV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/app-policy-queuing-profile"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestApplicationPolicyUpdateApplicationPolicyQueuingProfile).
-		SetResult(&ResponseApplicationPolicyUpdateApplicationPolicyQueuingProfile{}).
+		SetBody(requestApplicationPolicyUpdateApplicationPolicyQueuingProfileV1).
+		SetResult(&ResponseApplicationPolicyUpdateApplicationPolicyQueuingProfileV1{}).
 		SetError(&Error).
 		Put(path)
 
@@ -1856,29 +1847,29 @@ func (s *ApplicationPolicyService) UpdateApplicationPolicyQueuingProfile(request
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.UpdateApplicationPolicyQueuingProfile(requestApplicationPolicyUpdateApplicationPolicyQueuingProfile)
+			return s.UpdateApplicationPolicyQueuingProfileV1(requestApplicationPolicyUpdateApplicationPolicyQueuingProfileV1)
 		}
-		return nil, response, fmt.Errorf("error with operation UpdateApplicationPolicyQueuingProfile")
+		return nil, response, fmt.Errorf("error with operation UpdateApplicationPolicyQueuingProfileV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyUpdateApplicationPolicyQueuingProfile)
+	result := response.Result().(*ResponseApplicationPolicyUpdateApplicationPolicyQueuingProfileV1)
 	return result, response, err
 
 }
 
-//EditApplication Edit Application - 3986-6887-4439-a41d
+//EditApplicationV1 Edit Application - 3986-6887-4439-a41d
 /* Edit the attributes of an existing application
 
 
  */
-func (s *ApplicationPolicyService) EditApplication(requestApplicationPolicyEditApplication *RequestApplicationPolicyEditApplication) (*ResponseApplicationPolicyEditApplication, *resty.Response, error) {
+func (s *ApplicationPolicyService) EditApplicationV1(requestApplicationPolicyEditApplicationV1 *RequestApplicationPolicyEditApplicationV1) (*ResponseApplicationPolicyEditApplicationV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/applications"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestApplicationPolicyEditApplication).
-		SetResult(&ResponseApplicationPolicyEditApplication{}).
+		SetBody(requestApplicationPolicyEditApplicationV1).
+		SetResult(&ResponseApplicationPolicyEditApplicationV1{}).
 		SetError(&Error).
 		Put(path)
 
@@ -1889,29 +1880,29 @@ func (s *ApplicationPolicyService) EditApplication(requestApplicationPolicyEditA
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.EditApplication(requestApplicationPolicyEditApplication)
+			return s.EditApplicationV1(requestApplicationPolicyEditApplicationV1)
 		}
-		return nil, response, fmt.Errorf("error with operation EditApplication")
+		return nil, response, fmt.Errorf("error with operation EditApplicationV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyEditApplication)
+	result := response.Result().(*ResponseApplicationPolicyEditApplicationV1)
 	return result, response, err
 
 }
 
-//UpdateQosDeviceInterfaceInfo Update Qos Device Interface Info - 71b7-ba8c-47b8-95b6
+//UpdateQosDeviceInterfaceInfoV1 Update Qos Device Interface Info - 71b7-ba8c-47b8-95b6
 /* Update existing qos device interface infos associate with network device id
 
 
  */
-func (s *ApplicationPolicyService) UpdateQosDeviceInterfaceInfo(requestApplicationPolicyUpdateQosDeviceInterfaceInfo *RequestApplicationPolicyUpdateQosDeviceInterfaceInfo) (*ResponseApplicationPolicyUpdateQosDeviceInterfaceInfo, *resty.Response, error) {
+func (s *ApplicationPolicyService) UpdateQosDeviceInterfaceInfoV1(requestApplicationPolicyUpdateQosDeviceInterfaceInfoV1 *RequestApplicationPolicyUpdateQosDeviceInterfaceInfoV1) (*ResponseApplicationPolicyUpdateQosDeviceInterfaceInfoV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/qos-device-interface-info"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestApplicationPolicyUpdateQosDeviceInterfaceInfo).
-		SetResult(&ResponseApplicationPolicyUpdateQosDeviceInterfaceInfo{}).
+		SetBody(requestApplicationPolicyUpdateQosDeviceInterfaceInfoV1).
+		SetResult(&ResponseApplicationPolicyUpdateQosDeviceInterfaceInfoV1{}).
 		SetError(&Error).
 		Put(path)
 
@@ -1922,29 +1913,29 @@ func (s *ApplicationPolicyService) UpdateQosDeviceInterfaceInfo(requestApplicati
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.UpdateQosDeviceInterfaceInfo(requestApplicationPolicyUpdateQosDeviceInterfaceInfo)
+			return s.UpdateQosDeviceInterfaceInfoV1(requestApplicationPolicyUpdateQosDeviceInterfaceInfoV1)
 		}
-		return nil, response, fmt.Errorf("error with operation UpdateQosDeviceInterfaceInfo")
+		return nil, response, fmt.Errorf("error with operation UpdateQosDeviceInterfaceInfoV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyUpdateQosDeviceInterfaceInfo)
+	result := response.Result().(*ResponseApplicationPolicyUpdateQosDeviceInterfaceInfoV1)
 	return result, response, err
 
 }
 
-//EditApplications Edit Application/s - 6995-2aea-4f2b-a053
+//EditApplicationsV2 Edit Application/s - 6995-2aea-4f2b-a053
 /* Edit the attributes of an existing application
 
 
  */
-func (s *ApplicationPolicyService) EditApplications(requestApplicationPolicyEditApplications *RequestApplicationPolicyEditApplications) (*ResponseApplicationPolicyEditApplications, *resty.Response, error) {
+func (s *ApplicationPolicyService) EditApplicationsV2(requestApplicationPolicyEditApplicationsV2 *RequestApplicationPolicyEditApplicationsV2) (*ResponseApplicationPolicyEditApplicationsV2, *resty.Response, error) {
 	path := "/dna/intent/api/v2/applications"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestApplicationPolicyEditApplications).
-		SetResult(&ResponseApplicationPolicyEditApplications{}).
+		SetBody(requestApplicationPolicyEditApplicationsV2).
+		SetResult(&ResponseApplicationPolicyEditApplicationsV2{}).
 		SetError(&Error).
 		Put(path)
 
@@ -1955,26 +1946,26 @@ func (s *ApplicationPolicyService) EditApplications(requestApplicationPolicyEdit
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.EditApplications(requestApplicationPolicyEditApplications)
+			return s.EditApplicationsV2(requestApplicationPolicyEditApplicationsV2)
 		}
-		return nil, response, fmt.Errorf("error with operation EditApplications")
+		return nil, response, fmt.Errorf("error with operation EditApplicationsV2")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyEditApplications)
+	result := response.Result().(*ResponseApplicationPolicyEditApplicationsV2)
 	return result, response, err
 
 }
 
-//DeleteApplicationPolicyQueuingProfile Delete Application Policy Queuing Profile - 09a0-482f-422b-b325
+//DeleteApplicationPolicyQueuingProfileV1 Delete Application Policy Queuing Profile - 09a0-482f-422b-b325
 /* Delete existing custom application policy queuing profile by id
 
 
 @param id id path parameter. Id of custom queuing profile to delete
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-application-policy-queuing-profile
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-application-policy-queuing-profile-v1
 */
-func (s *ApplicationPolicyService) DeleteApplicationPolicyQueuingProfile(id string) (*ResponseApplicationPolicyDeleteApplicationPolicyQueuingProfile, *resty.Response, error) {
+func (s *ApplicationPolicyService) DeleteApplicationPolicyQueuingProfileV1(id string) (*ResponseApplicationPolicyDeleteApplicationPolicyQueuingProfileV1, *resty.Response, error) {
 	//id string
 	path := "/dna/intent/api/v1/app-policy-queuing-profile/{id}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
@@ -1982,7 +1973,7 @@ func (s *ApplicationPolicyService) DeleteApplicationPolicyQueuingProfile(id stri
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseApplicationPolicyDeleteApplicationPolicyQueuingProfile{}).
+		SetResult(&ResponseApplicationPolicyDeleteApplicationPolicyQueuingProfileV1{}).
 		SetError(&Error).
 		Delete(path)
 
@@ -1993,34 +1984,34 @@ func (s *ApplicationPolicyService) DeleteApplicationPolicyQueuingProfile(id stri
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeleteApplicationPolicyQueuingProfile(id)
+			return s.DeleteApplicationPolicyQueuingProfileV1(id)
 		}
-		return nil, response, fmt.Errorf("error with operation DeleteApplicationPolicyQueuingProfile")
+		return nil, response, fmt.Errorf("error with operation DeleteApplicationPolicyQueuingProfileV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyDeleteApplicationPolicyQueuingProfile)
+	result := response.Result().(*ResponseApplicationPolicyDeleteApplicationPolicyQueuingProfileV1)
 	return result, response, err
 
 }
 
-//DeleteApplicationSet2 Delete Application Set - 70b6-f8e1-40b8-b784
+//DeleteApplicationSetV1 Delete Application Set - 70b6-f8e1-40b8-b784
 /* Delete existing application-set by it's id
 
 
-@param DeleteApplicationSet2QueryParams Filtering parameter
+@param DeleteApplicationSetV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-application-set2
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-application-set-v1
 */
-func (s *ApplicationPolicyService) DeleteApplicationSet2(DeleteApplicationSet2QueryParams *DeleteApplicationSet2QueryParams) (*ResponseApplicationPolicyDeleteApplicationSet2, *resty.Response, error) {
-	//DeleteApplicationSet2QueryParams *DeleteApplicationSet2QueryParams
+func (s *ApplicationPolicyService) DeleteApplicationSetV1(DeleteApplicationSetV1QueryParams *DeleteApplicationSetV1QueryParams) (*ResponseApplicationPolicyDeleteApplicationSetV1, *resty.Response, error) {
+	//DeleteApplicationSetV1QueryParams *DeleteApplicationSetV1QueryParams
 	path := "/dna/intent/api/v1/application-policy-application-set"
 
-	queryString, _ := query.Values(DeleteApplicationSet2QueryParams)
+	queryString, _ := query.Values(DeleteApplicationSetV1QueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyDeleteApplicationSet2{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyDeleteApplicationSetV1{}).
 		SetError(&Error).
 		Delete(path)
 
@@ -2031,34 +2022,34 @@ func (s *ApplicationPolicyService) DeleteApplicationSet2(DeleteApplicationSet2Qu
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeleteApplicationSet2(DeleteApplicationSet2QueryParams)
+			return s.DeleteApplicationSetV1(DeleteApplicationSetV1QueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation DeleteApplicationSet2")
+		return nil, response, fmt.Errorf("error with operation DeleteApplicationSetV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyDeleteApplicationSet2)
+	result := response.Result().(*ResponseApplicationPolicyDeleteApplicationSetV1)
 	return result, response, err
 
 }
 
-//DeleteApplication2 Delete Application - d49a-f9b8-4c6a-a8ea
+//DeleteApplicationV1 Delete Application - d49a-f9b8-4c6a-a8ea
 /* Delete existing application by its id
 
 
-@param DeleteApplication2QueryParams Filtering parameter
+@param DeleteApplicationV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-application2
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-application-v1
 */
-func (s *ApplicationPolicyService) DeleteApplication2(DeleteApplication2QueryParams *DeleteApplication2QueryParams) (*ResponseApplicationPolicyDeleteApplication2, *resty.Response, error) {
-	//DeleteApplication2QueryParams *DeleteApplication2QueryParams
+func (s *ApplicationPolicyService) DeleteApplicationV1(DeleteApplicationV1QueryParams *DeleteApplicationV1QueryParams) (*ResponseApplicationPolicyDeleteApplicationV1, *resty.Response, error) {
+	//DeleteApplicationV1QueryParams *DeleteApplicationV1QueryParams
 	path := "/dna/intent/api/v1/applications"
 
-	queryString, _ := query.Values(DeleteApplication2QueryParams)
+	queryString, _ := query.Values(DeleteApplicationV1QueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyDeleteApplication2{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseApplicationPolicyDeleteApplicationV1{}).
 		SetError(&Error).
 		Delete(path)
 
@@ -2069,26 +2060,26 @@ func (s *ApplicationPolicyService) DeleteApplication2(DeleteApplication2QueryPar
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeleteApplication2(DeleteApplication2QueryParams)
+			return s.DeleteApplicationV1(DeleteApplicationV1QueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation DeleteApplication2")
+		return nil, response, fmt.Errorf("error with operation DeleteApplicationV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyDeleteApplication2)
+	result := response.Result().(*ResponseApplicationPolicyDeleteApplicationV1)
 	return result, response, err
 
 }
 
-//DeleteQosDeviceInterfaceInfo Delete Qos Device Interface Info - 51b1-b8bd-435b-9842
+//DeleteQosDeviceInterfaceInfoV1 Delete Qos Device Interface Info - 51b1-b8bd-435b-9842
 /* Delete all qos device interface infos associate with network device id
 
 
 @param id id path parameter. Id of the qos device info, this object holds all qos device interface infos associate with network device id
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-qos-device-interface-info
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-qos-device-interface-info-v1
 */
-func (s *ApplicationPolicyService) DeleteQosDeviceInterfaceInfo(id string) (*ResponseApplicationPolicyDeleteQosDeviceInterfaceInfo, *resty.Response, error) {
+func (s *ApplicationPolicyService) DeleteQosDeviceInterfaceInfoV1(id string) (*ResponseApplicationPolicyDeleteQosDeviceInterfaceInfoV1, *resty.Response, error) {
 	//id string
 	path := "/dna/intent/api/v1/qos-device-interface-info/{id}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
@@ -2096,7 +2087,7 @@ func (s *ApplicationPolicyService) DeleteQosDeviceInterfaceInfo(id string) (*Res
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseApplicationPolicyDeleteQosDeviceInterfaceInfo{}).
+		SetResult(&ResponseApplicationPolicyDeleteQosDeviceInterfaceInfoV1{}).
 		SetError(&Error).
 		Delete(path)
 
@@ -2107,26 +2098,26 @@ func (s *ApplicationPolicyService) DeleteQosDeviceInterfaceInfo(id string) (*Res
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeleteQosDeviceInterfaceInfo(id)
+			return s.DeleteQosDeviceInterfaceInfoV1(id)
 		}
-		return nil, response, fmt.Errorf("error with operation DeleteQosDeviceInterfaceInfo")
+		return nil, response, fmt.Errorf("error with operation DeleteQosDeviceInterfaceInfoV1")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyDeleteQosDeviceInterfaceInfo)
+	result := response.Result().(*ResponseApplicationPolicyDeleteQosDeviceInterfaceInfoV1)
 	return result, response, err
 
 }
 
-//DeleteApplicationSet Delete Application Set - b2a9-08f1-4879-9f70
+//DeleteApplicationSetV2 Delete Application Set - b2a9-08f1-4879-9f70
 /* Delete existing custom application set by id
 
 
 @param id id path parameter. Id of custom application set to delete
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-application-set
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-application-set-v2
 */
-func (s *ApplicationPolicyService) DeleteApplicationSet(id string) (*ResponseApplicationPolicyDeleteApplicationSet, *resty.Response, error) {
+func (s *ApplicationPolicyService) DeleteApplicationSetV2(id string) (*ResponseApplicationPolicyDeleteApplicationSetV2, *resty.Response, error) {
 	//id string
 	path := "/dna/intent/api/v2/application-policy-application-set/{id}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
@@ -2134,7 +2125,7 @@ func (s *ApplicationPolicyService) DeleteApplicationSet(id string) (*ResponseApp
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseApplicationPolicyDeleteApplicationSet{}).
+		SetResult(&ResponseApplicationPolicyDeleteApplicationSetV2{}).
 		SetError(&Error).
 		Delete(path)
 
@@ -2145,26 +2136,26 @@ func (s *ApplicationPolicyService) DeleteApplicationSet(id string) (*ResponseApp
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeleteApplicationSet(id)
+			return s.DeleteApplicationSetV2(id)
 		}
-		return nil, response, fmt.Errorf("error with operation DeleteApplicationSet")
+		return nil, response, fmt.Errorf("error with operation DeleteApplicationSetV2")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyDeleteApplicationSet)
+	result := response.Result().(*ResponseApplicationPolicyDeleteApplicationSetV2)
 	return result, response, err
 
 }
 
-//DeleteApplication Delete Application - 9098-8ada-4abb-bedc
+//DeleteApplicationV2 Delete Application - 9098-8ada-4abb-bedc
 /* Delete existing custom application by id
 
 
 @param id id path parameter. Id of custom application to delete
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-application
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-application-v2
 */
-func (s *ApplicationPolicyService) DeleteApplication(id string) (*ResponseApplicationPolicyDeleteApplication, *resty.Response, error) {
+func (s *ApplicationPolicyService) DeleteApplicationV2(id string) (*ResponseApplicationPolicyDeleteApplicationV2, *resty.Response, error) {
 	//id string
 	path := "/dna/intent/api/v2/applications/{id}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
@@ -2172,7 +2163,7 @@ func (s *ApplicationPolicyService) DeleteApplication(id string) (*ResponseApplic
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseApplicationPolicyDeleteApplication{}).
+		SetResult(&ResponseApplicationPolicyDeleteApplicationV2{}).
 		SetError(&Error).
 		Delete(path)
 
@@ -2183,12 +2174,147 @@ func (s *ApplicationPolicyService) DeleteApplication(id string) (*ResponseApplic
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeleteApplication(id)
+			return s.DeleteApplicationV2(id)
 		}
-		return nil, response, fmt.Errorf("error with operation DeleteApplication")
+		return nil, response, fmt.Errorf("error with operation DeleteApplicationV2")
 	}
 
-	result := response.Result().(*ResponseApplicationPolicyDeleteApplication)
+	result := response.Result().(*ResponseApplicationPolicyDeleteApplicationV2)
 	return result, response, err
 
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) GetApplicationPolicyDefault() (*ResponseApplicationPolicyGetApplicationPolicyDefaultV1, *resty.Response, error) {
+	return s.GetApplicationPolicyDefaultV1()
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) GetQosDeviceInterfaceInfo(GetQosDeviceInterfaceInfoV1QueryParams *GetQosDeviceInterfaceInfoV1QueryParams) (*ResponseApplicationPolicyGetQosDeviceInterfaceInfoV1, *resty.Response, error) {
+	return s.GetQosDeviceInterfaceInfoV1(GetQosDeviceInterfaceInfoV1QueryParams)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) CreateApplication(requestApplicationPolicyCreateApplicationV1 *RequestApplicationPolicyCreateApplicationV1) (*ResponseApplicationPolicyCreateApplicationV1, *resty.Response, error) {
+	return s.CreateApplicationV1(requestApplicationPolicyCreateApplicationV1)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) DeleteApplication(DeleteApplicationV1QueryParams *DeleteApplicationV1QueryParams) (*ResponseApplicationPolicyDeleteApplicationV1, *resty.Response, error) {
+	return s.DeleteApplicationV1(DeleteApplicationV1QueryParams)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) GetApplicationPolicy(GetApplicationPolicyV1QueryParams *GetApplicationPolicyV1QueryParams) (*ResponseApplicationPolicyGetApplicationPolicyV1, *resty.Response, error) {
+	return s.GetApplicationPolicyV1(GetApplicationPolicyV1QueryParams)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) GetApplicationCount(GetApplicationCountV2QueryParams *GetApplicationCountV2QueryParams) (*ResponseApplicationPolicyGetApplicationCountV2, *resty.Response, error) {
+	return s.GetApplicationCountV2(GetApplicationCountV2QueryParams)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) GetApplicationSetsCount() (*ResponseApplicationPolicyGetApplicationSetsCountV1, *resty.Response, error) {
+	return s.GetApplicationSetsCountV1()
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) EditApplication(requestApplicationPolicyEditApplicationV1 *RequestApplicationPolicyEditApplicationV1) (*ResponseApplicationPolicyEditApplicationV1, *resty.Response, error) {
+	return s.EditApplicationV1(requestApplicationPolicyEditApplicationV1)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) GetApplicationPolicyQueuingProfileCount() (*ResponseApplicationPolicyGetApplicationPolicyQueuingProfileCountV1, *resty.Response, error) {
+	return s.GetApplicationPolicyQueuingProfileCountV1()
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) CreateApplicationSets(requestApplicationPolicyCreateApplicationSetsV2 *RequestApplicationPolicyCreateApplicationSetsV2) (*ResponseApplicationPolicyCreateApplicationSetsV2, *resty.Response, error) {
+	return s.CreateApplicationSetsV2(requestApplicationPolicyCreateApplicationSetsV2)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) EditApplications(requestApplicationPolicyEditApplicationsV2 *RequestApplicationPolicyEditApplicationsV2) (*ResponseApplicationPolicyEditApplicationsV2, *resty.Response, error) {
+	return s.EditApplicationsV2(requestApplicationPolicyEditApplicationsV2)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) GetApplicationSetCount(GetApplicationSetCountV2QueryParams *GetApplicationSetCountV2QueryParams) (*ResponseApplicationPolicyGetApplicationSetCountV2, *resty.Response, error) {
+	return s.GetApplicationSetCountV2(GetApplicationSetCountV2QueryParams)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) CreateApplications(requestApplicationPolicyCreateApplicationsV2 *RequestApplicationPolicyCreateApplicationsV2) (*ResponseApplicationPolicyCreateApplicationsV2, *resty.Response, error) {
+	return s.CreateApplicationsV2(requestApplicationPolicyCreateApplicationsV2)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) GetApplications(GetApplicationsV1QueryParams *GetApplicationsV1QueryParams) (*ResponseApplicationPolicyGetApplicationsV1, *resty.Response, error) {
+	return s.GetApplicationsV1(GetApplicationsV1QueryParams)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) DeleteQosDeviceInterfaceInfo(id string) (*ResponseApplicationPolicyDeleteQosDeviceInterfaceInfoV1, *resty.Response, error) {
+	return s.DeleteQosDeviceInterfaceInfoV1(id)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) GetQosDeviceInterfaceInfoCount() (*ResponseApplicationPolicyGetQosDeviceInterfaceInfoCountV1, *resty.Response, error) {
+	return s.GetQosDeviceInterfaceInfoCountV1()
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) ApplicationPolicyIntent(requestApplicationPolicyApplicationPolicyIntentV1 *RequestApplicationPolicyApplicationPolicyIntentV1) (*ResponseApplicationPolicyApplicationPolicyIntentV1, *resty.Response, error) {
+	return s.ApplicationPolicyIntentV1(requestApplicationPolicyApplicationPolicyIntentV1)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) GetApplicationPolicyQueuingProfile(GetApplicationPolicyQueuingProfileV1QueryParams *GetApplicationPolicyQueuingProfileV1QueryParams) (*ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1, *resty.Response, error) {
+	return s.GetApplicationPolicyQueuingProfileV1(GetApplicationPolicyQueuingProfileV1QueryParams)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) UpdateApplicationPolicyQueuingProfile(requestApplicationPolicyUpdateApplicationPolicyQueuingProfileV1 *RequestApplicationPolicyUpdateApplicationPolicyQueuingProfileV1) (*ResponseApplicationPolicyUpdateApplicationPolicyQueuingProfileV1, *resty.Response, error) {
+	return s.UpdateApplicationPolicyQueuingProfileV1(requestApplicationPolicyUpdateApplicationPolicyQueuingProfileV1)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) DeleteApplicationSet(DeleteApplicationSetV1QueryParams *DeleteApplicationSetV1QueryParams) (*ResponseApplicationPolicyDeleteApplicationSetV1, *resty.Response, error) {
+	return s.DeleteApplicationSetV1(DeleteApplicationSetV1QueryParams)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) GetApplicationSets(GetApplicationSetsV1QueryParams *GetApplicationSetsV1QueryParams) (*ResponseApplicationPolicyGetApplicationSetsV1, *resty.Response, error) {
+	return s.GetApplicationSetsV1(GetApplicationSetsV1QueryParams)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) UpdateQosDeviceInterfaceInfo(requestApplicationPolicyUpdateQosDeviceInterfaceInfoV1 *RequestApplicationPolicyUpdateQosDeviceInterfaceInfoV1) (*ResponseApplicationPolicyUpdateQosDeviceInterfaceInfoV1, *resty.Response, error) {
+	return s.UpdateQosDeviceInterfaceInfoV1(requestApplicationPolicyUpdateQosDeviceInterfaceInfoV1)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) GetApplicationsCount() (*ResponseApplicationPolicyGetApplicationsCountV1, *resty.Response, error) {
+	return s.GetApplicationsCountV1()
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) CreateQosDeviceInterfaceInfo(requestApplicationPolicyCreateQosDeviceInterfaceInfoV1 *RequestApplicationPolicyCreateQosDeviceInterfaceInfoV1) (*ResponseApplicationPolicyCreateQosDeviceInterfaceInfoV1, *resty.Response, error) {
+	return s.CreateQosDeviceInterfaceInfoV1(requestApplicationPolicyCreateQosDeviceInterfaceInfoV1)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) CreateApplicationPolicyQueuingProfile(requestApplicationPolicyCreateApplicationPolicyQueuingProfileV1 *RequestApplicationPolicyCreateApplicationPolicyQueuingProfileV1) (*ResponseApplicationPolicyCreateApplicationPolicyQueuingProfileV1, *resty.Response, error) {
+	return s.CreateApplicationPolicyQueuingProfileV1(requestApplicationPolicyCreateApplicationPolicyQueuingProfileV1)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) DeleteApplicationPolicyQueuingProfile(id string) (*ResponseApplicationPolicyDeleteApplicationPolicyQueuingProfileV1, *resty.Response, error) {
+	return s.DeleteApplicationPolicyQueuingProfileV1(id)
+}
+
+// Alias Function
+func (s *ApplicationPolicyService) CreateApplicationSet(requestApplicationPolicyCreateApplicationSetV1 *RequestApplicationPolicyCreateApplicationSetV1) (*ResponseApplicationPolicyCreateApplicationSetV1, *resty.Response, error) {
+	return s.CreateApplicationSetV1(requestApplicationPolicyCreateApplicationSetV1)
 }

@@ -24,8 +24,10 @@ const CATALYST_PASSWORD = "CATALYST_PASSWORD"
 const CATALYST_DEBUG = "CATALYST_DEBUG"
 const CATALYST_SSL_VERIFY = "CATALYST_SSL_VERIFY"
 const CATALYST_WAIT_TIME = "CATALYST_WAIT_TIME"
-const VERSION = "2.3.7.6"
-const USER_AGENT = "go-cisco-catalystsdk/" + VERSION
+
+var VERSION = "2.3.7.6.1"
+var USER_STRING = "USER_STRING"
+var USER_AGENT = "go-cisco-catalystsdk/" + VERSION + USER_STRING
 
 type FileDownload struct {
 	FileName string
@@ -43,8 +45,10 @@ type Client struct {
 
 	// API Services
 	Authentication              *AuthenticationService
+	AIEndpointAnalytics         *AIEndpointAnalyticsService
 	ApplicationPolicy           *ApplicationPolicyService
 	Applications                *ApplicationsService
+	CiscoTrustedCertificates    *CiscoTrustedCertificatesService
 	Clients                     *ClientsService
 	CommandRunner               *CommandRunnerService
 	Compliance                  *ComplianceService
@@ -53,6 +57,7 @@ type Client struct {
 	DeviceOnboardingPnp         *DeviceOnboardingPnpService
 	DeviceReplacement           *DeviceReplacementService
 	Devices                     *DevicesService
+	DisasterRecovery            *DisasterRecoveryService
 	Discovery                   *DiscoveryService
 	Eox                         *EoxService
 	EventManagement             *EventManagementService
@@ -82,8 +87,6 @@ type Client struct {
 	Users                       *UsersService
 	Wireless                    *WirelessService
 	CustomCall                  *CustomCallService
-	CiscoDnaCenterSystem        *CiscoDnaCenterSystemService
-	CiscoTrustedCertificates    *CiscoTrustedCertificatesService
 }
 
 type service struct {
@@ -116,10 +119,17 @@ func NewClient() (*Client, error) {
 }
 
 // NewClientWithOptions is the client with options passed with parameters
-func NewClientWithOptions(baseURL string, username string, password string, debug string, sslVerify string, waitTimeToManyRequest *int) (*Client, error) {
+func NewClientWithOptions(baseURL string, username string, password string, debug string, sslVerify string, waitTimeToManyRequest *int, userString ...string) (*Client, error) {
 	var err error
 
-	err = SetOptions(baseURL, username, password, debug, sslVerify, waitTimeToManyRequest)
+	var user string
+	if len(userString) > 0 {
+		user = "-" + userString[0]
+	} else {
+		user = ""
+	}
+
+	err = SetOptions(baseURL, username, password, debug, sslVerify, waitTimeToManyRequest, user)
 	if err != nil {
 		return nil, err
 	}
@@ -128,7 +138,7 @@ func NewClientWithOptions(baseURL string, username string, password string, debu
 }
 
 // SetOptions sets the environment variables
-func SetOptions(baseURL string, username string, password string, debug string, sslVerify string, waitTimeToManyRequest *int) error {
+func SetOptions(baseURL string, username string, password string, debug string, sslVerify string, waitTimeToManyRequest *int, userString string) error {
 	var err error
 	err = os.Setenv(CATALYST_BASE_URL, baseURL)
 	if err != nil {
@@ -147,6 +157,10 @@ func SetOptions(baseURL string, username string, password string, debug string, 
 		return err
 	}
 	err = os.Setenv(CATALYST_SSL_VERIFY, sslVerify)
+	if err != nil {
+		return err
+	}
+	err = os.Setenv(USER_STRING, userString)
 	if err != nil {
 		return err
 	}
@@ -186,6 +200,7 @@ func NewClientNoAuth() (*Client, error) {
 	} else {
 		err = fmt.Errorf("enviroment variable %s was not defined", CATALYST_BASE_URL)
 	}
+
 	if os.Getenv(CATALYST_WAIT_TIME) != "" {
 		waitTimeToManyRequest, err = strconv.Atoi(os.Getenv(CATALYST_WAIT_TIME))
 		if err != nil {
@@ -194,6 +209,7 @@ func NewClientNoAuth() (*Client, error) {
 	} else {
 		waitTimeToManyRequest = 1
 	}
+
 	c.common.client.AddRetryCondition(
 		// RetryConditionFunc type is for retry condition function
 		// input: non-nil Response OR request execution error
@@ -228,7 +244,7 @@ func NewClientNoAuth() (*Client, error) {
 				r.Request.SetHeader("X-auth-token", result.Token)
 			}
 			if strings.Contains(r.Request.URL, "/dna/intent/api/v1/dnacaap/management/execution-status/") {
-				if strings.Contains(r.Request.Result.(*ResponseTaskGetBusinessAPIExecutionDetails).BapiError, "Rate Limit") && statusIsFailure(r.Request.Result.(*ResponseTaskGetBusinessAPIExecutionDetails).Status) {
+				if strings.Contains(r.Request.Result.(*ResponseTaskGetBusinessAPIExecutionDetailsV1).BapiError, "Rate Limit") && statusIsFailure(r.Request.Result.(*ResponseTaskGetBusinessAPIExecutionDetailsV1).Status) {
 					retry = true
 				}
 			}
@@ -244,13 +260,16 @@ func NewClientNoAuth() (*Client, error) {
 		// MaxWaitTime can be overridden as well.
 		// Default is 2 seconds.
 		SetRetryMaxWaitTime(time.Duration(waitTimeToManyRequest+1) * time.Minute)
+
 	if err != nil {
 		return nil, err
 	}
 
 	c.Authentication = (*AuthenticationService)(&c.common)
+	c.AIEndpointAnalytics = (*AIEndpointAnalyticsService)(&c.common)
 	c.ApplicationPolicy = (*ApplicationPolicyService)(&c.common)
 	c.Applications = (*ApplicationsService)(&c.common)
+	c.CiscoTrustedCertificates = (*CiscoTrustedCertificatesService)(&c.common)
 	c.Clients = (*ClientsService)(&c.common)
 	c.CommandRunner = (*CommandRunnerService)(&c.common)
 	c.Compliance = (*ComplianceService)(&c.common)
@@ -259,6 +278,7 @@ func NewClientNoAuth() (*Client, error) {
 	c.DeviceOnboardingPnp = (*DeviceOnboardingPnpService)(&c.common)
 	c.DeviceReplacement = (*DeviceReplacementService)(&c.common)
 	c.Devices = (*DevicesService)(&c.common)
+	c.DisasterRecovery = (*DisasterRecoveryService)(&c.common)
 	c.Discovery = (*DiscoveryService)(&c.common)
 	c.Eox = (*EoxService)(&c.common)
 	c.EventManagement = (*EventManagementService)(&c.common)
@@ -293,10 +313,17 @@ func NewClientNoAuth() (*Client, error) {
 }
 
 // NewClientWithOptionsNoAuth returns the client object without trying to authenticate and sets environment variables
-func NewClientWithOptionsNoAuth(baseURL string, username string, password string, debug string, sslVerify string, waitTimeToManyRequest *int) (*Client, error) {
+func NewClientWithOptionsNoAuth(baseURL string, username string, password string, debug string, sslVerify string, waitTimeToManyRequest *int, userString ...string) (*Client, error) {
 	var err error
 
-	err = SetOptions(baseURL, username, password, debug, sslVerify, waitTimeToManyRequest)
+	var user string
+	if len(userString) > 0 {
+		user = "-" + userString[0]
+	} else {
+		user = ""
+	}
+
+	err = SetOptions(baseURL, username, password, debug, sslVerify, waitTimeToManyRequest, user)
 	if err != nil {
 		return nil, err
 	}

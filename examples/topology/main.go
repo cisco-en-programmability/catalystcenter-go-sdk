@@ -33,7 +33,7 @@ func main() {
 
 	fmt.Println("Printing physical topology...")
 
-	getPhysicalTopologyQueryParams := &catalyst.GetPhysicalTopologyQueryParams{
+	getPhysicalTopologyQueryParams := &catalyst.GetPhysicalTopologyV1QueryParams{
 		NodeType: "",
 	}
 	physicalTopology, _, err := Client.Topology.GetPhysicalTopology(getPhysicalTopologyQueryParams)
@@ -67,7 +67,7 @@ func main() {
 	}
 
 	fmt.Println("Printing Network Health...")
-	getOverallNetworkHealthQueryParams := &catalyst.GetOverallNetworkHealthQueryParams{
+	getOverallNetworkHealthQueryParams := &catalyst.GetOverallNetworkHealthV1QueryParams{
 		Timestamp: 0,
 	}
 	networkHealth, _, err := Client.Topology.GetOverallNetworkHealth(getOverallNetworkHealthQueryParams)

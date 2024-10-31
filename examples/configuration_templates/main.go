@@ -93,7 +93,7 @@ func main() {
 	// 	return
 	// }
 
-	resp, _, err := client.ConfigurationTemplates.GetProjectsDetails(&catalyst.GetProjectsDetailsQueryParams{
+	resp, _, err := client.ConfigurationTemplates.GetProjectsDetails(&catalyst.GetProjectsDetailsV2QueryParams{
 		Name: "Onboarding Configuration",
 	})
 

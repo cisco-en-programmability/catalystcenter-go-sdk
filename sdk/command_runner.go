@@ -9,19 +9,19 @@ import (
 
 type CommandRunnerService service
 
-type ResponseCommandRunnerGetAllKeywordsOfClisAcceptedByCommandRunner struct {
+type ResponseCommandRunnerGetAllKeywordsOfClisAcceptedByCommandRunnerV1 struct {
 	Response []string `json:"response,omitempty"` //
 	Version  string   `json:"version,omitempty"`  //
 }
-type ResponseCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfiguration struct {
-	Response *ResponseCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationResponse `json:"response,omitempty"` //
-	Version  string                                                                                    `json:"version,omitempty"`  //
+type ResponseCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1 struct {
+	Response *ResponseCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1Response `json:"response,omitempty"` //
+	Version  string                                                                                      `json:"version,omitempty"`  //
 }
-type ResponseCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationResponse struct {
+type ResponseCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1Response struct {
 	TaskID string `json:"taskId,omitempty"` //
 	URL    string `json:"url,omitempty"`    //
 }
-type RequestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfiguration struct {
+type RequestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1 struct {
 	Commands    []string `json:"commands,omitempty"`    // Commands to be executed
 	Description string   `json:"description,omitempty"` // Describe the details about the command request
 	DeviceUUIDs []string `json:"deviceUuids,omitempty"` // Device Id of the device
@@ -29,20 +29,20 @@ type RequestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigura
 	Timeout     *int     `json:"timeout,omitempty"`     // The timeout value in unit of second. If no timeout provided wait till 300sec
 }
 
-//GetAllKeywordsOfClisAcceptedByCommandRunner Get all keywords of CLIs accepted by command runner - 33bb-2b9d-4019-9e14
+//GetAllKeywordsOfClisAcceptedByCommandRunnerV1 Get all keywords of CLIs accepted by command runner - 33bb-2b9d-4019-9e14
 /* Get valid keywords
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-all-keywords-of-clis-accepted-by-command-runner
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-all-keywords-of-clis-accepted-by-command-runner-v1
 */
-func (s *CommandRunnerService) GetAllKeywordsOfClisAcceptedByCommandRunner() (*ResponseCommandRunnerGetAllKeywordsOfClisAcceptedByCommandRunner, *resty.Response, error) {
+func (s *CommandRunnerService) GetAllKeywordsOfClisAcceptedByCommandRunnerV1() (*ResponseCommandRunnerGetAllKeywordsOfClisAcceptedByCommandRunnerV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/network-device-poller/cli/legit-reads"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseCommandRunnerGetAllKeywordsOfClisAcceptedByCommandRunner{}).
+		SetResult(&ResponseCommandRunnerGetAllKeywordsOfClisAcceptedByCommandRunnerV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -53,31 +53,31 @@ func (s *CommandRunnerService) GetAllKeywordsOfClisAcceptedByCommandRunner() (*R
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetAllKeywordsOfClisAcceptedByCommandRunner()
+			return s.GetAllKeywordsOfClisAcceptedByCommandRunnerV1()
 		}
-		return nil, response, fmt.Errorf("error with operation GetAllKeywordsOfClisAcceptedByCommandRunner")
+		return nil, response, fmt.Errorf("error with operation GetAllKeywordsOfClisAcceptedByCommandRunnerV1")
 	}
 
-	result := response.Result().(*ResponseCommandRunnerGetAllKeywordsOfClisAcceptedByCommandRunner)
+	result := response.Result().(*ResponseCommandRunnerGetAllKeywordsOfClisAcceptedByCommandRunnerV1)
 	return result, response, err
 
 }
 
-//RunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfiguration Run read-only commands on devices to get their real-time configuration - d6b8-ca77-4739-adf4
+//RunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1 Run read-only commands on devices to get their real-time configuration - d6b8-ca77-4739-adf4
 /* Submit request for read-only CLIs
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!run-read-only-commands-on-devices-to-get-their-real-time-configuration
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!run-read-only-commands-on-devices-to-get-their-real-time-configuration-v1
 */
-func (s *CommandRunnerService) RunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfiguration(requestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfiguration *RequestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfiguration) (*ResponseCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfiguration, *resty.Response, error) {
+func (s *CommandRunnerService) RunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1(requestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1 *RequestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1) (*ResponseCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/network-device-poller/cli/read-request"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfiguration).
-		SetResult(&ResponseCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfiguration{}).
+		SetBody(requestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1).
+		SetResult(&ResponseCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1{}).
 		SetError(&Error).
 		Post(path)
 
@@ -89,13 +89,23 @@ func (s *CommandRunnerService) RunReadOnlyCommandsOnDevicesToGetTheirRealTimeCon
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.RunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfiguration(requestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfiguration)
+			return s.RunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1(requestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1)
 		}
 
-		return nil, response, fmt.Errorf("error with operation RunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfiguration")
+		return nil, response, fmt.Errorf("error with operation RunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1")
 	}
 
-	result := response.Result().(*ResponseCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfiguration)
+	result := response.Result().(*ResponseCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1)
 	return result, response, err
 
+}
+
+// Alias Function
+func (s *CommandRunnerService) GetAllKeywordsOfClisAcceptedByCommandRunner() (*ResponseCommandRunnerGetAllKeywordsOfClisAcceptedByCommandRunnerV1, *resty.Response, error) {
+	return s.GetAllKeywordsOfClisAcceptedByCommandRunnerV1()
+}
+
+// Alias Function
+func (s *CommandRunnerService) RunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfiguration(requestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1 *RequestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1) (*ResponseCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1, *resty.Response, error) {
+	return s.RunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1(requestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1)
 }
