@@ -8,36 +8,36 @@ import (
 	"github.com/go-resty/resty/v2"
 )
 
-type EoxService service
+type EoXService service
 
-type ResponseEoxGetEoxStatusForAllDevicesV1 struct {
-	Response *[]ResponseEoxGetEoxStatusForAllDevicesV1Response `json:"response,omitempty"` //
+type ResponseEoXGetEoXStatusForAllDevicesV1 struct {
+	Response *[]ResponseEoXGetEoXStatusForAllDevicesV1Response `json:"response,omitempty"` //
 	Version  string                                            `json:"version,omitempty"`  // Version of the response
 }
-type ResponseEoxGetEoxStatusForAllDevicesV1Response struct {
+type ResponseEoXGetEoXStatusForAllDevicesV1Response struct {
 	DeviceID     string                                                   `json:"deviceId,omitempty"`     // Device instance UUID
 	AlertCount   *int                                                     `json:"alertCount,omitempty"`   // Number of EoX alerts on the network device
-	Summary      *[]ResponseEoxGetEoxStatusForAllDevicesV1ResponseSummary `json:"summary,omitempty"`      //
+	Summary      *[]ResponseEoXGetEoXStatusForAllDevicesV1ResponseSummary `json:"summary,omitempty"`      //
 	ScanStatus   string                                                   `json:"scanStatus,omitempty"`   // Status of the scan performed on the network device
 	Comments     []string                                                 `json:"comments,omitempty"`     // More details about the scan status. ie:- if the scan status is failed, comments will give the reason for failure.
 	LastScanTime *int                                                     `json:"lastScanTime,omitempty"` // Time at which the network device was scanned. The representation is unix time.
 }
-type ResponseEoxGetEoxStatusForAllDevicesV1ResponseSummary struct {
-	EoxType string `json:"eoxType,omitempty"` // Type of EoX Alert
+type ResponseEoXGetEoXStatusForAllDevicesV1ResponseSummary struct {
+	EoXType string `json:"EoXType,omitempty"` // Type of EoX Alert
 }
-type ResponseEoxGetEoxDetailsPerDeviceV1 struct {
-	Response *ResponseEoxGetEoxDetailsPerDeviceV1Response `json:"response,omitempty"` //
+type ResponseEoXGetEoXDetailsPerDeviceV1 struct {
+	Response *ResponseEoXGetEoXDetailsPerDeviceV1Response `json:"response,omitempty"` //
 	Version  string                                       `json:"version,omitempty"`  // Version of the response
 }
-type ResponseEoxGetEoxDetailsPerDeviceV1Response struct {
+type ResponseEoXGetEoXDetailsPerDeviceV1Response struct {
 	DeviceID     string                                                   `json:"deviceId,omitempty"`     // Device instance UUID
 	AlertCount   *int                                                     `json:"alertCount,omitempty"`   // Number of EoX alerts on the network device
-	EoxDetails   *[]ResponseEoxGetEoxDetailsPerDeviceV1ResponseEoxDetails `json:"eoxDetails,omitempty"`   //
+	EoXDetails   *[]ResponseEoXGetEoXDetailsPerDeviceV1ResponseEoXDetails `json:"EoXDetails,omitempty"`   //
 	ScanStatus   string                                                   `json:"scanStatus,omitempty"`   // Status of the scan performed on the network device
 	Comments     []string                                                 `json:"comments,omitempty"`     // More details about the scan status. ie:- if the scan status is failed, comments will give the reason for failure.
 	LastScanTime *int                                                     `json:"lastScanTime,omitempty"` // Time at which the network device was scanned. The representation is unix time.
 }
-type ResponseEoxGetEoxDetailsPerDeviceV1ResponseEoxDetails struct {
+type ResponseEoXGetEoXDetailsPerDeviceV1ResponseEoXDetails struct {
 	Name                                              string `json:"name,omitempty"`                                              // Name of the EoX alert. Every EoX announcement has a unique name. ie:- EOL13873
 	BulletinHeadline                                  string `json:"bulletinHeadline,omitempty"`                                  // Title of the EoX bulletin
 	BulletinName                                      string `json:"bulletinName,omitempty"`                                      // Name of the EoX bulletin
@@ -54,35 +54,35 @@ type ResponseEoxGetEoxDetailsPerDeviceV1ResponseEoxDetails struct {
 	EndOfLifeDate                                     string `json:"endOfLifeDate,omitempty"`                                     // The last date to receive applicable service and support for the product as entitled by active service contracts or by warranty terms and conditions. This will be populated for software alerts only.
 	LastDateOfSupport                                 string `json:"lastDateOfSupport,omitempty"`                                 // The last date to receive applicable service and support for the product as entitled by active service contracts or by warranty terms and conditions. This will be populated for hardware and module alerts only.
 	EndOfSoftwareMaintenanceReleasesDate              string `json:"endOfSoftwareMaintenanceReleasesDate,omitempty"`              // The last date that Cisco Engineering may release any final software maintenance releases or bug fixes for the product
-	EoxAlertType                                      string `json:"eoxAlertType,omitempty"`                                      // Type of EoX alert
-	EoxPhysicalType                                   string `json:"eoXPhysicalType,omitempty"`                                   // The type of part for EoX alert. eg:- Power Supply, Chassis, Fan etc.
+	EoXAlertType                                      string `json:"EoXAlertType,omitempty"`                                      // Type of EoX alert
+	EoXPhysicalType                                   string `json:"EoXPhysicalType,omitempty"`                                   // The type of part for EoX alert. eg:- Power Supply, Chassis, Fan etc.
 	BulletinPID                                       string `json:"bulletinPID,omitempty"`                                       // The part number for the EoX alert. eg:- PWR-C1-1100WAC
 }
-type ResponseEoxGetEoxSummaryV1 struct {
-	Response *ResponseEoxGetEoxSummaryV1Response `json:"response,omitempty"` //
+type ResponseEoXGetEoXSummaryV1 struct {
+	Response *ResponseEoXGetEoXSummaryV1Response `json:"response,omitempty"` //
 	Version  string                              `json:"version,omitempty"`  // Version of the response
 }
-type ResponseEoxGetEoxSummaryV1Response struct {
+type ResponseEoXGetEoXSummaryV1Response struct {
 	HardwareCount *int `json:"hardwareCount,omitempty"` // Number of hardware EoX alerts detected on the network
 	SoftwareCount *int `json:"softwareCount,omitempty"` // Number of software EoX alerts detected on the network
 	ModuleCount   *int `json:"moduleCount,omitempty"`   // Number of module EoX alerts detected on the network
 	TotalCount    *int `json:"totalCount,omitempty"`    // Total number of EoX alerts detected on the network. This is the sum of hardwareCount, softwareCount and moduleCount.
 }
 
-//GetEoxStatusForAllDevicesV1 Get EoX Status For All Devices - 3281-fa04-49ba-87d9
+//GetEoXStatusForAllDevicesV1 Get EoX Status For All Devices - 3281-fa04-49ba-87d9
 /* Retrieves EoX status for all devices in the network
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-eox-status-for-all-devices-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-EoX-status-for-all-devices-v1
 */
-func (s *EoxService) GetEoxStatusForAllDevicesV1() (*ResponseEoxGetEoxStatusForAllDevicesV1, *resty.Response, error) {
-	path := "/dna/intent/api/v1/eox-status/device"
+func (s *EoXService) GetEoXStatusForAllDevicesV1() (*ResponseEoXGetEoXStatusForAllDevicesV1, *resty.Response, error) {
+	path := "/dna/intent/api/v1/EoX-status/device"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseEoxGetEoxStatusForAllDevicesV1{}).
+		SetResult(&ResponseEoXGetEoXStatusForAllDevicesV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -93,33 +93,33 @@ func (s *EoxService) GetEoxStatusForAllDevicesV1() (*ResponseEoxGetEoxStatusForA
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetEoxStatusForAllDevicesV1()
+			return s.GetEoXStatusForAllDevicesV1()
 		}
-		return nil, response, fmt.Errorf("error with operation GetEoxStatusForAllDevicesV1")
+		return nil, response, fmt.Errorf("error with operation GetEoXStatusForAllDevicesV1")
 	}
 
-	result := response.Result().(*ResponseEoxGetEoxStatusForAllDevicesV1)
+	result := response.Result().(*ResponseEoXGetEoXStatusForAllDevicesV1)
 	return result, response, err
 
 }
 
-//GetEoxDetailsPerDeviceV1 Get EoX Details Per Device - dc80-099e-4d59-986d
+//GetEoXDetailsPerDeviceV1 Get EoX Details Per Device - dc80-099e-4d59-986d
 /* Retrieves EoX details for a device
 
 
 @param deviceID deviceId path parameter. Device instance UUID
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-eox-details-per-device-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-EoX-details-per-device-v1
 */
-func (s *EoxService) GetEoxDetailsPerDeviceV1(deviceID string) (*ResponseEoxGetEoxDetailsPerDeviceV1, *resty.Response, error) {
-	path := "/dna/intent/api/v1/eox-status/device/{deviceId}"
+func (s *EoXService) GetEoXDetailsPerDeviceV1(deviceID string) (*ResponseEoXGetEoXDetailsPerDeviceV1, *resty.Response, error) {
+	path := "/dna/intent/api/v1/EoX-status/device/{deviceId}"
 	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceID), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseEoxGetEoxDetailsPerDeviceV1{}).
+		SetResult(&ResponseEoXGetEoXDetailsPerDeviceV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -130,30 +130,30 @@ func (s *EoxService) GetEoxDetailsPerDeviceV1(deviceID string) (*ResponseEoxGetE
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetEoxDetailsPerDeviceV1(deviceID)
+			return s.GetEoXDetailsPerDeviceV1(deviceID)
 		}
-		return nil, response, fmt.Errorf("error with operation GetEoxDetailsPerDeviceV1")
+		return nil, response, fmt.Errorf("error with operation GetEoXDetailsPerDeviceV1")
 	}
 
-	result := response.Result().(*ResponseEoxGetEoxDetailsPerDeviceV1)
+	result := response.Result().(*ResponseEoXGetEoXDetailsPerDeviceV1)
 	return result, response, err
 
 }
 
-//GetEoxSummaryV1 Get EoX Summary - f0b2-7a23-4fea-96fc
+//GetEoXSummaryV1 Get EoX Summary - f0b2-7a23-4fea-96fc
 /* Retrieves EoX summary for all devices in the network
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-eox-summary-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-EoX-summary-v1
 */
-func (s *EoxService) GetEoxSummaryV1() (*ResponseEoxGetEoxSummaryV1, *resty.Response, error) {
-	path := "/dna/intent/api/v1/eox-status/summary"
+func (s *EoXService) GetEoXSummaryV1() (*ResponseEoXGetEoXSummaryV1, *resty.Response, error) {
+	path := "/dna/intent/api/v1/EoX-status/summary"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseEoxGetEoxSummaryV1{}).
+		SetResult(&ResponseEoXGetEoXSummaryV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -164,27 +164,27 @@ func (s *EoxService) GetEoxSummaryV1() (*ResponseEoxGetEoxSummaryV1, *resty.Resp
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetEoxSummaryV1()
+			return s.GetEoXSummaryV1()
 		}
-		return nil, response, fmt.Errorf("error with operation GetEoxSummaryV1")
+		return nil, response, fmt.Errorf("error with operation GetEoXSummaryV1")
 	}
 
-	result := response.Result().(*ResponseEoxGetEoxSummaryV1)
+	result := response.Result().(*ResponseEoXGetEoXSummaryV1)
 	return result, response, err
 
 }
 
 // Alias Function
-func (s *EoxService) GetEoxDetailsPerDevice(deviceID string) (*ResponseEoxGetEoxDetailsPerDeviceV1, *resty.Response, error) {
-	return s.GetEoxDetailsPerDeviceV1(deviceID)
+func (s *EoXService) GetEoXDetailsPerDevice(deviceID string) (*ResponseEoXGetEoXDetailsPerDeviceV1, *resty.Response, error) {
+	return s.GetEoXDetailsPerDeviceV1(deviceID)
 }
 
 // Alias Function
-func (s *EoxService) GetEoxStatusForAllDevices() (*ResponseEoxGetEoxStatusForAllDevicesV1, *resty.Response, error) {
-	return s.GetEoxStatusForAllDevicesV1()
+func (s *EoXService) GetEoXStatusForAllDevices() (*ResponseEoXGetEoXStatusForAllDevicesV1, *resty.Response, error) {
+	return s.GetEoXStatusForAllDevicesV1()
 }
 
 // Alias Function
-func (s *EoxService) GetEoxSummary() (*ResponseEoxGetEoxSummaryV1, *resty.Response, error) {
-	return s.GetEoxSummaryV1()
+func (s *EoXService) GetEoXSummary() (*ResponseEoXGetEoXSummaryV1, *resty.Response, error) {
+	return s.GetEoXSummaryV1()
 }

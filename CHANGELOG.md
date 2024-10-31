@@ -23,7 +23,7 @@ New services for Cisco Catalyst Center 2.3.7.6's API:
 - DeviceReplacement *DeviceReplacementService
 - Devices *DevicesService
 - Discovery *DiscoveryService
-- Eox *EoxService
+- EoX *EoXService
 - EventManagement *EventManagementService
 - FabricWireless *FabricWirelessService
 - File *FileService

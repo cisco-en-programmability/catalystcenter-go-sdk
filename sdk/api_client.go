@@ -59,7 +59,7 @@ type Client struct {
 	Devices                     *DevicesService
 	DisasterRecovery            *DisasterRecoveryService
 	Discovery                   *DiscoveryService
-	Eox                         *EoxService
+	EoX                         *EoXService
 	EventManagement             *EventManagementService
 	FabricWireless              *FabricWirelessService
 	File                        *FileService
@@ -280,7 +280,7 @@ func NewClientNoAuth() (*Client, error) {
 	c.Devices = (*DevicesService)(&c.common)
 	c.DisasterRecovery = (*DisasterRecoveryService)(&c.common)
 	c.Discovery = (*DiscoveryService)(&c.common)
-	c.Eox = (*EoxService)(&c.common)
+	c.EoX = (*EoXService)(&c.common)
 	c.EventManagement = (*EventManagementService)(&c.common)
 	c.FabricWireless = (*FabricWirelessService)(&c.common)
 	c.File = (*FileService)(&c.common)
