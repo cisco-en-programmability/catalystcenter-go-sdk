@@ -204,21 +204,33 @@ func (s *FileService) UploadFileV1(nameSpace string, UploadFileMultipartFields *
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UploadFileV1`
+*/
 func (s *FileService) UploadFile(nameSpace string, UploadFileMultipartFields *UploadFileMultipartFields) (*ResponseFileUploadFileV1, *resty.Response, error) {
 	return s.UploadFileV1(nameSpace, UploadFileMultipartFields)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetListOfFilesV1`
+*/
 func (s *FileService) GetListOfFiles(nameSpace string) (*ResponseFileGetListOfFilesV1, *resty.Response, error) {
 	return s.GetListOfFilesV1(nameSpace)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetListOfAvailableNamespacesV1`
+*/
 func (s *FileService) GetListOfAvailableNamespaces() (*ResponseFileGetListOfAvailableNamespacesV1, *resty.Response, error) {
 	return s.GetListOfAvailableNamespacesV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DownloadAFileByFileIDV1`
+*/
 func (s *FileService) DownloadAFileByFileID(fileID string) (FileDownload, *resty.Response, error) {
 	return s.DownloadAFileByFileIDV1(fileID)
 }

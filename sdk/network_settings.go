@@ -3131,201 +3131,321 @@ func (s *NetworkSettingsService) DeleteSpProfileV2(spProfileName string) (*Respo
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `SetImageDistributionSettingsForASiteV1`
+*/
 func (s *NetworkSettingsService) SetImageDistributionSettingsForASite(id string, requestNetworkSettingsSetImageDistributionSettingsForASiteV1 *RequestNetworkSettingsSetImageDistributionSettingsForASiteV1) (*ResponseNetworkSettingsSetImageDistributionSettingsForASiteV1, *resty.Response, error) {
 	return s.SetImageDistributionSettingsForASiteV1(id, requestNetworkSettingsSetImageDistributionSettingsForASiteV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteSpProfileV1`
+*/
 func (s *NetworkSettingsService) DeleteSpProfile(spProfileName string) (*ResponseNetworkSettingsDeleteSpProfileV1, *resty.Response, error) {
 	return s.DeleteSpProfileV1(spProfileName)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `SetDhcpSettingsForASiteV1`
+*/
 func (s *NetworkSettingsService) SetDhcpSettingsForASite(id string, requestNetworkSettingsSetDhcpSettingsForASiteV1 *RequestNetworkSettingsSetDhcpSettingsForASiteV1) (*ResponseNetworkSettingsSetDhcpSettingsForASiteV1, *resty.Response, error) {
 	return s.SetDhcpSettingsForASiteV1(id, requestNetworkSettingsSetDhcpSettingsForASiteV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceCredentialSettingsForASiteV1`
+*/
 func (s *NetworkSettingsService) GetDeviceCredentialSettingsForASite(id string, GetDeviceCredentialSettingsForASiteV1QueryParams *GetDeviceCredentialSettingsForASiteV1QueryParams) (*ResponseNetworkSettingsGetDeviceCredentialSettingsForASiteV1, *resty.Response, error) {
 	return s.GetDeviceCredentialSettingsForASiteV1(id, GetDeviceCredentialSettingsForASiteV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrieveDHCPSettingsForASiteV1`
+*/
 func (s *NetworkSettingsService) RetrieveDHCPSettingsForASite(id string, RetrieveDHCPSettingsForASiteV1QueryParams *RetrieveDHCPSettingsForASiteV1QueryParams) (*ResponseNetworkSettingsRetrieveDHCPSettingsForASiteV1, *resty.Response, error) {
 	return s.RetrieveDHCPSettingsForASiteV1(id, RetrieveDHCPSettingsForASiteV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ReleaseReserveIPSubpoolV1`
+*/
 func (s *NetworkSettingsService) ReleaseReserveIPSubpool(id string) (*ResponseNetworkSettingsReleaseReserveIPSubpoolV1, *resty.Response, error) {
 	return s.ReleaseReserveIPSubpoolV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteDeviceCredentialV1`
+*/
 func (s *NetworkSettingsService) DeleteDeviceCredential(id string) (*ResponseNetworkSettingsDeleteDeviceCredentialV1, *resty.Response, error) {
 	return s.DeleteDeviceCredentialV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetServiceProviderDetailsV1`
+*/
 func (s *NetworkSettingsService) GetServiceProviderDetails() (*ResponseNetworkSettingsGetServiceProviderDetailsV1, *resty.Response, error) {
 	return s.GetServiceProviderDetailsV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateSpProfileV1`
+*/
 func (s *NetworkSettingsService) CreateSpProfile(requestNetworkSettingsCreateSPProfileV1 *RequestNetworkSettingsCreateSpProfileV1) (*ResponseNetworkSettingsCreateSpProfileV1, *resty.Response, error) {
 	return s.CreateSpProfileV1(requestNetworkSettingsCreateSPProfileV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrieveBannerSettingsForASiteV1`
+*/
 func (s *NetworkSettingsService) RetrieveBannerSettingsForASite(id string, RetrieveBannerSettingsForASiteV1QueryParams *RetrieveBannerSettingsForASiteV1QueryParams) (*ResponseNetworkSettingsRetrieveBannerSettingsForASiteV1, *resty.Response, error) {
 	return s.RetrieveBannerSettingsForASiteV1(id, RetrieveBannerSettingsForASiteV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetNetworkV1`
+*/
 func (s *NetworkSettingsService) GetNetwork(GetNetworkV1QueryParams *GetNetworkV1QueryParams) (*ResponseNetworkSettingsGetNetworkV1, *resty.Response, error) {
 	return s.GetNetworkV1(GetNetworkV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `SetAAASettingsForASiteV1`
+*/
 func (s *NetworkSettingsService) SetAAASettingsForASite(id string, requestNetworkSettingsSetAAASettingsForASiteV1 *RequestNetworkSettingsSetAAASettingsForASiteV1) (*ResponseNetworkSettingsSetAAASettingsForASiteV1, *resty.Response, error) {
 	return s.SetAAASettingsForASiteV1(id, requestNetworkSettingsSetAAASettingsForASiteV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrieveImageDistributionSettingsForASiteV1`
+*/
 func (s *NetworkSettingsService) RetrieveImageDistributionSettingsForASite(id string, RetrieveImageDistributionSettingsForASiteV1QueryParams *RetrieveImageDistributionSettingsForASiteV1QueryParams) (*ResponseNetworkSettingsRetrieveImageDistributionSettingsForASiteV1, *resty.Response, error) {
 	return s.RetrieveImageDistributionSettingsForASiteV1(id, RetrieveImageDistributionSettingsForASiteV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateSpProfileV1`
+*/
 func (s *NetworkSettingsService) UpdateSpProfile(requestNetworkSettingsUpdateSPProfileV1 *RequestNetworkSettingsUpdateSpProfileV1) (*ResponseNetworkSettingsUpdateSpProfileV1, *resty.Response, error) {
 	return s.UpdateSpProfileV1(requestNetworkSettingsUpdateSPProfileV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `SetTimeZoneForASiteV1`
+*/
 func (s *NetworkSettingsService) SetTimeZoneForASite(id string, requestNetworkSettingsSetTimeZoneForASiteV1 *RequestNetworkSettingsSetTimeZoneForASiteV1) (*ResponseNetworkSettingsSetTimeZoneForASiteV1, *resty.Response, error) {
 	return s.SetTimeZoneForASiteV1(id, requestNetworkSettingsSetTimeZoneForASiteV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateDeviceCredentialsV1`
+*/
 func (s *NetworkSettingsService) CreateDeviceCredentials(requestNetworkSettingsCreateDeviceCredentialsV1 *RequestNetworkSettingsCreateDeviceCredentialsV1) (*ResponseNetworkSettingsCreateDeviceCredentialsV1, *resty.Response, error) {
 	return s.CreateDeviceCredentialsV1(requestNetworkSettingsCreateDeviceCredentialsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `SyncNetworkDevicesCredentialV1`
+*/
 func (s *NetworkSettingsService) SyncNetworkDevicesCredential(requestNetworkSettingsSyncNetworkDevicesCredentialV1 *RequestNetworkSettingsSyncNetworkDevicesCredentialV1) (*ResponseNetworkSettingsSyncNetworkDevicesCredentialV1, *resty.Response, error) {
 	return s.SyncNetworkDevicesCredentialV1(requestNetworkSettingsSyncNetworkDevicesCredentialV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AssignDeviceCredentialToSiteV1`
+*/
 func (s *NetworkSettingsService) AssignDeviceCredentialToSite(siteID string, requestNetworkSettingsAssignDeviceCredentialToSiteV1 *RequestNetworkSettingsAssignDeviceCredentialToSiteV1, AssignDeviceCredentialToSiteV1HeaderParams *AssignDeviceCredentialToSiteV1HeaderParams) (*ResponseNetworkSettingsAssignDeviceCredentialToSiteV1, *resty.Response, error) {
 	return s.AssignDeviceCredentialToSiteV1(siteID, requestNetworkSettingsAssignDeviceCredentialToSiteV1, AssignDeviceCredentialToSiteV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateNetworkV1`
+*/
 func (s *NetworkSettingsService) CreateNetwork(siteID string, requestNetworkSettingsCreateNetworkV1 *RequestNetworkSettingsCreateNetworkV1, CreateNetworkV1HeaderParams *CreateNetworkV1HeaderParams) (*ResponseNetworkSettingsCreateNetworkV1, *resty.Response, error) {
 	return s.CreateNetworkV1(siteID, requestNetworkSettingsCreateNetworkV1, CreateNetworkV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateDeviceCredentialSettingsForASiteV1`
+*/
 func (s *NetworkSettingsService) UpdateDeviceCredentialSettingsForASite(id string, requestNetworkSettingsUpdateDeviceCredentialSettingsForASiteV1 *RequestNetworkSettingsUpdateDeviceCredentialSettingsForASiteV1) (*ResponseNetworkSettingsUpdateDeviceCredentialSettingsForASiteV1, *resty.Response, error) {
 	return s.UpdateDeviceCredentialSettingsForASiteV1(id, requestNetworkSettingsUpdateDeviceCredentialSettingsForASiteV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateDeviceCredentialsV1`
+*/
 func (s *NetworkSettingsService) UpdateDeviceCredentials(requestNetworkSettingsUpdateDeviceCredentialsV1 *RequestNetworkSettingsUpdateDeviceCredentialsV1) (*ResponseNetworkSettingsUpdateDeviceCredentialsV1, *resty.Response, error) {
 	return s.UpdateDeviceCredentialsV1(requestNetworkSettingsUpdateDeviceCredentialsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetGlobalPoolV1`
+*/
 func (s *NetworkSettingsService) GetGlobalPool(GetGlobalPoolV1QueryParams *GetGlobalPoolV1QueryParams) (*ResponseNetworkSettingsGetGlobalPoolV1, *resty.Response, error) {
 	return s.GetGlobalPoolV1(GetGlobalPoolV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrieveTimeZoneSettingsForASiteV1`
+*/
 func (s *NetworkSettingsService) RetrieveTimeZoneSettingsForASite(id string, RetrieveTimeZoneSettingsForASiteV1QueryParams *RetrieveTimeZoneSettingsForASiteV1QueryParams) (*ResponseNetworkSettingsRetrieveTimeZoneSettingsForASiteV1, *resty.Response, error) {
 	return s.RetrieveTimeZoneSettingsForASiteV1(id, RetrieveTimeZoneSettingsForASiteV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateGlobalPoolV1`
+*/
 func (s *NetworkSettingsService) UpdateGlobalPool(requestNetworkSettingsUpdateGlobalPoolV1 *RequestNetworkSettingsUpdateGlobalPoolV1) (*ResponseNetworkSettingsUpdateGlobalPoolV1, *resty.Response, error) {
 	return s.UpdateGlobalPoolV1(requestNetworkSettingsUpdateGlobalPoolV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrieveDNSSettingsForASiteV1`
+*/
 func (s *NetworkSettingsService) RetrieveDNSSettingsForASite(id string, RetrieveDNSSettingsForASiteV1QueryParams *RetrieveDNSSettingsForASiteV1QueryParams) (*ResponseNetworkSettingsRetrieveDNSSettingsForASiteV1, *resty.Response, error) {
 	return s.RetrieveDNSSettingsForASiteV1(id, RetrieveDNSSettingsForASiteV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `SetNTPSettingsForASiteV1`
+*/
 func (s *NetworkSettingsService) SetNTPSettingsForASite(id string, requestNetworkSettingsSetNTPSettingsForASiteV1 *RequestNetworkSettingsSetNTPSettingsForASiteV1) (*ResponseNetworkSettingsSetNTPSettingsForASiteV1, *resty.Response, error) {
 	return s.SetNTPSettingsForASiteV1(id, requestNetworkSettingsSetNTPSettingsForASiteV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceCredentialDetailsV1`
+*/
 func (s *NetworkSettingsService) GetDeviceCredentialDetails(GetDeviceCredentialDetailsV1QueryParams *GetDeviceCredentialDetailsV1QueryParams) (*ResponseNetworkSettingsGetDeviceCredentialDetailsV1, *resty.Response, error) {
 	return s.GetDeviceCredentialDetailsV1(GetDeviceCredentialDetailsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrieveTelemetrySettingsForASiteV1`
+*/
 func (s *NetworkSettingsService) RetrieveTelemetrySettingsForASite(id string, RetrieveTelemetrySettingsForASiteV1QueryParams *RetrieveTelemetrySettingsForASiteV1QueryParams) (*ResponseNetworkSettingsRetrieveTelemetrySettingsForASiteV1, *resty.Response, error) {
 	return s.RetrieveTelemetrySettingsForASiteV1(id, RetrieveTelemetrySettingsForASiteV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrieveAAASettingsForASiteV1`
+*/
 func (s *NetworkSettingsService) RetrieveAAASettingsForASite(id string, RetrieveAAASettingsForASiteV1QueryParams *RetrieveAAASettingsForASiteV1QueryParams) (*ResponseNetworkSettingsRetrieveAAASettingsForASiteV1, *resty.Response, error) {
 	return s.RetrieveAAASettingsForASiteV1(id, RetrieveAAASettingsForASiteV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteGlobalIPPoolV1`
+*/
 func (s *NetworkSettingsService) DeleteGlobalIPPool(id string) (*ResponseNetworkSettingsDeleteGlobalIPPoolV1, *resty.Response, error) {
 	return s.DeleteGlobalIPPoolV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `SetTelemetrySettingsForASiteV1`
+*/
 func (s *NetworkSettingsService) SetTelemetrySettingsForASite(id string, requestNetworkSettingsSetTelemetrySettingsForASiteV1 *RequestNetworkSettingsSetTelemetrySettingsForASiteV1) (*ResponseNetworkSettingsSetTelemetrySettingsForASiteV1, *resty.Response, error) {
 	return s.SetTelemetrySettingsForASiteV1(id, requestNetworkSettingsSetTelemetrySettingsForASiteV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetReserveIPSubpoolV1`
+*/
 func (s *NetworkSettingsService) GetReserveIPSubpool(GetReserveIPSubpoolV1QueryParams *GetReserveIPSubpoolV1QueryParams) (*ResponseNetworkSettingsGetReserveIPSubpoolV1, *resty.Response, error) {
 	return s.GetReserveIPSubpoolV1(GetReserveIPSubpoolV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ReserveIPSubpoolV1`
+*/
 func (s *NetworkSettingsService) ReserveIPSubpool(siteID string, requestNetworkSettingsReserveIPSubpoolV1 *RequestNetworkSettingsReserveIPSubpoolV1) (*ResponseNetworkSettingsReserveIPSubpoolV1, *resty.Response, error) {
 	return s.ReserveIPSubpoolV1(siteID, requestNetworkSettingsReserveIPSubpoolV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `SetDNSSettingsForASiteV1`
+*/
 func (s *NetworkSettingsService) SetDNSSettingsForASite(id string, requestNetworkSettingsSetDNSSettingsForASiteV1 *RequestNetworkSettingsSetDNSSettingsForASiteV1) (*ResponseNetworkSettingsSetDNSSettingsForASiteV1, *resty.Response, error) {
 	return s.SetDNSSettingsForASiteV1(id, requestNetworkSettingsSetDNSSettingsForASiteV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateReserveIPSubpoolV1`
+*/
 func (s *NetworkSettingsService) UpdateReserveIPSubpool(siteID string, requestNetworkSettingsUpdateReserveIPSubpoolV1 *RequestNetworkSettingsUpdateReserveIPSubpoolV1, UpdateReserveIPSubpoolV1QueryParams *UpdateReserveIPSubpoolV1QueryParams) (*ResponseNetworkSettingsUpdateReserveIPSubpoolV1, *resty.Response, error) {
 	return s.UpdateReserveIPSubpoolV1(siteID, requestNetworkSettingsUpdateReserveIPSubpoolV1, UpdateReserveIPSubpoolV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateNetworkV1`
+*/
 func (s *NetworkSettingsService) UpdateNetwork(siteID string, requestNetworkSettingsUpdateNetworkV1 *RequestNetworkSettingsUpdateNetworkV1) (*ResponseNetworkSettingsUpdateNetworkV1, *resty.Response, error) {
 	return s.UpdateNetworkV1(siteID, requestNetworkSettingsUpdateNetworkV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `SetBannerSettingsForASiteV1`
+*/
 func (s *NetworkSettingsService) SetBannerSettingsForASite(id string, requestNetworkSettingsSetBannerSettingsForASiteV1 *RequestNetworkSettingsSetBannerSettingsForASiteV1) (*ResponseNetworkSettingsSetBannerSettingsForASiteV1, *resty.Response, error) {
 	return s.SetBannerSettingsForASiteV1(id, requestNetworkSettingsSetBannerSettingsForASiteV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetNetworkDevicesCredentialsSyncStatusV1`
+*/
 func (s *NetworkSettingsService) GetNetworkDevicesCredentialsSyncStatus(id string) (*ResponseNetworkSettingsGetNetworkDevicesCredentialsSyncStatusV1, *resty.Response, error) {
 	return s.GetNetworkDevicesCredentialsSyncStatusV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrieveNTPSettingsForASiteV1`
+*/
 func (s *NetworkSettingsService) RetrieveNTPSettingsForASite(id string, RetrieveNTPSettingsForASiteV1QueryParams *RetrieveNTPSettingsForASiteV1QueryParams) (*ResponseNetworkSettingsRetrieveNTPSettingsForASiteV1, *resty.Response, error) {
 	return s.RetrieveNTPSettingsForASiteV1(id, RetrieveNTPSettingsForASiteV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateGlobalPoolV1`
+*/
 func (s *NetworkSettingsService) CreateGlobalPool(requestNetworkSettingsCreateGlobalPoolV1 *RequestNetworkSettingsCreateGlobalPoolV1) (*ResponseNetworkSettingsCreateGlobalPoolV1, *resty.Response, error) {
 	return s.CreateGlobalPoolV1(requestNetworkSettingsCreateGlobalPoolV1)
 }

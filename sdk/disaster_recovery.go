@@ -189,11 +189,17 @@ func (s *DisasterRecoveryService) DisasterRecoveryStatusV1() (*ResponseDisasterR
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DisasterRecoveryOperationalStatusV1`
+*/
 func (s *DisasterRecoveryService) DisasterRecoveryOperationalStatus() (*ResponseDisasterRecoveryDisasterRecoveryOperationalStatusV1, *resty.Response, error) {
 	return s.DisasterRecoveryOperationalStatusV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DisasterRecoveryStatusV1`
+*/
 func (s *DisasterRecoveryService) DisasterRecoveryStatus() (*ResponseDisasterRecoveryDisasterRecoveryStatusV1, *resty.Response, error) {
 	return s.DisasterRecoveryStatusV1()
 }

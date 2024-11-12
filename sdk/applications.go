@@ -105,6 +105,9 @@ func (s *ApplicationsService) ApplicationsV1(ApplicationsV1QueryParams *Applicat
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ApplicationsV1`
+*/
 func (s *ApplicationsService) Applications(ApplicationsV1QueryParams *ApplicationsV1QueryParams) (*ResponseApplicationsApplicationsV1, *resty.Response, error) {
 	return s.ApplicationsV1(ApplicationsV1QueryParams)
 }

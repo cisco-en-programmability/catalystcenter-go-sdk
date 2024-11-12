@@ -1079,21 +1079,33 @@ func (s *PathTraceService) DeletesPathtraceByIDV1(flowAnalysisID string) (*Respo
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrievesPreviousPathtraceV1`
+*/
 func (s *PathTraceService) RetrievesPreviousPathtrace(flowAnalysisID string) (*ResponsePathTraceRetrievesPreviousPathtraceV1, *resty.Response, error) {
 	return s.RetrievesPreviousPathtraceV1(flowAnalysisID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeletesPathtraceByIDV1`
+*/
 func (s *PathTraceService) DeletesPathtraceByID(flowAnalysisID string) (*ResponsePathTraceDeletesPathtraceByIDV1, *resty.Response, error) {
 	return s.DeletesPathtraceByIDV1(flowAnalysisID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrievesAllPreviousPathtracesSummaryV1`
+*/
 func (s *PathTraceService) RetrievesAllPreviousPathtracesSummary(RetrievesAllPreviousPathtracesSummaryV1QueryParams *RetrievesAllPreviousPathtracesSummaryV1QueryParams) (*ResponsePathTraceRetrievesAllPreviousPathtracesSummaryV1, *resty.Response, error) {
 	return s.RetrievesAllPreviousPathtracesSummaryV1(RetrievesAllPreviousPathtracesSummaryV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `InitiateANewPathtraceV1`
+*/
 func (s *PathTraceService) InitiateANewPathtrace(requestPathTraceInitiateANewPathtraceV1 *RequestPathTraceInitiateANewPathtraceV1) (*ResponsePathTraceInitiateANewPathtraceV1, *resty.Response, error) {
 	return s.InitiateANewPathtraceV1(requestPathTraceInitiateANewPathtraceV1)
 }

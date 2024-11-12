@@ -5167,7 +5167,7 @@ func (s *DevicesService) GetDeviceListV1(GetDeviceListV1QueryParams *GetDeviceLi
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-device-values-that-match-fully-or-partially-an-attribute-v1
 */
-func (s *DevicesService) GetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1(GetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1QueryParams *GetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1QueryParams) (*ResponseDevicesGetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1, *resty.Response, error) {
+func (s *DevicesService) GetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1(GetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1QueryParams *GetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1QueryParams) (*resty.Response, error) {
 	path := "/dna/intent/api/v1/network-device/autocomplete"
 
 	queryString, _ := query.Values(GetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1QueryParams)
@@ -5180,7 +5180,7 @@ func (s *DevicesService) GetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1(G
 		Get(path)
 
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 
 	}
 
@@ -5188,11 +5188,10 @@ func (s *DevicesService) GetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1(G
 		if response.StatusCode() == http.StatusUnauthorized {
 			return s.GetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1(GetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1QueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1")
+		return response, fmt.Errorf("error with operation GetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1")
 	}
 
-	result := response.Result().(*ResponseDevicesGetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1)
-	return result, response, err
+	return response, err
 
 }
 
@@ -8153,531 +8152,849 @@ func (s *DevicesService) RemoveAllowedMacAddressV1(macAddress string) (*Response
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetInterfaceByIPV1`
+*/
 func (s *DevicesService) GetInterfaceByIP(ipAddress string) (*ResponseDevicesGetInterfaceByIPV1, *resty.Response, error) {
 	return s.GetInterfaceByIPV1(ipAddress)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSupervisorCardDetailV1`
+*/
 func (s *DevicesService) GetSupervisorCardDetail(deviceUUID string) (*ResponseDevicesGetSupervisorCardDetailV1, *resty.Response, error) {
 	return s.GetSupervisorCardDetailV1(deviceUUID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `TheTotalInterfacesCountAcrossTheNetworkDevicesV1`
+*/
 func (s *DevicesService) TheTotalInterfacesCountAcrossTheNetworkDevices(requestDevicesTheTotalInterfacesCountAcrossTheNetworkDevicesV1 *RequestDevicesTheTotalInterfacesCountAcrossTheNetworkDevicesV1) (*ResponseDevicesTheTotalInterfacesCountAcrossTheNetworkDevicesV1, *resty.Response, error) {
 	return s.TheTotalInterfacesCountAcrossTheNetworkDevicesV1(requestDevicesTheTotalInterfacesCountAcrossTheNetworkDevicesV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ThreatDetailsV1`
+*/
 func (s *DevicesService) ThreatDetails(requestDevicesThreatDetailsV1 *RequestDevicesThreatDetailsV1) (*ResponseDevicesThreatDetailsV1, *resty.Response, error) {
 	return s.ThreatDetailsV1(requestDevicesThreatDetailsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetsTheTotalNetworkDeviceCountsBasedOnTheProvidedQueryParametersV1`
+*/
 func (s *DevicesService) GetsTheTotalNetworkDeviceCountsBasedOnTheProvidedQueryParameters(GetsTheTotalNetworkDeviceCountsBasedOnTheProvidedQueryParametersV1QueryParams *GetsTheTotalNetworkDeviceCountsBasedOnTheProvidedQueryParametersV1QueryParams) (*ResponseDevicesGetsTheTotalNetworkDeviceCountsBasedOnTheProvidedQueryParametersV1, *resty.Response, error) {
 	return s.GetsTheTotalNetworkDeviceCountsBasedOnTheProvidedQueryParametersV1(GetsTheTotalNetworkDeviceCountsBasedOnTheProvidedQueryParametersV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `PoeDetailsV1`
+*/
 func (s *DevicesService) PoeDetails(deviceUUID string) (*ResponseDevicesPoeDetailsV1, *resty.Response, error) {
 	return s.PoeDetailsV1(deviceUUID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetThreatLevelsV1`
+*/
 func (s *DevicesService) GetThreatLevels() (*ResponseDevicesGetThreatLevelsV1, *resty.Response, error) {
 	return s.GetThreatLevelsV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetConnectedDeviceDetailV1`
+*/
 func (s *DevicesService) GetConnectedDeviceDetail(deviceUUID string, interfaceUUID string) (*ResponseDevicesGetConnectedDeviceDetailV1, *resty.Response, error) {
 	return s.GetConnectedDeviceDetailV1(deviceUUID, interfaceUUID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ExportDeviceListV1`
+*/
 func (s *DevicesService) ExportDeviceList(requestDevicesExportDeviceListV1 *RequestDevicesExportDeviceListV1) (*ResponseDevicesExportDeviceListV1, *resty.Response, error) {
 	return s.ExportDeviceListV1(requestDevicesExportDeviceListV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetsTheTotalNumberNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1`
+*/
 func (s *DevicesService) GetsTheTotalNumberNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctions(requestDevicesGetsTheTotalNumberNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1 *RequestDevicesGetsTheTotalNumberNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1) (*ResponseDevicesGetsTheTotalNumberNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1, *resty.Response, error) {
 	return s.GetsTheTotalNumberNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1(requestDevicesGetsTheTotalNumberNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetOrganizationListForMerakiV1`
+*/
 func (s *DevicesService) GetOrganizationListForMeraki(id string) (*ResponseDevicesGetOrganizationListForMerakiV1, *resty.Response, error) {
 	return s.GetOrganizationListForMerakiV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetWirelessLanControllerDetailsByIDV1`
+*/
 func (s *DevicesService) GetWirelessLanControllerDetailsByID(id string) (*ResponseDevicesGetWirelessLanControllerDetailsByIDV1, *resty.Response, error) {
 	return s.GetWirelessLanControllerDetailsByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAllInterfacesV1`
+*/
 func (s *DevicesService) GetAllInterfaces(GetAllInterfacesV1QueryParams *GetAllInterfacesV1QueryParams) (*ResponseDevicesGetAllInterfacesV1, *resty.Response, error) {
 	return s.GetAllInterfacesV1(GetAllInterfacesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateUserDefinedFieldV1`
+*/
 func (s *DevicesService) UpdateUserDefinedField(id string, requestDevicesUpdateUserDefinedFieldV1 *RequestDevicesUpdateUserDefinedFieldV1) (*ResponseDevicesUpdateUserDefinedFieldV1, *resty.Response, error) {
 	return s.UpdateUserDefinedFieldV1(id, requestDevicesUpdateUserDefinedFieldV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceInterfaceStatsInfoV2`
+*/
 func (s *DevicesService) GetDeviceInterfaceStatsInfo(deviceID string, requestDevicesGetDeviceInterfaceStatsInfoV2 *RequestDevicesGetDeviceInterfaceStatsInfoV2) (*ResponseDevicesGetDeviceInterfaceStatsInfoV2, *resty.Response, error) {
 	return s.GetDeviceInterfaceStatsInfoV2(deviceID, requestDevicesGetDeviceInterfaceStatsInfoV2)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetNetworkDeviceByPaginationRangeV1`
+*/
 func (s *DevicesService) GetNetworkDeviceByPaginationRange(startIndex int, recordsToReturn int) (*ResponseDevicesGetNetworkDeviceByPaginationRangeV1, *resty.Response, error) {
 	return s.GetNetworkDeviceByPaginationRangeV1(startIndex, recordsToReturn)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `StopWirelessRogueApContainmentV1`
+*/
 func (s *DevicesService) StopWirelessRogueApContainment(requestDevicesStopWirelessRogueAPContainmentV1 *RequestDevicesStopWirelessRogueApContainmentV1) (*ResponseDevicesStopWirelessRogueApContainmentV1, *resty.Response, error) {
 	return s.StopWirelessRogueApContainmentV1(requestDevicesStopWirelessRogueAPContainmentV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `InventoryInsightDeviceLinkMismatchAPIV1`
+*/
 func (s *DevicesService) InventoryInsightDeviceLinkMismatchAPI(siteID string, InventoryInsightDeviceLinkMismatchAPIV1QueryParams *InventoryInsightDeviceLinkMismatchAPIV1QueryParams) (*ResponseDevicesInventoryInsightDeviceLinkMismatchAPIV1, *resty.Response, error) {
 	return s.InventoryInsightDeviceLinkMismatchAPIV1(siteID, InventoryInsightDeviceLinkMismatchAPIV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDevicesRegisteredForWsaNotificationV1`
+*/
 func (s *DevicesService) GetDevicesRegisteredForWsaNotification(GetDevicesRegisteredForWSANotificationV1QueryParams *GetDevicesRegisteredForWsaNotificationV1QueryParams) (*ResponseDevicesGetDevicesRegisteredForWsaNotificationV1, *resty.Response, error) {
 	return s.GetDevicesRegisteredForWsaNotificationV1(GetDevicesRegisteredForWSANotificationV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ThreatDetailCountV1`
+*/
 func (s *DevicesService) ThreatDetailCount(requestDevicesThreatDetailCountV1 *RequestDevicesThreatDetailCountV1) (*ResponseDevicesThreatDetailCountV1, *resty.Response, error) {
 	return s.ThreatDetailCountV1(requestDevicesThreatDetailCountV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceEnrichmentDetailsV1`
+*/
 func (s *DevicesService) GetDeviceEnrichmentDetails(GetDeviceEnrichmentDetailsV1HeaderParams *GetDeviceEnrichmentDetailsV1HeaderParams) (*ResponseDevicesGetDeviceEnrichmentDetailsV1, *resty.Response, error) {
 	return s.GetDeviceEnrichmentDetailsV1(GetDeviceEnrichmentDetailsV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceByIDV1`
+*/
 func (s *DevicesService) GetDeviceByID(id string) (*ResponseDevicesGetDeviceByIDV1, *resty.Response, error) {
 	return s.GetDeviceByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceInterfaceVLANsV1`
+*/
 func (s *DevicesService) GetDeviceInterfaceVLANs(id string, GetDeviceInterfaceVLANsV1QueryParams *GetDeviceInterfaceVLANsV1QueryParams) (*ResponseDevicesGetDeviceInterfaceVLANsV1, *resty.Response, error) {
 	return s.GetDeviceInterfaceVLANsV1(id, GetDeviceInterfaceVLANsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetsTheSummaryAnalyticsDataRelatedToNetworkDevicesV1`
+*/
 func (s *DevicesService) GetsTheSummaryAnalyticsDataRelatedToNetworkDevices(requestDevicesGetsTheSummaryAnalyticsDataRelatedToNetworkDevicesV1 *RequestDevicesGetsTheSummaryAnalyticsDataRelatedToNetworkDevicesV1) (*ResponseDevicesGetsTheSummaryAnalyticsDataRelatedToNetworkDevicesV1, *resty.Response, error) {
 	return s.GetsTheSummaryAnalyticsDataRelatedToNetworkDevicesV1(requestDevicesGetsTheSummaryAnalyticsDataRelatedToNetworkDevicesV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetLinecardDetailsV1`
+*/
 func (s *DevicesService) GetLinecardDetails(deviceUUID string) (*ResponseDevicesGetLinecardDetailsV1, *resty.Response, error) {
 	return s.GetLinecardDetailsV1(deviceUUID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeletePlannedAccessPointForFloorV1`
+*/
 func (s *DevicesService) DeletePlannedAccessPointForFloor(floorID string, plannedAccessPointUUID string) (*ResponseDevicesDeletePlannedAccessPointForFloorV1, *resty.Response, error) {
 	return s.DeletePlannedAccessPointForFloorV1(floorID, plannedAccessPointUUID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `LegitOperationsForInterfaceV1`
+*/
 func (s *DevicesService) LegitOperationsForInterface(interfaceUUID string) (*ResponseDevicesLegitOperationsForInterfaceV1, *resty.Response, error) {
 	return s.LegitOperationsForInterfaceV1(interfaceUUID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `OverrideResyncIntervalV1`
+*/
 func (s *DevicesService) OverrideResyncInterval() (*ResponseDevicesOverrideResyncIntervalV1, *resty.Response, error) {
 	return s.OverrideResyncIntervalV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetThreatTypesV1`
+*/
 func (s *DevicesService) GetThreatTypes() (*ResponseDevicesGetThreatTypesV1, *resty.Response, error) {
 	return s.GetThreatTypesV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetModulesV1`
+*/
 func (s *DevicesService) GetModules(GetModulesV1QueryParams *GetModulesV1QueryParams) (*ResponseDevicesGetModulesV1, *resty.Response, error) {
 	return s.GetModulesV1(GetModulesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdatePlannedAccessPointForFloorV1`
+*/
 func (s *DevicesService) UpdatePlannedAccessPointForFloor(floorID string, requestDevicesUpdatePlannedAccessPointForFloorV1 *RequestDevicesUpdatePlannedAccessPointForFloorV1) (*ResponseDevicesUpdatePlannedAccessPointForFloorV1, *resty.Response, error) {
 	return s.UpdatePlannedAccessPointForFloorV1(floorID, requestDevicesUpdatePlannedAccessPointForFloorV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `SyncDevicesV1`
+*/
 func (s *DevicesService) SyncDevices(requestDevicesSyncDevicesV1 *RequestDevicesSyncDevicesV1, SyncDevicesV1QueryParams *SyncDevicesV1QueryParams) (*ResponseDevicesSyncDevicesV1, *resty.Response, error) {
 	return s.SyncDevicesV1(requestDevicesSyncDevicesV1, SyncDevicesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreatePlannedAccessPointForFloorV1`
+*/
 func (s *DevicesService) CreatePlannedAccessPointForFloor(floorID string, requestDevicesCreatePlannedAccessPointForFloorV1 *RequestDevicesCreatePlannedAccessPointForFloorV1) (*ResponseDevicesCreatePlannedAccessPointForFloorV1, *resty.Response, error) {
 	return s.CreatePlannedAccessPointForFloorV1(floorID, requestDevicesCreatePlannedAccessPointForFloorV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetsTheListOfInterfacesAcrossTheNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1`
+*/
 func (s *DevicesService) GetsTheListOfInterfacesAcrossTheNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctions(requestDevicesGetsTheListOfInterfacesAcrossTheNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1 *RequestDevicesGetsTheListOfInterfacesAcrossTheNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1) (*ResponseDevicesGetsTheListOfInterfacesAcrossTheNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1, *resty.Response, error) {
 	return s.GetsTheListOfInterfacesAcrossTheNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1(requestDevicesGetsTheListOfInterfacesAcrossTheNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetPollingIntervalByIDV1`
+*/
 func (s *DevicesService) GetPollingIntervalByID(id string) (*ResponseDevicesGetPollingIntervalByIDV1, *resty.Response, error) {
 	return s.GetPollingIntervalByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTheCountOfHealthScoreDefinitionsBasedOnProvidedFiltersV1`
+*/
 func (s *DevicesService) GetTheCountOfHealthScoreDefinitionsBasedOnProvidedFilters(GetTheCountOfHealthScoreDefinitionsBasedOnProvidedFiltersV1HeaderParams *GetTheCountOfHealthScoreDefinitionsBasedOnProvidedFiltersV1HeaderParams, GetTheCountOfHealthScoreDefinitionsBasedOnProvidedFiltersV1QueryParams *GetTheCountOfHealthScoreDefinitionsBasedOnProvidedFiltersV1QueryParams) (*ResponseDevicesGetTheCountOfHealthScoreDefinitionsBasedOnProvidedFiltersV1, *resty.Response, error) {
 	return s.GetTheCountOfHealthScoreDefinitionsBasedOnProvidedFiltersV1(GetTheCountOfHealthScoreDefinitionsBasedOnProvidedFiltersV1HeaderParams, GetTheCountOfHealthScoreDefinitionsBasedOnProvidedFiltersV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ThreatSummaryV1`
+*/
 func (s *DevicesService) ThreatSummary(requestDevicesThreatSummaryV1 *RequestDevicesThreatSummaryV1) (*ResponseDevicesThreatSummaryV1, *resty.Response, error) {
 	return s.ThreatSummaryV1(requestDevicesThreatSummaryV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetInterfaceInfoByIDV1`
+*/
 func (s *DevicesService) GetInterfaceInfoByID(deviceID string) (*ResponseDevicesGetInterfaceInfoByIDV1, *resty.Response, error) {
 	return s.GetInterfaceInfoByIDV1(deviceID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetHealthScoreDefinitionForTheGivenIDV1`
+*/
 func (s *DevicesService) GetHealthScoreDefinitionForTheGivenID(id string, GetHealthScoreDefinitionForTheGivenIdV1HeaderParams *GetHealthScoreDefinitionForTheGivenIDV1HeaderParams) (*ResponseDevicesGetHealthScoreDefinitionForTheGivenIDV1, *resty.Response, error) {
 	return s.GetHealthScoreDefinitionForTheGivenIDV1(id, GetHealthScoreDefinitionForTheGivenIdV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CountTheNumberOfEventsWithFiltersV1`
+*/
 func (s *DevicesService) CountTheNumberOfEventsWithFilters(requestDevicesCountTheNumberOfEventsWithFiltersV1 *RequestDevicesCountTheNumberOfEventsWithFiltersV1, CountTheNumberOfEventsWithFiltersV1HeaderParams *CountTheNumberOfEventsWithFiltersV1HeaderParams) (*ResponseDevicesCountTheNumberOfEventsWithFiltersV1, *resty.Response, error) {
 	return s.CountTheNumberOfEventsWithFiltersV1(requestDevicesCountTheNumberOfEventsWithFiltersV1, CountTheNumberOfEventsWithFiltersV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RemoveUserDefinedFieldFromDeviceV1`
+*/
 func (s *DevicesService) RemoveUserDefinedFieldFromDevice(deviceID string, RemoveUserDefinedFieldFromDeviceV1QueryParams *RemoveUserDefinedFieldFromDeviceV1QueryParams) (*ResponseDevicesRemoveUserDefinedFieldFromDeviceV1, *resty.Response, error) {
 	return s.RemoveUserDefinedFieldFromDeviceV1(deviceID, RemoveUserDefinedFieldFromDeviceV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteUserDefinedFieldV1`
+*/
 func (s *DevicesService) DeleteUserDefinedField(id string) (*ResponseDevicesDeleteUserDefinedFieldV1, *resty.Response, error) {
 	return s.DeleteUserDefinedFieldV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteDeviceByIDV1`
+*/
 func (s *DevicesService) DeleteDeviceByID(id string, DeleteDeviceByIdV1QueryParams *DeleteDeviceByIDV1QueryParams) (*ResponseDevicesDeleteDeviceByIDV1, *resty.Response, error) {
 	return s.DeleteDeviceByIDV1(id, DeleteDeviceByIdV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateGlobalResyncIntervalV1`
+*/
 func (s *DevicesService) UpdateGlobalResyncInterval(requestDevicesUpdateGlobalResyncIntervalV1 *RequestDevicesUpdateGlobalResyncIntervalV1) (*ResponseDevicesUpdateGlobalResyncIntervalV1, *resty.Response, error) {
 	return s.UpdateGlobalResyncIntervalV1(requestDevicesUpdateGlobalResyncIntervalV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetModuleInfoByIDV1`
+*/
 func (s *DevicesService) GetModuleInfoByID(id string) (*ResponseDevicesGetModuleInfoByIDV1, *resty.Response, error) {
 	return s.GetModuleInfoByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceListV1`
+*/
 func (s *DevicesService) GetDeviceList(GetDeviceListV1QueryParams *GetDeviceListV1QueryParams) (*ResponseDevicesGetDeviceListV1, *resty.Response, error) {
 	return s.GetDeviceListV1(GetDeviceListV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetsTheTotalNetworkDeviceInterfaceCountsInTheSpecifiedTimeRangeWhenThereIsNoStartAndEndTimeSpecifiedReturnsTheLatestInterfacesTotalCountV1`
+*/
 func (s *DevicesService) GetsTheTotalNetworkDeviceInterfaceCountsInTheSpecifiedTimeRangeWhenThereIsNoStartAndEndTimeSpecifiedReturnsTheLatestInterfacesTotalCount(GetsTheTotalNetworkDeviceInterfaceCountsInTheSpecifiedTimeRangeWhenThereIsNoStartAndEndTimeSpecifiedReturnsTheLatestInterfacesTotalCountV1QueryParams *GetsTheTotalNetworkDeviceInterfaceCountsInTheSpecifiedTimeRangeWhenThereIsNoStartAndEndTimeSpecifiedReturnsTheLatestInterfacesTotalCountV1QueryParams) (*ResponseDevicesGetsTheTotalNetworkDeviceInterfaceCountsInTheSpecifiedTimeRangeWhenThereIsNoStartAndEndTimeSpecifiedReturnsTheLatestInterfacesTotalCountV1, *resty.Response, error) {
 	return s.GetsTheTotalNetworkDeviceInterfaceCountsInTheSpecifiedTimeRangeWhenThereIsNoStartAndEndTimeSpecifiedReturnsTheLatestInterfacesTotalCountV1(GetsTheTotalNetworkDeviceInterfaceCountsInTheSpecifiedTimeRangeWhenThereIsNoStartAndEndTimeSpecifiedReturnsTheLatestInterfacesTotalCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddDeviceKnowYourNetworkV1`
+*/
 func (s *DevicesService) AddDeviceKnowYourNetwork(requestDevicesAddDeviceKnowYourNetworkV1 *RequestDevicesAddDeviceKnowYourNetworkV1) (*ResponseDevicesAddDeviceKnowYourNetworkV1, *resty.Response, error) {
 	return s.AddDeviceKnowYourNetworkV1(requestDevicesAddDeviceKnowYourNetworkV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateResyncIntervalForTheNetworkDeviceV1`
+*/
 func (s *DevicesService) UpdateResyncIntervalForTheNetworkDevice(id string, requestDevicesUpdateResyncIntervalForTheNetworkDeviceV1 *RequestDevicesUpdateResyncIntervalForTheNetworkDeviceV1) (*ResponseDevicesUpdateResyncIntervalForTheNetworkDeviceV1, *resty.Response, error) {
 	return s.UpdateResyncIntervalForTheNetworkDeviceV1(id, requestDevicesUpdateResyncIntervalForTheNetworkDeviceV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `TheTrendAnalyticsDataForTheNetworkDeviceInTheSpecifiedTimeRangeV1`
+*/
 func (s *DevicesService) TheTrendAnalyticsDataForTheNetworkDeviceInTheSpecifiedTimeRange(id string, requestDevicesTheTrendAnalyticsDataForTheNetworkDeviceInTheSpecifiedTimeRangeV1 *RequestDevicesTheTrendAnalyticsDataForTheNetworkDeviceInTheSpecifiedTimeRangeV1) (*ResponseDevicesTheTrendAnalyticsDataForTheNetworkDeviceInTheSpecifiedTimeRangeV1, *resty.Response, error) {
 	return s.TheTrendAnalyticsDataForTheNetworkDeviceInTheSpecifiedTimeRangeV1(id, requestDevicesTheTrendAnalyticsDataForTheNetworkDeviceInTheSpecifiedTimeRangeV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetIsisInterfacesV1`
+*/
 func (s *DevicesService) GetIsisInterfaces() (*ResponseDevicesGetIsisInterfacesV1, *resty.Response, error) {
 	return s.GetIsisInterfacesV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceBySerialNumberV1`
+*/
 func (s *DevicesService) GetDeviceBySerialNumber(serialNumber string) (*ResponseDevicesGetDeviceBySerialNumberV1, *resty.Response, error) {
 	return s.GetDeviceBySerialNumberV1(serialNumber)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceConfigCountV1`
+*/
 func (s *DevicesService) GetDeviceConfigCount() (*ResponseDevicesGetDeviceConfigCountV1, *resty.Response, error) {
 	return s.GetDeviceConfigCountV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetChassisDetailsForDeviceV1`
+*/
 func (s *DevicesService) GetChassisDetailsForDevice(deviceID string) (*ResponseDevicesGetChassisDetailsForDeviceV1, *resty.Response, error) {
 	return s.GetChassisDetailsForDeviceV1(deviceID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceConfigByIDV1`
+*/
 func (s *DevicesService) GetDeviceConfigByID(networkDeviceID string) (*ResponseDevicesGetDeviceConfigByIDV1, *resty.Response, error) {
 	return s.GetDeviceConfigByIDV1(networkDeviceID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RogueAdditionalDetailsV1`
+*/
 func (s *DevicesService) RogueAdditionalDetails(requestDevicesRogueAdditionalDetailsV1 *RequestDevicesRogueAdditionalDetailsV1) (*ResponseDevicesRogueAdditionalDetailsV1, *resty.Response, error) {
 	return s.RogueAdditionalDetailsV1(requestDevicesRogueAdditionalDetailsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAllHealthScoreDefinitionsForGivenFiltersV1`
+*/
 func (s *DevicesService) GetAllHealthScoreDefinitionsForGivenFilters(GetAllHealthScoreDefinitionsForGivenFiltersV1HeaderParams *GetAllHealthScoreDefinitionsForGivenFiltersV1HeaderParams, GetAllHealthScoreDefinitionsForGivenFiltersV1QueryParams *GetAllHealthScoreDefinitionsForGivenFiltersV1QueryParams) (*ResponseDevicesGetAllHealthScoreDefinitionsForGivenFiltersV1, *resty.Response, error) {
 	return s.GetAllHealthScoreDefinitionsForGivenFiltersV1(GetAllHealthScoreDefinitionsForGivenFiltersV1HeaderParams, GetAllHealthScoreDefinitionsForGivenFiltersV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetPlannedAccessPointsForBuildingV1`
+*/
 func (s *DevicesService) GetPlannedAccessPointsForBuilding(buildingID string, GetPlannedAccessPointsForBuildingV1QueryParams *GetPlannedAccessPointsForBuildingV1QueryParams) (*ResponseDevicesGetPlannedAccessPointsForBuildingV1, *resty.Response, error) {
 	return s.GetPlannedAccessPointsForBuildingV1(buildingID, GetPlannedAccessPointsForBuildingV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RemoveAllowedMacAddressV1`
+*/
 func (s *DevicesService) RemoveAllowedMacAddress(macAddress string) (*ResponseDevicesRemoveAllowedMacAddressV1, *resty.Response, error) {
 	return s.RemoveAllowedMacAddressV1(macAddress)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DevicesV1`
+*/
 func (s *DevicesService) Devices(DevicesV1QueryParams *DevicesV1QueryParams) (*ResponseDevicesDevicesV1, *resty.Response, error) {
 	return s.DevicesV1(DevicesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateDeviceRoleV1`
+*/
 func (s *DevicesService) UpdateDeviceRole(requestDevicesUpdateDeviceRoleV1 *RequestDevicesUpdateDeviceRoleV1) (*ResponseDevicesUpdateDeviceRoleV1, *resty.Response, error) {
 	return s.UpdateDeviceRoleV1(requestDevicesUpdateDeviceRoleV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetsTheNetworkDeviceDetailsBasedOnTheProvidedQueryParametersV1`
+*/
 func (s *DevicesService) GetsTheNetworkDeviceDetailsBasedOnTheProvidedQueryParameters(GetsTheNetworkDeviceDetailsBasedOnTheProvidedQueryParametersV1QueryParams *GetsTheNetworkDeviceDetailsBasedOnTheProvidedQueryParametersV1QueryParams) (*ResponseDevicesGetsTheNetworkDeviceDetailsBasedOnTheProvidedQueryParametersV1, *resty.Response, error) {
 	return s.GetsTheNetworkDeviceDetailsBasedOnTheProvidedQueryParametersV1(GetsTheNetworkDeviceDetailsBasedOnTheProvidedQueryParametersV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceInterfaceCountForMultipleDevicesV1`
+*/
 func (s *DevicesService) GetDeviceInterfaceCountForMultipleDevices() (*ResponseDevicesGetDeviceInterfaceCountForMultipleDevicesV1, *resty.Response, error) {
 	return s.GetDeviceInterfaceCountForMultipleDevicesV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetResyncIntervalForTheNetworkDeviceV1`
+*/
 func (s *DevicesService) GetResyncIntervalForTheNetworkDevice(id string) (*ResponseDevicesGetResyncIntervalForTheNetworkDeviceV1, *resty.Response, error) {
 	return s.GetResyncIntervalForTheNetworkDeviceV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAllUserDefinedFieldsV1`
+*/
 func (s *DevicesService) GetAllUserDefinedFields(GetAllUserDefinedFieldsV1QueryParams *GetAllUserDefinedFieldsV1QueryParams) (*ResponseDevicesGetAllUserDefinedFieldsV1, *resty.Response, error) {
 	return s.GetAllUserDefinedFieldsV1(GetAllUserDefinedFieldsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetsTheListOfNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1`
+*/
 func (s *DevicesService) GetsTheListOfNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctions(requestDevicesGetsTheListOfNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1 *RequestDevicesGetsTheListOfNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1) (*ResponseDevicesGetsTheListOfNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1, *resty.Response, error) {
 	return s.GetsTheListOfNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1(requestDevicesGetsTheListOfNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1)
 }
 
 // Alias Function
-func (s *DevicesService) GetDeviceValuesThatMatchFullyOrPartiallyAnAttribute(GetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1QueryParams *GetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1QueryParams) (*ResponseDevicesGetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1, *resty.Response, error) {
+/*
+This method acts as an alias for the method `GetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1`
+*/
+func (s *DevicesService) GetDeviceValuesThatMatchFullyOrPartiallyAnAttribute(GetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1QueryParams *GetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1QueryParams) (*resty.Response, error) {
 	return s.GetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1(GetDeviceValuesThatMatchFullyOrPartiallyAnAttributeV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ReturnsPoeInterfaceDetailsForTheDeviceV1`
+*/
 func (s *DevicesService) ReturnsPoeInterfaceDetailsForTheDevice(deviceUUID string, ReturnsPOEInterfaceDetailsForTheDeviceV1QueryParams *ReturnsPoeInterfaceDetailsForTheDeviceV1QueryParams) (*ResponseDevicesReturnsPoeInterfaceDetailsForTheDeviceV1, *resty.Response, error) {
 	return s.ReturnsPoeInterfaceDetailsForTheDeviceV1(deviceUUID, ReturnsPOEInterfaceDetailsForTheDeviceV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetModuleCountV1`
+*/
 func (s *DevicesService) GetModuleCount(GetModuleCountV1QueryParams *GetModuleCountV1QueryParams) (*ResponseDevicesGetModuleCountV1, *resty.Response, error) {
 	return s.GetModuleCountV1(GetModuleCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetPollingIntervalForAllDevicesV1`
+*/
 func (s *DevicesService) GetPollingIntervalForAllDevices() (*ResponseDevicesGetPollingIntervalForAllDevicesV1, *resty.Response, error) {
 	return s.GetPollingIntervalForAllDevicesV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetPlannedAccessPointsForFloorV1`
+*/
 func (s *DevicesService) GetPlannedAccessPointsForFloor(floorID string, GetPlannedAccessPointsForFloorV1QueryParams *GetPlannedAccessPointsForFloorV1QueryParams) (*ResponseDevicesGetPlannedAccessPointsForFloorV1, *resty.Response, error) {
 	return s.GetPlannedAccessPointsForFloorV1(floorID, GetPlannedAccessPointsForFloorV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ClearMacAddressTableV1`
+*/
 func (s *DevicesService) ClearMacAddressTable(interfaceUUID string, requestDevicesClearMacAddressTableV1 *RequestDevicesClearMacAddressTableV1, ClearMacAddressTableV1QueryParams *ClearMacAddressTableV1QueryParams) (*ResponseDevicesClearMacAddressTableV1, *resty.Response, error) {
 	return s.ClearMacAddressTableV1(interfaceUUID, requestDevicesClearMacAddressTableV1, ClearMacAddressTableV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `WirelessRogueApContainmentStatusV1`
+*/
 func (s *DevicesService) WirelessRogueApContainmentStatus(macAddress string) (*ResponseDevicesWirelessRogueApContainmentStatusV1, *resty.Response, error) {
 	return s.WirelessRogueApContainmentStatusV1(macAddress)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetsTheTrendAnalyticsDataV1`
+*/
 func (s *DevicesService) GetsTheTrendAnalyticsData(requestDevicesGetsTheTrendAnalyticsDataV1 *RequestDevicesGetsTheTrendAnalyticsDataV1) (*ResponseDevicesGetsTheTrendAnalyticsDataV1, *resty.Response, error) {
 	return s.GetsTheTrendAnalyticsDataV1(requestDevicesGetsTheTrendAnalyticsDataV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceConfigForAllDevicesV1`
+*/
 func (s *DevicesService) GetDeviceConfigForAllDevices() (*ResponseDevicesGetDeviceConfigForAllDevicesV1, *resty.Response, error) {
 	return s.GetDeviceConfigForAllDevicesV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddUserDefinedFieldToDeviceV1`
+*/
 func (s *DevicesService) AddUserDefinedFieldToDevice(deviceID string, requestDevicesAddUserDefinedFieldToDeviceV1 *RequestDevicesAddUserDefinedFieldToDeviceV1) (*ResponseDevicesAddUserDefinedFieldToDeviceV1, *resty.Response, error) {
 	return s.AddUserDefinedFieldToDeviceV1(deviceID, requestDevicesAddUserDefinedFieldToDeviceV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetStackDetailsForDeviceV1`
+*/
 func (s *DevicesService) GetStackDetailsForDevice(deviceID string) (*ResponseDevicesGetStackDetailsForDeviceV1, *resty.Response, error) {
 	return s.GetStackDetailsForDeviceV1(deviceID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RogueAdditionalDetailCountV1`
+*/
 func (s *DevicesService) RogueAdditionalDetailCount(requestDevicesRogueAdditionalDetailCountV1 *RequestDevicesRogueAdditionalDetailCountV1) (*ResponseDevicesRogueAdditionalDetailCountV1, *resty.Response, error) {
 	return s.RogueAdditionalDetailCountV1(requestDevicesRogueAdditionalDetailCountV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetListOfChildEventsForTheGivenWirelessClientEventV1`
+*/
 func (s *DevicesService) GetListOfChildEventsForTheGivenWirelessClientEvent(id string, GetListOfChildEventsForTheGivenWirelessClientEventV1HeaderParams *GetListOfChildEventsForTheGivenWirelessClientEventV1HeaderParams) (*ResponseDevicesGetListOfChildEventsForTheGivenWirelessClientEventV1, *resty.Response, error) {
 	return s.GetListOfChildEventsForTheGivenWirelessClientEventV1(id, GetListOfChildEventsForTheGivenWirelessClientEventV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetNetworkDeviceByIPV1`
+*/
 func (s *DevicesService) GetNetworkDeviceByIP(ipAddress string) (*ResponseDevicesGetNetworkDeviceByIPV1, *resty.Response, error) {
 	return s.GetNetworkDeviceByIPV1(ipAddress)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceSummaryV1`
+*/
 func (s *DevicesService) GetDeviceSummary(id string) (*ResponseDevicesGetDeviceSummaryV1, *resty.Response, error) {
 	return s.GetDeviceSummaryV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetsInterfacesAlongWithStatisticsDataFromAllNetworkDevicesV1`
+*/
 func (s *DevicesService) GetsInterfacesAlongWithStatisticsDataFromAllNetworkDevices(GetsInterfacesAlongWithStatisticsDataFromAllNetworkDevicesV1QueryParams *GetsInterfacesAlongWithStatisticsDataFromAllNetworkDevicesV1QueryParams) (*ResponseDevicesGetsInterfacesAlongWithStatisticsDataFromAllNetworkDevicesV1, *resty.Response, error) {
 	return s.GetsInterfacesAlongWithStatisticsDataFromAllNetworkDevicesV1(GetsInterfacesAlongWithStatisticsDataFromAllNetworkDevicesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddAllowedMacAddressV1`
+*/
 func (s *DevicesService) AddAllowedMacAddress(requestDevicesAddAllowedMacAddressV1 *RequestDevicesAddAllowedMacAddressV1) (*ResponseDevicesAddAllowedMacAddressV1, *resty.Response, error) {
 	return s.AddAllowedMacAddressV1(requestDevicesAddAllowedMacAddressV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetFunctionalCapabilityByIDV1`
+*/
 func (s *DevicesService) GetFunctionalCapabilityByID(id string) (*ResponseDevicesGetFunctionalCapabilityByIDV1, *resty.Response, error) {
 	return s.GetFunctionalCapabilityByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `QueryAssuranceEventsV1`
+*/
 func (s *DevicesService) QueryAssuranceEvents(QueryAssuranceEventsV1HeaderParams *QueryAssuranceEventsV1HeaderParams, QueryAssuranceEventsV1QueryParams *QueryAssuranceEventsV1QueryParams) (*ResponseDevicesQueryAssuranceEventsV1, *resty.Response, error) {
 	return s.QueryAssuranceEventsV1(QueryAssuranceEventsV1HeaderParams, QueryAssuranceEventsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAllowedMacAddressCountV1`
+*/
 func (s *DevicesService) GetAllowedMacAddressCount() (*ResponseDevicesGetAllowedMacAddressCountV1, *resty.Response, error) {
 	return s.GetAllowedMacAddressCountV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateHealthScoreDefinitionsV1`
+*/
 func (s *DevicesService) UpdateHealthScoreDefinitions(requestDevicesUpdateHealthScoreDefinitionsV1 *RequestDevicesUpdateHealthScoreDefinitionsV1, UpdateHealthScoreDefinitionsV1HeaderParams *UpdateHealthScoreDefinitionsV1HeaderParams) (*ResponseDevicesUpdateHealthScoreDefinitionsV1, *resty.Response, error) {
 	return s.UpdateHealthScoreDefinitionsV1(requestDevicesUpdateHealthScoreDefinitionsV1, UpdateHealthScoreDefinitionsV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceInterfaceCountV1`
+*/
 func (s *DevicesService) GetDeviceInterfaceCount(deviceID string) (*ResponseDevicesGetDeviceInterfaceCountV1, *resty.Response, error) {
 	return s.GetDeviceInterfaceCountV1(deviceID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetInterfaceByIDV1`
+*/
 func (s *DevicesService) GetInterfaceByID(id string) (*ResponseDevicesGetInterfaceByIDV1, *resty.Response, error) {
 	return s.GetInterfaceByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAllowedMacAddressV1`
+*/
 func (s *DevicesService) GetAllowedMacAddress(GetAllowedMacAddressV1QueryParams *GetAllowedMacAddressV1QueryParams) (*ResponseDevicesGetAllowedMacAddressV1, *resty.Response, error) {
 	return s.GetAllowedMacAddressV1(GetAllowedMacAddressV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceDetailV1`
+*/
 func (s *DevicesService) GetDeviceDetail(GetDeviceDetailV1QueryParams *GetDeviceDetailV1QueryParams) (*ResponseDevicesGetDeviceDetailV1, *resty.Response, error) {
 	return s.GetDeviceDetailV1(GetDeviceDetailV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateHealthScoreDefinitionForTheGivenIDV1`
+*/
 func (s *DevicesService) UpdateHealthScoreDefinitionForTheGivenID(id string, requestDevicesUpdateHealthScoreDefinitionForTheGivenIdV1 *RequestDevicesUpdateHealthScoreDefinitionForTheGivenIDV1) (*ResponseDevicesUpdateHealthScoreDefinitionForTheGivenIDV1, *resty.Response, error) {
 	return s.UpdateHealthScoreDefinitionForTheGivenIDV1(id, requestDevicesUpdateHealthScoreDefinitionForTheGivenIdV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDetailsOfASingleAssuranceEventV1`
+*/
 func (s *DevicesService) GetDetailsOfASingleAssuranceEvent(id string, GetDetailsOfASingleAssuranceEventV1HeaderParams *GetDetailsOfASingleAssuranceEventV1HeaderParams, GetDetailsOfASingleAssuranceEventV1QueryParams *GetDetailsOfASingleAssuranceEventV1QueryParams) (*ResponseDevicesGetDetailsOfASingleAssuranceEventV1, *resty.Response, error) {
 	return s.GetDetailsOfASingleAssuranceEventV1(id, GetDetailsOfASingleAssuranceEventV1HeaderParams, GetDetailsOfASingleAssuranceEventV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceInterfacesBySpecifiedRangeV1`
+*/
 func (s *DevicesService) GetDeviceInterfacesBySpecifiedRange(deviceID string, startIndex int, recordsToReturn int) (*ResponseDevicesGetDeviceInterfacesBySpecifiedRangeV1, *resty.Response, error) {
 	return s.GetDeviceInterfacesBySpecifiedRangeV1(deviceID, startIndex, recordsToReturn)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `QueryAssuranceEventsWithFiltersV1`
+*/
 func (s *DevicesService) QueryAssuranceEventsWithFilters(requestDevicesQueryAssuranceEventsWithFiltersV1 *RequestDevicesQueryAssuranceEventsWithFiltersV1, QueryAssuranceEventsWithFiltersV1HeaderParams *QueryAssuranceEventsWithFiltersV1HeaderParams) (*ResponseDevicesQueryAssuranceEventsWithFiltersV1, *resty.Response, error) {
 	return s.QueryAssuranceEventsWithFiltersV1(requestDevicesQueryAssuranceEventsWithFiltersV1, QueryAssuranceEventsWithFiltersV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceCountKnowYourNetworkV1`
+*/
 func (s *DevicesService) GetDeviceCountKnowYourNetwork(GetDeviceCountKnowYourNetworkV1QueryParams *GetDeviceCountKnowYourNetworkV1QueryParams) (*ResponseDevicesGetDeviceCountKnowYourNetworkV1, *resty.Response, error) {
 	return s.GetDeviceCountKnowYourNetworkV1(GetDeviceCountKnowYourNetworkV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `StartWirelessRogueApContainmentV1`
+*/
 func (s *DevicesService) StartWirelessRogueApContainment(requestDevicesStartWirelessRogueAPContainmentV1 *RequestDevicesStartWirelessRogueApContainmentV1) (*ResponseDevicesStartWirelessRogueApContainmentV1, *resty.Response, error) {
 	return s.StartWirelessRogueApContainmentV1(requestDevicesStartWirelessRogueAPContainmentV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateUserDefinedFieldV1`
+*/
 func (s *DevicesService) CreateUserDefinedField(requestDevicesCreateUserDefinedFieldV1 *RequestDevicesCreateUserDefinedFieldV1) (*ResponseDevicesCreateUserDefinedFieldV1, *resty.Response, error) {
 	return s.CreateUserDefinedFieldV1(requestDevicesCreateUserDefinedFieldV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateDeviceManagementAddressV1`
+*/
 func (s *DevicesService) UpdateDeviceManagementAddress(deviceid string, requestDevicesUpdateDeviceManagementAddressV1 *RequestDevicesUpdateDeviceManagementAddressV1) (*ResponseDevicesUpdateDeviceManagementAddressV1, *resty.Response, error) {
 	return s.UpdateDeviceManagementAddressV1(deviceid, requestDevicesUpdateDeviceManagementAddressV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetInterfaceDetailsByDeviceIDAndInterfaceNameV1`
+*/
 func (s *DevicesService) GetInterfaceDetailsByDeviceIDAndInterfaceName(deviceID string, GetInterfaceDetailsByDeviceIdAndInterfaceNameV1QueryParams *GetInterfaceDetailsByDeviceIDAndInterfaceNameV1QueryParams) (*ResponseDevicesGetInterfaceDetailsByDeviceIDAndInterfaceNameV1, *resty.Response, error) {
 	return s.GetInterfaceDetailsByDeviceIDAndInterfaceNameV1(deviceID, GetInterfaceDetailsByDeviceIdAndInterfaceNameV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateDeviceDetailsV1`
+*/
 func (s *DevicesService) UpdateDeviceDetails(requestDevicesUpdateDeviceDetailsV1 *RequestDevicesUpdateDeviceDetailsV1) (*ResponseDevicesUpdateDeviceDetailsV1, *resty.Response, error) {
 	return s.UpdateDeviceDetailsV1(requestDevicesUpdateDeviceDetailsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTheDetailsOfPhysicalComponentsOfTheGivenDeviceV1`
+*/
 func (s *DevicesService) GetTheDetailsOfPhysicalComponentsOfTheGivenDevice(deviceUUID string, GetTheDetailsOfPhysicalComponentsOfTheGivenDeviceV1QueryParams *GetTheDetailsOfPhysicalComponentsOfTheGivenDeviceV1QueryParams) (*ResponseDevicesGetTheDetailsOfPhysicalComponentsOfTheGivenDeviceV1, *resty.Response, error) {
 	return s.GetTheDetailsOfPhysicalComponentsOfTheGivenDeviceV1(deviceUUID, GetTheDetailsOfPhysicalComponentsOfTheGivenDeviceV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetFunctionalCapabilityForDevicesV1`
+*/
 func (s *DevicesService) GetFunctionalCapabilityForDevices(GetFunctionalCapabilityForDevicesV1QueryParams *GetFunctionalCapabilityForDevicesV1QueryParams) (*ResponseDevicesGetFunctionalCapabilityForDevicesV1, *resty.Response, error) {
 	return s.GetFunctionalCapabilityForDevicesV1(GetFunctionalCapabilityForDevicesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateInterfaceDetailsV1`
+*/
 func (s *DevicesService) UpdateInterfaceDetails(interfaceUUID string, requestDevicesUpdateInterfaceDetailsV1 *RequestDevicesUpdateInterfaceDetailsV1, UpdateInterfaceDetailsV1QueryParams *UpdateInterfaceDetailsV1QueryParams) (*ResponseDevicesUpdateInterfaceDetailsV1, *resty.Response, error) {
 	return s.UpdateInterfaceDetailsV1(interfaceUUID, requestDevicesUpdateInterfaceDetailsV1, UpdateInterfaceDetailsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CountTheNumberOfEventsV1`
+*/
 func (s *DevicesService) CountTheNumberOfEvents(CountTheNumberOfEventsV1HeaderParams *CountTheNumberOfEventsV1HeaderParams, CountTheNumberOfEventsV1QueryParams *CountTheNumberOfEventsV1QueryParams) (*ResponseDevicesCountTheNumberOfEventsV1, *resty.Response, error) {
 	return s.CountTheNumberOfEventsV1(CountTheNumberOfEventsV1HeaderParams, CountTheNumberOfEventsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetOspfInterfacesV1`
+*/
 func (s *DevicesService) GetOspfInterfaces() (*ResponseDevicesGetOspfInterfacesV1, *resty.Response, error) {
 	return s.GetOspfInterfacesV1()
 }

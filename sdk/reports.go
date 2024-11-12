@@ -950,71 +950,113 @@ func (s *ReportsService) DeleteAScheduledReportV1(reportID string) (*ResponseRep
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateOrScheduleAReportV1`
+*/
 func (s *ReportsService) CreateOrScheduleAReport(requestReportsCreateOrScheduleAReportV1 *RequestReportsCreateOrScheduleAReportV1) (*ResponseReportsCreateOrScheduleAReportV1, *resty.Response, error) {
 	return s.CreateOrScheduleAReportV1(requestReportsCreateOrScheduleAReportV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetExecutionIDByReportIDV1`
+*/
 func (s *ReportsService) GetExecutionIDByReportID(reportID string) (*ResponseReportsGetExecutionIDByReportIDV1, *resty.Response, error) {
 	return s.GetExecutionIDByReportIDV1(reportID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAllViewGroupsV1`
+*/
 func (s *ReportsService) GetAllViewGroups() (*ResponseReportsGetAllViewGroupsV1, *resty.Response, error) {
 	return s.GetAllViewGroupsV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ExecutingTheFlexibleReportV1`
+*/
 func (s *ReportsService) ExecutingTheFlexibleReport(reportID string) (*ResponseReportsExecutingTheFlexibleReportV1, *resty.Response, error) {
 	return s.ExecutingTheFlexibleReportV1(reportID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAScheduledReportV1`
+*/
 func (s *ReportsService) GetAScheduledReport(reportID string) (*ResponseReportsGetAScheduledReportV1, *resty.Response, error) {
 	return s.GetAScheduledReportV1(reportID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateScheduleOfFlexibleReportV1`
+*/
 func (s *ReportsService) UpdateScheduleOfFlexibleReport(reportID string, requestReportsUpdateScheduleOfFlexibleReportV1 *RequestReportsUpdateScheduleOfFlexibleReportV1) (*ResponseReportsUpdateScheduleOfFlexibleReportV1, *resty.Response, error) {
 	return s.UpdateScheduleOfFlexibleReportV1(reportID, requestReportsUpdateScheduleOfFlexibleReportV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAllExecutionDetailsForAGivenReportV1`
+*/
 func (s *ReportsService) GetAllExecutionDetailsForAGivenReport(reportID string) (*ResponseReportsGetAllExecutionDetailsForAGivenReportV1, *resty.Response, error) {
 	return s.GetAllExecutionDetailsForAGivenReportV1(reportID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAllFlexibleReportSchedulesV1`
+*/
 func (s *ReportsService) GetAllFlexibleReportSchedules() (*ResponseReportsGetAllFlexibleReportSchedulesV1, *resty.Response, error) {
 	return s.GetAllFlexibleReportSchedulesV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DownloadFlexibleReportV1`
+*/
 func (s *ReportsService) DownloadFlexibleReport(reportID string, executionID string) (*resty.Response, error) {
 	return s.DownloadFlexibleReportV1(reportID, executionID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetListOfScheduledReportsV1`
+*/
 func (s *ReportsService) GetListOfScheduledReports(GetListOfScheduledReportsV1QueryParams *GetListOfScheduledReportsV1QueryParams) (*ResponseReportsGetListOfScheduledReportsV1, *resty.Response, error) {
 	return s.GetListOfScheduledReportsV1(GetListOfScheduledReportsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DownloadReportContentV1`
+*/
 func (s *ReportsService) DownloadReportContent(reportID string, executionID string) (FileDownload, *resty.Response, error) {
 	return s.DownloadReportContentV1(reportID, executionID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetViewsForAGivenViewGroupV1`
+*/
 func (s *ReportsService) GetViewsForAGivenViewGroup(viewGroupID string) (*ResponseReportsGetViewsForAGivenViewGroupV1, *resty.Response, error) {
 	return s.GetViewsForAGivenViewGroupV1(viewGroupID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteAScheduledReportV1`
+*/
 func (s *ReportsService) DeleteAScheduledReport(reportID string) (*ResponseReportsDeleteAScheduledReportV1, *resty.Response, error) {
 	return s.DeleteAScheduledReportV1(reportID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetFlexibleReportScheduleByReportIDV1`
+*/
 func (s *ReportsService) GetFlexibleReportScheduleByReportID(reportID string) (*ResponseReportsGetFlexibleReportScheduleByReportIDV1, *resty.Response, error) {
 	return s.GetFlexibleReportScheduleByReportIDV1(reportID)
 }

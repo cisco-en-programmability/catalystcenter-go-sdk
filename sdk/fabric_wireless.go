@@ -514,51 +514,81 @@ func (s *FabricWirelessService) RemoveWLCFromFabricDomainV1(RemoveWLCFromFabricD
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RemoveWLCFromFabricDomainV1`
+*/
 func (s *FabricWirelessService) RemoveWLCFromFabricDomain(RemoveWLCFromFabricDomainV1HeaderParams *RemoveWLCFromFabricDomainV1HeaderParams, RemoveWLCFromFabricDomainV1QueryParams *RemoveWLCFromFabricDomainV1QueryParams) (*ResponseFabricWirelessRemoveWLCFromFabricDomainV1, *resty.Response, error) {
 	return s.RemoveWLCFromFabricDomainV1(RemoveWLCFromFabricDomainV1HeaderParams, RemoveWLCFromFabricDomainV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ReturnsAllTheFabricSitesThatHaveVLANToSSIDMappingV1`
+*/
 func (s *FabricWirelessService) ReturnsAllTheFabricSitesThatHaveVLANToSSIDMapping(ReturnsAllTheFabricSitesThatHaveVLANToSSIDMappingV1QueryParams *ReturnsAllTheFabricSitesThatHaveVLANToSSIDMappingV1QueryParams) (*ResponseFabricWirelessReturnsAllTheFabricSitesThatHaveVLANToSSIDMappingV1, *resty.Response, error) {
 	return s.ReturnsAllTheFabricSitesThatHaveVLANToSSIDMappingV1(ReturnsAllTheFabricSitesThatHaveVLANToSSIDMappingV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddWLCToFabricDomainV1`
+*/
 func (s *FabricWirelessService) AddWLCToFabricDomain(requestFabricWirelessAddWLCToFabricDomainV1 *RequestFabricWirelessAddWLCToFabricDomainV1) (*ResponseFabricWirelessAddWLCToFabricDomainV1, *resty.Response, error) {
 	return s.AddWLCToFabricDomainV1(requestFabricWirelessAddWLCToFabricDomainV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddSSIDToIPPoolMappingV1`
+*/
 func (s *FabricWirelessService) AddSSIDToIPPoolMapping(requestFabricWirelessAddSSIDToIPPoolMappingV1 *RequestFabricWirelessAddSSIDToIPPoolMappingV1) (*ResponseFabricWirelessAddSSIDToIPPoolMappingV1, *resty.Response, error) {
 	return s.AddSSIDToIPPoolMappingV1(requestFabricWirelessAddSSIDToIPPoolMappingV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateSSIDToIPPoolMappingV1`
+*/
 func (s *FabricWirelessService) UpdateSSIDToIPPoolMapping(requestFabricWirelessUpdateSSIDToIPPoolMappingV1 *RequestFabricWirelessUpdateSSIDToIPPoolMappingV1) (*ResponseFabricWirelessUpdateSSIDToIPPoolMappingV1, *resty.Response, error) {
 	return s.UpdateSSIDToIPPoolMappingV1(requestFabricWirelessUpdateSSIDToIPPoolMappingV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddUpdateOrRemoveSSIDMappingToAVLANV1`
+*/
 func (s *FabricWirelessService) AddUpdateOrRemoveSSIDMappingToAVLAN(fabricID string, requestFabricWirelessAddUpdateOrRemoveSSIDMappingToAVLANV1 *RequestFabricWirelessAddUpdateOrRemoveSSIDMappingToAVLANV1) (*ResponseFabricWirelessAddUpdateOrRemoveSSIDMappingToAVLANV1, *resty.Response, error) {
 	return s.AddUpdateOrRemoveSSIDMappingToAVLANV1(fabricID, requestFabricWirelessAddUpdateOrRemoveSSIDMappingToAVLANV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ReturnsTheCountOfVLANsMappedToSSIDsInAFabricSiteV1`
+*/
 func (s *FabricWirelessService) ReturnsTheCountOfVLANsMappedToSSIDsInAFabricSite(fabricID string) (*ResponseFabricWirelessReturnsTheCountOfVLANsMappedToSSIDsInAFabricSiteV1, *resty.Response, error) {
 	return s.ReturnsTheCountOfVLANsMappedToSSIDsInAFabricSiteV1(fabricID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ReturnTheCountOfAllTheFabricSiteWhichHasSSIDToIPPoolMappingV1`
+*/
 func (s *FabricWirelessService) ReturnTheCountOfAllTheFabricSiteWhichHasSSIDToIPPoolMapping() (*ResponseFabricWirelessReturnTheCountOfAllTheFabricSiteWhichHasSSIDToIPPoolMappingV1, *resty.Response, error) {
 	return s.ReturnTheCountOfAllTheFabricSiteWhichHasSSIDToIPPoolMappingV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSSIDToIPPoolMappingV1`
+*/
 func (s *FabricWirelessService) GetSSIDToIPPoolMapping(GetSSIDToIPPoolMappingV1QueryParams *GetSSIDToIPPoolMappingV1QueryParams) (*ResponseFabricWirelessGetSSIDToIPPoolMappingV1, *resty.Response, error) {
 	return s.GetSSIDToIPPoolMappingV1(GetSSIDToIPPoolMappingV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrieveTheVLANsAndSSIDsMappedToTheVLANWithinAFabricSiteV1`
+*/
 func (s *FabricWirelessService) RetrieveTheVLANsAndSSIDsMappedToTheVLANWithinAFabricSite(fabricID string, RetrieveTheVLANsAndSSIDsMappedToTheVLANWithinAFabricSiteV1QueryParams *RetrieveTheVLANsAndSSIDsMappedToTheVLANWithinAFabricSiteV1QueryParams) (*ResponseFabricWirelessRetrieveTheVLANsAndSSIDsMappedToTheVLANWithinAFabricSiteV1, *resty.Response, error) {
 	return s.RetrieveTheVLANsAndSSIDsMappedToTheVLANWithinAFabricSiteV1(fabricID, RetrieveTheVLANsAndSSIDsMappedToTheVLANWithinAFabricSiteV1QueryParams)
 }

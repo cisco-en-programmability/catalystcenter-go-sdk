@@ -354,31 +354,49 @@ func (s *ItsmIntegrationService) DeleteItsmIntegrationSettingV1(instanceID strin
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateItsmIntegrationSettingV1`
+*/
 func (s *ItsmIntegrationService) CreateItsmIntegrationSetting(requestItsmIntegrationCreateITSMIntegrationSettingV1 *RequestItsmIntegrationCreateItsmIntegrationSettingV1) (*ResponseItsmIntegrationCreateItsmIntegrationSettingV1, *resty.Response, error) {
 	return s.CreateItsmIntegrationSettingV1(requestItsmIntegrationCreateITSMIntegrationSettingV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAllItsmIntegrationSettingsV1`
+*/
 func (s *ItsmIntegrationService) GetAllItsmIntegrationSettings() (*ResponseItsmIntegrationGetAllItsmIntegrationSettingsV1, *resty.Response, error) {
 	return s.GetAllItsmIntegrationSettingsV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetItsmIntegrationStatusV1`
+*/
 func (s *ItsmIntegrationService) GetItsmIntegrationStatus() (*ResponseItsmIntegrationGetItsmIntegrationStatusV1, *resty.Response, error) {
 	return s.GetItsmIntegrationStatusV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateItsmIntegrationSettingV1`
+*/
 func (s *ItsmIntegrationService) UpdateItsmIntegrationSetting(instanceID string, requestItsmIntegrationUpdateITSMIntegrationSettingV1 *RequestItsmIntegrationUpdateItsmIntegrationSettingV1) (*ResponseItsmIntegrationUpdateItsmIntegrationSettingV1, *resty.Response, error) {
 	return s.UpdateItsmIntegrationSettingV1(instanceID, requestItsmIntegrationUpdateITSMIntegrationSettingV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetItsmIntegrationSettingByIDV1`
+*/
 func (s *ItsmIntegrationService) GetItsmIntegrationSettingByID(instanceID string) (*ResponseItsmIntegrationGetItsmIntegrationSettingByIDV1, *resty.Response, error) {
 	return s.GetItsmIntegrationSettingByIDV1(instanceID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteItsmIntegrationSettingV1`
+*/
 func (s *ItsmIntegrationService) DeleteItsmIntegrationSetting(instanceID string) (*resty.Response, error) {
 	return s.DeleteItsmIntegrationSettingV1(instanceID)
 }

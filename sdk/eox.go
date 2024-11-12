@@ -175,16 +175,25 @@ func (s *EoXService) GetEoXSummaryV1() (*ResponseEoXGetEoXSummaryV1, *resty.Resp
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetEoXDetailsPerDeviceV1`
+*/
 func (s *EoXService) GetEoXDetailsPerDevice(deviceID string) (*ResponseEoXGetEoXDetailsPerDeviceV1, *resty.Response, error) {
 	return s.GetEoXDetailsPerDeviceV1(deviceID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetEoXStatusForAllDevicesV1`
+*/
 func (s *EoXService) GetEoXStatusForAllDevices() (*ResponseEoXGetEoXStatusForAllDevicesV1, *resty.Response, error) {
 	return s.GetEoXStatusForAllDevicesV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetEoXSummaryV1`
+*/
 func (s *EoXService) GetEoXSummary() (*ResponseEoXGetEoXSummaryV1, *resty.Response, error) {
 	return s.GetEoXSummaryV1()
 }

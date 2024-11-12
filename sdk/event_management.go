@@ -2628,201 +2628,321 @@ func (s *EventManagementService) DeleteEventSubscriptionsV1(DeleteEventSubscript
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetEventSubscriptionsV1`
+*/
 func (s *EventManagementService) GetEventSubscriptions(GetEventSubscriptionsV1QueryParams *GetEventSubscriptionsV1QueryParams) (*ResponseEventManagementGetEventSubscriptionsV1, *resty.Response, error) {
 	return s.GetEventSubscriptionsV1(GetEventSubscriptionsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateSyslogDestinationV1`
+*/
 func (s *EventManagementService) UpdateSyslogDestination(requestEventManagementUpdateSyslogDestinationV1 *RequestEventManagementUpdateSyslogDestinationV1) (*ResponseEventManagementUpdateSyslogDestinationV1, *resty.Response, error) {
 	return s.UpdateSyslogDestinationV1(requestEventManagementUpdateSyslogDestinationV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateRestWebhookEventSubscriptionV1`
+*/
 func (s *EventManagementService) CreateRestWebhookEventSubscription(requestEventManagementCreateRestWebhookEventSubscriptionV1 *RequestEventManagementCreateRestWebhookEventSubscriptionV1) (*ResponseEventManagementCreateRestWebhookEventSubscriptionV1, *resty.Response, error) {
 	return s.CreateRestWebhookEventSubscriptionV1(requestEventManagementCreateRestWebhookEventSubscriptionV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateEmailDestinationV1`
+*/
 func (s *EventManagementService) UpdateEmailDestination(requestEventManagementUpdateEmailDestinationV1 *RequestEventManagementUpdateEmailDestinationV1) (*ResponseEventManagementUpdateEmailDestinationV1, *resty.Response, error) {
 	return s.UpdateEmailDestinationV1(requestEventManagementUpdateEmailDestinationV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetRestWebhookSubscriptionDetailsV1`
+*/
 func (s *EventManagementService) GetRestWebhookSubscriptionDetails(GetRestWebhookSubscriptionDetailsV1QueryParams *GetRestWebhookSubscriptionDetailsV1QueryParams) (*ResponseEventManagementGetRestWebhookSubscriptionDetailsV1, *resty.Response, error) {
 	return s.GetRestWebhookSubscriptionDetailsV1(GetRestWebhookSubscriptionDetailsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetRestWebhookEventSubscriptionsV1`
+*/
 func (s *EventManagementService) GetRestWebhookEventSubscriptions(GetRestWebhookEventSubscriptionsV1QueryParams *GetRestWebhookEventSubscriptionsV1QueryParams) (*ResponseEventManagementGetRestWebhookEventSubscriptionsV1, *resty.Response, error) {
 	return s.GetRestWebhookEventSubscriptionsV1(GetRestWebhookEventSubscriptionsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteEventSubscriptionsV1`
+*/
 func (s *EventManagementService) DeleteEventSubscriptions(DeleteEventSubscriptionsV1QueryParams *DeleteEventSubscriptionsV1QueryParams) (*ResponseEventManagementDeleteEventSubscriptionsV1, *resty.Response, error) {
 	return s.DeleteEventSubscriptionsV1(DeleteEventSubscriptionsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetEmailDestinationV1`
+*/
 func (s *EventManagementService) GetEmailDestination() (*ResponseEventManagementGetEmailDestinationV1, *resty.Response, error) {
 	return s.GetEmailDestinationV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateSNMPDestinationV1`
+*/
 func (s *EventManagementService) CreateSNMPDestination(requestEventManagementCreateSNMPDestinationV1 *RequestEventManagementCreateSNMPDestinationV1) (*ResponseEventManagementCreateSNMPDestinationV1, *resty.Response, error) {
 	return s.CreateSNMPDestinationV1(requestEventManagementCreateSNMPDestinationV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateEventSubscriptionsV1`
+*/
 func (s *EventManagementService) UpdateEventSubscriptions(requestEventManagementUpdateEventSubscriptionsV1 *RequestEventManagementUpdateEventSubscriptionsV1) (*ResponseEventManagementUpdateEventSubscriptionsV1, *resty.Response, error) {
 	return s.UpdateEventSubscriptionsV1(requestEventManagementUpdateEventSubscriptionsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `EventArtifactCountV1`
+*/
 func (s *EventManagementService) EventArtifactCount() (*ResponseEventManagementEventArtifactCountV1, *resty.Response, error) {
 	return s.EventArtifactCountV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSNMPDestinationV1`
+*/
 func (s *EventManagementService) GetSNMPDestination(GetSNMPDestinationV1QueryParams *GetSNMPDestinationV1QueryParams) (*ResponseEventManagementGetSNMPDestinationV1, *resty.Response, error) {
 	return s.GetSNMPDestinationV1(GetSNMPDestinationV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateEmailEventSubscriptionV1`
+*/
 func (s *EventManagementService) CreateEmailEventSubscription(requestEventManagementCreateEmailEventSubscriptionV1 *RequestEventManagementCreateEmailEventSubscriptionV1) (*ResponseEventManagementCreateEmailEventSubscriptionV1, *resty.Response, error) {
 	return s.CreateEmailEventSubscriptionV1(requestEventManagementCreateEmailEventSubscriptionV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CountOfEventSubscriptionsV1`
+*/
 func (s *EventManagementService) CountOfEventSubscriptions(CountOfEventSubscriptionsV1QueryParams *CountOfEventSubscriptionsV1QueryParams) (*ResponseEventManagementCountOfEventSubscriptionsV1, *resty.Response, error) {
 	return s.CountOfEventSubscriptionsV1(CountOfEventSubscriptionsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateWebhookDestinationV1`
+*/
 func (s *EventManagementService) CreateWebhookDestination(requestEventManagementCreateWebhookDestinationV1 *RequestEventManagementCreateWebhookDestinationV1) (*ResponseEventManagementCreateWebhookDestinationV1, *resty.Response, error) {
 	return s.CreateWebhookDestinationV1(requestEventManagementCreateWebhookDestinationV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetEmailSubscriptionDetailsV1`
+*/
 func (s *EventManagementService) GetEmailSubscriptionDetails(GetEmailSubscriptionDetailsV1QueryParams *GetEmailSubscriptionDetailsV1QueryParams) (*ResponseEventManagementGetEmailSubscriptionDetailsV1, *resty.Response, error) {
 	return s.GetEmailSubscriptionDetailsV1(GetEmailSubscriptionDetailsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetStatusAPIForEventsV1`
+*/
 func (s *EventManagementService) GetStatusAPIForEvents(executionID string) (*ResponseEventManagementGetStatusAPIForEventsV1, *resty.Response, error) {
 	return s.GetStatusAPIForEventsV1(executionID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetEventsV1`
+*/
 func (s *EventManagementService) GetEvents(GetEventsV1QueryParams *GetEventsV1QueryParams) (*ResponseEventManagementGetEventsV1, *resty.Response, error) {
 	return s.GetEventsV1(GetEventsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateSNMPDestinationV1`
+*/
 func (s *EventManagementService) UpdateSNMPDestination(requestEventManagementUpdateSNMPDestinationV1 *RequestEventManagementUpdateSNMPDestinationV1) (*ResponseEventManagementUpdateSNMPDestinationV1, *resty.Response, error) {
 	return s.UpdateSNMPDestinationV1(requestEventManagementUpdateSNMPDestinationV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateSyslogEventSubscriptionV1`
+*/
 func (s *EventManagementService) UpdateSyslogEventSubscription(requestEventManagementUpdateSyslogEventSubscriptionV1 *RequestEventManagementUpdateSyslogEventSubscriptionV1) (*ResponseEventManagementUpdateSyslogEventSubscriptionV1, *resty.Response, error) {
 	return s.UpdateSyslogEventSubscriptionV1(requestEventManagementUpdateSyslogEventSubscriptionV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateEmailDestinationV1`
+*/
 func (s *EventManagementService) CreateEmailDestination(requestEventManagementCreateEmailDestinationV1 *RequestEventManagementCreateEmailDestinationV1) (*ResponseEventManagementCreateEmailDestinationV1, *resty.Response, error) {
 	return s.CreateEmailDestinationV1(requestEventManagementCreateEmailDestinationV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateSyslogEventSubscriptionV1`
+*/
 func (s *EventManagementService) CreateSyslogEventSubscription(requestEventManagementCreateSyslogEventSubscriptionV1 *RequestEventManagementCreateSyslogEventSubscriptionV1) (*ResponseEventManagementCreateSyslogEventSubscriptionV1, *resty.Response, error) {
 	return s.CreateSyslogEventSubscriptionV1(requestEventManagementCreateSyslogEventSubscriptionV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateEmailEventSubscriptionV1`
+*/
 func (s *EventManagementService) UpdateEmailEventSubscription(requestEventManagementUpdateEmailEventSubscriptionV1 *RequestEventManagementUpdateEmailEventSubscriptionV1) (*ResponseEventManagementUpdateEmailEventSubscriptionV1, *resty.Response, error) {
 	return s.UpdateEmailEventSubscriptionV1(requestEventManagementUpdateEmailEventSubscriptionV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateWebhookDestinationV1`
+*/
 func (s *EventManagementService) UpdateWebhookDestination(requestEventManagementUpdateWebhookDestinationV1 *RequestEventManagementUpdateWebhookDestinationV1) (*ResponseEventManagementUpdateWebhookDestinationV1, *resty.Response, error) {
 	return s.UpdateWebhookDestinationV1(requestEventManagementUpdateWebhookDestinationV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSyslogDestinationV1`
+*/
 func (s *EventManagementService) GetSyslogDestination(GetSyslogDestinationV1QueryParams *GetSyslogDestinationV1QueryParams) (*ResponseEventManagementGetSyslogDestinationV1, *resty.Response, error) {
 	return s.GetSyslogDestinationV1(GetSyslogDestinationV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateEventSubscriptionsV1`
+*/
 func (s *EventManagementService) CreateEventSubscriptions(requestEventManagementCreateEventSubscriptionsV1 *RequestEventManagementCreateEventSubscriptionsV1) (*ResponseEventManagementCreateEventSubscriptionsV1, *resty.Response, error) {
 	return s.CreateEventSubscriptionsV1(requestEventManagementCreateEventSubscriptionsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetNotificationsV1`
+*/
 func (s *EventManagementService) GetNotifications(GetNotificationsV1QueryParams *GetNotificationsV1QueryParams) (*ResponseEventManagementGetNotificationsV1, *resty.Response, error) {
 	return s.GetNotificationsV1(GetNotificationsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSyslogSubscriptionDetailsV1`
+*/
 func (s *EventManagementService) GetSyslogSubscriptionDetails(GetSyslogSubscriptionDetailsV1QueryParams *GetSyslogSubscriptionDetailsV1QueryParams) (*ResponseEventManagementGetSyslogSubscriptionDetailsV1, *resty.Response, error) {
 	return s.GetSyslogSubscriptionDetailsV1(GetSyslogSubscriptionDetailsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetConnectorTypesV1`
+*/
 func (s *EventManagementService) GetConnectorTypes() (*ResponseEventManagementGetConnectorTypesV1, *resty.Response, error) {
 	return s.GetConnectorTypesV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetEmailEventSubscriptionsV1`
+*/
 func (s *EventManagementService) GetEmailEventSubscriptions(GetEmailEventSubscriptionsV1QueryParams *GetEmailEventSubscriptionsV1QueryParams) (*ResponseEventManagementGetEmailEventSubscriptionsV1, *resty.Response, error) {
 	return s.GetEmailEventSubscriptionsV1(GetEmailEventSubscriptionsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAuditLogRecordsV1`
+*/
 func (s *EventManagementService) GetAuditLogRecords(GetAuditLogRecordsV1QueryParams *GetAuditLogRecordsV1QueryParams) (*ResponseEventManagementGetAuditLogRecordsV1, *resty.Response, error) {
 	return s.GetAuditLogRecordsV1(GetAuditLogRecordsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateRestWebhookEventSubscriptionV1`
+*/
 func (s *EventManagementService) UpdateRestWebhookEventSubscription(requestEventManagementUpdateRestWebhookEventSubscriptionV1 *RequestEventManagementUpdateRestWebhookEventSubscriptionV1) (*ResponseEventManagementUpdateRestWebhookEventSubscriptionV1, *resty.Response, error) {
 	return s.UpdateRestWebhookEventSubscriptionV1(requestEventManagementUpdateRestWebhookEventSubscriptionV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CountOfNotificationsV1`
+*/
 func (s *EventManagementService) CountOfNotifications(CountOfNotificationsV1QueryParams *CountOfNotificationsV1QueryParams) (*ResponseEventManagementCountOfNotificationsV1, *resty.Response, error) {
 	return s.CountOfNotificationsV1(CountOfNotificationsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateSyslogDestinationV1`
+*/
 func (s *EventManagementService) CreateSyslogDestination(requestEventManagementCreateSyslogDestinationV1 *RequestEventManagementCreateSyslogDestinationV1) (*ResponseEventManagementCreateSyslogDestinationV1, *resty.Response, error) {
 	return s.CreateSyslogDestinationV1(requestEventManagementCreateSyslogDestinationV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSyslogEventSubscriptionsV1`
+*/
 func (s *EventManagementService) GetSyslogEventSubscriptions(GetSyslogEventSubscriptionsV1QueryParams *GetSyslogEventSubscriptionsV1QueryParams) (*ResponseEventManagementGetSyslogEventSubscriptionsV1, *resty.Response, error) {
 	return s.GetSyslogEventSubscriptionsV1(GetSyslogEventSubscriptionsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAuditLogSummaryV1`
+*/
 func (s *EventManagementService) GetAuditLogSummary(GetAuditLogSummaryV1QueryParams *GetAuditLogSummaryV1QueryParams) (*ResponseEventManagementGetAuditLogSummaryV1, *resty.Response, error) {
 	return s.GetAuditLogSummaryV1(GetAuditLogSummaryV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetEventArtifactsV1`
+*/
 func (s *EventManagementService) GetEventArtifacts(GetEventArtifactsV1QueryParams *GetEventArtifactsV1QueryParams) (*ResponseEventManagementGetEventArtifactsV1, *resty.Response, error) {
 	return s.GetEventArtifactsV1(GetEventArtifactsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAuditLogParentRecordsV1`
+*/
 func (s *EventManagementService) GetAuditLogParentRecords(GetAuditLogParentRecordsV1QueryParams *GetAuditLogParentRecordsV1QueryParams) (*ResponseEventManagementGetAuditLogParentRecordsV1, *resty.Response, error) {
 	return s.GetAuditLogParentRecordsV1(GetAuditLogParentRecordsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CountOfEventsV1`
+*/
 func (s *EventManagementService) CountOfEvents(CountOfEventsV1QueryParams *CountOfEventsV1QueryParams) (*ResponseEventManagementCountOfEventsV1, *resty.Response, error) {
 	return s.CountOfEventsV1(CountOfEventsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetWebhookDestinationV1`
+*/
 func (s *EventManagementService) GetWebhookDestination(GetWebhookDestinationV1QueryParams *GetWebhookDestinationV1QueryParams) (*ResponseEventManagementGetWebhookDestinationV1, *resty.Response, error) {
 	return s.GetWebhookDestinationV1(GetWebhookDestinationV1QueryParams)
 }

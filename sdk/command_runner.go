@@ -101,11 +101,17 @@ func (s *CommandRunnerService) RunReadOnlyCommandsOnDevicesToGetTheirRealTimeCon
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAllKeywordsOfClisAcceptedByCommandRunnerV1`
+*/
 func (s *CommandRunnerService) GetAllKeywordsOfClisAcceptedByCommandRunner() (*ResponseCommandRunnerGetAllKeywordsOfClisAcceptedByCommandRunnerV1, *resty.Response, error) {
 	return s.GetAllKeywordsOfClisAcceptedByCommandRunnerV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1`
+*/
 func (s *CommandRunnerService) RunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfiguration(requestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1 *RequestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1) (*ResponseCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1, *resty.Response, error) {
 	return s.RunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1(requestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1)
 }

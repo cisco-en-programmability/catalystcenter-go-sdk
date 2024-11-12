@@ -759,76 +759,121 @@ func (s *UserandRolesService) DeleteAAAAttributeAPIV1() (*ResponseUserandRolesDe
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddAndUpdateAAAAttributeAPIV1`
+*/
 func (s *UserandRolesService) AddAndUpdateAAAAttributeAPI(requestUserandRolesAddAndUpdateAAAAttributeAPIV1 *RequestUserandRolesAddAndUpdateAAAAttributeAPIV1) (*ResponseUserandRolesAddAndUpdateAAAAttributeAPIV1, *resty.Response, error) {
 	return s.AddAndUpdateAAAAttributeAPIV1(requestUserandRolesAddAndUpdateAAAAttributeAPIV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetUsersAPIV1`
+*/
 func (s *UserandRolesService) GetUsersAPI(GetUsersAPIV1QueryParams *GetUsersAPIV1QueryParams) (*ResponseUserandRolesGetUsersAPIV1, *resty.Response, error) {
 	return s.GetUsersAPIV1(GetUsersAPIV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetExternalAuthenticationServersAPIV1`
+*/
 func (s *UserandRolesService) GetExternalAuthenticationServersAPI(GetExternalAuthenticationServersAPIV1QueryParams *GetExternalAuthenticationServersAPIV1QueryParams) (*ResponseUserandRolesGetExternalAuthenticationServersAPIV1, *resty.Response, error) {
 	return s.GetExternalAuthenticationServersAPIV1(GetExternalAuthenticationServersAPIV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddUserAPIV1`
+*/
 func (s *UserandRolesService) AddUserAPI(requestUserandRolesAddUserAPIV1 *RequestUserandRolesAddUserAPIV1) (*ResponseUserandRolesAddUserAPIV1, *resty.Response, error) {
 	return s.AddUserAPIV1(requestUserandRolesAddUserAPIV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteAAAAttributeAPIV1`
+*/
 func (s *UserandRolesService) DeleteAAAAttributeAPI() (*ResponseUserandRolesDeleteAAAAttributeAPIV1, *resty.Response, error) {
 	return s.DeleteAAAAttributeAPIV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteUserAPIV1`
+*/
 func (s *UserandRolesService) DeleteUserAPI(userID string) (*ResponseUserandRolesDeleteUserAPIV1, *resty.Response, error) {
 	return s.DeleteUserAPIV1(userID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetExternalAuthenticationSettingAPIV1`
+*/
 func (s *UserandRolesService) GetExternalAuthenticationSettingAPI() (*ResponseUserandRolesGetExternalAuthenticationSettingAPIV1, *resty.Response, error) {
 	return s.GetExternalAuthenticationSettingAPIV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetRolesAPIV1`
+*/
 func (s *UserandRolesService) GetRolesAPI(GetRolesAPIV1HeaderParams *GetRolesAPIV1HeaderParams) (*ResponseUserandRolesGetRolesAPIV1, *resty.Response, error) {
 	return s.GetRolesAPIV1(GetRolesAPIV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddRoleAPIV1`
+*/
 func (s *UserandRolesService) AddRoleAPI(requestUserandRolesAddRoleAPIV1 *RequestUserandRolesAddRoleAPIV1) (*ResponseUserandRolesAddRoleAPIV1, *resty.Response, error) {
 	return s.AddRoleAPIV1(requestUserandRolesAddRoleAPIV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateUserAPIV1`
+*/
 func (s *UserandRolesService) UpdateUserAPI(requestUserandRolesUpdateUserAPIV1 *RequestUserandRolesUpdateUserAPIV1) (*ResponseUserandRolesUpdateUserAPIV1, *resty.Response, error) {
 	return s.UpdateUserAPIV1(requestUserandRolesUpdateUserAPIV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetPermissionsAPIV1`
+*/
 func (s *UserandRolesService) GetPermissionsAPI() (*ResponseUserandRolesGetPermissionsAPIV1, *resty.Response, error) {
 	return s.GetPermissionsAPIV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAAAAttributeAPIV1`
+*/
 func (s *UserandRolesService) GetAAAAttributeAPI() (*ResponseUserandRolesGetAAAAttributeAPIV1, *resty.Response, error) {
 	return s.GetAAAAttributeAPIV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ManageExternalAuthenticationSettingAPIV1`
+*/
 func (s *UserandRolesService) ManageExternalAuthenticationSettingAPI(requestUserandRolesManageExternalAuthenticationSettingAPIV1 *RequestUserandRolesManageExternalAuthenticationSettingAPIV1) (*ResponseUserandRolesManageExternalAuthenticationSettingAPIV1, *resty.Response, error) {
 	return s.ManageExternalAuthenticationSettingAPIV1(requestUserandRolesManageExternalAuthenticationSettingAPIV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteRoleAPIV1`
+*/
 func (s *UserandRolesService) DeleteRoleAPI(roleID string) (*ResponseUserandRolesDeleteRoleAPIV1, *resty.Response, error) {
 	return s.DeleteRoleAPIV1(roleID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateRoleAPIV1`
+*/
 func (s *UserandRolesService) UpdateRoleAPI(requestUserandRolesUpdateRoleAPIV1 *RequestUserandRolesUpdateRoleAPIV1) (*ResponseUserandRolesUpdateRoleAPIV1, *resty.Response, error) {
 	return s.UpdateRoleAPIV1(requestUserandRolesUpdateRoleAPIV1)
 }

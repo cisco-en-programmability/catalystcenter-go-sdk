@@ -2153,121 +2153,193 @@ func (s *IssuesService) DeletesAnExistingCustomIssueDefinitionV1(id string) (*re
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetIssueEnrichmentDetailsV1`
+*/
 func (s *IssuesService) GetIssueEnrichmentDetails(GetIssueEnrichmentDetailsV1HeaderParams *GetIssueEnrichmentDetailsV1HeaderParams) (*ResponseIssuesGetIssueEnrichmentDetailsV1, *resty.Response, error) {
 	return s.GetIssueEnrichmentDetailsV1(GetIssueEnrichmentDetailsV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTheCustomIssueDefinitionForTheGivenCustomIssueDefinitionIDV1`
+*/
 func (s *IssuesService) GetTheCustomIssueDefinitionForTheGivenCustomIssueDefinitionID(id string, GetTheCustomIssueDefinitionForTheGivenCustomIssueDefinitionIdV1HeaderParams *GetTheCustomIssueDefinitionForTheGivenCustomIssueDefinitionIDV1HeaderParams) (*ResponseIssuesGetTheCustomIssueDefinitionForTheGivenCustomIssueDefinitionIDV1, *resty.Response, error) {
 	return s.GetTheCustomIssueDefinitionForTheGivenCustomIssueDefinitionIDV1(id, GetTheCustomIssueDefinitionForTheGivenCustomIssueDefinitionIdV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSummaryAnalyticsDataOfIssuesV1`
+*/
 func (s *IssuesService) GetSummaryAnalyticsDataOfIssues(requestIssuesGetSummaryAnalyticsDataOfIssuesV1 *RequestIssuesGetSummaryAnalyticsDataOfIssuesV1, GetSummaryAnalyticsDataOfIssuesV1HeaderParams *GetSummaryAnalyticsDataOfIssuesV1HeaderParams) (*ResponseIssuesGetSummaryAnalyticsDataOfIssuesV1, *resty.Response, error) {
 	return s.GetSummaryAnalyticsDataOfIssuesV1(requestIssuesGetSummaryAnalyticsDataOfIssuesV1, GetSummaryAnalyticsDataOfIssuesV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ExecuteSuggestedActionsCommandsV1`
+*/
 func (s *IssuesService) ExecuteSuggestedActionsCommands(requestIssuesExecuteSuggestedActionsCommandsV1 *RequestIssuesExecuteSuggestedActionsCommandsV1) (*ResponseIssuesExecuteSuggestedActionsCommandsV1, *resty.Response, error) {
 	return s.ExecuteSuggestedActionsCommandsV1(requestIssuesExecuteSuggestedActionsCommandsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTheTotalCustomIssueDefinitionsCountBasedOnTheProvidedFiltersV1`
+*/
 func (s *IssuesService) GetTheTotalCustomIssueDefinitionsCountBasedOnTheProvidedFilters(GetTheTotalCustomIssueDefinitionsCountBasedOnTheProvidedFiltersV1HeaderParams *GetTheTotalCustomIssueDefinitionsCountBasedOnTheProvidedFiltersV1HeaderParams, GetTheTotalCustomIssueDefinitionsCountBasedOnTheProvidedFiltersV1QueryParams *GetTheTotalCustomIssueDefinitionsCountBasedOnTheProvidedFiltersV1QueryParams) (*ResponseIssuesGetTheTotalCustomIssueDefinitionsCountBasedOnTheProvidedFiltersV1, *resty.Response, error) {
 	return s.GetTheTotalCustomIssueDefinitionsCountBasedOnTheProvidedFiltersV1(GetTheTotalCustomIssueDefinitionsCountBasedOnTheProvidedFiltersV1HeaderParams, GetTheTotalCustomIssueDefinitionsCountBasedOnTheProvidedFiltersV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTheTotalNumberOfIssuesForGivenSetOfFiltersV1`
+*/
 func (s *IssuesService) GetTheTotalNumberOfIssuesForGivenSetOfFilters(requestIssuesGetTheTotalNumberOfIssuesForGivenSetOfFiltersV1 *RequestIssuesGetTheTotalNumberOfIssuesForGivenSetOfFiltersV1, GetTheTotalNumberOfIssuesForGivenSetOfFiltersV1HeaderParams *GetTheTotalNumberOfIssuesForGivenSetOfFiltersV1HeaderParams) (*ResponseIssuesGetTheTotalNumberOfIssuesForGivenSetOfFiltersV1, *resty.Response, error) {
 	return s.GetTheTotalNumberOfIssuesForGivenSetOfFiltersV1(requestIssuesGetTheTotalNumberOfIssuesForGivenSetOfFiltersV1, GetTheTotalNumberOfIssuesForGivenSetOfFiltersV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTopNAnalyticsDataOfIssuesV1`
+*/
 func (s *IssuesService) GetTopNAnalyticsDataOfIssues(requestIssuesGetTopNAnalyticsDataOfIssuesV1 *RequestIssuesGetTopNAnalyticsDataOfIssuesV1, GetTopNAnalyticsDataOfIssuesV1HeaderParams *GetTopNAnalyticsDataOfIssuesV1HeaderParams) (*ResponseIssuesGetTopNAnalyticsDataOfIssuesV1, *resty.Response, error) {
 	return s.GetTopNAnalyticsDataOfIssuesV1(requestIssuesGetTopNAnalyticsDataOfIssuesV1, GetTopNAnalyticsDataOfIssuesV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTrendAnalyticsDataOfIssuesV1`
+*/
 func (s *IssuesService) GetTrendAnalyticsDataOfIssues(requestIssuesGetTrendAnalyticsDataOfIssuesV1 *RequestIssuesGetTrendAnalyticsDataOfIssuesV1, GetTrendAnalyticsDataOfIssuesV1HeaderParams *GetTrendAnalyticsDataOfIssuesV1HeaderParams) (*ResponseIssuesGetTrendAnalyticsDataOfIssuesV1, *resty.Response, error) {
 	return s.GetTrendAnalyticsDataOfIssuesV1(requestIssuesGetTrendAnalyticsDataOfIssuesV1, GetTrendAnalyticsDataOfIssuesV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetIssueTriggerDefinitionForGivenIDV1`
+*/
 func (s *IssuesService) GetIssueTriggerDefinitionForGivenID(id string, GetIssueTriggerDefinitionForGivenIdV1HeaderParams *GetIssueTriggerDefinitionForGivenIDV1HeaderParams) (*ResponseIssuesGetIssueTriggerDefinitionForGivenIDV1, *resty.Response, error) {
 	return s.GetIssueTriggerDefinitionForGivenIDV1(id, GetIssueTriggerDefinitionForGivenIdV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreatesANewUserDefinedIssueDefinitionsV1`
+*/
 func (s *IssuesService) CreatesANewUserDefinedIssueDefinitions(requestIssuesCreatesANewUserDefinedIssueDefinitionsV1 *RequestIssuesCreatesANewUserDefinedIssueDefinitionsV1, CreatesANewUserDefinedIssueDefinitionsV1HeaderParams *CreatesANewUserDefinedIssueDefinitionsV1HeaderParams) (*ResponseIssuesCreatesANewUserDefinedIssueDefinitionsV1, *resty.Response, error) {
 	return s.CreatesANewUserDefinedIssueDefinitionsV1(requestIssuesCreatesANewUserDefinedIssueDefinitionsV1, CreatesANewUserDefinedIssueDefinitionsV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTheDetailsOfIssuesForGivenSetOfFiltersV1`
+*/
 func (s *IssuesService) GetTheDetailsOfIssuesForGivenSetOfFilters(requestIssuesGetTheDetailsOfIssuesForGivenSetOfFiltersV1 *RequestIssuesGetTheDetailsOfIssuesForGivenSetOfFiltersV1, GetTheDetailsOfIssuesForGivenSetOfFiltersV1HeaderParams *GetTheDetailsOfIssuesForGivenSetOfFiltersV1HeaderParams) (*ResponseIssuesGetTheDetailsOfIssuesForGivenSetOfFiltersV1, *resty.Response, error) {
 	return s.GetTheDetailsOfIssuesForGivenSetOfFiltersV1(requestIssuesGetTheDetailsOfIssuesForGivenSetOfFiltersV1, GetTheDetailsOfIssuesForGivenSetOfFiltersV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdatesAnExistingCustomIssueDefinitionBasedOnTheProvidedIDV1`
+*/
 func (s *IssuesService) UpdatesAnExistingCustomIssueDefinitionBasedOnTheProvidedID(id string, requestIssuesUpdatesAnExistingCustomIssueDefinitionBasedOnTheProvidedIdV1 *RequestIssuesUpdatesAnExistingCustomIssueDefinitionBasedOnTheProvidedIDV1, UpdatesAnExistingCustomIssueDefinitionBasedOnTheProvidedIdV1HeaderParams *UpdatesAnExistingCustomIssueDefinitionBasedOnTheProvidedIDV1HeaderParams) (*ResponseIssuesUpdatesAnExistingCustomIssueDefinitionBasedOnTheProvidedIDV1, *resty.Response, error) {
 	return s.UpdatesAnExistingCustomIssueDefinitionBasedOnTheProvidedIDV1(id, requestIssuesUpdatesAnExistingCustomIssueDefinitionBasedOnTheProvidedIdV1, UpdatesAnExistingCustomIssueDefinitionBasedOnTheProvidedIdV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `IssuesV1`
+*/
 func (s *IssuesService) Issues(IssuesV1QueryParams *IssuesV1QueryParams) (*ResponseIssuesIssuesV1, *resty.Response, error) {
 	return s.IssuesV1(IssuesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTheCountOfSystemDefinedIssueDefinitionsBasedOnProvidedFiltersV1`
+*/
 func (s *IssuesService) GetTheCountOfSystemDefinedIssueDefinitionsBasedOnProvidedFilters(GetTheCountOfSystemDefinedIssueDefinitionsBasedOnProvidedFiltersV1HeaderParams *GetTheCountOfSystemDefinedIssueDefinitionsBasedOnProvidedFiltersV1HeaderParams, GetTheCountOfSystemDefinedIssueDefinitionsBasedOnProvidedFiltersV1QueryParams *GetTheCountOfSystemDefinedIssueDefinitionsBasedOnProvidedFiltersV1QueryParams) (*ResponseIssuesGetTheCountOfSystemDefinedIssueDefinitionsBasedOnProvidedFiltersV1, *resty.Response, error) {
 	return s.GetTheCountOfSystemDefinedIssueDefinitionsBasedOnProvidedFiltersV1(GetTheCountOfSystemDefinedIssueDefinitionsBasedOnProvidedFiltersV1HeaderParams, GetTheCountOfSystemDefinedIssueDefinitionsBasedOnProvidedFiltersV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ResolveTheGivenListsOfIssuesV1`
+*/
 func (s *IssuesService) ResolveTheGivenListsOfIssues(requestIssuesResolveTheGivenListsOfIssuesV1 *RequestIssuesResolveTheGivenListsOfIssuesV1, ResolveTheGivenListsOfIssuesV1HeaderParams *ResolveTheGivenListsOfIssuesV1HeaderParams) (*ResponseIssuesResolveTheGivenListsOfIssuesV1, *resty.Response, error) {
 	return s.ResolveTheGivenListsOfIssuesV1(requestIssuesResolveTheGivenListsOfIssuesV1, ResolveTheGivenListsOfIssuesV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `IssueTriggerDefinitionUpdateV1`
+*/
 func (s *IssuesService) IssueTriggerDefinitionUpdate(id string, requestIssuesIssueTriggerDefinitionUpdateV1 *RequestIssuesIssueTriggerDefinitionUpdateV1) (*ResponseIssuesIssueTriggerDefinitionUpdateV1, *resty.Response, error) {
 	return s.IssueTriggerDefinitionUpdateV1(id, requestIssuesIssueTriggerDefinitionUpdateV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTheDetailsOfIssuesForGivenSetOfFiltersKnowYourNetworkV1`
+*/
 func (s *IssuesService) GetTheDetailsOfIssuesForGivenSetOfFiltersKnowYourNetwork(GetTheDetailsOfIssuesForGivenSetOfFiltersKnowYourNetworkV1HeaderParams *GetTheDetailsOfIssuesForGivenSetOfFiltersKnowYourNetworkV1HeaderParams, GetTheDetailsOfIssuesForGivenSetOfFiltersKnowYourNetworkV1QueryParams *GetTheDetailsOfIssuesForGivenSetOfFiltersKnowYourNetworkV1QueryParams) (*ResponseIssuesGetTheDetailsOfIssuesForGivenSetOfFiltersKnowYourNetworkV1, *resty.Response, error) {
 	return s.GetTheDetailsOfIssuesForGivenSetOfFiltersKnowYourNetworkV1(GetTheDetailsOfIssuesForGivenSetOfFiltersKnowYourNetworkV1HeaderParams, GetTheDetailsOfIssuesForGivenSetOfFiltersKnowYourNetworkV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAllTheDetailsAndSuggestedActionsOfAnIssueForTheGivenIssueIDV1`
+*/
 func (s *IssuesService) GetAllTheDetailsAndSuggestedActionsOfAnIssueForTheGivenIssueID(id string, GetAllTheDetailsAndSuggestedActionsOfAnIssueForTheGivenIssueIdV1HeaderParams *GetAllTheDetailsAndSuggestedActionsOfAnIssueForTheGivenIssueIDV1HeaderParams, GetAllTheDetailsAndSuggestedActionsOfAnIssueForTheGivenIssueIdV1QueryParams *GetAllTheDetailsAndSuggestedActionsOfAnIssueForTheGivenIssueIDV1QueryParams) (*ResponseIssuesGetAllTheDetailsAndSuggestedActionsOfAnIssueForTheGivenIssueIDV1, *resty.Response, error) {
 	return s.GetAllTheDetailsAndSuggestedActionsOfAnIssueForTheGivenIssueIDV1(id, GetAllTheDetailsAndSuggestedActionsOfAnIssueForTheGivenIssueIdV1HeaderParams, GetAllTheDetailsAndSuggestedActionsOfAnIssueForTheGivenIssueIdV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAllTheCustomIssueDefinitionsBasedOnTheGivenFiltersV1`
+*/
 func (s *IssuesService) GetAllTheCustomIssueDefinitionsBasedOnTheGivenFilters(GetAllTheCustomIssueDefinitionsBasedOnTheGivenFiltersV1QueryParams *GetAllTheCustomIssueDefinitionsBasedOnTheGivenFiltersV1QueryParams) (*ResponseIssuesGetAllTheCustomIssueDefinitionsBasedOnTheGivenFiltersV1, *resty.Response, error) {
 	return s.GetAllTheCustomIssueDefinitionsBasedOnTheGivenFiltersV1(GetAllTheCustomIssueDefinitionsBasedOnTheGivenFiltersV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeletesAnExistingCustomIssueDefinitionV1`
+*/
 func (s *IssuesService) DeletesAnExistingCustomIssueDefinition(id string) (*resty.Response, error) {
 	return s.DeletesAnExistingCustomIssueDefinitionV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `IgnoreTheGivenListOfIssuesV1`
+*/
 func (s *IssuesService) IgnoreTheGivenListOfIssues(requestIssuesIgnoreTheGivenListOfIssuesV1 *RequestIssuesIgnoreTheGivenListOfIssuesV1, IgnoreTheGivenListOfIssuesV1HeaderParams *IgnoreTheGivenListOfIssuesV1HeaderParams) (*ResponseIssuesIgnoreTheGivenListOfIssuesV1, *resty.Response, error) {
 	return s.IgnoreTheGivenListOfIssuesV1(requestIssuesIgnoreTheGivenListOfIssuesV1, IgnoreTheGivenListOfIssuesV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTheTotalNumberOfIssuesForGivenSetOfFiltersKnowYourNetworkV1`
+*/
 func (s *IssuesService) GetTheTotalNumberOfIssuesForGivenSetOfFiltersKnowYourNetwork(GetTheTotalNumberOfIssuesForGivenSetOfFiltersKnowYourNetworkV1HeaderParams *GetTheTotalNumberOfIssuesForGivenSetOfFiltersKnowYourNetworkV1HeaderParams, GetTheTotalNumberOfIssuesForGivenSetOfFiltersKnowYourNetworkV1QueryParams *GetTheTotalNumberOfIssuesForGivenSetOfFiltersKnowYourNetworkV1QueryParams) (*ResponseIssuesGetTheTotalNumberOfIssuesForGivenSetOfFiltersKnowYourNetworkV1, *resty.Response, error) {
 	return s.GetTheTotalNumberOfIssuesForGivenSetOfFiltersKnowYourNetworkV1(GetTheTotalNumberOfIssuesForGivenSetOfFiltersKnowYourNetworkV1HeaderParams, GetTheTotalNumberOfIssuesForGivenSetOfFiltersKnowYourNetworkV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateTheGivenIssueByUpdatingSelectedFieldsV1`
+*/
 func (s *IssuesService) UpdateTheGivenIssueByUpdatingSelectedFields(id string, requestIssuesUpdateTheGivenIssueByUpdatingSelectedFieldsV1 *RequestIssuesUpdateTheGivenIssueByUpdatingSelectedFieldsV1, UpdateTheGivenIssueByUpdatingSelectedFieldsV1HeaderParams *UpdateTheGivenIssueByUpdatingSelectedFieldsV1HeaderParams) (*ResponseIssuesUpdateTheGivenIssueByUpdatingSelectedFieldsV1, *resty.Response, error) {
 	return s.UpdateTheGivenIssueByUpdatingSelectedFieldsV1(id, requestIssuesUpdateTheGivenIssueByUpdatingSelectedFieldsV1, UpdateTheGivenIssueByUpdatingSelectedFieldsV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ReturnsAllIssueTriggerDefinitionsForGivenFiltersV1`
+*/
 func (s *IssuesService) ReturnsAllIssueTriggerDefinitionsForGivenFilters(ReturnsAllIssueTriggerDefinitionsForGivenFiltersV1HeaderParams *ReturnsAllIssueTriggerDefinitionsForGivenFiltersV1HeaderParams, ReturnsAllIssueTriggerDefinitionsForGivenFiltersV1QueryParams *ReturnsAllIssueTriggerDefinitionsForGivenFiltersV1QueryParams) (*ResponseIssuesReturnsAllIssueTriggerDefinitionsForGivenFiltersV1, *resty.Response, error) {
 	return s.ReturnsAllIssueTriggerDefinitionsForGivenFiltersV1(ReturnsAllIssueTriggerDefinitionsForGivenFiltersV1HeaderParams, ReturnsAllIssueTriggerDefinitionsForGivenFiltersV1QueryParams)
 }

@@ -2051,206 +2051,329 @@ func (s *SiteDesignService) DeletesAFloorV2(id string) (*ResponseSiteDesignDelet
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdatesFloorSettingsV2`
+*/
 func (s *SiteDesignService) UpdatesFloorSettings(requestSiteDesignUpdatesFloorSettingsV2 *RequestSiteDesignUpdatesFloorSettingsV2) (*ResponseSiteDesignUpdatesFloorSettingsV2, *resty.Response, error) {
 	return s.UpdatesFloorSettingsV2(requestSiteDesignUpdatesFloorSettingsV2)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSitesCountV1`
+*/
 func (s *SiteDesignService) GetSitesCount(GetSitesCountV1QueryParams *GetSitesCountV1QueryParams) (*ResponseSiteDesignGetSitesCountV1, *resty.Response, error) {
 	return s.GetSitesCountV1(GetSitesCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrievesTheCountOfProfilesThatTheGivenSiteHasBeenAssignedV1`
+*/
 func (s *SiteDesignService) RetrievesTheCountOfProfilesThatTheGivenSiteHasBeenAssigned(siteID string) (*ResponseSiteDesignRetrievesTheCountOfProfilesThatTheGivenSiteHasBeenAssignedV1, *resty.Response, error) {
 	return s.RetrievesTheCountOfProfilesThatTheGivenSiteHasBeenAssignedV1(siteID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrievesTheListOfNetworkProfilesForSitesV1`
+*/
 func (s *SiteDesignService) RetrievesTheListOfNetworkProfilesForSites(RetrievesTheListOfNetworkProfilesForSitesV1QueryParams *RetrievesTheListOfNetworkProfilesForSitesV1QueryParams) (*ResponseSiteDesignRetrievesTheListOfNetworkProfilesForSitesV1, *resty.Response, error) {
 	return s.RetrievesTheListOfNetworkProfilesForSitesV1(RetrievesTheListOfNetworkProfilesForSitesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSiteNotAssignedNetworkDevicesV1`
+*/
 func (s *SiteDesignService) GetSiteNotAssignedNetworkDevices(GetSiteNotAssignedNetworkDevicesV1QueryParams *GetSiteNotAssignedNetworkDevicesV1QueryParams) (*ResponseSiteDesignGetSiteNotAssignedNetworkDevicesV1, *resty.Response, error) {
 	return s.GetSiteNotAssignedNetworkDevicesV1(GetSiteNotAssignedNetworkDevicesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSiteNotAssignedNetworkDevicesCountV1`
+*/
 func (s *SiteDesignService) GetSiteNotAssignedNetworkDevicesCount() (*ResponseSiteDesignGetSiteNotAssignedNetworkDevicesCountV1, *resty.Response, error) {
 	return s.GetSiteNotAssignedNetworkDevicesCountV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreatesAFloorV2`
+*/
 func (s *SiteDesignService) CreatesAFloor(requestSiteDesignCreatesAFloorV2 *RequestSiteDesignCreatesAFloorV2) (*ResponseSiteDesignCreatesAFloorV2, *resty.Response, error) {
 	return s.CreatesAFloorV2(requestSiteDesignCreatesAFloorV2)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdatesAnAreaV1`
+*/
 func (s *SiteDesignService) UpdatesAnArea(id string, requestSiteDesignUpdatesAnAreaV1 *RequestSiteDesignUpdatesAnAreaV1) (*ResponseSiteDesignUpdatesAnAreaV1, *resty.Response, error) {
 	return s.UpdatesAnAreaV1(id, requestSiteDesignUpdatesAnAreaV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UploadsFloorImageV2`
+*/
 func (s *SiteDesignService) UploadsFloorImage(id string) (*resty.Response, error) {
 	return s.UploadsFloorImageV2(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreatesAnAreaV1`
+*/
 func (s *SiteDesignService) CreatesAnArea(requestSiteDesignCreatesAnAreaV1 *RequestSiteDesignCreatesAnAreaV1) (*ResponseSiteDesignCreatesAnAreaV1, *resty.Response, error) {
 	return s.CreatesAnAreaV1(requestSiteDesignCreatesAnAreaV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrievesTheCountOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1`
+*/
 func (s *SiteDesignService) RetrievesTheCountOfSitesThatTheGivenNetworkProfileForSitesIsAssignedTo(profileID string) (*ResponseSiteDesignRetrievesTheCountOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1, *resty.Response, error) {
 	return s.RetrievesTheCountOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1(profileID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdatesAFloorV2`
+*/
 func (s *SiteDesignService) UpdatesAFloor(id string, requestSiteDesignUpdatesAFloorV2 *RequestSiteDesignUpdatesAFloorV2) (*ResponseSiteDesignUpdatesAFloorV2, *resty.Response, error) {
 	return s.UpdatesAFloorV2(id, requestSiteDesignUpdatesAFloorV2)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeletesANetworkProfileForSitesV1`
+*/
 func (s *SiteDesignService) DeletesANetworkProfileForSites(id string) (*ResponseSiteDesignDeletesANetworkProfileForSitesV1, *resty.Response, error) {
 	return s.DeletesANetworkProfileForSitesV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSiteAssignedNetworkDeviceV1`
+*/
 func (s *SiteDesignService) GetSiteAssignedNetworkDevice(id string) (*ResponseSiteDesignGetSiteAssignedNetworkDeviceV1, *resty.Response, error) {
 	return s.GetSiteAssignedNetworkDeviceV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AssignANetworkProfileForSitesToTheGivenSiteV1`
+*/
 func (s *SiteDesignService) AssignANetworkProfileForSitesToTheGivenSite(profileID string, requestSiteDesignAssignANetworkProfileForSitesToTheGivenSiteV1 *RequestSiteDesignAssignANetworkProfileForSitesToTheGivenSiteV1) (*ResponseSiteDesignAssignANetworkProfileForSitesToTheGivenSiteV1, *resty.Response, error) {
 	return s.AssignANetworkProfileForSitesToTheGivenSiteV1(profileID, requestSiteDesignAssignANetworkProfileForSitesToTheGivenSiteV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreatesABuildingV2`
+*/
 func (s *SiteDesignService) CreatesABuilding(requestSiteDesignCreatesABuildingV2 *RequestSiteDesignCreatesABuildingV2) (*ResponseSiteDesignCreatesABuildingV2, *resty.Response, error) {
 	return s.CreatesABuildingV2(requestSiteDesignCreatesABuildingV2)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeletesAnAreaV1`
+*/
 func (s *SiteDesignService) DeletesAnArea(id string) (*ResponseSiteDesignDeletesAnAreaV1, *resty.Response, error) {
 	return s.DeletesAnAreaV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrieveANetworkProfileForSitesByIDV1`
+*/
 func (s *SiteDesignService) RetrieveANetworkProfileForSitesByID(id string) (*ResponseSiteDesignRetrieveANetworkProfileForSitesByIDV1, *resty.Response, error) {
 	return s.RetrieveANetworkProfileForSitesByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetsAFloorV2`
+*/
 func (s *SiteDesignService) GetsAFloor(id string, GetsAFloorV2QueryParams *GetsAFloorV2QueryParams) (*ResponseSiteDesignGetsAFloorV2, *resty.Response, error) {
 	return s.GetsAFloorV2(id, GetsAFloorV2QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1`
+*/
 func (s *SiteDesignService) RetrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssignedTo(profileID string, RetrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1QueryParams *RetrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1QueryParams) (*ResponseSiteDesignRetrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1, *resty.Response, error) {
 	return s.RetrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1(profileID, RetrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AssignANetworkProfileForSitesToAListOfSitesV1`
+*/
 func (s *SiteDesignService) AssignANetworkProfileForSitesToAListOfSites(profileID string, requestSiteDesignAssignANetworkProfileForSitesToAListOfSitesV1 *RequestSiteDesignAssignANetworkProfileForSitesToAListOfSitesV1) (*ResponseSiteDesignAssignANetworkProfileForSitesToAListOfSitesV1, *resty.Response, error) {
 	return s.AssignANetworkProfileForSitesToAListOfSitesV1(profileID, requestSiteDesignAssignANetworkProfileForSitesToAListOfSitesV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdatesABuildingV2`
+*/
 func (s *SiteDesignService) UpdatesABuilding(id string, requestSiteDesignUpdatesABuildingV2 *RequestSiteDesignUpdatesABuildingV2) (*ResponseSiteDesignUpdatesABuildingV2, *resty.Response, error) {
 	return s.UpdatesABuildingV2(id, requestSiteDesignUpdatesABuildingV2)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrievesTheCountOfNetworkProfilesForSitesV1`
+*/
 func (s *SiteDesignService) RetrievesTheCountOfNetworkProfilesForSites(RetrievesTheCountOfNetworkProfilesForSitesV1QueryParams *RetrievesTheCountOfNetworkProfilesForSitesV1QueryParams) (*ResponseSiteDesignRetrievesTheCountOfNetworkProfilesForSitesV1, *resty.Response, error) {
 	return s.RetrievesTheCountOfNetworkProfilesForSitesV1(RetrievesTheCountOfNetworkProfilesForSitesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UnassignsANetworkProfileForSitesFromMultipleSitesV1`
+*/
 func (s *SiteDesignService) UnassignsANetworkProfileForSitesFromMultipleSites(profileID string, UnassignsANetworkProfileForSitesFromMultipleSitesV1QueryParams *UnassignsANetworkProfileForSitesFromMultipleSitesV1QueryParams) (*ResponseSiteDesignUnassignsANetworkProfileForSitesFromMultipleSitesV1, *resty.Response, error) {
 	return s.UnassignsANetworkProfileForSitesFromMultipleSitesV1(profileID, UnassignsANetworkProfileForSitesFromMultipleSitesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UnassignNetworkDevicesFromSitesV1`
+*/
 func (s *SiteDesignService) UnassignNetworkDevicesFromSites(requestSiteDesignUnassignNetworkDevicesFromSitesV1 *RequestSiteDesignUnassignNetworkDevicesFromSitesV1) (*ResponseSiteDesignUnassignNetworkDevicesFromSitesV1, *resty.Response, error) {
 	return s.UnassignNetworkDevicesFromSitesV1(requestSiteDesignUnassignNetworkDevicesFromSitesV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UnassignsANetworkProfileForSitesFromASiteV1`
+*/
 func (s *SiteDesignService) UnassignsANetworkProfileForSitesFromASite(profileID string, id string) (*ResponseSiteDesignUnassignsANetworkProfileForSitesFromASiteV1, *resty.Response, error) {
 	return s.UnassignsANetworkProfileForSitesFromASiteV1(profileID, id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetsAnAreaV1`
+*/
 func (s *SiteDesignService) GetsAnArea(id string) (*ResponseSiteDesignGetsAnAreaV1, *resty.Response, error) {
 	return s.GetsAnAreaV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeletesABuildingV2`
+*/
 func (s *SiteDesignService) DeletesABuilding(id string) (*ResponseSiteDesignDeletesABuildingV2, *resty.Response, error) {
 	return s.DeletesABuildingV2(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceControllabilitySettingsV1`
+*/
 func (s *SiteDesignService) GetDeviceControllabilitySettings() (*ResponseSiteDesignGetDeviceControllabilitySettingsV1, *resty.Response, error) {
 	return s.GetDeviceControllabilitySettingsV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSiteAssignedNetworkDevicesCountV1`
+*/
 func (s *SiteDesignService) GetSiteAssignedNetworkDevicesCount(GetSiteAssignedNetworkDevicesCountV1QueryParams *GetSiteAssignedNetworkDevicesCountV1QueryParams) (*ResponseSiteDesignGetSiteAssignedNetworkDevicesCountV1, *resty.Response, error) {
 	return s.GetSiteAssignedNetworkDevicesCountV1(GetSiteAssignedNetworkDevicesCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetsABuildingV2`
+*/
 func (s *SiteDesignService) GetsABuilding(id string) (*ResponseSiteDesignGetsABuildingV2, *resty.Response, error) {
 	return s.GetsABuildingV2(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AssignNetworkDevicesToASiteV1`
+*/
 func (s *SiteDesignService) AssignNetworkDevicesToASite(requestSiteDesignAssignNetworkDevicesToASiteV1 *RequestSiteDesignAssignNetworkDevicesToASiteV1) (*ResponseSiteDesignAssignNetworkDevicesToASiteV1, *resty.Response, error) {
 	return s.AssignNetworkDevicesToASiteV1(requestSiteDesignAssignNetworkDevicesToASiteV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssignedV1`
+*/
 func (s *SiteDesignService) RetrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssigned(siteID string, RetrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssignedV1QueryParams *RetrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssignedV1QueryParams) (*ResponseSiteDesignRetrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssignedV1, *resty.Response, error) {
 	return s.RetrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssignedV1(siteID, RetrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssignedV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateSitesV1`
+*/
 func (s *SiteDesignService) CreateSites(requestSiteDesignCreateSitesV1 *RequestSiteDesignCreateSitesV1) (*ResponseSiteDesignCreateSitesV1, *resty.Response, error) {
 	return s.CreateSitesV1(requestSiteDesignCreateSitesV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeletesAFloorV2`
+*/
 func (s *SiteDesignService) DeletesAFloor(id string) (*ResponseSiteDesignDeletesAFloorV2, *resty.Response, error) {
 	return s.DeletesAFloorV2(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateDeviceControllabilitySettingsV1`
+*/
 func (s *SiteDesignService) UpdateDeviceControllabilitySettings(requestSiteDesignUpdateDeviceControllabilitySettingsV1 *RequestSiteDesignUpdateDeviceControllabilitySettingsV1) (*ResponseSiteDesignUpdateDeviceControllabilitySettingsV1, *resty.Response, error) {
 	return s.UpdateDeviceControllabilitySettingsV1(requestSiteDesignUpdateDeviceControllabilitySettingsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetFloorSettingsV2`
+*/
 func (s *SiteDesignService) GetFloorSettings() (*ResponseSiteDesignGetFloorSettingsV2, *resty.Response, error) {
 	return s.GetFloorSettingsV2()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSiteAssignedNetworkDevicesV1`
+*/
 func (s *SiteDesignService) GetSiteAssignedNetworkDevices(GetSiteAssignedNetworkDevicesV1QueryParams *GetSiteAssignedNetworkDevicesV1QueryParams) (*ResponseSiteDesignGetSiteAssignedNetworkDevicesV1, *resty.Response, error) {
 	return s.GetSiteAssignedNetworkDevicesV1(GetSiteAssignedNetworkDevicesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSitesV1`
+*/
 func (s *SiteDesignService) GetSites(GetSitesV1QueryParams *GetSitesV1QueryParams) (*ResponseSiteDesignGetSitesV1, *resty.Response, error) {
 	return s.GetSitesV1(GetSitesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AssociateV1`
+*/
 func (s *SiteDesignService) Associate(networkProfileID string, siteID string) (*ResponseSiteDesignAssociateV1, *resty.Response, error) {
 	return s.AssociateV1(networkProfileID, siteID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DisassociateV1`
+*/
 func (s *SiteDesignService) Disassociate(networkProfileID string, siteID string) (*ResponseSiteDesignDisassociateV1, *resty.Response, error) {
 	return s.DisassociateV1(networkProfileID, siteID)
 }

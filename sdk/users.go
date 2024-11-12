@@ -218,6 +218,9 @@ func (s *UsersService) GetUserEnrichmentDetailsV1(GetUserEnrichmentDetailsV1Head
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetUserEnrichmentDetailsV1`
+*/
 func (s *UsersService) GetUserEnrichmentDetails(GetUserEnrichmentDetailsV1HeaderParams *GetUserEnrichmentDetailsV1HeaderParams) (*ResponseUsersGetUserEnrichmentDetailsV1, *resty.Response, error) {
 	return s.GetUserEnrichmentDetailsV1(GetUserEnrichmentDetailsV1HeaderParams)
 }

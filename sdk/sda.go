@@ -7013,661 +7013,1057 @@ func (s *SdaService) DeleteVirtualNetworkWithScalableGroupsV1(DeleteVirtualNetwo
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDefaultAuthenticationProfileFromSdaFabricV1`
+*/
 func (s *SdaService) GetDefaultAuthenticationProfileFromSdaFabric(GetDefaultAuthenticationProfileFromSDAFabricV1QueryParams *GetDefaultAuthenticationProfileFromSdaFabricV1QueryParams) (*ResponseSdaGetDefaultAuthenticationProfileFromSdaFabricV1, *resty.Response, error) {
 	return s.GetDefaultAuthenticationProfileFromSdaFabricV1(GetDefaultAuthenticationProfileFromSDAFabricV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceInfoFromSdaFabricV1`
+*/
 func (s *SdaService) GetDeviceInfoFromSdaFabric(GetDeviceInfoFromSDAFabricV1QueryParams *GetDeviceInfoFromSdaFabricV1QueryParams) (*ResponseSdaGetDeviceInfoFromSdaFabricV1, *resty.Response, error) {
 	return s.GetDeviceInfoFromSdaFabricV1(GetDeviceInfoFromSDAFabricV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddBorderDeviceInSdaFabricV1`
+*/
 func (s *SdaService) AddBorderDeviceInSdaFabric(requestSdaAddBorderDeviceInSDAFabricV1 *RequestSdaAddBorderDeviceInSdaFabricV1) (*ResponseSdaAddBorderDeviceInSdaFabricV1, *resty.Response, error) {
 	return s.AddBorderDeviceInSdaFabricV1(requestSdaAddBorderDeviceInSDAFabricV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSiteFromSdaFabricV1`
+*/
 func (s *SdaService) GetSiteFromSdaFabric(GetSiteFromSDAFabricV1QueryParams *GetSiteFromSdaFabricV1QueryParams) (*ResponseSdaGetSiteFromSdaFabricV1, *resty.Response, error) {
 	return s.GetSiteFromSdaFabricV1(GetSiteFromSDAFabricV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddPortAssignmentForAccessPointInSdaFabricV1`
+*/
 func (s *SdaService) AddPortAssignmentForAccessPointInSdaFabric(requestSdaAddPortAssignmentForAccessPointInSDAFabricV1 *RequestSdaAddPortAssignmentForAccessPointInSdaFabricV1) (*ResponseSdaAddPortAssignmentForAccessPointInSdaFabricV1, *resty.Response, error) {
 	return s.AddPortAssignmentForAccessPointInSdaFabricV1(requestSdaAddPortAssignmentForAccessPointInSDAFabricV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateAnycastGatewaysV1`
+*/
 func (s *SdaService) UpdateAnycastGateways(requestSdaUpdateAnycastGatewaysV1 *RequestSdaUpdateAnycastGatewaysV1) (*ResponseSdaUpdateAnycastGatewaysV1, *resty.Response, error) {
 	return s.UpdateAnycastGatewaysV1(requestSdaUpdateAnycastGatewaysV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetIPPoolFromSdaVirtualNetworkV1`
+*/
 func (s *SdaService) GetIPPoolFromSdaVirtualNetwork(GetIPPoolFromSDAVirtualNetworkV1QueryParams *GetIPPoolFromSdaVirtualNetworkV1QueryParams) (*ResponseSdaGetIPPoolFromSdaVirtualNetworkV1, *resty.Response, error) {
 	return s.GetIPPoolFromSdaVirtualNetworkV1(GetIPPoolFromSDAVirtualNetworkV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddAnycastGatewaysV1`
+*/
 func (s *SdaService) AddAnycastGateways(requestSdaAddAnycastGatewaysV1 *RequestSdaAddAnycastGatewaysV1) (*ResponseSdaAddAnycastGatewaysV1, *resty.Response, error) {
 	return s.AddAnycastGatewaysV1(requestSdaAddAnycastGatewaysV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddDefaultAuthenticationTemplateInSdaFabricV1`
+*/
 func (s *SdaService) AddDefaultAuthenticationTemplateInSdaFabric(requestSdaAddDefaultAuthenticationTemplateInSDAFabricV1 *RequestSdaAddDefaultAuthenticationTemplateInSdaFabricV1) (*ResponseSdaAddDefaultAuthenticationTemplateInSdaFabricV1, *resty.Response, error) {
 	return s.AddDefaultAuthenticationTemplateInSdaFabricV1(requestSdaAddDefaultAuthenticationTemplateInSDAFabricV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteIPPoolFromSdaVirtualNetworkV1`
+*/
 func (s *SdaService) DeleteIPPoolFromSdaVirtualNetwork(DeleteIPPoolFromSDAVirtualNetworkV1QueryParams *DeleteIPPoolFromSdaVirtualNetworkV1QueryParams) (*ResponseSdaDeleteIPPoolFromSdaVirtualNetworkV1, *resty.Response, error) {
 	return s.DeleteIPPoolFromSdaVirtualNetworkV1(DeleteIPPoolFromSDAVirtualNetworkV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddIPPoolInSdaVirtualNetworkV1`
+*/
 func (s *SdaService) AddIPPoolInSdaVirtualNetwork(requestSdaAddIPPoolInSDAVirtualNetworkV1 *RequestSdaAddIPPoolInSdaVirtualNetworkV1) (*ResponseSdaAddIPPoolInSdaVirtualNetworkV1, *resty.Response, error) {
 	return s.AddIPPoolInSdaVirtualNetworkV1(requestSdaAddIPPoolInSDAVirtualNetworkV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteFabricDeviceLayer2HandoffsV1`
+*/
 func (s *SdaService) DeleteFabricDeviceLayer2Handoffs(DeleteFabricDeviceLayer2HandoffsV1QueryParams *DeleteFabricDeviceLayer2HandoffsV1QueryParams) (*ResponseSdaDeleteFabricDeviceLayer2HandoffsV1, *resty.Response, error) {
 	return s.DeleteFabricDeviceLayer2HandoffsV1(DeleteFabricDeviceLayer2HandoffsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAuthenticationProfilesV1`
+*/
 func (s *SdaService) GetAuthenticationProfiles(GetAuthenticationProfilesV1QueryParams *GetAuthenticationProfilesV1QueryParams) (*ResponseSdaGetAuthenticationProfilesV1, *resty.Response, error) {
 	return s.GetAuthenticationProfilesV1(GetAuthenticationProfilesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetFabricDevicesLayer3HandoffsWithIPTransitCountV1`
+*/
 func (s *SdaService) GetFabricDevicesLayer3HandoffsWithIPTransitCount(GetFabricDevicesLayer3HandoffsWithIpTransitCountV1QueryParams *GetFabricDevicesLayer3HandoffsWithIPTransitCountV1QueryParams) (*ResponseSdaGetFabricDevicesLayer3HandoffsWithIPTransitCountV1, *resty.Response, error) {
 	return s.GetFabricDevicesLayer3HandoffsWithIPTransitCountV1(GetFabricDevicesLayer3HandoffsWithIpTransitCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddFabricDevicesLayer3HandoffsWithIPTransitV1`
+*/
 func (s *SdaService) AddFabricDevicesLayer3HandoffsWithIPTransit(requestSdaAddFabricDevicesLayer3HandoffsWithIpTransitV1 *RequestSdaAddFabricDevicesLayer3HandoffsWithIPTransitV1) (*ResponseSdaAddFabricDevicesLayer3HandoffsWithIPTransitV1, *resty.Response, error) {
 	return s.AddFabricDevicesLayer3HandoffsWithIPTransitV1(requestSdaAddFabricDevicesLayer3HandoffsWithIpTransitV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetLayer3VirtualNetworksCountV1`
+*/
 func (s *SdaService) GetLayer3VirtualNetworksCount(GetLayer3VirtualNetworksCountV1QueryParams *GetLayer3VirtualNetworksCountV1QueryParams) (*ResponseSdaGetLayer3VirtualNetworksCountV1, *resty.Response, error) {
 	return s.GetLayer3VirtualNetworksCountV1(GetLayer3VirtualNetworksCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddPortAssignmentsV1`
+*/
 func (s *SdaService) AddPortAssignments(requestSdaAddPortAssignmentsV1 *RequestSdaAddPortAssignmentsV1) (*ResponseSdaAddPortAssignmentsV1, *resty.Response, error) {
 	return s.AddPortAssignmentsV1(requestSdaAddPortAssignmentsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteLayer2VirtualNetworkByIDV1`
+*/
 func (s *SdaService) DeleteLayer2VirtualNetworkByID(id string) (*ResponseSdaDeleteLayer2VirtualNetworkByIDV1, *resty.Response, error) {
 	return s.DeleteLayer2VirtualNetworkByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteExtranetPoliciesV1`
+*/
 func (s *SdaService) DeleteExtranetPolicies(DeleteExtranetPoliciesV1QueryParams *DeleteExtranetPoliciesV1QueryParams) (*ResponseSdaDeleteExtranetPoliciesV1, *resty.Response, error) {
 	return s.DeleteExtranetPoliciesV1(DeleteExtranetPoliciesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetFabricSitesV1`
+*/
 func (s *SdaService) GetFabricSites(GetFabricSitesV1QueryParams *GetFabricSitesV1QueryParams) (*ResponseSdaGetFabricSitesV1, *resty.Response, error) {
 	return s.GetFabricSitesV1(GetFabricSitesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddVirtualNetworkWithScalableGroupsV1`
+*/
 func (s *SdaService) AddVirtualNetworkWithScalableGroups(requestSdaAddVirtualNetworkWithScalableGroupsV1 *RequestSdaAddVirtualNetworkWithScalableGroupsV1) (*ResponseSdaAddVirtualNetworkWithScalableGroupsV1, *resty.Response, error) {
 	return s.AddVirtualNetworkWithScalableGroupsV1(requestSdaAddVirtualNetworkWithScalableGroupsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeletePortAssignmentForAccessPointInSdaFabricV1`
+*/
 func (s *SdaService) DeletePortAssignmentForAccessPointInSdaFabric(DeletePortAssignmentForAccessPointInSDAFabricV1QueryParams *DeletePortAssignmentForAccessPointInSdaFabricV1QueryParams) (*ResponseSdaDeletePortAssignmentForAccessPointInSdaFabricV1, *resty.Response, error) {
 	return s.DeletePortAssignmentForAccessPointInSdaFabricV1(DeletePortAssignmentForAccessPointInSDAFabricV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddMulticastInSdaFabricV1`
+*/
 func (s *SdaService) AddMulticastInSdaFabric(requestSdaAddMulticastInSDAFabricV1 *RequestSdaAddMulticastInSdaFabricV1) (*ResponseSdaAddMulticastInSdaFabricV1, *resty.Response, error) {
 	return s.AddMulticastInSdaFabricV1(requestSdaAddMulticastInSDAFabricV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateTransitNetworksV1`
+*/
 func (s *SdaService) UpdateTransitNetworks(requestSdaUpdateTransitNetworksV1 *RequestSdaUpdateTransitNetworksV1) (*ResponseSdaUpdateTransitNetworksV1, *resty.Response, error) {
 	return s.UpdateTransitNetworksV1(requestSdaUpdateTransitNetworksV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteFabricDeviceLayer3HandoffWithIPTransitByIDV1`
+*/
 func (s *SdaService) DeleteFabricDeviceLayer3HandoffWithIPTransitByID(id string) (*ResponseSdaDeleteFabricDeviceLayer3HandoffWithIPTransitByIDV1, *resty.Response, error) {
 	return s.DeleteFabricDeviceLayer3HandoffWithIPTransitByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateExtranetPolicyV1`
+*/
 func (s *SdaService) UpdateExtranetPolicy(requestSdaUpdateExtranetPolicyV1 *RequestSdaUpdateExtranetPolicyV1) (*ResponseSdaUpdateExtranetPolicyV1, *resty.Response, error) {
 	return s.UpdateExtranetPolicyV1(requestSdaUpdateExtranetPolicyV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteFabricSiteByIDV1`
+*/
 func (s *SdaService) DeleteFabricSiteByID(id string) (*ResponseSdaDeleteFabricSiteByIDV1, *resty.Response, error) {
 	return s.DeleteFabricSiteByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetFabricDevicesLayer2HandoffsV1`
+*/
 func (s *SdaService) GetFabricDevicesLayer2Handoffs(GetFabricDevicesLayer2HandoffsV1QueryParams *GetFabricDevicesLayer2HandoffsV1QueryParams) (*ResponseSdaGetFabricDevicesLayer2HandoffsV1, *resty.Response, error) {
 	return s.GetFabricDevicesLayer2HandoffsV1(GetFabricDevicesLayer2HandoffsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetFabricDevicesCountV1`
+*/
 func (s *SdaService) GetFabricDevicesCount(GetFabricDevicesCountV1QueryParams *GetFabricDevicesCountV1QueryParams) (*ResponseSdaGetFabricDevicesCountV1, *resty.Response, error) {
 	return s.GetFabricDevicesCountV1(GetFabricDevicesCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteFabricDeviceLayer2HandoffByIDV1`
+*/
 func (s *SdaService) DeleteFabricDeviceLayer2HandoffByID(id string) (*ResponseSdaDeleteFabricDeviceLayer2HandoffByIDV1, *resty.Response, error) {
 	return s.DeleteFabricDeviceLayer2HandoffByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetPortChannelsV1`
+*/
 func (s *SdaService) GetPortChannels(GetPortChannelsV1QueryParams *GetPortChannelsV1QueryParams) (*ResponseSdaGetPortChannelsV1, *resty.Response, error) {
 	return s.GetPortChannelsV1(GetPortChannelsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddEdgeDeviceInSdaFabricV1`
+*/
 func (s *SdaService) AddEdgeDeviceInSdaFabric(requestSdaAddEdgeDeviceInSDAFabricV1 *RequestSdaAddEdgeDeviceInSdaFabricV1) (*ResponseSdaAddEdgeDeviceInSdaFabricV1, *resty.Response, error) {
 	return s.AddEdgeDeviceInSdaFabricV1(requestSdaAddEdgeDeviceInSDAFabricV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceRoleInSdaFabricV1`
+*/
 func (s *SdaService) GetDeviceRoleInSdaFabric(GetDeviceRoleInSDAFabricV1QueryParams *GetDeviceRoleInSdaFabricV1QueryParams) (*ResponseSdaGetDeviceRoleInSdaFabricV1, *resty.Response, error) {
 	return s.GetDeviceRoleInSdaFabricV1(GetDeviceRoleInSDAFabricV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeletePortChannelByIDV1`
+*/
 func (s *SdaService) DeletePortChannelByID(id string) (*ResponseSdaDeletePortChannelByIDV1, *resty.Response, error) {
 	return s.DeletePortChannelByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateFabricDevicesLayer3HandoffsWithIPTransitV1`
+*/
 func (s *SdaService) UpdateFabricDevicesLayer3HandoffsWithIPTransit(requestSdaUpdateFabricDevicesLayer3HandoffsWithIpTransitV1 *RequestSdaUpdateFabricDevicesLayer3HandoffsWithIPTransitV1) (*ResponseSdaUpdateFabricDevicesLayer3HandoffsWithIPTransitV1, *resty.Response, error) {
 	return s.UpdateFabricDevicesLayer3HandoffsWithIPTransitV1(requestSdaUpdateFabricDevicesLayer3HandoffsWithIpTransitV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateMulticastV1`
+*/
 func (s *SdaService) UpdateMulticast(requestSdaUpdateMulticastV1 *RequestSdaUpdateMulticastV1) (*ResponseSdaUpdateMulticastV1, *resty.Response, error) {
 	return s.UpdateMulticastV1(requestSdaUpdateMulticastV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTransitNetworksCountV1`
+*/
 func (s *SdaService) GetTransitNetworksCount(GetTransitNetworksCountV1QueryParams *GetTransitNetworksCountV1QueryParams) (*ResponseSdaGetTransitNetworksCountV1, *resty.Response, error) {
 	return s.GetTransitNetworksCountV1(GetTransitNetworksCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddLayer3VirtualNetworksV1`
+*/
 func (s *SdaService) AddLayer3VirtualNetworks(requestSdaAddLayer3VirtualNetworksV1 *RequestSdaAddLayer3VirtualNetworksV1) (*ResponseSdaAddLayer3VirtualNetworksV1, *resty.Response, error) {
 	return s.AddLayer3VirtualNetworksV1(requestSdaAddLayer3VirtualNetworksV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetLayer3VirtualNetworksV1`
+*/
 func (s *SdaService) GetLayer3VirtualNetworks(GetLayer3VirtualNetworksV1QueryParams *GetLayer3VirtualNetworksV1QueryParams) (*ResponseSdaGetLayer3VirtualNetworksV1, *resty.Response, error) {
 	return s.GetLayer3VirtualNetworksV1(GetLayer3VirtualNetworksV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetPortAssignmentCountV1`
+*/
 func (s *SdaService) GetPortAssignmentCount(GetPortAssignmentCountV1QueryParams *GetPortAssignmentCountV1QueryParams) (*ResponseSdaGetPortAssignmentCountV1, *resty.Response, error) {
 	return s.GetPortAssignmentCountV1(GetPortAssignmentCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteExtranetPolicyByIDV1`
+*/
 func (s *SdaService) DeleteExtranetPolicyByID(id string) (*ResponseSdaDeleteExtranetPolicyByIDV1, *resty.Response, error) {
 	return s.DeleteExtranetPolicyByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteMulticastVirtualNetworkByIDV1`
+*/
 func (s *SdaService) DeleteMulticastVirtualNetworkByID(id string) (*ResponseSdaDeleteMulticastVirtualNetworkByIDV1, *resty.Response, error) {
 	return s.DeleteMulticastVirtualNetworkByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteVirtualNetworkWithScalableGroupsV1`
+*/
 func (s *SdaService) DeleteVirtualNetworkWithScalableGroups(DeleteVirtualNetworkWithScalableGroupsV1QueryParams *DeleteVirtualNetworkWithScalableGroupsV1QueryParams) (*ResponseSdaDeleteVirtualNetworkWithScalableGroupsV1, *resty.Response, error) {
 	return s.DeleteVirtualNetworkWithScalableGroupsV1(DeleteVirtualNetworkWithScalableGroupsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteProvisionedDevicesV1`
+*/
 func (s *SdaService) DeleteProvisionedDevices(DeleteProvisionedDevicesV1QueryParams *DeleteProvisionedDevicesV1QueryParams) (*ResponseSdaDeleteProvisionedDevicesV1, *resty.Response, error) {
 	return s.DeleteProvisionedDevicesV1(DeleteProvisionedDevicesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteLayer3VirtualNetworkByIDV1`
+*/
 func (s *SdaService) DeleteLayer3VirtualNetworkByID(id string) (*ResponseSdaDeleteLayer3VirtualNetworkByIDV1, *resty.Response, error) {
 	return s.DeleteLayer3VirtualNetworkByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteTransitPeerNetworkV1`
+*/
 func (s *SdaService) DeleteTransitPeerNetwork(DeleteTransitPeerNetworkV1QueryParams *DeleteTransitPeerNetworkV1QueryParams) (*ResponseSdaDeleteTransitPeerNetworkV1, *resty.Response, error) {
 	return s.DeleteTransitPeerNetworkV1(DeleteTransitPeerNetworkV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteProvisionedDeviceByIDV1`
+*/
 func (s *SdaService) DeleteProvisionedDeviceByID(id string) (*ResponseSdaDeleteProvisionedDeviceByIDV1, *resty.Response, error) {
 	return s.DeleteProvisionedDeviceByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetFabricDevicesV1`
+*/
 func (s *SdaService) GetFabricDevices(GetFabricDevicesV1QueryParams *GetFabricDevicesV1QueryParams) (*ResponseSdaGetFabricDevicesV1, *resty.Response, error) {
 	return s.GetFabricDevicesV1(GetFabricDevicesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddMulticastVirtualNetworksV1`
+*/
 func (s *SdaService) AddMulticastVirtualNetworks(requestSdaAddMulticastVirtualNetworksV1 *RequestSdaAddMulticastVirtualNetworksV1) (*ResponseSdaAddMulticastVirtualNetworksV1, *resty.Response, error) {
 	return s.AddMulticastVirtualNetworksV1(requestSdaAddMulticastVirtualNetworksV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTransitNetworksV1`
+*/
 func (s *SdaService) GetTransitNetworks(GetTransitNetworksV1QueryParams *GetTransitNetworksV1QueryParams) (*ResponseSdaGetTransitNetworksV1, *resty.Response, error) {
 	return s.GetTransitNetworksV1(GetTransitNetworksV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteVnFromSdaFabricV1`
+*/
 func (s *SdaService) DeleteVnFromSdaFabric(DeleteVNFromSDAFabricV1QueryParams *DeleteVnFromSdaFabricV1QueryParams) (*ResponseSdaDeleteVnFromSdaFabricV1, *resty.Response, error) {
 	return s.DeleteVnFromSdaFabricV1(DeleteVNFromSDAFabricV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddFabricDevicesLayer2HandoffsV1`
+*/
 func (s *SdaService) AddFabricDevicesLayer2Handoffs(requestSdaAddFabricDevicesLayer2HandoffsV1 *RequestSdaAddFabricDevicesLayer2HandoffsV1) (*ResponseSdaAddFabricDevicesLayer2HandoffsV1, *resty.Response, error) {
 	return s.AddFabricDevicesLayer2HandoffsV1(requestSdaAddFabricDevicesLayer2HandoffsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateFabricDevicesV1`
+*/
 func (s *SdaService) UpdateFabricDevices(requestSdaUpdateFabricDevicesV1 *RequestSdaUpdateFabricDevicesV1) (*ResponseSdaUpdateFabricDevicesV1, *resty.Response, error) {
 	return s.UpdateFabricDevicesV1(requestSdaUpdateFabricDevicesV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetBorderDeviceDetailFromSdaFabricV1`
+*/
 func (s *SdaService) GetBorderDeviceDetailFromSdaFabric(GetBorderDeviceDetailFromSDAFabricV1QueryParams *GetBorderDeviceDetailFromSdaFabricV1QueryParams) (*ResponseSdaGetBorderDeviceDetailFromSdaFabricV1, *resty.Response, error) {
 	return s.GetBorderDeviceDetailFromSdaFabricV1(GetBorderDeviceDetailFromSDAFabricV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetExtranetPolicyCountV1`
+*/
 func (s *SdaService) GetExtranetPolicyCount() (*ResponseSdaGetExtranetPolicyCountV1, *resty.Response, error) {
 	return s.GetExtranetPolicyCountV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTransitPeerNetworkInfoV1`
+*/
 func (s *SdaService) GetTransitPeerNetworkInfo(GetTransitPeerNetworkInfoV1QueryParams *GetTransitPeerNetworkInfoV1QueryParams) (*ResponseSdaGetTransitPeerNetworkInfoV1, *resty.Response, error) {
 	return s.GetTransitPeerNetworkInfoV1(GetTransitPeerNetworkInfoV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteFabricDeviceByIDV1`
+*/
 func (s *SdaService) DeleteFabricDeviceByID(id string) (*ResponseSdaDeleteFabricDeviceByIDV1, *resty.Response, error) {
 	return s.DeleteFabricDeviceByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetPortAssignmentsV1`
+*/
 func (s *SdaService) GetPortAssignments(GetPortAssignmentsV1QueryParams *GetPortAssignmentsV1QueryParams) (*ResponseSdaGetPortAssignmentsV1, *resty.Response, error) {
 	return s.GetPortAssignmentsV1(GetPortAssignmentsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetVirtualNetworkWithScalableGroupsV1`
+*/
 func (s *SdaService) GetVirtualNetworkWithScalableGroups(GetVirtualNetworkWithScalableGroupsV1QueryParams *GetVirtualNetworkWithScalableGroupsV1QueryParams) (*ResponseSdaGetVirtualNetworkWithScalableGroupsV1, *resty.Response, error) {
 	return s.GetVirtualNetworkWithScalableGroupsV1(GetVirtualNetworkWithScalableGroupsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetMulticastDetailsFromSdaFabricV1`
+*/
 func (s *SdaService) GetMulticastDetailsFromSdaFabric(GetMulticastDetailsFromSDAFabricV1QueryParams *GetMulticastDetailsFromSdaFabricV1QueryParams) (*ResponseSdaGetMulticastDetailsFromSdaFabricV1, *resty.Response, error) {
 	return s.GetMulticastDetailsFromSdaFabricV1(GetMulticastDetailsFromSDAFabricV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteProvisionedWiredDeviceV1`
+*/
 func (s *SdaService) DeleteProvisionedWiredDevice(DeleteProvisionedWiredDeviceV1QueryParams *DeleteProvisionedWiredDeviceV1QueryParams) (*ResponseSdaDeleteProvisionedWiredDeviceV1, *resty.Response, error) {
 	return s.DeleteProvisionedWiredDeviceV1(DeleteProvisionedWiredDeviceV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteAnycastGatewayByIDV1`
+*/
 func (s *SdaService) DeleteAnycastGatewayByID(id string) (*ResponseSdaDeleteAnycastGatewayByIDV1, *resty.Response, error) {
 	return s.DeleteAnycastGatewayByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetVirtualNetworkSummaryV1`
+*/
 func (s *SdaService) GetVirtualNetworkSummary(GetVirtualNetworkSummaryV1QueryParams *GetVirtualNetworkSummaryV1QueryParams) (*ResponseSdaGetVirtualNetworkSummaryV1, *resty.Response, error) {
 	return s.GetVirtualNetworkSummaryV1(GetVirtualNetworkSummaryV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddPortChannelsV1`
+*/
 func (s *SdaService) AddPortChannels(requestSdaAddPortChannelsV1 *RequestSdaAddPortChannelsV1) (*ResponseSdaAddPortChannelsV1, *resty.Response, error) {
 	return s.AddPortChannelsV1(requestSdaAddPortChannelsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteEdgeDeviceFromSdaFabricV1`
+*/
 func (s *SdaService) DeleteEdgeDeviceFromSdaFabric(DeleteEdgeDeviceFromSDAFabricV1QueryParams *DeleteEdgeDeviceFromSdaFabricV1QueryParams) (*ResponseSdaDeleteEdgeDeviceFromSdaFabricV1, *resty.Response, error) {
 	return s.DeleteEdgeDeviceFromSdaFabricV1(DeleteEdgeDeviceFromSDAFabricV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteFabricDevicesV1`
+*/
 func (s *SdaService) DeleteFabricDevices(DeleteFabricDevicesV1QueryParams *DeleteFabricDevicesV1QueryParams) (*ResponseSdaDeleteFabricDevicesV1, *resty.Response, error) {
 	return s.DeleteFabricDevicesV1(DeleteFabricDevicesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetFabricZonesV1`
+*/
 func (s *SdaService) GetFabricZones(GetFabricZonesV1QueryParams *GetFabricZonesV1QueryParams) (*ResponseSdaGetFabricZonesV1, *resty.Response, error) {
 	return s.GetFabricZonesV1(GetFabricZonesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateFabricDevicesLayer3HandoffsWithSdaTransitV1`
+*/
 func (s *SdaService) UpdateFabricDevicesLayer3HandoffsWithSdaTransit(requestSdaUpdateFabricDevicesLayer3HandoffsWithSdaTransitV1 *RequestSdaUpdateFabricDevicesLayer3HandoffsWithSdaTransitV1) (*ResponseSdaUpdateFabricDevicesLayer3HandoffsWithSdaTransitV1, *resty.Response, error) {
 	return s.UpdateFabricDevicesLayer3HandoffsWithSdaTransitV1(requestSdaUpdateFabricDevicesLayer3HandoffsWithSdaTransitV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateAuthenticationProfileV1`
+*/
 func (s *SdaService) UpdateAuthenticationProfile(requestSdaUpdateAuthenticationProfileV1 *RequestSdaUpdateAuthenticationProfileV1) (*ResponseSdaUpdateAuthenticationProfileV1, *resty.Response, error) {
 	return s.UpdateAuthenticationProfileV1(requestSdaUpdateAuthenticationProfileV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteControlPlaneDeviceInSdaFabricV1`
+*/
 func (s *SdaService) DeleteControlPlaneDeviceInSdaFabric(DeleteControlPlaneDeviceInSDAFabricV1QueryParams *DeleteControlPlaneDeviceInSdaFabricV1QueryParams) (*ResponseSdaDeleteControlPlaneDeviceInSdaFabricV1, *resty.Response, error) {
 	return s.DeleteControlPlaneDeviceInSdaFabricV1(DeleteControlPlaneDeviceInSDAFabricV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetMulticastVirtualNetworksV1`
+*/
 func (s *SdaService) GetMulticastVirtualNetworks(GetMulticastVirtualNetworksV1QueryParams *GetMulticastVirtualNetworksV1QueryParams) (*ResponseSdaGetMulticastVirtualNetworksV1, *resty.Response, error) {
 	return s.GetMulticastVirtualNetworksV1(GetMulticastVirtualNetworksV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdatePortAssignmentsV1`
+*/
 func (s *SdaService) UpdatePortAssignments(requestSdaUpdatePortAssignmentsV1 *RequestSdaUpdatePortAssignmentsV1) (*ResponseSdaUpdatePortAssignmentsV1, *resty.Response, error) {
 	return s.UpdatePortAssignmentsV1(requestSdaUpdatePortAssignmentsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetFabricDevicesLayer3HandoffsWithSdaTransitV1`
+*/
 func (s *SdaService) GetFabricDevicesLayer3HandoffsWithSdaTransit(GetFabricDevicesLayer3HandoffsWithSdaTransitV1QueryParams *GetFabricDevicesLayer3HandoffsWithSdaTransitV1QueryParams) (*ResponseSdaGetFabricDevicesLayer3HandoffsWithSdaTransitV1, *resty.Response, error) {
 	return s.GetFabricDevicesLayer3HandoffsWithSdaTransitV1(GetFabricDevicesLayer3HandoffsWithSdaTransitV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteFabricDeviceLayer3HandoffsWithSdaTransitV1`
+*/
 func (s *SdaService) DeleteFabricDeviceLayer3HandoffsWithSdaTransit(DeleteFabricDeviceLayer3HandoffsWithSdaTransitV1QueryParams *DeleteFabricDeviceLayer3HandoffsWithSdaTransitV1QueryParams) (*ResponseSdaDeleteFabricDeviceLayer3HandoffsWithSdaTransitV1, *resty.Response, error) {
 	return s.DeleteFabricDeviceLayer3HandoffsWithSdaTransitV1(DeleteFabricDeviceLayer3HandoffsWithSdaTransitV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddLayer2VirtualNetworksV1`
+*/
 func (s *SdaService) AddLayer2VirtualNetworks(requestSdaAddLayer2VirtualNetworksV1 *RequestSdaAddLayer2VirtualNetworksV1) (*ResponseSdaAddLayer2VirtualNetworksV1, *resty.Response, error) {
 	return s.AddLayer2VirtualNetworksV1(requestSdaAddLayer2VirtualNetworksV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddFabricDevicesLayer3HandoffsWithSdaTransitV1`
+*/
 func (s *SdaService) AddFabricDevicesLayer3HandoffsWithSdaTransit(requestSdaAddFabricDevicesLayer3HandoffsWithSdaTransitV1 *RequestSdaAddFabricDevicesLayer3HandoffsWithSdaTransitV1) (*ResponseSdaAddFabricDevicesLayer3HandoffsWithSdaTransitV1, *resty.Response, error) {
 	return s.AddFabricDevicesLayer3HandoffsWithSdaTransitV1(requestSdaAddFabricDevicesLayer3HandoffsWithSdaTransitV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeletePortAssignmentForUserDeviceInSdaFabricV1`
+*/
 func (s *SdaService) DeletePortAssignmentForUserDeviceInSdaFabric(DeletePortAssignmentForUserDeviceInSDAFabricV1QueryParams *DeletePortAssignmentForUserDeviceInSdaFabricV1QueryParams) (*ResponseSdaDeletePortAssignmentForUserDeviceInSdaFabricV1, *resty.Response, error) {
 	return s.DeletePortAssignmentForUserDeviceInSdaFabricV1(DeletePortAssignmentForUserDeviceInSDAFabricV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetFabricDevicesLayer2HandoffsCountV1`
+*/
 func (s *SdaService) GetFabricDevicesLayer2HandoffsCount(GetFabricDevicesLayer2HandoffsCountV1QueryParams *GetFabricDevicesLayer2HandoffsCountV1QueryParams) (*ResponseSdaGetFabricDevicesLayer2HandoffsCountV1, *resty.Response, error) {
 	return s.GetFabricDevicesLayer2HandoffsCountV1(GetFabricDevicesLayer2HandoffsCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddTransitNetworksV1`
+*/
 func (s *SdaService) AddTransitNetworks(requestSdaAddTransitNetworksV1 *RequestSdaAddTransitNetworksV1) (*ResponseSdaAddTransitNetworksV1, *resty.Response, error) {
 	return s.AddTransitNetworksV1(requestSdaAddTransitNetworksV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateMulticastVirtualNetworksV1`
+*/
 func (s *SdaService) UpdateMulticastVirtualNetworks(requestSdaUpdateMulticastVirtualNetworksV1 *RequestSdaUpdateMulticastVirtualNetworksV1) (*ResponseSdaUpdateMulticastVirtualNetworksV1, *resty.Response, error) {
 	return s.UpdateMulticastVirtualNetworksV1(requestSdaUpdateMulticastVirtualNetworksV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteTransitNetworkByIDV1`
+*/
 func (s *SdaService) DeleteTransitNetworkByID(id string) (*ResponseSdaDeleteTransitNetworkByIDV1, *resty.Response, error) {
 	return s.DeleteTransitNetworkByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteFabricZoneByIDV1`
+*/
 func (s *SdaService) DeleteFabricZoneByID(id string) (*ResponseSdaDeleteFabricZoneByIDV1, *resty.Response, error) {
 	return s.DeleteFabricZoneByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetProvisionedDevicesCountV1`
+*/
 func (s *SdaService) GetProvisionedDevicesCount(GetProvisionedDevicesCountV1QueryParams *GetProvisionedDevicesCountV1QueryParams) (*ResponseSdaGetProvisionedDevicesCountV1, *resty.Response, error) {
 	return s.GetProvisionedDevicesCountV1(GetProvisionedDevicesCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteSiteFromSdaFabricV1`
+*/
 func (s *SdaService) DeleteSiteFromSdaFabric(DeleteSiteFromSDAFabricV1QueryParams *DeleteSiteFromSdaFabricV1QueryParams) (*ResponseSdaDeleteSiteFromSdaFabricV1, *resty.Response, error) {
 	return s.DeleteSiteFromSdaFabricV1(DeleteSiteFromSDAFabricV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddExtranetPolicyV1`
+*/
 func (s *SdaService) AddExtranetPolicy(requestSdaAddExtranetPolicyV1 *RequestSdaAddExtranetPolicyV1) (*ResponseSdaAddExtranetPolicyV1, *resty.Response, error) {
 	return s.AddExtranetPolicyV1(requestSdaAddExtranetPolicyV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteLayer3VirtualNetworksV1`
+*/
 func (s *SdaService) DeleteLayer3VirtualNetworks(DeleteLayer3VirtualNetworksV1QueryParams *DeleteLayer3VirtualNetworksV1QueryParams) (*ResponseSdaDeleteLayer3VirtualNetworksV1, *resty.Response, error) {
 	return s.DeleteLayer3VirtualNetworksV1(DeleteLayer3VirtualNetworksV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateFabricZoneV1`
+*/
 func (s *SdaService) UpdateFabricZone(requestSdaUpdateFabricZoneV1 *RequestSdaUpdateFabricZoneV1) (*ResponseSdaUpdateFabricZoneV1, *resty.Response, error) {
 	return s.UpdateFabricZoneV1(requestSdaUpdateFabricZoneV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetMulticastV1`
+*/
 func (s *SdaService) GetMulticast(GetMulticastV1QueryParams *GetMulticastV1QueryParams) (*ResponseSdaGetMulticastV1, *resty.Response, error) {
 	return s.GetMulticastV1(GetMulticastV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddFabricZoneV1`
+*/
 func (s *SdaService) AddFabricZone(requestSdaAddFabricZoneV1 *RequestSdaAddFabricZoneV1) (*ResponseSdaAddFabricZoneV1, *resty.Response, error) {
 	return s.AddFabricZoneV1(requestSdaAddFabricZoneV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ReProvisionWiredDeviceV1`
+*/
 func (s *SdaService) ReProvisionWiredDevice(requestSdaReProvisionWiredDeviceV1 *RequestSdaReProvisionWiredDeviceV1) (*ResponseSdaReProvisionWiredDeviceV1, *resty.Response, error) {
 	return s.ReProvisionWiredDeviceV1(requestSdaReProvisionWiredDeviceV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeletePortAssignmentByIDV1`
+*/
 func (s *SdaService) DeletePortAssignmentByID(id string) (*ResponseSdaDeletePortAssignmentByIDV1, *resty.Response, error) {
 	return s.DeletePortAssignmentByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteFabricDeviceLayer3HandoffsWithIPTransitV1`
+*/
 func (s *SdaService) DeleteFabricDeviceLayer3HandoffsWithIPTransit(DeleteFabricDeviceLayer3HandoffsWithIpTransitV1QueryParams *DeleteFabricDeviceLayer3HandoffsWithIPTransitV1QueryParams) (*ResponseSdaDeleteFabricDeviceLayer3HandoffsWithIPTransitV1, *resty.Response, error) {
 	return s.DeleteFabricDeviceLayer3HandoffsWithIPTransitV1(DeleteFabricDeviceLayer3HandoffsWithIpTransitV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddTransitPeerNetworkV1`
+*/
 func (s *SdaService) AddTransitPeerNetwork(requestSdaAddTransitPeerNetworkV1 *RequestSdaAddTransitPeerNetworkV1) (*ResponseSdaAddTransitPeerNetworkV1, *resty.Response, error) {
 	return s.AddTransitPeerNetworkV1(requestSdaAddTransitPeerNetworkV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetControlPlaneDeviceFromSdaFabricV1`
+*/
 func (s *SdaService) GetControlPlaneDeviceFromSdaFabric(GetControlPlaneDeviceFromSDAFabricV1QueryParams *GetControlPlaneDeviceFromSdaFabricV1QueryParams) (*ResponseSdaGetControlPlaneDeviceFromSdaFabricV1, *resty.Response, error) {
 	return s.GetControlPlaneDeviceFromSdaFabricV1(GetControlPlaneDeviceFromSDAFabricV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteLayer2VirtualNetworksV1`
+*/
 func (s *SdaService) DeleteLayer2VirtualNetworks(DeleteLayer2VirtualNetworksV1QueryParams *DeleteLayer2VirtualNetworksV1QueryParams) (*ResponseSdaDeleteLayer2VirtualNetworksV1, *resty.Response, error) {
 	return s.DeleteLayer2VirtualNetworksV1(DeleteLayer2VirtualNetworksV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetFabricZoneCountV1`
+*/
 func (s *SdaService) GetFabricZoneCount() (*ResponseSdaGetFabricZoneCountV1, *resty.Response, error) {
 	return s.GetFabricZoneCountV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddPortAssignmentForUserDeviceInSdaFabricV1`
+*/
 func (s *SdaService) AddPortAssignmentForUserDeviceInSdaFabric(requestSdaAddPortAssignmentForUserDeviceInSDAFabricV1 *RequestSdaAddPortAssignmentForUserDeviceInSdaFabricV1) (*ResponseSdaAddPortAssignmentForUserDeviceInSdaFabricV1, *resty.Response, error) {
 	return s.AddPortAssignmentForUserDeviceInSdaFabricV1(requestSdaAddPortAssignmentForUserDeviceInSDAFabricV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdatePortChannelsV1`
+*/
 func (s *SdaService) UpdatePortChannels(requestSdaUpdatePortChannelsV1 *RequestSdaUpdatePortChannelsV1) (*ResponseSdaUpdatePortChannelsV1, *resty.Response, error) {
 	return s.UpdatePortChannelsV1(requestSdaUpdatePortChannelsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetVnFromSdaFabricV1`
+*/
 func (s *SdaService) GetVnFromSdaFabric(GetVNFromSDAFabricV1QueryParams *GetVnFromSdaFabricV1QueryParams) (*ResponseSdaGetVnFromSdaFabricV1, *resty.Response, error) {
 	return s.GetVnFromSdaFabricV1(GetVNFromSDAFabricV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetFabricDevicesLayer3HandoffsWithIPTransitV1`
+*/
 func (s *SdaService) GetFabricDevicesLayer3HandoffsWithIPTransit(GetFabricDevicesLayer3HandoffsWithIpTransitV1QueryParams *GetFabricDevicesLayer3HandoffsWithIPTransitV1QueryParams) (*ResponseSdaGetFabricDevicesLayer3HandoffsWithIPTransitV1, *resty.Response, error) {
 	return s.GetFabricDevicesLayer3HandoffsWithIPTransitV1(GetFabricDevicesLayer3HandoffsWithIpTransitV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddFabricSiteV1`
+*/
 func (s *SdaService) AddFabricSite(requestSdaAddFabricSiteV1 *RequestSdaAddFabricSiteV1) (*ResponseSdaAddFabricSiteV1, *resty.Response, error) {
 	return s.AddFabricSiteV1(requestSdaAddFabricSiteV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateVirtualNetworkWithScalableGroupsV1`
+*/
 func (s *SdaService) UpdateVirtualNetworkWithScalableGroups(requestSdaUpdateVirtualNetworkWithScalableGroupsV1 *RequestSdaUpdateVirtualNetworkWithScalableGroupsV1) (*ResponseSdaUpdateVirtualNetworkWithScalableGroupsV1, *resty.Response, error) {
 	return s.UpdateVirtualNetworkWithScalableGroupsV1(requestSdaUpdateVirtualNetworkWithScalableGroupsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAnycastGatewaysV1`
+*/
 func (s *SdaService) GetAnycastGateways(GetAnycastGatewaysV1QueryParams *GetAnycastGatewaysV1QueryParams) (*ResponseSdaGetAnycastGatewaysV1, *resty.Response, error) {
 	return s.GetAnycastGatewaysV1(GetAnycastGatewaysV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ProvisionDevicesV1`
+*/
 func (s *SdaService) ProvisionDevices(requestSdaProvisionDevicesV1 *RequestSdaProvisionDevicesV1) (*ResponseSdaProvisionDevicesV1, *resty.Response, error) {
 	return s.ProvisionDevicesV1(requestSdaProvisionDevicesV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateLayer3VirtualNetworksV1`
+*/
 func (s *SdaService) UpdateLayer3VirtualNetworks(requestSdaUpdateLayer3VirtualNetworksV1 *RequestSdaUpdateLayer3VirtualNetworksV1) (*ResponseSdaUpdateLayer3VirtualNetworksV1, *resty.Response, error) {
 	return s.UpdateLayer3VirtualNetworksV1(requestSdaUpdateLayer3VirtualNetworksV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteMulticastFromSdaFabricV1`
+*/
 func (s *SdaService) DeleteMulticastFromSdaFabric(DeleteMulticastFromSDAFabricV1QueryParams *DeleteMulticastFromSdaFabricV1QueryParams) (*ResponseSdaDeleteMulticastFromSdaFabricV1, *resty.Response, error) {
 	return s.DeleteMulticastFromSdaFabricV1(DeleteMulticastFromSDAFabricV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddControlPlaneDeviceInSdaFabricV1`
+*/
 func (s *SdaService) AddControlPlaneDeviceInSdaFabric(requestSdaAddControlPlaneDeviceInSDAFabricV1 *RequestSdaAddControlPlaneDeviceInSdaFabricV1) (*ResponseSdaAddControlPlaneDeviceInSdaFabricV1, *resty.Response, error) {
 	return s.AddControlPlaneDeviceInSdaFabricV1(requestSdaAddControlPlaneDeviceInSDAFabricV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeletePortAssignmentsV1`
+*/
 func (s *SdaService) DeletePortAssignments(DeletePortAssignmentsV1QueryParams *DeletePortAssignmentsV1QueryParams) (*ResponseSdaDeletePortAssignmentsV1, *resty.Response, error) {
 	return s.DeletePortAssignmentsV1(DeletePortAssignmentsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetMulticastVirtualNetworkCountV1`
+*/
 func (s *SdaService) GetMulticastVirtualNetworkCount(GetMulticastVirtualNetworkCountV1QueryParams *GetMulticastVirtualNetworkCountV1QueryParams) (*ResponseSdaGetMulticastVirtualNetworkCountV1, *resty.Response, error) {
 	return s.GetMulticastVirtualNetworkCountV1(GetMulticastVirtualNetworkCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateDefaultAuthenticationProfileInSdaFabricV1`
+*/
 func (s *SdaService) UpdateDefaultAuthenticationProfileInSdaFabric(requestSdaUpdateDefaultAuthenticationProfileInSDAFabricV1 *RequestSdaUpdateDefaultAuthenticationProfileInSdaFabricV1) (*ResponseSdaUpdateDefaultAuthenticationProfileInSdaFabricV1, *resty.Response, error) {
 	return s.UpdateDefaultAuthenticationProfileInSdaFabricV1(requestSdaUpdateDefaultAuthenticationProfileInSDAFabricV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetFabricDevicesLayer3HandoffsWithSdaTransitCountV1`
+*/
 func (s *SdaService) GetFabricDevicesLayer3HandoffsWithSdaTransitCount(GetFabricDevicesLayer3HandoffsWithSdaTransitCountV1QueryParams *GetFabricDevicesLayer3HandoffsWithSdaTransitCountV1QueryParams) (*ResponseSdaGetFabricDevicesLayer3HandoffsWithSdaTransitCountV1, *resty.Response, error) {
 	return s.GetFabricDevicesLayer3HandoffsWithSdaTransitCountV1(GetFabricDevicesLayer3HandoffsWithSdaTransitCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddFabricDevicesV1`
+*/
 func (s *SdaService) AddFabricDevices(requestSdaAddFabricDevicesV1 *RequestSdaAddFabricDevicesV1) (*ResponseSdaAddFabricDevicesV1, *resty.Response, error) {
 	return s.AddFabricDevicesV1(requestSdaAddFabricDevicesV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetProvisionedDevicesV1`
+*/
 func (s *SdaService) GetProvisionedDevices(GetProvisionedDevicesV1QueryParams *GetProvisionedDevicesV1QueryParams) (*ResponseSdaGetProvisionedDevicesV1, *resty.Response, error) {
 	return s.GetProvisionedDevicesV1(GetProvisionedDevicesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetLayer2VirtualNetworkCountV1`
+*/
 func (s *SdaService) GetLayer2VirtualNetworkCount(GetLayer2VirtualNetworkCountV1QueryParams *GetLayer2VirtualNetworkCountV1QueryParams) (*ResponseSdaGetLayer2VirtualNetworkCountV1, *resty.Response, error) {
 	return s.GetLayer2VirtualNetworkCountV1(GetLayer2VirtualNetworkCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAnycastGatewayCountV1`
+*/
 func (s *SdaService) GetAnycastGatewayCount(GetAnycastGatewayCountV1QueryParams *GetAnycastGatewayCountV1QueryParams) (*ResponseSdaGetAnycastGatewayCountV1, *resty.Response, error) {
 	return s.GetAnycastGatewayCountV1(GetAnycastGatewayCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetPortChannelCountV1`
+*/
 func (s *SdaService) GetPortChannelCount(GetPortChannelCountV1QueryParams *GetPortChannelCountV1QueryParams) (*ResponseSdaGetPortChannelCountV1, *resty.Response, error) {
 	return s.GetPortChannelCountV1(GetPortChannelCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetEdgeDeviceFromSdaFabricV1`
+*/
 func (s *SdaService) GetEdgeDeviceFromSdaFabric(GetEdgeDeviceFromSDAFabricV1QueryParams *GetEdgeDeviceFromSdaFabricV1QueryParams) (*ResponseSdaGetEdgeDeviceFromSdaFabricV1, *resty.Response, error) {
 	return s.GetEdgeDeviceFromSdaFabricV1(GetEdgeDeviceFromSDAFabricV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetFabricSiteCountV1`
+*/
 func (s *SdaService) GetFabricSiteCount() (*ResponseSdaGetFabricSiteCountV1, *resty.Response, error) {
 	return s.GetFabricSiteCountV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ReProvisionDevicesV1`
+*/
 func (s *SdaService) ReProvisionDevices(requestSdaReProvisionDevicesV1 *RequestSdaReProvisionDevicesV1) (*ResponseSdaReProvisionDevicesV1, *resty.Response, error) {
 	return s.ReProvisionDevicesV1(requestSdaReProvisionDevicesV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ProvisionWiredDeviceV1`
+*/
 func (s *SdaService) ProvisionWiredDevice(requestSdaProvisionWiredDeviceV1 *RequestSdaProvisionWiredDeviceV1) (*ResponseSdaProvisionWiredDeviceV1, *resty.Response, error) {
 	return s.ProvisionWiredDeviceV1(requestSdaProvisionWiredDeviceV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetProvisionedWiredDeviceV1`
+*/
 func (s *SdaService) GetProvisionedWiredDevice(GetProvisionedWiredDeviceV1QueryParams *GetProvisionedWiredDeviceV1QueryParams) (*ResponseSdaGetProvisionedWiredDeviceV1, *resty.Response, error) {
 	return s.GetProvisionedWiredDeviceV1(GetProvisionedWiredDeviceV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetPortAssignmentForUserDeviceInSdaFabricV1`
+*/
 func (s *SdaService) GetPortAssignmentForUserDeviceInSdaFabric(GetPortAssignmentForUserDeviceInSDAFabricV1QueryParams *GetPortAssignmentForUserDeviceInSdaFabricV1QueryParams) (*ResponseSdaGetPortAssignmentForUserDeviceInSdaFabricV1, *resty.Response, error) {
 	return s.GetPortAssignmentForUserDeviceInSdaFabricV1(GetPortAssignmentForUserDeviceInSDAFabricV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteDefaultAuthenticationProfileFromSdaFabricV1`
+*/
 func (s *SdaService) DeleteDefaultAuthenticationProfileFromSdaFabric(DeleteDefaultAuthenticationProfileFromSDAFabricV1QueryParams *DeleteDefaultAuthenticationProfileFromSdaFabricV1QueryParams) (*ResponseSdaDeleteDefaultAuthenticationProfileFromSdaFabricV1, *resty.Response, error) {
 	return s.DeleteDefaultAuthenticationProfileFromSdaFabricV1(DeleteDefaultAuthenticationProfileFromSDAFabricV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateFabricSiteV1`
+*/
 func (s *SdaService) UpdateFabricSite(requestSdaUpdateFabricSiteV1 *RequestSdaUpdateFabricSiteV1) (*ResponseSdaUpdateFabricSiteV1, *resty.Response, error) {
 	return s.UpdateFabricSiteV1(requestSdaUpdateFabricSiteV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddSiteInSdaFabricV1`
+*/
 func (s *SdaService) AddSiteInSdaFabric(requestSdaAddSiteInSDAFabricV1 *RequestSdaAddSiteInSdaFabricV1) (*ResponseSdaAddSiteInSdaFabricV1, *resty.Response, error) {
 	return s.AddSiteInSdaFabricV1(requestSdaAddSiteInSDAFabricV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteBorderDeviceFromSdaFabricV1`
+*/
 func (s *SdaService) DeleteBorderDeviceFromSdaFabric(DeleteBorderDeviceFromSDAFabricV1QueryParams *DeleteBorderDeviceFromSdaFabricV1QueryParams) (*ResponseSdaDeleteBorderDeviceFromSdaFabricV1, *resty.Response, error) {
 	return s.DeleteBorderDeviceFromSdaFabricV1(DeleteBorderDeviceFromSDAFabricV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetLayer2VirtualNetworksV1`
+*/
 func (s *SdaService) GetLayer2VirtualNetworks(GetLayer2VirtualNetworksV1QueryParams *GetLayer2VirtualNetworksV1QueryParams) (*ResponseSdaGetLayer2VirtualNetworksV1, *resty.Response, error) {
 	return s.GetLayer2VirtualNetworksV1(GetLayer2VirtualNetworksV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetExtranetPoliciesV1`
+*/
 func (s *SdaService) GetExtranetPolicies(GetExtranetPoliciesV1QueryParams *GetExtranetPoliciesV1QueryParams) (*ResponseSdaGetExtranetPoliciesV1, *resty.Response, error) {
 	return s.GetExtranetPoliciesV1(GetExtranetPoliciesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetPortAssignmentForAccessPointInSdaFabricV1`
+*/
 func (s *SdaService) GetPortAssignmentForAccessPointInSdaFabric(GetPortAssignmentForAccessPointInSDAFabricV1QueryParams *GetPortAssignmentForAccessPointInSdaFabricV1QueryParams) (*ResponseSdaGetPortAssignmentForAccessPointInSdaFabricV1, *resty.Response, error) {
 	return s.GetPortAssignmentForAccessPointInSdaFabricV1(GetPortAssignmentForAccessPointInSDAFabricV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeletePortChannelsV1`
+*/
 func (s *SdaService) DeletePortChannels(DeletePortChannelsV1QueryParams *DeletePortChannelsV1QueryParams) (*ResponseSdaDeletePortChannelsV1, *resty.Response, error) {
 	return s.DeletePortChannelsV1(DeletePortChannelsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddVnInFabricV1`
+*/
 func (s *SdaService) AddVnInFabric(requestSdaAddVNInFabricV1 *RequestSdaAddVnInFabricV1) (*ResponseSdaAddVnInFabricV1, *resty.Response, error) {
 	return s.AddVnInFabricV1(requestSdaAddVNInFabricV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateLayer2VirtualNetworksV1`
+*/
 func (s *SdaService) UpdateLayer2VirtualNetworks(requestSdaUpdateLayer2VirtualNetworksV1 *RequestSdaUpdateLayer2VirtualNetworksV1) (*ResponseSdaUpdateLayer2VirtualNetworksV1, *resty.Response, error) {
 	return s.UpdateLayer2VirtualNetworksV1(requestSdaUpdateLayer2VirtualNetworksV1)
 }

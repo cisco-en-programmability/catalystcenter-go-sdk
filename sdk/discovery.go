@@ -2411,186 +2411,297 @@ func (s *DiscoveryService) DeleteGlobalCredentialV2(id string) (*ResponseDiscove
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateSNMPWriteCommunityV1`
+*/
 func (s *DiscoveryService) CreateSNMPWriteCommunity(requestDiscoveryCreateSNMPWriteCommunityV1 *RequestDiscoveryCreateSNMPWriteCommunityV1) (*ResponseDiscoveryCreateSNMPWriteCommunityV1, *resty.Response, error) {
 	return s.CreateSNMPWriteCommunityV1(requestDiscoveryCreateSNMPWriteCommunityV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDiscoveriesByRangeV1`
+*/
 func (s *DiscoveryService) GetDiscoveriesByRange(startIndex int, recordsToReturn int) (*ResponseDiscoveryGetDiscoveriesByRangeV1, *resty.Response, error) {
 	return s.GetDiscoveriesByRangeV1(startIndex, recordsToReturn)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetCountOfAllDiscoveryJobsV1`
+*/
 func (s *DiscoveryService) GetCountOfAllDiscoveryJobs() (*ResponseDiscoveryGetCountOfAllDiscoveryJobsV1, *resty.Response, error) {
 	return s.GetCountOfAllDiscoveryJobsV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSNMPPropertiesV1`
+*/
 func (s *DiscoveryService) GetSNMPProperties() (*ResponseDiscoveryGetSNMPPropertiesV1, *resty.Response, error) {
 	return s.GetSNMPPropertiesV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDiscoveredNetworkDevicesByDiscoveryIDV1`
+*/
 func (s *DiscoveryService) GetDiscoveredNetworkDevicesByDiscoveryID(id string, GetDiscoveredNetworkDevicesByDiscoveryIdV1QueryParams *GetDiscoveredNetworkDevicesByDiscoveryIDV1QueryParams) (*ResponseDiscoveryGetDiscoveredNetworkDevicesByDiscoveryIDV1, *resty.Response, error) {
 	return s.GetDiscoveredNetworkDevicesByDiscoveryIDV1(id, GetDiscoveredNetworkDevicesByDiscoveryIdV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetGlobalCredentialsV1`
+*/
 func (s *DiscoveryService) GetGlobalCredentials(GetGlobalCredentialsV1QueryParams *GetGlobalCredentialsV1QueryParams) (*ResponseDiscoveryGetGlobalCredentialsV1, *resty.Response, error) {
 	return s.GetGlobalCredentialsV1(GetGlobalCredentialsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDevicesDiscoveredByIDV1`
+*/
 func (s *DiscoveryService) GetDevicesDiscoveredByID(id string, GetDevicesDiscoveredByIdV1QueryParams *GetDevicesDiscoveredByIDV1QueryParams) (*ResponseDiscoveryGetDevicesDiscoveredByIDV1, *resty.Response, error) {
 	return s.GetDevicesDiscoveredByIDV1(id, GetDevicesDiscoveredByIdV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteDiscoveryBySpecifiedRangeV1`
+*/
 func (s *DiscoveryService) DeleteDiscoveryBySpecifiedRange(startIndex int, recordsToDelete int) (*ResponseDiscoveryDeleteDiscoveryBySpecifiedRangeV1, *resty.Response, error) {
 	return s.DeleteDiscoveryBySpecifiedRangeV1(startIndex, recordsToDelete)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateNetconfCredentialsV1`
+*/
 func (s *DiscoveryService) UpdateNetconfCredentials(requestDiscoveryUpdateNetconfCredentialsV1 *RequestDiscoveryUpdateNetconfCredentialsV1) (*ResponseDiscoveryUpdateNetconfCredentialsV1, *resty.Response, error) {
 	return s.UpdateNetconfCredentialsV1(requestDiscoveryUpdateNetconfCredentialsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDiscoveredDevicesByRangeV1`
+*/
 func (s *DiscoveryService) GetDiscoveredDevicesByRange(id string, startIndex int, recordsToReturn int, GetDiscoveredDevicesByRangeV1QueryParams *GetDiscoveredDevicesByRangeV1QueryParams) (*ResponseDiscoveryGetDiscoveredDevicesByRangeV1, *resty.Response, error) {
 	return s.GetDiscoveredDevicesByRangeV1(id, startIndex, recordsToReturn, GetDiscoveredDevicesByRangeV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteAllDiscoveryV1`
+*/
 func (s *DiscoveryService) DeleteAllDiscovery() (*ResponseDiscoveryDeleteAllDiscoveryV1, *resty.Response, error) {
 	return s.DeleteAllDiscoveryV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdatesAnExistingDiscoveryBySpecifiedIDV1`
+*/
 func (s *DiscoveryService) UpdatesAnExistingDiscoveryBySpecifiedID(requestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIdV1 *RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1) (*ResponseDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1, *resty.Response, error) {
 	return s.UpdatesAnExistingDiscoveryBySpecifiedIDV1(requestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIdV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateSNMPReadCommunityV1`
+*/
 func (s *DiscoveryService) UpdateSNMPReadCommunity(requestDiscoveryUpdateSNMPReadCommunityV1 *RequestDiscoveryUpdateSNMPReadCommunityV1) (*ResponseDiscoveryUpdateSNMPReadCommunityV1, *resty.Response, error) {
 	return s.UpdateSNMPReadCommunityV1(requestDiscoveryUpdateSNMPReadCommunityV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateSNMPv3CredentialsV1`
+*/
 func (s *DiscoveryService) UpdateSNMPv3Credentials(requestDiscoveryUpdateSNMPv3CredentialsV1 *RequestDiscoveryUpdateSNMPv3CredentialsV1) (*ResponseDiscoveryUpdateSNMPv3CredentialsV1, *resty.Response, error) {
 	return s.UpdateSNMPv3CredentialsV1(requestDiscoveryUpdateSNMPv3CredentialsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteGlobalCredentialsByIDV1`
+*/
 func (s *DiscoveryService) DeleteGlobalCredentialsByID(globalCredentialID string) (*ResponseDiscoveryDeleteGlobalCredentialsByIDV1, *resty.Response, error) {
 	return s.DeleteGlobalCredentialsByIDV1(globalCredentialID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetListOfDiscoveriesByDiscoveryIDV1`
+*/
 func (s *DiscoveryService) GetListOfDiscoveriesByDiscoveryID(id string, GetListOfDiscoveriesByDiscoveryIdV1QueryParams *GetListOfDiscoveriesByDiscoveryIDV1QueryParams) (*ResponseDiscoveryGetListOfDiscoveriesByDiscoveryIDV1, *resty.Response, error) {
 	return s.GetListOfDiscoveriesByDiscoveryIDV1(id, GetListOfDiscoveriesByDiscoveryIdV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteDiscoveryByIDV1`
+*/
 func (s *DiscoveryService) DeleteDiscoveryByID(id string) (*ResponseDiscoveryDeleteDiscoveryByIDV1, *resty.Response, error) {
 	return s.DeleteDiscoveryByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateGlobalCredentialsV1`
+*/
 func (s *DiscoveryService) UpdateGlobalCredentials(globalCredentialID string, requestDiscoveryUpdateGlobalCredentialsV1 *RequestDiscoveryUpdateGlobalCredentialsV1) (*ResponseDiscoveryUpdateGlobalCredentialsV1, *resty.Response, error) {
 	return s.UpdateGlobalCredentialsV1(globalCredentialID, requestDiscoveryUpdateGlobalCredentialsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetCredentialSubTypeByCredentialIDV1`
+*/
 func (s *DiscoveryService) GetCredentialSubTypeByCredentialID(id string) (*ResponseDiscoveryGetCredentialSubTypeByCredentialIDV1, *resty.Response, error) {
 	return s.GetCredentialSubTypeByCredentialIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateGlobalCredentialsV2`
+*/
 func (s *DiscoveryService) CreateGlobalCredentials(requestDiscoveryCreateGlobalCredentialsV2 *RequestDiscoveryCreateGlobalCredentialsV2) (*ResponseDiscoveryCreateGlobalCredentialsV2, *resty.Response, error) {
 	return s.CreateGlobalCredentialsV2(requestDiscoveryCreateGlobalCredentialsV2)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAllGlobalCredentialsV2`
+*/
 func (s *DiscoveryService) GetAllGlobalCredentials() (*ResponseDiscoveryGetAllGlobalCredentialsV2, *resty.Response, error) {
 	return s.GetAllGlobalCredentialsV2()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateHTTPReadCredentialsV1`
+*/
 func (s *DiscoveryService) CreateHTTPReadCredentials(requestDiscoveryCreateHTTPReadCredentialsV1 *RequestDiscoveryCreateHTTPReadCredentialsV1) (*ResponseDiscoveryCreateHTTPReadCredentialsV1, *resty.Response, error) {
 	return s.CreateHTTPReadCredentialsV1(requestDiscoveryCreateHTTPReadCredentialsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetNetworkDevicesFromDiscoveryV1`
+*/
 func (s *DiscoveryService) GetNetworkDevicesFromDiscovery(id string, GetNetworkDevicesFromDiscoveryV1QueryParams *GetNetworkDevicesFromDiscoveryV1QueryParams) (*ResponseDiscoveryGetNetworkDevicesFromDiscoveryV1, *resty.Response, error) {
 	return s.GetNetworkDevicesFromDiscoveryV1(id, GetNetworkDevicesFromDiscoveryV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateCliCredentialsV1`
+*/
 func (s *DiscoveryService) UpdateCliCredentials(requestDiscoveryUpdateCLICredentialsV1 *RequestDiscoveryUpdateCliCredentialsV1) (*ResponseDiscoveryUpdateCliCredentialsV1, *resty.Response, error) {
 	return s.UpdateCliCredentialsV1(requestDiscoveryUpdateCLICredentialsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `StartDiscoveryV1`
+*/
 func (s *DiscoveryService) StartDiscovery(requestDiscoveryStartDiscoveryV1 *RequestDiscoveryStartDiscoveryV1) (*ResponseDiscoveryStartDiscoveryV1, *resty.Response, error) {
 	return s.StartDiscoveryV1(requestDiscoveryStartDiscoveryV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateSNMPReadCommunityV1`
+*/
 func (s *DiscoveryService) CreateSNMPReadCommunity(requestDiscoveryCreateSNMPReadCommunityV1 *RequestDiscoveryCreateSNMPReadCommunityV1) (*ResponseDiscoveryCreateSNMPReadCommunityV1, *resty.Response, error) {
 	return s.CreateSNMPReadCommunityV1(requestDiscoveryCreateSNMPReadCommunityV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateCliCredentialsV1`
+*/
 func (s *DiscoveryService) CreateCliCredentials(requestDiscoveryCreateCLICredentialsV1 *RequestDiscoveryCreateCliCredentialsV1) (*ResponseDiscoveryCreateCliCredentialsV1, *resty.Response, error) {
 	return s.CreateCliCredentialsV1(requestDiscoveryCreateCLICredentialsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateHTTPReadCredentialV1`
+*/
 func (s *DiscoveryService) UpdateHTTPReadCredential(requestDiscoveryUpdateHTTPReadCredentialV1 *RequestDiscoveryUpdateHTTPReadCredentialV1) (*ResponseDiscoveryUpdateHTTPReadCredentialV1, *resty.Response, error) {
 	return s.UpdateHTTPReadCredentialV1(requestDiscoveryUpdateHTTPReadCredentialV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateHTTPWriteCredentialsV1`
+*/
 func (s *DiscoveryService) UpdateHTTPWriteCredentials(requestDiscoveryUpdateHTTPWriteCredentialsV1 *RequestDiscoveryUpdateHTTPWriteCredentialsV1) (*ResponseDiscoveryUpdateHTTPWriteCredentialsV1, *resty.Response, error) {
 	return s.UpdateHTTPWriteCredentialsV1(requestDiscoveryUpdateHTTPWriteCredentialsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteGlobalCredentialV2`
+*/
 func (s *DiscoveryService) DeleteGlobalCredential(id string) (*ResponseDiscoveryDeleteGlobalCredentialV2, *resty.Response, error) {
 	return s.DeleteGlobalCredentialV2(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateHTTPWriteCredentialsV1`
+*/
 func (s *DiscoveryService) CreateHTTPWriteCredentials(requestDiscoveryCreateHTTPWriteCredentialsV1 *RequestDiscoveryCreateHTTPWriteCredentialsV1) (*ResponseDiscoveryCreateHTTPWriteCredentialsV1, *resty.Response, error) {
 	return s.CreateHTTPWriteCredentialsV1(requestDiscoveryCreateHTTPWriteCredentialsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDiscoveryByIDV1`
+*/
 func (s *DiscoveryService) GetDiscoveryByID(id string) (*ResponseDiscoveryGetDiscoveryByIDV1, *resty.Response, error) {
 	return s.GetDiscoveryByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateUpdateSNMPPropertiesV1`
+*/
 func (s *DiscoveryService) CreateUpdateSNMPProperties(requestDiscoveryCreateUpdateSNMPPropertiesV1 *RequestDiscoveryCreateUpdateSNMPPropertiesV1) (*ResponseDiscoveryCreateUpdateSNMPPropertiesV1, *resty.Response, error) {
 	return s.CreateUpdateSNMPPropertiesV1(requestDiscoveryCreateUpdateSNMPPropertiesV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateSNMPv3CredentialsV1`
+*/
 func (s *DiscoveryService) CreateSNMPv3Credentials(requestDiscoveryCreateSNMPv3CredentialsV1 *RequestDiscoveryCreateSNMPv3CredentialsV1) (*ResponseDiscoveryCreateSNMPv3CredentialsV1, *resty.Response, error) {
 	return s.CreateSNMPv3CredentialsV1(requestDiscoveryCreateSNMPv3CredentialsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateNetconfCredentialsV1`
+*/
 func (s *DiscoveryService) CreateNetconfCredentials(requestDiscoveryCreateNetconfCredentialsV1 *RequestDiscoveryCreateNetconfCredentialsV1) (*ResponseDiscoveryCreateNetconfCredentialsV1, *resty.Response, error) {
 	return s.CreateNetconfCredentialsV1(requestDiscoveryCreateNetconfCredentialsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateSNMPWriteCommunityV1`
+*/
 func (s *DiscoveryService) UpdateSNMPWriteCommunity(requestDiscoveryUpdateSNMPWriteCommunityV1 *RequestDiscoveryUpdateSNMPWriteCommunityV1) (*ResponseDiscoveryUpdateSNMPWriteCommunityV1, *resty.Response, error) {
 	return s.UpdateSNMPWriteCommunityV1(requestDiscoveryUpdateSNMPWriteCommunityV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDiscoveryJobsByIPV1`
+*/
 func (s *DiscoveryService) GetDiscoveryJobsByIP(GetDiscoveryJobsByIPV1QueryParams *GetDiscoveryJobsByIPV1QueryParams) (*ResponseDiscoveryGetDiscoveryJobsByIPV1, *resty.Response, error) {
 	return s.GetDiscoveryJobsByIPV1(GetDiscoveryJobsByIPV1QueryParams)
 }

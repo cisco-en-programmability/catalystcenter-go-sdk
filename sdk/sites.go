@@ -1757,102 +1757,220 @@ func (s *SitesService) DeleteSiteV1(siteID string) (*ResponseSitesDeleteSiteV1, 
 
 }
 
+func (s *SitesService) GetArea(GetSiteQueryParams *GetSiteV1QueryParams) (*ResponseSitesGetAreaV1, *resty.Response, error) {
+	path := "/dna/intent/api/v1/site"
+
+	queryString, _ := query.Values(GetSiteQueryParams)
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSitesGetAreaV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.GetArea(GetSiteQueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation GetSite")
+	}
+
+	result := response.Result().(*ResponseSitesGetAreaV1)
+	return result, response, err
+
+}
+
+func (s *SitesService) GetFloor(GetSiteQueryParams *GetSiteV1QueryParams) (*ResponseSitesGetFloorV1, *resty.Response, error) {
+	path := "/dna/intent/api/v1/site"
+
+	queryString, _ := query.Values(GetSiteQueryParams)
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSitesGetFloorV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.GetFloor(GetSiteQueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation GetSite")
+	}
+
+	result := response.Result().(*ResponseSitesGetFloorV1)
+	return result, response, err
+
+}
+
 // Alias Function
+/*
+This method acts as an alias for the method `GetSiteHealthV1`
+*/
 func (s *SitesService) GetSiteHealth(GetSiteHealthV1QueryParams *GetSiteHealthV1QueryParams) (*ResponseSitesGetSiteHealthV1, *resty.Response, error) {
 	return s.GetSiteHealthV1(GetSiteHealthV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateSiteV1`
+*/
 func (s *SitesService) CreateSite(requestSitesCreateSiteV1 *RequestSitesCreateSiteV1, CreateSiteV1HeaderParams *CreateSiteV1HeaderParams) (*ResponseSitesCreateSiteV1, *resty.Response, error) {
 	return s.CreateSiteV1(requestSitesCreateSiteV1, CreateSiteV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ImportMapArchivePerformImportV1`
+*/
 func (s *SitesService) ImportMapArchivePerformImport(importContextUUID string) (*ResponseSitesImportMapArchivePerformImportV1, *resty.Response, error) {
 	return s.ImportMapArchivePerformImportV1(importContextUUID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ImportMapArchiveImportStatusV1`
+*/
 func (s *SitesService) ImportMapArchiveImportStatus(importContextUUID string) (*ResponseSitesImportMapArchiveImportStatusV1, *resty.Response, error) {
 	return s.ImportMapArchiveImportStatusV1(importContextUUID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ImportMapArchiveCancelAnImportV1`
+*/
 func (s *SitesService) ImportMapArchiveCancelAnImport(importContextUUID string) (*ResponseSitesImportMapArchiveCancelAnImportV1, *resty.Response, error) {
 	return s.ImportMapArchiveCancelAnImportV1(importContextUUID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSiteCountV1`
+*/
 func (s *SitesService) GetSiteCount(GetSiteCountV1QueryParams *GetSiteCountV1QueryParams) (*ResponseSitesGetSiteCountV1, *resty.Response, error) {
 	return s.GetSiteCountV1(GetSiteCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ReadSiteCountV1`
+*/
 func (s *SitesService) ReadSiteCount(ReadSiteCountV1HeaderParams *ReadSiteCountV1HeaderParams, ReadSiteCountV1QueryParams *ReadSiteCountV1QueryParams) (*ResponseSitesReadSiteCountV1, *resty.Response, error) {
 	return s.ReadSiteCountV1(ReadSiteCountV1HeaderParams, ReadSiteCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetMembershipV1`
+*/
 func (s *SitesService) GetMembership(siteID string, GetMembershipV1QueryParams *GetMembershipV1QueryParams) (*ResponseSitesGetMembershipV1, *resty.Response, error) {
 	return s.GetMembershipV1(siteID, GetMembershipV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ReadListOfSiteHealthSummariesV1`
+*/
 func (s *SitesService) ReadListOfSiteHealthSummaries(ReadListOfSiteHealthSummariesV1HeaderParams *ReadListOfSiteHealthSummariesV1HeaderParams, ReadListOfSiteHealthSummariesV1QueryParams *ReadListOfSiteHealthSummariesV1QueryParams) (*ResponseSitesReadListOfSiteHealthSummariesV1, *resty.Response, error) {
 	return s.ReadListOfSiteHealthSummariesV1(ReadListOfSiteHealthSummariesV1HeaderParams, ReadListOfSiteHealthSummariesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSiteV1`
+*/
 func (s *SitesService) GetSite(GetSiteV1QueryParams *GetSiteV1QueryParams) (*ResponseSitesGetSiteV1, *resty.Response, error) {
 	return s.GetSiteV1(GetSiteV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ReadAnAggregatedSummaryOfSiteHealthDataV1`
+*/
 func (s *SitesService) ReadAnAggregatedSummaryOfSiteHealthData(ReadAnAggregatedSummaryOfSiteHealthDataV1HeaderParams *ReadAnAggregatedSummaryOfSiteHealthDataV1HeaderParams, ReadAnAggregatedSummaryOfSiteHealthDataV1QueryParams *ReadAnAggregatedSummaryOfSiteHealthDataV1QueryParams) (*ResponseSitesReadAnAggregatedSummaryOfSiteHealthDataV1, *resty.Response, error) {
 	return s.ReadAnAggregatedSummaryOfSiteHealthDataV1(ReadAnAggregatedSummaryOfSiteHealthDataV1HeaderParams, ReadAnAggregatedSummaryOfSiteHealthDataV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AssignDevicesToSiteV1`
+*/
 func (s *SitesService) AssignDevicesToSite(siteID string, requestSitesAssignDevicesToSiteV1 *RequestSitesAssignDevicesToSiteV1, AssignDevicesToSiteV1HeaderParams *AssignDevicesToSiteV1HeaderParams) (*ResponseSitesAssignDevicesToSiteV1, *resty.Response, error) {
 	return s.AssignDevicesToSiteV1(siteID, requestSitesAssignDevicesToSiteV1, AssignDevicesToSiteV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ExportMapArchiveV1`
+*/
 func (s *SitesService) ExportMapArchive(siteHierarchyUUID string) (*ResponseSitesExportMapArchiveV1, *resty.Response, error) {
 	return s.ExportMapArchiveV1(siteHierarchyUUID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateSiteV1`
+*/
 func (s *SitesService) UpdateSite(siteID string, requestSitesUpdateSiteV1 *RequestSitesUpdateSiteV1, UpdateSiteV1HeaderParams *UpdateSiteV1HeaderParams) (*ResponseSitesUpdateSiteV1, *resty.Response, error) {
 	return s.UpdateSiteV1(siteID, requestSitesUpdateSiteV1, UpdateSiteV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDevicesThatAreAssignedToASiteV1`
+*/
 func (s *SitesService) GetDevicesThatAreAssignedToASite(id string, GetDevicesThatAreAssignedToASiteV1QueryParams *GetDevicesThatAreAssignedToASiteV1QueryParams) (*ResponseSitesGetDevicesThatAreAssignedToASiteV1, *resty.Response, error) {
 	return s.GetDevicesThatAreAssignedToASiteV1(id, GetDevicesThatAreAssignedToASiteV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `QueryAnAggregatedSummaryOfSiteHealthDataV1`
+*/
 func (s *SitesService) QueryAnAggregatedSummaryOfSiteHealthData(requestSitesQueryAnAggregatedSummaryOfSiteHealthDataV1 *RequestSitesQueryAnAggregatedSummaryOfSiteHealthDataV1, QueryAnAggregatedSummaryOfSiteHealthDataV1QueryParams *QueryAnAggregatedSummaryOfSiteHealthDataV1QueryParams) (*ResponseSitesQueryAnAggregatedSummaryOfSiteHealthDataV1, *resty.Response, error) {
 	return s.QueryAnAggregatedSummaryOfSiteHealthDataV1(requestSitesQueryAnAggregatedSummaryOfSiteHealthDataV1, QueryAnAggregatedSummaryOfSiteHealthDataV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ImportMapArchiveStartImportV1`
+*/
 func (s *SitesService) ImportMapArchiveStartImport() (*resty.Response, error) {
 	return s.ImportMapArchiveStartImportV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteSiteV1`
+*/
 func (s *SitesService) DeleteSite(siteID string) (*ResponseSitesDeleteSiteV1, *resty.Response, error) {
 	return s.DeleteSiteV1(siteID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `MapsSupportedAccessPointsV1`
+*/
 func (s *SitesService) MapsSupportedAccessPoints() (*ResponseSitesMapsSupportedAccessPointsV1, *resty.Response, error) {
 	return s.MapsSupportedAccessPointsV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ReadSiteHealthSummaryDataBySiteIDV1`
+*/
 func (s *SitesService) ReadSiteHealthSummaryDataBySiteID(id string, ReadSiteHealthSummaryDataBySiteIdV1HeaderParams *ReadSiteHealthSummaryDataBySiteIDV1HeaderParams, ReadSiteHealthSummaryDataBySiteIdV1QueryParams *ReadSiteHealthSummaryDataBySiteIDV1QueryParams) (*ResponseSitesReadSiteHealthSummaryDataBySiteIDV1, *resty.Response, error) {
 	return s.ReadSiteHealthSummaryDataBySiteIDV1(id, ReadSiteHealthSummaryDataBySiteIdV1HeaderParams, ReadSiteHealthSummaryDataBySiteIdV1QueryParams)
 }

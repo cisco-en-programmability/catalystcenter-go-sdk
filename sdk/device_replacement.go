@@ -298,26 +298,41 @@ func (s *DeviceReplacementService) UnmarkDeviceForReplacementV1(requestDeviceRep
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ReturnListOfReplacementDevicesWithReplacementDetailsV1`
+*/
 func (s *DeviceReplacementService) ReturnListOfReplacementDevicesWithReplacementDetails(ReturnListOfReplacementDevicesWithReplacementDetailsV1QueryParams *ReturnListOfReplacementDevicesWithReplacementDetailsV1QueryParams) (*ResponseDeviceReplacementReturnListOfReplacementDevicesWithReplacementDetailsV1, *resty.Response, error) {
 	return s.ReturnListOfReplacementDevicesWithReplacementDetailsV1(ReturnListOfReplacementDevicesWithReplacementDetailsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UnmarkDeviceForReplacementV1`
+*/
 func (s *DeviceReplacementService) UnmarkDeviceForReplacement(requestDeviceReplacementUnMarkDeviceForReplacementV1 *RequestDeviceReplacementUnmarkDeviceForReplacementV1) (*ResponseDeviceReplacementUnmarkDeviceForReplacementV1, *resty.Response, error) {
 	return s.UnmarkDeviceForReplacementV1(requestDeviceReplacementUnMarkDeviceForReplacementV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ReturnReplacementDevicesCountV1`
+*/
 func (s *DeviceReplacementService) ReturnReplacementDevicesCount(ReturnReplacementDevicesCountV1QueryParams *ReturnReplacementDevicesCountV1QueryParams) (*ResponseDeviceReplacementReturnReplacementDevicesCountV1, *resty.Response, error) {
 	return s.ReturnReplacementDevicesCountV1(ReturnReplacementDevicesCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `MarkDeviceForReplacementV1`
+*/
 func (s *DeviceReplacementService) MarkDeviceForReplacement(requestDeviceReplacementMarkDeviceForReplacementV1 *RequestDeviceReplacementMarkDeviceForReplacementV1) (*ResponseDeviceReplacementMarkDeviceForReplacementV1, *resty.Response, error) {
 	return s.MarkDeviceForReplacementV1(requestDeviceReplacementMarkDeviceForReplacementV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeployDeviceReplacementWorkflowV1`
+*/
 func (s *DeviceReplacementService) DeployDeviceReplacementWorkflow(requestDeviceReplacementDeployDeviceReplacementWorkflowV1 *RequestDeviceReplacementDeployDeviceReplacementWorkflowV1) (*ResponseDeviceReplacementDeployDeviceReplacementWorkflowV1, *resty.Response, error) {
 	return s.DeployDeviceReplacementWorkflowV1(requestDeviceReplacementDeployDeviceReplacementWorkflowV1)
 }

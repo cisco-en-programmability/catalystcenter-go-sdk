@@ -508,31 +508,49 @@ func (s *TopologyService) GetVLANDetailsV1() (*ResponseTopologyGetVLANDetailsV1,
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSiteTopologyV1`
+*/
 func (s *TopologyService) GetSiteTopology() (*ResponseTopologyGetSiteTopologyV1, *resty.Response, error) {
 	return s.GetSiteTopologyV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetPhysicalTopologyV1`
+*/
 func (s *TopologyService) GetPhysicalTopology(GetPhysicalTopologyV1QueryParams *GetPhysicalTopologyV1QueryParams) (*ResponseTopologyGetPhysicalTopologyV1, *resty.Response, error) {
 	return s.GetPhysicalTopologyV1(GetPhysicalTopologyV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTopologyDetailsV1`
+*/
 func (s *TopologyService) GetTopologyDetails(vlanID string) (*ResponseTopologyGetTopologyDetailsV1, *resty.Response, error) {
 	return s.GetTopologyDetailsV1(vlanID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetL3TopologyDetailsV1`
+*/
 func (s *TopologyService) GetL3TopologyDetails(topologyType string) (*ResponseTopologyGetL3TopologyDetailsV1, *resty.Response, error) {
 	return s.GetL3TopologyDetailsV1(topologyType)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetVLANDetailsV1`
+*/
 func (s *TopologyService) GetVLANDetails() (*ResponseTopologyGetVLANDetailsV1, *resty.Response, error) {
 	return s.GetVLANDetailsV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetOverallNetworkHealthV1`
+*/
 func (s *TopologyService) GetOverallNetworkHealth(GetOverallNetworkHealthV1QueryParams *GetOverallNetworkHealthV1QueryParams) (*ResponseTopologyGetOverallNetworkHealthV1, *resty.Response, error) {
 	return s.GetOverallNetworkHealthV1(GetOverallNetworkHealthV1QueryParams)
 }

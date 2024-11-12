@@ -752,56 +752,89 @@ func (s *LanAutomationService) LanAutomationStopV1(id string) (*ResponseLanAutom
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `LanAutomationStatusByIDV1`
+*/
 func (s *LanAutomationService) LanAutomationStatusByID(id string) (*ResponseLanAutomationLanAutomationStatusByIDV1, *resty.Response, error) {
 	return s.LanAutomationStatusByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `LanAutomationStopV1`
+*/
 func (s *LanAutomationService) LanAutomationStop(id string) (*ResponseLanAutomationLanAutomationStopV1, *resty.Response, error) {
 	return s.LanAutomationStopV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `LanAutomationLogV1`
+*/
 func (s *LanAutomationService) LanAutomationLog(LANAutomationLogV1QueryParams *LanAutomationLogV1QueryParams) (*ResponseLanAutomationLanAutomationLogV1, *resty.Response, error) {
 	return s.LanAutomationLogV1(LANAutomationLogV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `LanAutomationLogByIDV1`
+*/
 func (s *LanAutomationService) LanAutomationLogByID(id string) (*ResponseLanAutomationLanAutomationLogByIDV1, *resty.Response, error) {
 	return s.LanAutomationLogByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `LanAutomationLogsForIndividualDevicesV1`
+*/
 func (s *LanAutomationService) LanAutomationLogsForIndividualDevices(id string, serialNumber string, LANAutomationLogsForIndividualDevicesV1QueryParams *LanAutomationLogsForIndividualDevicesV1QueryParams) (*ResponseLanAutomationLanAutomationLogsForIndividualDevicesV1, *resty.Response, error) {
 	return s.LanAutomationLogsForIndividualDevicesV1(id, serialNumber, LANAutomationLogsForIndividualDevicesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `LanAutomationStopAndUpdateDevicesV1`
+*/
 func (s *LanAutomationService) LanAutomationStopAndUpdateDevices(id string, requestLanAutomationLANAutomationStopAndUpdateDevicesV1 *RequestLanAutomationLanAutomationStopAndUpdateDevicesV1) (*ResponseLanAutomationLanAutomationStopAndUpdateDevicesV1, *resty.Response, error) {
 	return s.LanAutomationStopAndUpdateDevicesV1(id, requestLanAutomationLANAutomationStopAndUpdateDevicesV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `LanAutomationStartV1`
+*/
 func (s *LanAutomationService) LanAutomationStart(requestLanAutomationLANAutomationStartV1 *RequestLanAutomationLanAutomationStartV1) (*ResponseLanAutomationLanAutomationStartV1, *resty.Response, error) {
 	return s.LanAutomationStartV1(requestLanAutomationLANAutomationStartV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `LanAutomationStatusV1`
+*/
 func (s *LanAutomationService) LanAutomationStatus(LANAutomationStatusV1QueryParams *LanAutomationStatusV1QueryParams) (*ResponseLanAutomationLanAutomationStatusV1, *resty.Response, error) {
 	return s.LanAutomationStatusV1(LANAutomationStatusV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `LanAutomationDeviceUpdateV1`
+*/
 func (s *LanAutomationService) LanAutomationDeviceUpdate(requestLanAutomationLANAutomationDeviceUpdateV1 *RequestLanAutomationLanAutomationDeviceUpdateV1, LANAutomationDeviceUpdateV1QueryParams *LanAutomationDeviceUpdateV1QueryParams) (*ResponseLanAutomationLanAutomationDeviceUpdateV1, *resty.Response, error) {
 	return s.LanAutomationDeviceUpdateV1(requestLanAutomationLANAutomationDeviceUpdateV1, LANAutomationDeviceUpdateV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `LanAutomationSessionCountV1`
+*/
 func (s *LanAutomationService) LanAutomationSessionCount() (*ResponseLanAutomationLanAutomationSessionCountV1, *resty.Response, error) {
 	return s.LanAutomationSessionCountV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `LanAutomationActiveSessionsV1`
+*/
 func (s *LanAutomationService) LanAutomationActiveSessions() (*ResponseLanAutomationLanAutomationActiveSessionsV1, *resty.Response, error) {
 	return s.LanAutomationActiveSessionsV1()
 }

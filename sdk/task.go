@@ -593,51 +593,81 @@ func (s *TaskService) GetTaskDetailsByIDV1(id string) (*ResponseTaskGetTaskDetai
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTaskCountV1`
+*/
 func (s *TaskService) GetTaskCount(GetTaskCountV1QueryParams *GetTaskCountV1QueryParams) (*ResponseTaskGetTaskCountV1, *resty.Response, error) {
 	return s.GetTaskCountV1(GetTaskCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTaskTreeV1`
+*/
 func (s *TaskService) GetTaskTree(taskID string) (*ResponseTaskGetTaskTreeV1, *resty.Response, error) {
 	return s.GetTaskTreeV1(taskID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTasksV1`
+*/
 func (s *TaskService) GetTasks(GetTasksV1QueryParams *GetTasksV1QueryParams) (*ResponseTaskGetTasksV1, *resty.Response, error) {
 	return s.GetTasksV1(GetTasksV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTaskDetailsByIDV1`
+*/
 func (s *TaskService) GetTaskDetailsByID(id string) (*ResponseTaskGetTaskDetailsByIDV1, *resty.Response, error) {
 	return s.GetTaskDetailsByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTasksOperationalTasksV1`
+*/
 func (s *TaskService) GetTasksOperationalTasks(GetTasksOperationalTasksV1QueryParams *GetTasksOperationalTasksV1QueryParams) (*ResponseTaskGetTasksOperationalTasksV1, *resty.Response, error) {
 	return s.GetTasksOperationalTasksV1(GetTasksOperationalTasksV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTaskByIDV1`
+*/
 func (s *TaskService) GetTaskByID(taskID string) (*ResponseTaskGetTaskByIDV1, *resty.Response, error) {
 	return s.GetTaskByIDV1(taskID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetBusinessAPIExecutionDetailsV1`
+*/
 func (s *TaskService) GetBusinessAPIExecutionDetails(executionID string) (*ResponseTaskGetBusinessAPIExecutionDetailsV1, *resty.Response, error) {
 	return s.GetBusinessAPIExecutionDetailsV1(executionID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTasksCountV1`
+*/
 func (s *TaskService) GetTasksCount(GetTasksCountV1QueryParams *GetTasksCountV1QueryParams) (*ResponseTaskGetTasksCountV1, *resty.Response, error) {
 	return s.GetTasksCountV1(GetTasksCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTaskByOperationIDV1`
+*/
 func (s *TaskService) GetTaskByOperationID(operationID string, offset int, limit int) (*ResponseTaskGetTaskByOperationIDV1, *resty.Response, error) {
 	return s.GetTaskByOperationIDV1(operationID, offset, limit)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTasksByIDV1`
+*/
 func (s *TaskService) GetTasksByID(id string) (*ResponseTaskGetTasksByIDV1, *resty.Response, error) {
 	return s.GetTasksByIDV1(id)
 }

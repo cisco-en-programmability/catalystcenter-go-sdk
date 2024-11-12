@@ -4097,146 +4097,233 @@ func (s *DeviceOnboardingPnpService) DeleteWorkflowByIDV1(id string) (*ResponseD
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddDeviceV1`
+*/
 func (s *DeviceOnboardingPnpService) AddDevice(requestDeviceOnboardingPnpAddDeviceV1 *RequestDeviceOnboardingPnpAddDeviceV1) (*ResponseDeviceOnboardingPnpAddDeviceV1, *resty.Response, error) {
 	return s.AddDeviceV1(requestDeviceOnboardingPnpAddDeviceV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetWorkflowsV1`
+*/
 func (s *DeviceOnboardingPnpService) GetWorkflows(GetWorkflowsV1QueryParams *GetWorkflowsV1QueryParams) (*ResponseDeviceOnboardingPnpGetWorkflowsV1, *resty.Response, error) {
 	return s.GetWorkflowsV1(GetWorkflowsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetWorkflowByIDV1`
+*/
 func (s *DeviceOnboardingPnpService) GetWorkflowByID(id string) (*ResponseDeviceOnboardingPnpGetWorkflowByIDV1, *resty.Response, error) {
 	return s.GetWorkflowByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ImportDevicesInBulkV1`
+*/
 func (s *DeviceOnboardingPnpService) ImportDevicesInBulk(requestDeviceOnboardingPnpImportDevicesInBulkV1 *RequestDeviceOnboardingPnpImportDevicesInBulkV1) (*ResponseDeviceOnboardingPnpImportDevicesInBulkV1, *resty.Response, error) {
 	return s.ImportDevicesInBulkV1(requestDeviceOnboardingPnpImportDevicesInBulkV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddVirtualAccountV1`
+*/
 func (s *DeviceOnboardingPnpService) AddVirtualAccount(requestDeviceOnboardingPnpAddVirtualAccountV1 *RequestDeviceOnboardingPnpAddVirtualAccountV1) (*ResponseDeviceOnboardingPnpAddVirtualAccountV1, *resty.Response, error) {
 	return s.AddVirtualAccountV1(requestDeviceOnboardingPnpAddVirtualAccountV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdatePnpGlobalSettingsV1`
+*/
 func (s *DeviceOnboardingPnpService) UpdatePnpGlobalSettings(requestDeviceOnboardingPnpUpdatePnPGlobalSettingsV1 *RequestDeviceOnboardingPnpUpdatePnpGlobalSettingsV1) (*ResponseDeviceOnboardingPnpUpdatePnpGlobalSettingsV1, *resty.Response, error) {
 	return s.UpdatePnpGlobalSettingsV1(requestDeviceOnboardingPnpUpdatePnPGlobalSettingsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetVirtualAccountListV1`
+*/
 func (s *DeviceOnboardingPnpService) GetVirtualAccountList(domain string) (*ResponseDeviceOnboardingPnpGetVirtualAccountListV1, *resty.Response, error) {
 	return s.GetVirtualAccountListV1(domain)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `PreviewConfigV1`
+*/
 func (s *DeviceOnboardingPnpService) PreviewConfig(requestDeviceOnboardingPnpPreviewConfigV1 *RequestDeviceOnboardingPnpPreviewConfigV1) (*ResponseDeviceOnboardingPnpPreviewConfigV1, *resty.Response, error) {
 	return s.PreviewConfigV1(requestDeviceOnboardingPnpPreviewConfigV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ResetDeviceV1`
+*/
 func (s *DeviceOnboardingPnpService) ResetDevice(requestDeviceOnboardingPnpResetDeviceV1 *RequestDeviceOnboardingPnpResetDeviceV1) (*ResponseDeviceOnboardingPnpResetDeviceV1, *resty.Response, error) {
 	return s.ResetDeviceV1(requestDeviceOnboardingPnpResetDeviceV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSmartAccountListV1`
+*/
 func (s *DeviceOnboardingPnpService) GetSmartAccountList() (*ResponseDeviceOnboardingPnpGetSmartAccountListV1, *resty.Response, error) {
 	return s.GetSmartAccountListV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdatePnpServerProfileV1`
+*/
 func (s *DeviceOnboardingPnpService) UpdatePnpServerProfile(requestDeviceOnboardingPnpUpdatePnPServerProfileV1 *RequestDeviceOnboardingPnpUpdatePnpServerProfileV1) (*ResponseDeviceOnboardingPnpUpdatePnpServerProfileV1, *resty.Response, error) {
 	return s.UpdatePnpServerProfileV1(requestDeviceOnboardingPnpUpdatePnPServerProfileV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateDeviceV1`
+*/
 func (s *DeviceOnboardingPnpService) UpdateDevice(id string, requestDeviceOnboardingPnpUpdateDeviceV1 *RequestDeviceOnboardingPnpUpdateDeviceV1) (*ResponseDeviceOnboardingPnpUpdateDeviceV1, *resty.Response, error) {
 	return s.UpdateDeviceV1(id, requestDeviceOnboardingPnpUpdateDeviceV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AuthorizeDeviceV1`
+*/
 func (s *DeviceOnboardingPnpService) AuthorizeDevice(requestDeviceOnboardingPnpAuthorizeDeviceV1 *RequestDeviceOnboardingPnpAuthorizeDeviceV1) (*ResponseDeviceOnboardingPnpAuthorizeDeviceV1, *resty.Response, error) {
 	return s.AuthorizeDeviceV1(requestDeviceOnboardingPnpAuthorizeDeviceV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteWorkflowByIDV1`
+*/
 func (s *DeviceOnboardingPnpService) DeleteWorkflowByID(id string) (*ResponseDeviceOnboardingPnpDeleteWorkflowByIDV1, *resty.Response, error) {
 	return s.DeleteWorkflowByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceHistoryV1`
+*/
 func (s *DeviceOnboardingPnpService) GetDeviceHistory(GetDeviceHistoryV1QueryParams *GetDeviceHistoryV1QueryParams) (*ResponseDeviceOnboardingPnpGetDeviceHistoryV1, *resty.Response, error) {
 	return s.GetDeviceHistoryV1(GetDeviceHistoryV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddAWorkflowV1`
+*/
 func (s *DeviceOnboardingPnpService) AddAWorkflow(requestDeviceOnboardingPnpAddAWorkflowV1 *RequestDeviceOnboardingPnpAddAWorkflowV1) (*ResponseDeviceOnboardingPnpAddAWorkflowV1, *resty.Response, error) {
 	return s.AddAWorkflowV1(requestDeviceOnboardingPnpAddAWorkflowV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceCountV1`
+*/
 func (s *DeviceOnboardingPnpService) GetDeviceCount(GetDeviceCountV1QueryParams *GetDeviceCountV1QueryParams) (*ResponseDeviceOnboardingPnpGetDeviceCountV1, *resty.Response, error) {
 	return s.GetDeviceCountV1(GetDeviceCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ClaimDeviceV1`
+*/
 func (s *DeviceOnboardingPnpService) ClaimDevice(requestDeviceOnboardingPnpClaimDeviceV1 *RequestDeviceOnboardingPnpClaimDeviceV1) (*ResponseDeviceOnboardingPnpClaimDeviceV1, *resty.Response, error) {
 	return s.ClaimDeviceV1(requestDeviceOnboardingPnpClaimDeviceV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateWorkflowV1`
+*/
 func (s *DeviceOnboardingPnpService) UpdateWorkflow(id string, requestDeviceOnboardingPnpUpdateWorkflowV1 *RequestDeviceOnboardingPnpUpdateWorkflowV1) (*ResponseDeviceOnboardingPnpUpdateWorkflowV1, *resty.Response, error) {
 	return s.UpdateWorkflowV1(id, requestDeviceOnboardingPnpUpdateWorkflowV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `SyncVirtualAccountDevicesV1`
+*/
 func (s *DeviceOnboardingPnpService) SyncVirtualAccountDevices(requestDeviceOnboardingPnpSyncVirtualAccountDevicesV1 *RequestDeviceOnboardingPnpSyncVirtualAccountDevicesV1) (*ResponseDeviceOnboardingPnpSyncVirtualAccountDevicesV1, *resty.Response, error) {
 	return s.SyncVirtualAccountDevicesV1(requestDeviceOnboardingPnpSyncVirtualAccountDevicesV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UnClaimDeviceV1`
+*/
 func (s *DeviceOnboardingPnpService) UnClaimDevice(requestDeviceOnboardingPnpUnClaimDeviceV1 *RequestDeviceOnboardingPnpUnClaimDeviceV1) (*ResponseDeviceOnboardingPnpUnClaimDeviceV1, *resty.Response, error) {
 	return s.UnClaimDeviceV1(requestDeviceOnboardingPnpUnClaimDeviceV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteDeviceByIDFromPnpV1`
+*/
 func (s *DeviceOnboardingPnpService) DeleteDeviceByIDFromPnp(id string) (*ResponseDeviceOnboardingPnpDeleteDeviceByIDFromPnpV1, *resty.Response, error) {
 	return s.DeleteDeviceByIDFromPnpV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSyncResultForVirtualAccountV1`
+*/
 func (s *DeviceOnboardingPnpService) GetSyncResultForVirtualAccount(domain string, name string) (*ResponseDeviceOnboardingPnpGetSyncResultForVirtualAccountV1, *resty.Response, error) {
 	return s.GetSyncResultForVirtualAccountV1(domain, name)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeregisterVirtualAccountV1`
+*/
 func (s *DeviceOnboardingPnpService) DeregisterVirtualAccount(DeregisterVirtualAccountV1QueryParams *DeregisterVirtualAccountV1QueryParams) (*ResponseDeviceOnboardingPnpDeregisterVirtualAccountV1, *resty.Response, error) {
 	return s.DeregisterVirtualAccountV1(DeregisterVirtualAccountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceListSiteManagementV1`
+*/
 func (s *DeviceOnboardingPnpService) GetDeviceListSiteManagement(GetDeviceListSiteManagementV1QueryParams *GetDeviceListSiteManagementV1QueryParams) (*ResponseDeviceOnboardingPnpGetDeviceListSiteManagementV1, *resty.Response, error) {
 	return s.GetDeviceListSiteManagementV1(GetDeviceListSiteManagementV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetPnpGlobalSettingsV1`
+*/
 func (s *DeviceOnboardingPnpService) GetPnpGlobalSettings() (*ResponseDeviceOnboardingPnpGetPnpGlobalSettingsV1, *resty.Response, error) {
 	return s.GetPnpGlobalSettingsV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceByIDV1`
+*/
 func (s *DeviceOnboardingPnpService) GetDeviceByID(id string) (*ResponseDeviceOnboardingPnpGetDeviceByIDV1, *resty.Response, error) {
 	return s.GetDeviceByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ClaimADeviceToASiteV1`
+*/
 func (s *DeviceOnboardingPnpService) ClaimADeviceToASite(requestDeviceOnboardingPnpClaimADeviceToASiteV1 *RequestDeviceOnboardingPnpClaimADeviceToASiteV1) (*ResponseDeviceOnboardingPnpClaimADeviceToASiteV1, *resty.Response, error) {
 	return s.ClaimADeviceToASiteV1(requestDeviceOnboardingPnpClaimADeviceToASiteV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetWorkflowCountV1`
+*/
 func (s *DeviceOnboardingPnpService) GetWorkflowCount(GetWorkflowCountV1QueryParams *GetWorkflowCountV1QueryParams) (*ResponseDeviceOnboardingPnpGetWorkflowCountV1, *resty.Response, error) {
 	return s.GetWorkflowCountV1(GetWorkflowCountV1QueryParams)
 }

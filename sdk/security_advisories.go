@@ -290,26 +290,41 @@ func (s *SecurityAdvisoriesService) GetAdvisoriesPerDeviceV1(deviceID string) (*
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAdvisoriesSummaryV1`
+*/
 func (s *SecurityAdvisoriesService) GetAdvisoriesSummary() (*ResponseSecurityAdvisoriesGetAdvisoriesSummaryV1, *resty.Response, error) {
 	return s.GetAdvisoriesSummaryV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAdvisoryDeviceDetailV1`
+*/
 func (s *SecurityAdvisoriesService) GetAdvisoryDeviceDetail(deviceID string) (*ResponseSecurityAdvisoriesGetAdvisoryDeviceDetailV1, *resty.Response, error) {
 	return s.GetAdvisoryDeviceDetailV1(deviceID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDevicesPerAdvisoryV1`
+*/
 func (s *SecurityAdvisoriesService) GetDevicesPerAdvisory(advisoryID string) (*ResponseSecurityAdvisoriesGetDevicesPerAdvisoryV1, *resty.Response, error) {
 	return s.GetDevicesPerAdvisoryV1(advisoryID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAdvisoriesPerDeviceV1`
+*/
 func (s *SecurityAdvisoriesService) GetAdvisoriesPerDevice(deviceID string) (*ResponseSecurityAdvisoriesGetAdvisoriesPerDeviceV1, *resty.Response, error) {
 	return s.GetAdvisoriesPerDeviceV1(deviceID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAdvisoriesListV1`
+*/
 func (s *SecurityAdvisoriesService) GetAdvisoriesList() (*ResponseSecurityAdvisoriesGetAdvisoriesListV1, *resty.Response, error) {
 	return s.GetAdvisoriesListV1()
 }

@@ -140,11 +140,17 @@ func (s *ConfigurationArchiveService) ExportDeviceConfigurationsV1(requestConfig
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ExportDeviceConfigurationsV1`
+*/
 func (s *ConfigurationArchiveService) ExportDeviceConfigurations(requestConfigurationArchiveExportDeviceConfigurationsV1 *RequestConfigurationArchiveExportDeviceConfigurationsV1) (*ResponseConfigurationArchiveExportDeviceConfigurationsV1, *resty.Response, error) {
 	return s.ExportDeviceConfigurationsV1(requestConfigurationArchiveExportDeviceConfigurationsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetConfigurationArchiveDetailsV1`
+*/
 func (s *ConfigurationArchiveService) GetConfigurationArchiveDetails(GetConfigurationArchiveDetailsV1QueryParams *GetConfigurationArchiveDetailsV1QueryParams) (*ResponseConfigurationArchiveGetConfigurationArchiveDetailsV1, *resty.Response, error) {
 	return s.GetConfigurationArchiveDetailsV1(GetConfigurationArchiveDetailsV1QueryParams)
 }

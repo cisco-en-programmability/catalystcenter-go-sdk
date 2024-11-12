@@ -4832,346 +4832,553 @@ func (s *WirelessService) DeleteRfProfileV1(id string) (*ResponseWirelessDeleteR
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AssignManagedApLocationsForWLCV1`
+*/
 func (s *WirelessService) AssignManagedApLocationsForWLC(deviceID string, requestWirelessAssignManagedAPLocationsForWLCV1 *RequestWirelessAssignManagedApLocationsForWLCV1) (*ResponseWirelessAssignManagedApLocationsForWLCV1, *resty.Response, error) {
 	return s.AssignManagedApLocationsForWLCV1(deviceID, requestWirelessAssignManagedAPLocationsForWLCV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateRfProfileV1`
+*/
 func (s *WirelessService) CreateRfProfile(requestWirelessCreateRFProfileV1 *RequestWirelessCreateRfProfileV1) (*ResponseWirelessCreateRfProfileV1, *resty.Response, error) {
 	return s.CreateRfProfileV1(requestWirelessCreateRFProfileV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetInterfacesCountV1`
+*/
 func (s *WirelessService) GetInterfacesCount() (*ResponseWirelessGetInterfacesCountV1, *resty.Response, error) {
 	return s.GetInterfacesCountV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteDynamicInterfaceV1`
+*/
 func (s *WirelessService) DeleteDynamicInterface(DeleteDynamicInterfaceV1HeaderParams *DeleteDynamicInterfaceV1HeaderParams, DeleteDynamicInterfaceV1QueryParams *DeleteDynamicInterfaceV1QueryParams) (*ResponseWirelessDeleteDynamicInterfaceV1, *resty.Response, error) {
 	return s.DeleteDynamicInterfaceV1(DeleteDynamicInterfaceV1HeaderParams, DeleteDynamicInterfaceV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteRfProfileV1`
+*/
 func (s *WirelessService) DeleteRfProfile(id string) (*ResponseWirelessDeleteRfProfileV1, *resty.Response, error) {
 	return s.DeleteRfProfileV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateWirelessProfileV1`
+*/
 func (s *WirelessService) UpdateWirelessProfile(requestWirelessUpdateWirelessProfileV1 *RequestWirelessUpdateWirelessProfileV1) (*ResponseWirelessUpdateWirelessProfileV1, *resty.Response, error) {
 	return s.UpdateWirelessProfileV1(requestWirelessUpdateWirelessProfileV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateWirelessProfileConnectivityV1`
+*/
 func (s *WirelessService) UpdateWirelessProfileConnectivity(id string, requestWirelessUpdateWirelessProfileConnectivityV1 *RequestWirelessUpdateWirelessProfileConnectivityV1) (*ResponseWirelessUpdateWirelessProfileConnectivityV1, *resty.Response, error) {
 	return s.UpdateWirelessProfileConnectivityV1(id, requestWirelessUpdateWirelessProfileConnectivityV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAnchorManagedApLocationsForSpecificWirelessControllerV1`
+*/
 func (s *WirelessService) GetAnchorManagedApLocationsForSpecificWirelessController(networkDeviceID string, GetAnchorManagedAPLocationsForSpecificWirelessControllerV1QueryParams *GetAnchorManagedApLocationsForSpecificWirelessControllerV1QueryParams) (*ResponseWirelessGetAnchorManagedApLocationsForSpecificWirelessControllerV1, *resty.Response, error) {
 	return s.GetAnchorManagedApLocationsForSpecificWirelessControllerV1(networkDeviceID, GetAnchorManagedAPLocationsForSpecificWirelessControllerV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateUpdateDynamicInterfaceV1`
+*/
 func (s *WirelessService) CreateUpdateDynamicInterface(requestWirelessCreateUpdateDynamicInterfaceV1 *RequestWirelessCreateUpdateDynamicInterfaceV1) (*ResponseWirelessCreateUpdateDynamicInterfaceV1, *resty.Response, error) {
 	return s.CreateUpdateDynamicInterfaceV1(requestWirelessCreateUpdateDynamicInterfaceV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetInterfacesV1`
+*/
 func (s *WirelessService) GetInterfaces(GetInterfacesV1QueryParams *GetInterfacesV1QueryParams) (*ResponseWirelessGetInterfacesV1, *resty.Response, error) {
 	return s.GetInterfacesV1(GetInterfacesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetEnterpriseSSIDV1`
+*/
 func (s *WirelessService) GetEnterpriseSSID(GetEnterpriseSSIDV1QueryParams *GetEnterpriseSSIDV1QueryParams) (*ResponseWirelessGetEnterpriseSSIDV1, *resty.Response, error) {
 	return s.GetEnterpriseSSIDV1(GetEnterpriseSSIDV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSSIDByIDV1`
+*/
 func (s *WirelessService) GetSSIDByID(siteID string, id string) (*ResponseWirelessGetSSIDByIDV1, *resty.Response, error) {
 	return s.GetSSIDByIDV1(siteID, id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrieveRfProfilesV1`
+*/
 func (s *WirelessService) RetrieveRfProfiles(RetrieveRFProfilesV1QueryParams *RetrieveRfProfilesV1QueryParams) (*ResponseWirelessRetrieveRfProfilesV1, *resty.Response, error) {
 	return s.RetrieveRfProfilesV1(RetrieveRFProfilesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ConfigureAccessPointsV1`
+*/
 func (s *WirelessService) ConfigureAccessPoints(requestWirelessConfigureAccessPointsV1 *RequestWirelessConfigureAccessPointsV1) (*ResponseWirelessConfigureAccessPointsV1, *resty.Response, error) {
 	return s.ConfigureAccessPointsV1(requestWirelessConfigureAccessPointsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetRfProfileByIDV1`
+*/
 func (s *WirelessService) GetRfProfileByID(id string) (*ResponseWirelessGetRfProfileByIDV1, *resty.Response, error) {
 	return s.GetRfProfileByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateWirelessProfileV1`
+*/
 func (s *WirelessService) CreateWirelessProfile(requestWirelessCreateWirelessProfileV1 *RequestWirelessCreateWirelessProfileV1) (*ResponseWirelessCreateWirelessProfileV1, *resty.Response, error) {
 	return s.CreateWirelessProfileV1(requestWirelessCreateWirelessProfileV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `MobilityProvisionV1`
+*/
 func (s *WirelessService) MobilityProvision(requestWirelessMobilityProvisionV1 *RequestWirelessMobilityProvisionV1) (*ResponseWirelessMobilityProvisionV1, *resty.Response, error) {
 	return s.MobilityProvisionV1(requestWirelessMobilityProvisionV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteA80211BeProfileV1`
+*/
 func (s *WirelessService) DeleteA80211BeProfile(id string) (*ResponseWirelessDeleteA80211BeProfileV1, *resty.Response, error) {
 	return s.DeleteA80211BeProfileV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetMobilityGroupsCountV1`
+*/
 func (s *WirelessService) GetMobilityGroupsCount() (*ResponseWirelessGetMobilityGroupsCountV1, *resty.Response, error) {
 	return s.GetMobilityGroupsCountV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetRfProfilesV1`
+*/
 func (s *WirelessService) GetRfProfiles(GetRFProfilesV1QueryParams *GetRfProfilesV1QueryParams) (*ResponseWirelessGetRfProfilesV1, *resty.Response, error) {
 	return s.GetRfProfilesV1(GetRFProfilesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAllMobilityGroupsV1`
+*/
 func (s *WirelessService) GetAllMobilityGroups(GetAllMobilityGroupsV1QueryParams *GetAllMobilityGroupsV1QueryParams) (*ResponseWirelessGetAllMobilityGroupsV1, *resty.Response, error) {
 	return s.GetAllMobilityGroupsV1(GetAllMobilityGroupsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteWirelessProfileV1`
+*/
 func (s *WirelessService) DeleteWirelessProfile(wirelessProfileName string) (*ResponseWirelessDeleteWirelessProfileV1, *resty.Response, error) {
 	return s.DeleteWirelessProfileV1(wirelessProfileName)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetRfProfilesCountV1`
+*/
 func (s *WirelessService) GetRfProfilesCount() (*ResponseWirelessGetRfProfilesCountV1, *resty.Response, error) {
 	return s.GetRfProfilesCountV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `MobilityResetV1`
+*/
 func (s *WirelessService) MobilityReset(requestWirelessMobilityResetV1 *RequestWirelessMobilityResetV1) (*ResponseWirelessMobilityResetV1, *resty.Response, error) {
 	return s.MobilityResetV1(requestWirelessMobilityResetV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `Update80211BeProfileV1`
+*/
 func (s *WirelessService) Update80211BeProfile(id string, requestWirelessUpdate80211beProfileV1 *RequestWirelessUpdate80211BeProfileV1) (*ResponseWirelessUpdate80211BeProfileV1, *resty.Response, error) {
 	return s.Update80211BeProfileV1(id, requestWirelessUpdate80211beProfileV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDynamicInterfaceV1`
+*/
 func (s *WirelessService) GetDynamicInterface(GetDynamicInterfaceV1QueryParams *GetDynamicInterfaceV1QueryParams) (*ResponseWirelessGetDynamicInterfaceV1, *resty.Response, error) {
 	return s.GetDynamicInterfaceV1(GetDynamicInterfaceV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetInterfaceByIDV1`
+*/
 func (s *WirelessService) GetInterfaceByID(id string) (*ResponseWirelessGetInterfaceByIDV1, *resty.Response, error) {
 	return s.GetInterfaceByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetWirelessProfileV1`
+*/
 func (s *WirelessService) GetWirelessProfile(GetWirelessProfileV1QueryParams *GetWirelessProfileV1QueryParams) (*ResponseWirelessGetWirelessProfileV1, *resty.Response, error) {
 	return s.GetWirelessProfileV1(GetWirelessProfileV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateSSIDV1`
+*/
 func (s *WirelessService) CreateSSID(siteID string, requestWirelessCreateSSIDV1 *RequestWirelessCreateSSIDV1) (*ResponseWirelessCreateSSIDV1, *resty.Response, error) {
 	return s.CreateSSIDV1(siteID, requestWirelessCreateSSIDV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateEnterpriseSSIDV1`
+*/
 func (s *WirelessService) CreateEnterpriseSSID(requestWirelessCreateEnterpriseSSIDV1 *RequestWirelessCreateEnterpriseSSIDV1) (*ResponseWirelessCreateEnterpriseSSIDV1, *resty.Response, error) {
 	return s.CreateEnterpriseSSIDV1(requestWirelessCreateEnterpriseSSIDV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateRfProfileV1`
+*/
 func (s *WirelessService) UpdateRfProfile(id string, requestWirelessUpdateRFProfileV1 *RequestWirelessUpdateRfProfileV1) (*ResponseWirelessUpdateRfProfileV1, *resty.Response, error) {
 	return s.UpdateRfProfileV1(id, requestWirelessUpdateRFProfileV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAccessPointConfigurationTaskResultV1`
+*/
 func (s *WirelessService) GetAccessPointConfigurationTaskResult(taskTypeID string) (*ResponseWirelessGetAccessPointConfigurationTaskResultV1, *resty.Response, error) {
 	return s.GetAccessPointConfigurationTaskResultV1(taskTypeID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetWirelessProfileByIDV1`
+*/
 func (s *WirelessService) GetWirelessProfileByID(id string) (*ResponseWirelessGetWirelessProfileByIDV1, *resty.Response, error) {
 	return s.GetWirelessProfileByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `Get80211BeProfileByIDV1`
+*/
 func (s *WirelessService) Get80211BeProfileByID(id string) (*ResponseWirelessGet80211BeProfileByIDV1, *resty.Response, error) {
 	return s.Get80211BeProfileByIDV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetManagedApLocationsCountForSpecificWirelessControllerV1`
+*/
 func (s *WirelessService) GetManagedApLocationsCountForSpecificWirelessController(networkDeviceID string) (*ResponseWirelessGetManagedApLocationsCountForSpecificWirelessControllerV1, *resty.Response, error) {
 	return s.GetManagedApLocationsCountForSpecificWirelessControllerV1(networkDeviceID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateEnterpriseSSIDV1`
+*/
 func (s *WirelessService) UpdateEnterpriseSSID(requestWirelessUpdateEnterpriseSSIDV1 *RequestWirelessUpdateEnterpriseSSIDV1) (*ResponseWirelessUpdateEnterpriseSSIDV1, *resty.Response, error) {
 	return s.UpdateEnterpriseSSIDV1(requestWirelessUpdateEnterpriseSSIDV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ApProvisionV1`
+*/
 func (s *WirelessService) ApProvision(requestWirelessAPProvisionV1 *RequestWirelessApProvisionV1) (*ResponseWirelessApProvisionV1, *resty.Response, error) {
 	return s.ApProvisionV1(requestWirelessAPProvisionV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `PSKOverrideV1`
+*/
 func (s *WirelessService) PSKOverride(requestWirelessPSKOverrideV1 *RequestWirelessPSKOverrideV1) (*ResponseWirelessPSKOverrideV1, *resty.Response, error) {
 	return s.PSKOverrideV1(requestWirelessPSKOverrideV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ProvisionUpdateV1`
+*/
 func (s *WirelessService) ProvisionUpdate(requestWirelessProvisionUpdateV1 *RequestWirelessProvisionUpdateV1, ProvisionUpdateV1HeaderParams *ProvisionUpdateV1HeaderParams) (*ResponseWirelessProvisionUpdateV1, *resty.Response, error) {
 	return s.ProvisionUpdateV1(requestWirelessProvisionUpdateV1, ProvisionUpdateV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSSIDBySiteV1`
+*/
 func (s *WirelessService) GetSSIDBySite(siteID string, GetSSIDBySiteV1QueryParams *GetSSIDBySiteV1QueryParams) (*ResponseWirelessGetSSIDBySiteV1, *resty.Response, error) {
 	return s.GetSSIDBySiteV1(siteID, GetSSIDBySiteV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `SensorTestResultsV1`
+*/
 func (s *WirelessService) SensorTestResults(SensorTestResultsV1QueryParams *SensorTestResultsV1QueryParams) (*ResponseWirelessSensorTestResultsV1, *resty.Response, error) {
 	return s.SensorTestResultsV1(SensorTestResultsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAll80211BeProfilesV1`
+*/
 func (s *WirelessService) GetAll80211BeProfiles(GetAll80211beProfilesV1QueryParams *GetAll80211BeProfilesV1QueryParams) (*ResponseWirelessGetAll80211BeProfilesV1, *resty.Response, error) {
 	return s.GetAll80211BeProfilesV1(GetAll80211beProfilesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteInterfaceV1`
+*/
 func (s *WirelessService) DeleteInterface(id string) (*ResponseWirelessDeleteInterfaceV1, *resty.Response, error) {
 	return s.DeleteInterfaceV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSSIDCountForSpecificWirelessControllerV1`
+*/
 func (s *WirelessService) GetSSIDCountForSpecificWirelessController(networkDeviceID string, GetSSIDCountForSpecificWirelessControllerV1QueryParams *GetSSIDCountForSpecificWirelessControllerV1QueryParams) (*ResponseWirelessGetSSIDCountForSpecificWirelessControllerV1, *resty.Response, error) {
 	return s.GetSSIDCountForSpecificWirelessControllerV1(networkDeviceID, GetSSIDCountForSpecificWirelessControllerV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ProvisionV1`
+*/
 func (s *WirelessService) Provision(requestWirelessProvisionV1 *RequestWirelessProvisionV1) (*ResponseWirelessProvisionV1, *resty.Response, error) {
 	return s.ProvisionV1(requestWirelessProvisionV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RebootAccessPointsV1`
+*/
 func (s *WirelessService) RebootAccessPoints(requestWirelessRebootAccessPointsV1 *RequestWirelessRebootAccessPointsV1) (*ResponseWirelessRebootAccessPointsV1, *resty.Response, error) {
 	return s.RebootAccessPointsV1(requestWirelessRebootAccessPointsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ApProvisionConnectivityV1`
+*/
 func (s *WirelessService) ApProvisionConnectivity(requestWirelessAPProvisionConnectivityV1 *RequestWirelessApProvisionConnectivityV1, APProvisionConnectivityV1HeaderParams *ApProvisionConnectivityV1HeaderParams) (*ResponseWirelessApProvisionConnectivityV1, *resty.Response, error) {
 	return s.ApProvisionConnectivityV1(requestWirelessAPProvisionConnectivityV1, APProvisionConnectivityV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateAndProvisionSSIDV1`
+*/
 func (s *WirelessService) CreateAndProvisionSSID(requestWirelessCreateAndProvisionSSIDV1 *RequestWirelessCreateAndProvisionSSIDV1, CreateAndProvisionSSIDV1HeaderParams *CreateAndProvisionSSIDV1HeaderParams) (*ResponseWirelessCreateAndProvisionSSIDV1, *resty.Response, error) {
 	return s.CreateAndProvisionSSIDV1(requestWirelessCreateAndProvisionSSIDV1, CreateAndProvisionSSIDV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateOrUpdateRfProfileV1`
+*/
 func (s *WirelessService) CreateOrUpdateRfProfile(requestWirelessCreateOrUpdateRFProfileV1 *RequestWirelessCreateOrUpdateRfProfileV1) (*ResponseWirelessCreateOrUpdateRfProfileV1, *resty.Response, error) {
 	return s.CreateOrUpdateRfProfileV1(requestWirelessCreateOrUpdateRFProfileV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateInterfaceV1`
+*/
 func (s *WirelessService) CreateInterface(requestWirelessCreateInterfaceV1 *RequestWirelessCreateInterfaceV1) (*ResponseWirelessCreateInterfaceV1, *resty.Response, error) {
 	return s.CreateInterfaceV1(requestWirelessCreateInterfaceV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSSIDDetailsForSpecificWirelessControllerV1`
+*/
 func (s *WirelessService) GetSSIDDetailsForSpecificWirelessController(networkDeviceID string, GetSSIDDetailsForSpecificWirelessControllerV1QueryParams *GetSSIDDetailsForSpecificWirelessControllerV1QueryParams) (*ResponseWirelessGetSSIDDetailsForSpecificWirelessControllerV1, *resty.Response, error) {
 	return s.GetSSIDDetailsForSpecificWirelessControllerV1(networkDeviceID, GetSSIDDetailsForSpecificWirelessControllerV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteSSIDAndProvisionItToDevicesV1`
+*/
 func (s *WirelessService) DeleteSSIDAndProvisionItToDevices(ssidName string, managedAPLocations string, DeleteSSIDAndProvisionItToDevicesV1HeaderParams *DeleteSSIDAndProvisionItToDevicesV1HeaderParams) (*ResponseWirelessDeleteSSIDAndProvisionItToDevicesV1, *resty.Response, error) {
 	return s.DeleteSSIDAndProvisionItToDevicesV1(ssidName, managedAPLocations, DeleteSSIDAndProvisionItToDevicesV1HeaderParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateInterfaceV1`
+*/
 func (s *WirelessService) UpdateInterface(id string, requestWirelessUpdateInterfaceV1 *RequestWirelessUpdateInterfaceV1) (*ResponseWirelessUpdateInterfaceV1, *resty.Response, error) {
 	return s.UpdateInterfaceV1(id, requestWirelessUpdateInterfaceV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetWirelessProfilesV1`
+*/
 func (s *WirelessService) GetWirelessProfiles(GetWirelessProfilesV1QueryParams *GetWirelessProfilesV1QueryParams) (*ResponseWirelessGetWirelessProfilesV1, *resty.Response, error) {
 	return s.GetWirelessProfilesV1(GetWirelessProfilesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateSSIDV1`
+*/
 func (s *WirelessService) UpdateSSID(siteID string, id string, requestWirelessUpdateSSIDV1 *RequestWirelessUpdateSSIDV1) (*ResponseWirelessUpdateSSIDV1, *resty.Response, error) {
 	return s.UpdateSSIDV1(siteID, id, requestWirelessUpdateSSIDV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateA80211BeProfileV1`
+*/
 func (s *WirelessService) CreateA80211BeProfile(requestWirelessCreateA80211beProfileV1 *RequestWirelessCreateA80211BeProfileV1) (*ResponseWirelessCreateA80211BeProfileV1, *resty.Response, error) {
 	return s.CreateA80211BeProfileV1(requestWirelessCreateA80211beProfileV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetWirelessProfilesCountV1`
+*/
 func (s *WirelessService) GetWirelessProfilesCount() (*ResponseWirelessGetWirelessProfilesCountV1, *resty.Response, error) {
 	return s.GetWirelessProfilesCountV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAccessPointConfigurationV1`
+*/
 func (s *WirelessService) GetAccessPointConfiguration(GetAccessPointConfigurationV1QueryParams *GetAccessPointConfigurationV1QueryParams) (*ResponseWirelessGetAccessPointConfigurationV1, *resty.Response, error) {
 	return s.GetAccessPointConfigurationV1(GetAccessPointConfigurationV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteRfProfilesV1`
+*/
 func (s *WirelessService) DeleteRfProfiles(rfProfileName string) (*ResponseWirelessDeleteRfProfilesV1, *resty.Response, error) {
 	return s.DeleteRfProfilesV1(rfProfileName)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteSSIDV1`
+*/
 func (s *WirelessService) DeleteSSID(siteID string, id string) (*ResponseWirelessDeleteSSIDV1, *resty.Response, error) {
 	return s.DeleteSSIDV1(siteID, id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteEnterpriseSSIDV1`
+*/
 func (s *WirelessService) DeleteEnterpriseSSID(ssidName string) (*ResponseWirelessDeleteEnterpriseSSIDV1, *resty.Response, error) {
 	return s.DeleteEnterpriseSSIDV1(ssidName)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteWirelessProfileConnectivityV1`
+*/
 func (s *WirelessService) DeleteWirelessProfileConnectivity(id string) (*ResponseWirelessDeleteWirelessProfileConnectivityV1, *resty.Response, error) {
 	return s.DeleteWirelessProfileConnectivityV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `Get80211BeProfilesCountV1`
+*/
 func (s *WirelessService) Get80211BeProfilesCount() (*ResponseWirelessGet80211BeProfilesCountV1, *resty.Response, error) {
 	return s.Get80211BeProfilesCountV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSSIDCountBySiteV1`
+*/
 func (s *WirelessService) GetSSIDCountBySite(siteID string) (*ResponseWirelessGetSSIDCountBySiteV1, *resty.Response, error) {
 	return s.GetSSIDCountBySiteV1(siteID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetPrimaryManagedApLocationsForSpecificWirelessControllerV1`
+*/
 func (s *WirelessService) GetPrimaryManagedApLocationsForSpecificWirelessController(networkDeviceID string, GetPrimaryManagedAPLocationsForSpecificWirelessControllerV1QueryParams *GetPrimaryManagedApLocationsForSpecificWirelessControllerV1QueryParams) (*ResponseWirelessGetPrimaryManagedApLocationsForSpecificWirelessControllerV1, *resty.Response, error) {
 	return s.GetPrimaryManagedApLocationsForSpecificWirelessControllerV1(networkDeviceID, GetPrimaryManagedAPLocationsForSpecificWirelessControllerV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateWirelessProfileConnectivityV1`
+*/
 func (s *WirelessService) CreateWirelessProfileConnectivity(requestWirelessCreateWirelessProfileConnectivityV1 *RequestWirelessCreateWirelessProfileConnectivityV1) (*ResponseWirelessCreateWirelessProfileConnectivityV1, *resty.Response, error) {
 	return s.CreateWirelessProfileConnectivityV1(requestWirelessCreateWirelessProfileConnectivityV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `WirelessControllerProvisionV1`
+*/
 func (s *WirelessService) WirelessControllerProvision(deviceID string, requestWirelessWirelessControllerProvisionV1 *RequestWirelessWirelessControllerProvisionV1) (*ResponseWirelessWirelessControllerProvisionV1, *resty.Response, error) {
 	return s.WirelessControllerProvisionV1(deviceID, requestWirelessWirelessControllerProvisionV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAccessPointRebootTaskResultV1`
+*/
 func (s *WirelessService) GetAccessPointRebootTaskResult(GetAccessPointRebootTaskResultV1QueryParams *GetAccessPointRebootTaskResultV1QueryParams) (*ResponseWirelessGetAccessPointRebootTaskResultV1, *resty.Response, error) {
 	return s.GetAccessPointRebootTaskResultV1(GetAccessPointRebootTaskResultV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSecondaryManagedApLocationsForSpecificWirelessControllerV1`
+*/
 func (s *WirelessService) GetSecondaryManagedApLocationsForSpecificWirelessController(networkDeviceID string, GetSecondaryManagedAPLocationsForSpecificWirelessControllerV1QueryParams *GetSecondaryManagedApLocationsForSpecificWirelessControllerV1QueryParams) (*ResponseWirelessGetSecondaryManagedApLocationsForSpecificWirelessControllerV1, *resty.Response, error) {
 	return s.GetSecondaryManagedApLocationsForSpecificWirelessControllerV1(networkDeviceID, GetSecondaryManagedAPLocationsForSpecificWirelessControllerV1QueryParams)
 }

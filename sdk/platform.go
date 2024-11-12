@@ -187,16 +187,25 @@ func (s *PlatformService) CiscoDnaCenterNodesConfigurationSummaryV1() (*Response
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CiscoDnaCenterNodesConfigurationSummaryV1`
+*/
 func (s *PlatformService) CiscoDnaCenterNodesConfigurationSummary() (*ResponsePlatformCiscoDnaCenterNodesConfigurationSummaryV1, *resty.Response, error) {
 	return s.CiscoDnaCenterNodesConfigurationSummaryV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CiscoDnaCenterPackagesSummaryV1`
+*/
 func (s *PlatformService) CiscoDnaCenterPackagesSummary() (*ResponsePlatformCiscoDnaCenterPackagesSummaryV1, *resty.Response, error) {
 	return s.CiscoDnaCenterPackagesSummaryV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CiscoDnaCenterReleaseSummaryV1`
+*/
 func (s *PlatformService) CiscoDnaCenterReleaseSummary() (*ResponsePlatformCiscoDnaCenterReleaseSummaryV1, *resty.Response, error) {
 	return s.CiscoDnaCenterReleaseSummaryV1()
 }

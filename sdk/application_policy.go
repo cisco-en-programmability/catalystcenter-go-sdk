@@ -847,10 +847,19 @@ type RequestItemApplicationPolicyCreateApplicationSetV1 struct {
 }
 type RequestApplicationPolicyCreateApplicationV1 []RequestItemApplicationPolicyCreateApplicationV1 // Array of RequestApplicationPolicyCreateApplicationV1
 type RequestItemApplicationPolicyCreateApplicationV1 struct {
-	Name                string                                                                `json:"name,omitempty"`                // Name
-	NetworkApplications *[]RequestItemApplicationPolicyCreateApplicationV1NetworkApplications `json:"networkApplications,omitempty"` //
-	NetworkIDentity     *[]RequestItemApplicationPolicyCreateApplicationV1NetworkIDentity     `json:"networkIdentity,omitempty"`     //
-	ApplicationSet      *RequestItemApplicationPolicyCreateApplicationV1ApplicationSet        `json:"applicationSet,omitempty"`      //
+	Name                      string                                                                    `json:"name,omitempty"`                      // Name
+	NetworkApplications       *[]RequestItemApplicationPolicyCreateApplicationV1NetworkApplications     `json:"networkApplications,omitempty"`       //
+	NetworkIDentity           *[]RequestItemApplicationPolicyCreateApplicationV1NetworkIDentity         `json:"networkIdentity,omitempty"`           //
+	ApplicationSet            *RequestItemApplicationPolicyCreateApplicationV1ApplicationSet            `json:"applicationSet,omitempty"`            //
+	IndicativeNetworkIDentity *[]RequestItemApplicationPolicyCreateApplicationIndicativeNetworkIDentity `json:"indicativeNetworkIdentity,omitempty"` //
+}
+type RequestItemApplicationPolicyCreateApplicationIndicativeNetworkIDentity struct {
+	ID          string `json:"id,omitempty"`          // id
+	DisplayName string `json:"displayName,omitempty"` // displayName
+	LowerPort   *int   `json:"lowerPort,omitempty"`   // lowerPort
+	Ports       string `json:"ports,omitempty"`       // ports
+	Protocol    string `json:"protocol,omitempty"`    // protocol
+	UpperPort   *int   `json:"upperPort,omitempty"`   // upperPort
 }
 type RequestItemApplicationPolicyCreateApplicationV1NetworkApplications struct {
 	AppProtocol        string `json:"appProtocol,omitempty"`        // App Protocol
@@ -2185,136 +2194,217 @@ func (s *ApplicationPolicyService) DeleteApplicationV2(id string) (*ResponseAppl
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetApplicationPolicyDefaultV1`
+*/
 func (s *ApplicationPolicyService) GetApplicationPolicyDefault() (*ResponseApplicationPolicyGetApplicationPolicyDefaultV1, *resty.Response, error) {
 	return s.GetApplicationPolicyDefaultV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetQosDeviceInterfaceInfoV1`
+*/
 func (s *ApplicationPolicyService) GetQosDeviceInterfaceInfo(GetQosDeviceInterfaceInfoV1QueryParams *GetQosDeviceInterfaceInfoV1QueryParams) (*ResponseApplicationPolicyGetQosDeviceInterfaceInfoV1, *resty.Response, error) {
 	return s.GetQosDeviceInterfaceInfoV1(GetQosDeviceInterfaceInfoV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateApplicationV1`
+*/
 func (s *ApplicationPolicyService) CreateApplication(requestApplicationPolicyCreateApplicationV1 *RequestApplicationPolicyCreateApplicationV1) (*ResponseApplicationPolicyCreateApplicationV1, *resty.Response, error) {
 	return s.CreateApplicationV1(requestApplicationPolicyCreateApplicationV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteApplicationV1`
+*/
 func (s *ApplicationPolicyService) DeleteApplication(DeleteApplicationV1QueryParams *DeleteApplicationV1QueryParams) (*ResponseApplicationPolicyDeleteApplicationV1, *resty.Response, error) {
 	return s.DeleteApplicationV1(DeleteApplicationV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetApplicationPolicyV1`
+*/
 func (s *ApplicationPolicyService) GetApplicationPolicy(GetApplicationPolicyV1QueryParams *GetApplicationPolicyV1QueryParams) (*ResponseApplicationPolicyGetApplicationPolicyV1, *resty.Response, error) {
 	return s.GetApplicationPolicyV1(GetApplicationPolicyV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetApplicationCountV2`
+*/
 func (s *ApplicationPolicyService) GetApplicationCount(GetApplicationCountV2QueryParams *GetApplicationCountV2QueryParams) (*ResponseApplicationPolicyGetApplicationCountV2, *resty.Response, error) {
 	return s.GetApplicationCountV2(GetApplicationCountV2QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetApplicationSetsCountV1`
+*/
 func (s *ApplicationPolicyService) GetApplicationSetsCount() (*ResponseApplicationPolicyGetApplicationSetsCountV1, *resty.Response, error) {
 	return s.GetApplicationSetsCountV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `EditApplicationV1`
+*/
 func (s *ApplicationPolicyService) EditApplication(requestApplicationPolicyEditApplicationV1 *RequestApplicationPolicyEditApplicationV1) (*ResponseApplicationPolicyEditApplicationV1, *resty.Response, error) {
 	return s.EditApplicationV1(requestApplicationPolicyEditApplicationV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetApplicationPolicyQueuingProfileCountV1`
+*/
 func (s *ApplicationPolicyService) GetApplicationPolicyQueuingProfileCount() (*ResponseApplicationPolicyGetApplicationPolicyQueuingProfileCountV1, *resty.Response, error) {
 	return s.GetApplicationPolicyQueuingProfileCountV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateApplicationSetsV2`
+*/
 func (s *ApplicationPolicyService) CreateApplicationSets(requestApplicationPolicyCreateApplicationSetsV2 *RequestApplicationPolicyCreateApplicationSetsV2) (*ResponseApplicationPolicyCreateApplicationSetsV2, *resty.Response, error) {
 	return s.CreateApplicationSetsV2(requestApplicationPolicyCreateApplicationSetsV2)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `EditApplicationsV2`
+*/
 func (s *ApplicationPolicyService) EditApplications(requestApplicationPolicyEditApplicationsV2 *RequestApplicationPolicyEditApplicationsV2) (*ResponseApplicationPolicyEditApplicationsV2, *resty.Response, error) {
 	return s.EditApplicationsV2(requestApplicationPolicyEditApplicationsV2)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetApplicationSetCountV2`
+*/
 func (s *ApplicationPolicyService) GetApplicationSetCount(GetApplicationSetCountV2QueryParams *GetApplicationSetCountV2QueryParams) (*ResponseApplicationPolicyGetApplicationSetCountV2, *resty.Response, error) {
 	return s.GetApplicationSetCountV2(GetApplicationSetCountV2QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateApplicationsV2`
+*/
 func (s *ApplicationPolicyService) CreateApplications(requestApplicationPolicyCreateApplicationsV2 *RequestApplicationPolicyCreateApplicationsV2) (*ResponseApplicationPolicyCreateApplicationsV2, *resty.Response, error) {
 	return s.CreateApplicationsV2(requestApplicationPolicyCreateApplicationsV2)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetApplicationsV1`
+*/
 func (s *ApplicationPolicyService) GetApplications(GetApplicationsV1QueryParams *GetApplicationsV1QueryParams) (*ResponseApplicationPolicyGetApplicationsV1, *resty.Response, error) {
 	return s.GetApplicationsV1(GetApplicationsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteQosDeviceInterfaceInfoV1`
+*/
 func (s *ApplicationPolicyService) DeleteQosDeviceInterfaceInfo(id string) (*ResponseApplicationPolicyDeleteQosDeviceInterfaceInfoV1, *resty.Response, error) {
 	return s.DeleteQosDeviceInterfaceInfoV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetQosDeviceInterfaceInfoCountV1`
+*/
 func (s *ApplicationPolicyService) GetQosDeviceInterfaceInfoCount() (*ResponseApplicationPolicyGetQosDeviceInterfaceInfoCountV1, *resty.Response, error) {
 	return s.GetQosDeviceInterfaceInfoCountV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ApplicationPolicyIntentV1`
+*/
 func (s *ApplicationPolicyService) ApplicationPolicyIntent(requestApplicationPolicyApplicationPolicyIntentV1 *RequestApplicationPolicyApplicationPolicyIntentV1) (*ResponseApplicationPolicyApplicationPolicyIntentV1, *resty.Response, error) {
 	return s.ApplicationPolicyIntentV1(requestApplicationPolicyApplicationPolicyIntentV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetApplicationPolicyQueuingProfileV1`
+*/
 func (s *ApplicationPolicyService) GetApplicationPolicyQueuingProfile(GetApplicationPolicyQueuingProfileV1QueryParams *GetApplicationPolicyQueuingProfileV1QueryParams) (*ResponseApplicationPolicyGetApplicationPolicyQueuingProfileV1, *resty.Response, error) {
 	return s.GetApplicationPolicyQueuingProfileV1(GetApplicationPolicyQueuingProfileV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateApplicationPolicyQueuingProfileV1`
+*/
 func (s *ApplicationPolicyService) UpdateApplicationPolicyQueuingProfile(requestApplicationPolicyUpdateApplicationPolicyQueuingProfileV1 *RequestApplicationPolicyUpdateApplicationPolicyQueuingProfileV1) (*ResponseApplicationPolicyUpdateApplicationPolicyQueuingProfileV1, *resty.Response, error) {
 	return s.UpdateApplicationPolicyQueuingProfileV1(requestApplicationPolicyUpdateApplicationPolicyQueuingProfileV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteApplicationSetV1`
+*/
 func (s *ApplicationPolicyService) DeleteApplicationSet(DeleteApplicationSetV1QueryParams *DeleteApplicationSetV1QueryParams) (*ResponseApplicationPolicyDeleteApplicationSetV1, *resty.Response, error) {
 	return s.DeleteApplicationSetV1(DeleteApplicationSetV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetApplicationSetsV1`
+*/
 func (s *ApplicationPolicyService) GetApplicationSets(GetApplicationSetsV1QueryParams *GetApplicationSetsV1QueryParams) (*ResponseApplicationPolicyGetApplicationSetsV1, *resty.Response, error) {
 	return s.GetApplicationSetsV1(GetApplicationSetsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateQosDeviceInterfaceInfoV1`
+*/
 func (s *ApplicationPolicyService) UpdateQosDeviceInterfaceInfo(requestApplicationPolicyUpdateQosDeviceInterfaceInfoV1 *RequestApplicationPolicyUpdateQosDeviceInterfaceInfoV1) (*ResponseApplicationPolicyUpdateQosDeviceInterfaceInfoV1, *resty.Response, error) {
 	return s.UpdateQosDeviceInterfaceInfoV1(requestApplicationPolicyUpdateQosDeviceInterfaceInfoV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetApplicationsCountV1`
+*/
 func (s *ApplicationPolicyService) GetApplicationsCount() (*ResponseApplicationPolicyGetApplicationsCountV1, *resty.Response, error) {
 	return s.GetApplicationsCountV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateQosDeviceInterfaceInfoV1`
+*/
 func (s *ApplicationPolicyService) CreateQosDeviceInterfaceInfo(requestApplicationPolicyCreateQosDeviceInterfaceInfoV1 *RequestApplicationPolicyCreateQosDeviceInterfaceInfoV1) (*ResponseApplicationPolicyCreateQosDeviceInterfaceInfoV1, *resty.Response, error) {
 	return s.CreateQosDeviceInterfaceInfoV1(requestApplicationPolicyCreateQosDeviceInterfaceInfoV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateApplicationPolicyQueuingProfileV1`
+*/
 func (s *ApplicationPolicyService) CreateApplicationPolicyQueuingProfile(requestApplicationPolicyCreateApplicationPolicyQueuingProfileV1 *RequestApplicationPolicyCreateApplicationPolicyQueuingProfileV1) (*ResponseApplicationPolicyCreateApplicationPolicyQueuingProfileV1, *resty.Response, error) {
 	return s.CreateApplicationPolicyQueuingProfileV1(requestApplicationPolicyCreateApplicationPolicyQueuingProfileV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteApplicationPolicyQueuingProfileV1`
+*/
 func (s *ApplicationPolicyService) DeleteApplicationPolicyQueuingProfile(id string) (*ResponseApplicationPolicyDeleteApplicationPolicyQueuingProfileV1, *resty.Response, error) {
 	return s.DeleteApplicationPolicyQueuingProfileV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateApplicationSetV1`
+*/
 func (s *ApplicationPolicyService) CreateApplicationSet(requestApplicationPolicyCreateApplicationSetV1 *RequestApplicationPolicyCreateApplicationSetV1) (*ResponseApplicationPolicyCreateApplicationSetV1, *resty.Response, error) {
 	return s.CreateApplicationSetV1(requestApplicationPolicyCreateApplicationSetV1)
 }

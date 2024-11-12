@@ -719,61 +719,97 @@ func (s *LicensesService) DeviceRegistrationV1(virtualaccountname string, reques
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `VirtualAccountDetailsV1`
+*/
 func (s *LicensesService) VirtualAccountDetails(smartaccountTypeID string) (*ResponseLicensesVirtualAccountDetailsV1, *resty.Response, error) {
 	return s.VirtualAccountDetailsV1(smartaccountTypeID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `LicenseTermDetailsV1`
+*/
 func (s *LicensesService) LicenseTermDetails(smartaccountTypeID string, virtualaccountname string, LicenseTermDetailsV1QueryParams *LicenseTermDetailsV1QueryParams) (*ResponseLicensesLicenseTermDetailsV1, *resty.Response, error) {
 	return s.LicenseTermDetailsV1(smartaccountTypeID, virtualaccountname, LicenseTermDetailsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeviceCountDetailsV1`
+*/
 func (s *LicensesService) DeviceCountDetails(DeviceCountDetailsV1QueryParams *DeviceCountDetailsV1QueryParams) (*ResponseLicensesDeviceCountDetailsV1, *resty.Response, error) {
 	return s.DeviceCountDetailsV1(DeviceCountDetailsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrieveLicenseSettingV1`
+*/
 func (s *LicensesService) RetrieveLicenseSetting() (*ResponseLicensesRetrieveLicenseSettingV1, *resty.Response, error) {
 	return s.RetrieveLicenseSettingV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeviceLicenseSummaryV1`
+*/
 func (s *LicensesService) DeviceLicenseSummary(DeviceLicenseSummaryV1QueryParams *DeviceLicenseSummaryV1QueryParams) (*ResponseLicensesDeviceLicenseSummaryV1, *resty.Response, error) {
 	return s.DeviceLicenseSummaryV1(DeviceLicenseSummaryV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ChangeVirtualAccountV1`
+*/
 func (s *LicensesService) ChangeVirtualAccount(smartaccountTypeID string, virtualaccountname string, requestLicensesChangeVirtualAccountV1 *RequestLicensesChangeVirtualAccountV1) (*ResponseLicensesChangeVirtualAccountV1, *resty.Response, error) {
 	return s.ChangeVirtualAccountV1(smartaccountTypeID, virtualaccountname, requestLicensesChangeVirtualAccountV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeviceRegistrationV1`
+*/
 func (s *LicensesService) DeviceRegistration(virtualaccountname string, requestLicensesDeviceRegistrationV1 *RequestLicensesDeviceRegistrationV1) (*ResponseLicensesDeviceRegistrationV1, *resty.Response, error) {
 	return s.DeviceRegistrationV1(virtualaccountname, requestLicensesDeviceRegistrationV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `SmartAccountDetailsV1`
+*/
 func (s *LicensesService) SmartAccountDetails() (*ResponseLicensesSmartAccountDetailsV1, *resty.Response, error) {
 	return s.SmartAccountDetailsV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateLicenseSettingV1`
+*/
 func (s *LicensesService) UpdateLicenseSetting(requestLicensesUpdateLicenseSettingV1 *RequestLicensesUpdateLicenseSettingV1) (*ResponseLicensesUpdateLicenseSettingV1, *resty.Response, error) {
 	return s.UpdateLicenseSettingV1(requestLicensesUpdateLicenseSettingV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeviceLicenseDetailsV1`
+*/
 func (s *LicensesService) DeviceLicenseDetails(deviceuuid string) (*ResponseLicensesDeviceLicenseDetailsV1, *resty.Response, error) {
 	return s.DeviceLicenseDetailsV1(deviceuuid)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeviceDeregistrationV1`
+*/
 func (s *LicensesService) DeviceDeregistration(requestLicensesDeviceDeregistrationV1 *RequestLicensesDeviceDeregistrationV1) (*ResponseLicensesDeviceDeregistrationV1, *resty.Response, error) {
 	return s.DeviceDeregistrationV1(requestLicensesDeviceDeregistrationV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `LicenseUsageDetailsV1`
+*/
 func (s *LicensesService) LicenseUsageDetails(smartaccountTypeID string, virtualaccountname string, LicenseUsageDetailsV1QueryParams *LicenseUsageDetailsV1QueryParams) (*ResponseLicensesLicenseUsageDetailsV1, *resty.Response, error) {
 	return s.LicenseUsageDetailsV1(smartaccountTypeID, virtualaccountname, LicenseUsageDetailsV1QueryParams)
 }

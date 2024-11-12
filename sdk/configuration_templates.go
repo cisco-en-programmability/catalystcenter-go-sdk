@@ -93,13 +93,13 @@ type ResponseConfigurationTemplatesUpdateProjectV1Response struct {
 }
 type ResponseConfigurationTemplatesGetsAListOfProjectsV1 []ResponseItemConfigurationTemplatesGetsAListOfProjectsV1 // Array of ResponseConfigurationTemplatesGetsAListOfProjectsV1
 type ResponseItemConfigurationTemplatesGetsAListOfProjectsV1 struct {
-	Tags           *[]ResponseItemConfigurationTemplatesGetsAListOfProjectsV1Tags    `json:"tags,omitempty"`           //
-	CreateTime     *int                                                              `json:"createTime,omitempty"`     // Create time of project
-	Description    string                                                            `json:"description,omitempty"`    // Description of project
-	ID             string                                                            `json:"id,omitempty"`             // UUID of project
-	LastUpdateTime *int                                                              `json:"lastUpdateTime,omitempty"` // Update time of project
-	Name           string                                                            `json:"name,omitempty"`           // Name of project
-	Templates      *ResponseItemConfigurationTemplatesGetsAListOfProjectsV1Templates `json:"templates,omitempty"`      // List of templates within the project
+	Tags           *[]ResponseItemConfigurationTemplatesGetsAListOfProjectsV1Tags      `json:"tags,omitempty"`           //
+	CreateTime     *int                                                                `json:"createTime,omitempty"`     // Create time of project
+	Description    string                                                              `json:"description,omitempty"`    // Description of project
+	ID             string                                                              `json:"id,omitempty"`             // UUID of project
+	LastUpdateTime *int                                                                `json:"lastUpdateTime,omitempty"` // Update time of project
+	Name           string                                                              `json:"name,omitempty"`           // Name of project
+	Templates      *[]ResponseItemConfigurationTemplatesGetsAListOfProjectsV1Templates `json:"templates,omitempty"`      // List of templates within the project
 }
 type ResponseItemConfigurationTemplatesGetsAListOfProjectsV1Tags struct {
 	ID   string `json:"id,omitempty"`   // UUID of tag
@@ -326,13 +326,13 @@ type ResponseConfigurationTemplatesImportsTheTemplatesProvidedV1Response struct 
 	URL    string `json:"url,omitempty"`    //
 }
 type ResponseConfigurationTemplatesGetsTheDetailsOfAGivenProjectV1 struct {
-	Tags           *[]ResponseConfigurationTemplatesGetsTheDetailsOfAGivenProjectV1Tags    `json:"tags,omitempty"`           //
-	CreateTime     *int                                                                    `json:"createTime,omitempty"`     // Create time of project
-	Description    string                                                                  `json:"description,omitempty"`    // Description of project
-	ID             string                                                                  `json:"id,omitempty"`             // UUID of project
-	LastUpdateTime *int                                                                    `json:"lastUpdateTime,omitempty"` // Update time of project
-	Name           string                                                                  `json:"name,omitempty"`           // Name of project
-	Templates      *ResponseConfigurationTemplatesGetsTheDetailsOfAGivenProjectV1Templates `json:"templates,omitempty"`      // List of templates within the project
+	Tags           *[]ResponseConfigurationTemplatesGetsTheDetailsOfAGivenProjectV1Tags      `json:"tags,omitempty"`           //
+	CreateTime     *int                                                                      `json:"createTime,omitempty"`     // Create time of project
+	Description    string                                                                    `json:"description,omitempty"`    // Description of project
+	ID             string                                                                    `json:"id,omitempty"`             // UUID of project
+	LastUpdateTime *int                                                                      `json:"lastUpdateTime,omitempty"` // Update time of project
+	Name           string                                                                    `json:"name,omitempty"`           // Name of project
+	Templates      *[]ResponseConfigurationTemplatesGetsTheDetailsOfAGivenProjectV1Templates `json:"templates,omitempty"`      // List of templates within the project
 }
 type ResponseConfigurationTemplatesGetsTheDetailsOfAGivenProjectV1Tags struct {
 	ID   string `json:"id,omitempty"`   // UUID of tag
@@ -1106,13 +1106,13 @@ type ResponseConfigurationTemplatesDeployTemplateV2Response struct {
 	URL    string `json:"url,omitempty"`    //
 }
 type RequestConfigurationTemplatesCreateProjectV1 struct {
-	Tags           *[]RequestConfigurationTemplatesCreateProjectV1Tags      `json:"tags,omitempty"`           //
-	CreateTime     *int                                                     `json:"createTime,omitempty"`     // Create time of project
-	Description    string                                                   `json:"description,omitempty"`    // Description of project
-	ID             string                                                   `json:"id,omitempty"`             // UUID of project
-	LastUpdateTime *int                                                     `json:"lastUpdateTime,omitempty"` // Update time of project
-	Name           string                                                   `json:"name,omitempty"`           // Name of project
-	Templates      *[]RequestConfigurationTemplatesCreateProjectV1Templates `json:"templates,omitempty"`      // List of templates within the project
+	Tags           *[]RequestConfigurationTemplatesCreateProjectV1Tags    `json:"tags,omitempty"`           //
+	CreateTime     *int                                                   `json:"createTime,omitempty"`     // Create time of project
+	Description    string                                                 `json:"description,omitempty"`    // Description of project
+	ID             string                                                 `json:"id,omitempty"`             // UUID of project
+	LastUpdateTime *int                                                   `json:"lastUpdateTime,omitempty"` // Update time of project
+	Name           string                                                 `json:"name,omitempty"`           // Name of project
+	Templates      *RequestConfigurationTemplatesCreateProjectV1Templates `json:"templates,omitempty"`      // List of templates within the project
 }
 type RequestConfigurationTemplatesCreateProjectV1Tags struct {
 	ID   string `json:"id,omitempty"`   // UUID of tag
@@ -2768,106 +2768,169 @@ func (s *ConfigurationTemplatesService) DeletesTheTemplateV1(templateID string) 
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetProjectsDetailsV2`
+*/
 func (s *ConfigurationTemplatesService) GetProjectsDetails(GetProjectsDetailsV2QueryParams *GetProjectsDetailsV2QueryParams) (*ResponseConfigurationTemplatesGetProjectsDetailsV2, *resty.Response, error) {
 	return s.GetProjectsDetailsV2(GetProjectsDetailsV2QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ImportsTheProjectsProvidedV1`
+*/
 func (s *ConfigurationTemplatesService) ImportsTheProjectsProvided(ImportsTheProjectsProvidedV1QueryParams *ImportsTheProjectsProvidedV1QueryParams) (*ResponseConfigurationTemplatesImportsTheProjectsProvidedV1, *resty.Response, error) {
 	return s.ImportsTheProjectsProvidedV1(ImportsTheProjectsProvidedV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateProjectV1`
+*/
 func (s *ConfigurationTemplatesService) CreateProject(requestConfigurationTemplatesCreateProjectV1 *RequestConfigurationTemplatesCreateProjectV1) (*ResponseConfigurationTemplatesCreateProjectV1, *resty.Response, error) {
 	return s.CreateProjectV1(requestConfigurationTemplatesCreateProjectV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeployTemplateV1`
+*/
 func (s *ConfigurationTemplatesService) DeployTemplate(requestConfigurationTemplatesDeployTemplateV1 *RequestConfigurationTemplatesDeployTemplateV1) (*ResponseConfigurationTemplatesDeployTemplateV1, *resty.Response, error) {
 	return s.DeployTemplateV1(requestConfigurationTemplatesDeployTemplateV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateTemplateV1`
+*/
 func (s *ConfigurationTemplatesService) CreateTemplate(projectID string, requestConfigurationTemplatesCreateTemplateV1 *RequestConfigurationTemplatesCreateTemplateV1) (*ResponseConfigurationTemplatesCreateTemplateV1, *resty.Response, error) {
 	return s.CreateTemplateV1(projectID, requestConfigurationTemplatesCreateTemplateV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateProjectV1`
+*/
 func (s *ConfigurationTemplatesService) UpdateProject(requestConfigurationTemplatesUpdateProjectV1 *RequestConfigurationTemplatesUpdateProjectV1) (*ResponseConfigurationTemplatesUpdateProjectV1, *resty.Response, error) {
 	return s.UpdateProjectV1(requestConfigurationTemplatesUpdateProjectV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetsTheDetailsOfAGivenProjectV1`
+*/
 func (s *ConfigurationTemplatesService) GetsTheDetailsOfAGivenProject(projectID string) (*ResponseConfigurationTemplatesGetsTheDetailsOfAGivenProjectV1, *resty.Response, error) {
 	return s.GetsTheDetailsOfAGivenProjectV1(projectID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeletesTheTemplateV1`
+*/
 func (s *ConfigurationTemplatesService) DeletesTheTemplate(templateID string) (*ResponseConfigurationTemplatesDeletesTheTemplateV1, *resty.Response, error) {
 	return s.DeletesTheTemplateV1(templateID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetsTheTemplatesAvailableV1`
+*/
 func (s *ConfigurationTemplatesService) GetsTheTemplatesAvailable(GetsTheTemplatesAvailableV1QueryParams *GetsTheTemplatesAvailableV1QueryParams) (*ResponseConfigurationTemplatesGetsTheTemplatesAvailableV1, *resty.Response, error) {
 	return s.GetsTheTemplatesAvailableV1(GetsTheTemplatesAvailableV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ExportsTheProjectsForAGivenCriteriaV1`
+*/
 func (s *ConfigurationTemplatesService) ExportsTheProjectsForAGivenCriteria(requestConfigurationTemplatesExportsTheProjectsForAGivenCriteriaV1 *RequestConfigurationTemplatesExportsTheProjectsForAGivenCriteriaV1) (*ResponseConfigurationTemplatesExportsTheProjectsForAGivenCriteriaV1, *resty.Response, error) {
 	return s.ExportsTheProjectsForAGivenCriteriaV1(requestConfigurationTemplatesExportsTheProjectsForAGivenCriteriaV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreatesACloneOfTheGivenTemplateV1`
+*/
 func (s *ConfigurationTemplatesService) CreatesACloneOfTheGivenTemplate(name string, templateID string, projectID string, CreatesACloneOfTheGivenTemplateV1QueryParams *CreatesACloneOfTheGivenTemplateV1QueryParams) (*ResponseConfigurationTemplatesCreatesACloneOfTheGivenTemplateV1, *resty.Response, error) {
 	return s.CreatesACloneOfTheGivenTemplateV1(name, templateID, projectID, CreatesACloneOfTheGivenTemplateV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ImportsTheTemplatesProvidedV1`
+*/
 func (s *ConfigurationTemplatesService) ImportsTheTemplatesProvided(projectName string, requestConfigurationTemplatesImportsTheTemplatesProvidedV1 *RequestConfigurationTemplatesImportsTheTemplatesProvidedV1, ImportsTheTemplatesProvidedV1QueryParams *ImportsTheTemplatesProvidedV1QueryParams) (*ResponseConfigurationTemplatesImportsTheTemplatesProvidedV1, *resty.Response, error) {
 	return s.ImportsTheTemplatesProvidedV1(projectName, requestConfigurationTemplatesImportsTheTemplatesProvidedV1, ImportsTheTemplatesProvidedV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `PreviewTemplateV1`
+*/
 func (s *ConfigurationTemplatesService) PreviewTemplate(requestConfigurationTemplatesPreviewTemplateV1 *RequestConfigurationTemplatesPreviewTemplateV1) (*ResponseConfigurationTemplatesPreviewTemplateV1, *resty.Response, error) {
 	return s.PreviewTemplateV1(requestConfigurationTemplatesPreviewTemplateV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeletesTheProjectV1`
+*/
 func (s *ConfigurationTemplatesService) DeletesTheProject(projectID string) (*ResponseConfigurationTemplatesDeletesTheProjectV1, *resty.Response, error) {
 	return s.DeletesTheProjectV1(projectID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ExportsTheTemplatesForAGivenCriteriaV1`
+*/
 func (s *ConfigurationTemplatesService) ExportsTheTemplatesForAGivenCriteria(requestConfigurationTemplatesExportsTheTemplatesForAGivenCriteriaV1 *RequestConfigurationTemplatesExportsTheTemplatesForAGivenCriteriaV1) (*ResponseConfigurationTemplatesExportsTheTemplatesForAGivenCriteriaV1, *resty.Response, error) {
 	return s.ExportsTheTemplatesForAGivenCriteriaV1(requestConfigurationTemplatesExportsTheTemplatesForAGivenCriteriaV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetsAllTheVersionsOfAGivenTemplateV1`
+*/
 func (s *ConfigurationTemplatesService) GetsAllTheVersionsOfAGivenTemplate(templateID string) (*ResponseConfigurationTemplatesGetsAllTheVersionsOfAGivenTemplateV1, *resty.Response, error) {
 	return s.GetsAllTheVersionsOfAGivenTemplateV1(templateID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `StatusOfTemplateDeploymentV1`
+*/
 func (s *ConfigurationTemplatesService) StatusOfTemplateDeployment(deploymentID string) (*ResponseConfigurationTemplatesStatusOfTemplateDeploymentV1, *resty.Response, error) {
 	return s.StatusOfTemplateDeploymentV1(deploymentID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateTemplateV1`
+*/
 func (s *ConfigurationTemplatesService) UpdateTemplate(requestConfigurationTemplatesUpdateTemplateV1 *RequestConfigurationTemplatesUpdateTemplateV1) (*ResponseConfigurationTemplatesUpdateTemplateV1, *resty.Response, error) {
 	return s.UpdateTemplateV1(requestConfigurationTemplatesUpdateTemplateV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetsAListOfProjectsV1`
+*/
 func (s *ConfigurationTemplatesService) GetsAListOfProjects(GetsAListOfProjectsV1QueryParams *GetsAListOfProjectsV1QueryParams) (*ResponseConfigurationTemplatesGetsAListOfProjectsV1, *resty.Response, error) {
 	return s.GetsAListOfProjectsV1(GetsAListOfProjectsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetsDetailsOfAGivenTemplateV1`
+*/
 func (s *ConfigurationTemplatesService) GetsDetailsOfAGivenTemplate(templateID string, GetsDetailsOfAGivenTemplateV1QueryParams *GetsDetailsOfAGivenTemplateV1QueryParams) (*ResponseConfigurationTemplatesGetsDetailsOfAGivenTemplateV1, *resty.Response, error) {
 	return s.GetsDetailsOfAGivenTemplateV1(templateID, GetsDetailsOfAGivenTemplateV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `VersionTemplateV1`
+*/
 func (s *ConfigurationTemplatesService) VersionTemplate(requestConfigurationTemplatesVersionTemplateV1 *RequestConfigurationTemplatesVersionTemplateV1) (*ResponseConfigurationTemplatesVersionTemplateV1, *resty.Response, error) {
 	return s.VersionTemplateV1(requestConfigurationTemplatesVersionTemplateV1)
 }

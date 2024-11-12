@@ -571,51 +571,81 @@ func (s *ComplianceService) CommitDeviceConfigurationV1(requestComplianceCommitD
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetComplianceDetailCountV1`
+*/
 func (s *ComplianceService) GetComplianceDetailCount(GetComplianceDetailCountV1QueryParams *GetComplianceDetailCountV1QueryParams) (*ResponseComplianceGetComplianceDetailCountV1, *resty.Response, error) {
 	return s.GetComplianceDetailCountV1(GetComplianceDetailCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ComplianceRemediationV1`
+*/
 func (s *ComplianceService) ComplianceRemediation(id string) (*ResponseComplianceComplianceRemediationV1, *resty.Response, error) {
 	return s.ComplianceRemediationV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetComplianceDetailV1`
+*/
 func (s *ComplianceService) GetComplianceDetail(GetComplianceDetailV1QueryParams *GetComplianceDetailV1QueryParams) (*ResponseComplianceGetComplianceDetailV1, *resty.Response, error) {
 	return s.GetComplianceDetailV1(GetComplianceDetailV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetConfigTaskDetailsV1`
+*/
 func (s *ComplianceService) GetConfigTaskDetails(GetConfigTaskDetailsV1QueryParams *GetConfigTaskDetailsV1QueryParams) (*ResponseComplianceGetConfigTaskDetailsV1, *resty.Response, error) {
 	return s.GetConfigTaskDetailsV1(GetConfigTaskDetailsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetComplianceStatusV1`
+*/
 func (s *ComplianceService) GetComplianceStatus(GetComplianceStatusV1QueryParams *GetComplianceStatusV1QueryParams) (*ResponseComplianceGetComplianceStatusV1, *resty.Response, error) {
 	return s.GetComplianceStatusV1(GetComplianceStatusV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeviceComplianceStatusV1`
+*/
 func (s *ComplianceService) DeviceComplianceStatus(deviceUUID string) (*ResponseComplianceDeviceComplianceStatusV1, *resty.Response, error) {
 	return s.DeviceComplianceStatusV1(deviceUUID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CommitDeviceConfigurationV1`
+*/
 func (s *ComplianceService) CommitDeviceConfiguration(requestComplianceCommitDeviceConfigurationV1 *RequestComplianceCommitDeviceConfigurationV1) (*ResponseComplianceCommitDeviceConfigurationV1, *resty.Response, error) {
 	return s.CommitDeviceConfigurationV1(requestComplianceCommitDeviceConfigurationV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ComplianceDetailsOfDeviceV1`
+*/
 func (s *ComplianceService) ComplianceDetailsOfDevice(deviceUUID string, ComplianceDetailsOfDeviceV1QueryParams *ComplianceDetailsOfDeviceV1QueryParams) (*ResponseComplianceComplianceDetailsOfDeviceV1, *resty.Response, error) {
 	return s.ComplianceDetailsOfDeviceV1(deviceUUID, ComplianceDetailsOfDeviceV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetComplianceStatusCountV1`
+*/
 func (s *ComplianceService) GetComplianceStatusCount(GetComplianceStatusCountV1QueryParams *GetComplianceStatusCountV1QueryParams) (*ResponseComplianceGetComplianceStatusCountV1, *resty.Response, error) {
 	return s.GetComplianceStatusCountV1(GetComplianceStatusCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RunComplianceV1`
+*/
 func (s *ComplianceService) RunCompliance(requestComplianceRunComplianceV1 *RequestComplianceRunComplianceV1) (*ResponseComplianceRunComplianceV1, *resty.Response, error) {
 	return s.RunComplianceV1(requestComplianceRunComplianceV1)
 }

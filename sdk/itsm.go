@@ -172,16 +172,25 @@ func (s *ItsmService) RetryIntegrationEventsV1(requestItsmRetryIntegrationEvents
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetCmdbSyncStatusV1`
+*/
 func (s *ItsmService) GetCmdbSyncStatus(GetCMDBSyncStatusV1QueryParams *GetCmdbSyncStatusV1QueryParams) (*ResponseItsmGetCmdbSyncStatusV1, *resty.Response, error) {
 	return s.GetCmdbSyncStatusV1(GetCMDBSyncStatusV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetFailedItsmEventsV1`
+*/
 func (s *ItsmService) GetFailedItsmEvents(GetFailedITSMEventsV1QueryParams *GetFailedItsmEventsV1QueryParams) (*ResponseItsmGetFailedItsmEventsV1, *resty.Response, error) {
 	return s.GetFailedItsmEventsV1(GetFailedITSMEventsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetryIntegrationEventsV1`
+*/
 func (s *ItsmService) RetryIntegrationEvents(requestItsmRetryIntegrationEventsV1 *RequestItsmRetryIntegrationEventsV1) (*ResponseItsmRetryIntegrationEventsV1, *resty.Response, error) {
 	return s.RetryIntegrationEventsV1(requestItsmRetryIntegrationEventsV1)
 }

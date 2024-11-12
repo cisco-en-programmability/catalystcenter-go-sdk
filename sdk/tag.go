@@ -241,13 +241,13 @@ type RequestTagUpdateTagV1DynamicRules struct {
 	Rules      *RequestTagUpdateTagV1DynamicRulesRules `json:"rules,omitempty"`      //
 }
 type RequestTagUpdateTagV1DynamicRulesRules struct {
-	Values    []string                                       `json:"values,omitempty"`    // values of the parameter,Only one of the value or values can be used for the given parameter. (for managementIpAddress e.g. ["10.197.124.90","10.197.124.91"])
-	Items     *[]RequestTagUpdateTagV1DynamicRulesRulesItems `json:"items,omitempty"`     // items details,multiple rules can be defined by items(e.g. "items": [{"operation": "ILIKE", "name": "managementIpAddress", "value": "%10%"}, {"operation": "ILIKE", "name": "hostname", "value": "%NA%"} ])
-	Operation string                                         `json:"operation,omitempty"` // opeartion used in the rules (e.g. OR,IN,EQ,LIKE,ILIKE,AND)
-	Name      string                                         `json:"name,omitempty"`      // name of the parameter (e.g. for interface:portName,adminStatus,speed,status,description. for networkdevice:family,series,hostname,managementIpAddress,groupNameHierarchy,softwareVersion)
-	Value     string                                         `json:"value,omitempty"`     // value of the parameter (e.g. for portName:1/0/1,for adminStatus,status:up/down, for speed: any integer value, for description: any valid string, for family:switches, for series:C3650, for managementIpAddress:10.197.124.90, groupNameHierarchy:Global, softwareVersion: 16.9.1)
+	Values    []string    `json:"values,omitempty"`    // values of the parameter,Only one of the value or values can be used for the given parameter. (for managementIpAddress e.g. ["10.197.124.90","10.197.124.91"])
+	Items     interface{} `json:"items,omitempty"`     // items details,multiple rules can be defined by items(e.g. "items": [{"operation": "ILIKE", "name": "managementIpAddress", "value": "%10%"}, {"operation": "ILIKE", "name": "hostname", "value": "%NA%"} ])
+	Operation string      `json:"operation,omitempty"` // opeartion used in the rules (e.g. OR,IN,EQ,LIKE,ILIKE,AND)
+	Name      string      `json:"name,omitempty"`      // name of the parameter (e.g. for interface:portName,adminStatus,speed,status,description. for networkdevice:family,series,hostname,managementIpAddress,groupNameHierarchy,softwareVersion)
+	Value     string      `json:"value,omitempty"`     // value of the parameter (e.g. for portName:1/0/1,for adminStatus,status:up/down, for speed: any integer value, for description: any valid string, for family:switches, for series:C3650, for managementIpAddress:10.197.124.90, groupNameHierarchy:Global, softwareVersion: 16.9.1)
 }
-type RequestTagUpdateTagV1DynamicRulesRulesItems interface{}
+
 type RequestTagCreateTagV1 struct {
 	SystemTag        *bool                                `json:"systemTag,omitempty"`        // true for system created tags, false for user defined tags
 	Description      string                               `json:"description,omitempty"`      // description of the tag.
@@ -261,13 +261,13 @@ type RequestTagCreateTagV1DynamicRules struct {
 	Rules      *RequestTagCreateTagV1DynamicRulesRules `json:"rules,omitempty"`      //
 }
 type RequestTagCreateTagV1DynamicRulesRules struct {
-	Values    []string                                       `json:"values,omitempty"`    // values of the parameter,Only one of the value or values can be used for the given parameter. (for managementIpAddress e.g. ["10.197.124.90","10.197.124.91"])
-	Items     *[]RequestTagCreateTagV1DynamicRulesRulesItems `json:"items,omitempty"`     // items details,multiple rules can be defined by items(e.g. "items": [{"operation": "ILIKE", "name": "managementIpAddress", "value": "%10%"}, {"operation": "ILIKE", "name": "hostname", "value": "%NA%"} ])
-	Operation string                                         `json:"operation,omitempty"` // opeartion used in the rules (e.g. OR,IN,EQ,LIKE,ILIKE,AND)
-	Name      string                                         `json:"name,omitempty"`      // name of the parameter (e.g. for interface:portName,adminStatus,speed,status,description. for networkdevice:family,series,hostname,managementIpAddress,groupNameHierarchy,softwareVersion)
-	Value     string                                         `json:"value,omitempty"`     // value of the parameter (e.g. for portName:1/0/1,for adminStatus,status:up/down, for speed: any integer value, for description: any valid string, for family:switches, for series:C3650, for managementIpAddress:10.197.124.90, groupNameHierarchy:Global, softwareVersion: 16.9.1)
+	Values    []string    `json:"values,omitempty"`    // values of the parameter,Only one of the value or values can be used for the given parameter. (for managementIpAddress e.g. ["10.197.124.90","10.197.124.91"])
+	Items     interface{} `json:"items,omitempty"`     // items details,multiple rules can be defined by items(e.g. "items": [{"operation": "ILIKE", "name": "managementIpAddress", "value": "%10%"}, {"operation": "ILIKE", "name": "hostname", "value": "%NA%"} ])
+	Operation string      `json:"operation,omitempty"` // opeartion used in the rules (e.g. OR,IN,EQ,LIKE,ILIKE,AND)
+	Name      string      `json:"name,omitempty"`      // name of the parameter (e.g. for interface:portName,adminStatus,speed,status,description. for networkdevice:family,series,hostname,managementIpAddress,groupNameHierarchy,softwareVersion)
+	Value     string      `json:"value,omitempty"`     // value of the parameter (e.g. for portName:1/0/1,for adminStatus,status:up/down, for speed: any integer value, for description: any valid string, for family:switches, for series:C3650, for managementIpAddress:10.197.124.90, groupNameHierarchy:Global, softwareVersion: 16.9.1)
 }
-type RequestTagCreateTagV1DynamicRulesRulesItems interface{}
+
 type RequestTagUpdateTagMembershipV1 struct {
 	MemberToTags map[string][]string `json:"memberToTags,omitempty"` //
 	MemberType   string              `json:"memberType,omitempty"`   //
@@ -947,91 +947,145 @@ func (s *TagService) RemoveTagMemberV1(id string, memberID string) (*ResponseTag
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTagMembersByIDV1`
+*/
 func (s *TagService) GetTagMembersByID(id string, GetTagMembersByIdV1QueryParams *GetTagMembersByIDV1QueryParams) (*ResponseTagGetTagMembersByIDV1, *resty.Response, error) {
 	return s.GetTagMembersByIDV1(id, GetTagMembersByIdV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateTagV1`
+*/
 func (s *TagService) UpdateTag(requestTagUpdateTagV1 *RequestTagUpdateTagV1) (*ResponseTagUpdateTagV1, *resty.Response, error) {
 	return s.UpdateTagV1(requestTagUpdateTagV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteTagV1`
+*/
 func (s *TagService) DeleteTag(id string) (*ResponseTagDeleteTagV1, *resty.Response, error) {
 	return s.DeleteTagV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTagV1`
+*/
 func (s *TagService) GetTag(GetTagV1QueryParams *GetTagV1QueryParams) (*ResponseTagGetTagV1, *resty.Response, error) {
 	return s.GetTagV1(GetTagV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RemoveTagMemberV1`
+*/
 func (s *TagService) RemoveTagMember(id string, memberID string) (*ResponseTagRemoveTagMemberV1, *resty.Response, error) {
 	return s.RemoveTagMemberV1(id, memberID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrieveTagsAssociatedWithTheInterfacesV1`
+*/
 func (s *TagService) RetrieveTagsAssociatedWithTheInterfaces(RetrieveTagsAssociatedWithTheInterfacesV1QueryParams *RetrieveTagsAssociatedWithTheInterfacesV1QueryParams) (*ResponseTagRetrieveTagsAssociatedWithTheInterfacesV1, *resty.Response, error) {
 	return s.RetrieveTagsAssociatedWithTheInterfacesV1(RetrieveTagsAssociatedWithTheInterfacesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTagResourceTypesV1`
+*/
 func (s *TagService) GetTagResourceTypes() (*ResponseTagGetTagResourceTypesV1, *resty.Response, error) {
 	return s.GetTagResourceTypesV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrieveTheCountOfNetworkDevicesThatAreAssociatedWithAtLeastOneTagV1`
+*/
 func (s *TagService) RetrieveTheCountOfNetworkDevicesThatAreAssociatedWithAtLeastOneTag() (*ResponseTagRetrieveTheCountOfNetworkDevicesThatAreAssociatedWithAtLeastOneTagV1, *resty.Response, error) {
 	return s.RetrieveTheCountOfNetworkDevicesThatAreAssociatedWithAtLeastOneTagV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `QueryTheTagsAssociatedWithNetworkDevicesV1`
+*/
 func (s *TagService) QueryTheTagsAssociatedWithNetworkDevices(requestTagQueryTheTagsAssociatedWithNetworkDevicesV1 *RequestTagQueryTheTagsAssociatedWithNetworkDevicesV1) (*ResponseTagQueryTheTagsAssociatedWithNetworkDevicesV1, *resty.Response, error) {
 	return s.QueryTheTagsAssociatedWithNetworkDevicesV1(requestTagQueryTheTagsAssociatedWithNetworkDevicesV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrieveTheCountOfInterfacesThatAreAssociatedWithAtLeastOneTagV1`
+*/
 func (s *TagService) RetrieveTheCountOfInterfacesThatAreAssociatedWithAtLeastOneTag() (*ResponseTagRetrieveTheCountOfInterfacesThatAreAssociatedWithAtLeastOneTagV1, *resty.Response, error) {
 	return s.RetrieveTheCountOfInterfacesThatAreAssociatedWithAtLeastOneTagV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateTagV1`
+*/
 func (s *TagService) CreateTag(requestTagCreateTagV1 *RequestTagCreateTagV1) (*ResponseTagCreateTagV1, *resty.Response, error) {
 	return s.CreateTagV1(requestTagCreateTagV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrieveTagsAssociatedWithNetworkDevicesV1`
+*/
 func (s *TagService) RetrieveTagsAssociatedWithNetworkDevices(RetrieveTagsAssociatedWithNetworkDevicesV1QueryParams *RetrieveTagsAssociatedWithNetworkDevicesV1QueryParams) (*ResponseTagRetrieveTagsAssociatedWithNetworkDevicesV1, *resty.Response, error) {
 	return s.RetrieveTagsAssociatedWithNetworkDevicesV1(RetrieveTagsAssociatedWithNetworkDevicesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTagMemberCountV1`
+*/
 func (s *TagService) GetTagMemberCount(id string, GetTagMemberCountV1QueryParams *GetTagMemberCountV1QueryParams) (*ResponseTagGetTagMemberCountV1, *resty.Response, error) {
 	return s.GetTagMemberCountV1(id, GetTagMemberCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `QueryTheTagsAssociatedWithInterfacesV1`
+*/
 func (s *TagService) QueryTheTagsAssociatedWithInterfaces(requestTagQueryTheTagsAssociatedWithInterfacesV1 *RequestTagQueryTheTagsAssociatedWithInterfacesV1) (*ResponseTagQueryTheTagsAssociatedWithInterfacesV1, *resty.Response, error) {
 	return s.QueryTheTagsAssociatedWithInterfacesV1(requestTagQueryTheTagsAssociatedWithInterfacesV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateTagMembershipV1`
+*/
 func (s *TagService) UpdateTagMembership(requestTagUpdateTagMembershipV1 *RequestTagUpdateTagMembershipV1) (*ResponseTagUpdateTagMembershipV1, *resty.Response, error) {
 	return s.UpdateTagMembershipV1(requestTagUpdateTagMembershipV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTagCountV1`
+*/
 func (s *TagService) GetTagCount(GetTagCountV1QueryParams *GetTagCountV1QueryParams) (*ResponseTagGetTagCountV1, *resty.Response, error) {
 	return s.GetTagCountV1(GetTagCountV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddMembersToTheTagV1`
+*/
 func (s *TagService) AddMembersToTheTag(id string, requestTagAddMembersToTheTagV1 *RequestTagAddMembersToTheTagV1) (*ResponseTagAddMembersToTheTagV1, *resty.Response, error) {
 	return s.AddMembersToTheTagV1(id, requestTagAddMembersToTheTagV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTagByIDV1`
+*/
 func (s *TagService) GetTagByID(id string) (*ResponseTagGetTagByIDV1, *resty.Response, error) {
 	return s.GetTagByIDV1(id)
 }

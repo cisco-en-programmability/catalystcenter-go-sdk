@@ -1765,156 +1765,249 @@ func (s *SoftwareImageManagementSwimService) UnassignNetworkDeviceProductNameFro
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDeviceFamilyIDentifiersV1`
+*/
 func (s *SoftwareImageManagementSwimService) GetDeviceFamilyIDentifiers() (*ResponseSoftwareImageManagementSwimGetDeviceFamilyIDentifiersV1, *resty.Response, error) {
 	return s.GetDeviceFamilyIDentifiersV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `TriggerSoftwareImageDistributionV1`
+*/
 func (s *SoftwareImageManagementSwimService) TriggerSoftwareImageDistribution(requestSoftwareImageManagementSwimTriggerSoftwareImageDistributionV1 *RequestSoftwareImageManagementSwimTriggerSoftwareImageDistributionV1) (*ResponseSoftwareImageManagementSwimTriggerSoftwareImageDistributionV1, *resty.Response, error) {
 	return s.TriggerSoftwareImageDistributionV1(requestSoftwareImageManagementSwimTriggerSoftwareImageDistributionV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetNetworkDeviceImageUpdatesV1`
+*/
 func (s *SoftwareImageManagementSwimService) GetNetworkDeviceImageUpdates(GetNetworkDeviceImageUpdatesV1QueryParams *GetNetworkDeviceImageUpdatesV1QueryParams) (*ResponseSoftwareImageManagementSwimGetNetworkDeviceImageUpdatesV1, *resty.Response, error) {
 	return s.GetNetworkDeviceImageUpdatesV1(GetNetworkDeviceImageUpdatesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateRemoteImageDistributionServerV1`
+*/
 func (s *SoftwareImageManagementSwimService) UpdateRemoteImageDistributionServer(id string, requestSoftwareImageManagementSwimUpdateRemoteImageDistributionServerV1 *RequestSoftwareImageManagementSwimUpdateRemoteImageDistributionServerV1) (*ResponseSoftwareImageManagementSwimUpdateRemoteImageDistributionServerV1, *resty.Response, error) {
 	return s.UpdateRemoteImageDistributionServerV1(id, requestSoftwareImageManagementSwimUpdateRemoteImageDistributionServerV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrievesTheListOfNetworkDeviceProductNamesV1`
+*/
 func (s *SoftwareImageManagementSwimService) RetrievesTheListOfNetworkDeviceProductNames(RetrievesTheListOfNetworkDeviceProductNamesV1QueryParams *RetrievesTheListOfNetworkDeviceProductNamesV1QueryParams) (*ResponseSoftwareImageManagementSwimRetrievesTheListOfNetworkDeviceProductNamesV1, *resty.Response, error) {
 	return s.RetrievesTheListOfNetworkDeviceProductNamesV1(RetrievesTheListOfNetworkDeviceProductNamesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DownloadTheSoftwareImageV1`
+*/
 func (s *SoftwareImageManagementSwimService) DownloadTheSoftwareImage(id string) (*ResponseSoftwareImageManagementSwimDownloadTheSoftwareImageV1, *resty.Response, error) {
 	return s.DownloadTheSoftwareImageV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `TriggerSoftwareImageActivationV1`
+*/
 func (s *SoftwareImageManagementSwimService) TriggerSoftwareImageActivation(requestSoftwareImageManagementSwimTriggerSoftwareImageActivationV1 *RequestSoftwareImageManagementSwimTriggerSoftwareImageActivationV1, TriggerSoftwareImageActivationV1HeaderParams *TriggerSoftwareImageActivationV1HeaderParams, TriggerSoftwareImageActivationV1QueryParams *TriggerSoftwareImageActivationV1QueryParams) (*ResponseSoftwareImageManagementSwimTriggerSoftwareImageActivationV1, *resty.Response, error) {
 	return s.TriggerSoftwareImageActivationV1(requestSoftwareImageManagementSwimTriggerSoftwareImageActivationV1, TriggerSoftwareImageActivationV1HeaderParams, TriggerSoftwareImageActivationV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AssignNetworkDeviceProductNameToTheGivenSoftwareImageV1`
+*/
 func (s *SoftwareImageManagementSwimService) AssignNetworkDeviceProductNameToTheGivenSoftwareImage(imageID string, requestSoftwareImageManagementSwimAssignNetworkDeviceProductNameToTheGivenSoftwareImageV1 *RequestSoftwareImageManagementSwimAssignNetworkDeviceProductNameToTheGivenSoftwareImageV1) (*ResponseSoftwareImageManagementSwimAssignNetworkDeviceProductNameToTheGivenSoftwareImageV1, *resty.Response, error) {
 	return s.AssignNetworkDeviceProductNameToTheGivenSoftwareImageV1(imageID, requestSoftwareImageManagementSwimAssignNetworkDeviceProductNameToTheGivenSoftwareImageV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrieveNetworkDeviceProductNameV1`
+*/
 func (s *SoftwareImageManagementSwimService) RetrieveNetworkDeviceProductName(productNameOrdinal float64) (*ResponseSoftwareImageManagementSwimRetrieveNetworkDeviceProductNameV1, *resty.Response, error) {
 	return s.RetrieveNetworkDeviceProductNameV1(productNameOrdinal)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetSoftwareImageDetailsV1`
+*/
 func (s *SoftwareImageManagementSwimService) GetSoftwareImageDetails(GetSoftwareImageDetailsV1QueryParams *GetSoftwareImageDetailsV1QueryParams) (*ResponseSoftwareImageManagementSwimGetSoftwareImageDetailsV1, *resty.Response, error) {
 	return s.GetSoftwareImageDetailsV1(GetSoftwareImageDetailsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ReturnsListOfSoftwareImagesV1`
+*/
 func (s *SoftwareImageManagementSwimService) ReturnsListOfSoftwareImages(ReturnsListOfSoftwareImagesV1QueryParams *ReturnsListOfSoftwareImagesV1QueryParams) (*ResponseSoftwareImageManagementSwimReturnsListOfSoftwareImagesV1, *resty.Response, error) {
 	return s.ReturnsListOfSoftwareImagesV1(ReturnsListOfSoftwareImagesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ReturnsCountOfAddOnImagesV1`
+*/
 func (s *SoftwareImageManagementSwimService) ReturnsCountOfAddOnImages(id string) (*ResponseSoftwareImageManagementSwimReturnsCountOfAddOnImagesV1, *resty.Response, error) {
 	return s.ReturnsCountOfAddOnImagesV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CountOfNetworkProductNamesV1`
+*/
 func (s *SoftwareImageManagementSwimService) CountOfNetworkProductNames(CountOfNetworkProductNamesV1QueryParams *CountOfNetworkProductNamesV1QueryParams) (*ResponseSoftwareImageManagementSwimCountOfNetworkProductNamesV1, *resty.Response, error) {
 	return s.CountOfNetworkProductNamesV1(CountOfNetworkProductNamesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrieveSpecificImageDistributionServerV1`
+*/
 func (s *SoftwareImageManagementSwimService) RetrieveSpecificImageDistributionServer(id string) (*ResponseSoftwareImageManagementSwimRetrieveSpecificImageDistributionServerV1, *resty.Response, error) {
 	return s.RetrieveSpecificImageDistributionServerV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ImportSoftwareImageViaURLV1`
+*/
 func (s *SoftwareImageManagementSwimService) ImportSoftwareImageViaURL(requestSoftwareImageManagementSwimImportSoftwareImageViaURLV1 *RequestSoftwareImageManagementSwimImportSoftwareImageViaURLV1, ImportSoftwareImageViaURLV1QueryParams *ImportSoftwareImageViaURLV1QueryParams) (*ResponseSoftwareImageManagementSwimImportSoftwareImageViaURLV1, *resty.Response, error) {
 	return s.ImportSoftwareImageViaURLV1(requestSoftwareImageManagementSwimImportSoftwareImageViaURLV1, ImportSoftwareImageViaURLV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ReturnsNetworkDeviceProductNamesForASiteV1`
+*/
 func (s *SoftwareImageManagementSwimService) ReturnsNetworkDeviceProductNamesForASite(ReturnsNetworkDeviceProductNamesForASiteV1QueryParams *ReturnsNetworkDeviceProductNamesForASiteV1QueryParams) (*ResponseSoftwareImageManagementSwimReturnsNetworkDeviceProductNamesForASiteV1, *resty.Response, error) {
 	return s.ReturnsNetworkDeviceProductNamesForASiteV1(ReturnsNetworkDeviceProductNamesForASiteV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ReturnsCountOfSoftwareImagesV1`
+*/
 func (s *SoftwareImageManagementSwimService) ReturnsCountOfSoftwareImages(ReturnsCountOfSoftwareImagesV1QueryParams *ReturnsCountOfSoftwareImagesV1QueryParams) (*ResponseSoftwareImageManagementSwimReturnsCountOfSoftwareImagesV1, *resty.Response, error) {
 	return s.ReturnsCountOfSoftwareImagesV1(ReturnsCountOfSoftwareImagesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CountOfNetworkDeviceImageUpdatesV1`
+*/
 func (s *SoftwareImageManagementSwimService) CountOfNetworkDeviceImageUpdates(CountOfNetworkDeviceImageUpdatesV1QueryParams *CountOfNetworkDeviceImageUpdatesV1QueryParams) (*ResponseSoftwareImageManagementSwimCountOfNetworkDeviceImageUpdatesV1, *resty.Response, error) {
 	return s.CountOfNetworkDeviceImageUpdatesV1(CountOfNetworkDeviceImageUpdatesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UnassignNetworkDeviceProductNameFromTheGivenSoftwareImageV1`
+*/
 func (s *SoftwareImageManagementSwimService) UnassignNetworkDeviceProductNameFromTheGivenSoftwareImage(imageID string, productNameOrdinal float64) (*ResponseSoftwareImageManagementSwimUnassignNetworkDeviceProductNameFromTheGivenSoftwareImageV1, *resty.Response, error) {
 	return s.UnassignNetworkDeviceProductNameFromTheGivenSoftwareImageV1(imageID, productNameOrdinal)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RemoveImageDistributionServerV1`
+*/
 func (s *SoftwareImageManagementSwimService) RemoveImageDistributionServer(id string) (*ResponseSoftwareImageManagementSwimRemoveImageDistributionServerV1, *resty.Response, error) {
 	return s.RemoveImageDistributionServerV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrieveApplicableAddOnImagesForTheGivenSoftwareImageV1`
+*/
 func (s *SoftwareImageManagementSwimService) RetrieveApplicableAddOnImagesForTheGivenSoftwareImage(id string) (*ResponseSoftwareImageManagementSwimRetrieveApplicableAddOnImagesForTheGivenSoftwareImageV1, *resty.Response, error) {
 	return s.RetrieveApplicableAddOnImagesForTheGivenSoftwareImageV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RemoveGoldenTagForImageV1`
+*/
 func (s *SoftwareImageManagementSwimService) RemoveGoldenTagForImage(siteID string, deviceFamilyIDentifier string, deviceRole string, imageID string) (*ResponseSoftwareImageManagementSwimRemoveGoldenTagForImageV1, *resty.Response, error) {
 	return s.RemoveGoldenTagForImageV1(siteID, deviceFamilyIDentifier, deviceRole, imageID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ReturnsTheCountOfNetworkDeviceProductNamesForASiteV1`
+*/
 func (s *SoftwareImageManagementSwimService) ReturnsTheCountOfNetworkDeviceProductNamesForASite(ReturnsTheCountOfNetworkDeviceProductNamesForASiteV1QueryParams *ReturnsTheCountOfNetworkDeviceProductNamesForASiteV1QueryParams) (*ResponseSoftwareImageManagementSwimReturnsTheCountOfNetworkDeviceProductNamesForASiteV1, *resty.Response, error) {
 	return s.ReturnsTheCountOfNetworkDeviceProductNamesForASiteV1(ReturnsTheCountOfNetworkDeviceProductNamesForASiteV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrievesTheCountOfAssignedNetworkDeviceProductsV1`
+*/
 func (s *SoftwareImageManagementSwimService) RetrievesTheCountOfAssignedNetworkDeviceProducts(imageID string, RetrievesTheCountOfAssignedNetworkDeviceProductsV1QueryParams *RetrievesTheCountOfAssignedNetworkDeviceProductsV1QueryParams) (*ResponseSoftwareImageManagementSwimRetrievesTheCountOfAssignedNetworkDeviceProductsV1, *resty.Response, error) {
 	return s.RetrievesTheCountOfAssignedNetworkDeviceProductsV1(imageID, RetrievesTheCountOfAssignedNetworkDeviceProductsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetGoldenTagStatusOfAnImageV1`
+*/
 func (s *SoftwareImageManagementSwimService) GetGoldenTagStatusOfAnImage(siteID string, deviceFamilyIDentifier string, deviceRole string, imageID string) (*ResponseSoftwareImageManagementSwimGetGoldenTagStatusOfAnImageV1, *resty.Response, error) {
 	return s.GetGoldenTagStatusOfAnImageV1(siteID, deviceFamilyIDentifier, deviceRole, imageID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddImageDistributionServerV1`
+*/
 func (s *SoftwareImageManagementSwimService) AddImageDistributionServer(requestSoftwareImageManagementSwimAddImageDistributionServerV1 *RequestSoftwareImageManagementSwimAddImageDistributionServerV1) (*ResponseSoftwareImageManagementSwimAddImageDistributionServerV1, *resty.Response, error) {
 	return s.AddImageDistributionServerV1(requestSoftwareImageManagementSwimAddImageDistributionServerV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateTheListOfSitesForTheNetworkDeviceProductNameAssignedToTheSoftwareImageV1`
+*/
 func (s *SoftwareImageManagementSwimService) UpdateTheListOfSitesForTheNetworkDeviceProductNameAssignedToTheSoftwareImage(imageID string, productNameOrdinal float64, requestSoftwareImageManagementSwimUpdateTheListOfSitesForTheNetworkDeviceProductNameAssignedToTheSoftwareImageV1 *RequestSoftwareImageManagementSwimUpdateTheListOfSitesForTheNetworkDeviceProductNameAssignedToTheSoftwareImageV1) (*ResponseSoftwareImageManagementSwimUpdateTheListOfSitesForTheNetworkDeviceProductNameAssignedToTheSoftwareImageV1, *resty.Response, error) {
 	return s.UpdateTheListOfSitesForTheNetworkDeviceProductNameAssignedToTheSoftwareImageV1(imageID, productNameOrdinal, requestSoftwareImageManagementSwimUpdateTheListOfSitesForTheNetworkDeviceProductNameAssignedToTheSoftwareImageV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ImportLocalSoftwareImageV1`
+*/
 func (s *SoftwareImageManagementSwimService) ImportLocalSoftwareImage(ImportLocalSoftwareImageV1QueryParams *ImportLocalSoftwareImageV1QueryParams, ImportLocalSoftwareImageMultipartFields *ImportLocalSoftwareImageMultipartFields) (*ResponseSoftwareImageManagementSwimImportLocalSoftwareImageV1, *resty.Response, error) {
 	return s.ImportLocalSoftwareImageV1(ImportLocalSoftwareImageV1QueryParams, ImportLocalSoftwareImageMultipartFields)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `TagAsGoldenImageV1`
+*/
 func (s *SoftwareImageManagementSwimService) TagAsGoldenImage(requestSoftwareImageManagementSwimTagAsGoldenImageV1 *RequestSoftwareImageManagementSwimTagAsGoldenImageV1) (*ResponseSoftwareImageManagementSwimTagAsGoldenImageV1, *resty.Response, error) {
 	return s.TagAsGoldenImageV1(requestSoftwareImageManagementSwimTagAsGoldenImageV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrieveImageDistributionServersV1`
+*/
 func (s *SoftwareImageManagementSwimService) RetrieveImageDistributionServers() (*ResponseSoftwareImageManagementSwimRetrieveImageDistributionServersV1, *resty.Response, error) {
 	return s.RetrieveImageDistributionServersV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrievesNetworkDeviceProductNamesAssignedToASoftwareImageV1`
+*/
 func (s *SoftwareImageManagementSwimService) RetrievesNetworkDeviceProductNamesAssignedToASoftwareImage(imageID string, RetrievesNetworkDeviceProductNamesAssignedToASoftwareImageV1QueryParams *RetrievesNetworkDeviceProductNamesAssignedToASoftwareImageV1QueryParams) (*ResponseSoftwareImageManagementSwimRetrievesNetworkDeviceProductNamesAssignedToASoftwareImageV1, *resty.Response, error) {
 	return s.RetrievesNetworkDeviceProductNamesAssignedToASoftwareImageV1(imageID, RetrievesNetworkDeviceProductNamesAssignedToASoftwareImageV1QueryParams)
 }

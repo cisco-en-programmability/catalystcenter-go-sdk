@@ -640,56 +640,89 @@ func (s *HealthAndPerformanceService) DeletesAValidationWorkflowV1(id string) (*
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `SystemPerformanceAPIV1`
+*/
 func (s *HealthAndPerformanceService) SystemPerformanceAPI(SystemPerformanceAPIV1QueryParams *SystemPerformanceAPIV1QueryParams) (*ResponseHealthAndPerformanceSystemPerformanceAPIV1, *resty.Response, error) {
 	return s.SystemPerformanceAPIV1(SystemPerformanceAPIV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `SystemPerformanceHistoricalAPIV1`
+*/
 func (s *HealthAndPerformanceService) SystemPerformanceHistoricalAPI(SystemPerformanceHistoricalAPIV1QueryParams *SystemPerformanceHistoricalAPIV1QueryParams) (*ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1, *resty.Response, error) {
 	return s.SystemPerformanceHistoricalAPIV1(SystemPerformanceHistoricalAPIV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `SystemHealthAPIV1`
+*/
 func (s *HealthAndPerformanceService) SystemHealthAPI(SystemHealthAPIV1QueryParams *SystemHealthAPIV1QueryParams) (*ResponseHealthAndPerformanceSystemHealthAPIV1, *resty.Response, error) {
 	return s.SystemHealthAPIV1(SystemHealthAPIV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeletesAValidationWorkflowV1`
+*/
 func (s *HealthAndPerformanceService) DeletesAValidationWorkflow(id string) (*resty.Response, error) {
 	return s.DeletesAValidationWorkflowV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrievesValidationDetailsForAValidationSetV1`
+*/
 func (s *HealthAndPerformanceService) RetrievesValidationDetailsForAValidationSet(id string) (*ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSetV1, *resty.Response, error) {
 	return s.RetrievesValidationDetailsForAValidationSetV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrievesTheCountOfValidationWorkflowsV1`
+*/
 func (s *HealthAndPerformanceService) RetrievesTheCountOfValidationWorkflows(RetrievesTheCountOfValidationWorkflowsV1QueryParams *RetrievesTheCountOfValidationWorkflowsV1QueryParams) (*ResponseHealthAndPerformanceRetrievesTheCountOfValidationWorkflowsV1, *resty.Response, error) {
 	return s.RetrievesTheCountOfValidationWorkflowsV1(RetrievesTheCountOfValidationWorkflowsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrievesTheListOfValidationWorkflowsV1`
+*/
 func (s *HealthAndPerformanceService) RetrievesTheListOfValidationWorkflows(RetrievesTheListOfValidationWorkflowsV1QueryParams *RetrievesTheListOfValidationWorkflowsV1QueryParams) (*ResponseHealthAndPerformanceRetrievesTheListOfValidationWorkflowsV1, *resty.Response, error) {
 	return s.RetrievesTheListOfValidationWorkflowsV1(RetrievesTheListOfValidationWorkflowsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `SystemHealthCountAPIV1`
+*/
 func (s *HealthAndPerformanceService) SystemHealthCountAPI(SystemHealthCountAPIV1QueryParams *SystemHealthCountAPIV1QueryParams) (*ResponseHealthAndPerformanceSystemHealthCountAPIV1, *resty.Response, error) {
 	return s.SystemHealthCountAPIV1(SystemHealthCountAPIV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrievesValidationWorkflowDetailsV1`
+*/
 func (s *HealthAndPerformanceService) RetrievesValidationWorkflowDetails(id string) (*ResponseHealthAndPerformanceRetrievesValidationWorkflowDetailsV1, *resty.Response, error) {
 	return s.RetrievesValidationWorkflowDetailsV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `SubmitsTheWorkflowForExecutingValidationsV1`
+*/
 func (s *HealthAndPerformanceService) SubmitsTheWorkflowForExecutingValidations(requestHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1 *RequestHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1) (*ResponseHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1, *resty.Response, error) {
 	return s.SubmitsTheWorkflowForExecutingValidationsV1(requestHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrievesAllTheValidationSetsV1`
+*/
 func (s *HealthAndPerformanceService) RetrievesAllTheValidationSets(RetrievesAllTheValidationSetsV1QueryParams *RetrievesAllTheValidationSetsV1QueryParams) (*ResponseHealthAndPerformanceRetrievesAllTheValidationSetsV1, *resty.Response, error) {
 	return s.RetrievesAllTheValidationSetsV1(RetrievesAllTheValidationSetsV1QueryParams)
 }

@@ -89,9 +89,7 @@ type ResponseSystemSettingsEditAuthenticationAndPolicyServerAccessConfigurationV
 	TaskID string `json:"taskId,omitempty"` // Task Id
 	URL    string `json:"url,omitempty"`    // Url
 }
-type ResponseSystemSettingsAcceptCiscoIseServerCertificateForCiscoIseServerIntegrationV1 struct {
-	object string `json:"object,omitempty"` // object
-}
+type ResponseSystemSettingsAcceptCiscoIseServerCertificateForCiscoIseServerIntegrationV1 interface{}
 type ResponseSystemSettingsCreatesConfigurationDetailsOfTheExternalIPAMServerV1 struct {
 	Response *ResponseSystemSettingsCreatesConfigurationDetailsOfTheExternalIPAMServerV1Response `json:"response,omitempty"` //
 	Version  string                                                                              `json:"version,omitempty"`  // Version
@@ -603,7 +601,7 @@ func (s *SystemSettingsService) EditAuthenticationAndPolicyServerAccessConfigura
 @param id id path parameter. Cisco ISE Server Identifier. Use 'Get Authentication and Policy Servers' intent API to find the identifier.
 
 */
-func (s *SystemSettingsService) AcceptCiscoIseServerCertificateForCiscoIseServerIntegrationV1(id string, requestSystemSettingsAcceptCiscoISEServerCertificateForCiscoISEServerIntegrationV1 *RequestSystemSettingsAcceptCiscoIseServerCertificateForCiscoIseServerIntegrationV1) (*ResponseSystemSettingsAcceptCiscoIseServerCertificateForCiscoIseServerIntegrationV1, *resty.Response, error) {
+func (s *SystemSettingsService) AcceptCiscoIseServerCertificateForCiscoIseServerIntegrationV1(id string, requestSystemSettingsAcceptCiscoISEServerCertificateForCiscoISEServerIntegrationV1 *RequestSystemSettingsAcceptCiscoIseServerCertificateForCiscoIseServerIntegrationV1) (*resty.Response, error) {
 	path := "/dna/intent/api/v1/integrate-ise/{id}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
@@ -611,12 +609,11 @@ func (s *SystemSettingsService) AcceptCiscoIseServerCertificateForCiscoIseServer
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
 		SetBody(requestSystemSettingsAcceptCiscoISEServerCertificateForCiscoISEServerIntegrationV1).
-		SetResult(&ResponseSystemSettingsAcceptCiscoIseServerCertificateForCiscoIseServerIntegrationV1{}).
 		SetError(&Error).
 		Put(path)
 
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 
 	}
 
@@ -624,11 +621,10 @@ func (s *SystemSettingsService) AcceptCiscoIseServerCertificateForCiscoIseServer
 		if response.StatusCode() == http.StatusUnauthorized {
 			return s.AcceptCiscoIseServerCertificateForCiscoIseServerIntegrationV1(id, requestSystemSettingsAcceptCiscoISEServerCertificateForCiscoISEServerIntegrationV1)
 		}
-		return nil, response, fmt.Errorf("error with operation AcceptCiscoIseServerCertificateForCiscoIseServerIntegrationV1")
+		return response, fmt.Errorf("error with operation AcceptCiscoIseServerCertificateForCiscoIseServerIntegrationV1")
 	}
 
-	result := response.Result().(*ResponseSystemSettingsAcceptCiscoIseServerCertificateForCiscoIseServerIntegrationV1)
-	return result, response, err
+	return response, err
 
 }
 
@@ -772,71 +768,113 @@ func (s *SystemSettingsService) DeletesConfigurationDetailsOfTheExternalIPAMServ
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreatesConfigurationDetailsOfTheExternalIPAMServerV1`
+*/
 func (s *SystemSettingsService) CreatesConfigurationDetailsOfTheExternalIPAMServer(requestSystemSettingsCreatesConfigurationDetailsOfTheExternalIPAMServerV1 *RequestSystemSettingsCreatesConfigurationDetailsOfTheExternalIPAMServerV1) (*ResponseSystemSettingsCreatesConfigurationDetailsOfTheExternalIPAMServerV1, *resty.Response, error) {
 	return s.CreatesConfigurationDetailsOfTheExternalIPAMServerV1(requestSystemSettingsCreatesConfigurationDetailsOfTheExternalIPAMServerV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteAuthenticationAndPolicyServerAccessConfigurationV1`
+*/
 func (s *SystemSettingsService) DeleteAuthenticationAndPolicyServerAccessConfiguration(id string) (*ResponseSystemSettingsDeleteAuthenticationAndPolicyServerAccessConfigurationV1, *resty.Response, error) {
 	return s.DeleteAuthenticationAndPolicyServerAccessConfigurationV1(id)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `SetProvisioningSettingsV1`
+*/
 func (s *SystemSettingsService) SetProvisioningSettings(requestSystemSettingsSetProvisioningSettingsV1 *RequestSystemSettingsSetProvisioningSettingsV1) (*ResponseSystemSettingsSetProvisioningSettingsV1, *resty.Response, error) {
 	return s.SetProvisioningSettingsV1(requestSystemSettingsSetProvisioningSettingsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CustomPromptSupportGETAPIV1`
+*/
 func (s *SystemSettingsService) CustomPromptSupportGETAPI() (*ResponseSystemSettingsCustomPromptSupportGETAPIV1, *resty.Response, error) {
 	return s.CustomPromptSupportGETAPIV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `AddAuthenticationAndPolicyServerAccessConfigurationV1`
+*/
 func (s *SystemSettingsService) AddAuthenticationAndPolicyServerAccessConfiguration(requestSystemSettingsAddAuthenticationAndPolicyServerAccessConfigurationV1 *RequestSystemSettingsAddAuthenticationAndPolicyServerAccessConfigurationV1) (*ResponseSystemSettingsAddAuthenticationAndPolicyServerAccessConfigurationV1, *resty.Response, error) {
 	return s.AddAuthenticationAndPolicyServerAccessConfigurationV1(requestSystemSettingsAddAuthenticationAndPolicyServerAccessConfigurationV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RetrievesConfigurationDetailsOfTheExternalIPAMServerV1`
+*/
 func (s *SystemSettingsService) RetrievesConfigurationDetailsOfTheExternalIPAMServer() (*ResponseSystemSettingsRetrievesConfigurationDetailsOfTheExternalIPAMServerV1, *resty.Response, error) {
 	return s.RetrievesConfigurationDetailsOfTheExternalIPAMServerV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CustomPromptPOSTAPIV1`
+*/
 func (s *SystemSettingsService) CustomPromptPOSTAPI(requestSystemSettingsCustomPromptPOSTAPIV1 *RequestSystemSettingsCustomPromptPOSTAPIV1) (*ResponseSystemSettingsCustomPromptPOSTAPIV1, *resty.Response, error) {
 	return s.CustomPromptPOSTAPIV1(requestSystemSettingsCustomPromptPOSTAPIV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetProvisioningSettingsV1`
+*/
 func (s *SystemSettingsService) GetProvisioningSettings() (*ResponseSystemSettingsGetProvisioningSettingsV1, *resty.Response, error) {
 	return s.GetProvisioningSettingsV1()
 }
 
 // Alias Function
-func (s *SystemSettingsService) AcceptCiscoIseServerCertificateForCiscoIseServerIntegration(id string, requestSystemSettingsAcceptCiscoISEServerCertificateForCiscoISEServerIntegrationV1 *RequestSystemSettingsAcceptCiscoIseServerCertificateForCiscoIseServerIntegrationV1) (*ResponseSystemSettingsAcceptCiscoIseServerCertificateForCiscoIseServerIntegrationV1, *resty.Response, error) {
+/*
+This method acts as an alias for the method `AcceptCiscoIseServerCertificateForCiscoIseServerIntegrationV1`
+*/
+func (s *SystemSettingsService) AcceptCiscoIseServerCertificateForCiscoIseServerIntegration(id string, requestSystemSettingsAcceptCiscoISEServerCertificateForCiscoISEServerIntegrationV1 *RequestSystemSettingsAcceptCiscoIseServerCertificateForCiscoIseServerIntegrationV1) (*resty.Response, error) {
 	return s.AcceptCiscoIseServerCertificateForCiscoIseServerIntegrationV1(id, requestSystemSettingsAcceptCiscoISEServerCertificateForCiscoISEServerIntegrationV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeletesConfigurationDetailsOfTheExternalIPAMServerV1`
+*/
 func (s *SystemSettingsService) DeletesConfigurationDetailsOfTheExternalIPAMServer() (*ResponseSystemSettingsDeletesConfigurationDetailsOfTheExternalIPAMServerV1, *resty.Response, error) {
 	return s.DeletesConfigurationDetailsOfTheExternalIPAMServerV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CiscoIseServerIntegrationStatusV1`
+*/
 func (s *SystemSettingsService) CiscoIseServerIntegrationStatus() (*ResponseSystemSettingsCiscoIseServerIntegrationStatusV1, *resty.Response, error) {
 	return s.CiscoIseServerIntegrationStatusV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `EditAuthenticationAndPolicyServerAccessConfigurationV1`
+*/
 func (s *SystemSettingsService) EditAuthenticationAndPolicyServerAccessConfiguration(id string, requestSystemSettingsEditAuthenticationAndPolicyServerAccessConfigurationV1 *RequestSystemSettingsEditAuthenticationAndPolicyServerAccessConfigurationV1) (*ResponseSystemSettingsEditAuthenticationAndPolicyServerAccessConfigurationV1, *resty.Response, error) {
 	return s.EditAuthenticationAndPolicyServerAccessConfigurationV1(id, requestSystemSettingsEditAuthenticationAndPolicyServerAccessConfigurationV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdatesConfigurationDetailsOfTheExternalIPAMServerV1`
+*/
 func (s *SystemSettingsService) UpdatesConfigurationDetailsOfTheExternalIPAMServer(requestSystemSettingsUpdatesConfigurationDetailsOfTheExternalIPAMServerV1 *RequestSystemSettingsUpdatesConfigurationDetailsOfTheExternalIPAMServerV1) (*ResponseSystemSettingsUpdatesConfigurationDetailsOfTheExternalIPAMServerV1, *resty.Response, error) {
 	return s.UpdatesConfigurationDetailsOfTheExternalIPAMServerV1(requestSystemSettingsUpdatesConfigurationDetailsOfTheExternalIPAMServerV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAuthenticationAndPolicyServersV1`
+*/
 func (s *SystemSettingsService) GetAuthenticationAndPolicyServers(GetAuthenticationAndPolicyServersV1QueryParams *GetAuthenticationAndPolicyServersV1QueryParams) (*ResponseSystemSettingsGetAuthenticationAndPolicyServersV1, *resty.Response, error) {
 	return s.GetAuthenticationAndPolicyServersV1(GetAuthenticationAndPolicyServersV1QueryParams)
 }

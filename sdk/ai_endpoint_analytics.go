@@ -1099,96 +1099,153 @@ func (s *AIEndpointAnalyticsService) DeleteAnExistingProfilingRuleV1(ruleID stri
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateAnExistingProfilingRuleV1`
+*/
 func (s *AIEndpointAnalyticsService) UpdateAnExistingProfilingRule(ruleID string, requestAIEndpointAnalyticsUpdateAnExistingProfilingRuleV1 *RequestAIEndpointAnalyticsUpdateAnExistingProfilingRuleV1) (*resty.Response, error) {
 	return s.UpdateAnExistingProfilingRuleV1(ruleID, requestAIEndpointAnalyticsUpdateAnExistingProfilingRuleV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `UpdateARegisteredEndpointV1`
+*/
 func (s *AIEndpointAnalyticsService) UpdateARegisteredEndpoint(epID string, requestAIEndpointAnalyticsUpdateARegisteredEndpointV1 *RequestAIEndpointAnalyticsUpdateARegisteredEndpointV1) (*resty.Response, error) {
 	return s.UpdateARegisteredEndpointV1(epID, requestAIEndpointAnalyticsUpdateARegisteredEndpointV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RegisterAnEndpointV1`
+*/
 func (s *AIEndpointAnalyticsService) RegisterAnEndpoint(requestAIEndpointAnalyticsRegisterAnEndpointV1 *RequestAIEndpointAnalyticsRegisterAnEndpointV1) (*resty.Response, error) {
 	return s.RegisterAnEndpointV1(requestAIEndpointAnalyticsRegisterAnEndpointV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ApplyAncPolicyV1`
+*/
 func (s *AIEndpointAnalyticsService) ApplyAncPolicy(epID string, requestAIEndpointAnalyticsApplyANCPolicyV1 *RequestAIEndpointAnalyticsApplyAncPolicyV1) (*resty.Response, error) {
 	return s.ApplyAncPolicyV1(epID, requestAIEndpointAnalyticsApplyANCPolicyV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ProcessCmdbEndpointsV1`
+*/
 func (s *AIEndpointAnalyticsService) ProcessCmdbEndpoints(requestAIEndpointAnalyticsProcessCMDBEndpointsV1 *RequestAIEndpointAnalyticsProcessCmdbEndpointsV1) (*resty.Response, error) {
 	return s.ProcessCmdbEndpointsV1(requestAIEndpointAnalyticsProcessCMDBEndpointsV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetDetailsOfASingleProfilingRuleV1`
+*/
 func (s *AIEndpointAnalyticsService) GetDetailsOfASingleProfilingRule(ruleID string) (*ResponseAIEndpointAnalyticsGetDetailsOfASingleProfilingRuleV1, *resty.Response, error) {
 	return s.GetDetailsOfASingleProfilingRuleV1(ruleID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAncPoliciesV1`
+*/
 func (s *AIEndpointAnalyticsService) GetAncPolicies() (*ResponseAIEndpointAnalyticsGetAncPoliciesV1, *resty.Response, error) {
 	return s.GetAncPoliciesV1()
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateAProfilingRuleV1`
+*/
 func (s *AIEndpointAnalyticsService) CreateAProfilingRule(requestAIEndpointAnalyticsCreateAProfilingRuleV1 *RequestAIEndpointAnalyticsCreateAProfilingRuleV1) (*ResponseAIEndpointAnalyticsCreateAProfilingRuleV1, *resty.Response, error) {
 	return s.CreateAProfilingRuleV1(requestAIEndpointAnalyticsCreateAProfilingRuleV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `QueryTheEndpointsV1`
+*/
 func (s *AIEndpointAnalyticsService) QueryTheEndpoints(QueryTheEndpointsV1QueryParams *QueryTheEndpointsV1QueryParams) (*ResponseAIEndpointAnalyticsQueryTheEndpointsV1, *resty.Response, error) {
 	return s.QueryTheEndpointsV1(QueryTheEndpointsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RevokeAncPolicyV1`
+*/
 func (s *AIEndpointAnalyticsService) RevokeAncPolicy(epID string) (*resty.Response, error) {
 	return s.RevokeAncPolicyV1(epID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetListOfProfilingRulesV1`
+*/
 func (s *AIEndpointAnalyticsService) GetListOfProfilingRules(GetListOfProfilingRulesV1QueryParams *GetListOfProfilingRulesV1QueryParams) (*ResponseAIEndpointAnalyticsGetListOfProfilingRulesV1, *resty.Response, error) {
 	return s.GetListOfProfilingRulesV1(GetListOfProfilingRulesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetTaskDetailsV1`
+*/
 func (s *AIEndpointAnalyticsService) GetTaskDetails(taskID string) (*ResponseAIEndpointAnalyticsGetTaskDetailsV1, *resty.Response, error) {
 	return s.GetTaskDetailsV1(taskID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetAIEndpointAnalyticsAttributeDictionariesV1`
+*/
 func (s *AIEndpointAnalyticsService) GetAIEndpointAnalyticsAttributeDictionaries(GetAIEndpointAnalyticsAttributeDictionariesV1QueryParams *GetAIEndpointAnalyticsAttributeDictionariesV1QueryParams) (*ResponseAIEndpointAnalyticsGetAIEndpointAnalyticsAttributeDictionariesV1, *resty.Response, error) {
 	return s.GetAIEndpointAnalyticsAttributeDictionariesV1(GetAIEndpointAnalyticsAttributeDictionariesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `FetchTheCountOfEndpointsV1`
+*/
 func (s *AIEndpointAnalyticsService) FetchTheCountOfEndpoints(FetchTheCountOfEndpointsV1QueryParams *FetchTheCountOfEndpointsV1QueryParams) (*ResponseAIEndpointAnalyticsFetchTheCountOfEndpointsV1, *resty.Response, error) {
 	return s.FetchTheCountOfEndpointsV1(FetchTheCountOfEndpointsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ImportProfilingRulesInBulkV1`
+*/
 func (s *AIEndpointAnalyticsService) ImportProfilingRulesInBulk(requestAIEndpointAnalyticsImportProfilingRulesInBulkV1 *RequestAIEndpointAnalyticsImportProfilingRulesInBulkV1) (*resty.Response, error) {
 	return s.ImportProfilingRulesInBulkV1(requestAIEndpointAnalyticsImportProfilingRulesInBulkV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteAnExistingProfilingRuleV1`
+*/
 func (s *AIEndpointAnalyticsService) DeleteAnExistingProfilingRule(ruleID string) (*resty.Response, error) {
 	return s.DeleteAnExistingProfilingRuleV1(ruleID)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetEndpointDetailsV1`
+*/
 func (s *AIEndpointAnalyticsService) GetEndpointDetails(epID string, GetEndpointDetailsV1QueryParams *GetEndpointDetailsV1QueryParams) (*ResponseAIEndpointAnalyticsGetEndpointDetailsV1, *resty.Response, error) {
 	return s.GetEndpointDetailsV1(epID, GetEndpointDetailsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `GetCountOfProfilingRulesV1`
+*/
 func (s *AIEndpointAnalyticsService) GetCountOfProfilingRules(GetCountOfProfilingRulesV1QueryParams *GetCountOfProfilingRulesV1QueryParams) (*ResponseAIEndpointAnalyticsGetCountOfProfilingRulesV1, *resty.Response, error) {
 	return s.GetCountOfProfilingRulesV1(GetCountOfProfilingRulesV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteAnEndpointV1`
+*/
 func (s *AIEndpointAnalyticsService) DeleteAnEndpoint(epID string) (*resty.Response, error) {
 	return s.DeleteAnEndpointV1(epID)
 }

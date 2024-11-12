@@ -44,6 +44,9 @@ func (s *CiscoTrustedCertificatesService) ImportTrustedCertificateV1() (*resty.R
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `ImportTrustedCertificateV1`
+*/
 func (s *CiscoTrustedCertificatesService) ImportTrustedCertificate() (*resty.Response, error) {
 	return s.ImportTrustedCertificateV1()
 }

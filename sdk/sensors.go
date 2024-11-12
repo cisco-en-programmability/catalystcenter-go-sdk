@@ -1420,31 +1420,49 @@ func (s *SensorsService) DeleteSensorTestV1(DeleteSensorTestV1QueryParams *Delet
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `CreateSensorTestTemplateV1`
+*/
 func (s *SensorsService) CreateSensorTestTemplate(requestSensorsCreateSensorTestTemplateV1 *RequestSensorsCreateSensorTestTemplateV1) (*ResponseSensorsCreateSensorTestTemplateV1, *resty.Response, error) {
 	return s.CreateSensorTestTemplateV1(requestSensorsCreateSensorTestTemplateV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `RunNowSensorTestV1`
+*/
 func (s *SensorsService) RunNowSensorTest(requestSensorsRunNowSensorTestV1 *RequestSensorsRunNowSensorTestV1) (*resty.Response, error) {
 	return s.RunNowSensorTestV1(requestSensorsRunNowSensorTestV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DeleteSensorTestV1`
+*/
 func (s *SensorsService) DeleteSensorTest(DeleteSensorTestV1QueryParams *DeleteSensorTestV1QueryParams) (*ResponseSensorsDeleteSensorTestV1, *resty.Response, error) {
 	return s.DeleteSensorTestV1(DeleteSensorTestV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `DuplicateSensorTestTemplateV1`
+*/
 func (s *SensorsService) DuplicateSensorTestTemplate(requestSensorsDuplicateSensorTestTemplateV1 *RequestSensorsDuplicateSensorTestTemplateV1) (*ResponseSensorsDuplicateSensorTestTemplateV1, *resty.Response, error) {
 	return s.DuplicateSensorTestTemplateV1(requestSensorsDuplicateSensorTestTemplateV1)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `SensorsV1`
+*/
 func (s *SensorsService) Sensors(SensorsV1QueryParams *SensorsV1QueryParams) (*ResponseSensorsSensorsV1, *resty.Response, error) {
 	return s.SensorsV1(SensorsV1QueryParams)
 }
 
 // Alias Function
+/*
+This method acts as an alias for the method `EditSensorTestTemplateV1`
+*/
 func (s *SensorsService) EditSensorTestTemplate(requestSensorsEditSensorTestTemplateV1 *RequestSensorsEditSensorTestTemplateV1) (*ResponseSensorsEditSensorTestTemplateV1, *resty.Response, error) {
 	return s.EditSensorTestTemplateV1(requestSensorsEditSensorTestTemplateV1)
 }
