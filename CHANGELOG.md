@@ -6,12 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2024-11-12
+- Aliases documentation added.
+
 ## [1.0.1] - 2024-11-12
 ### Added
 - New services for Cisco Catalyst Center 2.3.7.6's API
     * AIEndpointAnalytics *AIEndpointAnalyticsService
     * DisasterRecovery *DisasterRecoveryService
-- Aliases added.
+
 
 ### Delete
 Delete services for Cisco Catalyst Center 2.3.7.6's API:
