@@ -20,7 +20,7 @@ func main() {
 		return
 	}
 
-	queryParams := &catalyst.ApplicationsQueryParams{
+	queryParams := &catalyst.ApplicationsV1QueryParams{
 		SiteID: "1",
 		Offset: 1,
 		Limit:  5,

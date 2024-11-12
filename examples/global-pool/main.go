@@ -20,7 +20,7 @@ func main() {
 		return
 	}
 
-	queryParams := &catalyst.GetGlobalPoolQueryParams{
+	queryParams := &catalyst.GetGlobalPoolV1QueryParams{
 		Offset: 1,
 		Limit:  5,
 	}

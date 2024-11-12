@@ -22,7 +22,7 @@ func main() {
 	}
 
 	fmt.Println("Printing ComplianceDetails")
-	getComplianceDetailQueryParams := &catalyst.GetComplianceDetailQueryParams{}
+	getComplianceDetailQueryParams := &catalyst.GetComplianceDetailV1QueryParams{}
 	respComplianceDetail, _, err := client.Compliance.GetComplianceDetail(getComplianceDetailQueryParams)
 	if err != nil {
 		fmt.Println(err)
@@ -38,7 +38,7 @@ func main() {
 	}
 
 	fmt.Println("Post ConfArchive")
-	reqBody := &catalyst.RequestConfigurationArchiveExportDeviceConfigurations{
+	reqBody := &catalyst.RequestConfigurationArchiveExportDeviceConfigurationsV1{
 		DeviceID: deviceUUID,
 		Password: "C1sco123!",
 	}

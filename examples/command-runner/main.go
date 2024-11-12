@@ -23,7 +23,7 @@ func main() {
 	}
 
 	fmt.Println("Printing device list  ... PlatformID is C9300-48U")
-	getDeviceListQueryParams := &catalyst.GetDeviceListQueryParams{
+	getDeviceListQueryParams := &catalyst.GetDeviceListV1QueryParams{
 		//PlatformID: []string{"C9300-48U"},
 	}
 
@@ -42,7 +42,7 @@ func main() {
 
 	commands := []string{"show version", "show ip interface brief"}
 	timeout := 0
-	runReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationRequest := &catalyst.RequestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfiguration{
+	runReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationRequest := &catalyst.RequestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1{
 		Commands:    commands,
 		DeviceUUIDs: deviceIDs,
 		Timeout:     &(timeout),

@@ -23,8 +23,8 @@ func main() {
 	// now := time.Now() // current local time
 	// sec := now.UnixNano()
 	vStack := false
-	request1 := catalyst.RequestDeviceOnboardingPnpAddDevice{
-		DeviceInfo: &catalyst.RequestDeviceOnboardingPnpAddDeviceDeviceInfo{
+	request1 := catalyst.RequestDeviceOnboardingPnpAddDeviceV1{
+		DeviceInfo: &catalyst.RequestDeviceOnboardingPnpAddDeviceV1DeviceInfo{
 			SerialNumber: "FLM2213W05S",
 			Stack:        &vStack,
 			SudiRequired: &vStack,

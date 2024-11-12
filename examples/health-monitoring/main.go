@@ -23,7 +23,7 @@ func main() {
 		fmt.Println("Printing site health...")
 		// now := time.Now() // current local time
 		// sec := now.UnixNano()
-		getSiteHealthQueryParams := &catalyst.GetSiteHealthQueryParams{
+		getSiteHealthQueryParams := &catalyst.GetSiteHealthV1QueryParams{
 			// Timestamp: strconv.Itoa(int(sec) / 1000000),
 		}
 		siteHealth, _, err := client.Sites.GetSiteHealth(getSiteHealthQueryParams)

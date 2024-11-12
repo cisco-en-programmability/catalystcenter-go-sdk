@@ -19,7 +19,7 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-	queryParams1 := catalyst.GetGlobalCredentialsQueryParams{}
+	queryParams1 := catalyst.GetGlobalCredentialsV1QueryParams{}
 
 	queryParams1.CredentialSubType = "HTTP_WRITE"
 	nResponse, _, err := client.Discovery.GetGlobalCredentials(&queryParams1)

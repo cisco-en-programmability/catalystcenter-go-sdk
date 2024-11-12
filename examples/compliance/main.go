@@ -22,7 +22,7 @@ func main() {
 	}
 
 	fmt.Println("Printing ComplianceDetailCount")
-	getComplianceDetailCountQueryParams := &catalyst.GetComplianceDetailCountQueryParams{}
+	getComplianceDetailCountQueryParams := &catalyst.GetComplianceDetailCountV1QueryParams{}
 
 	respComplianceDetailCount, _, err := client.Compliance.GetComplianceDetailCount(getComplianceDetailCountQueryParams)
 	if err != nil {
@@ -39,7 +39,7 @@ func main() {
 
 	fmt.Println("Printing ComplianceStatus")
 
-	getGetComplianceStatusQueryParams := &catalyst.GetComplianceStatusQueryParams{}
+	getGetComplianceStatusQueryParams := &catalyst.GetComplianceStatusV1QueryParams{}
 	respComplianceStatus, _, err := client.Compliance.GetComplianceStatus(getGetComplianceStatusQueryParams)
 	if err != nil {
 		fmt.Println(err)
@@ -54,7 +54,7 @@ func main() {
 	}
 
 	fmt.Println("Printing ComplianceDetails")
-	getComplianceDetailQueryParams := &catalyst.GetComplianceDetailQueryParams{}
+	getComplianceDetailQueryParams := &catalyst.GetComplianceDetailV1QueryParams{}
 	respComplianceDetail, _, err := client.Compliance.GetComplianceDetail(getComplianceDetailQueryParams)
 	if err != nil {
 		fmt.Println(err)
@@ -70,7 +70,7 @@ func main() {
 	}
 
 	fmt.Println("Printing ComplianceDetailsCount")
-	getComplianceStatusCountQueryParams := &catalyst.GetComplianceStatusCountQueryParams{}
+	getComplianceStatusCountQueryParams := &catalyst.GetComplianceStatusCountV1QueryParams{}
 	respComplianceStatusCount, _, err := client.Compliance.GetComplianceStatusCount(getComplianceStatusCountQueryParams)
 	if err != nil {
 		fmt.Println(err)
@@ -85,7 +85,7 @@ func main() {
 	}
 
 	fmt.Println("Printing ComplianceDetailsOfDevice")
-	getComplianceDetailsOfDeviceQueryParams := &catalyst.ComplianceDetailsOfDeviceQueryParams{}
+	getComplianceDetailsOfDeviceQueryParams := &catalyst.ComplianceDetailsOfDeviceV1QueryParams{}
 	respComplianceDetailsOfDevice, _, err := client.Compliance.ComplianceDetailsOfDevice(deviceUUID, getComplianceDetailsOfDeviceQueryParams)
 	if err != nil {
 		fmt.Println(err)
@@ -101,7 +101,7 @@ func main() {
 
 	fmt.Println("POST RunCompiliance")
 	triggerFull := true
-	reqBody := &catalyst.RequestComplianceRunCompliance{
+	reqBody := &catalyst.RequestComplianceRunComplianceV1{
 		TriggerFull: &triggerFull,
 		Categories:  []string{"PSIRT"},
 		DeviceUUIDs: []string{deviceUUID},

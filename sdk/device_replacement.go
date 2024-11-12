@@ -10,7 +10,7 @@ import (
 
 type DeviceReplacementService service
 
-type ReturnListOfReplacementDevicesWithReplacementDetailsQueryParams struct {
+type ReturnListOfReplacementDevicesWithReplacementDetailsV1QueryParams struct {
 	FaultyDeviceName              string   `url:"faultyDeviceName,omitempty"`              //Faulty Device Name
 	FaultyDevicePlatform          string   `url:"faultyDevicePlatform,omitempty"`          //Faulty Device Platform
 	ReplacementDevicePlatform     string   `url:"replacementDevicePlatform,omitempty"`     //Replacement Device Platform
@@ -23,15 +23,15 @@ type ReturnListOfReplacementDevicesWithReplacementDetailsQueryParams struct {
 	Offset                        int      `url:"offset,omitempty"`                        //offset
 	Limit                         int      `url:"limit,omitempty"`                         //limit
 }
-type ReturnReplacementDevicesCountQueryParams struct {
+type ReturnReplacementDevicesCountV1QueryParams struct {
 	ReplacementStatus []string `url:"replacementStatus,omitempty"` //Device Replacement status list[READY-FOR-REPLACEMENT, REPLACEMENT-IN-PROGRESS, REPLACEMENT-SCHEDULED, REPLACED, ERROR]
 }
 
-type ResponseDeviceReplacementReturnListOfReplacementDevicesWithReplacementDetails struct {
-	Response *[]ResponseDeviceReplacementReturnListOfReplacementDevicesWithReplacementDetailsResponse `json:"response,omitempty"` //
-	Version  string                                                                                   `json:"version,omitempty"`  //
+type ResponseDeviceReplacementReturnListOfReplacementDevicesWithReplacementDetailsV1 struct {
+	Response *[]ResponseDeviceReplacementReturnListOfReplacementDevicesWithReplacementDetailsV1Response `json:"response,omitempty"` //
+	Version  string                                                                                     `json:"version,omitempty"`  //
 }
-type ResponseDeviceReplacementReturnListOfReplacementDevicesWithReplacementDetailsResponse struct {
+type ResponseDeviceReplacementReturnListOfReplacementDevicesWithReplacementDetailsV1Response struct {
 	CreationTime                  *int   `json:"creationTime,omitempty"`                  // Date and time of marking the device for replacement
 	Family                        string `json:"family,omitempty"`                        // Faulty device family
 	FaultyDeviceID                string `json:"faultyDeviceId,omitempty"`                // Unique identifier of the faulty device
@@ -49,36 +49,36 @@ type ResponseDeviceReplacementReturnListOfReplacementDevicesWithReplacementDetai
 	WorkflowFailedStep            string `json:"workflowFailedStep,omitempty"`            // Step in which the device replacement failed
 	ReadinesscheckTaskID          string `json:"readinesscheckTaskId,omitempty"`          // Unique identifier of the readiness check task for the replacement device
 }
-type ResponseDeviceReplacementUnmarkDeviceForReplacement struct {
-	Response *ResponseDeviceReplacementUnmarkDeviceForReplacementResponse `json:"response,omitempty"` //
+type ResponseDeviceReplacementUnmarkDeviceForReplacementV1 struct {
+	Response *ResponseDeviceReplacementUnmarkDeviceForReplacementV1Response `json:"response,omitempty"` //
+	Version  string                                                         `json:"version,omitempty"`  //
+}
+type ResponseDeviceReplacementUnmarkDeviceForReplacementV1Response struct {
+	TaskID string `json:"taskId,omitempty"` //
+	URL    string `json:"url,omitempty"`    //
+}
+type ResponseDeviceReplacementMarkDeviceForReplacementV1 struct {
+	Response *ResponseDeviceReplacementMarkDeviceForReplacementV1Response `json:"response,omitempty"` //
 	Version  string                                                       `json:"version,omitempty"`  //
 }
-type ResponseDeviceReplacementUnmarkDeviceForReplacementResponse struct {
+type ResponseDeviceReplacementMarkDeviceForReplacementV1Response struct {
 	TaskID string `json:"taskId,omitempty"` //
 	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDeviceReplacementMarkDeviceForReplacement struct {
-	Response *ResponseDeviceReplacementMarkDeviceForReplacementResponse `json:"response,omitempty"` //
-	Version  string                                                     `json:"version,omitempty"`  //
-}
-type ResponseDeviceReplacementMarkDeviceForReplacementResponse struct {
-	TaskID string `json:"taskId,omitempty"` //
-	URL    string `json:"url,omitempty"`    //
-}
-type ResponseDeviceReplacementReturnReplacementDevicesCount struct {
+type ResponseDeviceReplacementReturnReplacementDevicesCountV1 struct {
 	Response *int   `json:"response,omitempty"` //
 	Version  string `json:"version,omitempty"`  //
 }
-type ResponseDeviceReplacementDeployDeviceReplacementWorkflow struct {
-	Response *ResponseDeviceReplacementDeployDeviceReplacementWorkflowResponse `json:"response,omitempty"` //
-	Version  string                                                            `json:"version,omitempty"`  //
+type ResponseDeviceReplacementDeployDeviceReplacementWorkflowV1 struct {
+	Response *ResponseDeviceReplacementDeployDeviceReplacementWorkflowV1Response `json:"response,omitempty"` //
+	Version  string                                                              `json:"version,omitempty"`  //
 }
-type ResponseDeviceReplacementDeployDeviceReplacementWorkflowResponse struct {
+type ResponseDeviceReplacementDeployDeviceReplacementWorkflowV1Response struct {
 	TaskID string `json:"taskId,omitempty"` //
 	URL    string `json:"url,omitempty"`    //
 }
-type RequestDeviceReplacementUnmarkDeviceForReplacement []RequestItemDeviceReplacementUnmarkDeviceForReplacement // Array of RequestDeviceReplacementUnMarkDeviceForReplacement
-type RequestItemDeviceReplacementUnmarkDeviceForReplacement struct {
+type RequestDeviceReplacementUnmarkDeviceForReplacementV1 []RequestItemDeviceReplacementUnmarkDeviceForReplacementV1 // Array of RequestDeviceReplacementUnMarkDeviceForReplacementV1
+type RequestItemDeviceReplacementUnmarkDeviceForReplacementV1 struct {
 	CreationTime                  *int   `json:"creationTime,omitempty"`                  // Date and time of marking the device for replacement
 	Family                        string `json:"family,omitempty"`                        // Faulty device family
 	FaultyDeviceID                string `json:"faultyDeviceId,omitempty"`                // Unique identifier of the faulty device
@@ -94,8 +94,8 @@ type RequestItemDeviceReplacementUnmarkDeviceForReplacement struct {
 	ReplacementTime               *int   `json:"replacementTime,omitempty"`               // Date and time of device replacement
 	WorkflowID                    string `json:"workflowId,omitempty"`                    // Unique identifier of the device replacement workflow
 }
-type RequestDeviceReplacementMarkDeviceForReplacement []RequestItemDeviceReplacementMarkDeviceForReplacement // Array of RequestDeviceReplacementMarkDeviceForReplacement
-type RequestItemDeviceReplacementMarkDeviceForReplacement struct {
+type RequestDeviceReplacementMarkDeviceForReplacementV1 []RequestItemDeviceReplacementMarkDeviceForReplacementV1 // Array of RequestDeviceReplacementMarkDeviceForReplacementV1
+type RequestItemDeviceReplacementMarkDeviceForReplacementV1 struct {
 	CreationTime                  *int   `json:"creationTime,omitempty"`                  // Date and time of marking the device for replacement
 	Family                        string `json:"family,omitempty"`                        // Faulty device family
 	FaultyDeviceID                string `json:"faultyDeviceId,omitempty"`                // Unique identifier of the faulty device
@@ -111,28 +111,28 @@ type RequestItemDeviceReplacementMarkDeviceForReplacement struct {
 	ReplacementTime               *int   `json:"replacementTime,omitempty"`               // Date and time of device replacement
 	WorkflowID                    string `json:"workflowId,omitempty"`                    // Unique identifier of the device replacement workflow
 }
-type RequestDeviceReplacementDeployDeviceReplacementWorkflow struct {
+type RequestDeviceReplacementDeployDeviceReplacementWorkflowV1 struct {
 	FaultyDeviceSerialNumber      string `json:"faultyDeviceSerialNumber,omitempty"`      // Faulty device serial number
 	ReplacementDeviceSerialNumber string `json:"replacementDeviceSerialNumber,omitempty"` // Replacement device serial number
 }
 
-//ReturnListOfReplacementDevicesWithReplacementDetails Return list of replacement devices with replacement details - 809c-2956-4bc9-97d0
+//ReturnListOfReplacementDevicesWithReplacementDetailsV1 Return list of replacement devices with replacement details - 809c-2956-4bc9-97d0
 /* Get list of replacement devices with replacement details and it can filter replacement devices based on Faulty Device Name,Faulty Device Platform, Replacement Device Platform, Faulty Device Serial Number,Replacement Device Serial Number, Device Replacement status, Product Family.
 
 
-@param ReturnListOfReplacementDevicesWithReplacementDetailsQueryParams Filtering parameter
+@param ReturnListOfReplacementDevicesWithReplacementDetailsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!return-list-of-replacement-devices-with-replacement-details
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!return-list-of-replacement-devices-with-replacement-details-v1
 */
-func (s *DeviceReplacementService) ReturnListOfReplacementDevicesWithReplacementDetails(ReturnListOfReplacementDevicesWithReplacementDetailsQueryParams *ReturnListOfReplacementDevicesWithReplacementDetailsQueryParams) (*ResponseDeviceReplacementReturnListOfReplacementDevicesWithReplacementDetails, *resty.Response, error) {
+func (s *DeviceReplacementService) ReturnListOfReplacementDevicesWithReplacementDetailsV1(ReturnListOfReplacementDevicesWithReplacementDetailsV1QueryParams *ReturnListOfReplacementDevicesWithReplacementDetailsV1QueryParams) (*ResponseDeviceReplacementReturnListOfReplacementDevicesWithReplacementDetailsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/device-replacement"
 
-	queryString, _ := query.Values(ReturnListOfReplacementDevicesWithReplacementDetailsQueryParams)
+	queryString, _ := query.Values(ReturnListOfReplacementDevicesWithReplacementDetailsV1QueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseDeviceReplacementReturnListOfReplacementDevicesWithReplacementDetails{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseDeviceReplacementReturnListOfReplacementDevicesWithReplacementDetailsV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -143,33 +143,33 @@ func (s *DeviceReplacementService) ReturnListOfReplacementDevicesWithReplacement
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.ReturnListOfReplacementDevicesWithReplacementDetails(ReturnListOfReplacementDevicesWithReplacementDetailsQueryParams)
+			return s.ReturnListOfReplacementDevicesWithReplacementDetailsV1(ReturnListOfReplacementDevicesWithReplacementDetailsV1QueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation ReturnListOfReplacementDevicesWithReplacementDetails")
+		return nil, response, fmt.Errorf("error with operation ReturnListOfReplacementDevicesWithReplacementDetailsV1")
 	}
 
-	result := response.Result().(*ResponseDeviceReplacementReturnListOfReplacementDevicesWithReplacementDetails)
+	result := response.Result().(*ResponseDeviceReplacementReturnListOfReplacementDevicesWithReplacementDetailsV1)
 	return result, response, err
 
 }
 
-//ReturnReplacementDevicesCount Return replacement devices count - 9eb8-4ba5-4929-a2a2
+//ReturnReplacementDevicesCountV1 Return replacement devices count - 9eb8-4ba5-4929-a2a2
 /* Get replacement devices count
 
 
-@param ReturnReplacementDevicesCountQueryParams Filtering parameter
+@param ReturnReplacementDevicesCountV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!return-replacement-devices-count
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!return-replacement-devices-count-v1
 */
-func (s *DeviceReplacementService) ReturnReplacementDevicesCount(ReturnReplacementDevicesCountQueryParams *ReturnReplacementDevicesCountQueryParams) (*ResponseDeviceReplacementReturnReplacementDevicesCount, *resty.Response, error) {
+func (s *DeviceReplacementService) ReturnReplacementDevicesCountV1(ReturnReplacementDevicesCountV1QueryParams *ReturnReplacementDevicesCountV1QueryParams) (*ResponseDeviceReplacementReturnReplacementDevicesCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/device-replacement/count"
 
-	queryString, _ := query.Values(ReturnReplacementDevicesCountQueryParams)
+	queryString, _ := query.Values(ReturnReplacementDevicesCountV1QueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseDeviceReplacementReturnReplacementDevicesCount{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseDeviceReplacementReturnReplacementDevicesCountV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -180,31 +180,31 @@ func (s *DeviceReplacementService) ReturnReplacementDevicesCount(ReturnReplaceme
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.ReturnReplacementDevicesCount(ReturnReplacementDevicesCountQueryParams)
+			return s.ReturnReplacementDevicesCountV1(ReturnReplacementDevicesCountV1QueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation ReturnReplacementDevicesCount")
+		return nil, response, fmt.Errorf("error with operation ReturnReplacementDevicesCountV1")
 	}
 
-	result := response.Result().(*ResponseDeviceReplacementReturnReplacementDevicesCount)
+	result := response.Result().(*ResponseDeviceReplacementReturnReplacementDevicesCountV1)
 	return result, response, err
 
 }
 
-//MarkDeviceForReplacement Mark device for replacement - 64b9-dad0-403a-aca1
+//MarkDeviceForReplacementV1 Mark device for replacement - 64b9-dad0-403a-aca1
 /* Marks device for replacement
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!mark-device-for-replacement
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!mark-device-for-replacement-v1
 */
-func (s *DeviceReplacementService) MarkDeviceForReplacement(requestDeviceReplacementMarkDeviceForReplacement *RequestDeviceReplacementMarkDeviceForReplacement) (*ResponseDeviceReplacementMarkDeviceForReplacement, *resty.Response, error) {
+func (s *DeviceReplacementService) MarkDeviceForReplacementV1(requestDeviceReplacementMarkDeviceForReplacementV1 *RequestDeviceReplacementMarkDeviceForReplacementV1) (*ResponseDeviceReplacementMarkDeviceForReplacementV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/device-replacement"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDeviceReplacementMarkDeviceForReplacement).
-		SetResult(&ResponseDeviceReplacementMarkDeviceForReplacement{}).
+		SetBody(requestDeviceReplacementMarkDeviceForReplacementV1).
+		SetResult(&ResponseDeviceReplacementMarkDeviceForReplacementV1{}).
 		SetError(&Error).
 		Post(path)
 
@@ -216,32 +216,32 @@ func (s *DeviceReplacementService) MarkDeviceForReplacement(requestDeviceReplace
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.MarkDeviceForReplacement(requestDeviceReplacementMarkDeviceForReplacement)
+			return s.MarkDeviceForReplacementV1(requestDeviceReplacementMarkDeviceForReplacementV1)
 		}
 
-		return nil, response, fmt.Errorf("error with operation MarkDeviceForReplacement")
+		return nil, response, fmt.Errorf("error with operation MarkDeviceForReplacementV1")
 	}
 
-	result := response.Result().(*ResponseDeviceReplacementMarkDeviceForReplacement)
+	result := response.Result().(*ResponseDeviceReplacementMarkDeviceForReplacementV1)
 	return result, response, err
 
 }
 
-//DeployDeviceReplacementWorkflow Deploy device replacement workflow - 3faa-a994-4b49-bc9f
+//DeployDeviceReplacementWorkflowV1 Deploy device replacement workflow - 3faa-a994-4b49-bc9f
 /* API to trigger RMA workflow that will replace faulty device with replacement device with same configuration and images
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!deploy-device-replacement-workflow
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!deploy-device-replacement-workflow-v1
 */
-func (s *DeviceReplacementService) DeployDeviceReplacementWorkflow(requestDeviceReplacementDeployDeviceReplacementWorkflow *RequestDeviceReplacementDeployDeviceReplacementWorkflow) (*ResponseDeviceReplacementDeployDeviceReplacementWorkflow, *resty.Response, error) {
+func (s *DeviceReplacementService) DeployDeviceReplacementWorkflowV1(requestDeviceReplacementDeployDeviceReplacementWorkflowV1 *RequestDeviceReplacementDeployDeviceReplacementWorkflowV1) (*ResponseDeviceReplacementDeployDeviceReplacementWorkflowV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/device-replacement/workflow"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDeviceReplacementDeployDeviceReplacementWorkflow).
-		SetResult(&ResponseDeviceReplacementDeployDeviceReplacementWorkflow{}).
+		SetBody(requestDeviceReplacementDeployDeviceReplacementWorkflowV1).
+		SetResult(&ResponseDeviceReplacementDeployDeviceReplacementWorkflowV1{}).
 		SetError(&Error).
 		Post(path)
 
@@ -253,30 +253,30 @@ func (s *DeviceReplacementService) DeployDeviceReplacementWorkflow(requestDevice
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeployDeviceReplacementWorkflow(requestDeviceReplacementDeployDeviceReplacementWorkflow)
+			return s.DeployDeviceReplacementWorkflowV1(requestDeviceReplacementDeployDeviceReplacementWorkflowV1)
 		}
 
-		return nil, response, fmt.Errorf("error with operation DeployDeviceReplacementWorkflow")
+		return nil, response, fmt.Errorf("error with operation DeployDeviceReplacementWorkflowV1")
 	}
 
-	result := response.Result().(*ResponseDeviceReplacementDeployDeviceReplacementWorkflow)
+	result := response.Result().(*ResponseDeviceReplacementDeployDeviceReplacementWorkflowV1)
 	return result, response, err
 
 }
 
-//UnmarkDeviceForReplacement UnMark device for replacement - 4aba-ba75-489a-b24b
+//UnmarkDeviceForReplacementV1 UnMark device for replacement - 4aba-ba75-489a-b24b
 /* UnMarks device for replacement
 
 
  */
-func (s *DeviceReplacementService) UnmarkDeviceForReplacement(requestDeviceReplacementUnMarkDeviceForReplacement *RequestDeviceReplacementUnmarkDeviceForReplacement) (*ResponseDeviceReplacementUnmarkDeviceForReplacement, *resty.Response, error) {
+func (s *DeviceReplacementService) UnmarkDeviceForReplacementV1(requestDeviceReplacementUnMarkDeviceForReplacementV1 *RequestDeviceReplacementUnmarkDeviceForReplacementV1) (*ResponseDeviceReplacementUnmarkDeviceForReplacementV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/device-replacement"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDeviceReplacementUnMarkDeviceForReplacement).
-		SetResult(&ResponseDeviceReplacementUnmarkDeviceForReplacement{}).
+		SetBody(requestDeviceReplacementUnMarkDeviceForReplacementV1).
+		SetResult(&ResponseDeviceReplacementUnmarkDeviceForReplacementV1{}).
 		SetError(&Error).
 		Put(path)
 
@@ -287,12 +287,52 @@ func (s *DeviceReplacementService) UnmarkDeviceForReplacement(requestDeviceRepla
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.UnmarkDeviceForReplacement(requestDeviceReplacementUnMarkDeviceForReplacement)
+			return s.UnmarkDeviceForReplacementV1(requestDeviceReplacementUnMarkDeviceForReplacementV1)
 		}
-		return nil, response, fmt.Errorf("error with operation UnmarkDeviceForReplacement")
+		return nil, response, fmt.Errorf("error with operation UnmarkDeviceForReplacementV1")
 	}
 
-	result := response.Result().(*ResponseDeviceReplacementUnmarkDeviceForReplacement)
+	result := response.Result().(*ResponseDeviceReplacementUnmarkDeviceForReplacementV1)
 	return result, response, err
 
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `ReturnListOfReplacementDevicesWithReplacementDetailsV1`
+*/
+func (s *DeviceReplacementService) ReturnListOfReplacementDevicesWithReplacementDetails(ReturnListOfReplacementDevicesWithReplacementDetailsV1QueryParams *ReturnListOfReplacementDevicesWithReplacementDetailsV1QueryParams) (*ResponseDeviceReplacementReturnListOfReplacementDevicesWithReplacementDetailsV1, *resty.Response, error) {
+	return s.ReturnListOfReplacementDevicesWithReplacementDetailsV1(ReturnListOfReplacementDevicesWithReplacementDetailsV1QueryParams)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `UnmarkDeviceForReplacementV1`
+*/
+func (s *DeviceReplacementService) UnmarkDeviceForReplacement(requestDeviceReplacementUnMarkDeviceForReplacementV1 *RequestDeviceReplacementUnmarkDeviceForReplacementV1) (*ResponseDeviceReplacementUnmarkDeviceForReplacementV1, *resty.Response, error) {
+	return s.UnmarkDeviceForReplacementV1(requestDeviceReplacementUnMarkDeviceForReplacementV1)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `ReturnReplacementDevicesCountV1`
+*/
+func (s *DeviceReplacementService) ReturnReplacementDevicesCount(ReturnReplacementDevicesCountV1QueryParams *ReturnReplacementDevicesCountV1QueryParams) (*ResponseDeviceReplacementReturnReplacementDevicesCountV1, *resty.Response, error) {
+	return s.ReturnReplacementDevicesCountV1(ReturnReplacementDevicesCountV1QueryParams)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `MarkDeviceForReplacementV1`
+*/
+func (s *DeviceReplacementService) MarkDeviceForReplacement(requestDeviceReplacementMarkDeviceForReplacementV1 *RequestDeviceReplacementMarkDeviceForReplacementV1) (*ResponseDeviceReplacementMarkDeviceForReplacementV1, *resty.Response, error) {
+	return s.MarkDeviceForReplacementV1(requestDeviceReplacementMarkDeviceForReplacementV1)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `DeployDeviceReplacementWorkflowV1`
+*/
+func (s *DeviceReplacementService) DeployDeviceReplacementWorkflow(requestDeviceReplacementDeployDeviceReplacementWorkflowV1 *RequestDeviceReplacementDeployDeviceReplacementWorkflowV1) (*ResponseDeviceReplacementDeployDeviceReplacementWorkflowV1, *resty.Response, error) {
+	return s.DeployDeviceReplacementWorkflowV1(requestDeviceReplacementDeployDeviceReplacementWorkflowV1)
 }

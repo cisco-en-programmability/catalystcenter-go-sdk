@@ -11,172 +11,172 @@ import (
 
 type LanAutomationService service
 
-type LanAutomationLogQueryParams struct {
+type LanAutomationLogV1QueryParams struct {
 	Offset float64 `url:"offset,omitempty"` //Starting index of the LAN Automation session. Minimum value is 1.
 	Limit  float64 `url:"limit,omitempty"`  //Number of LAN Automation sessions to be retrieved. Limit value can range between 1 to 10.
 }
-type LanAutomationLogsForIndividualDevicesQueryParams struct {
+type LanAutomationLogsForIndividualDevicesV1QueryParams struct {
 	LogLevel string `url:"logLevel,omitempty"` //Supported levels are ERROR, INFO, WARNING, TRACE, CONFIG and ALL. Specifying ALL will display device specific logs with the exception of CONFIG logs. In order to view CONFIG logs along with the remaining logs, please leave the query parameter blank.
 }
-type LanAutomationStatusQueryParams struct {
+type LanAutomationStatusV1QueryParams struct {
 	Offset float64 `url:"offset,omitempty"` //Starting index of the LAN Automation session. Minimum value is 1.
 	Limit  float64 `url:"limit,omitempty"`  //Number of LAN Automation sessions to be retrieved. Limit value can range between 1 to 10.
 }
-type LanAutomationDeviceUpdateQueryParams struct {
-	Feature string `url:"feature,omitempty"` //Feature ID for the update. Supported feature IDs include: LOOPBACK0_IPADDRESS_UPDATE, HOSTNAME_UPDATE, LINK_Add and LINK_DELETE.
+type LanAutomationDeviceUpdateV1QueryParams struct {
+	Feature string `url:"feature,omitempty"` //Feature ID for the update. Supported feature IDs include: LOOPBACK0_IPADDRESS_UPDATE, HOSTNAME_UPDATE, LINK_ADD, and LINK_DELETE.
 }
 
-type ResponseLanAutomationLanAutomationStart struct {
-	Response *ResponseLanAutomationLanAutomationStartResponse `json:"response,omitempty"` //
-	Version  string                                           `json:"version,omitempty"`  // Version
+type ResponseLanAutomationLanAutomationStartV1 struct {
+	Response *ResponseLanAutomationLanAutomationStartV1Response `json:"response,omitempty"` //
+	Version  string                                             `json:"version,omitempty"`  // Version
 }
-type ResponseLanAutomationLanAutomationStartResponse struct {
+type ResponseLanAutomationLanAutomationStartV1Response struct {
 	Message string `json:"message,omitempty"` // Status of the LAN Automation Start request
 	ID      string `json:"id,omitempty"`      // LAN Automation Session Id
 }
-type ResponseLanAutomationLanAutomationSessionCount struct {
-	Response *ResponseLanAutomationLanAutomationSessionCountResponse `json:"response,omitempty"` //
+type ResponseLanAutomationLanAutomationSessionCountV1 struct {
+	Response *ResponseLanAutomationLanAutomationSessionCountV1Response `json:"response,omitempty"` //
 }
-type ResponseLanAutomationLanAutomationSessionCountResponse struct {
+type ResponseLanAutomationLanAutomationSessionCountV1Response struct {
 	SessionCount string `json:"sessionCount,omitempty"` // Total number of sessions executed.
 }
-type ResponseLanAutomationLanAutomationLog struct {
-	Response *[]ResponseLanAutomationLanAutomationLogResponse `json:"response,omitempty"` //
-	Version  string                                           `json:"version,omitempty"`  // Version
+type ResponseLanAutomationLanAutomationLogV1 struct {
+	Response *[]ResponseLanAutomationLanAutomationLogV1Response `json:"response,omitempty"` //
+	Version  string                                             `json:"version,omitempty"`  // Version
 }
-type ResponseLanAutomationLanAutomationLogResponse struct {
-	NwOrchID string                                                `json:"nwOrchId,omitempty"` // LAN Automation session identifier.
-	Entry    *[]ResponseLanAutomationLanAutomationLogResponseEntry `json:"entry,omitempty"`    //
+type ResponseLanAutomationLanAutomationLogV1Response struct {
+	NwOrchID string                                                  `json:"nwOrchId,omitempty"` // LAN Automation session identifier.
+	Entry    *[]ResponseLanAutomationLanAutomationLogV1ResponseEntry `json:"entry,omitempty"`    //
 }
-type ResponseLanAutomationLanAutomationLogResponseEntry struct {
+type ResponseLanAutomationLanAutomationLogV1ResponseEntry struct {
 	LogLevel  string `json:"logLevel,omitempty"`  // Supported levels are ERROR, INFO, WARNING, TRACE and CONFIG.
 	TimeStamp string `json:"timeStamp,omitempty"` // Time at which the log message is created.
 	Record    string `json:"record,omitempty"`    // Detailed log message.
 	DeviceID  string `json:"deviceId,omitempty"`  // Device serial number for which the log message is associated.
 }
-type ResponseLanAutomationLanAutomationLogByID struct {
-	Response *[]ResponseLanAutomationLanAutomationLogByIDResponse `json:"response,omitempty"` //
-	Version  string                                               `json:"version,omitempty"`  // Version
+type ResponseLanAutomationLanAutomationLogByIDV1 struct {
+	Response *[]ResponseLanAutomationLanAutomationLogByIDV1Response `json:"response,omitempty"` //
+	Version  string                                                 `json:"version,omitempty"`  // Version
 }
-type ResponseLanAutomationLanAutomationLogByIDResponse struct {
-	NwOrchID string                                                    `json:"nwOrchId,omitempty"` // LAN Automation session identifier.
-	Entry    *[]ResponseLanAutomationLanAutomationLogByIDResponseEntry `json:"entry,omitempty"`    //
+type ResponseLanAutomationLanAutomationLogByIDV1Response struct {
+	NwOrchID string                                                      `json:"nwOrchId,omitempty"` // LAN Automation session identifier.
+	Entry    *[]ResponseLanAutomationLanAutomationLogByIDV1ResponseEntry `json:"entry,omitempty"`    //
 }
-type ResponseLanAutomationLanAutomationLogByIDResponseEntry struct {
+type ResponseLanAutomationLanAutomationLogByIDV1ResponseEntry struct {
 	LogLevel  string `json:"logLevel,omitempty"`  // Supported levels are ERROR, INFO, WARNING, TRACE and CONFIG.
 	TimeStamp string `json:"timeStamp,omitempty"` // Time at which the log message is created.
 	Record    string `json:"record,omitempty"`    // Detailed log message.
 	DeviceID  string `json:"deviceId,omitempty"`  // Device serial number for which the log message is associated.
 }
-type ResponseLanAutomationLanAutomationLogsForIndividualDevices struct {
-	Response *[]ResponseLanAutomationLanAutomationLogsForIndividualDevicesResponse `json:"response,omitempty"` //
-	Version  string                                                                `json:"version,omitempty"`  // Version
+type ResponseLanAutomationLanAutomationLogsForIndividualDevicesV1 struct {
+	Response *[]ResponseLanAutomationLanAutomationLogsForIndividualDevicesV1Response `json:"response,omitempty"` //
+	Version  string                                                                  `json:"version,omitempty"`  // Version
 }
-type ResponseLanAutomationLanAutomationLogsForIndividualDevicesResponse struct {
-	NwOrchID     string                                                                    `json:"nwOrchId,omitempty"`     // LAN Automation session identifier.
-	Logs         *[]ResponseLanAutomationLanAutomationLogsForIndividualDevicesResponseLogs `json:"logs,omitempty"`         //
-	SerialNumber string                                                                    `json:"serialNumber,omitempty"` // Device serial number for which the log messages are associated.
+type ResponseLanAutomationLanAutomationLogsForIndividualDevicesV1Response struct {
+	NwOrchID     string                                                                      `json:"nwOrchId,omitempty"`     // LAN Automation session identifier.
+	Logs         *[]ResponseLanAutomationLanAutomationLogsForIndividualDevicesV1ResponseLogs `json:"logs,omitempty"`         //
+	SerialNumber string                                                                      `json:"serialNumber,omitempty"` // Device serial number for which the log messages are associated.
 }
-type ResponseLanAutomationLanAutomationLogsForIndividualDevicesResponseLogs struct {
+type ResponseLanAutomationLanAutomationLogsForIndividualDevicesV1ResponseLogs struct {
 	LogLevel  string `json:"logLevel,omitempty"`  // Supported levels are ERROR, INFO, WARNING, TRACE, CONFIG and ALL. Specifying ALL will display device specific logs with the exception of CONFIG logs. In order to view CONFIG logs along with the remaining logs, please leave the query parameter blank.
 	TimeStamp string `json:"timeStamp,omitempty"` // Time at which the log message is created.
 	Record    string `json:"record,omitempty"`    // Detailed log message.
 }
-type ResponseLanAutomationLanAutomationActiveSessions struct {
-	Response *ResponseLanAutomationLanAutomationActiveSessionsResponse `json:"response,omitempty"` //
-	Version  string                                                    `json:"version,omitempty"`  // Version
+type ResponseLanAutomationLanAutomationActiveSessionsV1 struct {
+	Response *ResponseLanAutomationLanAutomationActiveSessionsV1Response `json:"response,omitempty"` //
+	Version  string                                                      `json:"version,omitempty"`  // Version
 }
-type ResponseLanAutomationLanAutomationActiveSessionsResponse struct {
+type ResponseLanAutomationLanAutomationActiveSessionsV1Response struct {
 	MaxSupportedCount string   `json:"maxSupportedCount,omitempty"` // Maximum supported parallel sessions count
 	ActiveSessions    string   `json:"activeSessions,omitempty"`    // Current active sessions count
 	ActiveSessionIDs  []string `json:"activeSessionIds,omitempty"`  // List of Active LAN Automation IDs
 }
-type ResponseLanAutomationLanAutomationStatus struct {
-	Response *[]ResponseLanAutomationLanAutomationStatusResponse `json:"response,omitempty"` //
-	Version  string                                              `json:"version,omitempty"`  // Version
+type ResponseLanAutomationLanAutomationStatusV1 struct {
+	Response *[]ResponseLanAutomationLanAutomationStatusV1Response `json:"response,omitempty"` //
+	Version  string                                                `json:"version,omitempty"`  // Version
 }
-type ResponseLanAutomationLanAutomationStatusResponse struct {
-	ID                                string                                                                  `json:"id,omitempty"`                                // LAN Automation session id.
-	DiscoveredDeviceSiteNameHierarchy string                                                                  `json:"discoveredDeviceSiteNameHierarchy,omitempty"` // Discovered device site name.
-	PrimaryDeviceManagmentIPAddress   string                                                                  `json:"primaryDeviceManagmentIPAddress,omitempty"`   // Primary seed device management IP address.
-	IPPools                           *[]ResponseLanAutomationLanAutomationStatusResponseIPPools              `json:"ipPools,omitempty"`                           //
-	PrimaryDeviceInterfaceNames       []string                                                                `json:"primaryDeviceInterfaceNames,omitempty"`       // The list of interfaces on primary seed via which the discovered devices are connected.
-	Status                            string                                                                  `json:"status,omitempty"`                            // Status of the LAN Automation session along with the number of discovered devices.
-	Action                            string                                                                  `json:"action,omitempty"`                            // State (START/STOP) of the LAN Automation session.
-	CreationTime                      string                                                                  `json:"creationTime,omitempty"`                      // LAN Automation session creation time.
-	MulticastEnabled                  *bool                                                                   `json:"multicastEnabled,omitempty"`                  // Shows whether underlay multicast is enabled or not.
-	PeerDeviceManagmentIPAddress      string                                                                  `json:"peerDeviceManagmentIPAddress,omitempty"`      // Peer seed device management IP address.
-	DiscoveredDeviceList              *[]ResponseLanAutomationLanAutomationStatusResponseDiscoveredDeviceList `json:"discoveredDeviceList,omitempty"`              //
-	RedistributeIsisToBgp             *bool                                                                   `json:"redistributeIsisToBgp,omitempty"`             // Shows whether advertise LAN Automation summary route into BGP is enabled or not.
-	DiscoveryLevel                    *int                                                                    `json:"discoveryLevel,omitempty"`                    // Level below primary seed device upto which the new devices will be LAN Automated by this session, level + seed = tier. Supported range for level is [1-5], default level is 2.
-	DiscoveryTimeout                  *int                                                                    `json:"discoveryTimeout,omitempty"`                  // Discovery timeout in minutes. Until this time, the stop processing will not be triggered. Any device contacting after the provided discovery timeout will not be processed, and a device reset and reload will be attempted to bring it back to the PnP agent state before process completion. The supported timeout range is in minutes [20-10080].
-	DiscoveryDevices                  *[]ResponseLanAutomationLanAutomationStatusResponseDiscoveryDevices     `json:"discoveryDevices,omitempty"`                  // Specific devices that will be LAN Automated in this session. Any other device discovered via DHCP will be attempted for a reset and reload to bring it back to the PnP agent state at the end of the LAN Automation process before process completion. The maximum supported devices that can be provided for a session is 50.
+type ResponseLanAutomationLanAutomationStatusV1Response struct {
+	ID                                string                                                                    `json:"id,omitempty"`                                // LAN Automation session id.
+	DiscoveredDeviceSiteNameHierarchy string                                                                    `json:"discoveredDeviceSiteNameHierarchy,omitempty"` // Discovered device site name.
+	PrimaryDeviceManagmentIPAddress   string                                                                    `json:"primaryDeviceManagmentIPAddress,omitempty"`   // Primary seed device management IP address.
+	IPPools                           *[]ResponseLanAutomationLanAutomationStatusV1ResponseIPPools              `json:"ipPools,omitempty"`                           //
+	PrimaryDeviceInterfaceNames       []string                                                                  `json:"primaryDeviceInterfaceNames,omitempty"`       // The list of interfaces on primary seed via which the discovered devices are connected.
+	Status                            string                                                                    `json:"status,omitempty"`                            // Status of the LAN Automation session along with the number of discovered devices.
+	Action                            string                                                                    `json:"action,omitempty"`                            // State (START/STOP) of the LAN Automation session.
+	CreationTime                      string                                                                    `json:"creationTime,omitempty"`                      // LAN Automation session creation time.
+	MulticastEnabled                  *bool                                                                     `json:"multicastEnabled,omitempty"`                  // Shows whether underlay multicast is enabled or not.
+	PeerDeviceManagmentIPAddress      string                                                                    `json:"peerDeviceManagmentIPAddress,omitempty"`      // Peer seed device management IP address.
+	DiscoveredDeviceList              *[]ResponseLanAutomationLanAutomationStatusV1ResponseDiscoveredDeviceList `json:"discoveredDeviceList,omitempty"`              //
+	RedistributeIsisToBgp             *bool                                                                     `json:"redistributeIsisToBgp,omitempty"`             // Shows whether advertise LAN Automation summary route into BGP is enabled or not.
+	DiscoveryLevel                    *int                                                                      `json:"discoveryLevel,omitempty"`                    // Level below primary seed device upto which the new devices will be LAN Automated by this session, level + seed = tier. Supported range for level is [1-5], default level is 2.
+	DiscoveryTimeout                  *int                                                                      `json:"discoveryTimeout,omitempty"`                  // Discovery timeout in minutes. Until this time, the stop processing will not be triggered. Any device contacting after the provided discovery timeout will not be processed, and a device reset and reload will be attempted to bring it back to the PnP agent state before process completion. The supported timeout range is in minutes [20-10080].
+	DiscoveryDevices                  *[]ResponseLanAutomationLanAutomationStatusV1ResponseDiscoveryDevices     `json:"discoveryDevices,omitempty"`                  // Specific devices that will be LAN Automated in this session. Any other device discovered via DHCP will be attempted for a reset and reload to bring it back to the PnP agent state at the end of the LAN Automation process before process completion. The maximum supported devices that can be provided for a session is 50.
 }
-type ResponseLanAutomationLanAutomationStatusResponseIPPools struct {
+type ResponseLanAutomationLanAutomationStatusV1ResponseIPPools struct {
 	IPPoolName string `json:"ipPoolName,omitempty"` // Name of the IP pool.
 	IPPoolRole string `json:"ipPoolRole,omitempty"` // Role of the IP pool. Supported roles are: MAIN_POOL and PHYSICAL_LINK_POOL.
 }
-type ResponseLanAutomationLanAutomationStatusResponseDiscoveredDeviceList struct {
+type ResponseLanAutomationLanAutomationStatusV1ResponseDiscoveredDeviceList struct {
 	Name               string   `json:"name,omitempty"`               // Name of the device.
 	SerialNumber       string   `json:"serialNumber,omitempty"`       // Serial number of the device.
 	State              string   `json:"state,omitempty"`              // State of the device (Added to inventory/Deleted from inventory).
 	IPAddressInUseList []string `json:"ipAddressInUseList,omitempty"` // List of IP address used by the device.
 }
-type ResponseLanAutomationLanAutomationStatusResponseDiscoveryDevices interface{}
-type ResponseLanAutomationLanAutomationStatusByID struct {
-	Response *[]ResponseLanAutomationLanAutomationStatusByIDResponse `json:"response,omitempty"` //
-	Version  string                                                  `json:"version,omitempty"`  // Version
+type ResponseLanAutomationLanAutomationStatusV1ResponseDiscoveryDevices interface{}
+type ResponseLanAutomationLanAutomationStatusByIDV1 struct {
+	Response *[]ResponseLanAutomationLanAutomationStatusByIDV1Response `json:"response,omitempty"` //
+	Version  string                                                    `json:"version,omitempty"`  // Version
 }
-type ResponseLanAutomationLanAutomationStatusByIDResponse struct {
-	ID                                string                                                                      `json:"id,omitempty"`                                // LAN Automation session id.
-	DiscoveredDeviceSiteNameHierarchy string                                                                      `json:"discoveredDeviceSiteNameHierarchy,omitempty"` // Discovered device site name.
-	PrimaryDeviceManagmentIPAddress   string                                                                      `json:"primaryDeviceManagmentIPAddress,omitempty"`   // Primary seed device management IP address.
-	IPPools                           *[]ResponseLanAutomationLanAutomationStatusByIDResponseIPPools              `json:"ipPools,omitempty"`                           //
-	PrimaryDeviceInterfaceNames       []string                                                                    `json:"primaryDeviceInterfaceNames,omitempty"`       // The list of interfaces on primary seed via which the discovered devices are connected.
-	Status                            string                                                                      `json:"status,omitempty"`                            // Status of the LAN Automation session along with the number of discovered devices.
-	Action                            string                                                                      `json:"action,omitempty"`                            // State (START/STOP) of the LAN Automation session.
-	CreationTime                      string                                                                      `json:"creationTime,omitempty"`                      // LAN Automation session creation time.
-	MulticastEnabled                  *bool                                                                       `json:"multicastEnabled,omitempty"`                  // Shows whether underlay multicast is enabled or not.
-	PeerDeviceManagmentIPAddress      string                                                                      `json:"peerDeviceManagmentIPAddress,omitempty"`      // Peer seed device management IP address.
-	DiscoveredDeviceList              *[]ResponseLanAutomationLanAutomationStatusByIDResponseDiscoveredDeviceList `json:"discoveredDeviceList,omitempty"`              //
-	RedistributeIsisToBgp             *bool                                                                       `json:"redistributeIsisToBgp,omitempty"`             // Shows whether advertise LAN Automation summary route into BGP is enabled or not.
-	DiscoveryLevel                    *int                                                                        `json:"discoveryLevel,omitempty"`                    // Level below primary seed device upto which the new devices will be LAN Automated by this session, level + seed = tier. Supported range for level is [1-5], default level is 2.
-	DiscoveryTimeout                  *int                                                                        `json:"discoveryTimeout,omitempty"`                  // Discovery timeout in minutes. Until this time, the stop processing will not be triggered. Any device contacting after the provided discovery timeout will not be processed, and a device reset and reload will be attempted to bring it back to the PnP agent state before process completion. The supported timeout range is in minutes [20-10080].
-	DiscoveryDevices                  *[]ResponseLanAutomationLanAutomationStatusByIDResponseDiscoveryDevices     `json:"discoveryDevices,omitempty"`                  // Specific devices that will be LAN Automated in this session. Any other device discovered via DHCP will be attempted for a reset and reload to bring it back to the PnP agent state at the end of the LAN Automation process before process completion. The maximum supported devices that can be provided for a session is 50.
+type ResponseLanAutomationLanAutomationStatusByIDV1Response struct {
+	ID                                string                                                                        `json:"id,omitempty"`                                // LAN Automation session id.
+	DiscoveredDeviceSiteNameHierarchy string                                                                        `json:"discoveredDeviceSiteNameHierarchy,omitempty"` // Discovered device site name.
+	PrimaryDeviceManagmentIPAddress   string                                                                        `json:"primaryDeviceManagmentIPAddress,omitempty"`   // Primary seed device management IP address.
+	IPPools                           *[]ResponseLanAutomationLanAutomationStatusByIDV1ResponseIPPools              `json:"ipPools,omitempty"`                           //
+	PrimaryDeviceInterfaceNames       []string                                                                      `json:"primaryDeviceInterfaceNames,omitempty"`       // The list of interfaces on primary seed via which the discovered devices are connected.
+	Status                            string                                                                        `json:"status,omitempty"`                            // Status of the LAN Automation session along with the number of discovered devices.
+	Action                            string                                                                        `json:"action,omitempty"`                            // State (START/STOP) of the LAN Automation session.
+	CreationTime                      string                                                                        `json:"creationTime,omitempty"`                      // LAN Automation session creation time.
+	MulticastEnabled                  *bool                                                                         `json:"multicastEnabled,omitempty"`                  // Shows whether underlay multicast is enabled or not.
+	PeerDeviceManagmentIPAddress      string                                                                        `json:"peerDeviceManagmentIPAddress,omitempty"`      // Peer seed device management IP address.
+	DiscoveredDeviceList              *[]ResponseLanAutomationLanAutomationStatusByIDV1ResponseDiscoveredDeviceList `json:"discoveredDeviceList,omitempty"`              //
+	RedistributeIsisToBgp             *bool                                                                         `json:"redistributeIsisToBgp,omitempty"`             // Shows whether advertise LAN Automation summary route into BGP is enabled or not.
+	DiscoveryLevel                    *int                                                                          `json:"discoveryLevel,omitempty"`                    // Level below primary seed device upto which the new devices will be LAN Automated by this session, level + seed = tier. Supported range for level is [1-5], default level is 2.
+	DiscoveryTimeout                  *int                                                                          `json:"discoveryTimeout,omitempty"`                  // Discovery timeout in minutes. Until this time, the stop processing will not be triggered. Any device contacting after the provided discovery timeout will not be processed, and a device reset and reload will be attempted to bring it back to the PnP agent state before process completion. The supported timeout range is in minutes [20-10080].
+	DiscoveryDevices                  *[]ResponseLanAutomationLanAutomationStatusByIDV1ResponseDiscoveryDevices     `json:"discoveryDevices,omitempty"`                  // Specific devices that will be LAN Automated in this session. Any other device discovered via DHCP will be attempted for a reset and reload to bring it back to the PnP agent state at the end of the LAN Automation process before process completion. The maximum supported devices that can be provided for a session is 50.
 }
-type ResponseLanAutomationLanAutomationStatusByIDResponseIPPools struct {
+type ResponseLanAutomationLanAutomationStatusByIDV1ResponseIPPools struct {
 	IPPoolName string `json:"ipPoolName,omitempty"` // Name of the IP pool.
 	IPPoolRole string `json:"ipPoolRole,omitempty"` // Role of the IP pool. Supported roles are: MAIN_POOL and PHYSICAL_LINK_POOL.
 }
-type ResponseLanAutomationLanAutomationStatusByIDResponseDiscoveredDeviceList struct {
+type ResponseLanAutomationLanAutomationStatusByIDV1ResponseDiscoveredDeviceList struct {
 	Name               string   `json:"name,omitempty"`               // Name of the device.
 	SerialNumber       string   `json:"serialNumber,omitempty"`       // Serial number of the device.
 	State              string   `json:"state,omitempty"`              // State of the device (Added to inventory/Deleted from inventory).
 	IPAddressInUseList []string `json:"ipAddressInUseList,omitempty"` // List of IP address used by the device.
 }
-type ResponseLanAutomationLanAutomationStatusByIDResponseDiscoveryDevices interface{}
-type ResponseLanAutomationLanAutomationDeviceUpdate struct {
-	Response *ResponseLanAutomationLanAutomationDeviceUpdateResponse `json:"response,omitempty"` //
-	Version  string                                                  `json:"version,omitempty"`  // version
+type ResponseLanAutomationLanAutomationStatusByIDV1ResponseDiscoveryDevices interface{}
+type ResponseLanAutomationLanAutomationDeviceUpdateV1 struct {
+	Response *ResponseLanAutomationLanAutomationDeviceUpdateV1Response `json:"response,omitempty"` //
+	Version  string                                                    `json:"version,omitempty"`  // version
 }
-type ResponseLanAutomationLanAutomationDeviceUpdateResponse struct {
+type ResponseLanAutomationLanAutomationDeviceUpdateV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task ID
 	URL    string `json:"url,omitempty"`    // url to check the status of task
 }
-type ResponseLanAutomationLanAutomationStop struct {
-	Response *ResponseLanAutomationLanAutomationStopResponse `json:"response,omitempty"` //
-	Version  string                                          `json:"version,omitempty"`  // Version
+type ResponseLanAutomationLanAutomationStopV1 struct {
+	Response *ResponseLanAutomationLanAutomationStopV1Response `json:"response,omitempty"` //
+	Version  string                                            `json:"version,omitempty"`  // Version
 }
-type ResponseLanAutomationLanAutomationStopResponse struct {
+type ResponseLanAutomationLanAutomationStopV1Response struct {
 	ErrorCode string `json:"errorCode,omitempty"` // Error code value.
 	Message   string `json:"message,omitempty"`   // Description of the error code.
 	Detail    string `json:"detail,omitempty"`    // Detailed information of the error code.
 }
-type ResponseLanAutomationLanAutomationStopAndUpdateDevices struct {
-	Response *ResponseLanAutomationLanAutomationStopAndUpdateDevicesResponse `json:"response,omitempty"` //
-	Version  string                                                          `json:"version,omitempty"`  // version
+type ResponseLanAutomationLanAutomationStopAndUpdateDevicesV1 struct {
+	Response *ResponseLanAutomationLanAutomationStopAndUpdateDevicesV1Response `json:"response,omitempty"` //
+	Version  string                                                            `json:"version,omitempty"`  // version
 }
-type ResponseLanAutomationLanAutomationStopAndUpdateDevicesResponse struct {
+type ResponseLanAutomationLanAutomationStopAndUpdateDevicesV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task ID
 	URL    string `json:"url,omitempty"`    // url to check the status of task
 }
@@ -196,45 +196,45 @@ type ResponseLanAutomationLanAutomationStopAndUpdateDevicesV2Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task ID
 	URL    string `json:"url,omitempty"`    // url to check the status of task
 }
-type RequestLanAutomationLanAutomationStart []RequestItemLanAutomationLanAutomationStart // Array of RequestLanAutomationLANAutomationStart
-type RequestItemLanAutomationLanAutomationStart struct {
-	DiscoveredDeviceSiteNameHierarchy string                                               `json:"discoveredDeviceSiteNameHierarchy,omitempty"` // Discovered device site name.
-	PrimaryDeviceManagmentIPAddress   string                                               `json:"primaryDeviceManagmentIPAddress,omitempty"`   // Primary seed management IP address.
-	PeerDeviceManagmentIPAddress      string                                               `json:"peerDeviceManagmentIPAddress,omitempty"`      // Peer seed management IP address.
-	PrimaryDeviceInterfaceNames       []string                                             `json:"primaryDeviceInterfaceNames,omitempty"`       // The list of interfaces on primary seed via which the discovered devices are connected.
-	IPPools                           *[]RequestItemLanAutomationLanAutomationStartIPPools `json:"ipPools,omitempty"`                           //
-	MulitcastEnabled                  *bool                                                `json:"mulitcastEnabled,omitempty"`                  // To enable underlay native multicast.
-	HostNamePrefix                    string                                               `json:"hostNamePrefix,omitempty"`                    // Host name prefix which shall be assigned to the discovered device.
-	HostNameFileID                    string                                               `json:"hostNameFileId,omitempty"`                    // Use /dna/intent/api/v1/file/namespace/nw_orch api to get the file id for the already uploaded file in nw_orch namespace.
-	IsisDomainPwd                     string                                               `json:"isisDomainPwd,omitempty"`                     // IS-IS domain password in plain text.
-	RedistributeIsisToBgp             *bool                                                `json:"redistributeIsisToBgp,omitempty"`             // Advertise LAN Automation summary route into BGP.
+type RequestLanAutomationLanAutomationStartV1 []RequestItemLanAutomationLanAutomationStartV1 // Array of RequestLanAutomationLANAutomationStartV1
+type RequestItemLanAutomationLanAutomationStartV1 struct {
+	DiscoveredDeviceSiteNameHierarchy string                                                 `json:"discoveredDeviceSiteNameHierarchy,omitempty"` // Discovered device site name.
+	PrimaryDeviceManagmentIPAddress   string                                                 `json:"primaryDeviceManagmentIPAddress,omitempty"`   // Primary seed management IP address.
+	PeerDeviceManagmentIPAddress      string                                                 `json:"peerDeviceManagmentIPAddress,omitempty"`      // Peer seed management IP address.
+	PrimaryDeviceInterfaceNames       []string                                               `json:"primaryDeviceInterfaceNames,omitempty"`       // The list of interfaces on primary seed via which the discovered devices are connected.
+	IPPools                           *[]RequestItemLanAutomationLanAutomationStartV1IPPools `json:"ipPools,omitempty"`                           //
+	MulitcastEnabled                  *bool                                                  `json:"mulitcastEnabled,omitempty"`                  // To enable underlay native multicast.
+	HostNamePrefix                    string                                                 `json:"hostNamePrefix,omitempty"`                    // Host name prefix which shall be assigned to the discovered device.
+	HostNameFileID                    string                                                 `json:"hostNameFileId,omitempty"`                    // Use /dna/intent/api/v1/file/namespace/nw_orch api to get the file id for the already uploaded file in nw_orch namespace.
+	IsisDomainPwd                     string                                                 `json:"isisDomainPwd,omitempty"`                     // IS-IS domain password in plain text.
+	RedistributeIsisToBgp             *bool                                                  `json:"redistributeIsisToBgp,omitempty"`             // Advertise LAN Automation summary route into BGP.
 }
-type RequestItemLanAutomationLanAutomationStartIPPools struct {
+type RequestItemLanAutomationLanAutomationStartV1IPPools struct {
 	IPPoolName string `json:"ipPoolName,omitempty"` // Name of the IP pool.
 	IPPoolRole string `json:"ipPoolRole,omitempty"` // Role of the IP pool. Supported roles are: MAIN_POOL and PHYSICAL_LINK_POOL.
 }
-type RequestLanAutomationLanAutomationDeviceUpdate struct {
-	LoopbackUpdateDeviceList *[]RequestLanAutomationLanAutomationDeviceUpdateLoopbackUpdateDeviceList `json:"loopbackUpdateDeviceList,omitempty"` //
-	LinkUpdate               *RequestLanAutomationLanAutomationDeviceUpdateLinkUpdate                 `json:"linkUpdate,omitempty"`               //
-	HostnameUpdateDevices    *[]RequestLanAutomationLanAutomationDeviceUpdateHostnameUpdateDevices    `json:"hostnameUpdateDevices,omitempty"`    //
+type RequestLanAutomationLanAutomationDeviceUpdateV1 struct {
+	LoopbackUpdateDeviceList *[]RequestLanAutomationLanAutomationDeviceUpdateV1LoopbackUpdateDeviceList `json:"loopbackUpdateDeviceList,omitempty"` //
+	LinkUpdate               *RequestLanAutomationLanAutomationDeviceUpdateV1LinkUpdate                 `json:"linkUpdate,omitempty"`               //
+	HostnameUpdateDevices    *[]RequestLanAutomationLanAutomationDeviceUpdateV1HostnameUpdateDevices    `json:"hostnameUpdateDevices,omitempty"`    //
 }
-type RequestLanAutomationLanAutomationDeviceUpdateLoopbackUpdateDeviceList struct {
+type RequestLanAutomationLanAutomationDeviceUpdateV1LoopbackUpdateDeviceList struct {
 	DeviceManagementIPAddress string `json:"deviceManagementIPAddress,omitempty"` // Device Management IP Address
 	NewLoopback0IPAddress     string `json:"newLoopback0IPAddress,omitempty"`     // New Loopback0 IP Address from LAN Pool of Device Discovery Site(Shared pool should not be used).
 }
-type RequestLanAutomationLanAutomationDeviceUpdateLinkUpdate struct {
+type RequestLanAutomationLanAutomationDeviceUpdateV1LinkUpdate struct {
 	SourceDeviceManagementIPAddress      string `json:"sourceDeviceManagementIPAddress,omitempty"`      // Source Device Management IP Address
 	SourceDeviceInterfaceName            string `json:"sourceDeviceInterfaceName,omitempty"`            // Source Device Interface Name
 	DestinationDeviceManagementIPAddress string `json:"destinationDeviceManagementIPAddress,omitempty"` // Destination Device Management IP Address
 	DestinationDeviceInterfaceName       string `json:"destinationDeviceInterfaceName,omitempty"`       // Destination Device Interface Name
 	IPPoolName                           string `json:"ipPoolName,omitempty"`                           // Name of the IP LAN Pool, required for Link Add should be from discovery site of source and destination device.
 }
-type RequestLanAutomationLanAutomationDeviceUpdateHostnameUpdateDevices struct {
+type RequestLanAutomationLanAutomationDeviceUpdateV1HostnameUpdateDevices struct {
 	DeviceManagementIPAddress string `json:"deviceManagementIPAddress,omitempty"` // Device Management IP Address
 	NewHostName               string `json:"newHostName,omitempty"`               // New hostname for the device
 }
-type RequestLanAutomationLanAutomationStopAndUpdateDevices []RequestItemLanAutomationLanAutomationStopAndUpdateDevices // Array of RequestLanAutomationLANAutomationStopAndUpdateDevices
-type RequestItemLanAutomationLanAutomationStopAndUpdateDevices struct {
+type RequestLanAutomationLanAutomationStopAndUpdateDevicesV1 []RequestItemLanAutomationLanAutomationStopAndUpdateDevicesV1 // Array of RequestLanAutomationLANAutomationStopAndUpdateDevicesV1
+type RequestItemLanAutomationLanAutomationStopAndUpdateDevicesV1 struct {
 	DeviceManagementIPAddress string `json:"deviceManagementIPAddress,omitempty"` // Device Management IP Address
 	NewLoopback0IPAddress     string `json:"newLoopback0IPAddress,omitempty"`     // New Loopback0 IP Address from LAN pool of Device Discovery Site.
 }
@@ -271,20 +271,20 @@ type RequestItemLanAutomationLanAutomationStopAndUpdateDevicesV2 struct {
 	NewHostName               string `json:"newHostName,omitempty"`               // New hostname to be assigned to the device
 }
 
-//LanAutomationSessionCount LAN Automation Session Count - b08b-6b11-4669-a12b
+//LanAutomationSessionCountV1 LAN Automation Session Count - b08b-6b11-4669-a12b
 /* Invoke this API to get the total count of LAN Automation sessions.
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-session-count
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-session-count-v1
 */
-func (s *LanAutomationService) LanAutomationSessionCount() (*ResponseLanAutomationLanAutomationSessionCount, *resty.Response, error) {
+func (s *LanAutomationService) LanAutomationSessionCountV1() (*ResponseLanAutomationLanAutomationSessionCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/lan-automation/count"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseLanAutomationLanAutomationSessionCount{}).
+		SetResult(&ResponseLanAutomationLanAutomationSessionCountV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -295,33 +295,33 @@ func (s *LanAutomationService) LanAutomationSessionCount() (*ResponseLanAutomati
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.LanAutomationSessionCount()
+			return s.LanAutomationSessionCountV1()
 		}
-		return nil, response, fmt.Errorf("error with operation LanAutomationSessionCount")
+		return nil, response, fmt.Errorf("error with operation LanAutomationSessionCountV1")
 	}
 
-	result := response.Result().(*ResponseLanAutomationLanAutomationSessionCount)
+	result := response.Result().(*ResponseLanAutomationLanAutomationSessionCountV1)
 	return result, response, err
 
 }
 
-//LanAutomationLog LAN Automation Log  - 93a9-68c2-480a-85d1
+//LanAutomationLogV1 LAN Automation Log  - 93a9-68c2-480a-85d1
 /* Invoke this API to get the LAN Automation session logs.
 
 
-@param LANAutomationLogQueryParams Filtering parameter
+@param LANAutomationLogV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-log
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-log-v1
 */
-func (s *LanAutomationService) LanAutomationLog(LANAutomationLogQueryParams *LanAutomationLogQueryParams) (*ResponseLanAutomationLanAutomationLog, *resty.Response, error) {
+func (s *LanAutomationService) LanAutomationLogV1(LANAutomationLogV1QueryParams *LanAutomationLogV1QueryParams) (*ResponseLanAutomationLanAutomationLogV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/lan-automation/log"
 
-	queryString, _ := query.Values(LANAutomationLogQueryParams)
+	queryString, _ := query.Values(LANAutomationLogV1QueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseLanAutomationLanAutomationLog{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseLanAutomationLanAutomationLogV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -332,33 +332,33 @@ func (s *LanAutomationService) LanAutomationLog(LANAutomationLogQueryParams *Lan
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.LanAutomationLog(LANAutomationLogQueryParams)
+			return s.LanAutomationLogV1(LANAutomationLogV1QueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation LanAutomationLog")
+		return nil, response, fmt.Errorf("error with operation LanAutomationLogV1")
 	}
 
-	result := response.Result().(*ResponseLanAutomationLanAutomationLog)
+	result := response.Result().(*ResponseLanAutomationLanAutomationLogV1)
 	return result, response, err
 
 }
 
-//LanAutomationLogByID LAN Automation Log by Id - 55b5-eb50-440a-a123
+//LanAutomationLogByIDV1 LAN Automation Log by Id - 55b5-eb50-440a-a123
 /* Invoke this API to get the LAN Automation session logs based on the given LAN Automation session id.
 
 
 @param id id path parameter. LAN Automation session identifier.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-log-by-id
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-log-by-id-v1
 */
-func (s *LanAutomationService) LanAutomationLogByID(id string) (*ResponseLanAutomationLanAutomationLogByID, *resty.Response, error) {
+func (s *LanAutomationService) LanAutomationLogByIDV1(id string) (*ResponseLanAutomationLanAutomationLogByIDV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/lan-automation/log/{id}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseLanAutomationLanAutomationLogByID{}).
+		SetResult(&ResponseLanAutomationLanAutomationLogByIDV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -369,17 +369,17 @@ func (s *LanAutomationService) LanAutomationLogByID(id string) (*ResponseLanAuto
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.LanAutomationLogByID(id)
+			return s.LanAutomationLogByIDV1(id)
 		}
-		return nil, response, fmt.Errorf("error with operation LanAutomationLogById")
+		return nil, response, fmt.Errorf("error with operation LanAutomationLogByIdV1")
 	}
 
-	result := response.Result().(*ResponseLanAutomationLanAutomationLogByID)
+	result := response.Result().(*ResponseLanAutomationLanAutomationLogByIDV1)
 	return result, response, err
 
 }
 
-//LanAutomationLogsForIndividualDevices LAN Automation Logs for Individual Devices - b2ac-5af7-45d8-8c4e
+//LanAutomationLogsForIndividualDevicesV1 LAN Automation Logs for Individual Devices - b2ac-5af7-45d8-8c4e
 /* Invoke this API to get the LAN Automation session logs for individual devices based on the given LAN Automation session id and device serial number.
 
 
@@ -387,21 +387,21 @@ func (s *LanAutomationService) LanAutomationLogByID(id string) (*ResponseLanAuto
 
 @param serialNumber serialNumber path parameter. Device serial number.
 
-@param LANAutomationLogsForIndividualDevicesQueryParams Filtering parameter
+@param LANAutomationLogsForIndividualDevicesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-logs-for-individual-devices
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-logs-for-individual-devices-v1
 */
-func (s *LanAutomationService) LanAutomationLogsForIndividualDevices(id string, serialNumber string, LANAutomationLogsForIndividualDevicesQueryParams *LanAutomationLogsForIndividualDevicesQueryParams) (*ResponseLanAutomationLanAutomationLogsForIndividualDevices, *resty.Response, error) {
+func (s *LanAutomationService) LanAutomationLogsForIndividualDevicesV1(id string, serialNumber string, LANAutomationLogsForIndividualDevicesV1QueryParams *LanAutomationLogsForIndividualDevicesV1QueryParams) (*ResponseLanAutomationLanAutomationLogsForIndividualDevicesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/lan-automation/log/{id}/{serialNumber}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 	path = strings.Replace(path, "{serialNumber}", fmt.Sprintf("%v", serialNumber), -1)
 
-	queryString, _ := query.Values(LANAutomationLogsForIndividualDevicesQueryParams)
+	queryString, _ := query.Values(LANAutomationLogsForIndividualDevicesV1QueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseLanAutomationLanAutomationLogsForIndividualDevices{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseLanAutomationLanAutomationLogsForIndividualDevicesV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -412,30 +412,30 @@ func (s *LanAutomationService) LanAutomationLogsForIndividualDevices(id string, 
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.LanAutomationLogsForIndividualDevices(id, serialNumber, LANAutomationLogsForIndividualDevicesQueryParams)
+			return s.LanAutomationLogsForIndividualDevicesV1(id, serialNumber, LANAutomationLogsForIndividualDevicesV1QueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation LanAutomationLogsForIndividualDevices")
+		return nil, response, fmt.Errorf("error with operation LanAutomationLogsForIndividualDevicesV1")
 	}
 
-	result := response.Result().(*ResponseLanAutomationLanAutomationLogsForIndividualDevices)
+	result := response.Result().(*ResponseLanAutomationLanAutomationLogsForIndividualDevicesV1)
 	return result, response, err
 
 }
 
-//LanAutomationActiveSessions LAN Automation Active Sessions - c1bf-69fb-4ad8-979c
+//LanAutomationActiveSessionsV1 LAN Automation Active Sessions - c1bf-69fb-4ad8-979c
 /* Invoke this API to get the LAN Automation active session information
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-active-sessions
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-active-sessions-v1
 */
-func (s *LanAutomationService) LanAutomationActiveSessions() (*ResponseLanAutomationLanAutomationActiveSessions, *resty.Response, error) {
+func (s *LanAutomationService) LanAutomationActiveSessionsV1() (*ResponseLanAutomationLanAutomationActiveSessionsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/lan-automation/sessions"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseLanAutomationLanAutomationActiveSessions{}).
+		SetResult(&ResponseLanAutomationLanAutomationActiveSessionsV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -446,33 +446,33 @@ func (s *LanAutomationService) LanAutomationActiveSessions() (*ResponseLanAutoma
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.LanAutomationActiveSessions()
+			return s.LanAutomationActiveSessionsV1()
 		}
-		return nil, response, fmt.Errorf("error with operation LanAutomationActiveSessions")
+		return nil, response, fmt.Errorf("error with operation LanAutomationActiveSessionsV1")
 	}
 
-	result := response.Result().(*ResponseLanAutomationLanAutomationActiveSessions)
+	result := response.Result().(*ResponseLanAutomationLanAutomationActiveSessionsV1)
 	return result, response, err
 
 }
 
-//LanAutomationStatus LAN Automation Status - a4ab-087e-4ed9-a3bb
+//LanAutomationStatusV1 LAN Automation Status - a4ab-087e-4ed9-a3bb
 /* Invoke this API to get the LAN Automation session status.
 
 
-@param LANAutomationStatusQueryParams Filtering parameter
+@param LANAutomationStatusV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-status
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-status-v1
 */
-func (s *LanAutomationService) LanAutomationStatus(LANAutomationStatusQueryParams *LanAutomationStatusQueryParams) (*ResponseLanAutomationLanAutomationStatus, *resty.Response, error) {
+func (s *LanAutomationService) LanAutomationStatusV1(LANAutomationStatusV1QueryParams *LanAutomationStatusV1QueryParams) (*ResponseLanAutomationLanAutomationStatusV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/lan-automation/status"
 
-	queryString, _ := query.Values(LANAutomationStatusQueryParams)
+	queryString, _ := query.Values(LANAutomationStatusV1QueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseLanAutomationLanAutomationStatus{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseLanAutomationLanAutomationStatusV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -483,33 +483,33 @@ func (s *LanAutomationService) LanAutomationStatus(LANAutomationStatusQueryParam
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.LanAutomationStatus(LANAutomationStatusQueryParams)
+			return s.LanAutomationStatusV1(LANAutomationStatusV1QueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation LanAutomationStatus")
+		return nil, response, fmt.Errorf("error with operation LanAutomationStatusV1")
 	}
 
-	result := response.Result().(*ResponseLanAutomationLanAutomationStatus)
+	result := response.Result().(*ResponseLanAutomationLanAutomationStatusV1)
 	return result, response, err
 
 }
 
-//LanAutomationStatusByID LAN Automation Status by Id - 5b99-8b6e-47b8-9882
+//LanAutomationStatusByIDV1 LAN Automation Status by Id - 5b99-8b6e-47b8-9882
 /* Invoke this API to get the LAN Automation session status based on the given Lan Automation session id.
 
 
 @param id id path parameter. LAN Automation session identifier.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-status-by-id
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-status-by-id-v1
 */
-func (s *LanAutomationService) LanAutomationStatusByID(id string) (*ResponseLanAutomationLanAutomationStatusByID, *resty.Response, error) {
+func (s *LanAutomationService) LanAutomationStatusByIDV1(id string) (*ResponseLanAutomationLanAutomationStatusByIDV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/lan-automation/status/{id}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseLanAutomationLanAutomationStatusByID{}).
+		SetResult(&ResponseLanAutomationLanAutomationStatusByIDV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -520,31 +520,31 @@ func (s *LanAutomationService) LanAutomationStatusByID(id string) (*ResponseLanA
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.LanAutomationStatusByID(id)
+			return s.LanAutomationStatusByIDV1(id)
 		}
-		return nil, response, fmt.Errorf("error with operation LanAutomationStatusById")
+		return nil, response, fmt.Errorf("error with operation LanAutomationStatusByIdV1")
 	}
 
-	result := response.Result().(*ResponseLanAutomationLanAutomationStatusByID)
+	result := response.Result().(*ResponseLanAutomationLanAutomationStatusByIDV1)
 	return result, response, err
 
 }
 
-//LanAutomationStart LAN Automation Start - 9795-f927-469a-a6d2
+//LanAutomationStartV1 LAN Automation Start - 9795-f927-469a-a6d2
 /* Invoke this API to start LAN Automation for the given site.
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-start
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-start-v1
 */
-func (s *LanAutomationService) LanAutomationStart(requestLanAutomationLANAutomationStart *RequestLanAutomationLanAutomationStart) (*ResponseLanAutomationLanAutomationStart, *resty.Response, error) {
+func (s *LanAutomationService) LanAutomationStartV1(requestLanAutomationLANAutomationStartV1 *RequestLanAutomationLanAutomationStartV1) (*ResponseLanAutomationLanAutomationStartV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/lan-automation"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestLanAutomationLANAutomationStart).
-		SetResult(&ResponseLanAutomationLanAutomationStart{}).
+		SetBody(requestLanAutomationLANAutomationStartV1).
+		SetResult(&ResponseLanAutomationLanAutomationStartV1{}).
 		SetError(&Error).
 		Post(path)
 
@@ -556,13 +556,13 @@ func (s *LanAutomationService) LanAutomationStart(requestLanAutomationLANAutomat
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.LanAutomationStart(requestLanAutomationLANAutomationStart)
+			return s.LanAutomationStartV1(requestLanAutomationLANAutomationStartV1)
 		}
 
-		return nil, response, fmt.Errorf("error with operation LanAutomationStart")
+		return nil, response, fmt.Errorf("error with operation LanAutomationStartV1")
 	}
 
-	result := response.Result().(*ResponseLanAutomationLanAutomationStart)
+	result := response.Result().(*ResponseLanAutomationLanAutomationStartV1)
 	return result, response, err
 
 }
@@ -604,22 +604,22 @@ func (s *LanAutomationService) LanAutomationStartV2(requestLanAutomationLANAutom
 
 }
 
-//LanAutomationDeviceUpdate LAN Automation Device Update - 1190-5ac3-4e88-bd5e
+//LanAutomationDeviceUpdateV1 LAN Automation Device Update - 1190-5ac3-4e88-bd5e
 /* Invoke this API to perform a DAY-N update on LAN Automation-related devices. Supported features include Loopback0 IP update, hostname update, link addition, and link deletion.
 
 
-@param LANAutomationDeviceUpdateQueryParams Filtering parameter
+@param LANAutomationDeviceUpdateV1QueryParams Filtering parameter
 */
-func (s *LanAutomationService) LanAutomationDeviceUpdate(requestLanAutomationLANAutomationDeviceUpdate *RequestLanAutomationLanAutomationDeviceUpdate, LANAutomationDeviceUpdateQueryParams *LanAutomationDeviceUpdateQueryParams) (*ResponseLanAutomationLanAutomationDeviceUpdate, *resty.Response, error) {
+func (s *LanAutomationService) LanAutomationDeviceUpdateV1(requestLanAutomationLANAutomationDeviceUpdateV1 *RequestLanAutomationLanAutomationDeviceUpdateV1, LANAutomationDeviceUpdateV1QueryParams *LanAutomationDeviceUpdateV1QueryParams) (*ResponseLanAutomationLanAutomationDeviceUpdateV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/lan-automation/updateDevice"
 
-	queryString, _ := query.Values(LANAutomationDeviceUpdateQueryParams)
+	queryString, _ := query.Values(LANAutomationDeviceUpdateV1QueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetBody(requestLanAutomationLANAutomationDeviceUpdate).
-		SetResult(&ResponseLanAutomationLanAutomationDeviceUpdate{}).
+		SetQueryString(queryString.Encode()).SetBody(requestLanAutomationLANAutomationDeviceUpdateV1).
+		SetResult(&ResponseLanAutomationLanAutomationDeviceUpdateV1{}).
 		SetError(&Error).
 		Put(path)
 
@@ -630,32 +630,32 @@ func (s *LanAutomationService) LanAutomationDeviceUpdate(requestLanAutomationLAN
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.LanAutomationDeviceUpdate(requestLanAutomationLANAutomationDeviceUpdate, LANAutomationDeviceUpdateQueryParams)
+			return s.LanAutomationDeviceUpdateV1(requestLanAutomationLANAutomationDeviceUpdateV1, LANAutomationDeviceUpdateV1QueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation LanAutomationDeviceUpdate")
+		return nil, response, fmt.Errorf("error with operation LanAutomationDeviceUpdateV1")
 	}
 
-	result := response.Result().(*ResponseLanAutomationLanAutomationDeviceUpdate)
+	result := response.Result().(*ResponseLanAutomationLanAutomationDeviceUpdateV1)
 	return result, response, err
 
 }
 
-//LanAutomationStopAndUpdateDevices LAN Automation Stop and Update Devices - 0780-4a4c-44cb-bae8
+//LanAutomationStopAndUpdateDevicesV1 LAN Automation Stop and Update Devices - 0780-4a4c-44cb-bae8
 /* Invoke this API to stop LAN Automation and Update Loopback0 IP Address of Devices, discovered in the current session
 
 
 @param id id path parameter. LAN Automation id can be obtained from /dna/intent/api/v1/lan-automation/status.
 
 */
-func (s *LanAutomationService) LanAutomationStopAndUpdateDevices(id string, requestLanAutomationLANAutomationStopAndUpdateDevices *RequestLanAutomationLanAutomationStopAndUpdateDevices) (*ResponseLanAutomationLanAutomationStopAndUpdateDevices, *resty.Response, error) {
+func (s *LanAutomationService) LanAutomationStopAndUpdateDevicesV1(id string, requestLanAutomationLANAutomationStopAndUpdateDevicesV1 *RequestLanAutomationLanAutomationStopAndUpdateDevicesV1) (*ResponseLanAutomationLanAutomationStopAndUpdateDevicesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/lan-automation/{id}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestLanAutomationLANAutomationStopAndUpdateDevices).
-		SetResult(&ResponseLanAutomationLanAutomationStopAndUpdateDevices{}).
+		SetBody(requestLanAutomationLANAutomationStopAndUpdateDevicesV1).
+		SetResult(&ResponseLanAutomationLanAutomationStopAndUpdateDevicesV1{}).
 		SetError(&Error).
 		Put(path)
 
@@ -666,12 +666,12 @@ func (s *LanAutomationService) LanAutomationStopAndUpdateDevices(id string, requ
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.LanAutomationStopAndUpdateDevices(id, requestLanAutomationLANAutomationStopAndUpdateDevices)
+			return s.LanAutomationStopAndUpdateDevicesV1(id, requestLanAutomationLANAutomationStopAndUpdateDevicesV1)
 		}
-		return nil, response, fmt.Errorf("error with operation LanAutomationStopAndUpdateDevices")
+		return nil, response, fmt.Errorf("error with operation LanAutomationStopAndUpdateDevicesV1")
 	}
 
-	result := response.Result().(*ResponseLanAutomationLanAutomationStopAndUpdateDevices)
+	result := response.Result().(*ResponseLanAutomationLanAutomationStopAndUpdateDevicesV1)
 	return result, response, err
 
 }
@@ -712,16 +712,16 @@ func (s *LanAutomationService) LanAutomationStopAndUpdateDevicesV2(id string, re
 
 }
 
-//LanAutomationStop LAN Automation Stop - e6a0-da69-4adb-8929
+//LanAutomationStopV1 LAN Automation Stop - e6a0-da69-4adb-8929
 /* Invoke this API to stop LAN Automation for the given site.
 
 
 @param id id path parameter. LAN Automation id can be obtained from /dna/intent/api/v1/lan-automation/status.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-stop
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-stop-v1
 */
-func (s *LanAutomationService) LanAutomationStop(id string) (*ResponseLanAutomationLanAutomationStop, *resty.Response, error) {
+func (s *LanAutomationService) LanAutomationStopV1(id string) (*ResponseLanAutomationLanAutomationStopV1, *resty.Response, error) {
 	//id string
 	path := "/dna/intent/api/v1/lan-automation/{id}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
@@ -729,7 +729,7 @@ func (s *LanAutomationService) LanAutomationStop(id string) (*ResponseLanAutomat
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseLanAutomationLanAutomationStop{}).
+		SetResult(&ResponseLanAutomationLanAutomationStopV1{}).
 		SetError(&Error).
 		Delete(path)
 
@@ -740,12 +740,101 @@ func (s *LanAutomationService) LanAutomationStop(id string) (*ResponseLanAutomat
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.LanAutomationStop(id)
+			return s.LanAutomationStopV1(
+				id)
 		}
-		return nil, response, fmt.Errorf("error with operation LanAutomationStop")
+		return nil, response, fmt.Errorf("error with operation LanAutomationStopV1")
 	}
 
-	result := response.Result().(*ResponseLanAutomationLanAutomationStop)
+	result := response.Result().(*ResponseLanAutomationLanAutomationStopV1)
 	return result, response, err
 
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `LanAutomationStatusByIDV1`
+*/
+func (s *LanAutomationService) LanAutomationStatusByID(id string) (*ResponseLanAutomationLanAutomationStatusByIDV1, *resty.Response, error) {
+	return s.LanAutomationStatusByIDV1(id)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `LanAutomationStopV1`
+*/
+func (s *LanAutomationService) LanAutomationStop(id string) (*ResponseLanAutomationLanAutomationStopV1, *resty.Response, error) {
+	return s.LanAutomationStopV1(id)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `LanAutomationLogV1`
+*/
+func (s *LanAutomationService) LanAutomationLog(LANAutomationLogV1QueryParams *LanAutomationLogV1QueryParams) (*ResponseLanAutomationLanAutomationLogV1, *resty.Response, error) {
+	return s.LanAutomationLogV1(LANAutomationLogV1QueryParams)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `LanAutomationLogByIDV1`
+*/
+func (s *LanAutomationService) LanAutomationLogByID(id string) (*ResponseLanAutomationLanAutomationLogByIDV1, *resty.Response, error) {
+	return s.LanAutomationLogByIDV1(id)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `LanAutomationLogsForIndividualDevicesV1`
+*/
+func (s *LanAutomationService) LanAutomationLogsForIndividualDevices(id string, serialNumber string, LANAutomationLogsForIndividualDevicesV1QueryParams *LanAutomationLogsForIndividualDevicesV1QueryParams) (*ResponseLanAutomationLanAutomationLogsForIndividualDevicesV1, *resty.Response, error) {
+	return s.LanAutomationLogsForIndividualDevicesV1(id, serialNumber, LANAutomationLogsForIndividualDevicesV1QueryParams)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `LanAutomationStopAndUpdateDevicesV1`
+*/
+func (s *LanAutomationService) LanAutomationStopAndUpdateDevices(id string, requestLanAutomationLANAutomationStopAndUpdateDevicesV1 *RequestLanAutomationLanAutomationStopAndUpdateDevicesV1) (*ResponseLanAutomationLanAutomationStopAndUpdateDevicesV1, *resty.Response, error) {
+	return s.LanAutomationStopAndUpdateDevicesV1(id, requestLanAutomationLANAutomationStopAndUpdateDevicesV1)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `LanAutomationStartV1`
+*/
+func (s *LanAutomationService) LanAutomationStart(requestLanAutomationLANAutomationStartV1 *RequestLanAutomationLanAutomationStartV1) (*ResponseLanAutomationLanAutomationStartV1, *resty.Response, error) {
+	return s.LanAutomationStartV1(requestLanAutomationLANAutomationStartV1)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `LanAutomationStatusV1`
+*/
+func (s *LanAutomationService) LanAutomationStatus(LANAutomationStatusV1QueryParams *LanAutomationStatusV1QueryParams) (*ResponseLanAutomationLanAutomationStatusV1, *resty.Response, error) {
+	return s.LanAutomationStatusV1(LANAutomationStatusV1QueryParams)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `LanAutomationDeviceUpdateV1`
+*/
+func (s *LanAutomationService) LanAutomationDeviceUpdate(requestLanAutomationLANAutomationDeviceUpdateV1 *RequestLanAutomationLanAutomationDeviceUpdateV1, LANAutomationDeviceUpdateV1QueryParams *LanAutomationDeviceUpdateV1QueryParams) (*ResponseLanAutomationLanAutomationDeviceUpdateV1, *resty.Response, error) {
+	return s.LanAutomationDeviceUpdateV1(requestLanAutomationLANAutomationDeviceUpdateV1, LANAutomationDeviceUpdateV1QueryParams)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `LanAutomationSessionCountV1`
+*/
+func (s *LanAutomationService) LanAutomationSessionCount() (*ResponseLanAutomationLanAutomationSessionCountV1, *resty.Response, error) {
+	return s.LanAutomationSessionCountV1()
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `LanAutomationActiveSessionsV1`
+*/
+func (s *LanAutomationService) LanAutomationActiveSessions() (*ResponseLanAutomationLanAutomationActiveSessionsV1, *resty.Response, error) {
+	return s.LanAutomationActiveSessionsV1()
 }

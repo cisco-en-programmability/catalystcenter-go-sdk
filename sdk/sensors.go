@@ -10,257 +10,20 @@ import (
 
 type SensorsService service
 
-type DeleteSensorTestQueryParams struct {
+type DeleteSensorTestV1QueryParams struct {
 	TemplateName string `url:"templateName,omitempty"` //
 }
-type SensorsQueryParams struct {
+type SensorsV1QueryParams struct {
 	SiteID string `url:"siteId,omitempty"` //
 }
 
-type ResponseSensorsEditSensorTestTemplate struct {
-	Version  string                                         `json:"version,omitempty"`  // Version
-	Response *ResponseSensorsEditSensorTestTemplateResponse `json:"response,omitempty"` //
-}
-type ResponseSensorsEditSensorTestTemplateResponse struct {
-	Name                   string                                                           `json:"name,omitempty"`                   // The sensor test template name
-	TypeID                 string                                                           `json:"_id,omitempty"`                    // The sensor test template unique identifier
-	Version                *int                                                             `json:"version,omitempty"`                // The sensor test template version (must be 2)
-	ModelVersion           *int                                                             `json:"modelVersion,omitempty"`           // Test template object model version (must be 2)
-	StartTime              *int                                                             `json:"startTime,omitempty"`              // Start time
-	LastModifiedTime       *int                                                             `json:"lastModifiedTime,omitempty"`       // Last modify time
-	NumAssociatedSensor    *int                                                             `json:"numAssociatedSensor,omitempty"`    // Number of associated sensor
-	Location               string                                                           `json:"location,omitempty"`               // Location string
-	SiteHierarchy          string                                                           `json:"siteHierarchy,omitempty"`          // Site hierarchy
-	Status                 string                                                           `json:"status,omitempty"`                 // Status of the test (RUNNING, NOTRUNNING)
-	Connection             string                                                           `json:"connection,omitempty"`             // connection type of test: WIRED, WIRELESS, BOTH
-	ActionInProgress       string                                                           `json:"actionInProgress,omitempty"`       // Indication of inprogress action
-	Frequency              *ResponseSensorsEditSensorTestTemplateResponseFrequency          `json:"frequency,omitempty"`              //
-	RssiThreshold          *int                                                             `json:"rssiThreshold,omitempty"`          // RSSI threshold
-	NumNeighborApThreshold *int                                                             `json:"numNeighborAPThreshold,omitempty"` // Number of neighboring AP threshold
-	ScheduleInDays         *int                                                             `json:"scheduleInDays,omitempty"`         // Bit-wise value of scheduled test days
-	WLANs                  []string                                                         `json:"wlans,omitempty"`                  // WLANs list
-	SSIDs                  *[]ResponseSensorsEditSensorTestTemplateResponseSSIDs            `json:"ssids,omitempty"`                  //
-	Profiles               *[]ResponseSensorsEditSensorTestTemplateResponseProfiles         `json:"profiles,omitempty"`               //
-	TestScheduleMode       string                                                           `json:"testScheduleMode,omitempty"`       // Test schedule mode (ONDEMAND, DEDICATED, SCHEDULED, CONTINUOUS, RUNNOW)
-	ShowWlcUpgradeBanner   *bool                                                            `json:"showWlcUpgradeBanner,omitempty"`   // Show WLC upgrade banner
-	RadioAsSensorRemoved   *bool                                                            `json:"radioAsSensorRemoved,omitempty"`   // Radio as sensor removed
-	EncryptionMode         string                                                           `json:"encryptionMode,omitempty"`         // Encryption mode
-	RunNow                 string                                                           `json:"runNow,omitempty"`                 // Run now (YES, NO)
-	LocationInfoList       *[]ResponseSensorsEditSensorTestTemplateResponseLocationInfoList `json:"locationInfoList,omitempty"`       //
-	Sensors                *[]ResponseSensorsEditSensorTestTemplateResponseSensors          `json:"sensors,omitempty"`                //
-	ApCoverage             *[]ResponseSensorsEditSensorTestTemplateResponseApCoverage       `json:"apCoverage,omitempty"`             //
-}
-type ResponseSensorsEditSensorTestTemplateResponseFrequency struct {
-	Value *int   `json:"value,omitempty"` // Value of the unit
-	Unit  string `json:"unit,omitempty"`  // Unit of the time value (NANOSECONDS, MICROSECONDS, MILLISECONDS, SECONDS, MINUTES, HOURS, DAYS)
-}
-type ResponseSensorsEditSensorTestTemplateResponseSSIDs struct {
-	Bands                     string                                                                 `json:"bands,omitempty"`                     // WIFI bands: 2.4GHz or 5GHz
-	SSID                      string                                                                 `json:"ssid,omitempty"`                      // The SSID string
-	ProfileName               string                                                                 `json:"profileName,omitempty"`               // The SSID profile name string
-	NumAps                    *int                                                                   `json:"numAps,omitempty"`                    // Number of APs in the test
-	NumSensors                *int                                                                   `json:"numSensors,omitempty"`                // Number of Sensors in the test
-	Layer3WebAuthsecurity     string                                                                 `json:"layer3webAuthsecurity,omitempty"`     // Layer 3 WEB Auth security
-	Layer3WebAuthuserName     string                                                                 `json:"layer3webAuthuserName,omitempty"`     // Layer 3 WEB Auth user name
-	Layer3WebAuthpassword     string                                                                 `json:"layer3webAuthpassword,omitempty"`     // Layer 3 WEB Auth password
-	Layer3WebAuthEmailAddress string                                                                 `json:"layer3webAuthEmailAddress,omitempty"` // Layer 3 WEB Auth email address
-	ThirdParty                *ResponseSensorsEditSensorTestTemplateResponseSSIDsThirdParty          `json:"thirdParty,omitempty"`                //
-	ID                        *int                                                                   `json:"id,omitempty"`                        // Identification number
-	WLANID                    *int                                                                   `json:"wlanId,omitempty"`                    // WLAN ID
-	Wlc                       string                                                                 `json:"wlc,omitempty"`                       // WLC IP addres
-	ValidFrom                 *int                                                                   `json:"validFrom,omitempty"`                 // Valid From UTC timestamp
-	ValidTo                   *int                                                                   `json:"validTo,omitempty"`                   // Valid To UTC timestamp
-	Status                    string                                                                 `json:"status,omitempty"`                    // WLAN status: ENABLED or DISABLED
-	ProxyServer               string                                                                 `json:"proxyServer,omitempty"`               // Proxy server for onboarding SSID
-	ProxyPort                 string                                                                 `json:"proxyPort,omitempty"`                 // Proxy server port
-	ProxyUserName             string                                                                 `json:"proxyUserName,omitempty"`             // Proxy server user name
-	ProxyPassword             string                                                                 `json:"proxyPassword,omitempty"`             // Proxy server password
-	AuthType                  string                                                                 `json:"authType,omitempty"`                  // Authentication type: OPEN, WPA2_PSK, WPA2_EAP, WEB_AUTH, MAB, DOT1X, OTHER
-	Psk                       string                                                                 `json:"psk,omitempty"`                       // Password of SSID when passwordType is ASCII
-	Username                  string                                                                 `json:"username,omitempty"`                  // User name string for onboarding SSID
-	Password                  string                                                                 `json:"password,omitempty"`                  // Password string for onboarding SSID
-	PasswordType              string                                                                 `json:"passwordType,omitempty"`              // SSID password type: ASCII or HEX
-	EapMethod                 string                                                                 `json:"eapMethod,omitempty"`                 // WPA2_EAP methods: EAP-FAST, PEAP-MSCHAPv2, EAP-TLS, PEAP-TLS, EAP-TTLS-MSCHAPv2, EAP-TTLS-PAP, EAP-TTLS-CHAP, EAP-FAST-GTC, EAP-PEAP-GTC
-	Scep                      *bool                                                                  `json:"scep,omitempty"`                      // Secure certificate enrollment protocol: true or false or null for not applicable
-	AuthProtocol              string                                                                 `json:"authProtocol,omitempty"`              // Auth protocol
-	Certfilename              string                                                                 `json:"certfilename,omitempty"`              // Auth certificate file name
-	Certxferprotocol          string                                                                 `json:"certxferprotocol,omitempty"`          // Certificate transfering protocol: HTTP or HTTPS
-	Certstatus                string                                                                 `json:"certstatus,omitempty"`                // Certificate status: INACTIVE or ACTIVE
-	Certpassphrase            string                                                                 `json:"certpassphrase,omitempty"`            // Certificate password phrase
-	Certdownloadurl           string                                                                 `json:"certdownloadurl,omitempty"`           // Certificate download URL
-	ExtWebAuthVirtualIP       string                                                                 `json:"extWebAuthVirtualIp,omitempty"`       // External WEB Auth virtual IP
-	ExtWebAuth                *bool                                                                  `json:"extWebAuth,omitempty"`                // Indication of using external WEB Auth
-	WhiteList                 *bool                                                                  `json:"whiteList,omitempty"`                 // Indication of being on allowed list
-	ExtWebAuthPortal          string                                                                 `json:"extWebAuthPortal,omitempty"`          // External authentication portal
-	ExtWebAuthAccessURL       string                                                                 `json:"extWebAuthAccessUrl,omitempty"`       // External WEB Auth access URL
-	ExtWebAuthHTMLTag         *[]ResponseSensorsEditSensorTestTemplateResponseSSIDsExtWebAuthHTMLTag `json:"extWebAuthHtmlTag,omitempty"`         //
-	QosPolicy                 string                                                                 `json:"qosPolicy,omitempty"`                 // QoS policy: PlATINUM, GOLD, SILVER, BRONZE
-	Tests                     *[]ResponseSensorsEditSensorTestTemplateResponseSSIDsTests             `json:"tests,omitempty"`                     //
-}
-type ResponseSensorsEditSensorTestTemplateResponseSSIDsThirdParty struct {
-	Selected *bool `json:"selected,omitempty"` // true: the SSID is third party
-}
-type ResponseSensorsEditSensorTestTemplateResponseSSIDsExtWebAuthHTMLTag struct {
-	Label string `json:"label,omitempty"` // Label
-	Tag   string `json:"tag,omitempty"`   // Tag
-	Value string `json:"value,omitempty"` // Value
-}
-type ResponseSensorsEditSensorTestTemplateResponseSSIDsTests struct {
-	Name   string                                                           `json:"name,omitempty"`   // Name of the test
-	Config *[]ResponseSensorsEditSensorTestTemplateResponseSSIDsTestsConfig `json:"config,omitempty"` //
-}
-type ResponseSensorsEditSensorTestTemplateResponseSSIDsTestsConfig struct {
-	Domains        []string `json:"domains,omitempty"`        // DNS domain name
-	Server         string   `json:"server,omitempty"`         // Ping, file transfer, mail, radius, ssh, or telnet server
-	UserName       string   `json:"userName,omitempty"`       // User name
-	Password       string   `json:"password,omitempty"`       // Password
-	URL            string   `json:"url,omitempty"`            // URL
-	Port           *int     `json:"port,omitempty"`           // Radius or WEB server port
-	Protocol       string   `json:"protocol,omitempty"`       // Protocol used by file transfer, IPerf, mail server, and radius (TCP, UDP, FTP, POP3, IMAP, CHAP, PAP)
-	Servers        []string `json:"servers,omitempty"`        // IPerf server list
-	Direction      string   `json:"direction,omitempty"`      // IPerf direction (UPLOAD, DOWNLOAD, BOTH)
-	StartPort      *int     `json:"startPort,omitempty"`      // IPerf start port
-	EndPort        *int     `json:"endPort,omitempty"`        // IPerf end port
-	UDPBandwidth   *int     `json:"udpBandwidth,omitempty"`   // IPerf UDP bandwidth
-	ProbeType      string   `json:"probeType,omitempty"`      // Probe type
-	NumPackets     *int     `json:"numPackets,omitempty"`     // Number of packets
-	PathToDownload string   `json:"pathToDownload,omitempty"` // File path for file transfer
-	TransferType   string   `json:"transferType,omitempty"`   // File transfer type (UPLOAD, DOWNLOAD, BOTH)
-	SharedSecret   string   `json:"sharedSecret,omitempty"`   // Shared secret
-	NdtServer      string   `json:"ndtServer,omitempty"`      // NDT server
-	NdtServerPort  string   `json:"ndtServerPort,omitempty"`  // NDT server port
-	NdtServerPath  string   `json:"ndtServerPath,omitempty"`  // NDT server path
-	UplinkTest     *bool    `json:"uplinkTest,omitempty"`     // Uplink test
-	DownlinkTest   *bool    `json:"downlinkTest,omitempty"`   // Downlink test
-	ProxyServer    string   `json:"proxyServer,omitempty"`    // Proxy server
-	ProxyPort      string   `json:"proxyPort,omitempty"`      // Proxy port
-	ProxyUserName  string   `json:"proxyUserName,omitempty"`  // Proxy user name
-	ProxyPassword  string   `json:"proxyPassword,omitempty"`  // Proxy password
-	UserNamePrompt string   `json:"userNamePrompt,omitempty"` // User name prompt
-	PasswordPrompt string   `json:"passwordPrompt,omitempty"` // Password prompt
-	ExitCommand    string   `json:"exitCommand,omitempty"`    // Exit command
-	FinalPrompt    string   `json:"finalPrompt,omitempty"`    // Final prompt
-}
-type ResponseSensorsEditSensorTestTemplateResponseProfiles struct {
-	AuthType            string                                                                    `json:"authType,omitempty"`            // Authentication type: OPEN, WPA2_PSK, WPA2_EAP, WEB_AUTH, MAB, DOT1X, OTHER
-	Psk                 string                                                                    `json:"psk,omitempty"`                 // Password of SSID when passwordType is ASCII
-	Username            string                                                                    `json:"username,omitempty"`            // User name string for onboarding SSID
-	Password            string                                                                    `json:"password,omitempty"`            // Password string for onboarding SSID
-	PasswordType        string                                                                    `json:"passwordType,omitempty"`        // SSID password type: ASCII or HEX
-	EapMethod           string                                                                    `json:"eapMethod,omitempty"`           // WPA2_EAP methods: EAP-FAST, PEAP-MSCHAPv2, EAP-TLS, PEAP-TLS, EAP-TTLS-MSCHAPv2, EAP-TTLS-PAP, EAP-TTLS-CHAP, EAP-FAST-GTC, EAP-PEAP-GTC
-	Scep                *bool                                                                     `json:"scep,omitempty"`                // Secure certificate enrollment protocol: true or false or null for not applicable
-	AuthProtocol        string                                                                    `json:"authProtocol,omitempty"`        // Auth protocol
-	Certfilename        string                                                                    `json:"certfilename,omitempty"`        // Auth certificate file name
-	Certxferprotocol    string                                                                    `json:"certxferprotocol,omitempty"`    // Certificate transfering protocol: HTTP or HTTPS
-	Certstatus          string                                                                    `json:"certstatus,omitempty"`          // Certificate status: INACTIVE or ACTIVE
-	Certpassphrase      string                                                                    `json:"certpassphrase,omitempty"`      // Certificate password phrase
-	Certdownloadurl     string                                                                    `json:"certdownloadurl,omitempty"`     // Certificate download URL
-	ExtWebAuthVirtualIP string                                                                    `json:"extWebAuthVirtualIp,omitempty"` // External WEB Auth virtual IP
-	ExtWebAuth          *bool                                                                     `json:"extWebAuth,omitempty"`          // Indication of using external WEB Auth
-	WhiteList           *bool                                                                     `json:"whiteList,omitempty"`           // Indication of being on allowed list
-	ExtWebAuthPortal    string                                                                    `json:"extWebAuthPortal,omitempty"`    // External authentication portal
-	ExtWebAuthAccessURL string                                                                    `json:"extWebAuthAccessUrl,omitempty"` // External WEB Auth access URL
-	ExtWebAuthHTMLTag   *[]ResponseSensorsEditSensorTestTemplateResponseProfilesExtWebAuthHTMLTag `json:"extWebAuthHtmlTag,omitempty"`   //
-	QosPolicy           string                                                                    `json:"qosPolicy,omitempty"`           // QoS policy: PlATINUM, GOLD, SILVER, BRONZE
-	Tests               *[]ResponseSensorsEditSensorTestTemplateResponseProfilesTests             `json:"tests,omitempty"`               //
-	ProfileName         string                                                                    `json:"profileName,omitempty"`         // Profile name
-	DeviceType          string                                                                    `json:"deviceType,omitempty"`          // Device Type
-	VLAN                string                                                                    `json:"vlan,omitempty"`                // VLAN
-	LocationVLANList    *[]ResponseSensorsEditSensorTestTemplateResponseProfilesLocationVLANList  `json:"locationVlanList,omitempty"`    //
-}
-type ResponseSensorsEditSensorTestTemplateResponseProfilesExtWebAuthHTMLTag struct {
-	Label string `json:"label,omitempty"` // Label
-	Tag   string `json:"tag,omitempty"`   // Tag
-	Value string `json:"value,omitempty"` // Value
-}
-type ResponseSensorsEditSensorTestTemplateResponseProfilesTests struct {
-	Name   string                                                              `json:"name,omitempty"`   // Name of the test
-	Config *[]ResponseSensorsEditSensorTestTemplateResponseProfilesTestsConfig `json:"config,omitempty"` //
-}
-type ResponseSensorsEditSensorTestTemplateResponseProfilesTestsConfig struct {
-	Domains        []string `json:"domains,omitempty"`        // DNS domain name
-	Server         string   `json:"server,omitempty"`         // Ping, file transfer, mail, radius, ssh, or telnet server
-	UserName       string   `json:"userName,omitempty"`       // User name
-	Password       string   `json:"password,omitempty"`       // Password
-	URL            string   `json:"url,omitempty"`            // URL
-	Port           *int     `json:"port,omitempty"`           // Radius or WEB server port
-	Protocol       string   `json:"protocol,omitempty"`       // Protocol used by file transfer, IPerf, mail server, and radius (TCP, UDP, FTP, POP3, IMAP, CHAP, PAP)
-	Servers        []string `json:"servers,omitempty"`        // IPerf server list
-	Direction      string   `json:"direction,omitempty"`      // IPerf direction (UPLOAD, DOWNLOAD, BOTH)
-	StartPort      *int     `json:"startPort,omitempty"`      // IPerf start port
-	EndPort        *int     `json:"endPort,omitempty"`        // IPerf end port
-	UDPBandwidth   *int     `json:"udpBandwidth,omitempty"`   // IPerf UDP bandwidth
-	ProbeType      string   `json:"probeType,omitempty"`      // Probe type
-	NumPackets     *int     `json:"numPackets,omitempty"`     // Number of packets
-	PathToDownload string   `json:"pathToDownload,omitempty"` // File path for file transfer
-	TransferType   string   `json:"transferType,omitempty"`   // File transfer type (UPLOAD, DOWNLOAD, BOTH)
-	SharedSecret   string   `json:"sharedSecret,omitempty"`   // Shared secret
-	NdtServer      string   `json:"ndtServer,omitempty"`      // NDT server
-	NdtServerPort  string   `json:"ndtServerPort,omitempty"`  // NDT server port
-	NdtServerPath  string   `json:"ndtServerPath,omitempty"`  // NDT server path
-	UplinkTest     *bool    `json:"uplinkTest,omitempty"`     // Uplink test
-	DownlinkTest   *bool    `json:"downlinkTest,omitempty"`   // Downlink test
-	ProxyServer    string   `json:"proxyServer,omitempty"`    // Proxy server
-	ProxyPort      string   `json:"proxyPort,omitempty"`      // Proxy port
-	ProxyUserName  string   `json:"proxyUserName,omitempty"`  // Proxy user name
-	ProxyPassword  string   `json:"proxyPassword,omitempty"`  // Proxy password
-	UserNamePrompt string   `json:"userNamePrompt,omitempty"` // User name prompt
-	PasswordPrompt string   `json:"passwordPrompt,omitempty"` // Password prompt
-	ExitCommand    string   `json:"exitCommand,omitempty"`    // Exit command
-	FinalPrompt    string   `json:"finalPrompt,omitempty"`    // Final prompt
-}
-type ResponseSensorsEditSensorTestTemplateResponseProfilesLocationVLANList struct {
-	LocationID string   `json:"locationId,omitempty"` // Site UUID
-	VLANs      []string `json:"vlans,omitempty"`      // Array of VLANs
-}
-type ResponseSensorsEditSensorTestTemplateResponseLocationInfoList struct {
-	LocationID           string   `json:"locationId,omitempty"`           // Site UUID
-	LocationType         string   `json:"locationType,omitempty"`         // Site type
-	AllSensors           *bool    `json:"allSensors,omitempty"`           // Use all sensors in the site for test
-	SiteHierarchy        string   `json:"siteHierarchy,omitempty"`        // Site name hierarhy
-	MacAddressList       []string `json:"macAddressList,omitempty"`       // MAC addresses
-	ManagementVLAN       string   `json:"managementVlan,omitempty"`       // Management VLAN
-	CustomManagementVLAN *bool    `json:"customManagementVlan,omitempty"` // Custom Management VLAN
-}
-type ResponseSensorsEditSensorTestTemplateResponseSensors struct {
-	Name                    string                                                                `json:"name,omitempty"`                    // Sensor name
-	MacAddress              string                                                                `json:"macAddress,omitempty"`              // MAC address
-	SwitchMac               string                                                                `json:"switchMac,omitempty"`               // Switch MAC address
-	SwitchUUID              string                                                                `json:"switchUuid,omitempty"`              // Switch device UUID
-	SwitchSerialNumber      string                                                                `json:"switchSerialNumber,omitempty"`      // Switch serial number
-	MarkedForUninstall      *bool                                                                 `json:"markedForUninstall,omitempty"`      // Is marked for uninstall
-	IPAddress               string                                                                `json:"ipAddress,omitempty"`               // IP address
-	HostName                string                                                                `json:"hostName,omitempty"`                // Host name
-	WiredApplicationStatus  string                                                                `json:"wiredApplicationStatus,omitempty"`  // Wired application status
-	WiredApplicationMessage string                                                                `json:"wiredApplicationMessage,omitempty"` // Wired application message
-	Assigned                *bool                                                                 `json:"assigned,omitempty"`                // Is assigned
-	Status                  string                                                                `json:"status,omitempty"`                  // Sensor device status: UP, DOWN, REBOOT
-	XorSensor               *bool                                                                 `json:"xorSensor,omitempty"`               // Is XOR sensor
-	TargetAPs               []string                                                              `json:"targetAPs,omitempty"`               // Array of target APs
-	RunNow                  string                                                                `json:"runNow,omitempty"`                  // Run now: YES, NO
-	LocationID              string                                                                `json:"locationId,omitempty"`              // Site UUID
-	AllSensorAddition       *bool                                                                 `json:"allSensorAddition,omitempty"`       // Is all sensor addition
-	ConfigUpdated           string                                                                `json:"configUpdated,omitempty"`           // Configuration updated: YES, NO
-	SensorType              string                                                                `json:"sensorType,omitempty"`              // Sensor type
-	TestMacAddresses        *ResponseSensorsEditSensorTestTemplateResponseSensorsTestMacAddresses `json:"testMacAddresses,omitempty"`        // A string-string test MAC address
-	ID                      string                                                                `json:"id,omitempty"`                      // Sensor ID
-	ServicePolicy           string                                                                `json:"servicePolicy,omitempty"`           // Service policy
-	IPerfInfo               *ResponseSensorsEditSensorTestTemplateResponseSensorsIPerfInfo        `json:"iPerfInfo,omitempty"`               // A string-stringList iPerf information
-}
-type ResponseSensorsEditSensorTestTemplateResponseSensorsTestMacAddresses interface{}
-type ResponseSensorsEditSensorTestTemplateResponseSensorsIPerfInfo interface{}
-type ResponseSensorsEditSensorTestTemplateResponseApCoverage struct {
-	Bands             string `json:"bands,omitempty"`             // The WIFI bands
-	NumberOfApsToTest *int   `json:"numberOfApsToTest,omitempty"` // Number of APs to test
-	RssiThreshold     *int   `json:"rssiThreshold,omitempty"`     // RSSI threshold
-}
-type ResponseSensorsCreateSensorTestTemplate struct {
+type ResponseSensorsEditSensorTestTemplateV1 struct {
 	Version  string                                           `json:"version,omitempty"`  // Version
-	Response *ResponseSensorsCreateSensorTestTemplateResponse `json:"response,omitempty"` //
+	Response *ResponseSensorsEditSensorTestTemplateV1Response `json:"response,omitempty"` //
 }
-type ResponseSensorsCreateSensorTestTemplateResponse struct {
+type ResponseSensorsEditSensorTestTemplateV1Response struct {
 	Name                   string                                                             `json:"name,omitempty"`                   // The sensor test template name
-	TypeID                 string                                                             `json:"_id,omitempty"`                    // (Used in edit only) The sensor test template unique identifier
+	TypeID                 string                                                             `json:"_id,omitempty"`                    // The sensor test template unique identifier
 	Version                *int                                                               `json:"version,omitempty"`                // The sensor test template version (must be 2)
 	ModelVersion           *int                                                               `json:"modelVersion,omitempty"`           // Test template object model version (must be 2)
 	StartTime              *int                                                               `json:"startTime,omitempty"`              // Start time
@@ -271,27 +34,27 @@ type ResponseSensorsCreateSensorTestTemplateResponse struct {
 	Status                 string                                                             `json:"status,omitempty"`                 // Status of the test (RUNNING, NOTRUNNING)
 	Connection             string                                                             `json:"connection,omitempty"`             // connection type of test: WIRED, WIRELESS, BOTH
 	ActionInProgress       string                                                             `json:"actionInProgress,omitempty"`       // Indication of inprogress action
-	Frequency              *ResponseSensorsCreateSensorTestTemplateResponseFrequency          `json:"frequency,omitempty"`              //
+	Frequency              *ResponseSensorsEditSensorTestTemplateV1ResponseFrequency          `json:"frequency,omitempty"`              //
 	RssiThreshold          *int                                                               `json:"rssiThreshold,omitempty"`          // RSSI threshold
 	NumNeighborApThreshold *int                                                               `json:"numNeighborAPThreshold,omitempty"` // Number of neighboring AP threshold
 	ScheduleInDays         *int                                                               `json:"scheduleInDays,omitempty"`         // Bit-wise value of scheduled test days
 	WLANs                  []string                                                           `json:"wlans,omitempty"`                  // WLANs list
-	SSIDs                  *[]ResponseSensorsCreateSensorTestTemplateResponseSSIDs            `json:"ssids,omitempty"`                  //
-	Profiles               *[]ResponseSensorsCreateSensorTestTemplateResponseProfiles         `json:"profiles,omitempty"`               //
+	SSIDs                  *[]ResponseSensorsEditSensorTestTemplateV1ResponseSSIDs            `json:"ssids,omitempty"`                  //
+	Profiles               *[]ResponseSensorsEditSensorTestTemplateV1ResponseProfiles         `json:"profiles,omitempty"`               //
 	TestScheduleMode       string                                                             `json:"testScheduleMode,omitempty"`       // Test schedule mode (ONDEMAND, DEDICATED, SCHEDULED, CONTINUOUS, RUNNOW)
 	ShowWlcUpgradeBanner   *bool                                                              `json:"showWlcUpgradeBanner,omitempty"`   // Show WLC upgrade banner
 	RadioAsSensorRemoved   *bool                                                              `json:"radioAsSensorRemoved,omitempty"`   // Radio as sensor removed
 	EncryptionMode         string                                                             `json:"encryptionMode,omitempty"`         // Encryption mode
 	RunNow                 string                                                             `json:"runNow,omitempty"`                 // Run now (YES, NO)
-	LocationInfoList       *[]ResponseSensorsCreateSensorTestTemplateResponseLocationInfoList `json:"locationInfoList,omitempty"`       //
-	Sensors                *[]ResponseSensorsCreateSensorTestTemplateResponseSensors          `json:"sensors,omitempty"`                //
-	ApCoverage             *[]ResponseSensorsCreateSensorTestTemplateResponseApCoverage       `json:"apCoverage,omitempty"`             //
+	LocationInfoList       *[]ResponseSensorsEditSensorTestTemplateV1ResponseLocationInfoList `json:"locationInfoList,omitempty"`       //
+	Sensors                *[]ResponseSensorsEditSensorTestTemplateV1ResponseSensors          `json:"sensors,omitempty"`                //
+	ApCoverage             *[]ResponseSensorsEditSensorTestTemplateV1ResponseApCoverage       `json:"apCoverage,omitempty"`             //
 }
-type ResponseSensorsCreateSensorTestTemplateResponseFrequency struct {
+type ResponseSensorsEditSensorTestTemplateV1ResponseFrequency struct {
 	Value *int   `json:"value,omitempty"` // Value of the unit
 	Unit  string `json:"unit,omitempty"`  // Unit of the time value (NANOSECONDS, MICROSECONDS, MILLISECONDS, SECONDS, MINUTES, HOURS, DAYS)
 }
-type ResponseSensorsCreateSensorTestTemplateResponseSSIDs struct {
+type ResponseSensorsEditSensorTestTemplateV1ResponseSSIDs struct {
 	Bands                     string                                                                   `json:"bands,omitempty"`                     // WIFI bands: 2.4GHz or 5GHz
 	SSID                      string                                                                   `json:"ssid,omitempty"`                      // The SSID string
 	ProfileName               string                                                                   `json:"profileName,omitempty"`               // The SSID profile name string
@@ -301,7 +64,7 @@ type ResponseSensorsCreateSensorTestTemplateResponseSSIDs struct {
 	Layer3WebAuthuserName     string                                                                   `json:"layer3webAuthuserName,omitempty"`     // Layer 3 WEB Auth user name
 	Layer3WebAuthpassword     string                                                                   `json:"layer3webAuthpassword,omitempty"`     // Layer 3 WEB Auth password
 	Layer3WebAuthEmailAddress string                                                                   `json:"layer3webAuthEmailAddress,omitempty"` // Layer 3 WEB Auth email address
-	ThirdParty                *ResponseSensorsCreateSensorTestTemplateResponseSSIDsThirdParty          `json:"thirdParty,omitempty"`                //
+	ThirdParty                *ResponseSensorsEditSensorTestTemplateV1ResponseSSIDsThirdParty          `json:"thirdParty,omitempty"`                //
 	ID                        *int                                                                     `json:"id,omitempty"`                        // Identification number
 	WLANID                    *int                                                                     `json:"wlanId,omitempty"`                    // WLAN ID
 	Wlc                       string                                                                   `json:"wlc,omitempty"`                       // WLC IP addres
@@ -312,7 +75,7 @@ type ResponseSensorsCreateSensorTestTemplateResponseSSIDs struct {
 	ProxyPort                 string                                                                   `json:"proxyPort,omitempty"`                 // Proxy server port
 	ProxyUserName             string                                                                   `json:"proxyUserName,omitempty"`             // Proxy server user name
 	ProxyPassword             string                                                                   `json:"proxyPassword,omitempty"`             // Proxy server password
-	AuthType                  string                                                                   `json:"authType,omitempty"`                  // Authentication type: OPEN, WPA2_PSK, WPA2_EaP, WEB_AUTH, MAB, DOT1X, OTHER
+	AuthType                  string                                                                   `json:"authType,omitempty"`                  // Authentication type: OPEN, WPA2_PSK, WPA2_EAP, WEB_AUTH, MAB, DOT1X, OTHER
 	Psk                       string                                                                   `json:"psk,omitempty"`                       // Password of SSID when passwordType is ASCII
 	Username                  string                                                                   `json:"username,omitempty"`                  // User name string for onboarding SSID
 	Password                  string                                                                   `json:"password,omitempty"`                  // Password string for onboarding SSID
@@ -330,23 +93,23 @@ type ResponseSensorsCreateSensorTestTemplateResponseSSIDs struct {
 	WhiteList                 *bool                                                                    `json:"whiteList,omitempty"`                 // Indication of being on allowed list
 	ExtWebAuthPortal          string                                                                   `json:"extWebAuthPortal,omitempty"`          // External authentication portal
 	ExtWebAuthAccessURL       string                                                                   `json:"extWebAuthAccessUrl,omitempty"`       // External WEB Auth access URL
-	ExtWebAuthHTMLTag         *[]ResponseSensorsCreateSensorTestTemplateResponseSSIDsExtWebAuthHTMLTag `json:"extWebAuthHtmlTag,omitempty"`         //
+	ExtWebAuthHTMLTag         *[]ResponseSensorsEditSensorTestTemplateV1ResponseSSIDsExtWebAuthHTMLTag `json:"extWebAuthHtmlTag,omitempty"`         //
 	QosPolicy                 string                                                                   `json:"qosPolicy,omitempty"`                 // QoS policy: PlATINUM, GOLD, SILVER, BRONZE
-	Tests                     *[]ResponseSensorsCreateSensorTestTemplateResponseSSIDsTests             `json:"tests,omitempty"`                     //
+	Tests                     *[]ResponseSensorsEditSensorTestTemplateV1ResponseSSIDsTests             `json:"tests,omitempty"`                     //
 }
-type ResponseSensorsCreateSensorTestTemplateResponseSSIDsThirdParty struct {
+type ResponseSensorsEditSensorTestTemplateV1ResponseSSIDsThirdParty struct {
 	Selected *bool `json:"selected,omitempty"` // true: the SSID is third party
 }
-type ResponseSensorsCreateSensorTestTemplateResponseSSIDsExtWebAuthHTMLTag struct {
+type ResponseSensorsEditSensorTestTemplateV1ResponseSSIDsExtWebAuthHTMLTag struct {
 	Label string `json:"label,omitempty"` // Label
 	Tag   string `json:"tag,omitempty"`   // Tag
 	Value string `json:"value,omitempty"` // Value
 }
-type ResponseSensorsCreateSensorTestTemplateResponseSSIDsTests struct {
+type ResponseSensorsEditSensorTestTemplateV1ResponseSSIDsTests struct {
 	Name   string                                                             `json:"name,omitempty"`   // Name of the test
-	Config *[]ResponseSensorsCreateSensorTestTemplateResponseSSIDsTestsConfig `json:"config,omitempty"` //
+	Config *[]ResponseSensorsEditSensorTestTemplateV1ResponseSSIDsTestsConfig `json:"config,omitempty"` //
 }
-type ResponseSensorsCreateSensorTestTemplateResponseSSIDsTestsConfig struct {
+type ResponseSensorsEditSensorTestTemplateV1ResponseSSIDsTestsConfig struct {
 	Domains        []string `json:"domains,omitempty"`        // DNS domain name
 	Server         string   `json:"server,omitempty"`         // Ping, file transfer, mail, radius, ssh, or telnet server
 	UserName       string   `json:"userName,omitempty"`       // User name
@@ -378,8 +141,8 @@ type ResponseSensorsCreateSensorTestTemplateResponseSSIDsTestsConfig struct {
 	ExitCommand    string   `json:"exitCommand,omitempty"`    // Exit command
 	FinalPrompt    string   `json:"finalPrompt,omitempty"`    // Final prompt
 }
-type ResponseSensorsCreateSensorTestTemplateResponseProfiles struct {
-	AuthType            string                                                                      `json:"authType,omitempty"`            // Authentication type: OPEN, WPA2_PSK, WPA2_EaP, WEB_AUTH, MAB, DOT1X, OTHER
+type ResponseSensorsEditSensorTestTemplateV1ResponseProfiles struct {
+	AuthType            string                                                                      `json:"authType,omitempty"`            // Authentication type: OPEN, WPA2_PSK, WPA2_EAP, WEB_AUTH, MAB, DOT1X, OTHER
 	Psk                 string                                                                      `json:"psk,omitempty"`                 // Password of SSID when passwordType is ASCII
 	Username            string                                                                      `json:"username,omitempty"`            // User name string for onboarding SSID
 	Password            string                                                                      `json:"password,omitempty"`            // Password string for onboarding SSID
@@ -397,24 +160,24 @@ type ResponseSensorsCreateSensorTestTemplateResponseProfiles struct {
 	WhiteList           *bool                                                                       `json:"whiteList,omitempty"`           // Indication of being on allowed list
 	ExtWebAuthPortal    string                                                                      `json:"extWebAuthPortal,omitempty"`    // External authentication portal
 	ExtWebAuthAccessURL string                                                                      `json:"extWebAuthAccessUrl,omitempty"` // External WEB Auth access URL
-	ExtWebAuthHTMLTag   *[]ResponseSensorsCreateSensorTestTemplateResponseProfilesExtWebAuthHTMLTag `json:"extWebAuthHtmlTag,omitempty"`   //
+	ExtWebAuthHTMLTag   *[]ResponseSensorsEditSensorTestTemplateV1ResponseProfilesExtWebAuthHTMLTag `json:"extWebAuthHtmlTag,omitempty"`   //
 	QosPolicy           string                                                                      `json:"qosPolicy,omitempty"`           // QoS policy: PlATINUM, GOLD, SILVER, BRONZE
-	Tests               *[]ResponseSensorsCreateSensorTestTemplateResponseProfilesTests             `json:"tests,omitempty"`               //
+	Tests               *[]ResponseSensorsEditSensorTestTemplateV1ResponseProfilesTests             `json:"tests,omitempty"`               //
 	ProfileName         string                                                                      `json:"profileName,omitempty"`         // Profile name
 	DeviceType          string                                                                      `json:"deviceType,omitempty"`          // Device Type
 	VLAN                string                                                                      `json:"vlan,omitempty"`                // VLAN
-	LocationVLANList    *[]ResponseSensorsCreateSensorTestTemplateResponseProfilesLocationVLANList  `json:"locationVlanList,omitempty"`    //
+	LocationVLANList    *[]ResponseSensorsEditSensorTestTemplateV1ResponseProfilesLocationVLANList  `json:"locationVlanList,omitempty"`    //
 }
-type ResponseSensorsCreateSensorTestTemplateResponseProfilesExtWebAuthHTMLTag struct {
+type ResponseSensorsEditSensorTestTemplateV1ResponseProfilesExtWebAuthHTMLTag struct {
 	Label string `json:"label,omitempty"` // Label
 	Tag   string `json:"tag,omitempty"`   // Tag
 	Value string `json:"value,omitempty"` // Value
 }
-type ResponseSensorsCreateSensorTestTemplateResponseProfilesTests struct {
+type ResponseSensorsEditSensorTestTemplateV1ResponseProfilesTests struct {
 	Name   string                                                                `json:"name,omitempty"`   // Name of the test
-	Config *[]ResponseSensorsCreateSensorTestTemplateResponseProfilesTestsConfig `json:"config,omitempty"` //
+	Config *[]ResponseSensorsEditSensorTestTemplateV1ResponseProfilesTestsConfig `json:"config,omitempty"` //
 }
-type ResponseSensorsCreateSensorTestTemplateResponseProfilesTestsConfig struct {
+type ResponseSensorsEditSensorTestTemplateV1ResponseProfilesTestsConfig struct {
 	Domains        []string `json:"domains,omitempty"`        // DNS domain name
 	Server         string   `json:"server,omitempty"`         // Ping, file transfer, mail, radius, ssh, or telnet server
 	UserName       string   `json:"userName,omitempty"`       // User name
@@ -446,11 +209,11 @@ type ResponseSensorsCreateSensorTestTemplateResponseProfilesTestsConfig struct {
 	ExitCommand    string   `json:"exitCommand,omitempty"`    // Exit command
 	FinalPrompt    string   `json:"finalPrompt,omitempty"`    // Final prompt
 }
-type ResponseSensorsCreateSensorTestTemplateResponseProfilesLocationVLANList struct {
+type ResponseSensorsEditSensorTestTemplateV1ResponseProfilesLocationVLANList struct {
 	LocationID string   `json:"locationId,omitempty"` // Site UUID
 	VLANs      []string `json:"vlans,omitempty"`      // Array of VLANs
 }
-type ResponseSensorsCreateSensorTestTemplateResponseLocationInfoList struct {
+type ResponseSensorsEditSensorTestTemplateV1ResponseLocationInfoList struct {
 	LocationID           string   `json:"locationId,omitempty"`           // Site UUID
 	LocationType         string   `json:"locationType,omitempty"`         // Site type
 	AllSensors           *bool    `json:"allSensors,omitempty"`           // Use all sensors in the site for test
@@ -459,7 +222,7 @@ type ResponseSensorsCreateSensorTestTemplateResponseLocationInfoList struct {
 	ManagementVLAN       string   `json:"managementVlan,omitempty"`       // Management VLAN
 	CustomManagementVLAN *bool    `json:"customManagementVlan,omitempty"` // Custom Management VLAN
 }
-type ResponseSensorsCreateSensorTestTemplateResponseSensors struct {
+type ResponseSensorsEditSensorTestTemplateV1ResponseSensors struct {
 	Name                    string                                                                  `json:"name,omitempty"`                    // Sensor name
 	MacAddress              string                                                                  `json:"macAddress,omitempty"`              // MAC address
 	SwitchMac               string                                                                  `json:"switchMac,omitempty"`               // Switch MAC address
@@ -479,144 +242,381 @@ type ResponseSensorsCreateSensorTestTemplateResponseSensors struct {
 	AllSensorAddition       *bool                                                                   `json:"allSensorAddition,omitempty"`       // Is all sensor addition
 	ConfigUpdated           string                                                                  `json:"configUpdated,omitempty"`           // Configuration updated: YES, NO
 	SensorType              string                                                                  `json:"sensorType,omitempty"`              // Sensor type
-	TestMacAddresses        *ResponseSensorsCreateSensorTestTemplateResponseSensorsTestMacAddresses `json:"testMacAddresses,omitempty"`        // A string-string test MAC address
+	TestMacAddresses        *ResponseSensorsEditSensorTestTemplateV1ResponseSensorsTestMacAddresses `json:"testMacAddresses,omitempty"`        // A string-string test MAC address
 	ID                      string                                                                  `json:"id,omitempty"`                      // Sensor ID
 	ServicePolicy           string                                                                  `json:"servicePolicy,omitempty"`           // Service policy
-	IPerfInfo               *ResponseSensorsCreateSensorTestTemplateResponseSensorsIPerfInfo        `json:"iPerfInfo,omitempty"`               // A string-stringList iPerf information
+	IPerfInfo               *ResponseSensorsEditSensorTestTemplateV1ResponseSensorsIPerfInfo        `json:"iPerfInfo,omitempty"`               // A string-stringList iPerf information
 }
-type ResponseSensorsCreateSensorTestTemplateResponseSensorsTestMacAddresses interface{}
-type ResponseSensorsCreateSensorTestTemplateResponseSensorsIPerfInfo interface{}
-type ResponseSensorsCreateSensorTestTemplateResponseApCoverage struct {
+type ResponseSensorsEditSensorTestTemplateV1ResponseSensorsTestMacAddresses interface{}
+type ResponseSensorsEditSensorTestTemplateV1ResponseSensorsIPerfInfo interface{}
+type ResponseSensorsEditSensorTestTemplateV1ResponseApCoverage struct {
 	Bands             string `json:"bands,omitempty"`             // The WIFI bands
 	NumberOfApsToTest *int   `json:"numberOfApsToTest,omitempty"` // Number of APs to test
 	RssiThreshold     *int   `json:"rssiThreshold,omitempty"`     // RSSI threshold
 }
-type ResponseSensorsDeleteSensorTest struct {
-	Version  string                                   `json:"version,omitempty"`  // Version
-	Response *ResponseSensorsDeleteSensorTestResponse `json:"response,omitempty"` //
+type ResponseSensorsCreateSensorTestTemplateV1 struct {
+	Version  string                                             `json:"version,omitempty"`  // Version
+	Response *ResponseSensorsCreateSensorTestTemplateV1Response `json:"response,omitempty"` //
 }
-type ResponseSensorsDeleteSensorTestResponse struct {
+type ResponseSensorsCreateSensorTestTemplateV1Response struct {
+	Name                   string                                                               `json:"name,omitempty"`                   // The sensor test template name
+	TypeID                 string                                                               `json:"_id,omitempty"`                    // (Used in edit only) The sensor test template unique identifier
+	Version                *int                                                                 `json:"version,omitempty"`                // The sensor test template version (must be 2)
+	ModelVersion           *int                                                                 `json:"modelVersion,omitempty"`           // Test template object model version (must be 2)
+	StartTime              *int                                                                 `json:"startTime,omitempty"`              // Start time
+	LastModifiedTime       *int                                                                 `json:"lastModifiedTime,omitempty"`       // Last modify time
+	NumAssociatedSensor    *int                                                                 `json:"numAssociatedSensor,omitempty"`    // Number of associated sensor
+	Location               string                                                               `json:"location,omitempty"`               // Location string
+	SiteHierarchy          string                                                               `json:"siteHierarchy,omitempty"`          // Site hierarchy
+	Status                 string                                                               `json:"status,omitempty"`                 // Status of the test (RUNNING, NOTRUNNING)
+	Connection             string                                                               `json:"connection,omitempty"`             // connection type of test: WIRED, WIRELESS, BOTH
+	ActionInProgress       string                                                               `json:"actionInProgress,omitempty"`       // Indication of inprogress action
+	Frequency              *ResponseSensorsCreateSensorTestTemplateV1ResponseFrequency          `json:"frequency,omitempty"`              //
+	RssiThreshold          *int                                                                 `json:"rssiThreshold,omitempty"`          // RSSI threshold
+	NumNeighborApThreshold *int                                                                 `json:"numNeighborAPThreshold,omitempty"` // Number of neighboring AP threshold
+	ScheduleInDays         *int                                                                 `json:"scheduleInDays,omitempty"`         // Bit-wise value of scheduled test days
+	WLANs                  []string                                                             `json:"wlans,omitempty"`                  // WLANs list
+	SSIDs                  *[]ResponseSensorsCreateSensorTestTemplateV1ResponseSSIDs            `json:"ssids,omitempty"`                  //
+	Profiles               *[]ResponseSensorsCreateSensorTestTemplateV1ResponseProfiles         `json:"profiles,omitempty"`               //
+	TestScheduleMode       string                                                               `json:"testScheduleMode,omitempty"`       // Test schedule mode (ONDEMAND, DEDICATED, SCHEDULED, CONTINUOUS, RUNNOW)
+	ShowWlcUpgradeBanner   *bool                                                                `json:"showWlcUpgradeBanner,omitempty"`   // Show WLC upgrade banner
+	RadioAsSensorRemoved   *bool                                                                `json:"radioAsSensorRemoved,omitempty"`   // Radio as sensor removed
+	EncryptionMode         string                                                               `json:"encryptionMode,omitempty"`         // Encryption mode
+	RunNow                 string                                                               `json:"runNow,omitempty"`                 // Run now (YES, NO)
+	LocationInfoList       *[]ResponseSensorsCreateSensorTestTemplateV1ResponseLocationInfoList `json:"locationInfoList,omitempty"`       //
+	Sensors                *[]ResponseSensorsCreateSensorTestTemplateV1ResponseSensors          `json:"sensors,omitempty"`                //
+	ApCoverage             *[]ResponseSensorsCreateSensorTestTemplateV1ResponseApCoverage       `json:"apCoverage,omitempty"`             //
+}
+type ResponseSensorsCreateSensorTestTemplateV1ResponseFrequency struct {
+	Value *int   `json:"value,omitempty"` // Value of the unit
+	Unit  string `json:"unit,omitempty"`  // Unit of the time value (NANOSECONDS, MICROSECONDS, MILLISECONDS, SECONDS, MINUTES, HOURS, DAYS)
+}
+type ResponseSensorsCreateSensorTestTemplateV1ResponseSSIDs struct {
+	Bands                     string                                                                     `json:"bands,omitempty"`                     // WIFI bands: 2.4GHz or 5GHz
+	SSID                      string                                                                     `json:"ssid,omitempty"`                      // The SSID string
+	ProfileName               string                                                                     `json:"profileName,omitempty"`               // The SSID profile name string
+	NumAps                    *int                                                                       `json:"numAps,omitempty"`                    // Number of APs in the test
+	NumSensors                *int                                                                       `json:"numSensors,omitempty"`                // Number of Sensors in the test
+	Layer3WebAuthsecurity     string                                                                     `json:"layer3webAuthsecurity,omitempty"`     // Layer 3 WEB Auth security
+	Layer3WebAuthuserName     string                                                                     `json:"layer3webAuthuserName,omitempty"`     // Layer 3 WEB Auth user name
+	Layer3WebAuthpassword     string                                                                     `json:"layer3webAuthpassword,omitempty"`     // Layer 3 WEB Auth password
+	Layer3WebAuthEmailAddress string                                                                     `json:"layer3webAuthEmailAddress,omitempty"` // Layer 3 WEB Auth email address
+	ThirdParty                *ResponseSensorsCreateSensorTestTemplateV1ResponseSSIDsThirdParty          `json:"thirdParty,omitempty"`                //
+	ID                        *int                                                                       `json:"id,omitempty"`                        // Identification number
+	WLANID                    *int                                                                       `json:"wlanId,omitempty"`                    // WLAN ID
+	Wlc                       string                                                                     `json:"wlc,omitempty"`                       // WLC IP addres
+	ValidFrom                 *int                                                                       `json:"validFrom,omitempty"`                 // Valid From UTC timestamp
+	ValidTo                   *int                                                                       `json:"validTo,omitempty"`                   // Valid To UTC timestamp
+	Status                    string                                                                     `json:"status,omitempty"`                    // WLAN status: ENABLED or DISABLED
+	ProxyServer               string                                                                     `json:"proxyServer,omitempty"`               // Proxy server for onboarding SSID
+	ProxyPort                 string                                                                     `json:"proxyPort,omitempty"`                 // Proxy server port
+	ProxyUserName             string                                                                     `json:"proxyUserName,omitempty"`             // Proxy server user name
+	ProxyPassword             string                                                                     `json:"proxyPassword,omitempty"`             // Proxy server password
+	AuthType                  string                                                                     `json:"authType,omitempty"`                  // Authentication type: OPEN, WPA2_PSK, WPA2_EaP, WEB_AUTH, MAB, DOT1X, OTHER
+	Psk                       string                                                                     `json:"psk,omitempty"`                       // Password of SSID when passwordType is ASCII
+	Username                  string                                                                     `json:"username,omitempty"`                  // User name string for onboarding SSID
+	Password                  string                                                                     `json:"password,omitempty"`                  // Password string for onboarding SSID
+	PasswordType              string                                                                     `json:"passwordType,omitempty"`              // SSID password type: ASCII or HEX
+	EapMethod                 string                                                                     `json:"eapMethod,omitempty"`                 // WPA2_EAP methods: EAP-FAST, PEAP-MSCHAPv2, EAP-TLS, PEAP-TLS, EAP-TTLS-MSCHAPv2, EAP-TTLS-PAP, EAP-TTLS-CHAP, EAP-FAST-GTC, EAP-PEAP-GTC
+	Scep                      *bool                                                                      `json:"scep,omitempty"`                      // Secure certificate enrollment protocol: true or false or null for not applicable
+	AuthProtocol              string                                                                     `json:"authProtocol,omitempty"`              // Auth protocol
+	Certfilename              string                                                                     `json:"certfilename,omitempty"`              // Auth certificate file name
+	Certxferprotocol          string                                                                     `json:"certxferprotocol,omitempty"`          // Certificate transfering protocol: HTTP or HTTPS
+	Certstatus                string                                                                     `json:"certstatus,omitempty"`                // Certificate status: INACTIVE or ACTIVE
+	Certpassphrase            string                                                                     `json:"certpassphrase,omitempty"`            // Certificate password phrase
+	Certdownloadurl           string                                                                     `json:"certdownloadurl,omitempty"`           // Certificate download URL
+	ExtWebAuthVirtualIP       string                                                                     `json:"extWebAuthVirtualIp,omitempty"`       // External WEB Auth virtual IP
+	ExtWebAuth                *bool                                                                      `json:"extWebAuth,omitempty"`                // Indication of using external WEB Auth
+	WhiteList                 *bool                                                                      `json:"whiteList,omitempty"`                 // Indication of being on allowed list
+	ExtWebAuthPortal          string                                                                     `json:"extWebAuthPortal,omitempty"`          // External authentication portal
+	ExtWebAuthAccessURL       string                                                                     `json:"extWebAuthAccessUrl,omitempty"`       // External WEB Auth access URL
+	ExtWebAuthHTMLTag         *[]ResponseSensorsCreateSensorTestTemplateV1ResponseSSIDsExtWebAuthHTMLTag `json:"extWebAuthHtmlTag,omitempty"`         //
+	QosPolicy                 string                                                                     `json:"qosPolicy,omitempty"`                 // QoS policy: PlATINUM, GOLD, SILVER, BRONZE
+	Tests                     *[]ResponseSensorsCreateSensorTestTemplateV1ResponseSSIDsTests             `json:"tests,omitempty"`                     //
+}
+type ResponseSensorsCreateSensorTestTemplateV1ResponseSSIDsThirdParty struct {
+	Selected *bool `json:"selected,omitempty"` // true: the SSID is third party
+}
+type ResponseSensorsCreateSensorTestTemplateV1ResponseSSIDsExtWebAuthHTMLTag struct {
+	Label string `json:"label,omitempty"` // Label
+	Tag   string `json:"tag,omitempty"`   // Tag
+	Value string `json:"value,omitempty"` // Value
+}
+type ResponseSensorsCreateSensorTestTemplateV1ResponseSSIDsTests struct {
+	Name   string                                                               `json:"name,omitempty"`   // Name of the test
+	Config *[]ResponseSensorsCreateSensorTestTemplateV1ResponseSSIDsTestsConfig `json:"config,omitempty"` //
+}
+type ResponseSensorsCreateSensorTestTemplateV1ResponseSSIDsTestsConfig struct {
+	Domains        []string `json:"domains,omitempty"`        // DNS domain name
+	Server         string   `json:"server,omitempty"`         // Ping, file transfer, mail, radius, ssh, or telnet server
+	UserName       string   `json:"userName,omitempty"`       // User name
+	Password       string   `json:"password,omitempty"`       // Password
+	URL            string   `json:"url,omitempty"`            // URL
+	Port           *int     `json:"port,omitempty"`           // Radius or WEB server port
+	Protocol       string   `json:"protocol,omitempty"`       // Protocol used by file transfer, IPerf, mail server, and radius (TCP, UDP, FTP, POP3, IMAP, CHAP, PAP)
+	Servers        []string `json:"servers,omitempty"`        // IPerf server list
+	Direction      string   `json:"direction,omitempty"`      // IPerf direction (UPLOAD, DOWNLOAD, BOTH)
+	StartPort      *int     `json:"startPort,omitempty"`      // IPerf start port
+	EndPort        *int     `json:"endPort,omitempty"`        // IPerf end port
+	UDPBandwidth   *int     `json:"udpBandwidth,omitempty"`   // IPerf UDP bandwidth
+	ProbeType      string   `json:"probeType,omitempty"`      // Probe type
+	NumPackets     *int     `json:"numPackets,omitempty"`     // Number of packets
+	PathToDownload string   `json:"pathToDownload,omitempty"` // File path for file transfer
+	TransferType   string   `json:"transferType,omitempty"`   // File transfer type (UPLOAD, DOWNLOAD, BOTH)
+	SharedSecret   string   `json:"sharedSecret,omitempty"`   // Shared secret
+	NdtServer      string   `json:"ndtServer,omitempty"`      // NDT server
+	NdtServerPort  string   `json:"ndtServerPort,omitempty"`  // NDT server port
+	NdtServerPath  string   `json:"ndtServerPath,omitempty"`  // NDT server path
+	UplinkTest     *bool    `json:"uplinkTest,omitempty"`     // Uplink test
+	DownlinkTest   *bool    `json:"downlinkTest,omitempty"`   // Downlink test
+	ProxyServer    string   `json:"proxyServer,omitempty"`    // Proxy server
+	ProxyPort      string   `json:"proxyPort,omitempty"`      // Proxy port
+	ProxyUserName  string   `json:"proxyUserName,omitempty"`  // Proxy user name
+	ProxyPassword  string   `json:"proxyPassword,omitempty"`  // Proxy password
+	UserNamePrompt string   `json:"userNamePrompt,omitempty"` // User name prompt
+	PasswordPrompt string   `json:"passwordPrompt,omitempty"` // Password prompt
+	ExitCommand    string   `json:"exitCommand,omitempty"`    // Exit command
+	FinalPrompt    string   `json:"finalPrompt,omitempty"`    // Final prompt
+}
+type ResponseSensorsCreateSensorTestTemplateV1ResponseProfiles struct {
+	AuthType            string                                                                        `json:"authType,omitempty"`            // Authentication type: OPEN, WPA2_PSK, WPA2_EaP, WEB_AUTH, MAB, DOT1X, OTHER
+	Psk                 string                                                                        `json:"psk,omitempty"`                 // Password of SSID when passwordType is ASCII
+	Username            string                                                                        `json:"username,omitempty"`            // User name string for onboarding SSID
+	Password            string                                                                        `json:"password,omitempty"`            // Password string for onboarding SSID
+	PasswordType        string                                                                        `json:"passwordType,omitempty"`        // SSID password type: ASCII or HEX
+	EapMethod           string                                                                        `json:"eapMethod,omitempty"`           // WPA2_EAP methods: EAP-FAST, PEAP-MSCHAPv2, EAP-TLS, PEAP-TLS, EAP-TTLS-MSCHAPv2, EAP-TTLS-PAP, EAP-TTLS-CHAP, EAP-FAST-GTC, EAP-PEAP-GTC
+	Scep                *bool                                                                         `json:"scep,omitempty"`                // Secure certificate enrollment protocol: true or false or null for not applicable
+	AuthProtocol        string                                                                        `json:"authProtocol,omitempty"`        // Auth protocol
+	Certfilename        string                                                                        `json:"certfilename,omitempty"`        // Auth certificate file name
+	Certxferprotocol    string                                                                        `json:"certxferprotocol,omitempty"`    // Certificate transfering protocol: HTTP or HTTPS
+	Certstatus          string                                                                        `json:"certstatus,omitempty"`          // Certificate status: INACTIVE or ACTIVE
+	Certpassphrase      string                                                                        `json:"certpassphrase,omitempty"`      // Certificate password phrase
+	Certdownloadurl     string                                                                        `json:"certdownloadurl,omitempty"`     // Certificate download URL
+	ExtWebAuthVirtualIP string                                                                        `json:"extWebAuthVirtualIp,omitempty"` // External WEB Auth virtual IP
+	ExtWebAuth          *bool                                                                         `json:"extWebAuth,omitempty"`          // Indication of using external WEB Auth
+	WhiteList           *bool                                                                         `json:"whiteList,omitempty"`           // Indication of being on allowed list
+	ExtWebAuthPortal    string                                                                        `json:"extWebAuthPortal,omitempty"`    // External authentication portal
+	ExtWebAuthAccessURL string                                                                        `json:"extWebAuthAccessUrl,omitempty"` // External WEB Auth access URL
+	ExtWebAuthHTMLTag   *[]ResponseSensorsCreateSensorTestTemplateV1ResponseProfilesExtWebAuthHTMLTag `json:"extWebAuthHtmlTag,omitempty"`   //
+	QosPolicy           string                                                                        `json:"qosPolicy,omitempty"`           // QoS policy: PlATINUM, GOLD, SILVER, BRONZE
+	Tests               *[]ResponseSensorsCreateSensorTestTemplateV1ResponseProfilesTests             `json:"tests,omitempty"`               //
+	ProfileName         string                                                                        `json:"profileName,omitempty"`         // Profile name
+	DeviceType          string                                                                        `json:"deviceType,omitempty"`          // Device Type
+	VLAN                string                                                                        `json:"vlan,omitempty"`                // VLAN
+	LocationVLANList    *[]ResponseSensorsCreateSensorTestTemplateV1ResponseProfilesLocationVLANList  `json:"locationVlanList,omitempty"`    //
+}
+type ResponseSensorsCreateSensorTestTemplateV1ResponseProfilesExtWebAuthHTMLTag struct {
+	Label string `json:"label,omitempty"` // Label
+	Tag   string `json:"tag,omitempty"`   // Tag
+	Value string `json:"value,omitempty"` // Value
+}
+type ResponseSensorsCreateSensorTestTemplateV1ResponseProfilesTests struct {
+	Name   string                                                                  `json:"name,omitempty"`   // Name of the test
+	Config *[]ResponseSensorsCreateSensorTestTemplateV1ResponseProfilesTestsConfig `json:"config,omitempty"` //
+}
+type ResponseSensorsCreateSensorTestTemplateV1ResponseProfilesTestsConfig struct {
+	Domains        []string `json:"domains,omitempty"`        // DNS domain name
+	Server         string   `json:"server,omitempty"`         // Ping, file transfer, mail, radius, ssh, or telnet server
+	UserName       string   `json:"userName,omitempty"`       // User name
+	Password       string   `json:"password,omitempty"`       // Password
+	URL            string   `json:"url,omitempty"`            // URL
+	Port           *int     `json:"port,omitempty"`           // Radius or WEB server port
+	Protocol       string   `json:"protocol,omitempty"`       // Protocol used by file transfer, IPerf, mail server, and radius (TCP, UDP, FTP, POP3, IMAP, CHAP, PAP)
+	Servers        []string `json:"servers,omitempty"`        // IPerf server list
+	Direction      string   `json:"direction,omitempty"`      // IPerf direction (UPLOAD, DOWNLOAD, BOTH)
+	StartPort      *int     `json:"startPort,omitempty"`      // IPerf start port
+	EndPort        *int     `json:"endPort,omitempty"`        // IPerf end port
+	UDPBandwidth   *int     `json:"udpBandwidth,omitempty"`   // IPerf UDP bandwidth
+	ProbeType      string   `json:"probeType,omitempty"`      // Probe type
+	NumPackets     *int     `json:"numPackets,omitempty"`     // Number of packets
+	PathToDownload string   `json:"pathToDownload,omitempty"` // File path for file transfer
+	TransferType   string   `json:"transferType,omitempty"`   // File transfer type (UPLOAD, DOWNLOAD, BOTH)
+	SharedSecret   string   `json:"sharedSecret,omitempty"`   // Shared secret
+	NdtServer      string   `json:"ndtServer,omitempty"`      // NDT server
+	NdtServerPort  string   `json:"ndtServerPort,omitempty"`  // NDT server port
+	NdtServerPath  string   `json:"ndtServerPath,omitempty"`  // NDT server path
+	UplinkTest     *bool    `json:"uplinkTest,omitempty"`     // Uplink test
+	DownlinkTest   *bool    `json:"downlinkTest,omitempty"`   // Downlink test
+	ProxyServer    string   `json:"proxyServer,omitempty"`    // Proxy server
+	ProxyPort      string   `json:"proxyPort,omitempty"`      // Proxy port
+	ProxyUserName  string   `json:"proxyUserName,omitempty"`  // Proxy user name
+	ProxyPassword  string   `json:"proxyPassword,omitempty"`  // Proxy password
+	UserNamePrompt string   `json:"userNamePrompt,omitempty"` // User name prompt
+	PasswordPrompt string   `json:"passwordPrompt,omitempty"` // Password prompt
+	ExitCommand    string   `json:"exitCommand,omitempty"`    // Exit command
+	FinalPrompt    string   `json:"finalPrompt,omitempty"`    // Final prompt
+}
+type ResponseSensorsCreateSensorTestTemplateV1ResponseProfilesLocationVLANList struct {
+	LocationID string   `json:"locationId,omitempty"` // Site UUID
+	VLANs      []string `json:"vlans,omitempty"`      // Array of VLANs
+}
+type ResponseSensorsCreateSensorTestTemplateV1ResponseLocationInfoList struct {
+	LocationID           string   `json:"locationId,omitempty"`           // Site UUID
+	LocationType         string   `json:"locationType,omitempty"`         // Site type
+	AllSensors           *bool    `json:"allSensors,omitempty"`           // Use all sensors in the site for test
+	SiteHierarchy        string   `json:"siteHierarchy,omitempty"`        // Site name hierarhy
+	MacAddressList       []string `json:"macAddressList,omitempty"`       // MAC addresses
+	ManagementVLAN       string   `json:"managementVlan,omitempty"`       // Management VLAN
+	CustomManagementVLAN *bool    `json:"customManagementVlan,omitempty"` // Custom Management VLAN
+}
+type ResponseSensorsCreateSensorTestTemplateV1ResponseSensors struct {
+	Name                    string                                                                    `json:"name,omitempty"`                    // Sensor name
+	MacAddress              string                                                                    `json:"macAddress,omitempty"`              // MAC address
+	SwitchMac               string                                                                    `json:"switchMac,omitempty"`               // Switch MAC address
+	SwitchUUID              string                                                                    `json:"switchUuid,omitempty"`              // Switch device UUID
+	SwitchSerialNumber      string                                                                    `json:"switchSerialNumber,omitempty"`      // Switch serial number
+	MarkedForUninstall      *bool                                                                     `json:"markedForUninstall,omitempty"`      // Is marked for uninstall
+	IPAddress               string                                                                    `json:"ipAddress,omitempty"`               // IP address
+	HostName                string                                                                    `json:"hostName,omitempty"`                // Host name
+	WiredApplicationStatus  string                                                                    `json:"wiredApplicationStatus,omitempty"`  // Wired application status
+	WiredApplicationMessage string                                                                    `json:"wiredApplicationMessage,omitempty"` // Wired application message
+	Assigned                *bool                                                                     `json:"assigned,omitempty"`                // Is assigned
+	Status                  string                                                                    `json:"status,omitempty"`                  // Sensor device status: UP, DOWN, REBOOT
+	XorSensor               *bool                                                                     `json:"xorSensor,omitempty"`               // Is XOR sensor
+	TargetAPs               []string                                                                  `json:"targetAPs,omitempty"`               // Array of target APs
+	RunNow                  string                                                                    `json:"runNow,omitempty"`                  // Run now: YES, NO
+	LocationID              string                                                                    `json:"locationId,omitempty"`              // Site UUID
+	AllSensorAddition       *bool                                                                     `json:"allSensorAddition,omitempty"`       // Is all sensor addition
+	ConfigUpdated           string                                                                    `json:"configUpdated,omitempty"`           // Configuration updated: YES, NO
+	SensorType              string                                                                    `json:"sensorType,omitempty"`              // Sensor type
+	TestMacAddresses        *ResponseSensorsCreateSensorTestTemplateV1ResponseSensorsTestMacAddresses `json:"testMacAddresses,omitempty"`        // A string-string test MAC address
+	ID                      string                                                                    `json:"id,omitempty"`                      // Sensor ID
+	ServicePolicy           string                                                                    `json:"servicePolicy,omitempty"`           // Service policy
+	IPerfInfo               *ResponseSensorsCreateSensorTestTemplateV1ResponseSensorsIPerfInfo        `json:"iPerfInfo,omitempty"`               // A string-stringList iPerf information
+}
+type ResponseSensorsCreateSensorTestTemplateV1ResponseSensorsTestMacAddresses interface{}
+type ResponseSensorsCreateSensorTestTemplateV1ResponseSensorsIPerfInfo interface{}
+type ResponseSensorsCreateSensorTestTemplateV1ResponseApCoverage struct {
+	Bands             string `json:"bands,omitempty"`             // The WIFI bands
+	NumberOfApsToTest *int   `json:"numberOfApsToTest,omitempty"` // Number of APs to test
+	RssiThreshold     *int   `json:"rssiThreshold,omitempty"`     // RSSI threshold
+}
+type ResponseSensorsDeleteSensorTestV1 struct {
+	Version  string                                     `json:"version,omitempty"`  // Version
+	Response *ResponseSensorsDeleteSensorTestV1Response `json:"response,omitempty"` //
+}
+type ResponseSensorsDeleteSensorTestV1Response struct {
 	TemplateName string `json:"templateName,omitempty"` // Test template name to be delete
 	Status       string `json:"status,omitempty"`       // Status of the DELETE action
 }
-type ResponseSensorsSensors struct {
-	Version  string                            `json:"version,omitempty"`  // Version string of this API
-	Response *[]ResponseSensorsSensorsResponse `json:"response,omitempty"` //
+type ResponseSensorsSensorsV1 struct {
+	Version  string                              `json:"version,omitempty"`  // Version string of this API
+	Response *[]ResponseSensorsSensorsV1Response `json:"response,omitempty"` //
 }
-type ResponseSensorsSensorsResponse struct {
-	Name               string                             `json:"name,omitempty"`               // The sensor device name
-	Status             string                             `json:"status,omitempty"`             // Status of sensor device (REACHABLE, UNREACHABLE, DELETED, RUNNING, IDLE, UCLAIMED)
-	RadioMacAddress    string                             `json:"radioMacAddress,omitempty"`    // Sensor device's radio MAC address
-	EthernetMacAddress string                             `json:"ethernetMacAddress,omitempty"` // Sensor device's ethernet MAC address
-	Location           string                             `json:"location,omitempty"`           // Site name in hierarchy form
-	BackhaulType       string                             `json:"backhaulType,omitempty"`       // Backhall type: WIRED, WIRELESS
-	SerialNumber       string                             `json:"serialNumber,omitempty"`       // Serial number
-	IPAddress          string                             `json:"ipAddress,omitempty"`          // IP Address
-	Version            string                             `json:"version,omitempty"`            // Sensor version
-	LastSeen           *int                               `json:"lastSeen,omitempty"`           // Last seen timestamp
-	Type               string                             `json:"type,omitempty"`               // Type
-	SSH                *ResponseSensorsSensorsResponseSSH `json:"ssh,omitempty"`                //
-	Led                *bool                              `json:"led,omitempty"`                // Is LED Enabled
+type ResponseSensorsSensorsV1Response struct {
+	Name               string                               `json:"name,omitempty"`               // The sensor device name
+	Status             string                               `json:"status,omitempty"`             // Status of sensor device (REACHABLE, UNREACHABLE, DELETED, RUNNING, IDLE, UCLAIMED)
+	RadioMacAddress    string                               `json:"radioMacAddress,omitempty"`    // Sensor device's radio MAC address
+	EthernetMacAddress string                               `json:"ethernetMacAddress,omitempty"` // Sensor device's ethernet MAC address
+	Location           string                               `json:"location,omitempty"`           // Site name in hierarchy form
+	BackhaulType       string                               `json:"backhaulType,omitempty"`       // Backhall type: WIRED, WIRELESS
+	SerialNumber       string                               `json:"serialNumber,omitempty"`       // Serial number
+	IPAddress          string                               `json:"ipAddress,omitempty"`          // IP Address
+	Version            string                               `json:"version,omitempty"`            // Sensor version
+	LastSeen           *int                                 `json:"lastSeen,omitempty"`           // Last seen timestamp
+	Type               string                               `json:"type,omitempty"`               // Type
+	SSH                *ResponseSensorsSensorsV1ResponseSSH `json:"ssh,omitempty"`                //
+	Led                *bool                                `json:"led,omitempty"`                // Is LED Enabled
 }
-type ResponseSensorsSensorsResponseSSH struct {
+type ResponseSensorsSensorsV1ResponseSSH struct {
 	SSHState       string `json:"sshState,omitempty"`       // SSH state
 	SSHUserName    string `json:"sshUserName,omitempty"`    // SSH user name
 	SSHPassword    string `json:"sshPassword,omitempty"`    // SSH password
 	EnablePassword string `json:"enablePassword,omitempty"` // Enable password
 }
-type ResponseSensorsDuplicateSensorTestTemplate struct {
-	Version  string                                              `json:"version,omitempty"`  // Version
-	Response *ResponseSensorsDuplicateSensorTestTemplateResponse `json:"response,omitempty"` //
+type ResponseSensorsDuplicateSensorTestTemplateV1 struct {
+	Version  string                                                `json:"version,omitempty"`  // Version
+	Response *ResponseSensorsDuplicateSensorTestTemplateV1Response `json:"response,omitempty"` //
 }
-type ResponseSensorsDuplicateSensorTestTemplateResponse struct {
-	Name                   string                                                                `json:"name,omitempty"`                   // The sensor test template name
-	TypeID                 string                                                                `json:"_id,omitempty"`                    // The sensor test template unique identifier
-	Version                *int                                                                  `json:"version,omitempty"`                // The sensor test template version (must be 2)
-	ModelVersion           *int                                                                  `json:"modelVersion,omitempty"`           // Test template object model version (must be 2)
-	StartTime              *int                                                                  `json:"startTime,omitempty"`              // Start time
-	LastModifiedTime       *int                                                                  `json:"lastModifiedTime,omitempty"`       // Last modify time
-	NumAssociatedSensor    *int                                                                  `json:"numAssociatedSensor,omitempty"`    // Number of associated sensor
-	Location               string                                                                `json:"location,omitempty"`               // Location string
-	SiteHierarchy          string                                                                `json:"siteHierarchy,omitempty"`          // Site hierarchy
-	Status                 string                                                                `json:"status,omitempty"`                 // Status of the test (RUNNING, NOTRUNNING)
-	Connection             string                                                                `json:"connection,omitempty"`             // connection type of test: WIRED, WIRELESS, BOTH
-	ActionInProgress       string                                                                `json:"actionInProgress,omitempty"`       // Indication of inprogress action
-	Frequency              *ResponseSensorsDuplicateSensorTestTemplateResponseFrequency          `json:"frequency,omitempty"`              //
-	RssiThreshold          *int                                                                  `json:"rssiThreshold,omitempty"`          // RSSI threshold
-	NumNeighborApThreshold *int                                                                  `json:"numNeighborAPThreshold,omitempty"` // Number of neighboring AP threshold
-	ScheduleInDays         *int                                                                  `json:"scheduleInDays,omitempty"`         // Bit-wise value of scheduled test days
-	WLANs                  []string                                                              `json:"wlans,omitempty"`                  // WLANs list
-	SSIDs                  *[]ResponseSensorsDuplicateSensorTestTemplateResponseSSIDs            `json:"ssids,omitempty"`                  //
-	Profiles               *[]ResponseSensorsDuplicateSensorTestTemplateResponseProfiles         `json:"profiles,omitempty"`               //
-	TestScheduleMode       string                                                                `json:"testScheduleMode,omitempty"`       // Test schedule mode (ONDEMAND, DEDICATED, SCHEDULED, CONTINUOUS, RUNNOW)
-	ShowWlcUpgradeBanner   *bool                                                                 `json:"showWlcUpgradeBanner,omitempty"`   // Show WLC upgrade banner
-	RadioAsSensorRemoved   *bool                                                                 `json:"radioAsSensorRemoved,omitempty"`   // Radio as sensor removed
-	EncryptionMode         string                                                                `json:"encryptionMode,omitempty"`         // Encryption mode
-	RunNow                 string                                                                `json:"runNow,omitempty"`                 // Run now (YES, NO)
-	LocationInfoList       *[]ResponseSensorsDuplicateSensorTestTemplateResponseLocationInfoList `json:"locationInfoList,omitempty"`       //
-	Sensors                *[]ResponseSensorsDuplicateSensorTestTemplateResponseSensors          `json:"sensors,omitempty"`                //
-	ApCoverage             *[]ResponseSensorsDuplicateSensorTestTemplateResponseApCoverage       `json:"apCoverage,omitempty"`             //
+type ResponseSensorsDuplicateSensorTestTemplateV1Response struct {
+	Name                   string                                                                  `json:"name,omitempty"`                   // The sensor test template name
+	TypeID                 string                                                                  `json:"_id,omitempty"`                    // The sensor test template unique identifier
+	Version                *int                                                                    `json:"version,omitempty"`                // The sensor test template version (must be 2)
+	ModelVersion           *int                                                                    `json:"modelVersion,omitempty"`           // Test template object model version (must be 2)
+	StartTime              *int                                                                    `json:"startTime,omitempty"`              // Start time
+	LastModifiedTime       *int                                                                    `json:"lastModifiedTime,omitempty"`       // Last modify time
+	NumAssociatedSensor    *int                                                                    `json:"numAssociatedSensor,omitempty"`    // Number of associated sensor
+	Location               string                                                                  `json:"location,omitempty"`               // Location string
+	SiteHierarchy          string                                                                  `json:"siteHierarchy,omitempty"`          // Site hierarchy
+	Status                 string                                                                  `json:"status,omitempty"`                 // Status of the test (RUNNING, NOTRUNNING)
+	Connection             string                                                                  `json:"connection,omitempty"`             // connection type of test: WIRED, WIRELESS, BOTH
+	ActionInProgress       string                                                                  `json:"actionInProgress,omitempty"`       // Indication of inprogress action
+	Frequency              *ResponseSensorsDuplicateSensorTestTemplateV1ResponseFrequency          `json:"frequency,omitempty"`              //
+	RssiThreshold          *int                                                                    `json:"rssiThreshold,omitempty"`          // RSSI threshold
+	NumNeighborApThreshold *int                                                                    `json:"numNeighborAPThreshold,omitempty"` // Number of neighboring AP threshold
+	ScheduleInDays         *int                                                                    `json:"scheduleInDays,omitempty"`         // Bit-wise value of scheduled test days
+	WLANs                  []string                                                                `json:"wlans,omitempty"`                  // WLANs list
+	SSIDs                  *[]ResponseSensorsDuplicateSensorTestTemplateV1ResponseSSIDs            `json:"ssids,omitempty"`                  //
+	Profiles               *[]ResponseSensorsDuplicateSensorTestTemplateV1ResponseProfiles         `json:"profiles,omitempty"`               //
+	TestScheduleMode       string                                                                  `json:"testScheduleMode,omitempty"`       // Test schedule mode (ONDEMAND, DEDICATED, SCHEDULED, CONTINUOUS, RUNNOW)
+	ShowWlcUpgradeBanner   *bool                                                                   `json:"showWlcUpgradeBanner,omitempty"`   // Show WLC upgrade banner
+	RadioAsSensorRemoved   *bool                                                                   `json:"radioAsSensorRemoved,omitempty"`   // Radio as sensor removed
+	EncryptionMode         string                                                                  `json:"encryptionMode,omitempty"`         // Encryption mode
+	RunNow                 string                                                                  `json:"runNow,omitempty"`                 // Run now (YES, NO)
+	LocationInfoList       *[]ResponseSensorsDuplicateSensorTestTemplateV1ResponseLocationInfoList `json:"locationInfoList,omitempty"`       //
+	Sensors                *[]ResponseSensorsDuplicateSensorTestTemplateV1ResponseSensors          `json:"sensors,omitempty"`                //
+	ApCoverage             *[]ResponseSensorsDuplicateSensorTestTemplateV1ResponseApCoverage       `json:"apCoverage,omitempty"`             //
 }
-type ResponseSensorsDuplicateSensorTestTemplateResponseFrequency struct {
+type ResponseSensorsDuplicateSensorTestTemplateV1ResponseFrequency struct {
 	Value *int   `json:"value,omitempty"` // Value of the unit
 	Unit  string `json:"unit,omitempty"`  // Unit of the time value (NANOSECONDS, MICROSECONDS, MILLISECONDS, SECONDS, MINUTES, HOURS, DAYS)
 }
-type ResponseSensorsDuplicateSensorTestTemplateResponseSSIDs struct {
-	Bands                     string                                                                      `json:"bands,omitempty"`                     // WIFI bands: 2.4GHz or 5GHz
-	SSID                      string                                                                      `json:"ssid,omitempty"`                      // The SSID string
-	ProfileName               string                                                                      `json:"profileName,omitempty"`               // The SSID profile name string
-	NumAps                    *int                                                                        `json:"numAps,omitempty"`                    // Number of APs in the test
-	NumSensors                *int                                                                        `json:"numSensors,omitempty"`                // Number of Sensors in the test
-	Layer3WebAuthsecurity     string                                                                      `json:"layer3webAuthsecurity,omitempty"`     // Layer 3 WEB Auth security
-	Layer3WebAuthuserName     string                                                                      `json:"layer3webAuthuserName,omitempty"`     // Layer 3 WEB Auth user name
-	Layer3WebAuthpassword     string                                                                      `json:"layer3webAuthpassword,omitempty"`     // Layer 3 WEB Auth password
-	Layer3WebAuthEmailAddress string                                                                      `json:"layer3webAuthEmailAddress,omitempty"` // Layer 3 WEB Auth email address
-	ThirdParty                *ResponseSensorsDuplicateSensorTestTemplateResponseSSIDsThirdParty          `json:"thirdParty,omitempty"`                //
-	ID                        *int                                                                        `json:"id,omitempty"`                        // Identification number
-	WLANID                    *int                                                                        `json:"wlanId,omitempty"`                    // WLAN ID
-	Wlc                       string                                                                      `json:"wlc,omitempty"`                       // WLC IP addres
-	ValidFrom                 *int                                                                        `json:"validFrom,omitempty"`                 // Valid From UTC timestamp
-	ValidTo                   *int                                                                        `json:"validTo,omitempty"`                   // Valid To UTC timestamp
-	Status                    string                                                                      `json:"status,omitempty"`                    // WLAN status: ENABLED or DISABLED
-	ProxyServer               string                                                                      `json:"proxyServer,omitempty"`               // Proxy server for onboarding SSID
-	ProxyPort                 string                                                                      `json:"proxyPort,omitempty"`                 // Proxy server port
-	ProxyUserName             string                                                                      `json:"proxyUserName,omitempty"`             // Proxy server user name
-	ProxyPassword             string                                                                      `json:"proxyPassword,omitempty"`             // Proxy server password
-	AuthType                  string                                                                      `json:"authType,omitempty"`                  // Authentication type: OPEN, WPA2_PSK, WPA2_EaP, WEB_AUTH, MAB, DOT1X, OTHER
-	Psk                       string                                                                      `json:"psk,omitempty"`                       // Password of SSID when passwordType is ASCII
-	Username                  string                                                                      `json:"username,omitempty"`                  // User name string for onboarding SSID
-	Password                  string                                                                      `json:"password,omitempty"`                  // Password string for onboarding SSID
-	PasswordType              string                                                                      `json:"passwordType,omitempty"`              // SSID password type: ASCII or HEX
-	EapMethod                 string                                                                      `json:"eapMethod,omitempty"`                 // WPA2_EAP methods: EAP-FAST, PEAP-MSCHAPv2, EAP-TLS, PEAP-TLS, EAP-TTLS-MSCHAPv2, EAP-TTLS-PAP, EAP-TTLS-CHAP, EAP-FAST-GTC, EAP-PEAP-GTC
-	Scep                      *bool                                                                       `json:"scep,omitempty"`                      // Secure certificate enrollment protocol: true or false or null for not applicable
-	AuthProtocol              string                                                                      `json:"authProtocol,omitempty"`              // Auth protocol
-	Certfilename              string                                                                      `json:"certfilename,omitempty"`              // Auth certificate file name
-	Certxferprotocol          string                                                                      `json:"certxferprotocol,omitempty"`          // Certificate transfering protocol: HTTP or HTTPS
-	Certstatus                string                                                                      `json:"certstatus,omitempty"`                // Certificate status: INACTIVE or ACTIVE
-	Certpassphrase            string                                                                      `json:"certpassphrase,omitempty"`            // Certificate password phrase
-	Certdownloadurl           string                                                                      `json:"certdownloadurl,omitempty"`           // Certificate download URL
-	ExtWebAuthVirtualIP       string                                                                      `json:"extWebAuthVirtualIp,omitempty"`       // External WEB Auth virtual IP
-	ExtWebAuth                *bool                                                                       `json:"extWebAuth,omitempty"`                // Indication of using external WEB Auth
-	WhiteList                 *bool                                                                       `json:"whiteList,omitempty"`                 // Indication of being on allowed list
-	ExtWebAuthPortal          string                                                                      `json:"extWebAuthPortal,omitempty"`          // External authentication portal
-	ExtWebAuthAccessURL       string                                                                      `json:"extWebAuthAccessUrl,omitempty"`       // External WEB Auth access URL
-	ExtWebAuthHTMLTag         *[]ResponseSensorsDuplicateSensorTestTemplateResponseSSIDsExtWebAuthHTMLTag `json:"extWebAuthHtmlTag,omitempty"`         //
-	QosPolicy                 string                                                                      `json:"qosPolicy,omitempty"`                 // QoS policy: PlATINUM, GOLD, SILVER, BRONZE
-	Tests                     *[]ResponseSensorsDuplicateSensorTestTemplateResponseSSIDsTests             `json:"tests,omitempty"`                     //
+type ResponseSensorsDuplicateSensorTestTemplateV1ResponseSSIDs struct {
+	Bands                     string                                                                        `json:"bands,omitempty"`                     // WIFI bands: 2.4GHz or 5GHz
+	SSID                      string                                                                        `json:"ssid,omitempty"`                      // The SSID string
+	ProfileName               string                                                                        `json:"profileName,omitempty"`               // The SSID profile name string
+	NumAps                    *int                                                                          `json:"numAps,omitempty"`                    // Number of APs in the test
+	NumSensors                *int                                                                          `json:"numSensors,omitempty"`                // Number of Sensors in the test
+	Layer3WebAuthsecurity     string                                                                        `json:"layer3webAuthsecurity,omitempty"`     // Layer 3 WEB Auth security
+	Layer3WebAuthuserName     string                                                                        `json:"layer3webAuthuserName,omitempty"`     // Layer 3 WEB Auth user name
+	Layer3WebAuthpassword     string                                                                        `json:"layer3webAuthpassword,omitempty"`     // Layer 3 WEB Auth password
+	Layer3WebAuthEmailAddress string                                                                        `json:"layer3webAuthEmailAddress,omitempty"` // Layer 3 WEB Auth email address
+	ThirdParty                *ResponseSensorsDuplicateSensorTestTemplateV1ResponseSSIDsThirdParty          `json:"thirdParty,omitempty"`                //
+	ID                        *int                                                                          `json:"id,omitempty"`                        // Identification number
+	WLANID                    *int                                                                          `json:"wlanId,omitempty"`                    // WLAN ID
+	Wlc                       string                                                                        `json:"wlc,omitempty"`                       // WLC IP addres
+	ValidFrom                 *int                                                                          `json:"validFrom,omitempty"`                 // Valid From UTC timestamp
+	ValidTo                   *int                                                                          `json:"validTo,omitempty"`                   // Valid To UTC timestamp
+	Status                    string                                                                        `json:"status,omitempty"`                    // WLAN status: ENABLED or DISABLED
+	ProxyServer               string                                                                        `json:"proxyServer,omitempty"`               // Proxy server for onboarding SSID
+	ProxyPort                 string                                                                        `json:"proxyPort,omitempty"`                 // Proxy server port
+	ProxyUserName             string                                                                        `json:"proxyUserName,omitempty"`             // Proxy server user name
+	ProxyPassword             string                                                                        `json:"proxyPassword,omitempty"`             // Proxy server password
+	AuthType                  string                                                                        `json:"authType,omitempty"`                  // Authentication type: OPEN, WPA2_PSK, WPA2_EaP, WEB_AUTH, MAB, DOT1X, OTHER
+	Psk                       string                                                                        `json:"psk,omitempty"`                       // Password of SSID when passwordType is ASCII
+	Username                  string                                                                        `json:"username,omitempty"`                  // User name string for onboarding SSID
+	Password                  string                                                                        `json:"password,omitempty"`                  // Password string for onboarding SSID
+	PasswordType              string                                                                        `json:"passwordType,omitempty"`              // SSID password type: ASCII or HEX
+	EapMethod                 string                                                                        `json:"eapMethod,omitempty"`                 // WPA2_EAP methods: EAP-FAST, PEAP-MSCHAPv2, EAP-TLS, PEAP-TLS, EAP-TTLS-MSCHAPv2, EAP-TTLS-PAP, EAP-TTLS-CHAP, EAP-FAST-GTC, EAP-PEAP-GTC
+	Scep                      *bool                                                                         `json:"scep,omitempty"`                      // Secure certificate enrollment protocol: true or false or null for not applicable
+	AuthProtocol              string                                                                        `json:"authProtocol,omitempty"`              // Auth protocol
+	Certfilename              string                                                                        `json:"certfilename,omitempty"`              // Auth certificate file name
+	Certxferprotocol          string                                                                        `json:"certxferprotocol,omitempty"`          // Certificate transfering protocol: HTTP or HTTPS
+	Certstatus                string                                                                        `json:"certstatus,omitempty"`                // Certificate status: INACTIVE or ACTIVE
+	Certpassphrase            string                                                                        `json:"certpassphrase,omitempty"`            // Certificate password phrase
+	Certdownloadurl           string                                                                        `json:"certdownloadurl,omitempty"`           // Certificate download URL
+	ExtWebAuthVirtualIP       string                                                                        `json:"extWebAuthVirtualIp,omitempty"`       // External WEB Auth virtual IP
+	ExtWebAuth                *bool                                                                         `json:"extWebAuth,omitempty"`                // Indication of using external WEB Auth
+	WhiteList                 *bool                                                                         `json:"whiteList,omitempty"`                 // Indication of being on allowed list
+	ExtWebAuthPortal          string                                                                        `json:"extWebAuthPortal,omitempty"`          // External authentication portal
+	ExtWebAuthAccessURL       string                                                                        `json:"extWebAuthAccessUrl,omitempty"`       // External WEB Auth access URL
+	ExtWebAuthHTMLTag         *[]ResponseSensorsDuplicateSensorTestTemplateV1ResponseSSIDsExtWebAuthHTMLTag `json:"extWebAuthHtmlTag,omitempty"`         //
+	QosPolicy                 string                                                                        `json:"qosPolicy,omitempty"`                 // QoS policy: PlATINUM, GOLD, SILVER, BRONZE
+	Tests                     *[]ResponseSensorsDuplicateSensorTestTemplateV1ResponseSSIDsTests             `json:"tests,omitempty"`                     //
 }
-type ResponseSensorsDuplicateSensorTestTemplateResponseSSIDsThirdParty struct {
+type ResponseSensorsDuplicateSensorTestTemplateV1ResponseSSIDsThirdParty struct {
 	Selected *bool `json:"selected,omitempty"` // true: the SSID is third party
 }
-type ResponseSensorsDuplicateSensorTestTemplateResponseSSIDsExtWebAuthHTMLTag struct {
+type ResponseSensorsDuplicateSensorTestTemplateV1ResponseSSIDsExtWebAuthHTMLTag struct {
 	Label string `json:"label,omitempty"` // Label
 	Tag   string `json:"tag,omitempty"`   // Tag
 	Value string `json:"value,omitempty"` // Value
 }
-type ResponseSensorsDuplicateSensorTestTemplateResponseSSIDsTests struct {
-	Name   string                                                                `json:"name,omitempty"`   // Name of the test
-	Config *[]ResponseSensorsDuplicateSensorTestTemplateResponseSSIDsTestsConfig `json:"config,omitempty"` //
+type ResponseSensorsDuplicateSensorTestTemplateV1ResponseSSIDsTests struct {
+	Name   string                                                                  `json:"name,omitempty"`   // Name of the test
+	Config *[]ResponseSensorsDuplicateSensorTestTemplateV1ResponseSSIDsTestsConfig `json:"config,omitempty"` //
 }
-type ResponseSensorsDuplicateSensorTestTemplateResponseSSIDsTestsConfig struct {
+type ResponseSensorsDuplicateSensorTestTemplateV1ResponseSSIDsTestsConfig struct {
 	Domains        []string `json:"domains,omitempty"`        // DNS domain name
 	Server         string   `json:"server,omitempty"`         // Ping, file transfer, mail, radius, ssh, or telnet server
 	UserName       string   `json:"userName,omitempty"`       // User name
@@ -648,43 +648,43 @@ type ResponseSensorsDuplicateSensorTestTemplateResponseSSIDsTestsConfig struct {
 	ExitCommand    string   `json:"exitCommand,omitempty"`    // Exit command
 	FinalPrompt    string   `json:"finalPrompt,omitempty"`    // Final prompt
 }
-type ResponseSensorsDuplicateSensorTestTemplateResponseProfiles struct {
-	AuthType            string                                                                         `json:"authType,omitempty"`            // Authentication type: OPEN, WPA2_PSK, WPA2_EaP, WEB_AUTH, MAB, DOT1X, OTHER
-	Psk                 string                                                                         `json:"psk,omitempty"`                 // Password of SSID when passwordType is ASCII
-	Username            string                                                                         `json:"username,omitempty"`            // User name string for onboarding SSID
-	Password            string                                                                         `json:"password,omitempty"`            // Password string for onboarding SSID
-	PasswordType        string                                                                         `json:"passwordType,omitempty"`        // SSID password type: ASCII or HEX
-	EapMethod           string                                                                         `json:"eapMethod,omitempty"`           // WPA2_EAP methods: EAP-FAST, PEAP-MSCHAPv2, EAP-TLS, PEAP-TLS, EAP-TTLS-MSCHAPv2, EAP-TTLS-PAP, EAP-TTLS-CHAP, EAP-FAST-GTC, EAP-PEAP-GTC
-	Scep                *bool                                                                          `json:"scep,omitempty"`                // Secure certificate enrollment protocol: true or false or null for not applicable
-	AuthProtocol        string                                                                         `json:"authProtocol,omitempty"`        // Auth protocol
-	Certfilename        string                                                                         `json:"certfilename,omitempty"`        // Auth certificate file name
-	Certxferprotocol    string                                                                         `json:"certxferprotocol,omitempty"`    // Certificate transfering protocol: HTTP or HTTPS
-	Certstatus          string                                                                         `json:"certstatus,omitempty"`          // Certificate status: INACTIVE or ACTIVE
-	Certpassphrase      string                                                                         `json:"certpassphrase,omitempty"`      // Certificate password phrase
-	Certdownloadurl     string                                                                         `json:"certdownloadurl,omitempty"`     // Certificate download URL
-	ExtWebAuthVirtualIP string                                                                         `json:"extWebAuthVirtualIp,omitempty"` // External WEB Auth virtual IP
-	ExtWebAuth          *bool                                                                          `json:"extWebAuth,omitempty"`          // Indication of using external WEB Auth
-	WhiteList           *bool                                                                          `json:"whiteList,omitempty"`           // Indication of being on allowed list
-	ExtWebAuthPortal    string                                                                         `json:"extWebAuthPortal,omitempty"`    // External authentication portal
-	ExtWebAuthAccessURL string                                                                         `json:"extWebAuthAccessUrl,omitempty"` // External WEB Auth access URL
-	ExtWebAuthHTMLTag   *[]ResponseSensorsDuplicateSensorTestTemplateResponseProfilesExtWebAuthHTMLTag `json:"extWebAuthHtmlTag,omitempty"`   //
-	QosPolicy           string                                                                         `json:"qosPolicy,omitempty"`           // QoS policy: PlATINUM, GOLD, SILVER, BRONZE
-	Tests               *[]ResponseSensorsDuplicateSensorTestTemplateResponseProfilesTests             `json:"tests,omitempty"`               //
-	ProfileName         string                                                                         `json:"profileName,omitempty"`         // Profile name
-	DeviceType          string                                                                         `json:"deviceType,omitempty"`          // Device Type
-	VLAN                string                                                                         `json:"vlan,omitempty"`                // VLAN
-	LocationVLANList    *[]ResponseSensorsDuplicateSensorTestTemplateResponseProfilesLocationVLANList  `json:"locationVlanList,omitempty"`    //
+type ResponseSensorsDuplicateSensorTestTemplateV1ResponseProfiles struct {
+	AuthType            string                                                                           `json:"authType,omitempty"`            // Authentication type: OPEN, WPA2_PSK, WPA2_EaP, WEB_AUTH, MAB, DOT1X, OTHER
+	Psk                 string                                                                           `json:"psk,omitempty"`                 // Password of SSID when passwordType is ASCII
+	Username            string                                                                           `json:"username,omitempty"`            // User name string for onboarding SSID
+	Password            string                                                                           `json:"password,omitempty"`            // Password string for onboarding SSID
+	PasswordType        string                                                                           `json:"passwordType,omitempty"`        // SSID password type: ASCII or HEX
+	EapMethod           string                                                                           `json:"eapMethod,omitempty"`           // WPA2_EAP methods: EAP-FAST, PEAP-MSCHAPv2, EAP-TLS, PEAP-TLS, EAP-TTLS-MSCHAPv2, EAP-TTLS-PAP, EAP-TTLS-CHAP, EAP-FAST-GTC, EAP-PEAP-GTC
+	Scep                *bool                                                                            `json:"scep,omitempty"`                // Secure certificate enrollment protocol: true or false or null for not applicable
+	AuthProtocol        string                                                                           `json:"authProtocol,omitempty"`        // Auth protocol
+	Certfilename        string                                                                           `json:"certfilename,omitempty"`        // Auth certificate file name
+	Certxferprotocol    string                                                                           `json:"certxferprotocol,omitempty"`    // Certificate transfering protocol: HTTP or HTTPS
+	Certstatus          string                                                                           `json:"certstatus,omitempty"`          // Certificate status: INACTIVE or ACTIVE
+	Certpassphrase      string                                                                           `json:"certpassphrase,omitempty"`      // Certificate password phrase
+	Certdownloadurl     string                                                                           `json:"certdownloadurl,omitempty"`     // Certificate download URL
+	ExtWebAuthVirtualIP string                                                                           `json:"extWebAuthVirtualIp,omitempty"` // External WEB Auth virtual IP
+	ExtWebAuth          *bool                                                                            `json:"extWebAuth,omitempty"`          // Indication of using external WEB Auth
+	WhiteList           *bool                                                                            `json:"whiteList,omitempty"`           // Indication of being on allowed list
+	ExtWebAuthPortal    string                                                                           `json:"extWebAuthPortal,omitempty"`    // External authentication portal
+	ExtWebAuthAccessURL string                                                                           `json:"extWebAuthAccessUrl,omitempty"` // External WEB Auth access URL
+	ExtWebAuthHTMLTag   *[]ResponseSensorsDuplicateSensorTestTemplateV1ResponseProfilesExtWebAuthHTMLTag `json:"extWebAuthHtmlTag,omitempty"`   //
+	QosPolicy           string                                                                           `json:"qosPolicy,omitempty"`           // QoS policy: PlATINUM, GOLD, SILVER, BRONZE
+	Tests               *[]ResponseSensorsDuplicateSensorTestTemplateV1ResponseProfilesTests             `json:"tests,omitempty"`               //
+	ProfileName         string                                                                           `json:"profileName,omitempty"`         // Profile name
+	DeviceType          string                                                                           `json:"deviceType,omitempty"`          // Device Type
+	VLAN                string                                                                           `json:"vlan,omitempty"`                // VLAN
+	LocationVLANList    *[]ResponseSensorsDuplicateSensorTestTemplateV1ResponseProfilesLocationVLANList  `json:"locationVlanList,omitempty"`    //
 }
-type ResponseSensorsDuplicateSensorTestTemplateResponseProfilesExtWebAuthHTMLTag struct {
+type ResponseSensorsDuplicateSensorTestTemplateV1ResponseProfilesExtWebAuthHTMLTag struct {
 	Label string `json:"label,omitempty"` // Label
 	Tag   string `json:"tag,omitempty"`   // Tag
 	Value string `json:"value,omitempty"` // Value
 }
-type ResponseSensorsDuplicateSensorTestTemplateResponseProfilesTests struct {
-	Name   string                                                                   `json:"name,omitempty"`   // Name of the test
-	Config *[]ResponseSensorsDuplicateSensorTestTemplateResponseProfilesTestsConfig `json:"config,omitempty"` //
+type ResponseSensorsDuplicateSensorTestTemplateV1ResponseProfilesTests struct {
+	Name   string                                                                     `json:"name,omitempty"`   // Name of the test
+	Config *[]ResponseSensorsDuplicateSensorTestTemplateV1ResponseProfilesTestsConfig `json:"config,omitempty"` //
 }
-type ResponseSensorsDuplicateSensorTestTemplateResponseProfilesTestsConfig struct {
+type ResponseSensorsDuplicateSensorTestTemplateV1ResponseProfilesTestsConfig struct {
 	Domains        []string `json:"domains,omitempty"`        // DNS domain name
 	Server         string   `json:"server,omitempty"`         // Ping, file transfer, mail, radius, ssh, or telnet server
 	UserName       string   `json:"userName,omitempty"`       // User name
@@ -716,11 +716,11 @@ type ResponseSensorsDuplicateSensorTestTemplateResponseProfilesTestsConfig struc
 	ExitCommand    string   `json:"exitCommand,omitempty"`    // Exit command
 	FinalPrompt    string   `json:"finalPrompt,omitempty"`    // Final prompt
 }
-type ResponseSensorsDuplicateSensorTestTemplateResponseProfilesLocationVLANList struct {
+type ResponseSensorsDuplicateSensorTestTemplateV1ResponseProfilesLocationVLANList struct {
 	LocationID string   `json:"locationId,omitempty"` // Site UUID
 	VLANs      []string `json:"vlans,omitempty"`      // Array of VLANs
 }
-type ResponseSensorsDuplicateSensorTestTemplateResponseLocationInfoList struct {
+type ResponseSensorsDuplicateSensorTestTemplateV1ResponseLocationInfoList struct {
 	LocationID           string   `json:"locationId,omitempty"`           // Site UUID
 	LocationType         string   `json:"locationType,omitempty"`         // Site type
 	AllSensors           *bool    `json:"allSensors,omitempty"`           // Use all sensors in the site for test
@@ -729,301 +729,94 @@ type ResponseSensorsDuplicateSensorTestTemplateResponseLocationInfoList struct {
 	ManagementVLAN       string   `json:"managementVlan,omitempty"`       // Management VLAN
 	CustomManagementVLAN *bool    `json:"customManagementVlan,omitempty"` // Custom Management VLAN
 }
-type ResponseSensorsDuplicateSensorTestTemplateResponseSensors struct {
-	Name                    string                                                                     `json:"name,omitempty"`                    // Sensor name
-	MacAddress              string                                                                     `json:"macAddress,omitempty"`              // MAC address
-	SwitchMac               string                                                                     `json:"switchMac,omitempty"`               // Switch MAC address
-	SwitchUUID              string                                                                     `json:"switchUuid,omitempty"`              // Switch device UUID
-	SwitchSerialNumber      string                                                                     `json:"switchSerialNumber,omitempty"`      // Switch serial number
-	MarkedForUninstall      *bool                                                                      `json:"markedForUninstall,omitempty"`      // Is marked for uninstall
-	IPAddress               string                                                                     `json:"ipAddress,omitempty"`               // IP address
-	HostName                string                                                                     `json:"hostName,omitempty"`                // Host name
-	WiredApplicationStatus  string                                                                     `json:"wiredApplicationStatus,omitempty"`  // Wired application status
-	WiredApplicationMessage string                                                                     `json:"wiredApplicationMessage,omitempty"` // Wired application message
-	Assigned                *bool                                                                      `json:"assigned,omitempty"`                // Is assigned
-	Status                  string                                                                     `json:"status,omitempty"`                  // Sensor device status: UP, DOWN, REBOOT
-	XorSensor               *bool                                                                      `json:"xorSensor,omitempty"`               // Is XOR sensor
-	TargetAPs               []string                                                                   `json:"targetAPs,omitempty"`               // Array of target APs
-	RunNow                  string                                                                     `json:"runNow,omitempty"`                  // Run now: YES, NO
-	LocationID              string                                                                     `json:"locationId,omitempty"`              // Site UUID
-	AllSensorAddition       *bool                                                                      `json:"allSensorAddition,omitempty"`       // Is all sensor addition
-	ConfigUpdated           string                                                                     `json:"configUpdated,omitempty"`           // Configuration updated: YES, NO
-	SensorType              string                                                                     `json:"sensorType,omitempty"`              // Sensor type
-	TestMacAddresses        *ResponseSensorsDuplicateSensorTestTemplateResponseSensorsTestMacAddresses `json:"testMacAddresses,omitempty"`        // A string-string test MAC address
-	ID                      string                                                                     `json:"id,omitempty"`                      // Sensor ID
-	ServicePolicy           string                                                                     `json:"servicePolicy,omitempty"`           // Service policy
-	IPerfInfo               *ResponseSensorsDuplicateSensorTestTemplateResponseSensorsIPerfInfo        `json:"iPerfInfo,omitempty"`               // A string-stringList iPerf information
+type ResponseSensorsDuplicateSensorTestTemplateV1ResponseSensors struct {
+	Name                    string                                                                       `json:"name,omitempty"`                    // Sensor name
+	MacAddress              string                                                                       `json:"macAddress,omitempty"`              // MAC address
+	SwitchMac               string                                                                       `json:"switchMac,omitempty"`               // Switch MAC address
+	SwitchUUID              string                                                                       `json:"switchUuid,omitempty"`              // Switch device UUID
+	SwitchSerialNumber      string                                                                       `json:"switchSerialNumber,omitempty"`      // Switch serial number
+	MarkedForUninstall      *bool                                                                        `json:"markedForUninstall,omitempty"`      // Is marked for uninstall
+	IPAddress               string                                                                       `json:"ipAddress,omitempty"`               // IP address
+	HostName                string                                                                       `json:"hostName,omitempty"`                // Host name
+	WiredApplicationStatus  string                                                                       `json:"wiredApplicationStatus,omitempty"`  // Wired application status
+	WiredApplicationMessage string                                                                       `json:"wiredApplicationMessage,omitempty"` // Wired application message
+	Assigned                *bool                                                                        `json:"assigned,omitempty"`                // Is assigned
+	Status                  string                                                                       `json:"status,omitempty"`                  // Sensor device status: UP, DOWN, REBOOT
+	XorSensor               *bool                                                                        `json:"xorSensor,omitempty"`               // Is XOR sensor
+	TargetAPs               []string                                                                     `json:"targetAPs,omitempty"`               // Array of target APs
+	RunNow                  string                                                                       `json:"runNow,omitempty"`                  // Run now: YES, NO
+	LocationID              string                                                                       `json:"locationId,omitempty"`              // Site UUID
+	AllSensorAddition       *bool                                                                        `json:"allSensorAddition,omitempty"`       // Is all sensor addition
+	ConfigUpdated           string                                                                       `json:"configUpdated,omitempty"`           // Configuration updated: YES, NO
+	SensorType              string                                                                       `json:"sensorType,omitempty"`              // Sensor type
+	TestMacAddresses        *ResponseSensorsDuplicateSensorTestTemplateV1ResponseSensorsTestMacAddresses `json:"testMacAddresses,omitempty"`        // A string-string test MAC address
+	ID                      string                                                                       `json:"id,omitempty"`                      // Sensor ID
+	ServicePolicy           string                                                                       `json:"servicePolicy,omitempty"`           // Service policy
+	IPerfInfo               *ResponseSensorsDuplicateSensorTestTemplateV1ResponseSensorsIPerfInfo        `json:"iPerfInfo,omitempty"`               // A string-stringList iPerf information
 }
-type ResponseSensorsDuplicateSensorTestTemplateResponseSensorsTestMacAddresses interface{}
-type ResponseSensorsDuplicateSensorTestTemplateResponseSensorsIPerfInfo interface{}
-type ResponseSensorsDuplicateSensorTestTemplateResponseApCoverage struct {
+type ResponseSensorsDuplicateSensorTestTemplateV1ResponseSensorsTestMacAddresses interface{}
+type ResponseSensorsDuplicateSensorTestTemplateV1ResponseSensorsIPerfInfo interface{}
+type ResponseSensorsDuplicateSensorTestTemplateV1ResponseApCoverage struct {
 	Bands             string `json:"bands,omitempty"`             // The WIFI bands
 	NumberOfApsToTest *int   `json:"numberOfApsToTest,omitempty"` // Number of APs to test
 	RssiThreshold     *int   `json:"rssiThreshold,omitempty"`     // RSSI threshold
 }
-type RequestSensorsEditSensorTestTemplate struct {
-	TemplateName           string                                                  `json:"templateName,omitempty"`           // The test template name that is to be edited
-	Name                   string                                                  `json:"name,omitempty"`                   // The sensor test template name, which is the same as in 'templateName'
-	TypeID                 string                                                  `json:"_id,omitempty"`                    // The sensor test template unique identifier, generated at test creation time
-	Version                *int                                                    `json:"version,omitempty"`                // The sensor test template version (must be 2)
-	ModelVersion           *int                                                    `json:"modelVersion,omitempty"`           // Test template object model version (must be 2)
-	StartTime              *int                                                    `json:"startTime,omitempty"`              // Start time
-	LastModifiedTime       *int                                                    `json:"lastModifiedTime,omitempty"`       // Last modify time
-	NumAssociatedSensor    *int                                                    `json:"numAssociatedSensor,omitempty"`    // Number of associated sensor
-	Location               string                                                  `json:"location,omitempty"`               // Location string
-	SiteHierarchy          string                                                  `json:"siteHierarchy,omitempty"`          // Site hierarchy
-	Status                 string                                                  `json:"status,omitempty"`                 // Status of the test (RUNNING, NOTRUNNING)
-	Connection             string                                                  `json:"connection,omitempty"`             // connection type of test: WIRED, WIRELESS, BOTH
-	ActionInProgress       string                                                  `json:"actionInProgress,omitempty"`       // Indication of inprogress action
-	Frequency              *RequestSensorsEditSensorTestTemplateFrequency          `json:"frequency,omitempty"`              //
-	RssiThreshold          *int                                                    `json:"rssiThreshold,omitempty"`          // RSSI threshold
-	NumNeighborApThreshold *int                                                    `json:"numNeighborAPThreshold,omitempty"` // Number of neighboring AP threshold
-	ScheduleInDays         *int                                                    `json:"scheduleInDays,omitempty"`         // Bit-wise value of scheduled test days
-	WLANs                  []string                                                `json:"wlans,omitempty"`                  // WLANs list
-	SSIDs                  *[]RequestSensorsEditSensorTestTemplateSSIDs            `json:"ssids,omitempty"`                  //
-	Profiles               *[]RequestSensorsEditSensorTestTemplateProfiles         `json:"profiles,omitempty"`               //
-	TestScheduleMode       string                                                  `json:"testScheduleMode,omitempty"`       // Test schedule mode (ONDEMAND, DEDICATED, SCHEDULED, CONTINUOUS, RUNNOW)
-	ShowWlcUpgradeBanner   *bool                                                   `json:"showWlcUpgradeBanner,omitempty"`   // Show WLC upgrade banner
-	RadioAsSensorRemoved   *bool                                                   `json:"radioAsSensorRemoved,omitempty"`   // Radio as sensor removed
-	EncryptionMode         string                                                  `json:"encryptionMode,omitempty"`         // Encryption mode
-	RunNow                 string                                                  `json:"runNow,omitempty"`                 // Run now (YES, NO)
-	LocationInfoList       *[]RequestSensorsEditSensorTestTemplateLocationInfoList `json:"locationInfoList,omitempty"`       //
-	Sensors                *[]RequestSensorsEditSensorTestTemplateSensors          `json:"sensors,omitempty"`                //
-	ApCoverage             *[]RequestSensorsEditSensorTestTemplateApCoverage       `json:"apCoverage,omitempty"`             //
+type RequestSensorsEditSensorTestTemplateV1 struct {
+	TemplateName           string                                                    `json:"templateName,omitempty"`           // The test template name that is to be edited
+	Name                   string                                                    `json:"name,omitempty"`                   // The sensor test template name, which is the same as in 'templateName'
+	TypeID                 string                                                    `json:"_id,omitempty"`                    // The sensor test template unique identifier, generated at test creation time
+	Version                *int                                                      `json:"version,omitempty"`                // The sensor test template version (must be 2)
+	ModelVersion           *int                                                      `json:"modelVersion,omitempty"`           // Test template object model version (must be 2)
+	StartTime              *int                                                      `json:"startTime,omitempty"`              // Start time
+	LastModifiedTime       *int                                                      `json:"lastModifiedTime,omitempty"`       // Last modify time
+	NumAssociatedSensor    *int                                                      `json:"numAssociatedSensor,omitempty"`    // Number of associated sensor
+	Location               string                                                    `json:"location,omitempty"`               // Location string
+	SiteHierarchy          string                                                    `json:"siteHierarchy,omitempty"`          // Site hierarchy
+	Status                 string                                                    `json:"status,omitempty"`                 // Status of the test (RUNNING, NOTRUNNING)
+	Connection             string                                                    `json:"connection,omitempty"`             // connection type of test: WIRED, WIRELESS, BOTH
+	ActionInProgress       string                                                    `json:"actionInProgress,omitempty"`       // Indication of inprogress action
+	Frequency              *RequestSensorsEditSensorTestTemplateV1Frequency          `json:"frequency,omitempty"`              //
+	RssiThreshold          *int                                                      `json:"rssiThreshold,omitempty"`          // RSSI threshold
+	NumNeighborApThreshold *int                                                      `json:"numNeighborAPThreshold,omitempty"` // Number of neighboring AP threshold
+	ScheduleInDays         *int                                                      `json:"scheduleInDays,omitempty"`         // Bit-wise value of scheduled test days
+	WLANs                  []string                                                  `json:"wlans,omitempty"`                  // WLANs list
+	SSIDs                  *[]RequestSensorsEditSensorTestTemplateV1SSIDs            `json:"ssids,omitempty"`                  //
+	Profiles               *[]RequestSensorsEditSensorTestTemplateV1Profiles         `json:"profiles,omitempty"`               //
+	TestScheduleMode       string                                                    `json:"testScheduleMode,omitempty"`       // Test schedule mode (ONDEMAND, DEDICATED, SCHEDULED, CONTINUOUS, RUNNOW)
+	ShowWlcUpgradeBanner   *bool                                                     `json:"showWlcUpgradeBanner,omitempty"`   // Show WLC upgrade banner
+	RadioAsSensorRemoved   *bool                                                     `json:"radioAsSensorRemoved,omitempty"`   // Radio as sensor removed
+	EncryptionMode         string                                                    `json:"encryptionMode,omitempty"`         // Encryption mode
+	RunNow                 string                                                    `json:"runNow,omitempty"`                 // Run now (YES, NO)
+	LocationInfoList       *[]RequestSensorsEditSensorTestTemplateV1LocationInfoList `json:"locationInfoList,omitempty"`       //
+	Sensors                *[]RequestSensorsEditSensorTestTemplateV1Sensors          `json:"sensors,omitempty"`                //
+	ApCoverage             *[]RequestSensorsEditSensorTestTemplateV1ApCoverage       `json:"apCoverage,omitempty"`             //
 }
-type RequestSensorsEditSensorTestTemplateFrequency struct {
+type RequestSensorsEditSensorTestTemplateV1Frequency struct {
 	Value *int   `json:"value,omitempty"` // Value of the unit
 	Unit  string `json:"unit,omitempty"`  // Unit of the time value (NANOSECONDS, MICROSECONDS, MILLISECONDS, SECONDS, MINUTES, HOURS, DAYS)
 }
-type RequestSensorsEditSensorTestTemplateSSIDs struct {
-	Bands                     string                                                        `json:"bands,omitempty"`                     // WIFI bands: 2.4GHz or 5GHz
-	SSID                      string                                                        `json:"ssid,omitempty"`                      // The SSID string
-	ProfileName               string                                                        `json:"profileName,omitempty"`               // The SSID profile name string
-	NumAps                    *int                                                          `json:"numAps,omitempty"`                    // Number of APs in the test
-	NumSensors                *int                                                          `json:"numSensors,omitempty"`                // Number of Sensors in the test
-	Layer3WebAuthsecurity     string                                                        `json:"layer3webAuthsecurity,omitempty"`     // Layer 3 WEB Auth security
-	Layer3WebAuthuserName     string                                                        `json:"layer3webAuthuserName,omitempty"`     // Layer 3 WEB Auth user name
-	Layer3WebAuthpassword     string                                                        `json:"layer3webAuthpassword,omitempty"`     // Layer 3 WEB Auth password
-	Layer3WebAuthEmailAddress string                                                        `json:"layer3webAuthEmailAddress,omitempty"` // Layer 3 WEB Auth email address
-	ThirdParty                *RequestSensorsEditSensorTestTemplateSSIDsThirdParty          `json:"thirdParty,omitempty"`                //
-	ID                        *int                                                          `json:"id,omitempty"`                        // Identification number
-	WLANID                    *int                                                          `json:"wlanId,omitempty"`                    // WLAN ID
-	Wlc                       string                                                        `json:"wlc,omitempty"`                       // WLC IP addres
-	ValidFrom                 *int                                                          `json:"validFrom,omitempty"`                 // Valid From UTC timestamp
-	ValidTo                   *int                                                          `json:"validTo,omitempty"`                   // Valid To UTC timestamp
-	Status                    string                                                        `json:"status,omitempty"`                    // WLAN status: ENABLED or DISABLED
-	ProxyServer               string                                                        `json:"proxyServer,omitempty"`               // Proxy server for onboarding SSID
-	ProxyPort                 string                                                        `json:"proxyPort,omitempty"`                 // Proxy server port
-	ProxyUserName             string                                                        `json:"proxyUserName,omitempty"`             // Proxy server user name
-	ProxyPassword             string                                                        `json:"proxyPassword,omitempty"`             // Proxy server password
-	AuthType                  string                                                        `json:"authType,omitempty"`                  // Authentication type: OPEN, WPA2_PSK, WPA2_EAP, WEB_AUTH, MAB, DOT1X, OTHER
-	Psk                       string                                                        `json:"psk,omitempty"`                       // Password of SSID when passwordType is ASCII
-	Username                  string                                                        `json:"username,omitempty"`                  // User name string for onboarding SSID
-	Password                  string                                                        `json:"password,omitempty"`                  // Password string for onboarding SSID
-	PasswordType              string                                                        `json:"passwordType,omitempty"`              // SSID password type: ASCII or HEX
-	EapMethod                 string                                                        `json:"eapMethod,omitempty"`                 // WPA2_EAP methods: EAP-FAST, PEAP-MSCHAPv2, EAP-TLS, PEAP-TLS, EAP-TTLS-MSCHAPv2, EAP-TTLS-PAP, EAP-TTLS-CHAP, EAP-FAST-GTC, EAP-PEAP-GTC
-	Scep                      *bool                                                         `json:"scep,omitempty"`                      // Secure certificate enrollment protocol: true or false or null for not applicable
-	AuthProtocol              string                                                        `json:"authProtocol,omitempty"`              // Auth protocol
-	Certfilename              string                                                        `json:"certfilename,omitempty"`              // Auth certificate file name
-	Certxferprotocol          string                                                        `json:"certxferprotocol,omitempty"`          // Certificate transfering protocol: HTTP or HTTPS
-	Certstatus                string                                                        `json:"certstatus,omitempty"`                // Certificate status: INACTIVE or ACTIVE
-	Certpassphrase            string                                                        `json:"certpassphrase,omitempty"`            // Certificate password phrase
-	Certdownloadurl           string                                                        `json:"certdownloadurl,omitempty"`           // Certificate download URL
-	ExtWebAuthVirtualIP       string                                                        `json:"extWebAuthVirtualIp,omitempty"`       // External WEB Auth virtual IP
-	ExtWebAuth                *bool                                                         `json:"extWebAuth,omitempty"`                // Indication of using external WEB Auth
-	WhiteList                 *bool                                                         `json:"whiteList,omitempty"`                 // Indication of being on allowed list
-	ExtWebAuthPortal          string                                                        `json:"extWebAuthPortal,omitempty"`          // External authentication portal
-	ExtWebAuthAccessURL       string                                                        `json:"extWebAuthAccessUrl,omitempty"`       // External WEB Auth access URL
-	ExtWebAuthHTMLTag         *[]RequestSensorsEditSensorTestTemplateSSIDsExtWebAuthHTMLTag `json:"extWebAuthHtmlTag,omitempty"`         //
-	QosPolicy                 string                                                        `json:"qosPolicy,omitempty"`                 // QoS policy: PlATINUM, GOLD, SILVER, BRONZE
-	Tests                     *[]RequestSensorsEditSensorTestTemplateSSIDsTests             `json:"tests,omitempty"`                     //
-}
-type RequestSensorsEditSensorTestTemplateSSIDsThirdParty struct {
-	Selected *bool `json:"selected,omitempty"` // true: the SSID is third party
-}
-type RequestSensorsEditSensorTestTemplateSSIDsExtWebAuthHTMLTag struct {
-	Label string `json:"label,omitempty"` // Label
-	Tag   string `json:"tag,omitempty"`   // Tag
-	Value string `json:"value,omitempty"` // Value
-}
-type RequestSensorsEditSensorTestTemplateSSIDsTests struct {
-	Name   string                                                  `json:"name,omitempty"`   // Name of the test
-	Config *[]RequestSensorsEditSensorTestTemplateSSIDsTestsConfig `json:"config,omitempty"` //
-}
-type RequestSensorsEditSensorTestTemplateSSIDsTestsConfig struct {
-	Domains        []string `json:"domains,omitempty"`        // DNS domain name
-	Server         string   `json:"server,omitempty"`         // Ping, file transfer, mail, radius, ssh, or telnet server
-	UserName       string   `json:"userName,omitempty"`       // User name
-	Password       string   `json:"password,omitempty"`       // Password
-	URL            string   `json:"url,omitempty"`            // URL
-	Port           *int     `json:"port,omitempty"`           // Radius or WEB server port
-	Protocol       string   `json:"protocol,omitempty"`       // Protocol used by file transfer, IPerf, mail server, and radius (TCP, UDP, FTP, POP3, IMAP, CHAP, PAP)
-	Servers        []string `json:"servers,omitempty"`        // IPerf server list
-	Direction      string   `json:"direction,omitempty"`      // IPerf direction (UPLOAD, DOWNLOAD, BOTH)
-	StartPort      *int     `json:"startPort,omitempty"`      // IPerf start port
-	EndPort        *int     `json:"endPort,omitempty"`        // IPerf end port
-	UDPBandwidth   *int     `json:"udpBandwidth,omitempty"`   // IPerf UDP bandwidth
-	ProbeType      string   `json:"probeType,omitempty"`      // Probe type
-	NumPackets     *int     `json:"numPackets,omitempty"`     // Number of packets
-	PathToDownload string   `json:"pathToDownload,omitempty"` // File path for file transfer
-	TransferType   string   `json:"transferType,omitempty"`   // File transfer type (UPLOAD, DOWNLOAD, BOTH)
-	SharedSecret   string   `json:"sharedSecret,omitempty"`   // Shared secret
-	NdtServer      string   `json:"ndtServer,omitempty"`      // NDT server
-	NdtServerPort  string   `json:"ndtServerPort,omitempty"`  // NDT server port
-	NdtServerPath  string   `json:"ndtServerPath,omitempty"`  // NDT server path
-	UplinkTest     *bool    `json:"uplinkTest,omitempty"`     // Uplink test
-	DownlinkTest   *bool    `json:"downlinkTest,omitempty"`   // Downlink test
-	ProxyServer    string   `json:"proxyServer,omitempty"`    // Proxy server
-	ProxyPort      string   `json:"proxyPort,omitempty"`      // Proxy port
-	ProxyUserName  string   `json:"proxyUserName,omitempty"`  // Proxy user name
-	ProxyPassword  string   `json:"proxyPassword,omitempty"`  // Proxy password
-	UserNamePrompt string   `json:"userNamePrompt,omitempty"` // User name prompt
-	PasswordPrompt string   `json:"passwordPrompt,omitempty"` // Password prompt
-	ExitCommand    string   `json:"exitCommand,omitempty"`    // Exit command
-	FinalPrompt    string   `json:"finalPrompt,omitempty"`    // Final prompt
-}
-type RequestSensorsEditSensorTestTemplateProfiles struct {
-	AuthType            string                                                           `json:"authType,omitempty"`            // Authentication type: OPEN, WPA2_PSK, WPA2_EAP, WEB_AUTH, MAB, DOT1X, OTHER
-	Psk                 string                                                           `json:"psk,omitempty"`                 // Password of SSID when passwordType is ASCII
-	Username            string                                                           `json:"username,omitempty"`            // User name string for onboarding SSID
-	Password            string                                                           `json:"password,omitempty"`            // Password string for onboarding SSID
-	PasswordType        string                                                           `json:"passwordType,omitempty"`        // SSID password type: ASCII or HEX
-	EapMethod           string                                                           `json:"eapMethod,omitempty"`           // WPA2_EAP methods: EAP-FAST, PEAP-MSCHAPv2, EAP-TLS, PEAP-TLS, EAP-TTLS-MSCHAPv2, EAP-TTLS-PAP, EAP-TTLS-CHAP, EAP-FAST-GTC, EAP-PEAP-GTC
-	Scep                *bool                                                            `json:"scep,omitempty"`                // Secure certificate enrollment protocol: true or false or null for not applicable
-	AuthProtocol        string                                                           `json:"authProtocol,omitempty"`        // Auth protocol
-	Certfilename        string                                                           `json:"certfilename,omitempty"`        // Auth certificate file name
-	Certxferprotocol    string                                                           `json:"certxferprotocol,omitempty"`    // Certificate transfering protocol: HTTP or HTTPS
-	Certstatus          string                                                           `json:"certstatus,omitempty"`          // Certificate status: INACTIVE or ACTIVE
-	Certpassphrase      string                                                           `json:"certpassphrase,omitempty"`      // Certificate password phrase
-	Certdownloadurl     string                                                           `json:"certdownloadurl,omitempty"`     // Certificate download URL
-	ExtWebAuthVirtualIP string                                                           `json:"extWebAuthVirtualIp,omitempty"` // External WEB Auth virtual IP
-	ExtWebAuth          *bool                                                            `json:"extWebAuth,omitempty"`          // Indication of using external WEB Auth
-	WhiteList           *bool                                                            `json:"whiteList,omitempty"`           // Indication of being on allowed list
-	ExtWebAuthPortal    string                                                           `json:"extWebAuthPortal,omitempty"`    // External authentication portal
-	ExtWebAuthAccessURL string                                                           `json:"extWebAuthAccessUrl,omitempty"` // External WEB Auth access URL
-	ExtWebAuthHTMLTag   *[]RequestSensorsEditSensorTestTemplateProfilesExtWebAuthHTMLTag `json:"extWebAuthHtmlTag,omitempty"`   //
-	QosPolicy           string                                                           `json:"qosPolicy,omitempty"`           // QoS policy: PlATINUM, GOLD, SILVER, BRONZE
-	Tests               *[]RequestSensorsEditSensorTestTemplateProfilesTests             `json:"tests,omitempty"`               //
-	ProfileName         string                                                           `json:"profileName,omitempty"`         // Profile name
-	DeviceType          string                                                           `json:"deviceType,omitempty"`          // Device Type
-	VLAN                string                                                           `json:"vlan,omitempty"`                // VLAN
-	LocationVLANList    *[]RequestSensorsEditSensorTestTemplateProfilesLocationVLANList  `json:"locationVlanList,omitempty"`    //
-}
-type RequestSensorsEditSensorTestTemplateProfilesExtWebAuthHTMLTag struct {
-	Label string `json:"label,omitempty"` // Label
-	Tag   string `json:"tag,omitempty"`   // Tag
-	Value string `json:"value,omitempty"` // Value
-}
-type RequestSensorsEditSensorTestTemplateProfilesTests struct {
-	Name   string                                                     `json:"name,omitempty"`   // Name of the test
-	Config *[]RequestSensorsEditSensorTestTemplateProfilesTestsConfig `json:"config,omitempty"` //
-}
-type RequestSensorsEditSensorTestTemplateProfilesTestsConfig struct {
-	Domains        []string `json:"domains,omitempty"`        // DNS domain name
-	Server         string   `json:"server,omitempty"`         // Ping, file transfer, mail, radius, ssh, or telnet server
-	UserName       string   `json:"userName,omitempty"`       // User name
-	Password       string   `json:"password,omitempty"`       // Password
-	URL            string   `json:"url,omitempty"`            // URL
-	Port           *int     `json:"port,omitempty"`           // Radius or WEB server port
-	Protocol       string   `json:"protocol,omitempty"`       // Protocol used by file transfer, IPerf, mail server, and radius (TCP, UDP, FTP, POP3, IMAP, CHAP, PAP)
-	Servers        []string `json:"servers,omitempty"`        // IPerf server list
-	Direction      string   `json:"direction,omitempty"`      // IPerf direction (UPLOAD, DOWNLOAD, BOTH)
-	StartPort      *int     `json:"startPort,omitempty"`      // IPerf start port
-	EndPort        *int     `json:"endPort,omitempty"`        // IPerf end port
-	UDPBandwidth   *int     `json:"udpBandwidth,omitempty"`   // IPerf UDP bandwidth
-	ProbeType      string   `json:"probeType,omitempty"`      // Probe type
-	NumPackets     *int     `json:"numPackets,omitempty"`     // Number of packets
-	PathToDownload string   `json:"pathToDownload,omitempty"` // File path for file transfer
-	TransferType   string   `json:"transferType,omitempty"`   // File transfer type (UPLOAD, DOWNLOAD, BOTH)
-	SharedSecret   string   `json:"sharedSecret,omitempty"`   // Shared secret
-	NdtServer      string   `json:"ndtServer,omitempty"`      // NDT server
-	NdtServerPort  string   `json:"ndtServerPort,omitempty"`  // NDT server port
-	NdtServerPath  string   `json:"ndtServerPath,omitempty"`  // NDT server path
-	UplinkTest     *bool    `json:"uplinkTest,omitempty"`     // Uplink test
-	DownlinkTest   *bool    `json:"downlinkTest,omitempty"`   // Downlink test
-	ProxyServer    string   `json:"proxyServer,omitempty"`    // Proxy server
-	ProxyPort      string   `json:"proxyPort,omitempty"`      // Proxy port
-	ProxyUserName  string   `json:"proxyUserName,omitempty"`  // Proxy user name
-	ProxyPassword  string   `json:"proxyPassword,omitempty"`  // Proxy password
-	UserNamePrompt string   `json:"userNamePrompt,omitempty"` // User name prompt
-	PasswordPrompt string   `json:"passwordPrompt,omitempty"` // Password prompt
-	ExitCommand    string   `json:"exitCommand,omitempty"`    // Exit command
-	FinalPrompt    string   `json:"finalPrompt,omitempty"`    // Final prompt
-}
-type RequestSensorsEditSensorTestTemplateProfilesLocationVLANList struct {
-	LocationID string   `json:"locationId,omitempty"` // Site UUID
-	VLANs      []string `json:"vlans,omitempty"`      // Array of VLANs
-}
-type RequestSensorsEditSensorTestTemplateLocationInfoList struct {
-	LocationID           string   `json:"locationId,omitempty"`           // Site UUID
-	LocationType         string   `json:"locationType,omitempty"`         // Site type
-	AllSensors           *bool    `json:"allSensors,omitempty"`           // Use all sensors in the site for test
-	SiteHierarchy        string   `json:"siteHierarchy,omitempty"`        // Site name hierarhy
-	MacAddressList       []string `json:"macAddressList,omitempty"`       // MAC addresses
-	ManagementVLAN       string   `json:"managementVlan,omitempty"`       // Management VLAN
-	CustomManagementVLAN *bool    `json:"customManagementVlan,omitempty"` // Custom Management VLAN
-}
-type RequestSensorsEditSensorTestTemplateSensors struct {
-	Name                    string                                                       `json:"name,omitempty"`                    // Sensor name
-	MacAddress              string                                                       `json:"macAddress,omitempty"`              // MAC address
-	SwitchMac               string                                                       `json:"switchMac,omitempty"`               // Switch MAC address
-	SwitchUUID              string                                                       `json:"switchUuid,omitempty"`              // Switch device UUID
-	SwitchSerialNumber      string                                                       `json:"switchSerialNumber,omitempty"`      // Switch serial number
-	MarkedForUninstall      *bool                                                        `json:"markedForUninstall,omitempty"`      // Is marked for uninstall
-	IPAddress               string                                                       `json:"ipAddress,omitempty"`               // IP address
-	HostName                string                                                       `json:"hostName,omitempty"`                // Host name
-	WiredApplicationStatus  string                                                       `json:"wiredApplicationStatus,omitempty"`  // Wired application status
-	WiredApplicationMessage string                                                       `json:"wiredApplicationMessage,omitempty"` // Wired application message
-	Assigned                *bool                                                        `json:"assigned,omitempty"`                // Is assigned
-	Status                  string                                                       `json:"status,omitempty"`                  // Sensor device status: UP, DOWN, REBOOT
-	XorSensor               *bool                                                        `json:"xorSensor,omitempty"`               // Is XOR sensor
-	TargetAPs               []string                                                     `json:"targetAPs,omitempty"`               // Array of target APs
-	RunNow                  string                                                       `json:"runNow,omitempty"`                  // Run now: YES, NO
-	LocationID              string                                                       `json:"locationId,omitempty"`              // Site UUID
-	AllSensorAddition       *bool                                                        `json:"allSensorAddition,omitempty"`       // Is all sensor addition
-	ConfigUpdated           string                                                       `json:"configUpdated,omitempty"`           // Configuration updated: YES, NO
-	SensorType              string                                                       `json:"sensorType,omitempty"`              // Sensor type
-	TestMacAddresses        *RequestSensorsEditSensorTestTemplateSensorsTestMacAddresses `json:"testMacAddresses,omitempty"`        // A string-string test MAC address
-	ID                      string                                                       `json:"id,omitempty"`                      // Sensor ID
-	ServicePolicy           string                                                       `json:"servicePolicy,omitempty"`           // Service policy
-	IPerfInfo               *RequestSensorsEditSensorTestTemplateSensorsIPerfInfo        `json:"iPerfInfo,omitempty"`               // A string-stringList iPerf information
-}
-type RequestSensorsEditSensorTestTemplateSensorsTestMacAddresses interface{}
-type RequestSensorsEditSensorTestTemplateSensorsIPerfInfo interface{}
-type RequestSensorsEditSensorTestTemplateApCoverage struct {
-	Bands             string `json:"bands,omitempty"`             // The WIFI bands
-	NumberOfApsToTest *int   `json:"numberOfApsToTest,omitempty"` // Number of APs to test
-	RssiThreshold     *int   `json:"rssiThreshold,omitempty"`     // RSSI threshold
-}
-type RequestSensorsCreateSensorTestTemplate struct {
-	Name             string                                                    `json:"name,omitempty"`             // The sensor test template name
-	Version          *int                                                      `json:"version,omitempty"`          // The sensor test template version (must be 2)
-	ModelVersion     *int                                                      `json:"modelVersion,omitempty"`     // Test template object model version (must be 2)
-	Connection       string                                                    `json:"connection,omitempty"`       // connection type of test: WIRED, WIRELESS, BOTH
-	SSIDs            *[]RequestSensorsCreateSensorTestTemplateSSIDs            `json:"ssids,omitempty"`            //
-	Profiles         *[]RequestSensorsCreateSensorTestTemplateProfiles         `json:"profiles,omitempty"`         //
-	EncryptionMode   string                                                    `json:"encryptionMode,omitempty"`   // Encryption mode
-	RunNow           string                                                    `json:"runNow,omitempty"`           // Run now (YES, NO)
-	LocationInfoList *[]RequestSensorsCreateSensorTestTemplateLocationInfoList `json:"locationInfoList,omitempty"` //
-	Sensors          *[]RequestSensorsCreateSensorTestTemplateSensors          `json:"sensors,omitempty"`          //
-	ApCoverage       *[]RequestSensorsCreateSensorTestTemplateApCoverage       `json:"apCoverage,omitempty"`       //
-}
-type RequestSensorsCreateSensorTestTemplateSSIDs struct {
+type RequestSensorsEditSensorTestTemplateV1SSIDs struct {
 	Bands                     string                                                          `json:"bands,omitempty"`                     // WIFI bands: 2.4GHz or 5GHz
 	SSID                      string                                                          `json:"ssid,omitempty"`                      // The SSID string
 	ProfileName               string                                                          `json:"profileName,omitempty"`               // The SSID profile name string
+	NumAps                    *int                                                            `json:"numAps,omitempty"`                    // Number of APs in the test
+	NumSensors                *int                                                            `json:"numSensors,omitempty"`                // Number of Sensors in the test
 	Layer3WebAuthsecurity     string                                                          `json:"layer3webAuthsecurity,omitempty"`     // Layer 3 WEB Auth security
 	Layer3WebAuthuserName     string                                                          `json:"layer3webAuthuserName,omitempty"`     // Layer 3 WEB Auth user name
 	Layer3WebAuthpassword     string                                                          `json:"layer3webAuthpassword,omitempty"`     // Layer 3 WEB Auth password
 	Layer3WebAuthEmailAddress string                                                          `json:"layer3webAuthEmailAddress,omitempty"` // Layer 3 WEB Auth email address
-	ThirdParty                *RequestSensorsCreateSensorTestTemplateSSIDsThirdParty          `json:"thirdParty,omitempty"`                //
+	ThirdParty                *RequestSensorsEditSensorTestTemplateV1SSIDsThirdParty          `json:"thirdParty,omitempty"`                //
+	ID                        *int                                                            `json:"id,omitempty"`                        // Identification number
 	WLANID                    *int                                                            `json:"wlanId,omitempty"`                    // WLAN ID
 	Wlc                       string                                                          `json:"wlc,omitempty"`                       // WLC IP addres
+	ValidFrom                 *int                                                            `json:"validFrom,omitempty"`                 // Valid From UTC timestamp
+	ValidTo                   *int                                                            `json:"validTo,omitempty"`                   // Valid To UTC timestamp
+	Status                    string                                                          `json:"status,omitempty"`                    // WLAN status: ENABLED or DISABLED
 	ProxyServer               string                                                          `json:"proxyServer,omitempty"`               // Proxy server for onboarding SSID
 	ProxyPort                 string                                                          `json:"proxyPort,omitempty"`                 // Proxy server port
 	ProxyUserName             string                                                          `json:"proxyUserName,omitempty"`             // Proxy server user name
 	ProxyPassword             string                                                          `json:"proxyPassword,omitempty"`             // Proxy server password
-	AuthType                  string                                                          `json:"authType,omitempty"`                  // Authentication type: OPEN, WPA2_PSK, WPA2_EaP, WEB_AUTH, MAB, DOT1X, OTHER
+	AuthType                  string                                                          `json:"authType,omitempty"`                  // Authentication type: OPEN, WPA2_PSK, WPA2_EAP, WEB_AUTH, MAB, DOT1X, OTHER
 	Psk                       string                                                          `json:"psk,omitempty"`                       // Password of SSID when passwordType is ASCII
 	Username                  string                                                          `json:"username,omitempty"`                  // User name string for onboarding SSID
 	Password                  string                                                          `json:"password,omitempty"`                  // Password string for onboarding SSID
@@ -1041,23 +834,23 @@ type RequestSensorsCreateSensorTestTemplateSSIDs struct {
 	WhiteList                 *bool                                                           `json:"whiteList,omitempty"`                 // Indication of being on allowed list
 	ExtWebAuthPortal          string                                                          `json:"extWebAuthPortal,omitempty"`          // External authentication portal
 	ExtWebAuthAccessURL       string                                                          `json:"extWebAuthAccessUrl,omitempty"`       // External WEB Auth access URL
-	ExtWebAuthHTMLTag         *[]RequestSensorsCreateSensorTestTemplateSSIDsExtWebAuthHTMLTag `json:"extWebAuthHtmlTag,omitempty"`         //
+	ExtWebAuthHTMLTag         *[]RequestSensorsEditSensorTestTemplateV1SSIDsExtWebAuthHTMLTag `json:"extWebAuthHtmlTag,omitempty"`         //
 	QosPolicy                 string                                                          `json:"qosPolicy,omitempty"`                 // QoS policy: PlATINUM, GOLD, SILVER, BRONZE
-	Tests                     *[]RequestSensorsCreateSensorTestTemplateSSIDsTests             `json:"tests,omitempty"`                     //
+	Tests                     *[]RequestSensorsEditSensorTestTemplateV1SSIDsTests             `json:"tests,omitempty"`                     //
 }
-type RequestSensorsCreateSensorTestTemplateSSIDsThirdParty struct {
+type RequestSensorsEditSensorTestTemplateV1SSIDsThirdParty struct {
 	Selected *bool `json:"selected,omitempty"` // true: the SSID is third party
 }
-type RequestSensorsCreateSensorTestTemplateSSIDsExtWebAuthHTMLTag struct {
+type RequestSensorsEditSensorTestTemplateV1SSIDsExtWebAuthHTMLTag struct {
 	Label string `json:"label,omitempty"` // Label
 	Tag   string `json:"tag,omitempty"`   // Tag
 	Value string `json:"value,omitempty"` // Value
 }
-type RequestSensorsCreateSensorTestTemplateSSIDsTests struct {
+type RequestSensorsEditSensorTestTemplateV1SSIDsTests struct {
 	Name   string                                                    `json:"name,omitempty"`   // Name of the test
-	Config *[]RequestSensorsCreateSensorTestTemplateSSIDsTestsConfig `json:"config,omitempty"` //
+	Config *[]RequestSensorsEditSensorTestTemplateV1SSIDsTestsConfig `json:"config,omitempty"` //
 }
-type RequestSensorsCreateSensorTestTemplateSSIDsTestsConfig struct {
+type RequestSensorsEditSensorTestTemplateV1SSIDsTestsConfig struct {
 	Domains        []string `json:"domains,omitempty"`        // DNS domain name
 	Server         string   `json:"server,omitempty"`         // Ping, file transfer, mail, radius, ssh, or telnet server
 	UserName       string   `json:"userName,omitempty"`       // User name
@@ -1089,8 +882,8 @@ type RequestSensorsCreateSensorTestTemplateSSIDsTestsConfig struct {
 	ExitCommand    string   `json:"exitCommand,omitempty"`    // Exit command
 	FinalPrompt    string   `json:"finalPrompt,omitempty"`    // Final prompt
 }
-type RequestSensorsCreateSensorTestTemplateProfiles struct {
-	AuthType            string                                                             `json:"authType,omitempty"`            // Authentication type: OPEN, WPA2_PSK, WPA2_EaP, WEB_AUTH, MAB, DOT1X, OTHER
+type RequestSensorsEditSensorTestTemplateV1Profiles struct {
+	AuthType            string                                                             `json:"authType,omitempty"`            // Authentication type: OPEN, WPA2_PSK, WPA2_EAP, WEB_AUTH, MAB, DOT1X, OTHER
 	Psk                 string                                                             `json:"psk,omitempty"`                 // Password of SSID when passwordType is ASCII
 	Username            string                                                             `json:"username,omitempty"`            // User name string for onboarding SSID
 	Password            string                                                             `json:"password,omitempty"`            // Password string for onboarding SSID
@@ -1108,24 +901,24 @@ type RequestSensorsCreateSensorTestTemplateProfiles struct {
 	WhiteList           *bool                                                              `json:"whiteList,omitempty"`           // Indication of being on allowed list
 	ExtWebAuthPortal    string                                                             `json:"extWebAuthPortal,omitempty"`    // External authentication portal
 	ExtWebAuthAccessURL string                                                             `json:"extWebAuthAccessUrl,omitempty"` // External WEB Auth access URL
-	ExtWebAuthHTMLTag   *[]RequestSensorsCreateSensorTestTemplateProfilesExtWebAuthHTMLTag `json:"extWebAuthHtmlTag,omitempty"`   //
+	ExtWebAuthHTMLTag   *[]RequestSensorsEditSensorTestTemplateV1ProfilesExtWebAuthHTMLTag `json:"extWebAuthHtmlTag,omitempty"`   //
 	QosPolicy           string                                                             `json:"qosPolicy,omitempty"`           // QoS policy: PlATINUM, GOLD, SILVER, BRONZE
-	Tests               *[]RequestSensorsCreateSensorTestTemplateProfilesTests             `json:"tests,omitempty"`               //
+	Tests               *[]RequestSensorsEditSensorTestTemplateV1ProfilesTests             `json:"tests,omitempty"`               //
 	ProfileName         string                                                             `json:"profileName,omitempty"`         // Profile name
 	DeviceType          string                                                             `json:"deviceType,omitempty"`          // Device Type
 	VLAN                string                                                             `json:"vlan,omitempty"`                // VLAN
-	LocationVLANList    *[]RequestSensorsCreateSensorTestTemplateProfilesLocationVLANList  `json:"locationVlanList,omitempty"`    //
+	LocationVLANList    *[]RequestSensorsEditSensorTestTemplateV1ProfilesLocationVLANList  `json:"locationVlanList,omitempty"`    //
 }
-type RequestSensorsCreateSensorTestTemplateProfilesExtWebAuthHTMLTag struct {
+type RequestSensorsEditSensorTestTemplateV1ProfilesExtWebAuthHTMLTag struct {
 	Label string `json:"label,omitempty"` // Label
 	Tag   string `json:"tag,omitempty"`   // Tag
 	Value string `json:"value,omitempty"` // Value
 }
-type RequestSensorsCreateSensorTestTemplateProfilesTests struct {
+type RequestSensorsEditSensorTestTemplateV1ProfilesTests struct {
 	Name   string                                                       `json:"name,omitempty"`   // Name of the test
-	Config *[]RequestSensorsCreateSensorTestTemplateProfilesTestsConfig `json:"config,omitempty"` //
+	Config *[]RequestSensorsEditSensorTestTemplateV1ProfilesTestsConfig `json:"config,omitempty"` //
 }
-type RequestSensorsCreateSensorTestTemplateProfilesTestsConfig struct {
+type RequestSensorsEditSensorTestTemplateV1ProfilesTestsConfig struct {
 	Domains        []string `json:"domains,omitempty"`        // DNS domain name
 	Server         string   `json:"server,omitempty"`         // Ping, file transfer, mail, radius, ssh, or telnet server
 	UserName       string   `json:"userName,omitempty"`       // User name
@@ -1157,11 +950,11 @@ type RequestSensorsCreateSensorTestTemplateProfilesTestsConfig struct {
 	ExitCommand    string   `json:"exitCommand,omitempty"`    // Exit command
 	FinalPrompt    string   `json:"finalPrompt,omitempty"`    // Final prompt
 }
-type RequestSensorsCreateSensorTestTemplateProfilesLocationVLANList struct {
+type RequestSensorsEditSensorTestTemplateV1ProfilesLocationVLANList struct {
 	LocationID string   `json:"locationId,omitempty"` // Site UUID
 	VLANs      []string `json:"vlans,omitempty"`      // Array of VLANs
 }
-type RequestSensorsCreateSensorTestTemplateLocationInfoList struct {
+type RequestSensorsEditSensorTestTemplateV1LocationInfoList struct {
 	LocationID           string   `json:"locationId,omitempty"`           // Site UUID
 	LocationType         string   `json:"locationType,omitempty"`         // Site type
 	AllSensors           *bool    `json:"allSensors,omitempty"`           // Use all sensors in the site for test
@@ -1170,7 +963,7 @@ type RequestSensorsCreateSensorTestTemplateLocationInfoList struct {
 	ManagementVLAN       string   `json:"managementVlan,omitempty"`       // Management VLAN
 	CustomManagementVLAN *bool    `json:"customManagementVlan,omitempty"` // Custom Management VLAN
 }
-type RequestSensorsCreateSensorTestTemplateSensors struct {
+type RequestSensorsEditSensorTestTemplateV1Sensors struct {
 	Name                    string                                                         `json:"name,omitempty"`                    // Sensor name
 	MacAddress              string                                                         `json:"macAddress,omitempty"`              // MAC address
 	SwitchMac               string                                                         `json:"switchMac,omitempty"`               // Switch MAC address
@@ -1190,43 +983,250 @@ type RequestSensorsCreateSensorTestTemplateSensors struct {
 	AllSensorAddition       *bool                                                          `json:"allSensorAddition,omitempty"`       // Is all sensor addition
 	ConfigUpdated           string                                                         `json:"configUpdated,omitempty"`           // Configuration updated: YES, NO
 	SensorType              string                                                         `json:"sensorType,omitempty"`              // Sensor type
-	TestMacAddresses        *RequestSensorsCreateSensorTestTemplateSensorsTestMacAddresses `json:"testMacAddresses,omitempty"`        // A string-string test MAC address
+	TestMacAddresses        *RequestSensorsEditSensorTestTemplateV1SensorsTestMacAddresses `json:"testMacAddresses,omitempty"`        // A string-string test MAC address
 	ID                      string                                                         `json:"id,omitempty"`                      // Sensor ID
 	ServicePolicy           string                                                         `json:"servicePolicy,omitempty"`           // Service policy
-	IPerfInfo               *RequestSensorsCreateSensorTestTemplateSensorsIPerfInfo        `json:"iPerfInfo,omitempty"`               // A string-stringList iPerf information
+	IPerfInfo               *RequestSensorsEditSensorTestTemplateV1SensorsIPerfInfo        `json:"iPerfInfo,omitempty"`               // A string-stringList iPerf information
 }
-type RequestSensorsCreateSensorTestTemplateSensorsTestMacAddresses interface{}
-type RequestSensorsCreateSensorTestTemplateSensorsIPerfInfo interface{}
-type RequestSensorsCreateSensorTestTemplateApCoverage struct {
+type RequestSensorsEditSensorTestTemplateV1SensorsTestMacAddresses interface{}
+type RequestSensorsEditSensorTestTemplateV1SensorsIPerfInfo interface{}
+type RequestSensorsEditSensorTestTemplateV1ApCoverage struct {
 	Bands             string `json:"bands,omitempty"`             // The WIFI bands
 	NumberOfApsToTest *int   `json:"numberOfApsToTest,omitempty"` // Number of APs to test
 	RssiThreshold     *int   `json:"rssiThreshold,omitempty"`     // RSSI threshold
 }
-type RequestSensorsRunNowSensorTest struct {
+type RequestSensorsCreateSensorTestTemplateV1 struct {
+	Name             string                                                      `json:"name,omitempty"`             // The sensor test template name
+	Version          *int                                                        `json:"version,omitempty"`          // The sensor test template version (must be 2)
+	ModelVersion     *int                                                        `json:"modelVersion,omitempty"`     // Test template object model version (must be 2)
+	Connection       string                                                      `json:"connection,omitempty"`       // connection type of test: WIRED, WIRELESS, BOTH
+	SSIDs            *[]RequestSensorsCreateSensorTestTemplateV1SSIDs            `json:"ssids,omitempty"`            //
+	Profiles         *[]RequestSensorsCreateSensorTestTemplateV1Profiles         `json:"profiles,omitempty"`         //
+	EncryptionMode   string                                                      `json:"encryptionMode,omitempty"`   // Encryption mode
+	RunNow           string                                                      `json:"runNow,omitempty"`           // Run now (YES, NO)
+	LocationInfoList *[]RequestSensorsCreateSensorTestTemplateV1LocationInfoList `json:"locationInfoList,omitempty"` //
+	Sensors          *[]RequestSensorsCreateSensorTestTemplateV1Sensors          `json:"sensors,omitempty"`          //
+	ApCoverage       *[]RequestSensorsCreateSensorTestTemplateV1ApCoverage       `json:"apCoverage,omitempty"`       //
+}
+type RequestSensorsCreateSensorTestTemplateV1SSIDs struct {
+	Bands                     string                                                            `json:"bands,omitempty"`                     // WIFI bands: 2.4GHz or 5GHz
+	SSID                      string                                                            `json:"ssid,omitempty"`                      // The SSID string
+	ProfileName               string                                                            `json:"profileName,omitempty"`               // The SSID profile name string
+	Layer3WebAuthsecurity     string                                                            `json:"layer3webAuthsecurity,omitempty"`     // Layer 3 WEB Auth security
+	Layer3WebAuthuserName     string                                                            `json:"layer3webAuthuserName,omitempty"`     // Layer 3 WEB Auth user name
+	Layer3WebAuthpassword     string                                                            `json:"layer3webAuthpassword,omitempty"`     // Layer 3 WEB Auth password
+	Layer3WebAuthEmailAddress string                                                            `json:"layer3webAuthEmailAddress,omitempty"` // Layer 3 WEB Auth email address
+	ThirdParty                *RequestSensorsCreateSensorTestTemplateV1SSIDsThirdParty          `json:"thirdParty,omitempty"`                //
+	WLANID                    *int                                                              `json:"wlanId,omitempty"`                    // WLAN ID
+	Wlc                       string                                                            `json:"wlc,omitempty"`                       // WLC IP addres
+	ProxyServer               string                                                            `json:"proxyServer,omitempty"`               // Proxy server for onboarding SSID
+	ProxyPort                 string                                                            `json:"proxyPort,omitempty"`                 // Proxy server port
+	ProxyUserName             string                                                            `json:"proxyUserName,omitempty"`             // Proxy server user name
+	ProxyPassword             string                                                            `json:"proxyPassword,omitempty"`             // Proxy server password
+	AuthType                  string                                                            `json:"authType,omitempty"`                  // Authentication type: OPEN, WPA2_PSK, WPA2_EaP, WEB_AUTH, MAB, DOT1X, OTHER
+	Psk                       string                                                            `json:"psk,omitempty"`                       // Password of SSID when passwordType is ASCII
+	Username                  string                                                            `json:"username,omitempty"`                  // User name string for onboarding SSID
+	Password                  string                                                            `json:"password,omitempty"`                  // Password string for onboarding SSID
+	PasswordType              string                                                            `json:"passwordType,omitempty"`              // SSID password type: ASCII or HEX
+	EapMethod                 string                                                            `json:"eapMethod,omitempty"`                 // WPA2_EAP methods: EAP-FAST, PEAP-MSCHAPv2, EAP-TLS, PEAP-TLS, EAP-TTLS-MSCHAPv2, EAP-TTLS-PAP, EAP-TTLS-CHAP, EAP-FAST-GTC, EAP-PEAP-GTC
+	Scep                      *bool                                                             `json:"scep,omitempty"`                      // Secure certificate enrollment protocol: true or false or null for not applicable
+	AuthProtocol              string                                                            `json:"authProtocol,omitempty"`              // Auth protocol
+	Certfilename              string                                                            `json:"certfilename,omitempty"`              // Auth certificate file name
+	Certxferprotocol          string                                                            `json:"certxferprotocol,omitempty"`          // Certificate transfering protocol: HTTP or HTTPS
+	Certstatus                string                                                            `json:"certstatus,omitempty"`                // Certificate status: INACTIVE or ACTIVE
+	Certpassphrase            string                                                            `json:"certpassphrase,omitempty"`            // Certificate password phrase
+	Certdownloadurl           string                                                            `json:"certdownloadurl,omitempty"`           // Certificate download URL
+	ExtWebAuthVirtualIP       string                                                            `json:"extWebAuthVirtualIp,omitempty"`       // External WEB Auth virtual IP
+	ExtWebAuth                *bool                                                             `json:"extWebAuth,omitempty"`                // Indication of using external WEB Auth
+	WhiteList                 *bool                                                             `json:"whiteList,omitempty"`                 // Indication of being on allowed list
+	ExtWebAuthPortal          string                                                            `json:"extWebAuthPortal,omitempty"`          // External authentication portal
+	ExtWebAuthAccessURL       string                                                            `json:"extWebAuthAccessUrl,omitempty"`       // External WEB Auth access URL
+	ExtWebAuthHTMLTag         *[]RequestSensorsCreateSensorTestTemplateV1SSIDsExtWebAuthHTMLTag `json:"extWebAuthHtmlTag,omitempty"`         //
+	QosPolicy                 string                                                            `json:"qosPolicy,omitempty"`                 // QoS policy: PlATINUM, GOLD, SILVER, BRONZE
+	Tests                     *[]RequestSensorsCreateSensorTestTemplateV1SSIDsTests             `json:"tests,omitempty"`                     //
+}
+type RequestSensorsCreateSensorTestTemplateV1SSIDsThirdParty struct {
+	Selected *bool `json:"selected,omitempty"` // true: the SSID is third party
+}
+type RequestSensorsCreateSensorTestTemplateV1SSIDsExtWebAuthHTMLTag struct {
+	Label string `json:"label,omitempty"` // Label
+	Tag   string `json:"tag,omitempty"`   // Tag
+	Value string `json:"value,omitempty"` // Value
+}
+type RequestSensorsCreateSensorTestTemplateV1SSIDsTests struct {
+	Name   string                                                      `json:"name,omitempty"`   // Name of the test
+	Config *[]RequestSensorsCreateSensorTestTemplateV1SSIDsTestsConfig `json:"config,omitempty"` //
+}
+type RequestSensorsCreateSensorTestTemplateV1SSIDsTestsConfig struct {
+	Domains        []string `json:"domains,omitempty"`        // DNS domain name
+	Server         string   `json:"server,omitempty"`         // Ping, file transfer, mail, radius, ssh, or telnet server
+	UserName       string   `json:"userName,omitempty"`       // User name
+	Password       string   `json:"password,omitempty"`       // Password
+	URL            string   `json:"url,omitempty"`            // URL
+	Port           *int     `json:"port,omitempty"`           // Radius or WEB server port
+	Protocol       string   `json:"protocol,omitempty"`       // Protocol used by file transfer, IPerf, mail server, and radius (TCP, UDP, FTP, POP3, IMAP, CHAP, PAP)
+	Servers        []string `json:"servers,omitempty"`        // IPerf server list
+	Direction      string   `json:"direction,omitempty"`      // IPerf direction (UPLOAD, DOWNLOAD, BOTH)
+	StartPort      *int     `json:"startPort,omitempty"`      // IPerf start port
+	EndPort        *int     `json:"endPort,omitempty"`        // IPerf end port
+	UDPBandwidth   *int     `json:"udpBandwidth,omitempty"`   // IPerf UDP bandwidth
+	ProbeType      string   `json:"probeType,omitempty"`      // Probe type
+	NumPackets     *int     `json:"numPackets,omitempty"`     // Number of packets
+	PathToDownload string   `json:"pathToDownload,omitempty"` // File path for file transfer
+	TransferType   string   `json:"transferType,omitempty"`   // File transfer type (UPLOAD, DOWNLOAD, BOTH)
+	SharedSecret   string   `json:"sharedSecret,omitempty"`   // Shared secret
+	NdtServer      string   `json:"ndtServer,omitempty"`      // NDT server
+	NdtServerPort  string   `json:"ndtServerPort,omitempty"`  // NDT server port
+	NdtServerPath  string   `json:"ndtServerPath,omitempty"`  // NDT server path
+	UplinkTest     *bool    `json:"uplinkTest,omitempty"`     // Uplink test
+	DownlinkTest   *bool    `json:"downlinkTest,omitempty"`   // Downlink test
+	ProxyServer    string   `json:"proxyServer,omitempty"`    // Proxy server
+	ProxyPort      string   `json:"proxyPort,omitempty"`      // Proxy port
+	ProxyUserName  string   `json:"proxyUserName,omitempty"`  // Proxy user name
+	ProxyPassword  string   `json:"proxyPassword,omitempty"`  // Proxy password
+	UserNamePrompt string   `json:"userNamePrompt,omitempty"` // User name prompt
+	PasswordPrompt string   `json:"passwordPrompt,omitempty"` // Password prompt
+	ExitCommand    string   `json:"exitCommand,omitempty"`    // Exit command
+	FinalPrompt    string   `json:"finalPrompt,omitempty"`    // Final prompt
+}
+type RequestSensorsCreateSensorTestTemplateV1Profiles struct {
+	AuthType            string                                                               `json:"authType,omitempty"`            // Authentication type: OPEN, WPA2_PSK, WPA2_EaP, WEB_AUTH, MAB, DOT1X, OTHER
+	Psk                 string                                                               `json:"psk,omitempty"`                 // Password of SSID when passwordType is ASCII
+	Username            string                                                               `json:"username,omitempty"`            // User name string for onboarding SSID
+	Password            string                                                               `json:"password,omitempty"`            // Password string for onboarding SSID
+	PasswordType        string                                                               `json:"passwordType,omitempty"`        // SSID password type: ASCII or HEX
+	EapMethod           string                                                               `json:"eapMethod,omitempty"`           // WPA2_EAP methods: EAP-FAST, PEAP-MSCHAPv2, EAP-TLS, PEAP-TLS, EAP-TTLS-MSCHAPv2, EAP-TTLS-PAP, EAP-TTLS-CHAP, EAP-FAST-GTC, EAP-PEAP-GTC
+	Scep                *bool                                                                `json:"scep,omitempty"`                // Secure certificate enrollment protocol: true or false or null for not applicable
+	AuthProtocol        string                                                               `json:"authProtocol,omitempty"`        // Auth protocol
+	Certfilename        string                                                               `json:"certfilename,omitempty"`        // Auth certificate file name
+	Certxferprotocol    string                                                               `json:"certxferprotocol,omitempty"`    // Certificate transfering protocol: HTTP or HTTPS
+	Certstatus          string                                                               `json:"certstatus,omitempty"`          // Certificate status: INACTIVE or ACTIVE
+	Certpassphrase      string                                                               `json:"certpassphrase,omitempty"`      // Certificate password phrase
+	Certdownloadurl     string                                                               `json:"certdownloadurl,omitempty"`     // Certificate download URL
+	ExtWebAuthVirtualIP string                                                               `json:"extWebAuthVirtualIp,omitempty"` // External WEB Auth virtual IP
+	ExtWebAuth          *bool                                                                `json:"extWebAuth,omitempty"`          // Indication of using external WEB Auth
+	WhiteList           *bool                                                                `json:"whiteList,omitempty"`           // Indication of being on allowed list
+	ExtWebAuthPortal    string                                                               `json:"extWebAuthPortal,omitempty"`    // External authentication portal
+	ExtWebAuthAccessURL string                                                               `json:"extWebAuthAccessUrl,omitempty"` // External WEB Auth access URL
+	ExtWebAuthHTMLTag   *[]RequestSensorsCreateSensorTestTemplateV1ProfilesExtWebAuthHTMLTag `json:"extWebAuthHtmlTag,omitempty"`   //
+	QosPolicy           string                                                               `json:"qosPolicy,omitempty"`           // QoS policy: PlATINUM, GOLD, SILVER, BRONZE
+	Tests               *[]RequestSensorsCreateSensorTestTemplateV1ProfilesTests             `json:"tests,omitempty"`               //
+	ProfileName         string                                                               `json:"profileName,omitempty"`         // Profile name
+	DeviceType          string                                                               `json:"deviceType,omitempty"`          // Device Type
+	VLAN                string                                                               `json:"vlan,omitempty"`                // VLAN
+	LocationVLANList    *[]RequestSensorsCreateSensorTestTemplateV1ProfilesLocationVLANList  `json:"locationVlanList,omitempty"`    //
+}
+type RequestSensorsCreateSensorTestTemplateV1ProfilesExtWebAuthHTMLTag struct {
+	Label string `json:"label,omitempty"` // Label
+	Tag   string `json:"tag,omitempty"`   // Tag
+	Value string `json:"value,omitempty"` // Value
+}
+type RequestSensorsCreateSensorTestTemplateV1ProfilesTests struct {
+	Name   string                                                         `json:"name,omitempty"`   // Name of the test
+	Config *[]RequestSensorsCreateSensorTestTemplateV1ProfilesTestsConfig `json:"config,omitempty"` //
+}
+type RequestSensorsCreateSensorTestTemplateV1ProfilesTestsConfig struct {
+	Domains        []string `json:"domains,omitempty"`        // DNS domain name
+	Server         string   `json:"server,omitempty"`         // Ping, file transfer, mail, radius, ssh, or telnet server
+	UserName       string   `json:"userName,omitempty"`       // User name
+	Password       string   `json:"password,omitempty"`       // Password
+	URL            string   `json:"url,omitempty"`            // URL
+	Port           *int     `json:"port,omitempty"`           // Radius or WEB server port
+	Protocol       string   `json:"protocol,omitempty"`       // Protocol used by file transfer, IPerf, mail server, and radius (TCP, UDP, FTP, POP3, IMAP, CHAP, PAP)
+	Servers        []string `json:"servers,omitempty"`        // IPerf server list
+	Direction      string   `json:"direction,omitempty"`      // IPerf direction (UPLOAD, DOWNLOAD, BOTH)
+	StartPort      *int     `json:"startPort,omitempty"`      // IPerf start port
+	EndPort        *int     `json:"endPort,omitempty"`        // IPerf end port
+	UDPBandwidth   *int     `json:"udpBandwidth,omitempty"`   // IPerf UDP bandwidth
+	ProbeType      string   `json:"probeType,omitempty"`      // Probe type
+	NumPackets     *int     `json:"numPackets,omitempty"`     // Number of packets
+	PathToDownload string   `json:"pathToDownload,omitempty"` // File path for file transfer
+	TransferType   string   `json:"transferType,omitempty"`   // File transfer type (UPLOAD, DOWNLOAD, BOTH)
+	SharedSecret   string   `json:"sharedSecret,omitempty"`   // Shared secret
+	NdtServer      string   `json:"ndtServer,omitempty"`      // NDT server
+	NdtServerPort  string   `json:"ndtServerPort,omitempty"`  // NDT server port
+	NdtServerPath  string   `json:"ndtServerPath,omitempty"`  // NDT server path
+	UplinkTest     *bool    `json:"uplinkTest,omitempty"`     // Uplink test
+	DownlinkTest   *bool    `json:"downlinkTest,omitempty"`   // Downlink test
+	ProxyServer    string   `json:"proxyServer,omitempty"`    // Proxy server
+	ProxyPort      string   `json:"proxyPort,omitempty"`      // Proxy port
+	ProxyUserName  string   `json:"proxyUserName,omitempty"`  // Proxy user name
+	ProxyPassword  string   `json:"proxyPassword,omitempty"`  // Proxy password
+	UserNamePrompt string   `json:"userNamePrompt,omitempty"` // User name prompt
+	PasswordPrompt string   `json:"passwordPrompt,omitempty"` // Password prompt
+	ExitCommand    string   `json:"exitCommand,omitempty"`    // Exit command
+	FinalPrompt    string   `json:"finalPrompt,omitempty"`    // Final prompt
+}
+type RequestSensorsCreateSensorTestTemplateV1ProfilesLocationVLANList struct {
+	LocationID string   `json:"locationId,omitempty"` // Site UUID
+	VLANs      []string `json:"vlans,omitempty"`      // Array of VLANs
+}
+type RequestSensorsCreateSensorTestTemplateV1LocationInfoList struct {
+	LocationID           string   `json:"locationId,omitempty"`           // Site UUID
+	LocationType         string   `json:"locationType,omitempty"`         // Site type
+	AllSensors           *bool    `json:"allSensors,omitempty"`           // Use all sensors in the site for test
+	SiteHierarchy        string   `json:"siteHierarchy,omitempty"`        // Site name hierarhy
+	MacAddressList       []string `json:"macAddressList,omitempty"`       // MAC addresses
+	ManagementVLAN       string   `json:"managementVlan,omitempty"`       // Management VLAN
+	CustomManagementVLAN *bool    `json:"customManagementVlan,omitempty"` // Custom Management VLAN
+}
+type RequestSensorsCreateSensorTestTemplateV1Sensors struct {
+	Name                    string                                                           `json:"name,omitempty"`                    // Sensor name
+	MacAddress              string                                                           `json:"macAddress,omitempty"`              // MAC address
+	SwitchMac               string                                                           `json:"switchMac,omitempty"`               // Switch MAC address
+	SwitchUUID              string                                                           `json:"switchUuid,omitempty"`              // Switch device UUID
+	SwitchSerialNumber      string                                                           `json:"switchSerialNumber,omitempty"`      // Switch serial number
+	MarkedForUninstall      *bool                                                            `json:"markedForUninstall,omitempty"`      // Is marked for uninstall
+	IPAddress               string                                                           `json:"ipAddress,omitempty"`               // IP address
+	HostName                string                                                           `json:"hostName,omitempty"`                // Host name
+	WiredApplicationStatus  string                                                           `json:"wiredApplicationStatus,omitempty"`  // Wired application status
+	WiredApplicationMessage string                                                           `json:"wiredApplicationMessage,omitempty"` // Wired application message
+	Assigned                *bool                                                            `json:"assigned,omitempty"`                // Is assigned
+	Status                  string                                                           `json:"status,omitempty"`                  // Sensor device status: UP, DOWN, REBOOT
+	XorSensor               *bool                                                            `json:"xorSensor,omitempty"`               // Is XOR sensor
+	TargetAPs               []string                                                         `json:"targetAPs,omitempty"`               // Array of target APs
+	RunNow                  string                                                           `json:"runNow,omitempty"`                  // Run now: YES, NO
+	LocationID              string                                                           `json:"locationId,omitempty"`              // Site UUID
+	AllSensorAddition       *bool                                                            `json:"allSensorAddition,omitempty"`       // Is all sensor addition
+	ConfigUpdated           string                                                           `json:"configUpdated,omitempty"`           // Configuration updated: YES, NO
+	SensorType              string                                                           `json:"sensorType,omitempty"`              // Sensor type
+	TestMacAddresses        *RequestSensorsCreateSensorTestTemplateV1SensorsTestMacAddresses `json:"testMacAddresses,omitempty"`        // A string-string test MAC address
+	ID                      string                                                           `json:"id,omitempty"`                      // Sensor ID
+	ServicePolicy           string                                                           `json:"servicePolicy,omitempty"`           // Service policy
+	IPerfInfo               *RequestSensorsCreateSensorTestTemplateV1SensorsIPerfInfo        `json:"iPerfInfo,omitempty"`               // A string-stringList iPerf information
+}
+type RequestSensorsCreateSensorTestTemplateV1SensorsTestMacAddresses interface{}
+type RequestSensorsCreateSensorTestTemplateV1SensorsIPerfInfo interface{}
+type RequestSensorsCreateSensorTestTemplateV1ApCoverage struct {
+	Bands             string `json:"bands,omitempty"`             // The WIFI bands
+	NumberOfApsToTest *int   `json:"numberOfApsToTest,omitempty"` // Number of APs to test
+	RssiThreshold     *int   `json:"rssiThreshold,omitempty"`     // RSSI threshold
+}
+type RequestSensorsRunNowSensorTestV1 struct {
 	TemplateName string `json:"templateName,omitempty"` // Template Name
 }
-type RequestSensorsDuplicateSensorTestTemplate struct {
+type RequestSensorsDuplicateSensorTestTemplateV1 struct {
 	TemplateName    string `json:"templateName,omitempty"`    // Source test template name
 	NewTemplateName string `json:"newTemplateName,omitempty"` // Destination test template name
 }
 
-//Sensors Sensors - 71a1-2bb7-4569-9cc5
+//SensorsV1 Sensors - 71a1-2bb7-4569-9cc5
 /* Intent API to get a list of SENSOR devices
 
 
-@param SensorsQueryParams Filtering parameter
+@param SensorsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!sensors
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!sensors-v1
 */
-func (s *SensorsService) Sensors(SensorsQueryParams *SensorsQueryParams) (*ResponseSensorsSensors, *resty.Response, error) {
+func (s *SensorsService) SensorsV1(SensorsV1QueryParams *SensorsV1QueryParams) (*ResponseSensorsSensorsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sensor"
 
-	queryString, _ := query.Values(SensorsQueryParams)
+	queryString, _ := query.Values(SensorsV1QueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseSensorsSensors{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSensorsSensorsV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1237,31 +1237,31 @@ func (s *SensorsService) Sensors(SensorsQueryParams *SensorsQueryParams) (*Respo
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.Sensors(SensorsQueryParams)
+			return s.SensorsV1(SensorsV1QueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation Sensors")
+		return nil, response, fmt.Errorf("error with operation SensorsV1")
 	}
 
-	result := response.Result().(*ResponseSensorsSensors)
+	result := response.Result().(*ResponseSensorsSensorsV1)
 	return result, response, err
 
 }
 
-//CreateSensorTestTemplate Create sensor test template - 08bd-8883-4a68-a2e6
+//CreateSensorTestTemplateV1 Create sensor test template - 08bd-8883-4a68-a2e6
 /* Intent API to create a SENSOR test template with a new SSID, existing SSID, or both new and existing SSID
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-sensor-test-template
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-sensor-test-template-v1
 */
-func (s *SensorsService) CreateSensorTestTemplate(requestSensorsCreateSensorTestTemplate *RequestSensorsCreateSensorTestTemplate) (*ResponseSensorsCreateSensorTestTemplate, *resty.Response, error) {
+func (s *SensorsService) CreateSensorTestTemplateV1(requestSensorsCreateSensorTestTemplateV1 *RequestSensorsCreateSensorTestTemplateV1) (*ResponseSensorsCreateSensorTestTemplateV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sensor"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestSensorsCreateSensorTestTemplate).
-		SetResult(&ResponseSensorsCreateSensorTestTemplate{}).
+		SetBody(requestSensorsCreateSensorTestTemplateV1).
+		SetResult(&ResponseSensorsCreateSensorTestTemplateV1{}).
 		SetError(&Error).
 		Post(path)
 
@@ -1273,30 +1273,30 @@ func (s *SensorsService) CreateSensorTestTemplate(requestSensorsCreateSensorTest
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateSensorTestTemplate(requestSensorsCreateSensorTestTemplate)
+			return s.CreateSensorTestTemplateV1(requestSensorsCreateSensorTestTemplateV1)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateSensorTestTemplate")
+		return nil, response, fmt.Errorf("error with operation CreateSensorTestTemplateV1")
 	}
 
-	result := response.Result().(*ResponseSensorsCreateSensorTestTemplate)
+	result := response.Result().(*ResponseSensorsCreateSensorTestTemplateV1)
 	return result, response, err
 
 }
 
-//EditSensorTestTemplate Edit sensor test template - c085-eaf5-4f89-ba34
+//EditSensorTestTemplateV1 Edit sensor test template - c085-eaf5-4f89-ba34
 /* Intent API to deploy, schedule, or edit and existing SENSOR test template
 
 
  */
-func (s *SensorsService) EditSensorTestTemplate(requestSensorsEditSensorTestTemplate *RequestSensorsEditSensorTestTemplate) (*ResponseSensorsEditSensorTestTemplate, *resty.Response, error) {
+func (s *SensorsService) EditSensorTestTemplateV1(requestSensorsEditSensorTestTemplateV1 *RequestSensorsEditSensorTestTemplateV1) (*ResponseSensorsEditSensorTestTemplateV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/AssuranceScheduleSensorTest"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestSensorsEditSensorTestTemplate).
-		SetResult(&ResponseSensorsEditSensorTestTemplate{}).
+		SetBody(requestSensorsEditSensorTestTemplateV1).
+		SetResult(&ResponseSensorsEditSensorTestTemplateV1{}).
 		SetError(&Error).
 		Put(path)
 
@@ -1307,28 +1307,28 @@ func (s *SensorsService) EditSensorTestTemplate(requestSensorsEditSensorTestTemp
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.EditSensorTestTemplate(requestSensorsEditSensorTestTemplate)
+			return s.EditSensorTestTemplateV1(requestSensorsEditSensorTestTemplateV1)
 		}
-		return nil, response, fmt.Errorf("error with operation EditSensorTestTemplate")
+		return nil, response, fmt.Errorf("error with operation EditSensorTestTemplateV1")
 	}
 
-	result := response.Result().(*ResponseSensorsEditSensorTestTemplate)
+	result := response.Result().(*ResponseSensorsEditSensorTestTemplateV1)
 	return result, response, err
 
 }
 
-//RunNowSensorTest Run now sensor test - f1a7-a8e7-4cf9-9c8f
+//RunNowSensorTestV1 Run now sensor test - f1a7-a8e7-4cf9-9c8f
 /* Intent API to run a deployed SENSOR test
 
 
  */
-func (s *SensorsService) RunNowSensorTest(requestSensorsRunNowSensorTest *RequestSensorsRunNowSensorTest) (*resty.Response, error) {
+func (s *SensorsService) RunNowSensorTestV1(requestSensorsRunNowSensorTestV1 *RequestSensorsRunNowSensorTestV1) (*resty.Response, error) {
 	path := "/dna/intent/api/v1/sensor-run-now"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestSensorsRunNowSensorTest).
+		SetBody(requestSensorsRunNowSensorTestV1).
 		SetError(&Error).
 		Put(path)
 
@@ -1339,28 +1339,28 @@ func (s *SensorsService) RunNowSensorTest(requestSensorsRunNowSensorTest *Reques
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.RunNowSensorTest(requestSensorsRunNowSensorTest)
+			return s.RunNowSensorTestV1(requestSensorsRunNowSensorTestV1)
 		}
-		return response, fmt.Errorf("error with operation RunNowSensorTest")
+		return response, fmt.Errorf("error with operation RunNowSensorTestV1")
 	}
 
 	return response, err
 
 }
 
-//DuplicateSensorTestTemplate Duplicate sensor test template - 85a2-8837-4909-9021
+//DuplicateSensorTestTemplateV1 Duplicate sensor test template - 85a2-8837-4909-9021
 /* Intent API to duplicate an existing SENSOR test template
 
 
  */
-func (s *SensorsService) DuplicateSensorTestTemplate(requestSensorsDuplicateSensorTestTemplate *RequestSensorsDuplicateSensorTestTemplate) (*ResponseSensorsDuplicateSensorTestTemplate, *resty.Response, error) {
+func (s *SensorsService) DuplicateSensorTestTemplateV1(requestSensorsDuplicateSensorTestTemplateV1 *RequestSensorsDuplicateSensorTestTemplateV1) (*ResponseSensorsDuplicateSensorTestTemplateV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sensorTestTemplate"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestSensorsDuplicateSensorTestTemplate).
-		SetResult(&ResponseSensorsDuplicateSensorTestTemplate{}).
+		SetBody(requestSensorsDuplicateSensorTestTemplateV1).
+		SetResult(&ResponseSensorsDuplicateSensorTestTemplateV1{}).
 		SetError(&Error).
 		Put(path)
 
@@ -1371,34 +1371,34 @@ func (s *SensorsService) DuplicateSensorTestTemplate(requestSensorsDuplicateSens
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DuplicateSensorTestTemplate(requestSensorsDuplicateSensorTestTemplate)
+			return s.DuplicateSensorTestTemplateV1(requestSensorsDuplicateSensorTestTemplateV1)
 		}
-		return nil, response, fmt.Errorf("error with operation DuplicateSensorTestTemplate")
+		return nil, response, fmt.Errorf("error with operation DuplicateSensorTestTemplateV1")
 	}
 
-	result := response.Result().(*ResponseSensorsDuplicateSensorTestTemplate)
+	result := response.Result().(*ResponseSensorsDuplicateSensorTestTemplateV1)
 	return result, response, err
 
 }
 
-//DeleteSensorTest Delete sensor test - 5bbb-28ff-442a-825f
+//DeleteSensorTestV1 Delete sensor test - 5bbb-28ff-442a-825f
 /* Intent API to delete an existing SENSOR test template
 
 
-@param DeleteSensorTestQueryParams Filtering parameter
+@param DeleteSensorTestV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-sensor-test
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-sensor-test-v1
 */
-func (s *SensorsService) DeleteSensorTest(DeleteSensorTestQueryParams *DeleteSensorTestQueryParams) (*ResponseSensorsDeleteSensorTest, *resty.Response, error) {
-	//DeleteSensorTestQueryParams *DeleteSensorTestQueryParams
+func (s *SensorsService) DeleteSensorTestV1(DeleteSensorTestV1QueryParams *DeleteSensorTestV1QueryParams) (*ResponseSensorsDeleteSensorTestV1, *resty.Response, error) {
+	//DeleteSensorTestV1QueryParams *DeleteSensorTestV1QueryParams
 	path := "/dna/intent/api/v1/sensor"
 
-	queryString, _ := query.Values(DeleteSensorTestQueryParams)
+	queryString, _ := query.Values(DeleteSensorTestV1QueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseSensorsDeleteSensorTest{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSensorsDeleteSensorTestV1{}).
 		SetError(&Error).
 		Delete(path)
 
@@ -1409,12 +1409,60 @@ func (s *SensorsService) DeleteSensorTest(DeleteSensorTestQueryParams *DeleteSen
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeleteSensorTest(DeleteSensorTestQueryParams)
+			return s.DeleteSensorTestV1(DeleteSensorTestV1QueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation DeleteSensorTest")
+		return nil, response, fmt.Errorf("error with operation DeleteSensorTestV1")
 	}
 
-	result := response.Result().(*ResponseSensorsDeleteSensorTest)
+	result := response.Result().(*ResponseSensorsDeleteSensorTestV1)
 	return result, response, err
 
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `CreateSensorTestTemplateV1`
+*/
+func (s *SensorsService) CreateSensorTestTemplate(requestSensorsCreateSensorTestTemplateV1 *RequestSensorsCreateSensorTestTemplateV1) (*ResponseSensorsCreateSensorTestTemplateV1, *resty.Response, error) {
+	return s.CreateSensorTestTemplateV1(requestSensorsCreateSensorTestTemplateV1)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `RunNowSensorTestV1`
+*/
+func (s *SensorsService) RunNowSensorTest(requestSensorsRunNowSensorTestV1 *RequestSensorsRunNowSensorTestV1) (*resty.Response, error) {
+	return s.RunNowSensorTestV1(requestSensorsRunNowSensorTestV1)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `DeleteSensorTestV1`
+*/
+func (s *SensorsService) DeleteSensorTest(DeleteSensorTestV1QueryParams *DeleteSensorTestV1QueryParams) (*ResponseSensorsDeleteSensorTestV1, *resty.Response, error) {
+	return s.DeleteSensorTestV1(DeleteSensorTestV1QueryParams)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `DuplicateSensorTestTemplateV1`
+*/
+func (s *SensorsService) DuplicateSensorTestTemplate(requestSensorsDuplicateSensorTestTemplateV1 *RequestSensorsDuplicateSensorTestTemplateV1) (*ResponseSensorsDuplicateSensorTestTemplateV1, *resty.Response, error) {
+	return s.DuplicateSensorTestTemplateV1(requestSensorsDuplicateSensorTestTemplateV1)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `SensorsV1`
+*/
+func (s *SensorsService) Sensors(SensorsV1QueryParams *SensorsV1QueryParams) (*ResponseSensorsSensorsV1, *resty.Response, error) {
+	return s.SensorsV1(SensorsV1QueryParams)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `EditSensorTestTemplateV1`
+*/
+func (s *SensorsService) EditSensorTestTemplate(requestSensorsEditSensorTestTemplateV1 *RequestSensorsEditSensorTestTemplateV1) (*ResponseSensorsEditSensorTestTemplateV1, *resty.Response, error) {
+	return s.EditSensorTestTemplateV1(requestSensorsEditSensorTestTemplateV1)
 }

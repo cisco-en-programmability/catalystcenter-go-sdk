@@ -19,7 +19,7 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-	queryParams1 := catalyst.GetSyslogEventSubscriptionsQueryParams{}
+	queryParams1 := catalyst.GetSyslogEventSubscriptionsV1QueryParams{}
 	queryParams1.Name = "Test Terraform 2"
 	nResponse, _, err := client.EventManagement.GetSyslogEventSubscriptions(&queryParams1)
 	if err != nil {
