@@ -412,7 +412,7 @@ type RequestAIEndpointAnalyticsUpdateAnExistingProfilingRuleV1ConditionGroupsCon
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-anc-policies-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-anc-policies
 */
 func (s *AIEndpointAnalyticsService) GetAncPoliciesV1() (*ResponseAIEndpointAnalyticsGetAncPoliciesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/endpoint-analytics/anc-policies"
@@ -447,7 +447,7 @@ func (s *AIEndpointAnalyticsService) GetAncPoliciesV1() (*ResponseAIEndpointAnal
 
 @param GetAIEndpointAnalyticsAttributeDictionariesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-a-i-endpoint-analytics-attribute-dictionaries-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-a-i-endpoint-analytics-attribute-dictionaries
 */
 func (s *AIEndpointAnalyticsService) GetAIEndpointAnalyticsAttributeDictionariesV1(GetAIEndpointAnalyticsAttributeDictionariesV1QueryParams *GetAIEndpointAnalyticsAttributeDictionariesV1QueryParams) (*ResponseAIEndpointAnalyticsGetAIEndpointAnalyticsAttributeDictionariesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/endpoint-analytics/dictionaries"
@@ -484,7 +484,7 @@ func (s *AIEndpointAnalyticsService) GetAIEndpointAnalyticsAttributeDictionaries
 
 @param QueryTheEndpointsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!query-the-endpoints-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!query-the-endpoints
 */
 func (s *AIEndpointAnalyticsService) QueryTheEndpointsV1(QueryTheEndpointsV1QueryParams *QueryTheEndpointsV1QueryParams) (*ResponseAIEndpointAnalyticsQueryTheEndpointsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/endpoint-analytics/endpoints"
@@ -521,7 +521,7 @@ func (s *AIEndpointAnalyticsService) QueryTheEndpointsV1(QueryTheEndpointsV1Quer
 
 @param FetchTheCountOfEndpointsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!fetch-the-count-of-endpoints-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!fetch-the-count-of-endpoints
 */
 func (s *AIEndpointAnalyticsService) FetchTheCountOfEndpointsV1(FetchTheCountOfEndpointsV1QueryParams *FetchTheCountOfEndpointsV1QueryParams) (*ResponseAIEndpointAnalyticsFetchTheCountOfEndpointsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/endpoint-analytics/endpoints/count"
@@ -560,7 +560,7 @@ func (s *AIEndpointAnalyticsService) FetchTheCountOfEndpointsV1(FetchTheCountOfE
 
 @param GetEndpointDetailsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-endpoint-details-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-endpoint-details
 */
 func (s *AIEndpointAnalyticsService) GetEndpointDetailsV1(epID string, GetEndpointDetailsV1QueryParams *GetEndpointDetailsV1QueryParams) (*ResponseAIEndpointAnalyticsGetEndpointDetailsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/endpoint-analytics/endpoints/{epId}"
@@ -598,7 +598,7 @@ func (s *AIEndpointAnalyticsService) GetEndpointDetailsV1(epID string, GetEndpoi
 
 @param GetListOfProfilingRulesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-list-of-profiling-rules-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-list-of-profiling-rules
 */
 func (s *AIEndpointAnalyticsService) GetListOfProfilingRulesV1(GetListOfProfilingRulesV1QueryParams *GetListOfProfilingRulesV1QueryParams) (*ResponseAIEndpointAnalyticsGetListOfProfilingRulesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/endpoint-analytics/profiling-rules"
@@ -635,7 +635,7 @@ func (s *AIEndpointAnalyticsService) GetListOfProfilingRulesV1(GetListOfProfilin
 
 @param GetCountOfProfilingRulesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-count-of-profiling-rules-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-count-of-profiling-rules
 */
 func (s *AIEndpointAnalyticsService) GetCountOfProfilingRulesV1(GetCountOfProfilingRulesV1QueryParams *GetCountOfProfilingRulesV1QueryParams) (*ResponseAIEndpointAnalyticsGetCountOfProfilingRulesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/endpoint-analytics/profiling-rules/count"
@@ -673,7 +673,7 @@ func (s *AIEndpointAnalyticsService) GetCountOfProfilingRulesV1(GetCountOfProfil
 @param ruleID ruleId path parameter. Unique rule identifier
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-details-of-a-single-profiling-rule-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-details-of-a-single-profiling-rule
 */
 func (s *AIEndpointAnalyticsService) GetDetailsOfASingleProfilingRuleV1(ruleID string) (*ResponseAIEndpointAnalyticsGetDetailsOfASingleProfilingRuleV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/endpoint-analytics/profiling-rules/{ruleId}"
@@ -710,7 +710,7 @@ func (s *AIEndpointAnalyticsService) GetDetailsOfASingleProfilingRuleV1(ruleID s
 @param taskID taskId path parameter. Unique identifier for the task.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-task-details-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-task-details
 */
 func (s *AIEndpointAnalyticsService) GetTaskDetailsV1(taskID string) (*ResponseAIEndpointAnalyticsGetTaskDetailsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/endpoint-analytics/tasks/{taskId}"
@@ -745,7 +745,7 @@ func (s *AIEndpointAnalyticsService) GetTaskDetailsV1(taskID string) (*ResponseA
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!process-cmdb-endpoints-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!process-cmdb-endpoints
 */
 func (s *AIEndpointAnalyticsService) ProcessCmdbEndpointsV1(requestAIEndpointAnalyticsProcessCMDBEndpointsV1 *RequestAIEndpointAnalyticsProcessCmdbEndpointsV1) (*resty.Response, error) {
 	path := "/dna/intent/api/v1/endpoint-analytics/cmdb/endpoints"
@@ -780,7 +780,7 @@ func (s *AIEndpointAnalyticsService) ProcessCmdbEndpointsV1(requestAIEndpointAna
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!register-an-endpoint-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!register-an-endpoint
 */
 func (s *AIEndpointAnalyticsService) RegisterAnEndpointV1(requestAIEndpointAnalyticsRegisterAnEndpointV1 *RequestAIEndpointAnalyticsRegisterAnEndpointV1) (*resty.Response, error) {
 	path := "/dna/intent/api/v1/endpoint-analytics/endpoints"
@@ -815,7 +815,7 @@ func (s *AIEndpointAnalyticsService) RegisterAnEndpointV1(requestAIEndpointAnaly
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-a-profiling-rule-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-a-profiling-rule
 */
 func (s *AIEndpointAnalyticsService) CreateAProfilingRuleV1(requestAIEndpointAnalyticsCreateAProfilingRuleV1 *RequestAIEndpointAnalyticsCreateAProfilingRuleV1) (*ResponseAIEndpointAnalyticsCreateAProfilingRuleV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/endpoint-analytics/profiling-rules"
@@ -855,7 +855,7 @@ func (s *AIEndpointAnalyticsService) CreateAProfilingRuleV1(requestAIEndpointAna
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!import-profiling-rules-in-bulk-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!import-profiling-rules-in-bulk
 */
 func (s *AIEndpointAnalyticsService) ImportProfilingRulesInBulkV1(requestAIEndpointAnalyticsImportProfilingRulesInBulkV1 *RequestAIEndpointAnalyticsImportProfilingRulesInBulkV1) (*resty.Response, error) {
 	path := "/dna/intent/api/v1/endpoint-analytics/profiling-rules/bulk"
@@ -994,7 +994,7 @@ func (s *AIEndpointAnalyticsService) UpdateAnExistingProfilingRuleV1(ruleID stri
 @param epID epId path parameter. Unique identifier for the endpoint.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-an-endpoint-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-an-endpoint
 */
 func (s *AIEndpointAnalyticsService) DeleteAnEndpointV1(epID string) (*resty.Response, error) {
 	//epID string
@@ -1014,8 +1014,7 @@ func (s *AIEndpointAnalyticsService) DeleteAnEndpointV1(epID string) (*resty.Res
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeleteAnEndpointV1(
-				epID)
+			return s.DeleteAnEndpointV1(epID)
 		}
 		return response, fmt.Errorf("error with operation DeleteAnEndpointV1")
 	}
@@ -1031,7 +1030,7 @@ func (s *AIEndpointAnalyticsService) DeleteAnEndpointV1(epID string) (*resty.Res
 @param epID epId path parameter. Unique identifier for the endpoint.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!revoke-anc-policy-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!revoke-anc-policy
 */
 func (s *AIEndpointAnalyticsService) RevokeAncPolicyV1(epID string) (*resty.Response, error) {
 	//epID string
@@ -1051,8 +1050,7 @@ func (s *AIEndpointAnalyticsService) RevokeAncPolicyV1(epID string) (*resty.Resp
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.RevokeAncPolicyV1(
-				epID)
+			return s.RevokeAncPolicyV1(epID)
 		}
 		return response, fmt.Errorf("error with operation RevokeAncPolicyV1")
 	}
@@ -1068,7 +1066,7 @@ func (s *AIEndpointAnalyticsService) RevokeAncPolicyV1(epID string) (*resty.Resp
 @param ruleID ruleId path parameter. Unique rule identifier
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-an-existing-profiling-rule-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-an-existing-profiling-rule
 */
 func (s *AIEndpointAnalyticsService) DeleteAnExistingProfilingRuleV1(ruleID string) (*resty.Response, error) {
 	//ruleID string
@@ -1088,8 +1086,7 @@ func (s *AIEndpointAnalyticsService) DeleteAnExistingProfilingRuleV1(ruleID stri
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeleteAnExistingProfilingRuleV1(
-				ruleID)
+			return s.DeleteAnExistingProfilingRuleV1(ruleID)
 		}
 		return response, fmt.Errorf("error with operation DeleteAnExistingProfilingRuleV1")
 	}

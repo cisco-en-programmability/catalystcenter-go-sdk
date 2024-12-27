@@ -14,18 +14,18 @@ type SiteDesignService service
 type GetSiteAssignedNetworkDevicesV1QueryParams struct {
 	SiteID string  `url:"siteId,omitempty"` //Site Id. It must be area Id or building Id or floor Id.
 	Offset float64 `url:"offset,omitempty"` //The first record to show for this page; the first record is numbered 1.
-	Limit  float64 `url:"limit,omitempty"`  //The number of records to show for this page.
+	Limit  float64 `url:"limit,omitempty"`  //The number of records to show for this page;The minimum is 1, and the maximum is 500.
 }
 type GetSiteAssignedNetworkDevicesCountV1QueryParams struct {
 	SiteID string `url:"siteId,omitempty"` //Site Id. It must be area Id or building Id or floor Id.
 }
 type GetSiteNotAssignedNetworkDevicesV1QueryParams struct {
 	Offset float64 `url:"offset,omitempty"` //The first record to show for this page; the first record is numbered 1.
-	Limit  float64 `url:"limit,omitempty"`  //The number of records to show for this page.
+	Limit  float64 `url:"limit,omitempty"`  //The number of records to show for this page;The minimum is 1, and the maximum is 500.
 }
 type RetrievesTheListOfNetworkProfilesForSitesV1QueryParams struct {
 	Offset float64 `url:"offset,omitempty"` //The first record to show for this page; the first record is numbered 1.
-	Limit  float64 `url:"limit,omitempty"`  //The number of records to show for this page.
+	Limit  float64 `url:"limit,omitempty"`  //The number of records to show for this page;The minimum is 1, and the maximum is 500.
 	SortBy string  `url:"sortBy,omitempty"` //A property within the response to sort by.
 	Order  string  `url:"order,omitempty"`  //Whether ascending or descending order should be used to sort the response.
 	Type   string  `url:"type,omitempty"`   //Filter responses to only include profiles of a given type
@@ -35,444 +35,866 @@ type RetrievesTheCountOfNetworkProfilesForSitesV1QueryParams struct {
 }
 type RetrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1QueryParams struct {
 	Offset float64 `url:"offset,omitempty"` //The first record to show for this page; the first record is numbered 1.
-	Limit  float64 `url:"limit,omitempty"`  //The number of records to show for this page.
+	Limit  float64 `url:"limit,omitempty"`  //The number of records to show for this page;The minimum is 1, and the maximum is 500.
 }
 type UnassignsANetworkProfileForSitesFromMultipleSitesV1QueryParams struct {
-	SiteID string `url:"siteId,omitempty"` //The `id` of the site, retrievable from `GET /intent/api/v1/sites`
+	SiteID string `url:"siteId,omitempty"` //The id or ids of the network profile, retrievable from /dna/intent/api/v1/sites.. A list of profile ids can be passed as a queryParameter in two ways:  1. a comma-separated string ( siteId=388a23e9-4739-4be7-a0aa-cc5a95d158dd,2726dc60-3a12-451e-947a-d972ebf58743), or... 2. as separate query parameters with the same name ( siteId=388a23e9-4739-4be7-a0aa-cc5a95d158dd&siteId=2726dc60-3a12-451e-947a-d972ebf58743
 }
 type GetSitesV1QueryParams struct {
-	Name           string `url:"name,omitempty"`            //Site name.
-	NameHierarchy  string `url:"nameHierarchy,omitempty"`   //Site name hierarchy.
-	Type           string `url:"type,omitempty"`            //Site type.
-	UnitsOfMeasure string `url:"_unitsOfMeasure,omitempty"` //Floor units of measure
-	Offset         int    `url:"offset,omitempty"`          //The first record to show for this page; the first record is numbered 1.
-	Limit          int    `url:"limit,omitempty"`           //The number of records to show for this page.
+	Name           string  `url:"name,omitempty"`            //Site name.
+	NameHierarchy  string  `url:"nameHierarchy,omitempty"`   //Site name hierarchy.
+	Type           string  `url:"type,omitempty"`            //Site type.
+	UnitsOfMeasure string  `url:"_unitsOfMeasure,omitempty"` //Floor units of measure
+	Offset         float64 `url:"offset,omitempty"`          //The first record to show for this page; the first record is numbered 1.
+	Limit          float64 `url:"limit,omitempty"`           //The number of records to show for this page;The minimum is 1, and the maximum is 500.
 }
 type GetSitesCountV1QueryParams struct {
 	Name string `url:"name,omitempty"` //Site name.
 }
 type RetrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssignedV1QueryParams struct {
 	Offset float64 `url:"offset,omitempty"` //The first record to show for this page; the first record is numbered 1.
-	Limit  float64 `url:"limit,omitempty"`  //The number of records to show for this page.
+	Limit  float64 `url:"limit,omitempty"`  //The number of records to show for this page;The minimum is 1, and the maximum is 500.
+}
+type GetAccessPointsPositionsV2QueryParams struct {
+	Name       string  `url:"name,omitempty"`       //Access Point name.
+	MacAddress string  `url:"macAddress,omitempty"` //Access Point mac address.
+	Type       string  `url:"type,omitempty"`       //Access Point type.
+	Model      string  `url:"model,omitempty"`      //Access Point model.
+	Offset     float64 `url:"offset,omitempty"`     //The first record to show for this page; the first record is numbered 1. Minimum: 1
+	Limit      float64 `url:"limit,omitempty"`      //The number of records to show for this page;The minimum is 1, and the maximum is 500.
+}
+type GetAccessPointsPositionsCountV2QueryParams struct {
+	Name       string `url:"name,omitempty"`       //Access Point name.
+	MacAddress string `url:"macAddress,omitempty"` //Access Point mac address.
+	Type       string `url:"type,omitempty"`       //Access Point type.
+	Model      string `url:"model,omitempty"`      //Access Point model.
+}
+type GetPlannedAccessPointsPositionsV2QueryParams struct {
+	Name       string  `url:"name,omitempty"`       //Planned Access Point name.
+	MacAddress string  `url:"macAddress,omitempty"` //Planned Access Point mac address.
+	Type       string  `url:"type,omitempty"`       //Planned Access Point type.
+	Offset     float64 `url:"offset,omitempty"`     //The first record to show for this page; the first record is numbered 1. Minimum: 1
+	Limit      float64 `url:"limit,omitempty"`      //The number of records to show for this page;The minimum is 1, and the maximum is 500.
+}
+type GetPlannedAccessPointsPositionsCountV2QueryParams struct {
+	Name       string `url:"name,omitempty"`       //Planned Access Point name.
+	MacAddress string `url:"macAddress,omitempty"` //Planned Access Point mac address.
+	Type       string `url:"type,omitempty"`       //Planned Access Point type.
 }
 type GetsAFloorV2QueryParams struct {
 	UnitsOfMeasure string `url:"_unitsOfMeasure,omitempty"` //Floor units of measure
 }
 
 type ResponseSiteDesignCreatesAnAreaV1 struct {
-	Version  string                                     `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
 	Response *ResponseSiteDesignCreatesAnAreaV1Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignCreatesAnAreaV1Response struct {
-	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
 type ResponseSiteDesignUpdatesAnAreaV1 struct {
-	Version  string                                     `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
 	Response *ResponseSiteDesignUpdatesAnAreaV1Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignUpdatesAnAreaV1Response struct {
-	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
 type ResponseSiteDesignDeletesAnAreaV1 struct {
-	Version  string                                     `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
 	Response *ResponseSiteDesignDeletesAnAreaV1Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignDeletesAnAreaV1Response struct {
-	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
 type ResponseSiteDesignGetsAnAreaV1 struct {
 	Response *ResponseSiteDesignGetsAnAreaV1Response `json:"response,omitempty"` //
-	Version  string                                  `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseSiteDesignGetsAnAreaV1Response struct {
-	ID            string `json:"id,omitempty"`            // Aread Id. Read only.
-	Name          string `json:"name,omitempty"`          // Area name
+	ID string `json:"id,omitempty"` // Aread Id. Read only.
+
+	Name string `json:"name,omitempty"` // Area name
+
 	NameHierarchy string `json:"nameHierarchy,omitempty"` // Area hierarchical name. Read only.
-	ParentID      string `json:"parentId,omitempty"`      // Parent Id
-	Type          string `json:"type,omitempty"`          // Site Type.
+
+	ParentID string `json:"parentId,omitempty"` // Parent Id
+
+	Type string `json:"type,omitempty"` // Site Type.
 }
 type ResponseSiteDesignAssignNetworkDevicesToASiteV1 struct {
-	Version  string                                                   `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
 	Response *ResponseSiteDesignAssignNetworkDevicesToASiteV1Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignAssignNetworkDevicesToASiteV1Response struct {
-	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
 type ResponseSiteDesignGetSiteAssignedNetworkDevicesV1 struct {
 	Response *[]ResponseSiteDesignGetSiteAssignedNetworkDevicesV1Response `json:"response,omitempty"` //
-	Version  string                                                       `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseSiteDesignGetSiteAssignedNetworkDevicesV1Response struct {
-	DeviceID          string `json:"deviceId,omitempty"`          // Site assigned network device Id.
-	SiteID            string `json:"siteId,omitempty"`            // Site Id where device has been assigned.
+	DeviceID string `json:"deviceId,omitempty"` // Site assigned network device Id.
+
+	SiteID string `json:"siteId,omitempty"` // Site Id where device has been assigned.
+
 	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Site name hierarchy
-	SiteType          string `json:"siteType,omitempty"`          // Type of the site where device has been assigned.
+
+	SiteType string `json:"siteType,omitempty"` // Type of the site where device has been assigned.
 }
 type ResponseSiteDesignGetSiteAssignedNetworkDevicesCountV1 struct {
 	Response *ResponseSiteDesignGetSiteAssignedNetworkDevicesCountV1Response `json:"response,omitempty"` //
-	Version  string                                                          `json:"version,omitempty"`  // The version of the response
+
+	Version string `json:"version,omitempty"` // The version of the response
 }
 type ResponseSiteDesignGetSiteAssignedNetworkDevicesCountV1Response struct {
 	Count *int `json:"count,omitempty"` // The total number of records related to the resource
 }
 type ResponseSiteDesignGetDeviceControllabilitySettingsV1 struct {
 	Response *ResponseSiteDesignGetDeviceControllabilitySettingsV1Response `json:"response,omitempty"` //
-	Version  string                                                        `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseSiteDesignGetDeviceControllabilitySettingsV1Response struct {
 	AutocorrectTelemetryConfig *bool `json:"autocorrectTelemetryConfig,omitempty"` // If it is true, autocorrect telemetry config is enabled. If it is false, autocorrect telemetry config is disabled. The autocorrect telemetry config feature is supported only when device controllability is enabled.
-	DeviceControllability      *bool `json:"deviceControllability,omitempty"`      // If it is true, device controllability is enabled. If it is false, device controllability is disabled.
+
+	DeviceControllability *bool `json:"deviceControllability,omitempty"` // If it is true, device controllability is enabled. If it is false, device controllability is disabled.
 }
 type ResponseSiteDesignUpdateDeviceControllabilitySettingsV1 struct {
-	Version  string                                                           `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
 	Response *ResponseSiteDesignUpdateDeviceControllabilitySettingsV1Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignUpdateDeviceControllabilitySettingsV1Response struct {
-	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
 type ResponseSiteDesignGetSiteNotAssignedNetworkDevicesV1 struct {
 	Response *ResponseSiteDesignGetSiteNotAssignedNetworkDevicesV1Response `json:"response,omitempty"` //
-	Version  string                                                        `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseSiteDesignGetSiteNotAssignedNetworkDevicesV1Response struct {
 	DeviceIDs []string `json:"deviceIds,omitempty"` // Network device Ids.
 }
 type ResponseSiteDesignGetSiteNotAssignedNetworkDevicesCountV1 struct {
 	Response *ResponseSiteDesignGetSiteNotAssignedNetworkDevicesCountV1Response `json:"response,omitempty"` //
-	Version  string                                                             `json:"version,omitempty"`  // The version of the response
+
+	Version string `json:"version,omitempty"` // The version of the response
 }
 type ResponseSiteDesignGetSiteNotAssignedNetworkDevicesCountV1Response struct {
 	Count *int `json:"count,omitempty"` // The total number of records related to the resource
 }
 type ResponseSiteDesignUnassignNetworkDevicesFromSitesV1 struct {
-	Version  string                                                       `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
 	Response *ResponseSiteDesignUnassignNetworkDevicesFromSitesV1Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignUnassignNetworkDevicesFromSitesV1Response struct {
-	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
 type ResponseSiteDesignGetSiteAssignedNetworkDeviceV1 struct {
 	Response *ResponseSiteDesignGetSiteAssignedNetworkDeviceV1Response `json:"response,omitempty"` //
-	Version  string                                                    `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseSiteDesignGetSiteAssignedNetworkDeviceV1Response struct {
-	DeviceID          string `json:"deviceId,omitempty"`          // Site assigned network device Id.
-	SiteID            string `json:"siteId,omitempty"`            // Site Id where device has been assigned.
+	DeviceID string `json:"deviceId,omitempty"` // Site assigned network device Id.
+
+	SiteID string `json:"siteId,omitempty"` // Site Id where device has been assigned.
+
 	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Site name hierarchy
-	SiteType          string `json:"siteType,omitempty"`          // Type of the site where device has been assigned.
+
+	SiteType string `json:"siteType,omitempty"` // Type of the site where device has been assigned.
 }
 type ResponseSiteDesignRetrievesTheListOfNetworkProfilesForSitesV1 struct {
 	Response *[]ResponseSiteDesignRetrievesTheListOfNetworkProfilesForSitesV1Response `json:"response,omitempty"` //
-	Version  string                                                                   `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseSiteDesignRetrievesTheListOfNetworkProfilesForSitesV1Response struct {
-	ID   string `json:"id,omitempty"`   // The ID of this network profile.
+	ID string `json:"id,omitempty"` // The ID of this network profile.
+
 	Name string `json:"name,omitempty"` // The name of the network profile.
+
 	Type string `json:"type,omitempty"` // Type
 }
 type ResponseSiteDesignRetrievesTheCountOfNetworkProfilesForSitesV1 struct {
 	Response *ResponseSiteDesignRetrievesTheCountOfNetworkProfilesForSitesV1Response `json:"response,omitempty"` //
-	Version  string                                                                  `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseSiteDesignRetrievesTheCountOfNetworkProfilesForSitesV1Response struct {
 	Count *int `json:"count,omitempty"` // Count
 }
 type ResponseSiteDesignDeletesANetworkProfileForSitesV1 struct {
-	Version  string                                                      `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
 	Response *ResponseSiteDesignDeletesANetworkProfileForSitesV1Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignDeletesANetworkProfileForSitesV1Response struct {
-	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
 type ResponseSiteDesignRetrieveANetworkProfileForSitesByIDV1 struct {
 	Response *ResponseSiteDesignRetrieveANetworkProfileForSitesByIDV1Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignRetrieveANetworkProfileForSitesByIDV1Response struct {
-	ID   string `json:"id,omitempty"`   // The ID of this network profile.
+	ID string `json:"id,omitempty"` // The ID of this network profile.
+
 	Name string `json:"name,omitempty"` // The name of the network profile.
+
 	Type string `json:"type,omitempty"` // Type
 }
 type ResponseSiteDesignAssignANetworkProfileForSitesToTheGivenSiteV1 struct {
-	Version  string                                                                   `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
 	Response *ResponseSiteDesignAssignANetworkProfileForSitesToTheGivenSiteV1Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignAssignANetworkProfileForSitesToTheGivenSiteV1Response struct {
-	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
 type ResponseSiteDesignRetrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1 struct {
 	Response *[]ResponseSiteDesignRetrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1Response `json:"response,omitempty"` //
-	Version  string                                                                                               `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseSiteDesignRetrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1Response struct {
 	ID string `json:"id,omitempty"` // Id
 }
 type ResponseSiteDesignAssignANetworkProfileForSitesToAListOfSitesV1 struct {
-	Version  string                                                                   `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
 	Response *ResponseSiteDesignAssignANetworkProfileForSitesToAListOfSitesV1Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignAssignANetworkProfileForSitesToAListOfSitesV1Response struct {
-	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
 type ResponseSiteDesignUnassignsANetworkProfileForSitesFromMultipleSitesV1 struct {
-	Version  string                                                                         `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
 	Response *ResponseSiteDesignUnassignsANetworkProfileForSitesFromMultipleSitesV1Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignUnassignsANetworkProfileForSitesFromMultipleSitesV1Response struct {
-	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
 type ResponseSiteDesignRetrievesTheCountOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1 struct {
 	Response *ResponseSiteDesignRetrievesTheCountOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1Response `json:"response,omitempty"` //
-	Version  string                                                                                              `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseSiteDesignRetrievesTheCountOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1Response struct {
 	Count *int `json:"count,omitempty"` // Count
 }
 type ResponseSiteDesignUnassignsANetworkProfileForSitesFromASiteV1 struct {
-	Version  string                                                                 `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
 	Response *ResponseSiteDesignUnassignsANetworkProfileForSitesFromASiteV1Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignUnassignsANetworkProfileForSitesFromASiteV1Response struct {
-	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
 type ResponseSiteDesignAssociateV1 struct {
-	Version  string                                 `json:"version,omitempty"`  // Version
+	Version string `json:"version,omitempty"` // Version
+
 	Response *ResponseSiteDesignAssociateV1Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignAssociateV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task Id
-	URL    string `json:"url,omitempty"`    // Url
+
+	URL string `json:"url,omitempty"` // Url
 }
 type ResponseSiteDesignDisassociateV1 struct {
-	Version  string                                    `json:"version,omitempty"`  // Version
+	Version string `json:"version,omitempty"` // Version
+
 	Response *ResponseSiteDesignDisassociateV1Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignDisassociateV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task Id
-	URL    string `json:"url,omitempty"`    // Url
+
+	URL string `json:"url,omitempty"` // Url
 }
 type ResponseSiteDesignGetSitesV1 struct {
 	Response *[]ResponseSiteDesignGetSitesV1Response `json:"response,omitempty"` //
-	Version  string                                  `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseSiteDesignGetSitesV1Response struct {
-	NameHierarchy  string   `json:"nameHierarchy,omitempty"`  // Site hierarchical name. Read only. Example: Global/USA/San Jose/Building1
-	Name           string   `json:"name,omitempty"`           // Site name.
-	Latitude       *float64 `json:"latitude,omitempty"`       // Building Latitude. Example: 37.403712
-	Longitude      *float64 `json:"longitude,omitempty"`      // Building Longitude. Example: -121.971063
-	Address        string   `json:"address,omitempty"`        // Building address. Example: 4900 Marie P. Debartolo Way, Santa Clara, California 95054, United States
-	Country        string   `json:"country,omitempty"`        // Country name for the building.
-	FloorNumber    *int     `json:"floorNumber,omitempty"`    // Floor number
-	RfModel        string   `json:"rfModel,omitempty"`        // Floor RF Model
-	Width          *float64 `json:"width,omitempty"`          // Floor width. Example : 100.5
-	Length         *float64 `json:"length,omitempty"`         // Floor length. Example : 110.3
-	Height         *float64 `json:"height,omitempty"`         // Floor height. Example : 10.1
-	UnitsOfMeasure string   `json:"unitsOfMeasure,omitempty"` // Floor unit of measure
-	Type           string   `json:"type,omitempty"`           // Type
-	ID             string   `json:"id,omitempty"`             // Site Id. Read only.
-	ParentID       string   `json:"parentId,omitempty"`       // Parent Id. Read only
+	NameHierarchy string `json:"nameHierarchy,omitempty"` // Site hierarchical name. Read only. Example: Global/USA/San Jose/Building1
+
+	Name string `json:"name,omitempty"` // Site name.
+
+	Latitude *float64 `json:"latitude,omitempty"` // Building Latitude. Example: 37.403712
+
+	Longitude *float64 `json:"longitude,omitempty"` // Building Longitude. Example: -121.971063
+
+	Address string `json:"address,omitempty"` // Building address. Example: 4900 Marie P. Debartolo Way, Santa Clara, California 95054, United States
+
+	Country string `json:"country,omitempty"` // Country name for the building.
+
+	FloorNumber *int `json:"floorNumber,omitempty"` // Floor number
+
+	RfModel string `json:"rfModel,omitempty"` // Floor RF Model
+
+	Width *float64 `json:"width,omitempty"` // Floor width. Example : 100.5
+
+	Length *float64 `json:"length,omitempty"` // Floor length. Example : 110.3
+
+	Height *float64 `json:"height,omitempty"` // Floor height. Example : 10.1
+
+	UnitsOfMeasure string `json:"unitsOfMeasure,omitempty"` // Floor unit of measure
+
+	Type string `json:"type,omitempty"` // Type
+
+	ID string `json:"id,omitempty"` // Site Id. Read only.
+
+	ParentID string `json:"parentId,omitempty"` // Parent Id. Read only
 }
 type ResponseSiteDesignCreateSitesV1 struct {
-	Version  string                                   `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
 	Response *ResponseSiteDesignCreateSitesV1Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignCreateSitesV1Response struct {
-	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
 type ResponseSiteDesignGetSitesCountV1 []ResponseItemSiteDesignGetSitesCountV1 // Array of ResponseSiteDesignGetSitesCountV1
 type ResponseItemSiteDesignGetSitesCountV1 struct {
 	Response *ResponseItemSiteDesignGetSitesCountV1Response `json:"response,omitempty"` //
-	Version  string                                         `json:"version,omitempty"`  // The version of the response
+
+	Version string `json:"version,omitempty"` // The version of the response
 }
 type ResponseItemSiteDesignGetSitesCountV1Response struct {
 	Count *int `json:"count,omitempty"` // The reported count.
 }
 type ResponseSiteDesignRetrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssignedV1 struct {
 	Response *[]ResponseSiteDesignRetrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssignedV1Response `json:"response,omitempty"` //
-	Version  string                                                                                          `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseSiteDesignRetrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssignedV1Response struct {
 	ID string `json:"id,omitempty"` // Id
 }
 type ResponseSiteDesignRetrievesTheCountOfProfilesThatTheGivenSiteHasBeenAssignedV1 struct {
 	Response *ResponseSiteDesignRetrievesTheCountOfProfilesThatTheGivenSiteHasBeenAssignedV1Response `json:"response,omitempty"` //
-	Version  string                                                                                  `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseSiteDesignRetrievesTheCountOfProfilesThatTheGivenSiteHasBeenAssignedV1Response struct {
 	Count *int `json:"count,omitempty"` // Count
 }
 type ResponseSiteDesignCreatesABuildingV2 struct {
-	Version  string                                        `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
 	Response *ResponseSiteDesignCreatesABuildingV2Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignCreatesABuildingV2Response struct {
-	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
 type ResponseSiteDesignUpdatesABuildingV2 struct {
-	Version  string                                        `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
 	Response *ResponseSiteDesignUpdatesABuildingV2Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignUpdatesABuildingV2Response struct {
-	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
 type ResponseSiteDesignDeletesABuildingV2 struct {
-	Version  string                                        `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
 	Response *ResponseSiteDesignDeletesABuildingV2Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignDeletesABuildingV2Response struct {
-	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
 type ResponseSiteDesignGetsABuildingV2 struct {
 	Response *ResponseSiteDesignGetsABuildingV2Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignGetsABuildingV2Response struct {
-	ParentID  string   `json:"parentId,omitempty"`  // Parent Id
-	Name      string   `json:"name,omitempty"`      // Building name
-	Latitude  *float64 `json:"latitude,omitempty"`  // Building Latitude. Example: 37.403712
+	ParentID string `json:"parentId,omitempty"` // Parent Id
+
+	Name string `json:"name,omitempty"` // Building name
+
+	Latitude *float64 `json:"latitude,omitempty"` // Building Latitude. Example: 37.403712
+
 	Longitude *float64 `json:"longitude,omitempty"` // Building Longitude. Example: -121.971063
-	Address   string   `json:"address,omitempty"`   // Building address. Example: 4900 Marie P. Debartolo Way, Santa Clara, California 95054, United States
-	Country   string   `json:"country,omitempty"`   // Country name
-	Type      string   `json:"type,omitempty"`      // Example: building
+
+	Address string `json:"address,omitempty"` // Building address. Example: 4900 Marie P. Debartolo Way, Santa Clara, California 95054, United States
+
+	Country string `json:"country,omitempty"` // Country name
+
+	Type string `json:"type,omitempty"` // Example: building
 }
 type ResponseSiteDesignCreatesAFloorV2 struct {
-	Version  string                                     `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
 	Response *ResponseSiteDesignCreatesAFloorV2Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignCreatesAFloorV2Response struct {
-	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
 type ResponseSiteDesignUpdatesFloorSettingsV2 struct {
-	Version  string                                            `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
 	Response *ResponseSiteDesignUpdatesFloorSettingsV2Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignUpdatesFloorSettingsV2Response struct {
-	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
 type ResponseSiteDesignGetFloorSettingsV2 struct {
 	Response *ResponseSiteDesignGetFloorSettingsV2Response `json:"response,omitempty"` //
-	Version  string                                        `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseSiteDesignGetFloorSettingsV2Response struct {
 	UnitsOfMeasure string `json:"unitsOfMeasure,omitempty"` // Floor units of measure.
 }
+type ResponseSiteDesignGetAccessPointsPositionsV2 struct {
+	Response *[]ResponseSiteDesignGetAccessPointsPositionsV2Response `json:"response,omitempty"` //
+
+	Version string `json:"version,omitempty"` // Version
+}
+type ResponseSiteDesignGetAccessPointsPositionsV2Response struct {
+	ID string `json:"id,omitempty"` // Access Point Id (readonly)
+
+	MacAddress string `json:"macAddress,omitempty"` // Access Point MAC address (readonly)
+
+	Model string `json:"model,omitempty"` // Access Point model (readonly)
+
+	Name string `json:"name,omitempty"` // Access Point Name (readonly)
+
+	Type string `json:"type,omitempty"` // Access Point type (readonly)
+
+	Position *ResponseSiteDesignGetAccessPointsPositionsV2ResponsePosition `json:"position,omitempty"` //
+
+	Radios *[]ResponseSiteDesignGetAccessPointsPositionsV2ResponseRadios `json:"radios,omitempty"` //
+}
+type ResponseSiteDesignGetAccessPointsPositionsV2ResponsePosition struct {
+	X *float64 `json:"x,omitempty"` // Access Point X coordinate in feet
+
+	Y *float64 `json:"y,omitempty"` // Access Point Y coordinate in feet
+
+	Z *float64 `json:"z,omitempty"` // Access Point Z coordinate in feet
+}
+type ResponseSiteDesignGetAccessPointsPositionsV2ResponseRadios struct {
+	ID string `json:"id,omitempty"` // Radio Id (readonly)
+
+	Bands *[]float64 `json:"bands,omitempty"` // Radio frequencies in GHz (readonly). Radio frequencies are expected to be 2.4, 5, and 6. MinItems: 1; MaxItems: 3
+
+	Channel *int `json:"channel,omitempty"` // Channel to be used by the Access Point (readonly). The value gets updated only every 24 hours
+
+	TxPower *int `json:"txPower,omitempty"` // Transmit power for the channel in Decibel milliwatts (dBm) (readonly). The value gets updated only every 24 hours
+
+	Antenna *ResponseSiteDesignGetAccessPointsPositionsV2ResponseRadiosAntenna `json:"antenna,omitempty"` //
+}
+type ResponseSiteDesignGetAccessPointsPositionsV2ResponseRadiosAntenna struct {
+	Name string `json:"name,omitempty"` // Antenna type for this Access Point. Use `/dna/intent/api/v1/maps/supported-access-points` to find supported Antennas for a particualr Access Point model.
+
+	Azimuth *int `json:"azimuth,omitempty"` // Angle of the antenna, measured relative to the x axis, clockwise. The azimuth range is from 0 through 360
+
+	Elevation *int `json:"elevation,omitempty"` // Elevation of the antenna. The elevation range is from -90 through 90
+}
+type ResponseSiteDesignEditTheAccessPointsPositionsV2 struct {
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
+	Response *ResponseSiteDesignEditTheAccessPointsPositionsV2Response `json:"response,omitempty"` //
+}
+type ResponseSiteDesignEditTheAccessPointsPositionsV2Response struct {
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
+	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
+}
+type ResponseSiteDesignGetAccessPointsPositionsCountV2 struct {
+	Response *ResponseSiteDesignGetAccessPointsPositionsCountV2Response `json:"response,omitempty"` //
+
+	Version string `json:"version,omitempty"` // Version
+}
+type ResponseSiteDesignGetAccessPointsPositionsCountV2Response struct {
+	Count *int `json:"count,omitempty"` // Count
+}
+type ResponseSiteDesignGetPlannedAccessPointsPositionsV2 struct {
+	Response *[]ResponseSiteDesignGetPlannedAccessPointsPositionsV2Response `json:"response,omitempty"` //
+
+	Version string `json:"version,omitempty"` // Version
+}
+type ResponseSiteDesignGetPlannedAccessPointsPositionsV2Response struct {
+	Name string `json:"name,omitempty"` // Planned Access Point Name
+
+	MacAddress string `json:"macAddress,omitempty"` // Planned Access Point MAC address
+
+	Type string `json:"type,omitempty"` // Planned Access Point type. Use `dna/intent/api/v1/maps/supported-access-points` to find the supported models
+
+	Position *ResponseSiteDesignGetPlannedAccessPointsPositionsV2ResponsePosition `json:"position,omitempty"` //
+
+	Radios *[]ResponseSiteDesignGetPlannedAccessPointsPositionsV2ResponseRadios `json:"radios,omitempty"` //
+
+	ID string `json:"id,omitempty"` // Planned Access Point Id (readonly)
+}
+type ResponseSiteDesignGetPlannedAccessPointsPositionsV2ResponsePosition struct {
+	X *float64 `json:"x,omitempty"` // Planned Access Point X coordinate in feet
+
+	Y *float64 `json:"y,omitempty"` // Planned Access Point Y coordinate in feet
+
+	Z *float64 `json:"z,omitempty"` // Planned Access Point Z coordinate in feet
+}
+type ResponseSiteDesignGetPlannedAccessPointsPositionsV2ResponseRadios struct {
+	Bands *[]float64 `json:"bands,omitempty"` // Radio frequencies in GHz (readonly). Radio frequencies are expected to be 2.4, 5, and 6. MinItems: 1; MaxItems: 3
+
+	Channel *int `json:"channel,omitempty"` // Channel to be used by the Planned Access Point. In the context of a Planned Access Point, the channel have no bearing on what the real Access Point will actually be, they are just used for Maps visualization feature set
+
+	TxPower *int `json:"txPower,omitempty"` // Transmit power for the channel in Decibel milliwatts (dBm). In the context of a Planned Access Point, the txPower have no bearing on what the real Access Point will actually be, they are just used for Maps visualization feature set
+
+	Antenna *ResponseSiteDesignGetPlannedAccessPointsPositionsV2ResponseRadiosAntenna `json:"antenna,omitempty"` //
+
+	ID string `json:"id,omitempty"` // Radio Id (readonly)
+}
+type ResponseSiteDesignGetPlannedAccessPointsPositionsV2ResponseRadiosAntenna struct {
+	Name string `json:"name,omitempty"` // Antenna type for this Planned Access Point. Use `/dna/intent/api/v1/maps/supported-access-points` to find supported Antennas for a particualr Planned Access Point type
+
+	Azimuth *int `json:"azimuth,omitempty"` // Angle of the antenna, measured relative to the x axis, clockwise. The azimuth range is from 0 through 360
+
+	Elevation *int `json:"elevation,omitempty"` // Elevation of the antenna. The elevation range is from -90 through 90
+}
+type ResponseSiteDesignAssignPlannedAccessPointsToOperationsOnesV2 struct {
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
+	Response *ResponseSiteDesignAssignPlannedAccessPointsToOperationsOnesV2Response `json:"response,omitempty"` //
+}
+type ResponseSiteDesignAssignPlannedAccessPointsToOperationsOnesV2Response struct {
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
+	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
+}
+type ResponseSiteDesignAddPlannedAccessPointsPositionsV2 struct {
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
+	Response *ResponseSiteDesignAddPlannedAccessPointsPositionsV2Response `json:"response,omitempty"` //
+}
+type ResponseSiteDesignAddPlannedAccessPointsPositionsV2Response struct {
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
+	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
+}
+type ResponseSiteDesignEditPlannedAccessPointsPositionsV2 struct {
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
+	Response *ResponseSiteDesignEditPlannedAccessPointsPositionsV2Response `json:"response,omitempty"` //
+}
+type ResponseSiteDesignEditPlannedAccessPointsPositionsV2Response struct {
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
+	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
+}
+type ResponseSiteDesignGetPlannedAccessPointsPositionsCountV2 struct {
+	Response *ResponseSiteDesignGetPlannedAccessPointsPositionsCountV2Response `json:"response,omitempty"` //
+
+	Version string `json:"version,omitempty"` // Version
+}
+type ResponseSiteDesignGetPlannedAccessPointsPositionsCountV2Response struct {
+	Count *int `json:"count,omitempty"` // Count
+}
+type ResponseSiteDesignDeletePlannedAccessPointsPositionV2 struct {
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
+	Response *ResponseSiteDesignDeletePlannedAccessPointsPositionV2Response `json:"response,omitempty"` //
+}
+type ResponseSiteDesignDeletePlannedAccessPointsPositionV2Response struct {
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
+	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
+}
 type ResponseSiteDesignUpdatesAFloorV2 struct {
-	Version  string                                     `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
 	Response *ResponseSiteDesignUpdatesAFloorV2Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignUpdatesAFloorV2Response struct {
-	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
 type ResponseSiteDesignGetsAFloorV2 struct {
 	Response *ResponseSiteDesignGetsAFloorV2Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignGetsAFloorV2Response struct {
-	ParentID       string   `json:"parentId,omitempty"`       // Parent Id.
-	Name           string   `json:"name,omitempty"`           // Floor name
-	FloorNumber    *int     `json:"floorNumber,omitempty"`    // Floor number
-	RfModel        string   `json:"rfModel,omitempty"`        // RF Model
-	Width          *float64 `json:"width,omitempty"`          // Floor width. Example : 100.5
-	Length         *float64 `json:"length,omitempty"`         // Floor length. Example : 110.3
-	Height         *float64 `json:"height,omitempty"`         // Floor height. Example : 10.1
-	UnitsOfMeasure string   `json:"unitsOfMeasure,omitempty"` // Units Of Measure
-	Type           string   `json:"type,omitempty"`           // Example : floor
-	ID             string   `json:"id,omitempty"`             // Floor Id. Read only.
-	NameHierarchy  string   `json:"nameHierarchy,omitempty"`  // Floor hierarchical name. Read only.
+	ParentID string `json:"parentId,omitempty"` // Parent Id.
+
+	Name string `json:"name,omitempty"` // Floor name
+
+	FloorNumber *int `json:"floorNumber,omitempty"` // Floor number
+
+	RfModel string `json:"rfModel,omitempty"` // RF Model
+
+	Width *float64 `json:"width,omitempty"` // Floor width. Example : 100.5
+
+	Length *float64 `json:"length,omitempty"` // Floor length. Example : 110.3
+
+	Height *float64 `json:"height,omitempty"` // Floor height. Example : 10.1
+
+	UnitsOfMeasure string `json:"unitsOfMeasure,omitempty"` // Units Of Measure
+
+	Type string `json:"type,omitempty"` // Example : floor
+
+	ID string `json:"id,omitempty"` // Floor Id. Read only.
+
+	NameHierarchy string `json:"nameHierarchy,omitempty"` // Floor hierarchical name. Read only.
 }
 type ResponseSiteDesignDeletesAFloorV2 struct {
-	Version  string                                     `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
 	Response *ResponseSiteDesignDeletesAFloorV2Response `json:"response,omitempty"` //
 }
 type ResponseSiteDesignDeletesAFloorV2Response struct {
-	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
 type RequestSiteDesignCreatesAnAreaV1 struct {
-	Name     string `json:"name,omitempty"`     // Area name
+	Name string `json:"name,omitempty"` // Area name
+
 	ParentID string `json:"parentId,omitempty"` // Parent Id
 }
 type RequestSiteDesignUpdatesAnAreaV1 struct {
-	Name     string `json:"name,omitempty"`     // Area name
+	Name string `json:"name,omitempty"` // Area name
+
 	ParentID string `json:"parentId,omitempty"` // Parent Id
 }
 type RequestSiteDesignAssignNetworkDevicesToASiteV1 struct {
-	DeviceIDs []string `json:"deviceIds,omitempty"` // Unassigned network devices.
-	SiteID    string   `json:"siteId,omitempty"`    // This must be building Id or floor Id. Access points, Sensors are assigned to floor. Remaining network devices are assigned to building. Site Id can be retrieved using '/intent/api/v1/sites'.
+	DeviceIDs []string `json:"deviceIds,omitempty"` // Unassigned network devices, ranging from a minimum of 1 to a maximum of 100.
+
+	SiteID string `json:"siteId,omitempty"` // This must be building Id or floor Id. Access points, Sensors are assigned to floor. Remaining network devices are assigned to building. Site Id can be retrieved using '/intent/api/v1/sites'.
 }
 type RequestSiteDesignUpdateDeviceControllabilitySettingsV1 struct {
 	AutocorrectTelemetryConfig *bool `json:"autocorrectTelemetryConfig,omitempty"` // If it is true, autocorrect telemetry config is enabled. If it is false, autocorrect telemetry config is disabled. The autocorrect telemetry config feature is supported only when device controllability is enabled.
-	DeviceControllability      *bool `json:"deviceControllability,omitempty"`      // If it is true, device controllability is enabled. If it is false, device controllability is disabled.
+
+	DeviceControllability *bool `json:"deviceControllability,omitempty"` // If it is true, device controllability is enabled. If it is false, device controllability is disabled.
 }
 type RequestSiteDesignUnassignNetworkDevicesFromSitesV1 struct {
-	DeviceIDs []string `json:"deviceIds,omitempty"` // Network device Ids.
+	DeviceIDs []string `json:"deviceIds,omitempty"` // Network device Ids, ranging from a minimum of 1 to a maximum of 100.
 }
 type RequestSiteDesignAssignANetworkProfileForSitesToTheGivenSiteV1 struct {
 	ID string `json:"id,omitempty"` // Id
 }
 type RequestSiteDesignAssignANetworkProfileForSitesToAListOfSitesV1 struct {
-	Type *RequestSiteDesignAssignANetworkProfileForSitesToAListOfSitesV1Type `json:"type,omitempty"` //
+	Items []struct {
+		ID string `json:"id,omitempty"`
+	} `json:"items,omitempty"` // Items
 }
-type RequestSiteDesignAssignANetworkProfileForSitesToAListOfSitesV1Type interface{}
 type RequestSiteDesignCreateSitesV1 []RequestItemSiteDesignCreateSitesV1 // Array of RequestSiteDesignCreateSitesV1
 type RequestItemSiteDesignCreateSitesV1 struct {
-	ParentNameHierarchy string   `json:"parentNameHierarchy,omitempty"` // Parent hierarchical name. Example: Global/USA/San Jose/Building1
-	Name                string   `json:"name,omitempty"`                // Site name.
-	Latitude            *float64 `json:"latitude,omitempty"`            // Building Latitude. Example: 37.403712
-	Longitude           *float64 `json:"longitude,omitempty"`           // Building Longitude. Example: -121.971063
-	Address             string   `json:"address,omitempty"`             // Building address. Example: 4900 Marie P. Debartolo Way, Santa Clara, California 95054, United States
-	Country             string   `json:"country,omitempty"`             // Country name. Required for building.
-	FloorNumber         *int     `json:"floorNumber,omitempty"`         // Floor number. Required for floor.
-	RfModel             string   `json:"rfModel,omitempty"`             // Floor RF Model. Required for floor.
-	Width               *float64 `json:"width,omitempty"`               // Floor width. Required for floor. Example : 100.5
-	Length              *float64 `json:"length,omitempty"`              // Floor length. Required for floor. Example : 110.3
-	Height              *float64 `json:"height,omitempty"`              // Floor height. Required for floor. Example : 10.1
-	UnitsOfMeasure      string   `json:"unitsOfMeasure,omitempty"`      // Floor unit of measure. Required for floor.
-	Type                string   `json:"type,omitempty"`                // Type
+	ParentNameHierarchy string `json:"parentNameHierarchy,omitempty"` // Parent hierarchical name. Example: Global/USA/San Jose/Building1
+
+	Name string `json:"name,omitempty"` // Site name.
+
+	Latitude *float64 `json:"latitude,omitempty"` // Building Latitude. Example: 37.403712
+
+	Longitude *float64 `json:"longitude,omitempty"` // Building Longitude. Example: -121.971063
+
+	Address string `json:"address,omitempty"` // Building address. Example: 4900 Marie P. Debartolo Way, Santa Clara, California 95054, United States
+
+	Country string `json:"country,omitempty"` // Country name. Required for building.
+
+	FloorNumber *int `json:"floorNumber,omitempty"` // Floor number. Required for floor.
+
+	RfModel string `json:"rfModel,omitempty"` // Floor RF Model. Required for floor.
+
+	Width *float64 `json:"width,omitempty"` // Floor width. Required for floor. Example : 100.5
+
+	Length *float64 `json:"length,omitempty"` // Floor length. Required for floor. Example : 110.3
+
+	Height *float64 `json:"height,omitempty"` // Floor height. Required for floor. Example : 10.1
+
+	UnitsOfMeasure string `json:"unitsOfMeasure,omitempty"` // Floor unit of measure. Required for floor.
+
+	Type string `json:"type,omitempty"` // Type
 }
 type RequestSiteDesignCreatesABuildingV2 struct {
-	ParentID  string   `json:"parentId,omitempty"`  // Parent Id
-	Name      string   `json:"name,omitempty"`      // Building name
-	Latitude  *float64 `json:"latitude,omitempty"`  // Building Latitude. Example: 37.403712
+	ParentID string `json:"parentId,omitempty"` // Parent Id
+
+	Name string `json:"name,omitempty"` // Building name
+
+	Latitude *float64 `json:"latitude,omitempty"` // Building Latitude. Example: 37.403712
+
 	Longitude *float64 `json:"longitude,omitempty"` // Building Longitude. Example: -121.971063
-	Address   string   `json:"address,omitempty"`   // Building address. Example: 4900 Marie P. Debartolo Way, Santa Clara, California 95054, United States
-	Country   string   `json:"country,omitempty"`   // Country name
+
+	Address string `json:"address,omitempty"` // Building address. Example: 4900 Marie P. Debartolo Way, Santa Clara, California 95054, United States. Please note that if only the address is provided when creating a building, the UI will not display the geo-location on the map. To ensure the location is rendered, you must also provide the latitude and longitude. If a building has been created without these coordinates and you wish to display its geo-location on the map later, you can edit the building details via the UI to include the latitude and longitude. This limitation will be resolved in a future release.
+
+	Country string `json:"country,omitempty"` // Country name
 }
 type RequestSiteDesignUpdatesABuildingV2 struct {
-	ParentID  string   `json:"parentId,omitempty"`  // Parent Id
-	Name      string   `json:"name,omitempty"`      // Building name
-	Latitude  *float64 `json:"latitude,omitempty"`  // Building Latitude. Example: 37.403712
+	ParentID string `json:"parentId,omitempty"` // Parent Id
+
+	Name string `json:"name,omitempty"` // Building name
+
+	Latitude *float64 `json:"latitude,omitempty"` // Building Latitude. Example: 37.403712
+
 	Longitude *float64 `json:"longitude,omitempty"` // Building Longitude. Example: -121.971063
-	Address   string   `json:"address,omitempty"`   // Building address. Example: 4900 Marie P. Debartolo Way, Santa Clara, California 95054, United States
-	Country   string   `json:"country,omitempty"`   // Country name
+
+	Address string `json:"address,omitempty"` // Building address. Example: 4900 Marie P. Debartolo Way, Santa Clara, California 95054, United States. Please note that if only the address is provided when creating a building, the UI will not display the geo-location on the map. To ensure the location is rendered, you must also provide the latitude and longitude. If a building has been created without these coordinates and you wish to display its geo-location on the map later, you can edit the building details via the UI to include the latitude and longitude. This limitation will be resolved in a future release.
+
+	Country string `json:"country,omitempty"` // Country name
 }
 type RequestSiteDesignCreatesAFloorV2 struct {
-	ParentID       string   `json:"parentId,omitempty"`       // Parent Id
-	Name           string   `json:"name,omitempty"`           // Floor name
-	FloorNumber    *int     `json:"floorNumber,omitempty"`    // Floor number
-	RfModel        string   `json:"rfModel,omitempty"`        // RF Model
-	Width          *float64 `json:"width,omitempty"`          // Floor width. Example : 100.5
-	Length         *float64 `json:"length,omitempty"`         // Floor length. Example : 110.3
-	Height         *float64 `json:"height,omitempty"`         // Floor height. Example : 10.1
-	UnitsOfMeasure string   `json:"unitsOfMeasure,omitempty"` // Units Of Measure
+	ParentID string `json:"parentId,omitempty"` // Parent Id
+
+	Name string `json:"name,omitempty"` // Floor name
+
+	FloorNumber *int `json:"floorNumber,omitempty"` // Floor number
+
+	RfModel string `json:"rfModel,omitempty"` // RF Model
+
+	Width *float64 `json:"width,omitempty"` // Floor width. Example : 100.5
+
+	Length *float64 `json:"length,omitempty"` // Floor length. Example : 110.3
+
+	Height *float64 `json:"height,omitempty"` // Floor height. Example : 10.1
+
+	UnitsOfMeasure string `json:"unitsOfMeasure,omitempty"` // Units Of Measure
 }
 type RequestSiteDesignUpdatesFloorSettingsV2 struct {
 	UnitsOfMeasure string `json:"unitsOfMeasure,omitempty"` // Floor units of measure
+}
+type RequestSiteDesignEditTheAccessPointsPositionsV2 []RequestItemSiteDesignEditTheAccessPointsPositionsV2 // Array of RequestSiteDesignEditTheAccessPointsPositionsV2
+type RequestItemSiteDesignEditTheAccessPointsPositionsV2 struct {
+	ID string `json:"id,omitempty"` // Access Point Id
+
+	Position *RequestItemSiteDesignEditTheAccessPointsPositionsV2Position `json:"position,omitempty"` //
+
+	Radios *[]RequestItemSiteDesignEditTheAccessPointsPositionsV2Radios `json:"radios,omitempty"` //
+}
+type RequestItemSiteDesignEditTheAccessPointsPositionsV2Position struct {
+	X *float64 `json:"x,omitempty"` // Access Point X coordinate in feet
+
+	Y *float64 `json:"y,omitempty"` // Access Point Y coordinate in feet
+
+	Z *float64 `json:"z,omitempty"` // Access Point Z coordinate in feet
+}
+type RequestItemSiteDesignEditTheAccessPointsPositionsV2Radios struct {
+	ID string `json:"id,omitempty"` // Radio Id
+
+	Antenna *RequestItemSiteDesignEditTheAccessPointsPositionsV2RadiosAntenna `json:"antenna,omitempty"` //
+}
+type RequestItemSiteDesignEditTheAccessPointsPositionsV2RadiosAntenna struct {
+	Name string `json:"name,omitempty"` // Antenna type for this Access Point. Use `/dna/intent/api/v1/maps/supported-access-points` to find supported Antennas for a particualr Access Point model
+
+	Azimuth *int `json:"azimuth,omitempty"` // Angle of the antenna, measured relative to the x axis, clockwise. The azimuth range is from 0 through 360
+
+	Elevation *int `json:"elevation,omitempty"` // Elevation of the antenna. The elevation range is from -90 through 90
+}
+type RequestSiteDesignAssignPlannedAccessPointsToOperationsOnesV2 []RequestItemSiteDesignAssignPlannedAccessPointsToOperationsOnesV2 // Array of RequestSiteDesignAssignPlannedAccessPointsToOperationsOnesV2
+type RequestItemSiteDesignAssignPlannedAccessPointsToOperationsOnesV2 struct {
+	PlannedAccessPointID string `json:"plannedAccessPointId,omitempty"` // Planned Access Point Id
+
+	AccessPointID string `json:"accessPointId,omitempty"` // Operational Access Point Id
+}
+type RequestSiteDesignAddPlannedAccessPointsPositionsV2 []RequestItemSiteDesignAddPlannedAccessPointsPositionsV2 // Array of RequestSiteDesignAddPlannedAccessPointsPositionsV2
+type RequestItemSiteDesignAddPlannedAccessPointsPositionsV2 struct {
+	Name string `json:"name,omitempty"` // Planned Access Point Name
+
+	MacAddress string `json:"macAddress,omitempty"` // Planned Access Point MAC address
+
+	Type string `json:"type,omitempty"` // Planned Access Point type. Use `dna/intent/api/v1/maps/supported-access-points` to find the supported models
+
+	Position *RequestItemSiteDesignAddPlannedAccessPointsPositionsV2Position `json:"position,omitempty"` //
+
+	Radios *[]RequestItemSiteDesignAddPlannedAccessPointsPositionsV2Radios `json:"radios,omitempty"` //
+}
+type RequestItemSiteDesignAddPlannedAccessPointsPositionsV2Position struct {
+	X *float64 `json:"x,omitempty"` // Planned Access Point X coordinate in feet
+
+	Y *float64 `json:"y,omitempty"` // Planned Access Point Y coordinate in feet
+
+	Z *float64 `json:"z,omitempty"` // Planned Access Point Z coordinate in feet
+}
+type RequestItemSiteDesignAddPlannedAccessPointsPositionsV2Radios struct {
+	Bands *[]float64 `json:"bands,omitempty"` // Radio frequencies in GHz. Radio frequencies are expected to be 2.4, 5, and 6. MinItems: 1; MaxItems: 3
+
+	Channel *int `json:"channel,omitempty"` // Channel to be used by the Planned Access Point. In the context of a Planned Access Point, the channel have no bearing on what the real Access Point will actually be, they are just used for Maps visualization feature set
+
+	TxPower *int `json:"txPower,omitempty"` // Transmit power for the channel in Decibel milliwatts (dBm). In the context of a Planned Access Point, the txPower have no bearing on what the real Access Point will actually be, they are just used for Maps visualization feature set
+
+	Antenna *RequestItemSiteDesignAddPlannedAccessPointsPositionsV2RadiosAntenna `json:"antenna,omitempty"` //
+}
+type RequestItemSiteDesignAddPlannedAccessPointsPositionsV2RadiosAntenna struct {
+	Name string `json:"name,omitempty"` // Antenna type for this Planned Access Point. Use `/dna/intent/api/v1/maps/supported-access-points` to find supported Antennas for a particualr Planned Access Point type
+
+	Azimuth *int `json:"azimuth,omitempty"` // Angle of the antenna, measured relative to the x axis, clockwise. The azimuth range is from 0 through 360
+
+	Elevation *int `json:"elevation,omitempty"` // Elevation of the antenna. The elevation range is from -90 through 90
+}
+type RequestSiteDesignEditPlannedAccessPointsPositionsV2 []RequestItemSiteDesignEditPlannedAccessPointsPositionsV2 // Array of RequestSiteDesignEditPlannedAccessPointsPositionsV2
+type RequestItemSiteDesignEditPlannedAccessPointsPositionsV2 struct {
+	Name string `json:"name,omitempty"` // Planned Access Point Name
+
+	MacAddress string `json:"macAddress,omitempty"` // Planned Access Point MAC address
+
+	Type string `json:"type,omitempty"` // Planned Access Point type. Use `dna/intent/api/v1/maps/supported-access-points` to find the supported models
+
+	Position *RequestItemSiteDesignEditPlannedAccessPointsPositionsV2Position `json:"position,omitempty"` //
+
+	Radios *[]RequestItemSiteDesignEditPlannedAccessPointsPositionsV2Radios `json:"radios,omitempty"` //
+
+	ID string `json:"id,omitempty"` // Planned Access Point Id
+}
+type RequestItemSiteDesignEditPlannedAccessPointsPositionsV2Position struct {
+	X *float64 `json:"x,omitempty"` // Planned Access Point X coordinate in feet
+
+	Y *float64 `json:"y,omitempty"` // Planned Access Point Y coordinate in feet
+
+	Z *float64 `json:"z,omitempty"` // Planned Access Point Z coordinate in feet
+}
+type RequestItemSiteDesignEditPlannedAccessPointsPositionsV2Radios struct {
+	Channel *int `json:"channel,omitempty"` // Channel to be used by the Planned Access Point. In the context of a Planned Access Point, the channel have no bearing on what the real Access Point will actually be, they are just used for Maps visualization feature set
+
+	TxPower *int `json:"txPower,omitempty"` // Transmit power for the channel in Decibel milliwatts (dBm). In the context of a Planned Access Point, the txPower have no bearing on what the real Access Point will actually be, they are just used for Maps visualization feature set
+
+	Antenna *RequestItemSiteDesignEditPlannedAccessPointsPositionsV2RadiosAntenna `json:"antenna,omitempty"` //
+
+	ID string `json:"id,omitempty"` // Radio Id
+}
+type RequestItemSiteDesignEditPlannedAccessPointsPositionsV2RadiosAntenna struct {
+	Name string `json:"name,omitempty"` // Antenna type for this Planned Access Point. Use `/dna/intent/api/v1/maps/supported-access-points` to find supported Antennas for a particualr Planned Access Point type
+
+	Azimuth *int `json:"azimuth,omitempty"` // Angle of the antenna, measured relative to the x axis, clockwise. The azimuth range is from 0 through 360
+
+	Elevation *int `json:"elevation,omitempty"` // Elevation of the antenna. The elevation range is from -90 through 90
 }
 type RequestSiteDesignUpdatesAFloorV2 struct {
 	ParentID       string   `json:"parentId,omitempty"`       // Parent Id
@@ -492,7 +914,7 @@ type RequestSiteDesignUpdatesAFloorV2 struct {
 @param id id path parameter. Area Id
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!gets-an-area-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!gets-an-area
 */
 func (s *SiteDesignService) GetsAnAreaV1(id string) (*ResponseSiteDesignGetsAnAreaV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/areas/{id}"
@@ -528,7 +950,7 @@ func (s *SiteDesignService) GetsAnAreaV1(id string) (*ResponseSiteDesignGetsAnAr
 
 @param GetSiteAssignedNetworkDevicesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-site-assigned-network-devices-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-site-assigned-network-devices
 */
 func (s *SiteDesignService) GetSiteAssignedNetworkDevicesV1(GetSiteAssignedNetworkDevicesV1QueryParams *GetSiteAssignedNetworkDevicesV1QueryParams) (*ResponseSiteDesignGetSiteAssignedNetworkDevicesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkDevices/assignedToSite"
@@ -565,7 +987,7 @@ func (s *SiteDesignService) GetSiteAssignedNetworkDevicesV1(GetSiteAssignedNetwo
 
 @param GetSiteAssignedNetworkDevicesCountV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-site-assigned-network-devices-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-site-assigned-network-devices-count
 */
 func (s *SiteDesignService) GetSiteAssignedNetworkDevicesCountV1(GetSiteAssignedNetworkDevicesCountV1QueryParams *GetSiteAssignedNetworkDevicesCountV1QueryParams) (*ResponseSiteDesignGetSiteAssignedNetworkDevicesCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkDevices/assignedToSite/count"
@@ -601,7 +1023,7 @@ func (s *SiteDesignService) GetSiteAssignedNetworkDevicesCountV1(GetSiteAssigned
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-device-controllability-settings-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-device-controllability-settings
 */
 func (s *SiteDesignService) GetDeviceControllabilitySettingsV1() (*ResponseSiteDesignGetDeviceControllabilitySettingsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkDevices/deviceControllability/settings"
@@ -636,7 +1058,7 @@ func (s *SiteDesignService) GetDeviceControllabilitySettingsV1() (*ResponseSiteD
 
 @param GetSiteNotAssignedNetworkDevicesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-site-not-assigned-network-devices-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-site-not-assigned-network-devices
 */
 func (s *SiteDesignService) GetSiteNotAssignedNetworkDevicesV1(GetSiteNotAssignedNetworkDevicesV1QueryParams *GetSiteNotAssignedNetworkDevicesV1QueryParams) (*ResponseSiteDesignGetSiteNotAssignedNetworkDevicesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkDevices/notAssignedToSite"
@@ -672,7 +1094,7 @@ func (s *SiteDesignService) GetSiteNotAssignedNetworkDevicesV1(GetSiteNotAssigne
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-site-not-assigned-network-devices-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-site-not-assigned-network-devices-count
 */
 func (s *SiteDesignService) GetSiteNotAssignedNetworkDevicesCountV1() (*ResponseSiteDesignGetSiteNotAssignedNetworkDevicesCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkDevices/notAssignedToSite/count"
@@ -708,7 +1130,7 @@ func (s *SiteDesignService) GetSiteNotAssignedNetworkDevicesCountV1() (*Response
 @param id id path parameter. Network Device Id.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-site-assigned-network-device-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-site-assigned-network-device
 */
 func (s *SiteDesignService) GetSiteAssignedNetworkDeviceV1(id string) (*ResponseSiteDesignGetSiteAssignedNetworkDeviceV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkDevices/{id}/assignedToSite"
@@ -744,7 +1166,7 @@ func (s *SiteDesignService) GetSiteAssignedNetworkDeviceV1(id string) (*Response
 
 @param RetrievesTheListOfNetworkProfilesForSitesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-the-list-of-network-profiles-for-sites-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-the-list-of-network-profiles-for-sites
 */
 func (s *SiteDesignService) RetrievesTheListOfNetworkProfilesForSitesV1(RetrievesTheListOfNetworkProfilesForSitesV1QueryParams *RetrievesTheListOfNetworkProfilesForSitesV1QueryParams) (*ResponseSiteDesignRetrievesTheListOfNetworkProfilesForSitesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkProfilesForSites"
@@ -781,7 +1203,7 @@ func (s *SiteDesignService) RetrievesTheListOfNetworkProfilesForSitesV1(Retrieve
 
 @param RetrievesTheCountOfNetworkProfilesForSitesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-the-count-of-network-profiles-for-sites-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-the-count-of-network-profiles-for-sites
 */
 func (s *SiteDesignService) RetrievesTheCountOfNetworkProfilesForSitesV1(RetrievesTheCountOfNetworkProfilesForSitesV1QueryParams *RetrievesTheCountOfNetworkProfilesForSitesV1QueryParams) (*ResponseSiteDesignRetrievesTheCountOfNetworkProfilesForSitesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkProfilesForSites/count"
@@ -819,7 +1241,7 @@ func (s *SiteDesignService) RetrievesTheCountOfNetworkProfilesForSitesV1(Retriev
 @param id id path parameter. The `id` of the network profile, retrievable from `GET /intent/api/v1/networkProfilesForSites`
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieve-a-network-profile-for-sites-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieve-a-network-profile-for-sites-by-id
 */
 func (s *SiteDesignService) RetrieveANetworkProfileForSitesByIDV1(id string) (*ResponseSiteDesignRetrieveANetworkProfileForSitesByIDV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkProfilesForSites/{id}"
@@ -858,7 +1280,7 @@ The list includes the sites the profile has been directly assigned to, as well a
 
 @param RetrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-the-list-of-sites-that-the-given-network-profile-for-sites-is-assigned-to-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-the-list-of-sites-that-the-given-network-profile-for-sites-is-assigned-to
 */
 func (s *SiteDesignService) RetrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1(profileID string, RetrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1QueryParams *RetrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1QueryParams) (*ResponseSiteDesignRetrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkProfilesForSites/{profileId}/siteAssignments"
@@ -897,7 +1319,7 @@ func (s *SiteDesignService) RetrievesTheListOfSitesThatTheGivenNetworkProfileFor
 @param profileID profileId path parameter. The `id` of the network profile, retrievable from `GET /intent/api/v1/networkProfilesForSites`
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-the-count-of-sites-that-the-given-network-profile-for-sites-is-assigned-to-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-the-count-of-sites-that-the-given-network-profile-for-sites-is-assigned-to
 */
 func (s *SiteDesignService) RetrievesTheCountOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1(profileID string) (*ResponseSiteDesignRetrievesTheCountOfSitesThatTheGivenNetworkProfileForSitesIsAssignedToV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkProfilesForSites/{profileId}/siteAssignments/count"
@@ -933,7 +1355,7 @@ func (s *SiteDesignService) RetrievesTheCountOfSitesThatTheGivenNetworkProfileFo
 
 @param GetSitesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-sites-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-sites
 */
 func (s *SiteDesignService) GetSitesV1(GetSitesV1QueryParams *GetSitesV1QueryParams) (*ResponseSiteDesignGetSitesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sites"
@@ -970,7 +1392,7 @@ func (s *SiteDesignService) GetSitesV1(GetSitesV1QueryParams *GetSitesV1QueryPar
 
 @param GetSitesCountV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-sites-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-sites-count
 */
 func (s *SiteDesignService) GetSitesCountV1(GetSitesCountV1QueryParams *GetSitesCountV1QueryParams) (*ResponseSiteDesignGetSitesCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sites/count"
@@ -1010,7 +1432,7 @@ These assigments can be modified via the `/dna/intent/api/v1/networkProfilesForS
 
 @param RetrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssignedV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-the-list-of-network-profiles-that-the-given-site-has-been-assigned-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-the-list-of-network-profiles-that-the-given-site-has-been-assigned
 */
 func (s *SiteDesignService) RetrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssignedV1(siteID string, RetrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssignedV1QueryParams *RetrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssignedV1QueryParams) (*ResponseSiteDesignRetrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssignedV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sites/{siteId}/profileAssignments"
@@ -1049,7 +1471,7 @@ func (s *SiteDesignService) RetrievesTheListOfNetworkProfilesThatTheGivenSiteHas
 @param siteID siteId path parameter. The `id` of the site, retrievable from `/dna/intent/api/v1/sites`
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-the-count-of-profiles-that-the-given-site-has-been-assigned-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-the-count-of-profiles-that-the-given-site-has-been-assigned
 */
 func (s *SiteDesignService) RetrievesTheCountOfProfilesThatTheGivenSiteHasBeenAssignedV1(siteID string) (*ResponseSiteDesignRetrievesTheCountOfProfilesThatTheGivenSiteHasBeenAssignedV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sites/{siteId}/profileAssignments/count"
@@ -1150,6 +1572,166 @@ func (s *SiteDesignService) GetFloorSettingsV2() (*ResponseSiteDesignGetFloorSet
 
 }
 
+//GetAccessPointsPositionsV2 Get Access Points positions - fd8b-0aab-4a49-8a71
+/* Retrieve all Access Points positions assigned for a specific floor
+
+
+@param floorID floorId path parameter. Floor Id
+
+@param GetAccessPointsPositionsV2QueryParams Filtering parameter
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-access-points-positions-v2
+*/
+func (s *SiteDesignService) GetAccessPointsPositionsV2(floorID string, GetAccessPointsPositionsV2QueryParams *GetAccessPointsPositionsV2QueryParams) (*ResponseSiteDesignGetAccessPointsPositionsV2, *resty.Response, error) {
+	path := "/dna/intent/api/v2/floors/{floorId}/accessPointPositions"
+	path = strings.Replace(path, "{floorId}", fmt.Sprintf("%v", floorID), -1)
+
+	queryString, _ := query.Values(GetAccessPointsPositionsV2QueryParams)
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSiteDesignGetAccessPointsPositionsV2{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.GetAccessPointsPositionsV2(floorID, GetAccessPointsPositionsV2QueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation GetAccessPointsPositionsV2")
+	}
+
+	result := response.Result().(*ResponseSiteDesignGetAccessPointsPositionsV2)
+	return result, response, err
+
+}
+
+//GetAccessPointsPositionsCountV2 Get Access Points positions count - ccab-58ba-432a-88b3
+/* Retrieve Access Points positions count assigned for a specific floor
+
+
+@param floorID floorId path parameter. Floor Id
+
+@param GetAccessPointsPositionsCountV2QueryParams Filtering parameter
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-access-points-positions-count-v2
+*/
+func (s *SiteDesignService) GetAccessPointsPositionsCountV2(floorID string, GetAccessPointsPositionsCountV2QueryParams *GetAccessPointsPositionsCountV2QueryParams) (*ResponseSiteDesignGetAccessPointsPositionsCountV2, *resty.Response, error) {
+	path := "/dna/intent/api/v2/floors/{floorId}/accessPointPositions/count"
+	path = strings.Replace(path, "{floorId}", fmt.Sprintf("%v", floorID), -1)
+
+	queryString, _ := query.Values(GetAccessPointsPositionsCountV2QueryParams)
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSiteDesignGetAccessPointsPositionsCountV2{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.GetAccessPointsPositionsCountV2(floorID, GetAccessPointsPositionsCountV2QueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation GetAccessPointsPositionsCountV2")
+	}
+
+	result := response.Result().(*ResponseSiteDesignGetAccessPointsPositionsCountV2)
+	return result, response, err
+
+}
+
+//GetPlannedAccessPointsPositionsV2 Get Planned Access Points Positions - 7888-2b7d-431b-8e32
+/* Retrieve all Planned Access Points Positions designated for a specific floor
+
+
+@param floorID floorId path parameter. Floor Id
+
+@param GetPlannedAccessPointsPositionsV2QueryParams Filtering parameter
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-planned-access-points-positions-v2
+*/
+func (s *SiteDesignService) GetPlannedAccessPointsPositionsV2(floorID string, GetPlannedAccessPointsPositionsV2QueryParams *GetPlannedAccessPointsPositionsV2QueryParams) (*ResponseSiteDesignGetPlannedAccessPointsPositionsV2, *resty.Response, error) {
+	path := "/dna/intent/api/v2/floors/{floorId}/plannedAccessPointPositions"
+	path = strings.Replace(path, "{floorId}", fmt.Sprintf("%v", floorID), -1)
+
+	queryString, _ := query.Values(GetPlannedAccessPointsPositionsV2QueryParams)
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSiteDesignGetPlannedAccessPointsPositionsV2{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.GetPlannedAccessPointsPositionsV2(floorID, GetPlannedAccessPointsPositionsV2QueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation GetPlannedAccessPointsPositionsV2")
+	}
+
+	result := response.Result().(*ResponseSiteDesignGetPlannedAccessPointsPositionsV2)
+	return result, response, err
+
+}
+
+//GetPlannedAccessPointsPositionsCountV2 Get Planned Access Points Positions count - 63b0-c84b-47a9-beda
+/* Retrieve all Planned Access Points Positions count designated for a specific floor
+
+
+@param floorID floorId path parameter. Floor Id
+
+@param GetPlannedAccessPointsPositionsCountV2QueryParams Filtering parameter
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-planned-access-points-positions-count-v2
+*/
+func (s *SiteDesignService) GetPlannedAccessPointsPositionsCountV2(floorID string, GetPlannedAccessPointsPositionsCountV2QueryParams *GetPlannedAccessPointsPositionsCountV2QueryParams) (*ResponseSiteDesignGetPlannedAccessPointsPositionsCountV2, *resty.Response, error) {
+	path := "/dna/intent/api/v2/floors/{floorId}/plannedAccessPointPositions/count"
+	path = strings.Replace(path, "{floorId}", fmt.Sprintf("%v", floorID), -1)
+
+	queryString, _ := query.Values(GetPlannedAccessPointsPositionsCountV2QueryParams)
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSiteDesignGetPlannedAccessPointsPositionsCountV2{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.GetPlannedAccessPointsPositionsCountV2(floorID, GetPlannedAccessPointsPositionsCountV2QueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation GetPlannedAccessPointsPositionsCountV2")
+	}
+
+	result := response.Result().(*ResponseSiteDesignGetPlannedAccessPointsPositionsCountV2)
+	return result, response, err
+
+}
+
 //GetsAFloorV2 Gets a floor - ff92-2958-4bba-9288
 /* Gets a floor in the network hierarchy.
 
@@ -1195,7 +1777,7 @@ func (s *SiteDesignService) GetsAFloorV2(id string, GetsAFloorV2QueryParams *Get
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!creates-an-area-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!creates-an-area
 */
 func (s *SiteDesignService) CreatesAnAreaV1(requestSiteDesignCreatesAnAreaV1 *RequestSiteDesignCreatesAnAreaV1) (*ResponseSiteDesignCreatesAnAreaV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/areas"
@@ -1232,7 +1814,7 @@ func (s *SiteDesignService) CreatesAnAreaV1(requestSiteDesignCreatesAnAreaV1 *Re
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!assign-network-devices-to-a-site-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!assign-network-devices-to-a-site
 */
 func (s *SiteDesignService) AssignNetworkDevicesToASiteV1(requestSiteDesignAssignNetworkDevicesToASiteV1 *RequestSiteDesignAssignNetworkDevicesToASiteV1) (*ResponseSiteDesignAssignNetworkDevicesToASiteV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkDevices/assignToSite/apply"
@@ -1269,7 +1851,7 @@ func (s *SiteDesignService) AssignNetworkDevicesToASiteV1(requestSiteDesignAssig
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!unassign-network-devices-from-sites-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!unassign-network-devices-from-sites
 */
 func (s *SiteDesignService) UnassignNetworkDevicesFromSitesV1(requestSiteDesignUnassignNetworkDevicesFromSitesV1 *RequestSiteDesignUnassignNetworkDevicesFromSitesV1) (*ResponseSiteDesignUnassignNetworkDevicesFromSitesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkDevices/unassignFromSite/apply"
@@ -1308,7 +1890,7 @@ func (s *SiteDesignService) UnassignNetworkDevicesFromSitesV1(requestSiteDesignU
 @param profileID profileId path parameter. The `id` of the network profile, retrievable from `GET /intent/api/v1/networkProfilesForSites`
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!assign-a-network-profile-for-sites-to-the-given-site-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!assign-a-network-profile-for-sites-to-the-given-site
 */
 func (s *SiteDesignService) AssignANetworkProfileForSitesToTheGivenSiteV1(profileID string, requestSiteDesignAssignANetworkProfileForSitesToTheGivenSiteV1 *RequestSiteDesignAssignANetworkProfileForSitesToTheGivenSiteV1) (*ResponseSiteDesignAssignANetworkProfileForSitesToTheGivenSiteV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkProfilesForSites/{profileId}/siteAssignments"
@@ -1348,7 +1930,7 @@ func (s *SiteDesignService) AssignANetworkProfileForSitesToTheGivenSiteV1(profil
 @param profileID profileId path parameter. The `id` of the network profile, retrievable from `GET /intent/api/v1/networkProfilesForSites`
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!assign-a-network-profile-for-sites-to-a-list-of-sites-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!assign-a-network-profile-for-sites-to-a-list-of-sites
 */
 func (s *SiteDesignService) AssignANetworkProfileForSitesToAListOfSitesV1(profileID string, requestSiteDesignAssignANetworkProfileForSitesToAListOfSitesV1 *RequestSiteDesignAssignANetworkProfileForSitesToAListOfSitesV1) (*ResponseSiteDesignAssignANetworkProfileForSitesToAListOfSitesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkProfilesForSites/{profileId}/siteAssignments/bulk"
@@ -1390,7 +1972,7 @@ func (s *SiteDesignService) AssignANetworkProfileForSitesToAListOfSitesV1(profil
 @param siteID siteId path parameter. Site Id to be associated
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!associate-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!associate
 */
 func (s *SiteDesignService) AssociateV1(networkProfileID string, siteID string) (*ResponseSiteDesignAssociateV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkprofile/{networkProfileId}/site/{siteId}"
@@ -1428,7 +2010,7 @@ func (s *SiteDesignService) AssociateV1(networkProfileID string, siteID string) 
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-sites-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-sites
 */
 func (s *SiteDesignService) CreateSitesV1(requestSiteDesignCreateSitesV1 *RequestSiteDesignCreateSitesV1) (*ResponseSiteDesignCreateSitesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sites/bulk"
@@ -1534,6 +2116,166 @@ func (s *SiteDesignService) CreatesAFloorV2(requestSiteDesignCreatesAFloorV2 *Re
 
 }
 
+//EditTheAccessPointsPositionsV2 Edit the Access Points Positions - dba0-5a1b-495b-9520
+/* Position or reposition the Access Points on the map.
+
+
+@param floorID floorId path parameter. Floor Id
+
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!edit-the-access-points-positions-v2
+*/
+func (s *SiteDesignService) EditTheAccessPointsPositionsV2(floorID string, requestSiteDesignEditTheAccessPointsPositionsV2 *RequestSiteDesignEditTheAccessPointsPositionsV2) (*ResponseSiteDesignEditTheAccessPointsPositionsV2, *resty.Response, error) {
+	path := "/dna/intent/api/v2/floors/{floorId}/accessPointPositions/bulkChange"
+	path = strings.Replace(path, "{floorId}", fmt.Sprintf("%v", floorID), -1)
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetBody(requestSiteDesignEditTheAccessPointsPositionsV2).
+		SetResult(&ResponseSiteDesignEditTheAccessPointsPositionsV2{}).
+		SetError(&Error).
+		Post(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.EditTheAccessPointsPositionsV2(floorID, requestSiteDesignEditTheAccessPointsPositionsV2)
+		}
+
+		return nil, response, fmt.Errorf("error with operation EditTheAccessPointsPositionsV2")
+	}
+
+	result := response.Result().(*ResponseSiteDesignEditTheAccessPointsPositionsV2)
+	return result, response, err
+
+}
+
+//AssignPlannedAccessPointsToOperationsOnesV2 Assign Planned Access Points to operations ones - 0c9d-f92d-4aab-b8c1
+/* Assign Planned Access Points to operations ones.
+
+
+@param floorID floorId path parameter. Floor Id
+
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!assign-planned-access-points-to-operations-ones-v2
+*/
+func (s *SiteDesignService) AssignPlannedAccessPointsToOperationsOnesV2(floorID string, requestSiteDesignAssignPlannedAccessPointsToOperationsOnesV2 *RequestSiteDesignAssignPlannedAccessPointsToOperationsOnesV2) (*ResponseSiteDesignAssignPlannedAccessPointsToOperationsOnesV2, *resty.Response, error) {
+	path := "/dna/intent/api/v2/floors/{floorId}/plannedAccessPointPositions/assignAccessPointPositions"
+	path = strings.Replace(path, "{floorId}", fmt.Sprintf("%v", floorID), -1)
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetBody(requestSiteDesignAssignPlannedAccessPointsToOperationsOnesV2).
+		SetResult(&ResponseSiteDesignAssignPlannedAccessPointsToOperationsOnesV2{}).
+		SetError(&Error).
+		Post(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.AssignPlannedAccessPointsToOperationsOnesV2(floorID, requestSiteDesignAssignPlannedAccessPointsToOperationsOnesV2)
+		}
+
+		return nil, response, fmt.Errorf("error with operation AssignPlannedAccessPointsToOperationsOnesV2")
+	}
+
+	result := response.Result().(*ResponseSiteDesignAssignPlannedAccessPointsToOperationsOnesV2)
+	return result, response, err
+
+}
+
+//AddPlannedAccessPointsPositionsV2 Add Planned Access Points Positions - b689-cbbc-4938-a234
+/* Add Planned Access Points Positions on the map.
+
+
+@param floorID floorId path parameter. Floor Id
+
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-planned-access-points-positions-v2
+*/
+func (s *SiteDesignService) AddPlannedAccessPointsPositionsV2(floorID string, requestSiteDesignAddPlannedAccessPointsPositionsV2 *RequestSiteDesignAddPlannedAccessPointsPositionsV2) (*ResponseSiteDesignAddPlannedAccessPointsPositionsV2, *resty.Response, error) {
+	path := "/dna/intent/api/v2/floors/{floorId}/plannedAccessPointPositions/bulk"
+	path = strings.Replace(path, "{floorId}", fmt.Sprintf("%v", floorID), -1)
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetBody(requestSiteDesignAddPlannedAccessPointsPositionsV2).
+		SetResult(&ResponseSiteDesignAddPlannedAccessPointsPositionsV2{}).
+		SetError(&Error).
+		Post(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.AddPlannedAccessPointsPositionsV2(floorID, requestSiteDesignAddPlannedAccessPointsPositionsV2)
+		}
+
+		return nil, response, fmt.Errorf("error with operation AddPlannedAccessPointsPositionsV2")
+	}
+
+	result := response.Result().(*ResponseSiteDesignAddPlannedAccessPointsPositionsV2)
+	return result, response, err
+
+}
+
+//EditPlannedAccessPointsPositionsV2 Edit Planned Access Points Positions - 189f-8bc9-4d88-a44b
+/* Edit Planned Access Points Positions on the map.
+
+
+@param floorID floorId path parameter. Floor Id
+
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!edit-planned-access-points-positions-v2
+*/
+func (s *SiteDesignService) EditPlannedAccessPointsPositionsV2(floorID string, requestSiteDesignEditPlannedAccessPointsPositionsV2 *RequestSiteDesignEditPlannedAccessPointsPositionsV2) (*ResponseSiteDesignEditPlannedAccessPointsPositionsV2, *resty.Response, error) {
+	path := "/dna/intent/api/v2/floors/{floorId}/plannedAccessPointPositions/bulkChange"
+	path = strings.Replace(path, "{floorId}", fmt.Sprintf("%v", floorID), -1)
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetBody(requestSiteDesignEditPlannedAccessPointsPositionsV2).
+		SetResult(&ResponseSiteDesignEditPlannedAccessPointsPositionsV2{}).
+		SetError(&Error).
+		Post(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.EditPlannedAccessPointsPositionsV2(floorID, requestSiteDesignEditPlannedAccessPointsPositionsV2)
+		}
+
+		return nil, response, fmt.Errorf("error with operation EditPlannedAccessPointsPositionsV2")
+	}
+
+	result := response.Result().(*ResponseSiteDesignEditPlannedAccessPointsPositionsV2)
+	return result, response, err
+
+}
+
 //UploadsFloorImageV2 Uploads floor image - fca4-5804-4758-98d2
 /* Uploads floor image.
 
@@ -1608,16 +2350,16 @@ func (s *SiteDesignService) UpdatesAnAreaV1(id string, requestSiteDesignUpdatesA
 }
 
 //UpdateDeviceControllabilitySettingsV1 Update device controllability settings - f58f-e8d6-4b88-912c
-/* Device Controllability is a system-level process on Catalyst Center that enforces state synchronization for some device-layer features. Its purpose is to aid in the deployment of required network settings that Catalyst Center needs to manage devices. Changes are made on network devices  during discovery, when adding a device to Inventory, or when assigning a device to a site. If changes  are made to any settings that are under the scope of this process, these changes are applied to the  network devices during the Provision and Update Telemetry Settings operations, even if Device  Controllability is disabled. The following device settings will be enabled as part of  Device Controllability when devices are discovered.
+/* Device Controllability is a system-level process on Catalyst Center that enforces state synchronization for some device-layer features. Its purpose is to aid in the deployment of required network settings that Catalyst Center needs to manage devices. Changes are made on network devices during discovery, when adding a device to Inventory, or when assigning a device to a site. If changes are made to any settings that are under the scope of this process, these changes are applied to the network devices during the Provision and Update Telemetry Settings operations, even if Device Controllability is disabled. The following device settings will be enabled as part of Device Controllability when devices are discovered.
 
   SNMP Credentials.
   NETCONF Credentials.
 
-Subsequent to discovery, devices will be added to Inventory. The following device settings will be  enabled when devices are added to inventory.
+Subsequent to discovery, devices will be added to Inventory. The following device settings will be enabled when devices are added to inventory.
 
   Cisco TrustSec (CTS) Credentials.
 
-The following device settings will be enabled when devices are assigned to a site. Some of these  settings can be defined at a site level under Design > Network Settings > Telemetry & Wireless.
+The following device settings will be enabled when devices are assigned to a site. Some of these settings can be defined at a site level under Design > Network Settings > Telemetry & Wireless.
 
   Wired Endpoint Data Collection Enablement.
   Controller Certificates.
@@ -1630,8 +2372,8 @@ The following device settings will be enabled when devices are assigned to a sit
   DTLS Ciphersuite.
   AP Impersonation.
 
-If Device Controllability is disabled, Catalyst Center does not configure any of the preceding  credentials or settings on devices during discovery, at runtime, or during site assignment. However,  the telemetry settings and related configuration are pushed when the device is provisioned or when the  update Telemetry Settings action is performed.
-Catalyst Center identifies and automatically corrects the following telemetry configuration issues on  the device.
+If Device Controllability is disabled, Catalyst Center does not configure any of the preceding credentials or settings on devices during discovery, at runtime, or during site assignment. However, the telemetry settings and related configuration are pushed when the device is provisioned or when the update Telemetry Settings action is performed.
+Catalyst Center identifies and automatically corrects the following telemetry configuration issues on the device.
 
   SWIM certificate issue.
   IOS WLC NA certificate issue.
@@ -1782,7 +2524,7 @@ func (s *SiteDesignService) UpdatesAFloorV2(id string, requestSiteDesignUpdatesA
 @param id id path parameter. Area ID
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!deletes-an-area-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!deletes-an-area
 */
 func (s *SiteDesignService) DeletesAnAreaV1(id string) (*ResponseSiteDesignDeletesAnAreaV1, *resty.Response, error) {
 	//id string
@@ -1820,7 +2562,7 @@ func (s *SiteDesignService) DeletesAnAreaV1(id string) (*ResponseSiteDesignDelet
 @param id id path parameter. The `id` of the network profile, retrievable from `GET /intent/api/v1/networkProfilesForSites`
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!deletes-a-network-profile-for-sites-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!deletes-a-network-profile-for-sites
 */
 func (s *SiteDesignService) DeletesANetworkProfileForSitesV1(id string) (*ResponseSiteDesignDeletesANetworkProfileForSitesV1, *resty.Response, error) {
 	//id string
@@ -1859,7 +2601,7 @@ func (s *SiteDesignService) DeletesANetworkProfileForSitesV1(id string) (*Respon
 
 @param UnassignsANetworkProfileForSitesFromMultipleSitesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!unassigns-a-network-profile-for-sites-from-multiple-sites-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!unassigns-a-network-profile-for-sites-from-multiple-sites
 */
 func (s *SiteDesignService) UnassignsANetworkProfileForSitesFromMultipleSitesV1(profileID string, UnassignsANetworkProfileForSitesFromMultipleSitesV1QueryParams *UnassignsANetworkProfileForSitesFromMultipleSitesV1QueryParams) (*ResponseSiteDesignUnassignsANetworkProfileForSitesFromMultipleSitesV1, *resty.Response, error) {
 	//profileID string,UnassignsANetworkProfileForSitesFromMultipleSitesV1QueryParams *UnassignsANetworkProfileForSitesFromMultipleSitesV1QueryParams
@@ -1901,7 +2643,7 @@ func (s *SiteDesignService) UnassignsANetworkProfileForSitesFromMultipleSitesV1(
 @param id id path parameter. The `id` of the site, retrievable from `GET /intent/api/v1/networkProfilesForSites/{id}/siteAssignments`
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!unassigns-a-network-profile-for-sites-from-a-site-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!unassigns-a-network-profile-for-sites-from-a-site
 */
 func (s *SiteDesignService) UnassignsANetworkProfileForSitesFromASiteV1(profileID string, id string) (*ResponseSiteDesignUnassignsANetworkProfileForSitesFromASiteV1, *resty.Response, error) {
 	//profileID string,id string
@@ -1942,7 +2684,7 @@ func (s *SiteDesignService) UnassignsANetworkProfileForSitesFromASiteV1(profileI
 @param siteID siteId path parameter. Site Id to be associated
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!disassociate-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!disassociate
 */
 func (s *SiteDesignService) DisassociateV1(networkProfileID string, siteID string) (*ResponseSiteDesignDisassociateV1, *resty.Response, error) {
 	//networkProfileID string,siteID string
@@ -2012,6 +2754,47 @@ func (s *SiteDesignService) DeletesABuildingV2(id string) (*ResponseSiteDesignDe
 
 }
 
+//DeletePlannedAccessPointsPositionV2 Delete Planned Access Points Position - fda5-0ba1-462a-ae58
+/* Delete specified Planned Access Points Position designated for a specific floor.
+
+
+@param floorID floorId path parameter. Floor Id
+
+@param id id path parameter. Planned Access Point Id
+
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-planned-access-points-position-v2
+*/
+func (s *SiteDesignService) DeletePlannedAccessPointsPositionV2(floorID string, id string) (*ResponseSiteDesignDeletePlannedAccessPointsPositionV2, *resty.Response, error) {
+	//floorID string,id string
+	path := "/dna/intent/api/v2/floors/{floorId}/plannedAccessPointPositions/{id}"
+	path = strings.Replace(path, "{floorId}", fmt.Sprintf("%v", floorID), -1)
+	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetResult(&ResponseSiteDesignDeletePlannedAccessPointsPositionV2{}).
+		SetError(&Error).
+		Delete(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.DeletePlannedAccessPointsPositionV2(floorID, id)
+		}
+		return nil, response, fmt.Errorf("error with operation DeletePlannedAccessPointsPositionV2")
+	}
+
+	result := response.Result().(*ResponseSiteDesignDeletePlannedAccessPointsPositionV2)
+	return result, response, err
+
+}
+
 //DeletesAFloorV2 Deletes a floor - 6cb4-884b-47db-a808
 /* Deletes a floor from the network hierarchy. This operations fails if there are any devices assigned to this floor.
 
@@ -2048,6 +2831,14 @@ func (s *SiteDesignService) DeletesAFloorV2(id string) (*ResponseSiteDesignDelet
 	result := response.Result().(*ResponseSiteDesignDeletesAFloorV2)
 	return result, response, err
 
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `EditTheAccessPointsPositionsV2`
+*/
+func (s *SiteDesignService) EditTheAccessPointsPositions(floorID string, requestSiteDesignEditTheAccessPointsPositionsV2 *RequestSiteDesignEditTheAccessPointsPositionsV2) (*ResponseSiteDesignEditTheAccessPointsPositionsV2, *resty.Response, error) {
+	return s.EditTheAccessPointsPositionsV2(floorID, requestSiteDesignEditTheAccessPointsPositionsV2)
 }
 
 // Alias Function
@@ -2096,6 +2887,14 @@ This method acts as an alias for the method `GetSiteNotAssignedNetworkDevicesCou
 */
 func (s *SiteDesignService) GetSiteNotAssignedNetworkDevicesCount() (*ResponseSiteDesignGetSiteNotAssignedNetworkDevicesCountV1, *resty.Response, error) {
 	return s.GetSiteNotAssignedNetworkDevicesCountV1()
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `GetAccessPointsPositionsV2`
+*/
+func (s *SiteDesignService) GetAccessPointsPositions(floorID string, GetAccessPointsPositionsV2QueryParams *GetAccessPointsPositionsV2QueryParams) (*ResponseSiteDesignGetAccessPointsPositionsV2, *resty.Response, error) {
+	return s.GetAccessPointsPositionsV2(floorID, GetAccessPointsPositionsV2QueryParams)
 }
 
 // Alias Function
@@ -2172,6 +2971,14 @@ func (s *SiteDesignService) AssignANetworkProfileForSitesToTheGivenSite(profileI
 
 // Alias Function
 /*
+This method acts as an alias for the method `EditPlannedAccessPointsPositionsV2`
+*/
+func (s *SiteDesignService) EditPlannedAccessPointsPositions(floorID string, requestSiteDesignEditPlannedAccessPointsPositionsV2 *RequestSiteDesignEditPlannedAccessPointsPositionsV2) (*ResponseSiteDesignEditPlannedAccessPointsPositionsV2, *resty.Response, error) {
+	return s.EditPlannedAccessPointsPositionsV2(floorID, requestSiteDesignEditPlannedAccessPointsPositionsV2)
+}
+
+// Alias Function
+/*
 This method acts as an alias for the method `CreatesABuildingV2`
 */
 func (s *SiteDesignService) CreatesABuilding(requestSiteDesignCreatesABuildingV2 *RequestSiteDesignCreatesABuildingV2) (*ResponseSiteDesignCreatesABuildingV2, *resty.Response, error) {
@@ -2200,6 +3007,14 @@ This method acts as an alias for the method `GetsAFloorV2`
 */
 func (s *SiteDesignService) GetsAFloor(id string, GetsAFloorV2QueryParams *GetsAFloorV2QueryParams) (*ResponseSiteDesignGetsAFloorV2, *resty.Response, error) {
 	return s.GetsAFloorV2(id, GetsAFloorV2QueryParams)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `GetAccessPointsPositionsCountV2`
+*/
+func (s *SiteDesignService) GetAccessPointsPositionsCount(floorID string, GetAccessPointsPositionsCountV2QueryParams *GetAccessPointsPositionsCountV2QueryParams) (*ResponseSiteDesignGetAccessPointsPositionsCountV2, *resty.Response, error) {
+	return s.GetAccessPointsPositionsCountV2(floorID, GetAccessPointsPositionsCountV2QueryParams)
 }
 
 // Alias Function
@@ -2268,10 +3083,26 @@ func (s *SiteDesignService) GetsAnArea(id string) (*ResponseSiteDesignGetsAnArea
 
 // Alias Function
 /*
+This method acts as an alias for the method `GetPlannedAccessPointsPositionsV2`
+*/
+func (s *SiteDesignService) GetPlannedAccessPointsPositions(floorID string, GetPlannedAccessPointsPositionsV2QueryParams *GetPlannedAccessPointsPositionsV2QueryParams) (*ResponseSiteDesignGetPlannedAccessPointsPositionsV2, *resty.Response, error) {
+	return s.GetPlannedAccessPointsPositionsV2(floorID, GetPlannedAccessPointsPositionsV2QueryParams)
+}
+
+// Alias Function
+/*
 This method acts as an alias for the method `DeletesABuildingV2`
 */
 func (s *SiteDesignService) DeletesABuilding(id string) (*ResponseSiteDesignDeletesABuildingV2, *resty.Response, error) {
 	return s.DeletesABuildingV2(id)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `AddPlannedAccessPointsPositionsV2`
+*/
+func (s *SiteDesignService) AddPlannedAccessPointsPositions(floorID string, requestSiteDesignAddPlannedAccessPointsPositionsV2 *RequestSiteDesignAddPlannedAccessPointsPositionsV2) (*ResponseSiteDesignAddPlannedAccessPointsPositionsV2, *resty.Response, error) {
+	return s.AddPlannedAccessPointsPositionsV2(floorID, requestSiteDesignAddPlannedAccessPointsPositionsV2)
 }
 
 // Alias Function
@@ -2288,6 +3119,22 @@ This method acts as an alias for the method `GetSiteAssignedNetworkDevicesCountV
 */
 func (s *SiteDesignService) GetSiteAssignedNetworkDevicesCount(GetSiteAssignedNetworkDevicesCountV1QueryParams *GetSiteAssignedNetworkDevicesCountV1QueryParams) (*ResponseSiteDesignGetSiteAssignedNetworkDevicesCountV1, *resty.Response, error) {
 	return s.GetSiteAssignedNetworkDevicesCountV1(GetSiteAssignedNetworkDevicesCountV1QueryParams)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `GetPlannedAccessPointsPositionsCountV2`
+*/
+func (s *SiteDesignService) GetPlannedAccessPointsPositionsCount(floorID string, GetPlannedAccessPointsPositionsCountV2QueryParams *GetPlannedAccessPointsPositionsCountV2QueryParams) (*ResponseSiteDesignGetPlannedAccessPointsPositionsCountV2, *resty.Response, error) {
+	return s.GetPlannedAccessPointsPositionsCountV2(floorID, GetPlannedAccessPointsPositionsCountV2QueryParams)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `AssignPlannedAccessPointsToOperationsOnesV2`
+*/
+func (s *SiteDesignService) AssignPlannedAccessPointsToOperationsOnes(floorID string, requestSiteDesignAssignPlannedAccessPointsToOperationsOnesV2 *RequestSiteDesignAssignPlannedAccessPointsToOperationsOnesV2) (*ResponseSiteDesignAssignPlannedAccessPointsToOperationsOnesV2, *resty.Response, error) {
+	return s.AssignPlannedAccessPointsToOperationsOnesV2(floorID, requestSiteDesignAssignPlannedAccessPointsToOperationsOnesV2)
 }
 
 // Alias Function
@@ -2376,4 +3223,12 @@ This method acts as an alias for the method `DisassociateV1`
 */
 func (s *SiteDesignService) Disassociate(networkProfileID string, siteID string) (*ResponseSiteDesignDisassociateV1, *resty.Response, error) {
 	return s.DisassociateV1(networkProfileID, siteID)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `DeletePlannedAccessPointsPositionV2`
+*/
+func (s *SiteDesignService) DeletePlannedAccessPointsPosition(floorID string, id string) (*ResponseSiteDesignDeletePlannedAccessPointsPositionV2, *resty.Response, error) {
+	return s.DeletePlannedAccessPointsPositionV2(floorID, id)
 }

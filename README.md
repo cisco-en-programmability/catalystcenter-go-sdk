@@ -84,20 +84,23 @@ if devices.Response != nil {
 ```
 
 ## Documentation
+
 ### catalystcenter-go-sdk
+
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/)](https://pkg.go.dev/github.com/cisco-en-programmability/catalystcenter-go-sdk)
+
 ## Compatibility matrix
 
 | SDK versions | Cisco Catalyst Center version supported |
-|--------------|-----------------------------------------|
-| 1.y.z        |  2.3.7.6                                |
+| ------------ | --------------------------------------- |
+| 1.y.z        | 2.3.7.6                                 |
+| 2.y.z        | 2.3.7.9                                 |
 
 ## Changelog
 
 All notable changes to this project will be documented in the [CHANGELOG](https://github.com/cisco-en-programmability/catalystcenter-go-sdk/blob/main/CHANGELOG.md) file.
 
 The development team may make additional name changes as the library evolves with the Cisco Catalyst Center APIs.
-
 
 ## License
 

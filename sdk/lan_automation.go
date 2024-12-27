@@ -276,7 +276,7 @@ type RequestItemLanAutomationLanAutomationStopAndUpdateDevicesV2 struct {
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-session-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-session-count
 */
 func (s *LanAutomationService) LanAutomationSessionCountV1() (*ResponseLanAutomationLanAutomationSessionCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/lan-automation/count"
@@ -311,7 +311,7 @@ func (s *LanAutomationService) LanAutomationSessionCountV1() (*ResponseLanAutoma
 
 @param LANAutomationLogV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-log-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-log
 */
 func (s *LanAutomationService) LanAutomationLogV1(LANAutomationLogV1QueryParams *LanAutomationLogV1QueryParams) (*ResponseLanAutomationLanAutomationLogV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/lan-automation/log"
@@ -349,7 +349,7 @@ func (s *LanAutomationService) LanAutomationLogV1(LANAutomationLogV1QueryParams 
 @param id id path parameter. LAN Automation session identifier.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-log-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-log-by-id
 */
 func (s *LanAutomationService) LanAutomationLogByIDV1(id string) (*ResponseLanAutomationLanAutomationLogByIDV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/lan-automation/log/{id}"
@@ -389,7 +389,7 @@ func (s *LanAutomationService) LanAutomationLogByIDV1(id string) (*ResponseLanAu
 
 @param LANAutomationLogsForIndividualDevicesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-logs-for-individual-devices-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-logs-for-individual-devices
 */
 func (s *LanAutomationService) LanAutomationLogsForIndividualDevicesV1(id string, serialNumber string, LANAutomationLogsForIndividualDevicesV1QueryParams *LanAutomationLogsForIndividualDevicesV1QueryParams) (*ResponseLanAutomationLanAutomationLogsForIndividualDevicesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/lan-automation/log/{id}/{serialNumber}"
@@ -427,7 +427,7 @@ func (s *LanAutomationService) LanAutomationLogsForIndividualDevicesV1(id string
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-active-sessions-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-active-sessions
 */
 func (s *LanAutomationService) LanAutomationActiveSessionsV1() (*ResponseLanAutomationLanAutomationActiveSessionsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/lan-automation/sessions"
@@ -462,7 +462,7 @@ func (s *LanAutomationService) LanAutomationActiveSessionsV1() (*ResponseLanAuto
 
 @param LANAutomationStatusV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-status-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-status
 */
 func (s *LanAutomationService) LanAutomationStatusV1(LANAutomationStatusV1QueryParams *LanAutomationStatusV1QueryParams) (*ResponseLanAutomationLanAutomationStatusV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/lan-automation/status"
@@ -500,7 +500,7 @@ func (s *LanAutomationService) LanAutomationStatusV1(LANAutomationStatusV1QueryP
 @param id id path parameter. LAN Automation session identifier.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-status-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-status-by-id
 */
 func (s *LanAutomationService) LanAutomationStatusByIDV1(id string) (*ResponseLanAutomationLanAutomationStatusByIDV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/lan-automation/status/{id}"
@@ -535,7 +535,7 @@ func (s *LanAutomationService) LanAutomationStatusByIDV1(id string) (*ResponseLa
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-start-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-start
 */
 func (s *LanAutomationService) LanAutomationStartV1(requestLanAutomationLANAutomationStartV1 *RequestLanAutomationLanAutomationStartV1) (*ResponseLanAutomationLanAutomationStartV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/lan-automation"
@@ -719,7 +719,7 @@ func (s *LanAutomationService) LanAutomationStopAndUpdateDevicesV2(id string, re
 @param id id path parameter. LAN Automation id can be obtained from /dna/intent/api/v1/lan-automation/status.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-stop-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!lan-automation-stop
 */
 func (s *LanAutomationService) LanAutomationStopV1(id string) (*ResponseLanAutomationLanAutomationStopV1, *resty.Response, error) {
 	//id string
@@ -740,8 +740,7 @@ func (s *LanAutomationService) LanAutomationStopV1(id string) (*ResponseLanAutom
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.LanAutomationStopV1(
-				id)
+			return s.LanAutomationStopV1(id)
 		}
 		return nil, response, fmt.Errorf("error with operation LanAutomationStopV1")
 	}

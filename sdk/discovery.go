@@ -19,7 +19,7 @@ type GetDiscoveryJobsByIPV1QueryParams struct {
 }
 type GetListOfDiscoveriesByDiscoveryIDV1QueryParams struct {
 	Offset    int    `url:"offset,omitempty"`    //Starting index for the records
-	Limit     int    `url:"limit,omitempty"`     //Number of records to fetch from the starting index
+	Limit     int    `url:"limit,omitempty"`     //Number of records to fetch from the starting index. Min: 1, Max: 500
 	IPAddress string `url:"ipAddress,omitempty"` //Filter records based on IP address
 }
 type GetDiscoveredNetworkDevicesByDiscoveryIDV1QueryParams struct {
@@ -427,598 +427,935 @@ type ResponseDiscoveryCreateCliCredentialsV1Response struct {
 }
 type ResponseDiscoveryCreateHTTPReadCredentialsV1 struct {
 	Response *ResponseDiscoveryCreateHTTPReadCredentialsV1Response `json:"response,omitempty"` //
-	Version  string                                                `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseDiscoveryCreateHTTPReadCredentialsV1Response struct {
 	TaskID string `json:"taskId,omitempty"` //
-	URL    string `json:"url,omitempty"`    //
+
+	URL string `json:"url,omitempty"` //
 }
 type ResponseDiscoveryUpdateHTTPReadCredentialV1 struct {
 	Response *ResponseDiscoveryUpdateHTTPReadCredentialV1Response `json:"response,omitempty"` //
-	Version  string                                               `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseDiscoveryUpdateHTTPReadCredentialV1Response struct {
 	TaskID string `json:"taskId,omitempty"` //
-	URL    string `json:"url,omitempty"`    //
+
+	URL string `json:"url,omitempty"` //
 }
 type ResponseDiscoveryUpdateHTTPWriteCredentialsV1 struct {
 	Response *ResponseDiscoveryUpdateHTTPWriteCredentialsV1Response `json:"response,omitempty"` //
-	Version  string                                                 `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseDiscoveryUpdateHTTPWriteCredentialsV1Response struct {
 	TaskID string `json:"taskId,omitempty"` //
-	URL    string `json:"url,omitempty"`    //
+
+	URL string `json:"url,omitempty"` //
 }
 type ResponseDiscoveryCreateHTTPWriteCredentialsV1 struct {
 	Response *ResponseDiscoveryCreateHTTPWriteCredentialsV1Response `json:"response,omitempty"` //
-	Version  string                                                 `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseDiscoveryCreateHTTPWriteCredentialsV1Response struct {
 	TaskID string `json:"taskId,omitempty"` //
-	URL    string `json:"url,omitempty"`    //
+
+	URL string `json:"url,omitempty"` //
 }
 type ResponseDiscoveryUpdateNetconfCredentialsV1 struct {
 	Response *ResponseDiscoveryUpdateNetconfCredentialsV1Response `json:"response,omitempty"` //
-	Version  string                                               `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseDiscoveryUpdateNetconfCredentialsV1Response struct {
 	TaskID string `json:"taskId,omitempty"` //
-	URL    string `json:"url,omitempty"`    //
+
+	URL string `json:"url,omitempty"` //
 }
 type ResponseDiscoveryCreateNetconfCredentialsV1 struct {
 	Response *ResponseDiscoveryCreateNetconfCredentialsV1Response `json:"response,omitempty"` //
-	Version  string                                               `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseDiscoveryCreateNetconfCredentialsV1Response struct {
 	TaskID string `json:"taskId,omitempty"` //
-	URL    string `json:"url,omitempty"`    //
+
+	URL string `json:"url,omitempty"` //
 }
 type ResponseDiscoveryUpdateSNMPReadCommunityV1 struct {
 	Response *ResponseDiscoveryUpdateSNMPReadCommunityV1Response `json:"response,omitempty"` //
-	Version  string                                              `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseDiscoveryUpdateSNMPReadCommunityV1Response struct {
 	TaskID string `json:"taskId,omitempty"` //
-	URL    string `json:"url,omitempty"`    //
+
+	URL string `json:"url,omitempty"` //
 }
 type ResponseDiscoveryCreateSNMPReadCommunityV1 struct {
 	Response *ResponseDiscoveryCreateSNMPReadCommunityV1Response `json:"response,omitempty"` //
-	Version  string                                              `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseDiscoveryCreateSNMPReadCommunityV1Response struct {
 	TaskID string `json:"taskId,omitempty"` //
-	URL    string `json:"url,omitempty"`    //
+
+	URL string `json:"url,omitempty"` //
 }
 type ResponseDiscoveryCreateSNMPWriteCommunityV1 struct {
 	Response *ResponseDiscoveryCreateSNMPWriteCommunityV1Response `json:"response,omitempty"` //
-	Version  string                                               `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseDiscoveryCreateSNMPWriteCommunityV1Response struct {
 	TaskID string `json:"taskId,omitempty"` //
-	URL    string `json:"url,omitempty"`    //
+
+	URL string `json:"url,omitempty"` //
 }
 type ResponseDiscoveryUpdateSNMPWriteCommunityV1 struct {
 	Response *ResponseDiscoveryUpdateSNMPWriteCommunityV1Response `json:"response,omitempty"` //
-	Version  string                                               `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseDiscoveryUpdateSNMPWriteCommunityV1Response struct {
 	TaskID string `json:"taskId,omitempty"` //
-	URL    string `json:"url,omitempty"`    //
+
+	URL string `json:"url,omitempty"` //
 }
 type ResponseDiscoveryUpdateSNMPv3CredentialsV1 struct {
 	Response *ResponseDiscoveryUpdateSNMPv3CredentialsV1Response `json:"response,omitempty"` //
-	Version  string                                              `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseDiscoveryUpdateSNMPv3CredentialsV1Response struct {
 	TaskID string `json:"taskId,omitempty"` //
-	URL    string `json:"url,omitempty"`    //
+
+	URL string `json:"url,omitempty"` //
 }
 type ResponseDiscoveryCreateSNMPv3CredentialsV1 struct {
 	Response *ResponseDiscoveryCreateSNMPv3CredentialsV1Response `json:"response,omitempty"` //
-	Version  string                                              `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseDiscoveryCreateSNMPv3CredentialsV1Response struct {
 	TaskID string `json:"taskId,omitempty"` //
-	URL    string `json:"url,omitempty"`    //
+
+	URL string `json:"url,omitempty"` //
 }
 type ResponseDiscoveryDeleteGlobalCredentialsByIDV1 struct {
 	Response *ResponseDiscoveryDeleteGlobalCredentialsByIDV1Response `json:"response,omitempty"` //
-	Version  string                                                  `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseDiscoveryDeleteGlobalCredentialsByIDV1Response struct {
 	TaskID string `json:"taskId,omitempty"` //
-	URL    string `json:"url,omitempty"`    //
+
+	URL string `json:"url,omitempty"` //
 }
 type ResponseDiscoveryUpdateGlobalCredentialsV1 struct {
 	Response *ResponseDiscoveryUpdateGlobalCredentialsV1Response `json:"response,omitempty"` //
-	Version  string                                              `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseDiscoveryUpdateGlobalCredentialsV1Response struct {
 	TaskID string `json:"taskId,omitempty"` //
-	URL    string `json:"url,omitempty"`    //
+
+	URL string `json:"url,omitempty"` //
 }
 type ResponseDiscoveryGetCredentialSubTypeByCredentialIDV1 struct {
 	Response string `json:"response,omitempty"` // Credential type as 'CLICredential', 'HTTPReadCredential', 'HTTPWriteCredential', 'NetconfCredential', 'SNMPv2ReadCommunity', 'SNMPv2WriteCommunity', 'SNMPv3Credential'
-	Version  string `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseDiscoveryGetSNMPPropertiesV1 struct {
 	Response *[]ResponseDiscoveryGetSNMPPropertiesV1Response `json:"response,omitempty"` //
-	Version  string                                          `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseDiscoveryGetSNMPPropertiesV1Response struct {
-	ID                 string `json:"id,omitempty"`                 // Id of the SNMP Property
-	InstanceTenantID   string `json:"instanceTenantId,omitempty"`   // [Deprecated] InstanceTenantId of the SNMP Property
-	InstanceUUID       string `json:"instanceUuid,omitempty"`       // Instance Uuid of the SNMP Property. It is the same as the id. It will be deprecated in future version.
-	IntValue           *int   `json:"intValue,omitempty"`           // Integer Value of the SNMP 'Retry' or 'Timeout' property
+	ID string `json:"id,omitempty"` // Id of the SNMP Property
+
+	InstanceTenantID string `json:"instanceTenantId,omitempty"` // [Deprecated] InstanceTenantId of the SNMP Property
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Instance Uuid of the SNMP Property. It is the same as the id. It will be deprecated in future version.
+
+	IntValue *int `json:"intValue,omitempty"` // Integer Value of the SNMP 'Retry' or 'Timeout' property
+
 	SystemPropertyName string `json:"systemPropertyName,omitempty"` // Name of the SNMP Property as 'Retry' or 'Timeout'
 }
 type ResponseDiscoveryCreateUpdateSNMPPropertiesV1 struct {
 	Response *ResponseDiscoveryCreateUpdateSNMPPropertiesV1Response `json:"response,omitempty"` //
-	Version  string                                                 `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseDiscoveryCreateUpdateSNMPPropertiesV1Response struct {
 	TaskID string `json:"taskId,omitempty"` //
-	URL    string `json:"url,omitempty"`    //
+
+	URL string `json:"url,omitempty"` //
 }
 type ResponseDiscoveryUpdateGlobalCredentialsV2 struct {
 	Response *ResponseDiscoveryUpdateGlobalCredentialsV2Response `json:"response,omitempty"` //
-	Version  string                                              `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseDiscoveryUpdateGlobalCredentialsV2Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task Id
-	URL    string `json:"url,omitempty"`    // Url
+
+	URL string `json:"url,omitempty"` // Url
 }
 type ResponseDiscoveryCreateGlobalCredentialsV2 struct {
 	Response *ResponseDiscoveryCreateGlobalCredentialsV2Response `json:"response,omitempty"` //
-	Version  string                                              `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseDiscoveryCreateGlobalCredentialsV2Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task Id
-	URL    string `json:"url,omitempty"`    // Url
+
+	URL string `json:"url,omitempty"` // Url
 }
 type ResponseDiscoveryGetAllGlobalCredentialsV2 struct {
 	Response *ResponseDiscoveryGetAllGlobalCredentialsV2Response `json:"response,omitempty"` //
-	Version  string                                              `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseDiscoveryGetAllGlobalCredentialsV2Response struct {
 	CliCredential *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseCliCredential `json:"cliCredential,omitempty"` //
-	SNMPV2CRead   *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseSNMPV2CRead   `json:"snmpV2cRead,omitempty"`   //
-	SNMPV2CWrite  *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseSNMPV2CWrite  `json:"snmpV2cWrite,omitempty"`  //
-	HTTPSRead     *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseHTTPSRead     `json:"httpsRead,omitempty"`     //
-	HTTPSWrite    *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseHTTPSWrite    `json:"httpsWrite,omitempty"`    //
-	SNMPV3        *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseSNMPV3        `json:"snmpV3,omitempty"`        //
+
+	SNMPV2CRead *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseSNMPV2CRead `json:"snmpV2cRead,omitempty"` //
+
+	SNMPV2CWrite *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseSNMPV2CWrite `json:"snmpV2cWrite,omitempty"` //
+
+	HTTPSRead *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseHTTPSRead `json:"httpsRead,omitempty"` //
+
+	HTTPSWrite *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseHTTPSWrite `json:"httpsWrite,omitempty"` //
+
+	SNMPV3 *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseSNMPV3 `json:"snmpV3,omitempty"` //
 }
 type ResponseDiscoveryGetAllGlobalCredentialsV2ResponseCliCredential struct {
-	Password         string `json:"password,omitempty"`         // CLI Password
-	Username         string `json:"username,omitempty"`         // CLI Username
-	EnablePassword   string `json:"enablePassword,omitempty"`   // CLI Enable Password
-	Description      string `json:"description,omitempty"`      // Description of the CLI credential
-	Comments         string `json:"comments,omitempty"`         // Comments to identify the CLI credential
-	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the CLI credential
+	Password string `json:"password,omitempty"` // CLI Password
+
+	Username string `json:"username,omitempty"` // CLI Username
+
+	EnablePassword string `json:"enablePassword,omitempty"` // CLI Enable Password
+
+	Description string `json:"description,omitempty"` // Description of the CLI credential
+
+	Comments string `json:"comments,omitempty"` // Comments to identify the CLI credential
+
+	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the CLI credential
+
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Instance Tenant Id of CLI Credential
-	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Instance Uuid of CLI Credential
-	ID               string `json:"id,omitempty"`               // Id of the CLI Credential
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Instance Uuid of CLI Credential
+
+	ID string `json:"id,omitempty"` // Id of the CLI Credential
 }
 type ResponseDiscoveryGetAllGlobalCredentialsV2ResponseSNMPV2CRead struct {
-	ReadCommunity    string `json:"readCommunity,omitempty"`    // Snmp RO community
-	Description      string `json:"description,omitempty"`      // Description for Snmp RO community
-	Comments         string `json:"comments,omitempty"`         // Comments to identify the SNMP Read credential
-	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the SNMP Read credential
+	ReadCommunity string `json:"readCommunity,omitempty"` // Snmp RO community
+
+	Description string `json:"description,omitempty"` // Description for Snmp RO community
+
+	Comments string `json:"comments,omitempty"` // Comments to identify the SNMP Read credential
+
+	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the SNMP Read credential
+
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Instance Tenant Id of SNMP Read Credential
-	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Instance Uuid of SNMP Read Credential
-	ID               string `json:"id,omitempty"`               // Id of the SNMP Read Credential
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Instance Uuid of SNMP Read Credential
+
+	ID string `json:"id,omitempty"` // Id of the SNMP Read Credential
 }
 type ResponseDiscoveryGetAllGlobalCredentialsV2ResponseSNMPV2CWrite struct {
-	WriteCommunity   string `json:"writeCommunity,omitempty"`   // Snmp RW community
-	Description      string `json:"description,omitempty"`      // Description for Snmp RW community
-	Comments         string `json:"comments,omitempty"`         // Comments to identify the SNMP Write credential
-	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the SNMP Write credential
+	WriteCommunity string `json:"writeCommunity,omitempty"` // Snmp RW community
+
+	Description string `json:"description,omitempty"` // Description for Snmp RW community
+
+	Comments string `json:"comments,omitempty"` // Comments to identify the SNMP Write credential
+
+	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the SNMP Write credential
+
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Instance Tenant Id of SNMP Write Credential
-	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Instance Uuid of SNMP Write Credential
-	ID               string `json:"id,omitempty"`               // Id of SNMP Write Credential
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Instance Uuid of SNMP Write Credential
+
+	ID string `json:"id,omitempty"` // Id of SNMP Write Credential
 }
 type ResponseDiscoveryGetAllGlobalCredentialsV2ResponseHTTPSRead struct {
-	Password         string `json:"password,omitempty"`         // HTTP(S) Read Password
-	Port             *int   `json:"port,omitempty"`             // HTTP(S) Port
-	Username         string `json:"username,omitempty"`         // HTTP(S) Read Username
-	Secure           *bool  `json:"secure,omitempty"`           // Flag for HTTP(S) Read
-	Description      string `json:"description,omitempty"`      // Description for HTTP(S) Read Credential
-	Comments         string `json:"comments,omitempty"`         // Comments to identify the HTTP(S) Read credential
-	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the HTTP(S) Read credential
+	Password string `json:"password,omitempty"` // HTTP(S) Read Password
+
+	Port *int `json:"port,omitempty"` // HTTP(S) Port
+
+	Username string `json:"username,omitempty"` // HTTP(S) Read Username
+
+	Secure *bool `json:"secure,omitempty"` // Flag for HTTP(S) Read
+
+	Description string `json:"description,omitempty"` // Description for HTTP(S) Read Credential
+
+	Comments string `json:"comments,omitempty"` // Comments to identify the HTTP(S) Read credential
+
+	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the HTTP(S) Read credential
+
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Instance Tenant Id of HTTP(S) Read Credential
-	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Instance Uuid of HTTP(S) Read Credential
-	ID               string `json:"id,omitempty"`               // Id of the HTTP(S) Read Credential
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Instance Uuid of HTTP(S) Read Credential
+
+	ID string `json:"id,omitempty"` // Id of the HTTP(S) Read Credential
 }
 type ResponseDiscoveryGetAllGlobalCredentialsV2ResponseHTTPSWrite struct {
-	Password         string `json:"password,omitempty"`         // HTTP(S) Write Password
-	Port             *int   `json:"port,omitempty"`             // HTTP(S) Port
-	Username         string `json:"username,omitempty"`         // HTTP(S) Write Username
-	Secure           *bool  `json:"secure,omitempty"`           // Flag for HTTP(S) Write
-	Description      string `json:"description,omitempty"`      // Description for HTTP(S) Write Credetntials
-	Comments         string `json:"comments,omitempty"`         // Comments to identify the HTTP(S) Write credential
-	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the HTTP(S) Write credential
+	Password string `json:"password,omitempty"` // HTTP(S) Write Password
+
+	Port *int `json:"port,omitempty"` // HTTP(S) Port
+
+	Username string `json:"username,omitempty"` // HTTP(S) Write Username
+
+	Secure *bool `json:"secure,omitempty"` // Flag for HTTP(S) Write
+
+	Description string `json:"description,omitempty"` // Description for HTTP(S) Write Credetntials
+
+	Comments string `json:"comments,omitempty"` // Comments to identify the HTTP(S) Write credential
+
+	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the HTTP(S) Write credential
+
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Instance Tenant Id of HTTP(S) Write Credential
-	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Instance Uuid of HTTP(S) Write Credential
-	ID               string `json:"id,omitempty"`               // Id of the HTTP(S) Write Credential
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Instance Uuid of HTTP(S) Write Credential
+
+	ID string `json:"id,omitempty"` // Id of the HTTP(S) Write Credential
 }
 type ResponseDiscoveryGetAllGlobalCredentialsV2ResponseSNMPV3 struct {
-	Username         string `json:"username,omitempty"`         // SNMP V3 Username
-	AuthPassword     string `json:"authPassword,omitempty"`     // Auth Password for SNMP V3
-	AuthType         string `json:"authType,omitempty"`         // SNMP auth protocol. SHA' or 'MD5'
-	PrivacyPassword  string `json:"privacyPassword,omitempty"`  // Privacy Password for SNMP privacy
-	PrivacyType      string `json:"privacyType,omitempty"`      // SNMP privacy protocol. 'AES128','AES192','AES256'
-	SNMPMode         string `json:"snmpMode,omitempty"`         // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
-	Description      string `json:"description,omitempty"`      // Description for Snmp V3 Credential
-	Comments         string `json:"comments,omitempty"`         // Comments to identify the SNMP V3 credential
-	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the SNMP V3 credential
+	Username string `json:"username,omitempty"` // SNMP V3 Username
+
+	AuthPassword string `json:"authPassword,omitempty"` // Auth Password for SNMP V3
+
+	AuthType string `json:"authType,omitempty"` // SNMP auth protocol. SHA' or 'MD5'
+
+	PrivacyPassword string `json:"privacyPassword,omitempty"` // Privacy Password for SNMP privacy
+
+	PrivacyType string `json:"privacyType,omitempty"` // SNMP privacy protocol. 'AES128','AES192','AES256'
+
+	SNMPMode string `json:"snmpMode,omitempty"` // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
+
+	Description string `json:"description,omitempty"` // Description for Snmp V3 Credential
+
+	Comments string `json:"comments,omitempty"` // Comments to identify the SNMP V3 credential
+
+	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the SNMP V3 credential
+
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Instance Tenant Id of SNMP V3 Credential
-	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Instance Tenant Id of SNMP V3 Credential
-	ID               string `json:"id,omitempty"`               // Id of the SNMP V3 Credential
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Instance Tenant Id of SNMP V3 Credential
+
+	ID string `json:"id,omitempty"` // Id of the SNMP V3 Credential
 }
 type ResponseDiscoveryDeleteGlobalCredentialV2 struct {
 	Response *ResponseDiscoveryDeleteGlobalCredentialV2Response `json:"response,omitempty"` //
-	Version  string                                             `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseDiscoveryDeleteGlobalCredentialV2Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task Id
-	URL    string `json:"url,omitempty"`    // Url
+
+	URL string `json:"url,omitempty"` // Url
 }
 type RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1 struct {
-	AttributeInfo          *RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1AttributeInfo       `json:"attributeInfo,omitempty"`          // Deprecated
-	CdpLevel               *int                                                                          `json:"cdpLevel,omitempty"`               // CDP level to which neighbor devices to be discovered
-	DeviceIDs              string                                                                        `json:"deviceIds,omitempty"`              // Ids of the devices discovered in a discovery
-	DiscoveryCondition     string                                                                        `json:"discoveryCondition,omitempty"`     // To indicate the discovery status. Available options: Complete or In Progress
-	DiscoveryStatus        string                                                                        `json:"discoveryStatus,omitempty"`        // Status of the discovery. Available options are: Active, Inactive, Edit
-	DiscoveryType          string                                                                        `json:"discoveryType,omitempty"`          // Type of the discovery. 'Single', 'Range', 'Multi Range', 'CDP', 'LLDP', 'CIDR'
-	EnablePasswordList     string                                                                        `json:"enablePasswordList,omitempty"`     // Enable Password of the devices to be discovered
-	GlobalCredentialIDList []string                                                                      `json:"globalCredentialIdList,omitempty"` // List of global credential ids to be used
-	HTTPReadCredential     *RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1HTTPReadCredential  `json:"httpReadCredential,omitempty"`     //
-	HTTPWriteCredential    *RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1HTTPWriteCredential `json:"httpWriteCredential,omitempty"`    //
-	ID                     string                                                                        `json:"id,omitempty"`                     // Unique Discovery Id
-	IPAddressList          string                                                                        `json:"ipAddressList,omitempty"`          // List of IP address of the devices to be discovered
-	IPFilterList           string                                                                        `json:"ipFilterList,omitempty"`           // IP addresses of the devices to be filtered
-	IsAutoCdp              *bool                                                                         `json:"isAutoCdp,omitempty"`              // Flag to mention if CDP discovery or not
-	LldpLevel              *int                                                                          `json:"lldpLevel,omitempty"`              // LLDP level to which neighbor devices to be discovered
-	Name                   string                                                                        `json:"name,omitempty"`                   // Name for the discovery
-	NetconfPort            string                                                                        `json:"netconfPort,omitempty"`            // Netconf port on the device. Netconf will need valid sshv2 credentials for it to work
-	NumDevices             *int                                                                          `json:"numDevices,omitempty"`             // Number of devices discovered in the discovery
-	ParentDiscoveryID      string                                                                        `json:"parentDiscoveryId,omitempty"`      // Parent Discovery Id from which the discovery was initiated
-	PasswordList           string                                                                        `json:"passwordList,omitempty"`           // Password of the devices to be discovered
-	PreferredMgmtIPMethod  string                                                                        `json:"preferredMgmtIPMethod,omitempty"`  // Preferred management IP method. Available options are '' and 'UseLoopBack'
-	ProtocolOrder          string                                                                        `json:"protocolOrder,omitempty"`          // Order of protocol (ssh/telnet) in which device connection will be tried. Ex: 'telnet': only telnet; 'ssh,telnet': ssh with higher order than telnet
-	RetryCount             *int                                                                          `json:"retryCount,omitempty"`             // Number of times to try establishing connection to device
-	SNMPAuthPassphrase     string                                                                        `json:"snmpAuthPassphrase,omitempty"`     // Auth passphrase for SNMP
-	SNMPAuthProtocol       string                                                                        `json:"snmpAuthProtocol,omitempty"`       // SNMP auth protocol. SHA' or 'MD5'
-	SNMPMode               string                                                                        `json:"snmpMode,omitempty"`               // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
-	SNMPPrivPassphrase     string                                                                        `json:"snmpPrivPassphrase,omitempty"`     // Passphrase for SNMP privacy
-	SNMPPrivProtocol       string                                                                        `json:"snmpPrivProtocol,omitempty"`       // SNMP privacy protocol. 'AES128'
-	SNMPRoCommunity        string                                                                        `json:"snmpRoCommunity,omitempty"`        // SNMP RO community of the devices to be discovered
-	SNMPRoCommunityDesc    string                                                                        `json:"snmpRoCommunityDesc,omitempty"`    // Description for SNMP RO community
-	SNMPRwCommunity        string                                                                        `json:"snmpRwCommunity,omitempty"`        // SNMP RW community of the devices to be discovered
-	SNMPRwCommunityDesc    string                                                                        `json:"snmpRwCommunityDesc,omitempty"`    // Description for SNMP RW community
-	SNMPUserName           string                                                                        `json:"snmpUserName,omitempty"`           // SNMP username of the device
-	TimeOut                *int                                                                          `json:"timeOut,omitempty"`                // Time to wait for device response.
-	UpdateMgmtIP           *bool                                                                         `json:"updateMgmtIp,omitempty"`           // Updates Management IP if multiple IPs are available for a device. If set to true, when a device is rediscovered with a different IP, the management IP is updated. Default value is false
-	UserNameList           string                                                                        `json:"userNameList,omitempty"`           // Username of the devices to be discovered
+	AttributeInfo *RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1AttributeInfo `json:"attributeInfo,omitempty"` // Deprecated
+
+	CdpLevel *int `json:"cdpLevel,omitempty"` // CDP level to which neighbor devices to be discovered
+
+	DeviceIDs string `json:"deviceIds,omitempty"` // Ids of the devices discovered in a discovery
+
+	DiscoveryCondition string `json:"discoveryCondition,omitempty"` // To indicate the discovery status. Available options: Complete or In Progress
+
+	DiscoveryStatus string `json:"discoveryStatus,omitempty"` // Status of the discovery. Available options are: Active, Inactive, Edit
+
+	DiscoveryType string `json:"discoveryType,omitempty"` // Type of the discovery. 'Single', 'Range', 'Multi Range', 'CDP', 'LLDP', 'CIDR'
+
+	EnablePasswordList string `json:"enablePasswordList,omitempty"` // Enable Password of the devices to be discovered
+
+	GlobalCredentialIDList []string `json:"globalCredentialIdList,omitempty"` // List of global credential ids to be used
+
+	HTTPReadCredential *RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1HTTPReadCredential `json:"httpReadCredential,omitempty"` //
+
+	HTTPWriteCredential *RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1HTTPWriteCredential `json:"httpWriteCredential,omitempty"` //
+
+	ID string `json:"id,omitempty"` // Unique Discovery Id
+
+	IPAddressList string `json:"ipAddressList,omitempty"` // List of IP address of the devices to be discovered
+
+	IPFilterList string `json:"ipFilterList,omitempty"` // IP addresses of the devices to be filtered
+
+	IsAutoCdp *bool `json:"isAutoCdp,omitempty"` // Flag to mention if CDP discovery or not
+
+	LldpLevel *int `json:"lldpLevel,omitempty"` // LLDP level to which neighbor devices to be discovered
+
+	Name string `json:"name,omitempty"` // Name for the discovery
+
+	NetconfPort string `json:"netconfPort,omitempty"` // Netconf port on the device. Netconf will need valid sshv2 credentials for it to work
+
+	NumDevices *int `json:"numDevices,omitempty"` // Number of devices discovered in the discovery
+
+	ParentDiscoveryID string `json:"parentDiscoveryId,omitempty"` // Parent Discovery Id from which the discovery was initiated
+
+	PasswordList string `json:"passwordList,omitempty"` // Password of the devices to be discovered
+
+	PreferredMgmtIPMethod string `json:"preferredMgmtIPMethod,omitempty"` // Preferred management IP method. Available options are '' and 'UseLoopBack'
+
+	ProtocolOrder string `json:"protocolOrder,omitempty"` // Order of protocol (ssh/telnet) in which device connection will be tried. Ex: 'telnet': only telnet; 'ssh,telnet': ssh with higher order than telnet
+
+	RetryCount *int `json:"retryCount,omitempty"` // Number of times to try establishing connection to device
+
+	SNMPAuthPassphrase string `json:"snmpAuthPassphrase,omitempty"` // Auth passphrase for SNMP
+
+	SNMPAuthProtocol string `json:"snmpAuthProtocol,omitempty"` // SNMP auth protocol. SHA' or 'MD5'
+
+	SNMPMode string `json:"snmpMode,omitempty"` // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
+
+	SNMPPrivPassphrase string `json:"snmpPrivPassphrase,omitempty"` // Passphrase for SNMP privacy
+
+	SNMPPrivProtocol string `json:"snmpPrivProtocol,omitempty"` // SNMP privacy protocol. 'AES128'
+
+	SNMPRoCommunity string `json:"snmpRoCommunity,omitempty"` // SNMP RO community of the devices to be discovered
+
+	SNMPRoCommunityDesc string `json:"snmpRoCommunityDesc,omitempty"` // Description for SNMP RO community
+
+	SNMPRwCommunity string `json:"snmpRwCommunity,omitempty"` // SNMP RW community of the devices to be discovered
+
+	SNMPRwCommunityDesc string `json:"snmpRwCommunityDesc,omitempty"` // Description for SNMP RW community
+
+	SNMPUserName string `json:"snmpUserName,omitempty"` // SNMP username of the device
+
+	TimeOut *int `json:"timeOut,omitempty"` // Time to wait for device response.
+
+	UpdateMgmtIP *bool `json:"updateMgmtIp,omitempty"` // Updates Management IP if multiple IPs are available for a device. If set to true, when a device is rediscovered with a different IP, the management IP is updated. Default value is false
+
+	UserNameList string `json:"userNameList,omitempty"` // Username of the devices to be discovered
 }
 type RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1AttributeInfo interface{}
 type RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1HTTPReadCredential struct {
-	Comments         string `json:"comments,omitempty"`         // Comments to identify the credential
-	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the credential
-	Description      string `json:"description,omitempty"`      // Description of the credential
-	ID               string `json:"id,omitempty"`               // Credential Id
+	Comments string `json:"comments,omitempty"` // Comments to identify the credential
+
+	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the credential
+
+	Description string `json:"description,omitempty"` // Description of the credential
+
+	ID string `json:"id,omitempty"` // Credential Id
+
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Credential Tenant Id
-	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Credential Id
-	Password         string `json:"password,omitempty"`         // HTTP(S) password
-	Port             *int   `json:"port,omitempty"`             // HTTP(S) port
-	Secure           *bool  `json:"secure,omitempty"`           // Flag for HTTPS
-	Username         string `json:"username,omitempty"`         // HTTP(S) username
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Credential Id
+
+	Password string `json:"password,omitempty"` // HTTP(S) password
+
+	Port *int `json:"port,omitempty"` // HTTP(S) port
+
+	Secure *bool `json:"secure,omitempty"` // Flag for HTTPS
+
+	Username string `json:"username,omitempty"` // HTTP(S) username
 }
 type RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1HTTPWriteCredential struct {
-	Comments         string `json:"comments,omitempty"`         // Comments to identify the credential
-	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the credential
-	Description      string `json:"description,omitempty"`      // Description of the credential
-	ID               string `json:"id,omitempty"`               // Credential Id
+	Comments string `json:"comments,omitempty"` // Comments to identify the credential
+
+	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the credential
+
+	Description string `json:"description,omitempty"` // Description of the credential
+
+	ID string `json:"id,omitempty"` // Credential Id
+
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Credential Tenant Id
-	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Credential Id
-	Password         string `json:"password,omitempty"`         // HTTP(S) password
-	Port             *int   `json:"port,omitempty"`             // HTTP(S) port
-	Secure           *bool  `json:"secure,omitempty"`           // Flag for HTTPS
-	Username         string `json:"username,omitempty"`         // HTTP(S) username
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Credential Id
+
+	Password string `json:"password,omitempty"` // HTTP(S) password
+
+	Port *int `json:"port,omitempty"` // HTTP(S) port
+
+	Secure *bool `json:"secure,omitempty"` // Flag for HTTPS
+
+	Username string `json:"username,omitempty"` // HTTP(S) username
 }
 type RequestDiscoveryStartDiscoveryV1 struct {
-	CdpLevel               *int                                                 `json:"cdpLevel,omitempty"`               // CDP level to which neighbor devices are to be discovered
-	DiscoveryType          string                                               `json:"discoveryType,omitempty"`          // Type of the discovery. 'Single', 'Range', 'Multi Range', 'CDP', 'LLDP', 'CIDR'
-	EnablePasswordList     []string                                             `json:"enablePasswordList,omitempty"`     // Enable Password of the devices to be discovered
-	GlobalCredentialIDList []string                                             `json:"globalCredentialIdList,omitempty"` // Global Credential Ids to be used for discovery
-	HTTPReadCredential     *RequestDiscoveryStartDiscoveryV1HTTPReadCredential  `json:"httpReadCredential,omitempty"`     //
-	HTTPWriteCredential    *RequestDiscoveryStartDiscoveryV1HTTPWriteCredential `json:"httpWriteCredential,omitempty"`    //
-	IPAddressList          string                                               `json:"ipAddressList,omitempty"`          // IP Address of devices to be discovered. Ex: '172.30.0.1' for SINGLE, CDP and LLDP; '72.30.0.1-172.30.0.4' for RANGE; '72.30.0.1-172.30.0.4,172.31.0.1-172.31.0.4' for MULTI RANGE; '172.30.0.1/20' for CIDR
-	IPFilterList           []string                                             `json:"ipFilterList,omitempty"`           // IP Addresses of the devices to be filtered out during discovery
-	LldpLevel              *int                                                 `json:"lldpLevel,omitempty"`              // LLDP level to which neighbor devices to be discovered
-	Name                   string                                               `json:"name,omitempty"`                   // Name of the discovery
-	NetconfPort            string                                               `json:"netconfPort,omitempty"`            // Netconf Port. It will need valid SSH credentials to work
-	PasswordList           []string                                             `json:"passwordList,omitempty"`           // Password of the devices to be discovered
-	PreferredMgmtIPMethod  string                                               `json:"preferredMgmtIPMethod,omitempty"`  // Preferred Management IP Method.'' or 'UseLoopBack'. Default is ''
-	ProtocolOrder          string                                               `json:"protocolOrder,omitempty"`          // Order of protocol (ssh/telnet) in which device connection will be tried. Ex: 'telnet': only telnet; 'ssh,telnet': ssh with higher order than telnet
-	Retry                  *int                                                 `json:"retry,omitempty"`                  // Number of times to try establishing connection to device
-	SNMPAuthPassphrase     string                                               `json:"snmpAuthPassphrase,omitempty"`     // Auth passphrase for SNMP
-	SNMPAuthProtocol       string                                               `json:"snmpAuthProtocol,omitempty"`       // SNMP auth protocol. SHA' or 'MD5'
-	SNMPMode               string                                               `json:"snmpMode,omitempty"`               // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
-	SNMPPrivPassphrase     string                                               `json:"snmpPrivPassphrase,omitempty"`     // Pass phrase for SNMP privacy
-	SNMPPrivProtocol       string                                               `json:"snmpPrivProtocol,omitempty"`       // SNMP privacy protocol. 'AES128'
-	SNMPROCommunity        string                                               `json:"snmpROCommunity,omitempty"`        // SNMP RO community of the devices to be discovered
-	SNMPROCommunityDesc    string                                               `json:"snmpROCommunityDesc,omitempty"`    // Description for SNMP RO community
-	SNMPRWCommunity        string                                               `json:"snmpRWCommunity,omitempty"`        // SNMP RW community of the devices to be discovered
-	SNMPRWCommunityDesc    string                                               `json:"snmpRWCommunityDesc,omitempty"`    // Description for SNMP RW community
-	SNMPUserName           string                                               `json:"snmpUserName,omitempty"`           // SNMP username of the device
-	SNMPVersion            string                                               `json:"snmpVersion,omitempty"`            // Version of SNMP. v2 or v3
-	Timeout                *int                                                 `json:"timeout,omitempty"`                // Time to wait for device response in seconds
-	UserNameList           []string                                             `json:"userNameList,omitempty"`           // Username of the devices to be discovered
+	CdpLevel *int `json:"cdpLevel,omitempty"` // CDP level to which neighbor devices are to be discovered
+
+	DiscoveryType string `json:"discoveryType,omitempty"` // Type of the discovery. 'Single', 'Range', 'Multi Range', 'CDP', 'LLDP', 'CIDR'
+
+	EnablePasswordList []string `json:"enablePasswordList,omitempty"` // Enable Password of the devices to be discovered
+
+	GlobalCredentialIDList []string `json:"globalCredentialIdList,omitempty"` // Global Credential Ids to be used for discovery
+
+	HTTPReadCredential *RequestDiscoveryStartDiscoveryV1HTTPReadCredential `json:"httpReadCredential,omitempty"` //
+
+	HTTPWriteCredential *RequestDiscoveryStartDiscoveryV1HTTPWriteCredential `json:"httpWriteCredential,omitempty"` //
+
+	IPAddressList string `json:"ipAddressList,omitempty"` // IP Address of devices to be discovered. Ex: '172.30.0.1' for SINGLE, CDP and LLDP; '72.30.0.1-172.30.0.4' for RANGE; '72.30.0.1-172.30.0.4,172.31.0.1-172.31.0.4' for MULTI RANGE; '172.30.0.1/20' for CIDR
+
+	IPFilterList []string `json:"ipFilterList,omitempty"` // IP Addresses of the devices to be filtered out during discovery
+
+	LldpLevel *int `json:"lldpLevel,omitempty"` // LLDP level to which neighbor devices to be discovered
+
+	Name string `json:"name,omitempty"` // Name of the discovery
+
+	NetconfPort string `json:"netconfPort,omitempty"` // Netconf Port. It will need valid SSH credentials to work
+
+	PasswordList []string `json:"passwordList,omitempty"` // Password of the devices to be discovered
+
+	PreferredMgmtIPMethod string `json:"preferredMgmtIPMethod,omitempty"` // Preferred Management IP Method.'' or 'UseLoopBack'. Default is ''
+
+	ProtocolOrder string `json:"protocolOrder,omitempty"` // Order of protocol (ssh/telnet) in which device connection will be tried. Ex: 'telnet': only telnet; 'ssh,telnet': ssh with higher order than telnet
+
+	Retry *int `json:"retry,omitempty"` // Number of times to try establishing connection to device
+
+	SNMPAuthPassphrase string `json:"snmpAuthPassphrase,omitempty"` // Auth passphrase for SNMP
+
+	SNMPAuthProtocol string `json:"snmpAuthProtocol,omitempty"` // SNMP auth protocol. SHA' or 'MD5'
+
+	SNMPMode string `json:"snmpMode,omitempty"` // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
+
+	SNMPPrivPassphrase string `json:"snmpPrivPassphrase,omitempty"` // Pass phrase for SNMP privacy
+
+	SNMPPrivProtocol string `json:"snmpPrivProtocol,omitempty"` // SNMP privacy protocol. 'AES128'
+
+	SNMPROCommunity string `json:"snmpROCommunity,omitempty"` // SNMP RO community of the devices to be discovered
+
+	SNMPROCommunityDesc string `json:"snmpROCommunityDesc,omitempty"` // Description for SNMP RO community
+
+	SNMPRWCommunity string `json:"snmpRWCommunity,omitempty"` // SNMP RW community of the devices to be discovered
+
+	SNMPRWCommunityDesc string `json:"snmpRWCommunityDesc,omitempty"` // Description for SNMP RW community
+
+	SNMPUserName string `json:"snmpUserName,omitempty"` // SNMP username of the device
+
+	SNMPVersion string `json:"snmpVersion,omitempty"` // Version of SNMP. v2 or v3
+
+	Timeout *int `json:"timeout,omitempty"` // Time to wait for device response in seconds
+
+	UserNameList []string `json:"userNameList,omitempty"` // Username of the devices to be discovered
 }
 type RequestDiscoveryStartDiscoveryV1HTTPReadCredential struct {
 	Password string `json:"password,omitempty"` // HTTP(S) password
-	Port     *int   `json:"port,omitempty"`     // HTTP(S) port
-	Secure   *bool  `json:"secure,omitempty"`   // Flag for HTTPS
+
+	Port *int `json:"port,omitempty"` // HTTP(S) port
+
+	Secure *bool `json:"secure,omitempty"` // Flag for HTTPS
+
 	Username string `json:"username,omitempty"` // HTTP(S) username
 }
 type RequestDiscoveryStartDiscoveryV1HTTPWriteCredential struct {
 	Password string `json:"password,omitempty"` // HTTP(S) password
-	Port     *int   `json:"port,omitempty"`     // HTTP(S) port
-	Secure   *bool  `json:"secure,omitempty"`   // Flag for HTTPS
+
+	Port *int `json:"port,omitempty"` // HTTP(S) port
+
+	Secure *bool `json:"secure,omitempty"` // Flag for HTTPS
+
 	Username string `json:"username,omitempty"` // HTTP(S) username
 }
 type RequestDiscoveryUpdateCliCredentialsV1 struct {
-	Comments         string `json:"comments,omitempty"`         // Comments to identify the CLI credential
-	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the CLI credential
-	Description      string `json:"description,omitempty"`      // Description for CLI Credentials
-	EnablePassword   string `json:"enablePassword,omitempty"`   // CLI Enable Password
-	ID               string `json:"id,omitempty"`               // Id of the CLI Credential in UUID format
+	Comments string `json:"comments,omitempty"` // Comments to identify the CLI credential
+
+	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the CLI credential
+
+	Description string `json:"description,omitempty"` // Description for CLI Credentials
+
+	EnablePassword string `json:"enablePassword,omitempty"` // CLI Enable Password
+
+	ID string `json:"id,omitempty"` // Id of the CLI Credential in UUID format
+
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated
-	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Deprecated
-	Password         string `json:"password,omitempty"`         // CLI Password
-	Username         string `json:"username,omitempty"`         // CLI Username
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Deprecated
+
+	Password string `json:"password,omitempty"` // CLI Password
+
+	Username string `json:"username,omitempty"` // CLI Username
 }
 type RequestDiscoveryCreateCliCredentialsV1 []RequestItemDiscoveryCreateCliCredentialsV1 // Array of RequestDiscoveryCreateCLICredentialsV1
 type RequestItemDiscoveryCreateCliCredentialsV1 struct {
-	Comments         string `json:"comments,omitempty"`         // Comments to identify the CLI credential
-	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the CLI credential
-	Description      string `json:"description,omitempty"`      // Description for CLI Credentials
-	EnablePassword   string `json:"enablePassword,omitempty"`   // CLI Enable Password
-	ID               string `json:"id,omitempty"`               // Deprecated
+	Comments string `json:"comments,omitempty"` // Comments to identify the CLI credential
+
+	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the CLI credential
+
+	Description string `json:"description,omitempty"` // Description for CLI Credentials
+
+	EnablePassword string `json:"enablePassword,omitempty"` // CLI Enable Password
+
+	ID string `json:"id,omitempty"` // Deprecated
+
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated
-	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Deprecated
-	Password         string `json:"password,omitempty"`         // CLI Password
-	Username         string `json:"username,omitempty"`         // CLI Username
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Deprecated
+
+	Password string `json:"password,omitempty"` // CLI Password
+
+	Username string `json:"username,omitempty"` // CLI Username
 }
 type RequestDiscoveryCreateHTTPReadCredentialsV1 []RequestItemDiscoveryCreateHTTPReadCredentialsV1 // Array of RequestDiscoveryCreateHTTPReadCredentialsV1
 type RequestItemDiscoveryCreateHTTPReadCredentialsV1 struct {
-	Comments         string `json:"comments,omitempty"`         // Comments to identify the HTTP(S) Read credential
-	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the HTTP(S) Read credential
-	Description      string `json:"description,omitempty"`      // Description for HTTP(S) Read Credential
-	ID               string `json:"id,omitempty"`               // Deprecated
+	Comments string `json:"comments,omitempty"` // Comments to identify the HTTP(S) Read credential
+
+	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the HTTP(S) Read credential
+
+	Description string `json:"description,omitempty"` // Description for HTTP(S) Read Credential
+
+	ID string `json:"id,omitempty"` // Deprecated
+
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated
-	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Deprecated
-	Password         string `json:"password,omitempty"`         // HTTP(S) Read Password
-	Port             *int   `json:"port,omitempty"`             // HTTP(S) Port. Valid port should be in the range of 1 to 65535.
-	Secure           *bool  `json:"secure,omitempty"`           // Flag for HTTPS Read
-	Username         string `json:"username,omitempty"`         // HTTP(S) Read Username
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Deprecated
+
+	Password string `json:"password,omitempty"` // HTTP(S) Read Password
+
+	Port *int `json:"port,omitempty"` // HTTP(S) Port. Valid port should be in the range of 1 to 65535.
+
+	Secure *bool `json:"secure,omitempty"` // Flag for HTTPS Read
+
+	Username string `json:"username,omitempty"` // HTTP(S) Read Username
 }
 type RequestDiscoveryUpdateHTTPReadCredentialV1 struct {
-	Comments         string `json:"comments,omitempty"`         // Comments to identify the HTTP(S) Read credential
-	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the HTTP(S) Read credential
-	Description      string `json:"description,omitempty"`      // Description for HTTP(S) Read Credential
-	ID               string `json:"id,omitempty"`               // Id of the HTTP(S) Read Credential in UUID format
+	Comments string `json:"comments,omitempty"` // Comments to identify the HTTP(S) Read credential
+
+	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the HTTP(S) Read credential
+
+	Description string `json:"description,omitempty"` // Description for HTTP(S) Read Credential
+
+	ID string `json:"id,omitempty"` // Id of the HTTP(S) Read Credential in UUID format
+
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated
-	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Deprecated
-	Password         string `json:"password,omitempty"`         // HTTP(S) Read Password
-	Port             *int   `json:"port,omitempty"`             // HTTP(S) Port. Valid port should be in the range of 1 to 65535.
-	Secure           *bool  `json:"secure,omitempty"`           // Flag for HTTPS Read
-	Username         string `json:"username,omitempty"`         // HTTP(S) Read Username
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Deprecated
+
+	Password string `json:"password,omitempty"` // HTTP(S) Read Password
+
+	Port *int `json:"port,omitempty"` // HTTP(S) Port. Valid port should be in the range of 1 to 65535.
+
+	Secure *bool `json:"secure,omitempty"` // Flag for HTTPS Read
+
+	Username string `json:"username,omitempty"` // HTTP(S) Read Username
 }
 type RequestDiscoveryUpdateHTTPWriteCredentialsV1 struct {
-	Comments         string `json:"comments,omitempty"`         // Comments to identify the HTTP(S) Write credential
-	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the HTTP(S) Write credential
-	Description      string `json:"description,omitempty"`      // Description for HTTP(S) Write Credential
-	ID               string `json:"id,omitempty"`               // Id of the HTTP(S) Write Credential in UUID format
+	Comments string `json:"comments,omitempty"` // Comments to identify the HTTP(S) Write credential
+
+	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the HTTP(S) Write credential
+
+	Description string `json:"description,omitempty"` // Description for HTTP(S) Write Credential
+
+	ID string `json:"id,omitempty"` // Id of the HTTP(S) Write Credential in UUID format
+
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated
-	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Deprecated
-	Password         string `json:"password,omitempty"`         // HTTP(S) Write Password
-	Port             *int   `json:"port,omitempty"`             // HTTP(S) Port. Valid port should be in the range of 1 to 65535.
-	Secure           *bool  `json:"secure,omitempty"`           // Flag for HTTPS Write
-	Username         string `json:"username,omitempty"`         // HTTP(S) Write Username
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Deprecated
+
+	Password string `json:"password,omitempty"` // HTTP(S) Write Password
+
+	Port *int `json:"port,omitempty"` // HTTP(S) Port. Valid port should be in the range of 1 to 65535.
+
+	Secure *bool `json:"secure,omitempty"` // Flag for HTTPS Write
+
+	Username string `json:"username,omitempty"` // HTTP(S) Write Username
 }
 type RequestDiscoveryCreateHTTPWriteCredentialsV1 []RequestItemDiscoveryCreateHTTPWriteCredentialsV1 // Array of RequestDiscoveryCreateHTTPWriteCredentialsV1
 type RequestItemDiscoveryCreateHTTPWriteCredentialsV1 struct {
-	Comments         string `json:"comments,omitempty"`         // Comments to identify the HTTP(S) Write credential
-	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the HTTP(S) Write credential
-	Description      string `json:"description,omitempty"`      // Description for HTTP(S) Write Credential
-	ID               string `json:"id,omitempty"`               // Deprecated
+	Comments string `json:"comments,omitempty"` // Comments to identify the HTTP(S) Write credential
+
+	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the HTTP(S) Write credential
+
+	Description string `json:"description,omitempty"` // Description for HTTP(S) Write Credential
+
+	ID string `json:"id,omitempty"` // Deprecated
+
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated
-	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Deprecated
-	Password         string `json:"password,omitempty"`         // HTTP(S) Write Password
-	Port             *int   `json:"port,omitempty"`             // HTTP(S) Port. Valid port should be in the range of 1 to 65535.
-	Secure           *bool  `json:"secure,omitempty"`           // Flag for HTTPS Write
-	Username         string `json:"username,omitempty"`         // HTTP(S) Write Username
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Deprecated
+
+	Password string `json:"password,omitempty"` // HTTP(S) Write Password
+
+	Port *int `json:"port,omitempty"` // HTTP(S) Port. Valid port should be in the range of 1 to 65535.
+
+	Secure *bool `json:"secure,omitempty"` // Flag for HTTPS Write
+
+	Username string `json:"username,omitempty"` // HTTP(S) Write Username
 }
 type RequestDiscoveryUpdateNetconfCredentialsV1 struct {
-	Comments         string `json:"comments,omitempty"`         // Comments to identify the netconf credential
-	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the netconf credential
-	Description      string `json:"description,omitempty"`      // Description for Netconf Credentials
-	ID               string `json:"id,omitempty"`               // Id of the Netconf Credential in UUID format
+	Comments string `json:"comments,omitempty"` // Comments to identify the netconf credential
+
+	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the netconf credential
+
+	Description string `json:"description,omitempty"` // Description for Netconf Credentials
+
+	ID string `json:"id,omitempty"` // Id of the Netconf Credential in UUID format
+
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated
-	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Deprecated
-	NetconfPort      string `json:"netconfPort,omitempty"`      // Netconf port on the device. Valid port should be in the range of 1 to 65535.
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Deprecated
+
+	NetconfPort string `json:"netconfPort,omitempty"` // Netconf port on the device. Valid port should be in the range of 1 to 65535.
 }
 type RequestDiscoveryCreateNetconfCredentialsV1 []RequestItemDiscoveryCreateNetconfCredentialsV1 // Array of RequestDiscoveryCreateNetconfCredentialsV1
 type RequestItemDiscoveryCreateNetconfCredentialsV1 struct {
-	Comments         string `json:"comments,omitempty"`         // Comments to identify the netconf credential
-	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the credential
-	Description      string `json:"description,omitempty"`      // Description for Netconf Credentials
-	ID               string `json:"id,omitempty"`               // Deprecated
+	Comments string `json:"comments,omitempty"` // Comments to identify the netconf credential
+
+	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the credential
+
+	Description string `json:"description,omitempty"` // Description for Netconf Credentials
+
+	ID string `json:"id,omitempty"` // Deprecated
+
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated
-	InstanceUUID     string `json:"instanceUuid,omitempty"`     // deprecated
-	NetconfPort      string `json:"netconfPort,omitempty"`      // Netconf port on the device. Valid port should be in the range of 1 to 65535.
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // deprecated
+
+	NetconfPort string `json:"netconfPort,omitempty"` // Netconf port on the device. Valid port should be in the range of 1 to 65535.
 }
 type RequestDiscoveryUpdateSNMPReadCommunityV1 struct {
-	Comments       string `json:"comments,omitempty"`       // Comments to identify the credential
+	Comments string `json:"comments,omitempty"` // Comments to identify the credential
+
 	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the credential
-	Description    string `json:"description,omitempty"`    // Name/Description of the credential
-	InstanceUUID   string `json:"instanceUuid,omitempty"`   // Credential UUID
-	ReadCommunity  string `json:"readCommunity,omitempty"`  // SNMP read community. NO!$DATA!$ for no value change
+
+	Description string `json:"description,omitempty"` // Name/Description of the credential
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Credential UUID
+
+	ReadCommunity string `json:"readCommunity,omitempty"` // SNMP read community. NO!$DATA!$ for no value change
 }
 type RequestDiscoveryCreateSNMPReadCommunityV1 []RequestItemDiscoveryCreateSNMPReadCommunityV1 // Array of RequestDiscoveryCreateSNMPReadCommunityV1
 type RequestItemDiscoveryCreateSNMPReadCommunityV1 struct {
-	Comments       string `json:"comments,omitempty"`       // Comments to identify the credential
+	Comments string `json:"comments,omitempty"` // Comments to identify the credential
+
 	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the credential
-	Description    string `json:"description,omitempty"`    // Name/Description of the credential
-	ReadCommunity  string `json:"readCommunity,omitempty"`  // SNMP read community
+
+	Description string `json:"description,omitempty"` // Name/Description of the credential
+
+	ReadCommunity string `json:"readCommunity,omitempty"` // SNMP read community
 }
 type RequestDiscoveryCreateSNMPWriteCommunityV1 []RequestItemDiscoveryCreateSNMPWriteCommunityV1 // Array of RequestDiscoveryCreateSNMPWriteCommunityV1
 type RequestItemDiscoveryCreateSNMPWriteCommunityV1 struct {
-	Comments       string `json:"comments,omitempty"`       // Comments to identify the credential
+	Comments string `json:"comments,omitempty"` // Comments to identify the credential
+
 	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the credential
-	Description    string `json:"description,omitempty"`    // Name/Description of the credential
+
+	Description string `json:"description,omitempty"` // Name/Description of the credential
+
 	WriteCommunity string `json:"writeCommunity,omitempty"` // SNMP write community
 }
 type RequestDiscoveryUpdateSNMPWriteCommunityV1 struct {
-	Comments       string `json:"comments,omitempty"`       // Comments to identify the credential
+	Comments string `json:"comments,omitempty"` // Comments to identify the credential
+
 	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the credential
-	Description    string `json:"description,omitempty"`    // Name/Description of the credential
-	InstanceUUID   string `json:"instanceUuid,omitempty"`   // Credential UUID
+
+	Description string `json:"description,omitempty"` // Name/Description of the credential
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Credential UUID
+
 	WriteCommunity string `json:"writeCommunity,omitempty"` // SNMP write community. NO!$DATA!$ for no value change
 }
 type RequestDiscoveryUpdateSNMPv3CredentialsV1 struct {
-	AuthPassword     string `json:"authPassword,omitempty"`     // Auth password for SNMPv3. Required if snmpMode is 'AUTHPRIV' or 'AUTHNOPRIV'. Use 'NO!$DATA!$' if no change required.
-	AuthType         string `json:"authType,omitempty"`         // SNMPv3 auth protocol. 'SHA' or 'MD5'. Required if snmpMode is 'AUTHPRIV' or 'AUTHNOPRIV'.
-	Comments         string `json:"comments,omitempty"`         // Comments to identify the SNMPv3 credential
-	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the SNMPv3 credential
-	Description      string `json:"description,omitempty"`      // Description for SNMPv3 Credential
-	ID               string `json:"id,omitempty"`               // Id of the SNMPv3 Credential
+	AuthPassword string `json:"authPassword,omitempty"` // Auth password for SNMPv3. Required if snmpMode is 'AUTHPRIV' or 'AUTHNOPRIV'. Use 'NO!$DATA!$' if no change required.
+
+	AuthType string `json:"authType,omitempty"` // SNMPv3 auth protocol. 'SHA' or 'MD5'. Required if snmpMode is 'AUTHPRIV' or 'AUTHNOPRIV'.
+
+	Comments string `json:"comments,omitempty"` // Comments to identify the SNMPv3 credential
+
+	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the SNMPv3 credential
+
+	Description string `json:"description,omitempty"` // Description for SNMPv3 Credential
+
+	ID string `json:"id,omitempty"` // Id of the SNMPv3 Credential
+
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated. This attribute will be removed in a future release, should not be used, and any value supplied will be ignored.
-	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Deprecated. This attribute will be removed in a future release, should not be used, and any value supplied will be ignored.
-	PrivacyPassword  string `json:"privacyPassword,omitempty"`  // Privacy password for SNMPv3 privacy. Required if snmpMode is 'AUTHPRIV'. Use 'NO!$DATA!$' if no change required.
-	PrivacyType      string `json:"privacyType,omitempty"`      // SNMPv3 privacy protocol. Required is snmpMode is 'AUTHPRIV'.
-	SNMPMode         string `json:"snmpMode,omitempty"`         // Mode of SNMPv3. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
-	Username         string `json:"username,omitempty"`         // SNMPv3 username
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Deprecated. This attribute will be removed in a future release, should not be used, and any value supplied will be ignored.
+
+	PrivacyPassword string `json:"privacyPassword,omitempty"` // Privacy password for SNMPv3 privacy. Required if snmpMode is 'AUTHPRIV'. Use 'NO!$DATA!$' if no change required.
+
+	PrivacyType string `json:"privacyType,omitempty"` // SNMPv3 privacy protocol. Required is snmpMode is 'AUTHPRIV'.
+
+	SNMPMode string `json:"snmpMode,omitempty"` // Mode of SNMPv3. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
+
+	Username string `json:"username,omitempty"` // SNMPv3 username
 }
 type RequestDiscoveryCreateSNMPv3CredentialsV1 []RequestItemDiscoveryCreateSNMPv3CredentialsV1 // Array of RequestDiscoveryCreateSNMPv3CredentialsV1
 type RequestItemDiscoveryCreateSNMPv3CredentialsV1 struct {
-	AuthPassword     string `json:"authPassword,omitempty"`     // Auth password for SNMPv3. Required if snmpMode is 'AUTHPRIV' or 'AUTHNOPRIV'.
-	AuthType         string `json:"authType,omitempty"`         // SNMPv3 auth protocol. 'SHA' or 'MD5'. Required if snmpMode is 'AUTHPRIV' or 'AUTHNOPRIV'.
-	Comments         string `json:"comments,omitempty"`         // Comments to identify the SNMPv3 credential
-	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the SNMPv3 credential
-	Description      string `json:"description,omitempty"`      // Description for the SNMPv3 credential
-	ID               string `json:"id,omitempty"`               // Deprecated. This attribute will be removed in a future release, should not be used, and any value supplied will be ignored.
+	AuthPassword string `json:"authPassword,omitempty"` // Auth password for SNMPv3. Required if snmpMode is 'AUTHPRIV' or 'AUTHNOPRIV'.
+
+	AuthType string `json:"authType,omitempty"` // SNMPv3 auth protocol. 'SHA' or 'MD5'. Required if snmpMode is 'AUTHPRIV' or 'AUTHNOPRIV'.
+
+	Comments string `json:"comments,omitempty"` // Comments to identify the SNMPv3 credential
+
+	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the SNMPv3 credential
+
+	Description string `json:"description,omitempty"` // Description for the SNMPv3 credential
+
+	ID string `json:"id,omitempty"` // Deprecated. This attribute will be removed in a future release, should not be used, and any value supplied will be ignored.
+
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated. This attribute will be removed in a future release, should not be used, and any value supplied will be ignored.
-	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Deprecated. This attribute will be removed in a future release, should not be used, and any value supplied will be ignored.
-	PrivacyPassword  string `json:"privacyPassword,omitempty"`  // Privacy password for SNMPv3 privacy. Required if snmpMode is 'AUTHPRIV'.
-	PrivacyType      string `json:"privacyType,omitempty"`      // SNMPv3 privacy protocol. Required is snmpMode is 'AUTHPRIV'.
-	SNMPMode         string `json:"snmpMode,omitempty"`         // Mode of SNMPv3. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'.
-	Username         string `json:"username,omitempty"`         // SNMPv3 username
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Deprecated. This attribute will be removed in a future release, should not be used, and any value supplied will be ignored.
+
+	PrivacyPassword string `json:"privacyPassword,omitempty"` // Privacy password for SNMPv3 privacy. Required if snmpMode is 'AUTHPRIV'.
+
+	PrivacyType string `json:"privacyType,omitempty"` // SNMPv3 privacy protocol. Required is snmpMode is 'AUTHPRIV'.
+
+	SNMPMode string `json:"snmpMode,omitempty"` // Mode of SNMPv3. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'.
+
+	Username string `json:"username,omitempty"` // SNMPv3 username
 }
 type RequestDiscoveryUpdateGlobalCredentialsV1 struct {
 	SiteUUIDs []string `json:"siteUuids,omitempty"` // List of siteUuids where credential is to be updated
 }
 type RequestDiscoveryCreateUpdateSNMPPropertiesV1 []RequestItemDiscoveryCreateUpdateSNMPPropertiesV1 // Array of RequestDiscoveryCreateUpdateSNMPPropertiesV1
 type RequestItemDiscoveryCreateUpdateSNMPPropertiesV1 struct {
-	ID                 string `json:"id,omitempty"`                 //
-	InstanceTenantID   string `json:"instanceTenantId,omitempty"`   //
-	InstanceUUID       string `json:"instanceUuid,omitempty"`       //
-	IntValue           *int   `json:"intValue,omitempty"`           //
+	ID string `json:"id,omitempty"` //
+
+	InstanceTenantID string `json:"instanceTenantId,omitempty"` //
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` //
+
+	IntValue *int `json:"intValue,omitempty"` //
+
 	SystemPropertyName string `json:"systemPropertyName,omitempty"` //
 }
 type RequestDiscoveryUpdateGlobalCredentialsV2 struct {
 	CliCredential *RequestDiscoveryUpdateGlobalCredentialsV2CliCredential `json:"cliCredential,omitempty"` //
-	SNMPV2CRead   *RequestDiscoveryUpdateGlobalCredentialsV2SNMPV2CRead   `json:"snmpV2cRead,omitempty"`   //
-	SNMPV2CWrite  *RequestDiscoveryUpdateGlobalCredentialsV2SNMPV2CWrite  `json:"snmpV2cWrite,omitempty"`  //
-	SNMPV3        *RequestDiscoveryUpdateGlobalCredentialsV2SNMPV3        `json:"snmpV3,omitempty"`        //
-	HTTPSRead     *RequestDiscoveryUpdateGlobalCredentialsV2HTTPSRead     `json:"httpsRead,omitempty"`     //
-	HTTPSWrite    *RequestDiscoveryUpdateGlobalCredentialsV2HTTPSWrite    `json:"httpsWrite,omitempty"`    //
+
+	SNMPV2CRead *RequestDiscoveryUpdateGlobalCredentialsV2SNMPV2CRead `json:"snmpV2cRead,omitempty"` //
+
+	SNMPV2CWrite *RequestDiscoveryUpdateGlobalCredentialsV2SNMPV2CWrite `json:"snmpV2cWrite,omitempty"` //
+
+	SNMPV3 *RequestDiscoveryUpdateGlobalCredentialsV2SNMPV3 `json:"snmpV3,omitempty"` //
+
+	HTTPSRead *RequestDiscoveryUpdateGlobalCredentialsV2HTTPSRead `json:"httpsRead,omitempty"` //
+
+	HTTPSWrite *RequestDiscoveryUpdateGlobalCredentialsV2HTTPSWrite `json:"httpsWrite,omitempty"` //
 }
 type RequestDiscoveryUpdateGlobalCredentialsV2CliCredential struct {
-	Description    string `json:"description,omitempty"`    // Description for CLI credential
-	Username       string `json:"username,omitempty"`       // CLI Username
-	Password       string `json:"password,omitempty"`       // CLI Password
+	Description string `json:"description,omitempty"` // Description for CLI credential
+
+	Username string `json:"username,omitempty"` // CLI Username
+
+	Password string `json:"password,omitempty"` // CLI Password
+
 	EnablePassword string `json:"enablePassword,omitempty"` // CLI Enable Password
-	ID             string `json:"id,omitempty"`             // Id of the CLI Credential in UUID format
+
+	ID string `json:"id,omitempty"` // Id of the CLI Credential in UUID format
 }
 type RequestDiscoveryUpdateGlobalCredentialsV2SNMPV2CRead struct {
-	Description   string `json:"description,omitempty"`   // Description for Snmp RO community
+	Description string `json:"description,omitempty"` // Description for Snmp RO community
+
 	ReadCommunity string `json:"readCommunity,omitempty"` // Snmp RO community
-	ID            string `json:"id,omitempty"`            // Id of the SNMP Read Credential in UUID format
+
+	ID string `json:"id,omitempty"` // Id of the SNMP Read Credential in UUID format
 }
 type RequestDiscoveryUpdateGlobalCredentialsV2SNMPV2CWrite struct {
-	Description    string `json:"description,omitempty"`    // Description for Snmp RW community
+	Description string `json:"description,omitempty"` // Description for Snmp RW community
+
 	WriteCommunity string `json:"writeCommunity,omitempty"` // Snmp RW community
-	ID             string `json:"id,omitempty"`             // Id of the SNMP Write Credential in UUID format
+
+	ID string `json:"id,omitempty"` // Id of the SNMP Write Credential in UUID format
 }
 type RequestDiscoveryUpdateGlobalCredentialsV2SNMPV3 struct {
-	AuthPassword    string `json:"authPassword,omitempty"`    // Auth Password for SNMP V3
-	AuthType        string `json:"authType,omitempty"`        // SNMP auth protocol. SHA' or 'MD5'
-	SNMPMode        string `json:"snmpMode,omitempty"`        // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
+	AuthPassword string `json:"authPassword,omitempty"` // Auth Password for SNMP V3
+
+	AuthType string `json:"authType,omitempty"` // SNMP auth protocol. SHA' or 'MD5'
+
+	SNMPMode string `json:"snmpMode,omitempty"` // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
+
 	PrivacyPassword string `json:"privacyPassword,omitempty"` // Privacy Password for SNMP privacy
-	PrivacyType     string `json:"privacyType,omitempty"`     // SNMP privacy protocol. 'AES128','AES192','AES256'
-	Username        string `json:"username,omitempty"`        // SNMP V3 Username
-	Description     string `json:"description,omitempty"`     // Description for Snmp V3 Credential
-	ID              string `json:"id,omitempty"`              // Id of the SNMP V3 Credential in UUID format
+
+	PrivacyType string `json:"privacyType,omitempty"` // SNMP privacy protocol. 'AES128','AES192','AES256'
+
+	Username string `json:"username,omitempty"` // SNMP V3 Username
+
+	Description string `json:"description,omitempty"` // Description for Snmp V3 Credential
+
+	ID string `json:"id,omitempty"` // Id of the SNMP V3 Credential in UUID format
 }
 type RequestDiscoveryUpdateGlobalCredentialsV2HTTPSRead struct {
 	Description string `json:"description,omitempty"` // Description for HTTP(S) Read Credentials
-	Username    string `json:"username,omitempty"`    // HTTP(S) Read Username
-	Password    string `json:"password,omitempty"`    // HTTP(S) Read Password
-	Port        *int   `json:"port,omitempty"`        // HTTP(S) Port
-	ID          string `json:"id,omitempty"`          // Id of the HTTP(S) Read Credential in UUID format
+
+	Username string `json:"username,omitempty"` // HTTP(S) Read Username
+
+	Password string `json:"password,omitempty"` // HTTP(S) Read Password
+
+	Port *int `json:"port,omitempty"` // HTTP(S) Port
+
+	ID string `json:"id,omitempty"` // Id of the HTTP(S) Read Credential in UUID format
 }
 type RequestDiscoveryUpdateGlobalCredentialsV2HTTPSWrite struct {
 	Description string `json:"description,omitempty"` // Description for HTTP(S) Write Credentials
-	Username    string `json:"username,omitempty"`    // HTTP(S) Write Username
-	Password    string `json:"password,omitempty"`    // HTTP(S) Write Password
-	Port        *int   `json:"port,omitempty"`        // HTTP(S) Port
-	ID          string `json:"id,omitempty"`          // Id of the HTTP(S) Read Credential in UUID format
+
+	Username string `json:"username,omitempty"` // HTTP(S) Write Username
+
+	Password string `json:"password,omitempty"` // HTTP(S) Write Password
+
+	Port *int `json:"port,omitempty"` // HTTP(S) Port
+
+	ID string `json:"id,omitempty"` // Id of the HTTP(S) Read Credential in UUID format
 }
 type RequestDiscoveryCreateGlobalCredentialsV2 struct {
 	CliCredential *[]RequestDiscoveryCreateGlobalCredentialsV2CliCredential `json:"cliCredential,omitempty"` //
-	SNMPV2CRead   *[]RequestDiscoveryCreateGlobalCredentialsV2SNMPV2CRead   `json:"snmpV2cRead,omitempty"`   //
-	SNMPV2CWrite  *[]RequestDiscoveryCreateGlobalCredentialsV2SNMPV2CWrite  `json:"snmpV2cWrite,omitempty"`  //
-	SNMPV3        *[]RequestDiscoveryCreateGlobalCredentialsV2SNMPV3        `json:"snmpV3,omitempty"`        //
-	HTTPSRead     *[]RequestDiscoveryCreateGlobalCredentialsV2HTTPSRead     `json:"httpsRead,omitempty"`     //
-	HTTPSWrite    *[]RequestDiscoveryCreateGlobalCredentialsV2HTTPSWrite    `json:"httpsWrite,omitempty"`    //
+
+	SNMPV2CRead *[]RequestDiscoveryCreateGlobalCredentialsV2SNMPV2CRead `json:"snmpV2cRead,omitempty"` //
+
+	SNMPV2CWrite *[]RequestDiscoveryCreateGlobalCredentialsV2SNMPV2CWrite `json:"snmpV2cWrite,omitempty"` //
+
+	SNMPV3 *[]RequestDiscoveryCreateGlobalCredentialsV2SNMPV3 `json:"snmpV3,omitempty"` //
+
+	HTTPSRead *[]RequestDiscoveryCreateGlobalCredentialsV2HTTPSRead `json:"httpsRead,omitempty"` //
+
+	HTTPSWrite *[]RequestDiscoveryCreateGlobalCredentialsV2HTTPSWrite `json:"httpsWrite,omitempty"` //
 }
 type RequestDiscoveryCreateGlobalCredentialsV2CliCredential struct {
-	Description    string `json:"description,omitempty"`    // Description for CLI credential
-	Username       string `json:"username,omitempty"`       // CLI Username
-	Password       string `json:"password,omitempty"`       // CLI Password
+	Description string `json:"description,omitempty"` // Description for CLI credential
+
+	Username string `json:"username,omitempty"` // CLI Username
+
+	Password string `json:"password,omitempty"` // CLI Password
+
 	EnablePassword string `json:"enablePassword,omitempty"` // CLI Enable Password
 }
 type RequestDiscoveryCreateGlobalCredentialsV2SNMPV2CRead struct {
-	Description   string `json:"description,omitempty"`   // Description for Snmp RO community
+	Description string `json:"description,omitempty"` // Description for Snmp RO community
+
 	ReadCommunity string `json:"readCommunity,omitempty"` // Snmp RO community
 }
 type RequestDiscoveryCreateGlobalCredentialsV2SNMPV2CWrite struct {
-	Description    string `json:"description,omitempty"`    // Description for Snmp RW community
+	Description string `json:"description,omitempty"` // Description for Snmp RW community
+
 	WriteCommunity string `json:"writeCommunity,omitempty"` // Snmp RW community
 }
 type RequestDiscoveryCreateGlobalCredentialsV2SNMPV3 struct {
-	Description     string `json:"description,omitempty"`     // Description for Snmp V3 Credential
-	Username        string `json:"username,omitempty"`        // SNMP V3 Username
-	PrivacyType     string `json:"privacyType,omitempty"`     // SNMP privacy protocol. 'AES128','AES192','AES256'
+	Description string `json:"description,omitempty"` // Description for Snmp V3 Credential
+
+	Username string `json:"username,omitempty"` // SNMP V3 Username
+
+	PrivacyType string `json:"privacyType,omitempty"` // SNMP privacy protocol. 'AES128','AES192','AES256'
+
 	PrivacyPassword string `json:"privacyPassword,omitempty"` // Privacy Password for SNMP privacy
-	AuthType        string `json:"authType,omitempty"`        // SNMP auth protocol. SHA' or 'MD5'
-	AuthPassword    string `json:"authPassword,omitempty"`    // Auth Password for SNMP
-	SNMPMode        string `json:"snmpMode,omitempty"`        // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
+
+	AuthType string `json:"authType,omitempty"` // SNMP auth protocol. SHA' or 'MD5'
+
+	AuthPassword string `json:"authPassword,omitempty"` // Auth Password for SNMP
+
+	SNMPMode string `json:"snmpMode,omitempty"` // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
 }
 type RequestDiscoveryCreateGlobalCredentialsV2HTTPSRead struct {
 	Description string `json:"description,omitempty"` // Description for HTTP(S) Read Credentials
-	Username    string `json:"username,omitempty"`    // HTTP(S) Read Username
-	Password    string `json:"password,omitempty"`    // HTTP(S) Read Password
-	Port        *int   `json:"port,omitempty"`        // HTTP(S) Port
+
+	Username string `json:"username,omitempty"` // HTTP(S) Read Username
+
+	Password string `json:"password,omitempty"` // HTTP(S) Read Password
+
+	Port *int `json:"port,omitempty"` // HTTP(S) Port
 }
 type RequestDiscoveryCreateGlobalCredentialsV2HTTPSWrite struct {
 	Description string `json:"description,omitempty"` // Description for HTTP(S) Write Credentials
-	Username    string `json:"username,omitempty"`    // HTTP(S) Write Username
-	Password    string `json:"password,omitempty"`    // HTTP(S) Write Password
-	Port        *int   `json:"port,omitempty"`        // HTTP(S) Port
+
+	Username string `json:"username,omitempty"` // HTTP(S) Write Username
+
+	Password string `json:"password,omitempty"` // HTTP(S) Write Password
+
+	Port *int `json:"port,omitempty"` // HTTP(S) Port
 }
 
 //GetCountOfAllDiscoveryJobsV1 Get count of all discovery jobs - 069d-9823-451b-892d
@@ -1026,7 +1363,7 @@ type RequestDiscoveryCreateGlobalCredentialsV2HTTPSWrite struct {
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-count-of-all-discovery-jobs-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-count-of-all-discovery-jobs
 */
 func (s *DiscoveryService) GetCountOfAllDiscoveryJobsV1() (*ResponseDiscoveryGetCountOfAllDiscoveryJobsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery/count"
@@ -1061,7 +1398,7 @@ func (s *DiscoveryService) GetCountOfAllDiscoveryJobsV1() (*ResponseDiscoveryGet
 
 @param GetDiscoveryJobsByIPV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-discovery-jobs-by-ip-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-discovery-jobs-by-ip
 */
 func (s *DiscoveryService) GetDiscoveryJobsByIPV1(GetDiscoveryJobsByIPV1QueryParams *GetDiscoveryJobsByIPV1QueryParams) (*ResponseDiscoveryGetDiscoveryJobsByIPV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery/job"
@@ -1099,7 +1436,7 @@ func (s *DiscoveryService) GetDiscoveryJobsByIPV1(GetDiscoveryJobsByIPV1QueryPar
 @param id id path parameter. Discovery ID
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-discovery-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-discovery-by-id
 */
 func (s *DiscoveryService) GetDiscoveryByIDV1(id string) (*ResponseDiscoveryGetDiscoveryByIDV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery/{id}"
@@ -1137,7 +1474,7 @@ func (s *DiscoveryService) GetDiscoveryByIDV1(id string) (*ResponseDiscoveryGetD
 
 @param GetListOfDiscoveriesByDiscoveryIdV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-list-of-discoveries-by-discovery-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-list-of-discoveries-by-discovery-id
 */
 func (s *DiscoveryService) GetListOfDiscoveriesByDiscoveryIDV1(id string, GetListOfDiscoveriesByDiscoveryIdV1QueryParams *GetListOfDiscoveriesByDiscoveryIDV1QueryParams) (*ResponseDiscoveryGetListOfDiscoveriesByDiscoveryIDV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery/{id}/job"
@@ -1177,7 +1514,7 @@ func (s *DiscoveryService) GetListOfDiscoveriesByDiscoveryIDV1(id string, GetLis
 
 @param GetDiscoveredNetworkDevicesByDiscoveryIdV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-discovered-network-devices-by-discovery-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-discovered-network-devices-by-discovery-id
 */
 func (s *DiscoveryService) GetDiscoveredNetworkDevicesByDiscoveryIDV1(id string, GetDiscoveredNetworkDevicesByDiscoveryIdV1QueryParams *GetDiscoveredNetworkDevicesByDiscoveryIDV1QueryParams) (*ResponseDiscoveryGetDiscoveredNetworkDevicesByDiscoveryIDV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery/{id}/network-device"
@@ -1217,7 +1554,7 @@ func (s *DiscoveryService) GetDiscoveredNetworkDevicesByDiscoveryIDV1(id string,
 
 @param GetDevicesDiscoveredByIdV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-devices-discovered-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-devices-discovered-by-id
 */
 func (s *DiscoveryService) GetDevicesDiscoveredByIDV1(id string, GetDevicesDiscoveredByIdV1QueryParams *GetDevicesDiscoveredByIDV1QueryParams) (*ResponseDiscoveryGetDevicesDiscoveredByIDV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery/{id}/network-device/count"
@@ -1261,7 +1598,7 @@ func (s *DiscoveryService) GetDevicesDiscoveredByIDV1(id string, GetDevicesDisco
 
 @param GetDiscoveredDevicesByRangeV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-discovered-devices-by-range-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-discovered-devices-by-range
 */
 func (s *DiscoveryService) GetDiscoveredDevicesByRangeV1(id string, startIndex int, recordsToReturn int, GetDiscoveredDevicesByRangeV1QueryParams *GetDiscoveredDevicesByRangeV1QueryParams) (*ResponseDiscoveryGetDiscoveredDevicesByRangeV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery/{id}/network-device/{startIndex}/{recordsToReturn}"
@@ -1303,7 +1640,7 @@ func (s *DiscoveryService) GetDiscoveredDevicesByRangeV1(id string, startIndex i
 
 @param GetNetworkDevicesFromDiscoveryV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-devices-from-discovery-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-devices-from-discovery
 */
 func (s *DiscoveryService) GetNetworkDevicesFromDiscoveryV1(id string, GetNetworkDevicesFromDiscoveryV1QueryParams *GetNetworkDevicesFromDiscoveryV1QueryParams) (*ResponseDiscoveryGetNetworkDevicesFromDiscoveryV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery/{id}/summary"
@@ -1344,7 +1681,7 @@ func (s *DiscoveryService) GetNetworkDevicesFromDiscoveryV1(id string, GetNetwor
 @param recordsToReturn recordsToReturn path parameter. Number of records to fetch from the starting index
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-discoveries-by-range-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-discoveries-by-range
 */
 func (s *DiscoveryService) GetDiscoveriesByRangeV1(startIndex int, recordsToReturn int) (*ResponseDiscoveryGetDiscoveriesByRangeV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery/{startIndex}/{recordsToReturn}"
@@ -1381,7 +1718,7 @@ func (s *DiscoveryService) GetDiscoveriesByRangeV1(startIndex int, recordsToRetu
 
 @param GetGlobalCredentialsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-global-credentials-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-global-credentials
 */
 func (s *DiscoveryService) GetGlobalCredentialsV1(GetGlobalCredentialsV1QueryParams *GetGlobalCredentialsV1QueryParams) (*ResponseDiscoveryGetGlobalCredentialsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential"
@@ -1419,7 +1756,7 @@ func (s *DiscoveryService) GetGlobalCredentialsV1(GetGlobalCredentialsV1QueryPar
 @param id id path parameter. Global Credential ID
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-credential-sub-type-by-credential-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-credential-sub-type-by-credential-id
 */
 func (s *DiscoveryService) GetCredentialSubTypeByCredentialIDV1(id string) (*ResponseDiscoveryGetCredentialSubTypeByCredentialIDV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/{id}"
@@ -1454,7 +1791,7 @@ func (s *DiscoveryService) GetCredentialSubTypeByCredentialIDV1(id string) (*Res
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-snmp-properties-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-snmp-properties
 */
 func (s *DiscoveryService) GetSNMPPropertiesV1() (*ResponseDiscoveryGetSNMPPropertiesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/snmp-property"
@@ -1522,7 +1859,7 @@ func (s *DiscoveryService) GetAllGlobalCredentialsV2() (*ResponseDiscoveryGetAll
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!start-discovery-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!start-discovery
 */
 func (s *DiscoveryService) StartDiscoveryV1(requestDiscoveryStartDiscoveryV1 *RequestDiscoveryStartDiscoveryV1) (*ResponseDiscoveryStartDiscoveryV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery"
@@ -1559,7 +1896,7 @@ func (s *DiscoveryService) StartDiscoveryV1(requestDiscoveryStartDiscoveryV1 *Re
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-cli-credentials-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-cli-credentials
 */
 func (s *DiscoveryService) CreateCliCredentialsV1(requestDiscoveryCreateCLICredentialsV1 *RequestDiscoveryCreateCliCredentialsV1) (*ResponseDiscoveryCreateCliCredentialsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/cli"
@@ -1596,7 +1933,7 @@ func (s *DiscoveryService) CreateCliCredentialsV1(requestDiscoveryCreateCLICrede
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-http-read-credentials-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-http-read-credentials
 */
 func (s *DiscoveryService) CreateHTTPReadCredentialsV1(requestDiscoveryCreateHTTPReadCredentialsV1 *RequestDiscoveryCreateHTTPReadCredentialsV1) (*ResponseDiscoveryCreateHTTPReadCredentialsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/http-read"
@@ -1633,7 +1970,7 @@ func (s *DiscoveryService) CreateHTTPReadCredentialsV1(requestDiscoveryCreateHTT
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-http-write-credentials-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-http-write-credentials
 */
 func (s *DiscoveryService) CreateHTTPWriteCredentialsV1(requestDiscoveryCreateHTTPWriteCredentialsV1 *RequestDiscoveryCreateHTTPWriteCredentialsV1) (*ResponseDiscoveryCreateHTTPWriteCredentialsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/http-write"
@@ -1670,7 +2007,7 @@ func (s *DiscoveryService) CreateHTTPWriteCredentialsV1(requestDiscoveryCreateHT
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-netconf-credentials-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-netconf-credentials
 */
 func (s *DiscoveryService) CreateNetconfCredentialsV1(requestDiscoveryCreateNetconfCredentialsV1 *RequestDiscoveryCreateNetconfCredentialsV1) (*ResponseDiscoveryCreateNetconfCredentialsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/netconf"
@@ -1707,7 +2044,7 @@ func (s *DiscoveryService) CreateNetconfCredentialsV1(requestDiscoveryCreateNetc
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-snmp-read-community-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-snmp-read-community
 */
 func (s *DiscoveryService) CreateSNMPReadCommunityV1(requestDiscoveryCreateSNMPReadCommunityV1 *RequestDiscoveryCreateSNMPReadCommunityV1) (*ResponseDiscoveryCreateSNMPReadCommunityV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/snmpv2-read-community"
@@ -1744,7 +2081,7 @@ func (s *DiscoveryService) CreateSNMPReadCommunityV1(requestDiscoveryCreateSNMPR
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-snmp-write-community-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-snmp-write-community
 */
 func (s *DiscoveryService) CreateSNMPWriteCommunityV1(requestDiscoveryCreateSNMPWriteCommunityV1 *RequestDiscoveryCreateSNMPWriteCommunityV1) (*ResponseDiscoveryCreateSNMPWriteCommunityV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/snmpv2-write-community"
@@ -1781,7 +2118,7 @@ func (s *DiscoveryService) CreateSNMPWriteCommunityV1(requestDiscoveryCreateSNMP
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-snmpv3-credentials-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-snmpv3-credentials
 */
 func (s *DiscoveryService) CreateSNMPv3CredentialsV1(requestDiscoveryCreateSNMPv3CredentialsV1 *RequestDiscoveryCreateSNMPv3CredentialsV1) (*ResponseDiscoveryCreateSNMPv3CredentialsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/snmpv3"
@@ -1818,7 +2155,7 @@ func (s *DiscoveryService) CreateSNMPv3CredentialsV1(requestDiscoveryCreateSNMPv
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-update-snmp-properties-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-update-snmp-properties
 */
 func (s *DiscoveryService) CreateUpdateSNMPPropertiesV1(requestDiscoveryCreateUpdateSNMPPropertiesV1 *RequestDiscoveryCreateUpdateSNMPPropertiesV1) (*ResponseDiscoveryCreateUpdateSNMPPropertiesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/snmp-property"
@@ -2221,11 +2558,11 @@ func (s *DiscoveryService) UpdateGlobalCredentialsV2(requestDiscoveryUpdateGloba
 }
 
 //DeleteAllDiscoveryV1 Delete all discovery - db8e-0923-4a98-8bab
-/* Stops all the discoveries and removes them
+/* Stops all the discoveries and removes them.
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-all-discovery-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-all-discovery
 */
 func (s *DiscoveryService) DeleteAllDiscoveryV1() (*ResponseDiscoveryDeleteAllDiscoveryV1, *resty.Response, error) {
 	//
@@ -2262,7 +2599,7 @@ func (s *DiscoveryService) DeleteAllDiscoveryV1() (*ResponseDiscoveryDeleteAllDi
 @param id id path parameter. Discovery ID
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-discovery-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-discovery-by-id
 */
 func (s *DiscoveryService) DeleteDiscoveryByIDV1(id string) (*ResponseDiscoveryDeleteDiscoveryByIDV1, *resty.Response, error) {
 	//id string
@@ -2302,7 +2639,7 @@ func (s *DiscoveryService) DeleteDiscoveryByIDV1(id string) (*ResponseDiscoveryD
 @param recordsToDelete recordsToDelete path parameter. Number of records to delete from the starting index
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-discovery-by-specified-range-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-discovery-by-specified-range
 */
 func (s *DiscoveryService) DeleteDiscoveryBySpecifiedRangeV1(startIndex int, recordsToDelete int) (*ResponseDiscoveryDeleteDiscoveryBySpecifiedRangeV1, *resty.Response, error) {
 	//startIndex int,recordsToDelete int
@@ -2341,7 +2678,7 @@ func (s *DiscoveryService) DeleteDiscoveryBySpecifiedRangeV1(startIndex int, rec
 @param globalCredentialID globalCredentialId path parameter. ID of global-credential
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-global-credentials-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-global-credentials-by-id
 */
 func (s *DiscoveryService) DeleteGlobalCredentialsByIDV1(globalCredentialID string) (*ResponseDiscoveryDeleteGlobalCredentialsByIDV1, *resty.Response, error) {
 	//globalCredentialID string

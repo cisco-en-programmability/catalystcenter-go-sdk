@@ -11,6 +11,144 @@ import (
 
 type SdaService service
 
+type ReadListOfFabricSitesWithTheirHealthSummaryV1QueryParams struct {
+	StartTime float64 `url:"startTime,omitempty"` //Start time from which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	EndTime   float64 `url:"endTime,omitempty"`   //End time to which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	Limit     float64 `url:"limit,omitempty"`     //Maximum number of records to return
+	Offset    float64 `url:"offset,omitempty"`    //Specifies the starting point within all records returned by the API. It's one based offset. The starting value is 1.
+	SortBy    string  `url:"sortBy,omitempty"`    //A field within the response to sort by.
+	Order     string  `url:"order,omitempty"`     //The sort order of the field ascending or descending.
+	ID        string  `url:"id,omitempty"`        //The list of entity Uuids. (Ex."6bef213c-19ca-4170-8375-b694e251101c") Examples: id=6bef213c-19ca-4170-8375-b694e251101c (single entity uuid requested) id=6bef213c-19ca-4170-8375-b694e251101c&id=32219612-819e-4b5e-a96b-cf22aca13dd9&id=2541e9a7-b80d-4955-8aa2-79b233318ba0 (multiple entity uuid with '&' separator)
+	Attribute string  `url:"attribute,omitempty"` //The list of FabricSite health attributes. Please refer to ```fabricSiteAttributes``` section in the Open API specification document mentioned in the description.
+	View      string  `url:"view,omitempty"`      //The specific summary view being requested. A maximum of 3 views can be queried at a time per request.  Please refer to ```fabricSiteViews``` section in the Open API specification document mentioned in the description.
+}
+type ReadListOfFabricSitesWithTheirHealthSummaryV1HeaderParams struct {
+	XCaLLERID string `url:"X-CALLER-ID,omitempty"` //Expects type string. Caller ID is used to trace the origin of API calls and their associated queries executed on the database. It's an optional header parameter that can be added to an API request.
+}
+type ReadFabricSiteCountV1QueryParams struct {
+	StartTime float64 `url:"startTime,omitempty"` //Start time from which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	EndTime   float64 `url:"endTime,omitempty"`   //End time to which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	ID        string  `url:"id,omitempty"`        //The list of entity Uuids. (Ex."6bef213c-19ca-4170-8375-b694e251101c") Examples: id=6bef213c-19ca-4170-8375-b694e251101c (single entity uuid requested) id=6bef213c-19ca-4170-8375-b694e251101c&id=32219612-819e-4b5e-a96b-cf22aca13dd9&id=2541e9a7-b80d-4955-8aa2-79b233318ba0 (multiple entity uuid with '&' separator)
+}
+type ReadFabricSiteCountV1HeaderParams struct {
+	XCaLLERID string `url:"X-CALLER-ID,omitempty"` //Expects type string. Caller ID is used to trace the origin of API calls and their associated queries executed on the database. It's an optional header parameter that can be added to an API request.
+}
+type ReadFabricSitesWithHealthSummaryFromIDV1QueryParams struct {
+	StartTime float64 `url:"startTime,omitempty"` //Start time from which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	EndTime   float64 `url:"endTime,omitempty"`   //End time to which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	Attribute string  `url:"attribute,omitempty"` //The list of FabricSite health attributes. Please refer to ```fabricSiteAttributes``` section in the Open API specification document mentioned in the description.
+	View      string  `url:"view,omitempty"`      //The specific summary view being requested. A maximum of 3 views can be queried at a time per request.  Please refer to ```fabricSiteViews``` section in the Open API specification document mentioned in the description.
+}
+type ReadFabricSitesWithHealthSummaryFromIDV1HeaderParams struct {
+	XCaLLERID string `url:"X-CALLER-ID,omitempty"` //Expects type string. Caller ID is used to trace the origin of API calls and their associated queries executed on the database. It's an optional header parameter that can be added to an API request.
+}
+type TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1QueryParams struct {
+	StartTime     float64 `url:"startTime,omitempty"`     //Start time from which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	EndTime       float64 `url:"endTime,omitempty"`       //End time to which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	TrendInterval string  `url:"trendInterval,omitempty"` //The time window to aggregate the metrics. Interval can be 5 minutes or 10 minutes or 1 hour or 1 day or 7 days
+	Limit         float64 `url:"limit,omitempty"`         //Maximum number of records to return
+	Offset        float64 `url:"offset,omitempty"`        //Specifies the starting point within all records returned by the API. It's one based offset. The starting value is 1.
+	Order         string  `url:"order,omitempty"`         //The sort order of the field ascending or descending.
+	Attribute     string  `url:"attribute,omitempty"`     //The interested fields in the request. For valid attributes, verify the documentation.
+}
+type TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1HeaderParams struct {
+	XCaLLERID string `url:"X-CALLER-ID,omitempty"` //Expects type string. Caller ID is used to trace the origin of API calls and their associated queries executed on the database. It's an optional header parameter that can be added to an API request.
+}
+type ReadFabricEntitySummaryV1QueryParams struct {
+	StartTime float64 `url:"startTime,omitempty"` //Start time from which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	EndTime   float64 `url:"endTime,omitempty"`   //End time to which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+}
+type ReadFabricEntitySummaryV1HeaderParams struct {
+	XCaLLERID string `url:"X-CALLER-ID,omitempty"` //Expects type string. Caller ID is used to trace the origin of API calls and their associated queries executed on the database. It's an optional header parameter that can be added to an API request.
+}
+type ReadListOfTransitNetworksWithTheirHealthSummaryV1QueryParams struct {
+	StartTime float64 `url:"startTime,omitempty"` //Start time from which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	EndTime   float64 `url:"endTime,omitempty"`   //End time to which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	Limit     float64 `url:"limit,omitempty"`     //Maximum number of records to return
+	Offset    float64 `url:"offset,omitempty"`    //Specifies the starting point within all records returned by the API. It's one based offset. The starting value is 1.
+	SortBy    string  `url:"sortBy,omitempty"`    //A field within the response to sort by.
+	Order     string  `url:"order,omitempty"`     //The sort order of the field ascending or descending.
+	ID        string  `url:"id,omitempty"`        //The list of transit entity ids. (Ex "1551156a-bc97-3c63-aeda-8a6d3765b5b9") Examples: id=1551156a-bc97-3c63-aeda-8a6d3765b5b9 (single entity uuid requested) id=1551156a-bc97-3c63-aeda-8a6d3765b5b9&id=4aa20652-237c-4625-b2b4-fd7e82b6a81e (multiple entity uuids with '&' separator)
+	Attribute string  `url:"attribute,omitempty"` //The interested fields in the request. For valid attributes, verify the documentation.
+	View      string  `url:"view,omitempty"`      //The specific summary view being requested. This is an optional parameter which can be passed to get one or more of the specific health data summaries associated with sites.
+}
+type ReadListOfTransitNetworksWithTheirHealthSummaryV1HeaderParams struct {
+	XCaLLERID string `url:"X-CALLER-ID,omitempty"` //Expects type string. Caller ID is used to trace the origin of API calls and their associated queries executed on the database. It's an optional header parameter that can be added to an API request.
+}
+type ReadTransitNetworksCountV1QueryParams struct {
+	StartTime float64 `url:"startTime,omitempty"` //Start time from which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	EndTime   float64 `url:"endTime,omitempty"`   //End time to which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	ID        string  `url:"id,omitempty"`        //The list of transit entity ids. (Ex "1551156a-bc97-3c63-aeda-8a6d3765b5b9") Examples: id=1551156a-bc97-3c63-aeda-8a6d3765b5b9 (single entity uuid requested) id=1551156a-bc97-3c63-aeda-8a6d3765b5b9&id=4aa20652-237c-4625-b2b4-fd7e82b6a81e (multiple entity uuids with '&' separator)
+}
+type ReadTransitNetworksCountV1HeaderParams struct {
+	XCaLLERID string `url:"X-CALLER-ID,omitempty"` //Expects type string. Caller ID is used to trace the origin of API calls and their associated queries executed on the database. It's an optional header parameter that can be added to an API request.
+}
+type ReadTransitNetworkWithItsHealthSummaryFromIDV1QueryParams struct {
+	EndTime   float64 `url:"endTime,omitempty"`   //End time to which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	StartTime float64 `url:"startTime,omitempty"` //Start time from which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	Attribute string  `url:"attribute,omitempty"` //The interested fields in the request. For valid attributes, verify the documentation.
+	View      string  `url:"view,omitempty"`      //The specific summary view being requested. This is an optional parameter which can be passed to get one or more of the specific health data summaries associated with sites.
+}
+type ReadTransitNetworkWithItsHealthSummaryFromIDV1HeaderParams struct {
+	XCaLLERID string `url:"X-CALLER-ID,omitempty"` //Expects type string. Caller ID is used to trace the origin of API calls and their associated queries executed on the database. It's an optional header parameter that can be added to an API request.
+}
+type TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1QueryParams struct {
+	StartTime     float64 `url:"startTime,omitempty"`     //Start time from which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	EndTime       float64 `url:"endTime,omitempty"`       //End time to which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	TrendInterval string  `url:"trendInterval,omitempty"` //The time window to aggregate the metrics. Interval can be 5 minutes or 10 minutes or 1 hour or 1 day or 7 days
+	Limit         float64 `url:"limit,omitempty"`         //Maximum number of records to return
+	Offset        float64 `url:"offset,omitempty"`        //Specifies the starting point within all records returned by the API. It's one based offset. The starting value is 1.
+	Order         string  `url:"order,omitempty"`         //The sort order of the field ascending or descending.
+	Attribute     string  `url:"attribute,omitempty"`     //The interested fields in the request. For valid attributes, verify the documentation.
+}
+type TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1HeaderParams struct {
+	XCaLLERID string `url:"X-CALLER-ID,omitempty"` //Expects type string. Caller ID is used to trace the origin of API calls and their associated queries executed on the database. It's an optional header parameter that can be added to an API request.
+}
+type ReadListOfVirtualNetworksWithTheirHealthSummaryV1QueryParams struct {
+	StartTime float64 `url:"startTime,omitempty"` //Start time from which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	EndTime   float64 `url:"endTime,omitempty"`   //End time to which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	Limit     float64 `url:"limit,omitempty"`     //Maximum number of records to return
+	Offset    float64 `url:"offset,omitempty"`    //Specifies the starting point within all records returned by the API. It's one based offset. The starting value is 1.
+	SortBy    string  `url:"sortBy,omitempty"`    //A field within the response to sort by.
+	Order     string  `url:"order,omitempty"`     //The sort order of the field ascending or descending.
+	ID        string  `url:"id,omitempty"`        //The list of entity Uuids. (Ex."6bef213c-19ca-4170-8375-b694e251101c") Examples: id=6bef213c-19ca-4170-8375-b694e251101c (single entity uuid requested) id=6bef213c-19ca-4170-8375-b694e251101c&id=32219612-819e-4b5e-a96b-cf22aca13dd9&id=2541e9a7-b80d-4955-8aa2-79b233318ba0 (multiple entity uuid with '&' separator)
+	VnLayer   string  `url:"vnLayer,omitempty"`   //VN Layer information covering Layer 3 or Layer 2 VNs.
+	Attribute string  `url:"attribute,omitempty"` //The interested fields in the request. For valid attributes, verify the documentation.
+	View      string  `url:"view,omitempty"`      //The specific summary view being requested. This is an optional parameter which can be passed to get one or more of the specific health data summaries associated with virtual networks.
+}
+type ReadListOfVirtualNetworksWithTheirHealthSummaryV1HeaderParams struct {
+	XCaLLERID string `url:"X-CALLER-ID,omitempty"` //Expects type string. Caller ID is used to trace the origin of API calls and their associated queries executed on the database. It's an optional header parameter that can be added to an API request.
+}
+type ReadVirtualNetworksCountV1QueryParams struct {
+	StartTime float64 `url:"startTime,omitempty"` //Start time from which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	EndTime   float64 `url:"endTime,omitempty"`   //End time to which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	ID        string  `url:"id,omitempty"`        //The list of entity Uuids. (Ex."6bef213c-19ca-4170-8375-b694e251101c") Examples: id=6bef213c-19ca-4170-8375-b694e251101c (single entity uuid requested) id=6bef213c-19ca-4170-8375-b694e251101c&id=32219612-819e-4b5e-a96b-cf22aca13dd9&id=2541e9a7-b80d-4955-8aa2-79b233318ba0 (multiple entity uuid with '&' separator)
+	VnLayer   string  `url:"vnLayer,omitempty"`   //VN Layer information covering Layer 3 or Layer 2 VNs.
+}
+type ReadVirtualNetworksCountV1HeaderParams struct {
+	XCaLLERID string `url:"X-CALLER-ID,omitempty"` //Expects type string. Caller ID is used to trace the origin of API calls and their associated queries executed on the database. It's an optional header parameter that can be added to an API request.
+}
+type ReadVirtualNetworkWithItsHealthSummaryFromIDV1QueryParams struct {
+	EndTime   float64 `url:"endTime,omitempty"`   //End time to which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	StartTime float64 `url:"startTime,omitempty"` //Start time from which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	Attribute string  `url:"attribute,omitempty"` //The interested fields in the request. For valid attributes, verify the documentation.
+	View      string  `url:"view,omitempty"`      //The specific summary view being requested. This is an optional parameter which can be passed to get one or more of the specific health data summaries associated with virtual networks.
+}
+type ReadVirtualNetworkWithItsHealthSummaryFromIDV1HeaderParams struct {
+	XCaLLERID string `url:"X-CALLER-ID,omitempty"` //Expects type string. Caller ID is used to trace the origin of API calls and their associated queries executed on the database. It's an optional header parameter that can be added to an API request.
+}
+type TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1QueryParams struct {
+	StartTime     float64 `url:"startTime,omitempty"`     //Start time from which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	EndTime       float64 `url:"endTime,omitempty"`       //End time to which API queries the data set related to the resource. It must be specified in UNIX epochtime in milliseconds. Value is inclusive.
+	TrendInterval string  `url:"trendInterval,omitempty"` //The time window to aggregate the metrics. Interval can be 5 minutes or 10 minutes or 1 hour or 1 day or 7 days
+	Limit         float64 `url:"limit,omitempty"`         //Maximum number of records to return
+	Offset        float64 `url:"offset,omitempty"`        //Specifies the starting point within all records returned by the API. It's one based offset. The starting value is 1.
+	Order         string  `url:"order,omitempty"`         //The sort order of the field ascending or descending.
+	Attribute     string  `url:"attribute,omitempty"`     //The interested fields in the request. For valid attributes, verify the documentation.
+}
+type TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1HeaderParams struct {
+	XCaLLERID string `url:"X-CALLER-ID,omitempty"` //Expects type string. Caller ID is used to trace the origin of API calls and their associated queries executed on the database. It's an optional header parameter that can be added to an API request.
+}
 type GetDefaultAuthenticationProfileFromSdaFabricV1QueryParams struct {
 	SiteNameHierarchy        string `url:"siteNameHierarchy,omitempty"`        //siteNameHierarchy
 	AuthenticateTemplateName string `url:"authenticateTemplateName,omitempty"` //authenticateTemplateName
@@ -111,7 +249,7 @@ type GetAnycastGatewaysV1QueryParams struct {
 	VLANName           string  `url:"vlanName,omitempty"`           //VLAN name of the anycast gateways.
 	VLANID             float64 `url:"vlanId,omitempty"`             //VLAN ID of the anycast gateways. The allowed range for vlanId is [2-4093] except for reserved VLANs [1002-1005], 2046, and 4094.
 	Offset             float64 `url:"offset,omitempty"`             //Starting record for pagination.
-	Limit              float64 `url:"limit,omitempty"`              //Maximum number of records to return.
+	Limit              float64 `url:"limit,omitempty"`              //Maximum number of records to return. The maximum number of objects supported in a single request is 500.
 }
 type GetAnycastGatewayCountV1QueryParams struct {
 	FabricID           string  `url:"fabricId,omitempty"`           //ID of the fabric the anycast gateway is assigned to.
@@ -121,10 +259,11 @@ type GetAnycastGatewayCountV1QueryParams struct {
 	VLANID             float64 `url:"vlanId,omitempty"`             //VLAN ID of the anycast gateways. The allowed range for vlanId is [2-4093] except for reserved VLANs [1002-1005], 2046, and 4094.
 }
 type GetAuthenticationProfilesV1QueryParams struct {
-	FabricID                  string  `url:"fabricId,omitempty"`                  //ID of the fabric the authentication profile is assigned to.
-	AuthenticationProfileName string  `url:"authenticationProfileName,omitempty"` //Return only the authentication profiles with this specified name. Note that 'No Authentication' is not a valid option for this parameter.
-	Offset                    float64 `url:"offset,omitempty"`                    //Starting record for pagination.
-	Limit                     float64 `url:"limit,omitempty"`                     //Maximum number of records to return.
+	FabricID                      string  `url:"fabricId,omitempty"`                      //ID of the fabric the authentication profile is assigned to.
+	AuthenticationProfileName     string  `url:"authenticationProfileName,omitempty"`     //Return only the authentication profiles with this specified name. Note that 'No Authentication' is not a valid option for this parameter.
+	IsGlobalAuthenticationProfile bool    `url:"isGlobalAuthenticationProfile,omitempty"` //Set to true to return only global authentication profiles, or set to false to hide them. isGlobalAuthenticationProfile must not be true when fabricId is provided.
+	Offset                        float64 `url:"offset,omitempty"`                        //Starting record for pagination.
+	Limit                         float64 `url:"limit,omitempty"`                         //Maximum number of records to return. The maximum number of objects supported in a single request is 500.
 }
 type DeleteExtranetPoliciesV1QueryParams struct {
 	ExtranetPolicyName string `url:"extranetPolicyName,omitempty"` //Name of the extranet policy.
@@ -132,14 +271,14 @@ type DeleteExtranetPoliciesV1QueryParams struct {
 type GetExtranetPoliciesV1QueryParams struct {
 	ExtranetPolicyName string  `url:"extranetPolicyName,omitempty"` //Name of the extranet policy.
 	Offset             float64 `url:"offset,omitempty"`             //Starting record for pagination.
-	Limit              float64 `url:"limit,omitempty"`              //Maximum number of records to return.
+	Limit              float64 `url:"limit,omitempty"`              //Maximum number of records to return. The maximum number of objects supported in a single request is 500.
 }
 type GetFabricDevicesV1QueryParams struct {
 	FabricID        string  `url:"fabricId,omitempty"`        //ID of the fabric this device belongs to.
 	NetworkDeviceID string  `url:"networkDeviceId,omitempty"` //Network device ID of the fabric device.
 	DeviceRoles     string  `url:"deviceRoles,omitempty"`     //Device roles of the fabric device. Allowed values are [CONTROL_PLANE_NODE, EDGE_NODE, BORDER_NODE, WIRELESS_CONTROLLER_NODE, EXTENDED_NODE].
 	Offset          float64 `url:"offset,omitempty"`          //Starting record for pagination.
-	Limit           float64 `url:"limit,omitempty"`           //Maximum number of records to return.
+	Limit           float64 `url:"limit,omitempty"`           //Maximum number of records to return. The maximum number of objects supported in a single request is 500.
 }
 type DeleteFabricDevicesV1QueryParams struct {
 	FabricID        string `url:"fabricId,omitempty"`        //ID of the fabric this device belongs to.
@@ -159,7 +298,7 @@ type GetFabricDevicesLayer2HandoffsV1QueryParams struct {
 	FabricID        string  `url:"fabricId,omitempty"`        //ID of the fabric this device belongs to.
 	NetworkDeviceID string  `url:"networkDeviceId,omitempty"` //Network device ID of the fabric device.
 	Offset          float64 `url:"offset,omitempty"`          //Starting record for pagination.
-	Limit           float64 `url:"limit,omitempty"`           //Maximum number of records to return.
+	Limit           float64 `url:"limit,omitempty"`           //Maximum number of records to return. The maximum number of objects supported in a single request is 500.
 }
 type GetFabricDevicesLayer2HandoffsCountV1QueryParams struct {
 	FabricID        string `url:"fabricId,omitempty"`        //ID of the fabric this device belongs to.
@@ -173,7 +312,7 @@ type GetFabricDevicesLayer3HandoffsWithIPTransitV1QueryParams struct {
 	FabricID        string  `url:"fabricId,omitempty"`        //ID of the fabric this device belongs to.
 	NetworkDeviceID string  `url:"networkDeviceId,omitempty"` //Network device ID of the fabric device.
 	Offset          float64 `url:"offset,omitempty"`          //Starting record for pagination.
-	Limit           float64 `url:"limit,omitempty"`           //Maximum number of records to return.
+	Limit           float64 `url:"limit,omitempty"`           //Maximum number of records to return. The maximum number of objects supported in a single request is 500.
 }
 type GetFabricDevicesLayer3HandoffsWithIPTransitCountV1QueryParams struct {
 	FabricID        string `url:"fabricId,omitempty"`        //ID of the fabric this device belongs to.
@@ -183,7 +322,7 @@ type GetFabricDevicesLayer3HandoffsWithSdaTransitV1QueryParams struct {
 	FabricID        string  `url:"fabricId,omitempty"`        //ID of the fabric this device belongs to.
 	NetworkDeviceID string  `url:"networkDeviceId,omitempty"` //Network device ID of the fabric device.
 	Offset          float64 `url:"offset,omitempty"`          //Starting record for pagination.
-	Limit           float64 `url:"limit,omitempty"`           //Maximum number of records to return.
+	Limit           float64 `url:"limit,omitempty"`           //Maximum number of records to return. The maximum number of objects supported in a single request is 500.
 }
 type DeleteFabricDeviceLayer3HandoffsWithSdaTransitV1QueryParams struct {
 	FabricID        string `url:"fabricId,omitempty"`        //ID of the fabric this device belongs to.
@@ -197,13 +336,13 @@ type GetFabricSitesV1QueryParams struct {
 	ID     string  `url:"id,omitempty"`     //ID of the fabric site.
 	SiteID string  `url:"siteId,omitempty"` //ID of the network hierarchy associated with the fabric site.
 	Offset float64 `url:"offset,omitempty"` //Starting record for pagination.
-	Limit  float64 `url:"limit,omitempty"`  //Maximum number of records to return.
+	Limit  float64 `url:"limit,omitempty"`  //Maximum number of records to return. The maximum number of objects supported in a single request is 500.
 }
 type GetFabricZonesV1QueryParams struct {
 	ID     string  `url:"id,omitempty"`     //ID of the fabric zone.
 	SiteID string  `url:"siteId,omitempty"` //ID of the network hierarchy associated with the fabric zone.
 	Offset float64 `url:"offset,omitempty"` //Starting record for pagination.
-	Limit  float64 `url:"limit,omitempty"`  //Maximum number of records to return.
+	Limit  float64 `url:"limit,omitempty"`  //Maximum number of records to return. The maximum number of objects supported in a single request is 500.
 }
 type DeleteLayer2VirtualNetworksV1QueryParams struct {
 	FabricID                           string  `url:"fabricId,omitempty"`                           //ID of the fabric the layer 2 virtual network is assigned to.
@@ -220,7 +359,7 @@ type GetLayer2VirtualNetworksV1QueryParams struct {
 	TrafficType                        string  `url:"trafficType,omitempty"`                        //The traffic type of the layer 2 virtual network.
 	AssociatedLayer3VirtualNetworkName string  `url:"associatedLayer3VirtualNetworkName,omitempty"` //Name of the associated layer 3 virtual network.
 	Offset                             float64 `url:"offset,omitempty"`                             //Starting record for pagination.
-	Limit                              float64 `url:"limit,omitempty"`                              //Maximum number of records to return.
+	Limit                              float64 `url:"limit,omitempty"`                              //Maximum number of records to return. The maximum number of objects supported in a single request is 500.
 }
 type GetLayer2VirtualNetworkCountV1QueryParams struct {
 	FabricID                           string  `url:"fabricId,omitempty"`                           //ID of the fabric the layer 2 virtual network is assigned to.
@@ -234,7 +373,7 @@ type GetLayer3VirtualNetworksV1QueryParams struct {
 	FabricID           string  `url:"fabricId,omitempty"`           //ID of the fabric the layer 3 virtual network is assigned to.
 	AnchoredSiteID     string  `url:"anchoredSiteId,omitempty"`     //Fabric ID of the fabric site the layer 3 virtual network is anchored at.
 	Offset             float64 `url:"offset,omitempty"`             //Starting record for pagination.
-	Limit              float64 `url:"limit,omitempty"`              //Maximum number of records to return.
+	Limit              float64 `url:"limit,omitempty"`              //Maximum number of records to return. The maximum number of objects supported in a single request is 500.
 }
 type DeleteLayer3VirtualNetworksV1QueryParams struct {
 	VirtualNetworkName string `url:"virtualNetworkName,omitempty"` //Name of the layer 3 virtual network.
@@ -246,16 +385,21 @@ type GetLayer3VirtualNetworksCountV1QueryParams struct {
 type GetMulticastV1QueryParams struct {
 	FabricID string  `url:"fabricId,omitempty"` //ID of the fabric site where multicast is configured.
 	Offset   float64 `url:"offset,omitempty"`   //Starting record for pagination.
-	Limit    float64 `url:"limit,omitempty"`    //Maximum number of records to return.
+	Limit    float64 `url:"limit,omitempty"`    //Maximum number of records to return. The maximum number of objects supported in a single request is 500.
 }
 type GetMulticastVirtualNetworksV1QueryParams struct {
 	FabricID           string  `url:"fabricId,omitempty"`           //ID of the fabric site where multicast is configured.
 	VirtualNetworkName string  `url:"virtualNetworkName,omitempty"` //Name of the virtual network associated to the multicast configuration.
 	Offset             float64 `url:"offset,omitempty"`             //Starting record for pagination.
-	Limit              float64 `url:"limit,omitempty"`              //Maximum number of records to return.
+	Limit              float64 `url:"limit,omitempty"`              //Maximum number of records to return. The maximum number of objects supported in a single request is 500.
 }
 type GetMulticastVirtualNetworkCountV1QueryParams struct {
 	FabricID string `url:"fabricId,omitempty"` //ID of the fabric site the multicast configuration is associated with.
+}
+type GetPendingFabricEventsV1QueryParams struct {
+	FabricID string  `url:"fabricId,omitempty"` //ID of the fabric.
+	Offset   float64 `url:"offset,omitempty"`   //Starting record for pagination.
+	Limit    float64 `url:"limit,omitempty"`    //Maximum number of records to return. The maximum number of objects supported in a single request is 500.
 }
 type GetPortAssignmentsV1QueryParams struct {
 	FabricID        string  `url:"fabricId,omitempty"`        //ID of the fabric the device is assigned to.
@@ -264,7 +408,7 @@ type GetPortAssignmentsV1QueryParams struct {
 	DataVLANName    string  `url:"dataVlanName,omitempty"`    //Data VLAN name of the port assignment.
 	VoiceVLANName   string  `url:"voiceVlanName,omitempty"`   //Voice VLAN name of the port assignment.
 	Offset          float64 `url:"offset,omitempty"`          //Starting record for pagination.
-	Limit           float64 `url:"limit,omitempty"`           //Maximum number of records to return.
+	Limit           float64 `url:"limit,omitempty"`           //Maximum number of records to return. The maximum number of objects supported in a single request is 500.
 }
 type DeletePortAssignmentsV1QueryParams struct {
 	FabricID        string `url:"fabricId,omitempty"`        //ID of the fabric the device is assigned to.
@@ -286,12 +430,13 @@ type GetPortChannelsV1QueryParams struct {
 	PortChannelName     string  `url:"portChannelName,omitempty"`     //Name of the port channel.
 	ConnectedDeviceType string  `url:"connectedDeviceType,omitempty"` //Connected device type of the port channel. The allowed values are [TRUNK, EXTENDED_NODE].
 	Offset              float64 `url:"offset,omitempty"`              //Starting record for pagination.
-	Limit               float64 `url:"limit,omitempty"`               //Maximum number of records to return.
+	Limit               float64 `url:"limit,omitempty"`               //Maximum number of records to return. The maximum number of objects supported in a single request is 500.
 }
 type DeletePortChannelsV1QueryParams struct {
 	FabricID            string `url:"fabricId,omitempty"`            //ID of the fabric the device is assigned to.
 	NetworkDeviceID     string `url:"networkDeviceId,omitempty"`     //ID of the network device.
 	PortChannelName     string `url:"portChannelName,omitempty"`     //Name of the port channel.
+	PortChannelIDs      string `url:"portChannelIds,omitempty"`      //IDs of the port channels to be selectively deleted(Maximum number of IDs this parameter could consume is 10).
 	ConnectedDeviceType string `url:"connectedDeviceType,omitempty"` //Connected device type of the port channel. The allowed values are [TRUNK, EXTENDED_NODE].
 }
 type GetPortChannelCountV1QueryParams struct {
@@ -303,23 +448,27 @@ type GetPortChannelCountV1QueryParams struct {
 type DeleteProvisionedDevicesV1QueryParams struct {
 	NetworkDeviceID string `url:"networkDeviceId,omitempty"` //ID of the network device.
 	SiteID          string `url:"siteId,omitempty"`          //ID of the site hierarchy.
+	CleanUpConfig   bool   `url:"cleanUpConfig,omitempty"`   //Enable/disable configuration cleanup for the device(s). Defaults to true.
 }
 type GetProvisionedDevicesV1QueryParams struct {
 	ID              string  `url:"id,omitempty"`              //ID of the provisioned device.
 	NetworkDeviceID string  `url:"networkDeviceId,omitempty"` //ID of the network device.
 	SiteID          string  `url:"siteId,omitempty"`          //ID of the site hierarchy.
 	Offset          float64 `url:"offset,omitempty"`          //Starting record for pagination.
-	Limit           float64 `url:"limit,omitempty"`           //Maximum number of devices to return.
+	Limit           float64 `url:"limit,omitempty"`           //Maximum number of devices to return. The maximum number of objects supported in a single request is 500.
 }
 type GetProvisionedDevicesCountV1QueryParams struct {
 	SiteID string `url:"siteId,omitempty"` //ID of the site hierarchy.
+}
+type DeleteProvisionedDeviceByIDV1QueryParams struct {
+	CleanUpConfig bool `url:"cleanUpConfig,omitempty"` //Enable/disable configuration cleanup for the particular device. Defaults to true.
 }
 type GetTransitNetworksV1QueryParams struct {
 	ID     string  `url:"id,omitempty"`     //ID of the transit network.
 	Name   string  `url:"name,omitempty"`   //Name of the transit network.
 	Type   string  `url:"type,omitempty"`   //Type of the transit network. Allowed values are [IP_BASED_TRANSIT, SDA_LISP_PUB_SUB_TRANSIT, SDA_LISP_BGP_TRANSIT].
 	Offset float64 `url:"offset,omitempty"` //Starting record for pagination.
-	Limit  float64 `url:"limit,omitempty"`  //Maximum number of records to return.
+	Limit  float64 `url:"limit,omitempty"`  //Maximum number of records to return. The maximum number of objects supported in a single request is 500.
 }
 type GetTransitNetworksCountV1QueryParams struct {
 	Type string `url:"type,omitempty"` //Type of the transit network. Allowed values are [IP_BASED_TRANSIT, SDA_LISP_PUB_SUB_TRANSIT, SDA_LISP_BGP_TRANSIT].
@@ -331,90 +480,1117 @@ type GetVirtualNetworkWithScalableGroupsV1QueryParams struct {
 	VirtualNetworkName string `url:"virtualNetworkName,omitempty"` //virtualNetworkName
 }
 
+type ResponseSdaReadListOfFabricSitesWithTheirHealthSummaryV1 struct {
+	Response *[]ResponseSdaReadListOfFabricSitesWithTheirHealthSummaryV1Response `json:"response,omitempty"` //
+}
+type ResponseSdaReadListOfFabricSitesWithTheirHealthSummaryV1Response struct {
+	ID string `json:"id,omitempty"` // Id
+
+	Name string `json:"name,omitempty"` // Name
+
+	GoodHealthPercentage *int `json:"goodHealthPercentage,omitempty"` // Good Health Percentage
+
+	GoodHealthDeviceCount *int `json:"goodHealthDeviceCount,omitempty"` // Good Health Device Count
+
+	TotalDeviceCount *int `json:"totalDeviceCount,omitempty"` // Total Device Count
+
+	PoorHealthDeviceCount *int `json:"poorHealthDeviceCount,omitempty"` // Poor Health Device Count
+
+	FairHealthDeviceCount *int `json:"fairHealthDeviceCount,omitempty"` // Fair Health Device Count
+
+	AssociatedL2VnCount *int `json:"associatedL2VnCount,omitempty"` // Associated L2 Vn Count
+
+	AssociatedL3VnCount *int `json:"associatedL3VnCount,omitempty"` // Associated L3 Vn Count
+
+	NetworkProtocol string `json:"networkProtocol,omitempty"` // Network Protocol
+
+	ConnectivityGoodHealthPercentage *int `json:"connectivityGoodHealthPercentage,omitempty"` // Connectivity Good Health Percentage
+
+	ConnectivityTotalHealthDeviceCount *int `json:"connectivityTotalHealthDeviceCount,omitempty"` // Connectivity Total Health Device Count
+
+	ConnectivityGoodHealthDeviceCount *int `json:"connectivityGoodHealthDeviceCount,omitempty"` // Connectivity Good Health Device Count
+
+	ConnectivityPoorHealthDeviceCount *int `json:"connectivityPoorHealthDeviceCount,omitempty"` // Connectivity Poor Health Device Count
+
+	ConnectivityFairHealthDeviceCount *int `json:"connectivityFairHealthDeviceCount,omitempty"` // Connectivity Fair Health Device Count
+
+	InfraGoodHealthPercentage *int `json:"infraGoodHealthPercentage,omitempty"` // Infra Good Health Percentage
+
+	InfraTotalHealthDeviceCount *int `json:"infraTotalHealthDeviceCount,omitempty"` // Infra Total Health Device Count
+
+	InfraGoodHealthDeviceCount *int `json:"infraGoodHealthDeviceCount,omitempty"` // Infra Good Health Device Count
+
+	InfraFairHealthDeviceCount *float64 `json:"infraFairHealthDeviceCount,omitempty"` // Infra Fair Health Device Count
+
+	InfraPoorHealthDeviceCount *float64 `json:"infraPoorHealthDeviceCount,omitempty"` // Infra Poor Health Device Count
+
+	ControlPlaneGoodHealthPercentage *int `json:"controlPlaneGoodHealthPercentage,omitempty"` // Control Plane Good Health Percentage
+
+	ControlPlaneTotalHealthDeviceCount *int `json:"controlPlaneTotalHealthDeviceCount,omitempty"` // Control Plane Total Health Device Count
+
+	ControlPlaneGoodHealthDeviceCount *int `json:"controlPlaneGoodHealthDeviceCount,omitempty"` // Control Plane Good Health Device Count
+
+	ControlPlanePoorHealthDeviceCount *float64 `json:"controlPlanePoorHealthDeviceCount,omitempty"` // Control Plane Poor Health Device Count
+
+	ControlPlaneFairHealthDeviceCount *int `json:"controlPlaneFairHealthDeviceCount,omitempty"` // Control Plane Fair Health Device Count
+
+	PubsubInfraVnGoodHealthPercentage *int `json:"pubsubInfraVnGoodHealthPercentage,omitempty"` // Pubsub Infra Vn Good Health Percentage
+
+	PubsubInfraVnTotalHealthDeviceCount *int `json:"pubsubInfraVnTotalHealthDeviceCount,omitempty"` // Pubsub Infra Vn Total Health Device Count
+
+	PubsubInfraVnGoodHealthDeviceCount *int `json:"pubsubInfraVnGoodHealthDeviceCount,omitempty"` // Pubsub Infra Vn Good Health Device Count
+
+	PubsubInfraVnPoorHealthDeviceCount *int `json:"pubsubInfraVnPoorHealthDeviceCount,omitempty"` // Pubsub Infra Vn Poor Health Device Count
+
+	PubsubInfraVnFairHealthDeviceCount *int `json:"pubsubInfraVnFairHealthDeviceCount,omitempty"` // Pubsub Infra Vn Fair Health Device Count
+
+	BgpEvpnGoodHealthPercentage *ResponseSdaReadListOfFabricSitesWithTheirHealthSummaryV1ResponseBgpEvpnGoodHealthPercentage `json:"bgpEvpnGoodHealthPercentage,omitempty"` // Bgp Evpn Good Health Percentage
+
+	BgpEvpnTotalHealthDeviceCount *float64 `json:"bgpEvpnTotalHealthDeviceCount,omitempty"` // Bgp Evpn Total Health Device Count
+
+	BgpEvpnGoodHealthDeviceCount *float64 `json:"bgpEvpnGoodHealthDeviceCount,omitempty"` // Bgp Evpn Good Health Device Count
+
+	BgpEvpnpoorHealthDeviceCount *float64 `json:"bgpEvpnPoorHealthDeviceCount,omitempty"` // Bgp Evpn Poor Health Device Count
+
+	BgpEvpnFairHealthDeviceCount *float64 `json:"bgpEvpnFairHealthDeviceCount,omitempty"` // Bgp Evpn Fair Health Device Count
+
+	CtsEnvDataDownloadGoodHealthPercentage *int `json:"ctsEnvDataDownloadGoodHealthPercentage,omitempty"` // Cts Env Data Download Good Health Percentage
+
+	CtsEnvDataDownloadTotalHealthDeviceCount *int `json:"ctsEnvDataDownloadTotalHealthDeviceCount,omitempty"` // Cts Env Data Download Total Health Device Count
+
+	CtsEnvDataDownloadGoodHealthDeviceCount *int `json:"ctsEnvDataDownloadGoodHealthDeviceCount,omitempty"` // Cts Env Data Download Good Health Device Count
+
+	CtsEnvDataDownloadPoorHealthDeviceCount *int `json:"ctsEnvDataDownloadPoorHealthDeviceCount,omitempty"` // Cts Env Data Download Poor Health Device Count
+
+	CtsEnvDataDownloadFairHealthDeviceCount *float64 `json:"ctsEnvDataDownloadFairHealthDeviceCount,omitempty"` // Cts Env Data Download Fair Health Device Count
+
+	AAAStatusGoodHealthPercentage *int `json:"aaaStatusGoodHealthPercentage,omitempty"` // Aaa Status Good Health Percentage
+
+	AAAStatusTotalHealthDeviceCount *int `json:"aaaStatusTotalHealthDeviceCount,omitempty"` // Aaa Status Total Health Device Count
+
+	AAAStatusGoodHealthDeviceCount *int `json:"aaaStatusGoodHealthDeviceCount,omitempty"` // Aaa Status Good Health Device Count
+
+	AAAStatusPoorHealthDeviceCount *int `json:"aaaStatusPoorHealthDeviceCount,omitempty"` // Aaa Status Poor Health Device Count
+
+	AAAStatusFairHealthDeviceCount *int `json:"aaaStatusFairHealthDeviceCount,omitempty"` // Aaa Status Fair Health Device Count
+
+	PortChannelGoodHealthPercentage *int `json:"portChannelGoodHealthPercentage,omitempty"` // Port Channel Good Health Percentage
+
+	PortChannelTotalHealthDeviceCount *int `json:"portChannelTotalHealthDeviceCount,omitempty"` // Port Channel Total Health Device Count
+
+	PortChannelGoodHealthDeviceCount *int `json:"portChannelGoodHealthDeviceCount,omitempty"` // Port Channel Good Health Device Count
+
+	PortChannelPoorHealthDeviceCount *int `json:"portChannelPoorHealthDeviceCount,omitempty"` // Port Channel Poor Health Device Count
+
+	PortChannelFairHealthDeviceCount *int `json:"portChannelFairHealthDeviceCount,omitempty"` // Port Channel Fair Health Device Count
+
+	PeerScoreGoodHealthPercentage *ResponseSdaReadListOfFabricSitesWithTheirHealthSummaryV1ResponsePeerScoreGoodHealthPercentage `json:"peerScoreGoodHealthPercentage,omitempty"` // Peer Score Good Health Percentage
+
+	PeerScoreTotalHealthDeviceCount *float64 `json:"peerScoreTotalHealthDeviceCount,omitempty"` // Peer Score Total Health Device Count
+
+	PeerScoreGoodHealthDeviceCount *float64 `json:"peerScoreGoodHealthDeviceCount,omitempty"` // Peer Score Good Health Device Count
+
+	PeerScorePoorHealthDeviceCount *float64 `json:"peerScorePoorHealthDeviceCount,omitempty"` // Peer Score Poor Health Device Count
+
+	PeerScoreFairHealthDeviceCount *float64 `json:"peerScoreFairHealthDeviceCount,omitempty"` // Peer Score Fair Health Device Count
+
+	LispSessionGoodHealthPercentage *int `json:"lispSessionGoodHealthPercentage,omitempty"` // Lisp Session Good Health Percentage
+
+	LispSessionTotalHealthDeviceCount *int `json:"lispSessionTotalHealthDeviceCount,omitempty"` // Lisp Session Total Health Device Count
+
+	LispSessionGoodHealthDeviceCount *int `json:"lispSessionGoodHealthDeviceCount,omitempty"` // Lisp Session Good Health Device Count
+
+	LispSessionPoorHealthDeviceCount *int `json:"lispSessionPoorHealthDeviceCount,omitempty"` // Lisp Session Poor Health Device Count
+
+	LispSessionFairHealthDeviceCount *float64 `json:"lispSessionFairHealthDeviceCount,omitempty"` // Lisp Session Fair Health Device Count
+
+	BorderToControlPlaneGoodHealthPercentage *int `json:"borderToControlPlaneGoodHealthPercentage,omitempty"` // Border To Control Plane Good Health Percentage
+
+	BorderToControlPlaneTotalHealthDeviceCount *int `json:"borderToControlPlaneTotalHealthDeviceCount,omitempty"` // Border To Control Plane Total Health Device Count
+
+	BorderToControlPlaneGoodHealthDeviceCount *int `json:"borderToControlPlaneGoodHealthDeviceCount,omitempty"` // Border To Control Plane Good Health Device Count
+
+	BorderToControlPlanePoorHealthDeviceCount *float64 `json:"borderToControlPlanePoorHealthDeviceCount,omitempty"` // Border To Control Plane Poor Health Device Count
+
+	BorderToControlPlaneFairHealthDeviceCount *int `json:"borderToControlPlaneFairHealthDeviceCount,omitempty"` // Border To Control Plane Fair Health Device Count
+
+	BgpBgpSiteGoodHealthPercentage *int `json:"bgpBgpSiteGoodHealthPercentage,omitempty"` // Bgp Bgp Site Good Health Percentage
+
+	BgpBgpSiteTotalHealthDeviceCount *int `json:"bgpBgpSiteTotalHealthDeviceCount,omitempty"` // Bgp Bgp Site Total Health Device Count
+
+	BgpBgpSiteGoodHealthDeviceCount *int `json:"bgpBgpSiteGoodHealthDeviceCount,omitempty"` // Bgp Bgp Site Good Health Device Count
+
+	BgpBgpSitePoorHealthDeviceCount *float64 `json:"bgpBgpSitePoorHealthDeviceCount,omitempty"` // Bgp Bgp Site Poor Health Device Count
+
+	BgpBgpSiteFairHealthDeviceCount *int `json:"bgpBgpSiteFairHealthDeviceCount,omitempty"` // Bgp Bgp Site Fair Health Device Count
+
+	BgpPubsubSiteGoodHealthPercentage *int `json:"bgpPubsubSiteGoodHealthPercentage,omitempty"` // Bgp Pubsub Site Good Health Percentage
+
+	BgpPubsubSiteTotalHealthDeviceCount *int `json:"bgpPubsubSiteTotalHealthDeviceCount,omitempty"` // Bgp Pubsub Site Total Health Device Count
+
+	BgpPubsubSiteGoodHealthDeviceCount *int `json:"bgpPubsubSiteGoodHealthDeviceCount,omitempty"` // Bgp Pubsub Site Good Health Device Count
+
+	BgpPubsubSitePoorHealthDeviceCount *float64 `json:"bgpPubsubSitePoorHealthDeviceCount,omitempty"` // Bgp Pubsub Site Poor Health Device Count
+
+	BgpPubsubSiteFairHealthDeviceCount *int `json:"bgpPubsubSiteFairHealthDeviceCount,omitempty"` // Bgp Pubsub Site Fair Health Device Count
+
+	BgpPeerInfraVnScoreGoodHealthPercentage *int `json:"bgpPeerInfraVnScoreGoodHealthPercentage,omitempty"` // Bgp Peer Infra Vn Score Good Health Percentage
+
+	BgpPeerInfraVnTotalHealthDeviceCount *int `json:"bgpPeerInfraVnTotalHealthDeviceCount,omitempty"` // Bgp Peer Infra Vn Total Health Device Count
+
+	BgpPeerInfraVnGoodHealthDeviceCount *int `json:"bgpPeerInfraVnGoodHealthDeviceCount,omitempty"` // Bgp Peer Infra Vn Good Health Device Count
+
+	BgpPeerInfraVnPoorHealthDeviceCount *int `json:"bgpPeerInfraVnPoorHealthDeviceCount,omitempty"` // Bgp Peer Infra Vn Poor Health Device Count
+
+	BgpPeerInfraVnFairHealthDeviceCount *float64 `json:"bgpPeerInfraVnFairHealthDeviceCount,omitempty"` // Bgp Peer Infra Vn Fair Health Device Count
+}
+type ResponseSdaReadListOfFabricSitesWithTheirHealthSummaryV1ResponseBgpEvpnGoodHealthPercentage interface{}
+type ResponseSdaReadListOfFabricSitesWithTheirHealthSummaryV1ResponsePeerScoreGoodHealthPercentage interface{}
+type ResponseSdaReadFabricSiteCountV1 struct {
+	Response *ResponseSdaReadFabricSiteCountV1Response `json:"response,omitempty"` //
+
+	Version string `json:"version,omitempty"` // Version
+}
+type ResponseSdaReadFabricSiteCountV1Response struct {
+	Count *int `json:"count,omitempty"` // Count
+}
+type ResponseSdaReadFabricSitesWithHealthSummaryFromIDV1 struct {
+	Response *ResponseSdaReadFabricSitesWithHealthSummaryFromIDV1Response `json:"response,omitempty"` //
+}
+type ResponseSdaReadFabricSitesWithHealthSummaryFromIDV1Response struct {
+	ID string `json:"id,omitempty"` // Id
+
+	Name string `json:"name,omitempty"` // Name
+
+	GoodHealthPercentage *int `json:"goodHealthPercentage,omitempty"` // Good Health Percentage
+
+	GoodHealthDeviceCount *int `json:"goodHealthDeviceCount,omitempty"` // Good Health Device Count
+
+	TotalDeviceCount *int `json:"totalDeviceCount,omitempty"` // Total Device Count
+
+	PoorHealthDeviceCount *int `json:"poorHealthDeviceCount,omitempty"` // Poor Health Device Count
+
+	FairHealthDeviceCount *int `json:"fairHealthDeviceCount,omitempty"` // Fair Health Device Count
+
+	AssociatedL2VnCount *int `json:"associatedL2VnCount,omitempty"` // Associated L2 Vn Count
+
+	AssociatedL3VnCount *int `json:"associatedL3VnCount,omitempty"` // Associated L3 Vn Count
+
+	NetworkProtocol string `json:"networkProtocol,omitempty"` // Network Protocol
+
+	ConnectivityGoodHealthPercentage *int `json:"connectivityGoodHealthPercentage,omitempty"` // Connectivity Good Health Percentage
+
+	ConnectivityTotalHealthDeviceCount *int `json:"connectivityTotalHealthDeviceCount,omitempty"` // Connectivity Total Health Device Count
+
+	ConnectivityGoodHealthDeviceCount *int `json:"connectivityGoodHealthDeviceCount,omitempty"` // Connectivity Good Health Device Count
+
+	ConnectivityPoorHealthDeviceCount *int `json:"connectivityPoorHealthDeviceCount,omitempty"` // Connectivity Poor Health Device Count
+
+	ConnectivityFairHealthDeviceCount *int `json:"connectivityFairHealthDeviceCount,omitempty"` // Connectivity Fair Health Device Count
+
+	InfraGoodHealthPercentage *int `json:"infraGoodHealthPercentage,omitempty"` // Infra Good Health Percentage
+
+	InfraTotalHealthDeviceCount *int `json:"infraTotalHealthDeviceCount,omitempty"` // Infra Total Health Device Count
+
+	InfraGoodHealthDeviceCount *int `json:"infraGoodHealthDeviceCount,omitempty"` // Infra Good Health Device Count
+
+	InfraFairHealthDeviceCount *float64 `json:"infraFairHealthDeviceCount,omitempty"` // Infra Fair Health Device Count
+
+	InfraPoorHealthDeviceCount *float64 `json:"infraPoorHealthDeviceCount,omitempty"` // Infra Poor Health Device Count
+
+	ControlPlaneGoodHealthPercentage *int `json:"controlPlaneGoodHealthPercentage,omitempty"` // Control Plane Good Health Percentage
+
+	ControlPlaneTotalHealthDeviceCount *int `json:"controlPlaneTotalHealthDeviceCount,omitempty"` // Control Plane Total Health Device Count
+
+	ControlPlaneGoodHealthDeviceCount *int `json:"controlPlaneGoodHealthDeviceCount,omitempty"` // Control Plane Good Health Device Count
+
+	ControlPlanePoorHealthDeviceCount *float64 `json:"controlPlanePoorHealthDeviceCount,omitempty"` // Control Plane Poor Health Device Count
+
+	ControlPlaneFairHealthDeviceCount *int `json:"controlPlaneFairHealthDeviceCount,omitempty"` // Control Plane Fair Health Device Count
+
+	PubsubInfraVnGoodHealthPercentage *int `json:"pubsubInfraVnGoodHealthPercentage,omitempty"` // Pubsub Infra Vn Good Health Percentage
+
+	PubsubInfraVnTotalHealthDeviceCount *int `json:"pubsubInfraVnTotalHealthDeviceCount,omitempty"` // Pubsub Infra Vn Total Health Device Count
+
+	PubsubInfraVnGoodHealthDeviceCount *int `json:"pubsubInfraVnGoodHealthDeviceCount,omitempty"` // Pubsub Infra Vn Good Health Device Count
+
+	PubsubInfraVnPoorHealthDeviceCount *int `json:"pubsubInfraVnPoorHealthDeviceCount,omitempty"` // Pubsub Infra Vn Poor Health Device Count
+
+	PubsubInfraVnFairHealthDeviceCount *int `json:"pubsubInfraVnFairHealthDeviceCount,omitempty"` // Pubsub Infra Vn Fair Health Device Count
+
+	BgpEvpnGoodHealthPercentage *ResponseSdaReadFabricSitesWithHealthSummaryFromIDV1ResponseBgpEvpnGoodHealthPercentage `json:"bgpEvpnGoodHealthPercentage,omitempty"` // Bgp Evpn Good Health Percentage
+
+	BgpEvpnTotalHealthDeviceCount *float64 `json:"bgpEvpnTotalHealthDeviceCount,omitempty"` // Bgp Evpn Total Health Device Count
+
+	BgpEvpnGoodHealthDeviceCount *float64 `json:"bgpEvpnGoodHealthDeviceCount,omitempty"` // Bgp Evpn Good Health Device Count
+
+	BgpEvpnpoorHealthDeviceCount *float64 `json:"bgpEvpnPoorHealthDeviceCount,omitempty"` // Bgp Evpn Poor Health Device Count
+
+	BgpEvpnFairHealthDeviceCount *float64 `json:"bgpEvpnFairHealthDeviceCount,omitempty"` // Bgp Evpn Fair Health Device Count
+
+	CtsEnvDataDownloadGoodHealthPercentage *int `json:"ctsEnvDataDownloadGoodHealthPercentage,omitempty"` // Cts Env Data Download Good Health Percentage
+
+	CtsEnvDataDownloadTotalHealthDeviceCount *int `json:"ctsEnvDataDownloadTotalHealthDeviceCount,omitempty"` // Cts Env Data Download Total Health Device Count
+
+	CtsEnvDataDownloadGoodHealthDeviceCount *int `json:"ctsEnvDataDownloadGoodHealthDeviceCount,omitempty"` // Cts Env Data Download Good Health Device Count
+
+	CtsEnvDataDownloadPoorHealthDeviceCount *int `json:"ctsEnvDataDownloadPoorHealthDeviceCount,omitempty"` // Cts Env Data Download Poor Health Device Count
+
+	CtsEnvDataDownloadFairHealthDeviceCount *float64 `json:"ctsEnvDataDownloadFairHealthDeviceCount,omitempty"` // Cts Env Data Download Fair Health Device Count
+
+	AAAStatusGoodHealthPercentage *int `json:"aaaStatusGoodHealthPercentage,omitempty"` // Aaa Status Good Health Percentage
+
+	AAAStatusTotalHealthDeviceCount *int `json:"aaaStatusTotalHealthDeviceCount,omitempty"` // Aaa Status Total Health Device Count
+
+	AAAStatusGoodHealthDeviceCount *int `json:"aaaStatusGoodHealthDeviceCount,omitempty"` // Aaa Status Good Health Device Count
+
+	AAAStatusPoorHealthDeviceCount *int `json:"aaaStatusPoorHealthDeviceCount,omitempty"` // Aaa Status Poor Health Device Count
+
+	AAAStatusFairHealthDeviceCount *int `json:"aaaStatusFairHealthDeviceCount,omitempty"` // Aaa Status Fair Health Device Count
+
+	PortChannelGoodHealthPercentage *int `json:"portChannelGoodHealthPercentage,omitempty"` // Port Channel Good Health Percentage
+
+	PortChannelTotalHealthDeviceCount *int `json:"portChannelTotalHealthDeviceCount,omitempty"` // Port Channel Total Health Device Count
+
+	PortChannelGoodHealthDeviceCount *int `json:"portChannelGoodHealthDeviceCount,omitempty"` // Port Channel Good Health Device Count
+
+	PortChannelPoorHealthDeviceCount *int `json:"portChannelPoorHealthDeviceCount,omitempty"` // Port Channel Poor Health Device Count
+
+	PortChannelFairHealthDeviceCount *int `json:"portChannelFairHealthDeviceCount,omitempty"` // Port Channel Fair Health Device Count
+
+	PeerScoreGoodHealthPercentage *ResponseSdaReadFabricSitesWithHealthSummaryFromIDV1ResponsePeerScoreGoodHealthPercentage `json:"peerScoreGoodHealthPercentage,omitempty"` // Peer Score Good Health Percentage
+
+	PeerScoreTotalHealthDeviceCount *float64 `json:"peerScoreTotalHealthDeviceCount,omitempty"` // Peer Score Total Health Device Count
+
+	PeerScoreGoodHealthDeviceCount *float64 `json:"peerScoreGoodHealthDeviceCount,omitempty"` // Peer Score Good Health Device Count
+
+	PeerScorePoorHealthDeviceCount *float64 `json:"peerScorePoorHealthDeviceCount,omitempty"` // Peer Score Poor Health Device Count
+
+	PeerScoreFairHealthDeviceCount *float64 `json:"peerScoreFairHealthDeviceCount,omitempty"` // Peer Score Fair Health Device Count
+
+	LispSessionGoodHealthPercentage *int `json:"lispSessionGoodHealthPercentage,omitempty"` // Lisp Session Good Health Percentage
+
+	LispSessionTotalHealthDeviceCount *int `json:"lispSessionTotalHealthDeviceCount,omitempty"` // Lisp Session Total Health Device Count
+
+	LispSessionGoodHealthDeviceCount *int `json:"lispSessionGoodHealthDeviceCount,omitempty"` // Lisp Session Good Health Device Count
+
+	LispSessionPoorHealthDeviceCount *int `json:"lispSessionPoorHealthDeviceCount,omitempty"` // Lisp Session Poor Health Device Count
+
+	LispSessionFairHealthDeviceCount *float64 `json:"lispSessionFairHealthDeviceCount,omitempty"` // Lisp Session Fair Health Device Count
+
+	BorderToControlPlaneGoodHealthPercentage *int `json:"borderToControlPlaneGoodHealthPercentage,omitempty"` // Border To Control Plane Good Health Percentage
+
+	BorderToControlPlaneTotalHealthDeviceCount *int `json:"borderToControlPlaneTotalHealthDeviceCount,omitempty"` // Border To Control Plane Total Health Device Count
+
+	BorderToControlPlaneGoodHealthDeviceCount *int `json:"borderToControlPlaneGoodHealthDeviceCount,omitempty"` // Border To Control Plane Good Health Device Count
+
+	BorderToControlPlanePoorHealthDeviceCount *float64 `json:"borderToControlPlanePoorHealthDeviceCount,omitempty"` // Border To Control Plane Poor Health Device Count
+
+	BorderToControlPlaneFairHealthDeviceCount *int `json:"borderToControlPlaneFairHealthDeviceCount,omitempty"` // Border To Control Plane Fair Health Device Count
+
+	BgpBgpSiteGoodHealthPercentage *int `json:"bgpBgpSiteGoodHealthPercentage,omitempty"` // Bgp Bgp Site Good Health Percentage
+
+	BgpBgpSiteTotalHealthDeviceCount *int `json:"bgpBgpSiteTotalHealthDeviceCount,omitempty"` // Bgp Bgp Site Total Health Device Count
+
+	BgpBgpSiteGoodHealthDeviceCount *int `json:"bgpBgpSiteGoodHealthDeviceCount,omitempty"` // Bgp Bgp Site Good Health Device Count
+
+	BgpBgpSitePoorHealthDeviceCount *float64 `json:"bgpBgpSitePoorHealthDeviceCount,omitempty"` // Bgp Bgp Site Poor Health Device Count
+
+	BgpBgpSiteFairHealthDeviceCount *int `json:"bgpBgpSiteFairHealthDeviceCount,omitempty"` // Bgp Bgp Site Fair Health Device Count
+
+	BgpPubsubSiteGoodHealthPercentage *int `json:"bgpPubsubSiteGoodHealthPercentage,omitempty"` // Bgp Pubsub Site Good Health Percentage
+
+	BgpPubsubSiteTotalHealthDeviceCount *int `json:"bgpPubsubSiteTotalHealthDeviceCount,omitempty"` // Bgp Pubsub Site Total Health Device Count
+
+	BgpPubsubSiteGoodHealthDeviceCount *int `json:"bgpPubsubSiteGoodHealthDeviceCount,omitempty"` // Bgp Pubsub Site Good Health Device Count
+
+	BgpPubsubSitePoorHealthDeviceCount *float64 `json:"bgpPubsubSitePoorHealthDeviceCount,omitempty"` // Bgp Pubsub Site Poor Health Device Count
+
+	BgpPubsubSiteFairHealthDeviceCount *int `json:"bgpPubsubSiteFairHealthDeviceCount,omitempty"` // Bgp Pubsub Site Fair Health Device Count
+
+	BgpPeerInfraVnScoreGoodHealthPercentage *int `json:"bgpPeerInfraVnScoreGoodHealthPercentage,omitempty"` // Bgp Peer Infra Vn Score Good Health Percentage
+
+	BgpPeerInfraVnTotalHealthDeviceCount *int `json:"bgpPeerInfraVnTotalHealthDeviceCount,omitempty"` // Bgp Peer Infra Vn Total Health Device Count
+
+	BgpPeerInfraVnGoodHealthDeviceCount *int `json:"bgpPeerInfraVnGoodHealthDeviceCount,omitempty"` // Bgp Peer Infra Vn Good Health Device Count
+
+	BgpPeerInfraVnPoorHealthDeviceCount *int `json:"bgpPeerInfraVnPoorHealthDeviceCount,omitempty"` // Bgp Peer Infra Vn Poor Health Device Count
+
+	BgpPeerInfraVnFairHealthDeviceCount *float64 `json:"bgpPeerInfraVnFairHealthDeviceCount,omitempty"` // Bgp Peer Infra Vn Fair Health Device Count
+}
+type ResponseSdaReadFabricSitesWithHealthSummaryFromIDV1ResponseBgpEvpnGoodHealthPercentage interface{}
+type ResponseSdaReadFabricSitesWithHealthSummaryFromIDV1ResponsePeerScoreGoodHealthPercentage interface{}
+type ResponseSdaTheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1 struct {
+	Response *[]ResponseSdaTheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1Response `json:"response,omitempty"` //
+
+	Page *ResponseSdaTheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1Page `json:"page,omitempty"` //
+
+	Version *int `json:"version,omitempty"` // Version
+}
+type ResponseSdaTheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1Response struct {
+	Timestamp *int `json:"timestamp,omitempty"` // Timestamp
+
+	Attributes *[]ResponseSdaTheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1ResponseAttributes `json:"attributes,omitempty"` //
+}
+type ResponseSdaTheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1ResponseAttributes struct {
+	Name string `json:"name,omitempty"` // Name
+
+	Value *int `json:"value,omitempty"` // Value
+}
+type ResponseSdaTheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1Page struct {
+	Limit *int `json:"limit,omitempty"` // Limit
+
+	Offset *float64 `json:"offset,omitempty"` // Offset
+
+	TimeSortOrder string `json:"timeSortOrder,omitempty"` // Time Sort Order
+}
+type ResponseSdaReadFabricEntitySummaryV1 struct {
+	Response *ResponseSdaReadFabricEntitySummaryV1Response `json:"response,omitempty"` //
+
+	Version string `json:"version,omitempty"` // Version
+}
+type ResponseSdaReadFabricEntitySummaryV1Response struct {
+	ProtocolSummaries *[]ResponseSdaReadFabricEntitySummaryV1ResponseProtocolSummaries `json:"protocolSummaries,omitempty"` //
+}
+type ResponseSdaReadFabricEntitySummaryV1ResponseProtocolSummaries struct {
+	FabricSiteGoodHealthCount *int `json:"fabricSiteGoodHealthCount,omitempty"` // Fabric Site Good Health Count
+
+	FabricSiteCount *int `json:"fabricSiteCount,omitempty"` // Fabric Site Count
+
+	FabricSiteGoodHealthPercentage *int `json:"fabricSiteGoodHealthPercentage,omitempty"` // Fabric Site Good Health Percentage
+
+	FabricSiteNoHealthCount *int `json:"fabricSiteNoHealthCount,omitempty"` // Fabric Site No Health Count
+
+	FabricSitePoorHealthCount *int `json:"fabricSitePoorHealthCount,omitempty"` // Fabric Site Poor Health Count
+
+	FabricSiteFairHealthCount *float64 `json:"fabricSiteFairHealthCount,omitempty"` // Fabric Site Fair Health Count
+
+	L3VnGoodHealthCount *int `json:"l3VnGoodHealthCount,omitempty"` // L3 Vn Good Health Count
+
+	L3VnCount *int `json:"l3VnCount,omitempty"` // L3 Vn Count
+
+	L3VnGoodHealthPercentage *int `json:"l3VnGoodHealthPercentage,omitempty"` // L3 Vn Good Health Percentage
+
+	L3VnNoHealthCount *int `json:"l3VnNoHealthCount,omitempty"` // L3 Vn No Health Count
+
+	L3VnFairHealthCount *float64 `json:"l3VnFairHealthCount,omitempty"` // L3 Vn Fair Health Count
+
+	L3VnPoorHealthCount *int `json:"l3VnPoorHealthCount,omitempty"` // L3 Vn Poor Health Count
+
+	L2VnGoodHealthCount *int `json:"l2VnGoodHealthCount,omitempty"` // L2 Vn Good Health Count
+
+	L2VnCount *int `json:"l2VnCount,omitempty"` // L2 Vn Count
+
+	L2VnGoodHealthPercentage *int `json:"l2VnGoodHealthPercentage,omitempty"` // L2 Vn Good Health Percentage
+
+	L2VnNoHealthCount *int `json:"l2VnNoHealthCount,omitempty"` // L2 Vn No Health Count
+
+	L2VnPoorHealthCount *int `json:"l2VnPoorHealthCount,omitempty"` // L2 Vn Poor Health Count
+
+	L2VnFairHealthCount *float64 `json:"l2VnFairHealthCount,omitempty"` // L2 Vn Fair Health Count
+
+	TransitNetworkGoodHealthCount *int `json:"transitNetworkGoodHealthCount,omitempty"` // Transit Network Good Health Count
+
+	TransitNetworkCount *int `json:"transitNetworkCount,omitempty"` // Transit Network Count
+
+	TransitNetworkGoodHealthPercentage *int `json:"transitNetworkGoodHealthPercentage,omitempty"` // Transit Network Good Health Percentage
+
+	TransitNetworkNoHealthCount *int `json:"transitNetworkNoHealthCount,omitempty"` // Transit Network No Health Count
+
+	TransitNetworkPoorHealthCount *int `json:"transitNetworkPoorHealthCount,omitempty"` // Transit Network Poor Health Count
+
+	TransitNetworkFairHealthCount *float64 `json:"transitNetworkFairHealthCount,omitempty"` // Transit Network Fair Health Count
+
+	IPTransitNetworkCount *int `json:"ipTransitNetworkCount,omitempty"` // Ip Transit Network Count
+
+	FabricDeviceCount *int `json:"fabricDeviceCount,omitempty"` // Fabric Device Count
+
+	P1IssueCount *int `json:"p1IssueCount,omitempty"` // P1 Issue Count
+
+	P2IssueCount *int `json:"p2IssueCount,omitempty"` // P2 Issue Count
+
+	P3IssueCount *int `json:"p3IssueCount,omitempty"` // P3 Issue Count
+
+	NetworkSegmentProtocol string `json:"networkSegmentProtocol,omitempty"` // Network Segment Protocol
+}
+type ResponseSdaReadListOfTransitNetworksWithTheirHealthSummaryV1 struct {
+	Response *[]ResponseSdaReadListOfTransitNetworksWithTheirHealthSummaryV1Response `json:"response,omitempty"` //
+}
+type ResponseSdaReadListOfTransitNetworksWithTheirHealthSummaryV1Response struct {
+	ID string `json:"id,omitempty"` // Id
+
+	Name string `json:"name,omitempty"` // Name
+
+	ControlPlaneCount *int `json:"controlPlaneCount,omitempty"` // Control Plane Count
+
+	TransitType string `json:"transitType,omitempty"` // Transit Type
+
+	FabricSitesCount *int `json:"fabricSitesCount,omitempty"` // Fabric Sites Count
+
+	GoodHealthPercentage *int `json:"goodHealthPercentage,omitempty"` // Good Health Percentage
+
+	GoodHealthDeviceCount *int `json:"goodHealthDeviceCount,omitempty"` // Good Health Device Count
+
+	TotalDeviceCount *int `json:"totalDeviceCount,omitempty"` // Total Device Count
+
+	PoorHealthDeviceCount *int `json:"poorHealthDeviceCount,omitempty"` // Poor Health Device Count
+
+	FairHealthDeviceCount *int `json:"fairHealthDeviceCount,omitempty"` // Fair Health Device Count
+
+	TransitControlPlaneHealthPercentage *int `json:"transitControlPlaneHealthPercentage,omitempty"` // Transit Control Plane Health Percentage
+
+	TransitControlPlaneTotalDeviceCount *int `json:"transitControlPlaneTotalDeviceCount,omitempty"` // Transit Control Plane Total Device Count
+
+	TransitControlPlaneGoodHealthDeviceCount *int `json:"transitControlPlaneGoodHealthDeviceCount,omitempty"` // Transit Control Plane Good Health Device Count
+
+	TransitControlPlanePoorHealthDeviceCount *int `json:"transitControlPlanePoorHealthDeviceCount,omitempty"` // Transit Control Plane Poor Health Device Count
+
+	TransitControlPlaneFairHealthDeviceCount *int `json:"transitControlPlaneFairHealthDeviceCount,omitempty"` // Transit Control Plane Fair Health Device Count
+
+	TransitServicesHealthPercentage *int `json:"transitServicesHealthPercentage,omitempty"` // Transit Services Health Percentage
+
+	TransitServicesTotalDeviceCount *int `json:"transitServicesTotalDeviceCount,omitempty"` // Transit Services Total Device Count
+
+	TransitServicesGoodHealthDeviceCount *int `json:"transitServicesGoodHealthDeviceCount,omitempty"` // Transit Services Good Health Device Count
+
+	TransitServicesPoorHealthDeviceCount *float64 `json:"transitServicesPoorHealthDeviceCount,omitempty"` // Transit Services Poor Health Device Count
+
+	TransitServicesFairHealthDeviceCount *int `json:"transitServicesFairHealthDeviceCount,omitempty"` // Transit Services Fair Health Device Count
+
+	PubsubTransitHealthPercentage *int `json:"pubsubTransitHealthPercentage,omitempty"` // Pubsub Transit Health Percentage
+
+	PubsubTransitTotalDeviceCount *int `json:"pubsubTransitTotalDeviceCount,omitempty"` // Pubsub Transit Total Device Count
+
+	PubsubTransitGoodHealthDeviceCount *int `json:"pubsubTransitGoodHealthDeviceCount,omitempty"` // Pubsub Transit Good Health Device Count
+
+	PubsubTransitPoorHealthDeviceCount *int `json:"pubsubTransitPoorHealthDeviceCount,omitempty"` // Pubsub Transit Poor Health Device Count
+
+	PubsubTransitFairHealthDeviceCount *int `json:"pubsubTransitFairHealthDeviceCount,omitempty"` // Pubsub Transit Fair Health Device Count
+
+	LispTransitHealthPercentage *int `json:"lispTransitHealthPercentage,omitempty"` // Lisp Transit Health Percentage
+
+	LispTransitTotalDeviceCount *int `json:"lispTransitTotalDeviceCount,omitempty"` // Lisp Transit Total Device Count
+
+	LispTransitGoodHealthDeviceCount *int `json:"lispTransitGoodHealthDeviceCount,omitempty"` // Lisp Transit Good Health Device Count
+
+	LispTransitPoorHealthDeviceCount *float64 `json:"lispTransitPoorHealthDeviceCount,omitempty"` // Lisp Transit Poor Health Device Count
+
+	LispTransitFairHealthDeviceCount *int `json:"lispTransitFairHealthDeviceCount,omitempty"` // Lisp Transit Fair Health Device Count
+
+	InternetAvailTransitHealthPercentage *int `json:"internetAvailTransitHealthPercentage,omitempty"` // Internet Avail Transit Health Percentage
+
+	InternetAvailTransitTotalDeviceCount *int `json:"internetAvailTransitTotalDeviceCount,omitempty"` // Internet Avail Transit Total Device Count
+
+	InternetAvailTransitGoodHealthDeviceCount *int `json:"internetAvailTransitGoodHealthDeviceCount,omitempty"` // Internet Avail Transit Good Health Device Count
+
+	InternetAvailTransitPoorHealthDeviceCount *int `json:"internetAvailTransitPoorHealthDeviceCount,omitempty"` // Internet Avail Transit Poor Health Device Count
+
+	InternetAvailTransitFairHealthDeviceCount *int `json:"internetAvailTransitFairHealthDeviceCount,omitempty"` // Internet Avail Transit Fair Health Device Count
+
+	BgpTCPHealthPercentage *int `json:"bgpTcpHealthPercentage,omitempty"` // Bgp Tcp Health Percentage
+
+	BgpTCPTotalDeviceCount *int `json:"bgpTcpTotalDeviceCount,omitempty"` // Bgp Tcp Total Device Count
+
+	BgpTCPGoodHealthDeviceCount *int `json:"bgpTcpGoodHealthDeviceCount,omitempty"` // Bgp Tcp Good Health Device Count
+
+	BgpTCPPoorHealthDeviceCount *int `json:"bgpTcpPoorHealthDeviceCount,omitempty"` // Bgp Tcp Poor Health Device Count
+
+	BgpTCPFairHealthDeviceCount *int `json:"bgpTcpFairHealthDeviceCount,omitempty"` // Bgp Tcp Fair Health Device Count
+}
+type ResponseSdaReadTransitNetworksCountV1 struct {
+	Response *[]ResponseSdaReadTransitNetworksCountV1Response `json:"response,omitempty"` //
+}
+type ResponseSdaReadTransitNetworksCountV1Response struct {
+	ErrorCode *int `json:"errorCode,omitempty"` // Error Code
+
+	Message string `json:"message,omitempty"` // Message
+
+	Detail string `json:"detail,omitempty"` // Detail
+}
+type ResponseSdaReadTransitNetworkWithItsHealthSummaryFromIDV1 struct {
+	Response *ResponseSdaReadTransitNetworkWithItsHealthSummaryFromIDV1Response `json:"response,omitempty"` //
+}
+type ResponseSdaReadTransitNetworkWithItsHealthSummaryFromIDV1Response struct {
+	ID string `json:"id,omitempty"` // Id
+
+	Name string `json:"name,omitempty"` // Name
+
+	ControlPlaneCount *int `json:"controlPlaneCount,omitempty"` // Control Plane Count
+
+	TransitType string `json:"transitType,omitempty"` // Transit Type
+
+	FabricSitesCount *int `json:"fabricSitesCount,omitempty"` // Fabric Sites Count
+
+	GoodHealthPercentage *int `json:"goodHealthPercentage,omitempty"` // Good Health Percentage
+
+	GoodHealthDeviceCount *int `json:"goodHealthDeviceCount,omitempty"` // Good Health Device Count
+
+	TotalDeviceCount *int `json:"totalDeviceCount,omitempty"` // Total Device Count
+
+	PoorHealthDeviceCount *int `json:"poorHealthDeviceCount,omitempty"` // Poor Health Device Count
+
+	FairHealthDeviceCount *int `json:"fairHealthDeviceCount,omitempty"` // Fair Health Device Count
+
+	TransitControlPlaneHealthPercentage *int `json:"transitControlPlaneHealthPercentage,omitempty"` // Transit Control Plane Health Percentage
+
+	TransitControlPlaneTotalDeviceCount *int `json:"transitControlPlaneTotalDeviceCount,omitempty"` // Transit Control Plane Total Device Count
+
+	TransitControlPlaneGoodHealthDeviceCount *int `json:"transitControlPlaneGoodHealthDeviceCount,omitempty"` // Transit Control Plane Good Health Device Count
+
+	TransitControlPlanePoorHealthDeviceCount *int `json:"transitControlPlanePoorHealthDeviceCount,omitempty"` // Transit Control Plane Poor Health Device Count
+
+	TransitControlPlaneFairHealthDeviceCount *int `json:"transitControlPlaneFairHealthDeviceCount,omitempty"` // Transit Control Plane Fair Health Device Count
+
+	TransitServicesHealthPercentage *int `json:"transitServicesHealthPercentage,omitempty"` // Transit Services Health Percentage
+
+	TransitServicesTotalDeviceCount *int `json:"transitServicesTotalDeviceCount,omitempty"` // Transit Services Total Device Count
+
+	TransitServicesGoodHealthDeviceCount *int `json:"transitServicesGoodHealthDeviceCount,omitempty"` // Transit Services Good Health Device Count
+
+	TransitServicesPoorHealthDeviceCount *float64 `json:"transitServicesPoorHealthDeviceCount,omitempty"` // Transit Services Poor Health Device Count
+
+	TransitServicesFairHealthDeviceCount *int `json:"transitServicesFairHealthDeviceCount,omitempty"` // Transit Services Fair Health Device Count
+
+	PubsubTransitHealthPercentage *int `json:"pubsubTransitHealthPercentage,omitempty"` // Pubsub Transit Health Percentage
+
+	PubsubTransitTotalDeviceCount *int `json:"pubsubTransitTotalDeviceCount,omitempty"` // Pubsub Transit Total Device Count
+
+	PubsubTransitGoodHealthDeviceCount *int `json:"pubsubTransitGoodHealthDeviceCount,omitempty"` // Pubsub Transit Good Health Device Count
+
+	PubsubTransitPoorHealthDeviceCount *int `json:"pubsubTransitPoorHealthDeviceCount,omitempty"` // Pubsub Transit Poor Health Device Count
+
+	PubsubTransitFairHealthDeviceCount *int `json:"pubsubTransitFairHealthDeviceCount,omitempty"` // Pubsub Transit Fair Health Device Count
+
+	LispTransitHealthPercentage *int `json:"lispTransitHealthPercentage,omitempty"` // Lisp Transit Health Percentage
+
+	LispTransitTotalDeviceCount *int `json:"lispTransitTotalDeviceCount,omitempty"` // Lisp Transit Total Device Count
+
+	LispTransitGoodHealthDeviceCount *int `json:"lispTransitGoodHealthDeviceCount,omitempty"` // Lisp Transit Good Health Device Count
+
+	LispTransitPoorHealthDeviceCount *float64 `json:"lispTransitPoorHealthDeviceCount,omitempty"` // Lisp Transit Poor Health Device Count
+
+	LispTransitFairHealthDeviceCount *int `json:"lispTransitFairHealthDeviceCount,omitempty"` // Lisp Transit Fair Health Device Count
+
+	InternetAvailTransitHealthPercentage *int `json:"internetAvailTransitHealthPercentage,omitempty"` // Internet Avail Transit Health Percentage
+
+	InternetAvailTransitTotalDeviceCount *int `json:"internetAvailTransitTotalDeviceCount,omitempty"` // Internet Avail Transit Total Device Count
+
+	InternetAvailTransitGoodHealthDeviceCount *int `json:"internetAvailTransitGoodHealthDeviceCount,omitempty"` // Internet Avail Transit Good Health Device Count
+
+	InternetAvailTransitPoorHealthDeviceCount *int `json:"internetAvailTransitPoorHealthDeviceCount,omitempty"` // Internet Avail Transit Poor Health Device Count
+
+	InternetAvailTransitFairHealthDeviceCount *int `json:"internetAvailTransitFairHealthDeviceCount,omitempty"` // Internet Avail Transit Fair Health Device Count
+
+	BgpTCPHealthPercentage *int `json:"bgpTcpHealthPercentage,omitempty"` // Bgp Tcp Health Percentage
+
+	BgpTCPTotalDeviceCount *int `json:"bgpTcpTotalDeviceCount,omitempty"` // Bgp Tcp Total Device Count
+
+	BgpTCPGoodHealthDeviceCount *int `json:"bgpTcpGoodHealthDeviceCount,omitempty"` // Bgp Tcp Good Health Device Count
+
+	BgpTCPPoorHealthDeviceCount *int `json:"bgpTcpPoorHealthDeviceCount,omitempty"` // Bgp Tcp Poor Health Device Count
+
+	BgpTCPFairHealthDeviceCount *int `json:"bgpTcpFairHealthDeviceCount,omitempty"` // Bgp Tcp Fair Health Device Count
+}
+type ResponseSdaTheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1 struct {
+	Response *[]ResponseSdaTheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1Response `json:"response,omitempty"` //
+
+	Page *ResponseSdaTheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1Page `json:"page,omitempty"` //
+
+	Version *int `json:"version,omitempty"` // Version
+}
+type ResponseSdaTheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1Response struct {
+	Timestamp *int `json:"timestamp,omitempty"` // Timestamp
+
+	Attributes *[]ResponseSdaTheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1ResponseAttributes `json:"attributes,omitempty"` //
+}
+type ResponseSdaTheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1ResponseAttributes struct {
+	Name string `json:"name,omitempty"` // Name
+
+	Value *int `json:"value,omitempty"` // Value
+}
+type ResponseSdaTheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1Page struct {
+	Limit *int `json:"limit,omitempty"` // Limit
+
+	Offset *float64 `json:"offset,omitempty"` // Offset
+
+	TimeSortOrder string `json:"timeSortOrder,omitempty"` // Time Sort Order
+}
+type ResponseSdaReadListOfVirtualNetworksWithTheirHealthSummaryV1 struct {
+	Response *[]ResponseSdaReadListOfVirtualNetworksWithTheirHealthSummaryV1Response `json:"response,omitempty"` //
+}
+type ResponseSdaReadListOfVirtualNetworksWithTheirHealthSummaryV1Response struct {
+	ID string `json:"id,omitempty"` // Id
+
+	Name string `json:"name,omitempty"` // Name
+
+	NetworkProtocol string `json:"networkProtocol,omitempty"` // Network Protocol
+
+	VLAN *ResponseSdaReadListOfVirtualNetworksWithTheirHealthSummaryV1ResponseVLAN `json:"vlan,omitempty"` // Vlan
+
+	Vnid *int `json:"vnid,omitempty"` // Vnid
+
+	Layer *ResponseSdaReadListOfVirtualNetworksWithTheirHealthSummaryV1ResponseLayer `json:"layer,omitempty"` // Layer
+
+	TotalFabricSites *int `json:"totalFabricSites,omitempty"` // Total Fabric Sites
+
+	AssociatedL3Vn *ResponseSdaReadListOfVirtualNetworksWithTheirHealthSummaryV1ResponseAssociatedL3Vn `json:"associatedL3Vn,omitempty"` // Associated L3 Vn
+
+	TotalEndpoints *float64 `json:"totalEndpoints,omitempty"` // Total Endpoints
+
+	GoodHealthPercentage *int `json:"goodHealthPercentage,omitempty"` // Good Health Percentage
+
+	TotalDeviceCount *int `json:"totalDeviceCount,omitempty"` // Total Device Count
+
+	GoodHealthDeviceCount *int `json:"goodHealthDeviceCount,omitempty"` // Good Health Device Count
+
+	FairHealthDeviceCount *int `json:"fairHealthDeviceCount,omitempty"` // Fair Health Device Count
+
+	PoorHealthDeviceCount *int `json:"poorHealthDeviceCount,omitempty"` // Poor Health Device Count
+
+	NoHealthDeviceCount *int `json:"noHealthDeviceCount,omitempty"` // No Health Device Count
+
+	VnFabricControlPlaneGoodHealthPercentage *int `json:"vnFabricControlPlaneGoodHealthPercentage,omitempty"` // Vn Fabric Control Plane Good Health Percentage
+
+	VnFabricControlPlaneTotalDeviceCount *int `json:"vnFabricControlPlaneTotalDeviceCount,omitempty"` // Vn Fabric Control Plane Total Device Count
+
+	VnFabricControlPlaneGoodHealthDeviceCount *int `json:"vnFabricControlPlaneGoodHealthDeviceCount,omitempty"` // Vn Fabric Control Plane Good Health Device Count
+
+	VnFabricControlPlanePoorHealthDeviceCount *int `json:"vnFabricControlPlanePoorHealthDeviceCount,omitempty"` // Vn Fabric Control Plane Poor Health Device Count
+
+	VnFabricControlPlaneFairHealthDeviceCount *float64 `json:"vnFabricControlPlaneFairHealthDeviceCount,omitempty"` // Vn Fabric Control Plane Fair Health Device Count
+
+	VnFabricControlPlaneNoHealthDeviceCount *float64 `json:"vnFabricControlPlaneNoHealthDeviceCount,omitempty"` // Vn Fabric Control Plane No Health Device Count
+
+	VnServicesHealthPercentage *int `json:"vnServicesHealthPercentage,omitempty"` // Vn Services Health Percentage
+
+	VnServicesTotalDeviceCount *int `json:"vnServicesTotalDeviceCount,omitempty"` // Vn Services Total Device Count
+
+	VnServicesGoodHealthDeviceCount *int `json:"vnServicesGoodHealthDeviceCount,omitempty"` // Vn Services Good Health Device Count
+
+	VnServicesPoorHealthDeviceCount *int `json:"vnServicesPoorHealthDeviceCount,omitempty"` // Vn Services Poor Health Device Count
+
+	VnServicesFairHealthDeviceCount *float64 `json:"vnServicesFairHealthDeviceCount,omitempty"` // Vn Services Fair Health Device Count
+
+	VnServicesNoHealthDeviceCount *float64 `json:"vnServicesNoHealthDeviceCount,omitempty"` // Vn Services No Health Device Count
+
+	VnExitHealthPercentage *int `json:"vnExitHealthPercentage,omitempty"` // Vn Exit Health Percentage
+
+	VnExitTotalDeviceCount *int `json:"vnExitTotalDeviceCount,omitempty"` // Vn Exit Total Device Count
+
+	VnExitGoodHealthDeviceCount *int `json:"vnExitGoodHealthDeviceCount,omitempty"` // Vn Exit Good Health Device Count
+
+	VnExitPoorHealthDeviceCount *int `json:"vnExitPoorHealthDeviceCount,omitempty"` // Vn Exit Poor Health Device Count
+
+	VnExitFairHealthDeviceCount *float64 `json:"vnExitFairHealthDeviceCount,omitempty"` // Vn Exit Fair Health Device Count
+
+	VnExitNoHealthDeviceCount *float64 `json:"vnExitNoHealthDeviceCount,omitempty"` // Vn Exit No Health Device Count
+
+	VnStatusHealthPercentage *ResponseSdaReadListOfVirtualNetworksWithTheirHealthSummaryV1ResponseVnStatusHealthPercentage `json:"vnStatusHealthPercentage,omitempty"` // Vn Status Health Percentage
+
+	VnStatusTotalDeviceCount *float64 `json:"vnStatusTotalDeviceCount,omitempty"` // Vn Status Total Device Count
+
+	VnStatusGoodHealthDeviceCount *float64 `json:"vnStatusGoodHealthDeviceCount,omitempty"` // Vn Status Good Health Device Count
+
+	VnStatusPoorHealthDeviceCount *float64 `json:"vnStatusPoorHealthDeviceCount,omitempty"` // Vn Status Poor Health Device Count
+
+	VnStatusFairHealthDeviceCount *float64 `json:"vnStatusFairHealthDeviceCount,omitempty"` // Vn Status Fair Health Device Count
+
+	VnStatusNoHealthDeviceCount *float64 `json:"vnStatusNoHealthDeviceCount,omitempty"` // Vn Status No Health Device Count
+
+	PubsubSessionGoodHealthPercentage *int `json:"pubsubSessionGoodHealthPercentage,omitempty"` // Pubsub Session Good Health Percentage
+
+	PubsubSessionTotalDeviceCount *int `json:"pubsubSessionTotalDeviceCount,omitempty"` // Pubsub Session Total Device Count
+
+	PubsubSessionGoodHealthDeviceCount *int `json:"pubsubSessionGoodHealthDeviceCount,omitempty"` // Pubsub Session Good Health Device Count
+
+	PubsubSessionPoorHealthDeviceCount *int `json:"pubsubSessionPoorHealthDeviceCount,omitempty"` // Pubsub Session Poor Health Device Count
+
+	PubsubSessionFairHealthDeviceCount *float64 `json:"pubsubSessionFairHealthDeviceCount,omitempty"` // Pubsub Session Fair Health Device Count
+
+	PubsubSessionNoHealthDeviceCount *float64 `json:"pubsubSessionNoHealthDeviceCount,omitempty"` // Pubsub Session No Health Device Count
+
+	MultiCastGoodHealthPercentage *ResponseSdaReadListOfVirtualNetworksWithTheirHealthSummaryV1ResponseMultiCastGoodHealthPercentage `json:"multiCastGoodHealthPercentage,omitempty"` // Multi Cast Good Health Percentage
+
+	MultiCastTotalDeviceCount *float64 `json:"multiCastTotalDeviceCount,omitempty"` // Multi Cast Total Device Count
+
+	MultiCastGoodHealthDeviceCount *float64 `json:"multiCastGoodHealthDeviceCount,omitempty"` // Multi Cast Good Health Device Count
+
+	MultiCastPoorHealthDeviceCount *float64 `json:"multiCastPoorHealthDeviceCount,omitempty"` // Multi Cast Poor Health Device Count
+
+	MultiCastFairHealthDeviceCount *float64 `json:"multiCastFairHealthDeviceCount,omitempty"` // Multi Cast Fair Health Device Count
+
+	MultiCastNoHealthDeviceCount *float64 `json:"multiCastNoHealthDeviceCount,omitempty"` // Multi Cast No Health Device Count
+
+	InternetAvailGoodHealthPercentage *int `json:"internetAvailGoodHealthPercentage,omitempty"` // Internet Avail Good Health Percentage
+
+	InternetAvailTotalDeviceCount *int `json:"internetAvailTotalDeviceCount,omitempty"` // Internet Avail Total Device Count
+
+	InternetAvailGoodHealthDeviceCount *int `json:"internetAvailGoodHealthDeviceCount,omitempty"` // Internet Avail Good Health Device Count
+
+	InternetAvailPoorHealthDeviceCount *int `json:"internetAvailPoorHealthDeviceCount,omitempty"` // Internet Avail Poor Health Device Count
+
+	InternetAvailFairHealthDeviceCount *int `json:"internetAvailFairHealthDeviceCount,omitempty"` // Internet Avail Fair Health Device Count
+
+	InternetAvailNoHealthDeviceCount *int `json:"internetAvailNoHealthDeviceCount,omitempty"` // Internet Avail No Health Device Count
+
+	BgpPeerGoodHealthPercentage *int `json:"bgpPeerGoodHealthPercentage,omitempty"` // Bgp Peer Good Health Percentage
+
+	BgpPeerTotalDeviceCount *int `json:"bgpPeerTotalDeviceCount,omitempty"` // Bgp Peer Total Device Count
+
+	BgpPeerGoodHealthDeviceCount *int `json:"bgpPeerGoodHealthDeviceCount,omitempty"` // Bgp Peer Good Health Device Count
+
+	BgpPeerPoorHealthDeviceCount *int `json:"bgpPeerPoorHealthDeviceCount,omitempty"` // Bgp Peer Poor Health Device Count
+
+	BgpPeerFairHealthDeviceCount *float64 `json:"bgpPeerFairHealthDeviceCount,omitempty"` // Bgp Peer Fair Health Device Count
+
+	BgpPeerNoHealthDeviceCount *float64 `json:"bgpPeerNoHealthDeviceCount,omitempty"` // Bgp Peer No Health Device Count
+
+	VniGoodHealthPercentage *ResponseSdaReadListOfVirtualNetworksWithTheirHealthSummaryV1ResponseVniGoodHealthPercentage `json:"vniGoodHealthPercentage,omitempty"` // Vni Good Health Percentage
+
+	VniTotalDeviceCount *float64 `json:"vniTotalDeviceCount,omitempty"` // Vni Total Device Count
+
+	VniGoodHealthDeviceCount *float64 `json:"vniGoodHealthDeviceCount,omitempty"` // Vni Good Health Device Count
+
+	VniPoorHealthDeviceCount *float64 `json:"vniPoorHealthDeviceCount,omitempty"` // Vni Poor Health Device Count
+
+	VniFairHealthDeviceCount *float64 `json:"vniFairHealthDeviceCount,omitempty"` // Vni Fair Health Device Count
+
+	VniNoHealthDeviceCount *float64 `json:"vniNoHealthDeviceCount,omitempty"` // Vni No Health Device Count
+}
+type ResponseSdaReadListOfVirtualNetworksWithTheirHealthSummaryV1ResponseVLAN interface{}
+type ResponseSdaReadListOfVirtualNetworksWithTheirHealthSummaryV1ResponseLayer interface{}
+type ResponseSdaReadListOfVirtualNetworksWithTheirHealthSummaryV1ResponseAssociatedL3Vn interface{}
+type ResponseSdaReadListOfVirtualNetworksWithTheirHealthSummaryV1ResponseVnStatusHealthPercentage interface{}
+type ResponseSdaReadListOfVirtualNetworksWithTheirHealthSummaryV1ResponseMultiCastGoodHealthPercentage interface{}
+type ResponseSdaReadListOfVirtualNetworksWithTheirHealthSummaryV1ResponseVniGoodHealthPercentage interface{}
+type ResponseSdaReadVirtualNetworksCountV1 struct {
+	Response *ResponseSdaReadVirtualNetworksCountV1Response `json:"response,omitempty"` //
+
+	Version string `json:"version,omitempty"` // Version
+}
+type ResponseSdaReadVirtualNetworksCountV1Response struct {
+	Count *int `json:"count,omitempty"` // Count
+}
+type ResponseSdaReadVirtualNetworkWithItsHealthSummaryFromIDV1 struct {
+	Response *ResponseSdaReadVirtualNetworkWithItsHealthSummaryFromIDV1Response `json:"response,omitempty"` //
+}
+type ResponseSdaReadVirtualNetworkWithItsHealthSummaryFromIDV1Response struct {
+	ID string `json:"id,omitempty"` // Id
+
+	Name string `json:"name,omitempty"` // Name
+
+	NetworkProtocol string `json:"networkProtocol,omitempty"` // Network Protocol
+
+	VLAN *ResponseSdaReadVirtualNetworkWithItsHealthSummaryFromIDV1ResponseVLAN `json:"vlan,omitempty"` // Vlan
+
+	Vnid *int `json:"vnid,omitempty"` // Vnid
+
+	Layer *ResponseSdaReadVirtualNetworkWithItsHealthSummaryFromIDV1ResponseLayer `json:"layer,omitempty"` // Layer
+
+	TotalFabricSites *int `json:"totalFabricSites,omitempty"` // Total Fabric Sites
+
+	AssociatedL3Vn *ResponseSdaReadVirtualNetworkWithItsHealthSummaryFromIDV1ResponseAssociatedL3Vn `json:"associatedL3Vn,omitempty"` // Associated L3 Vn
+
+	TotalEndpoints *float64 `json:"totalEndpoints,omitempty"` // Total Endpoints
+
+	GoodHealthPercentage *int `json:"goodHealthPercentage,omitempty"` // Good Health Percentage
+
+	TotalDeviceCount *int `json:"totalDeviceCount,omitempty"` // Total Device Count
+
+	GoodHealthDeviceCount *int `json:"goodHealthDeviceCount,omitempty"` // Good Health Device Count
+
+	FairHealthDeviceCount *int `json:"fairHealthDeviceCount,omitempty"` // Fair Health Device Count
+
+	PoorHealthDeviceCount *int `json:"poorHealthDeviceCount,omitempty"` // Poor Health Device Count
+
+	NoHealthDeviceCount *int `json:"noHealthDeviceCount,omitempty"` // No Health Device Count
+
+	VnFabricControlPlaneGoodHealthPercentage *int `json:"vnFabricControlPlaneGoodHealthPercentage,omitempty"` // Vn Fabric Control Plane Good Health Percentage
+
+	VnFabricControlPlaneTotalDeviceCount *int `json:"vnFabricControlPlaneTotalDeviceCount,omitempty"` // Vn Fabric Control Plane Total Device Count
+
+	VnFabricControlPlaneGoodHealthDeviceCount *int `json:"vnFabricControlPlaneGoodHealthDeviceCount,omitempty"` // Vn Fabric Control Plane Good Health Device Count
+
+	VnFabricControlPlanePoorHealthDeviceCount *int `json:"vnFabricControlPlanePoorHealthDeviceCount,omitempty"` // Vn Fabric Control Plane Poor Health Device Count
+
+	VnFabricControlPlaneFairHealthDeviceCount *float64 `json:"vnFabricControlPlaneFairHealthDeviceCount,omitempty"` // Vn Fabric Control Plane Fair Health Device Count
+
+	VnFabricControlPlaneNoHealthDeviceCount *float64 `json:"vnFabricControlPlaneNoHealthDeviceCount,omitempty"` // Vn Fabric Control Plane No Health Device Count
+
+	VnServicesHealthPercentage *int `json:"vnServicesHealthPercentage,omitempty"` // Vn Services Health Percentage
+
+	VnServicesTotalDeviceCount *int `json:"vnServicesTotalDeviceCount,omitempty"` // Vn Services Total Device Count
+
+	VnServicesGoodHealthDeviceCount *int `json:"vnServicesGoodHealthDeviceCount,omitempty"` // Vn Services Good Health Device Count
+
+	VnServicesPoorHealthDeviceCount *int `json:"vnServicesPoorHealthDeviceCount,omitempty"` // Vn Services Poor Health Device Count
+
+	VnServicesFairHealthDeviceCount *float64 `json:"vnServicesFairHealthDeviceCount,omitempty"` // Vn Services Fair Health Device Count
+
+	VnServicesNoHealthDeviceCount *float64 `json:"vnServicesNoHealthDeviceCount,omitempty"` // Vn Services No Health Device Count
+
+	VnExitHealthPercentage *int `json:"vnExitHealthPercentage,omitempty"` // Vn Exit Health Percentage
+
+	VnExitTotalDeviceCount *int `json:"vnExitTotalDeviceCount,omitempty"` // Vn Exit Total Device Count
+
+	VnExitGoodHealthDeviceCount *int `json:"vnExitGoodHealthDeviceCount,omitempty"` // Vn Exit Good Health Device Count
+
+	VnExitPoorHealthDeviceCount *int `json:"vnExitPoorHealthDeviceCount,omitempty"` // Vn Exit Poor Health Device Count
+
+	VnExitFairHealthDeviceCount *float64 `json:"vnExitFairHealthDeviceCount,omitempty"` // Vn Exit Fair Health Device Count
+
+	VnExitNoHealthDeviceCount *float64 `json:"vnExitNoHealthDeviceCount,omitempty"` // Vn Exit No Health Device Count
+
+	VnStatusHealthPercentage *ResponseSdaReadVirtualNetworkWithItsHealthSummaryFromIDV1ResponseVnStatusHealthPercentage `json:"vnStatusHealthPercentage,omitempty"` // Vn Status Health Percentage
+
+	VnStatusTotalDeviceCount *float64 `json:"vnStatusTotalDeviceCount,omitempty"` // Vn Status Total Device Count
+
+	VnStatusGoodHealthDeviceCount *float64 `json:"vnStatusGoodHealthDeviceCount,omitempty"` // Vn Status Good Health Device Count
+
+	VnStatusPoorHealthDeviceCount *float64 `json:"vnStatusPoorHealthDeviceCount,omitempty"` // Vn Status Poor Health Device Count
+
+	VnStatusFairHealthDeviceCount *float64 `json:"vnStatusFairHealthDeviceCount,omitempty"` // Vn Status Fair Health Device Count
+
+	VnStatusNoHealthDeviceCount *float64 `json:"vnStatusNoHealthDeviceCount,omitempty"` // Vn Status No Health Device Count
+
+	PubsubSessionGoodHealthPercentage *int `json:"pubsubSessionGoodHealthPercentage,omitempty"` // Pubsub Session Good Health Percentage
+
+	PubsubSessionTotalDeviceCount *int `json:"pubsubSessionTotalDeviceCount,omitempty"` // Pubsub Session Total Device Count
+
+	PubsubSessionGoodHealthDeviceCount *int `json:"pubsubSessionGoodHealthDeviceCount,omitempty"` // Pubsub Session Good Health Device Count
+
+	PubsubSessionPoorHealthDeviceCount *int `json:"pubsubSessionPoorHealthDeviceCount,omitempty"` // Pubsub Session Poor Health Device Count
+
+	PubsubSessionFairHealthDeviceCount *float64 `json:"pubsubSessionFairHealthDeviceCount,omitempty"` // Pubsub Session Fair Health Device Count
+
+	PubsubSessionNoHealthDeviceCount *float64 `json:"pubsubSessionNoHealthDeviceCount,omitempty"` // Pubsub Session No Health Device Count
+
+	MultiCastGoodHealthPercentage *ResponseSdaReadVirtualNetworkWithItsHealthSummaryFromIDV1ResponseMultiCastGoodHealthPercentage `json:"multiCastGoodHealthPercentage,omitempty"` // Multi Cast Good Health Percentage
+
+	MultiCastTotalDeviceCount *float64 `json:"multiCastTotalDeviceCount,omitempty"` // Multi Cast Total Device Count
+
+	MultiCastGoodHealthDeviceCount *float64 `json:"multiCastGoodHealthDeviceCount,omitempty"` // Multi Cast Good Health Device Count
+
+	MultiCastPoorHealthDeviceCount *float64 `json:"multiCastPoorHealthDeviceCount,omitempty"` // Multi Cast Poor Health Device Count
+
+	MultiCastFairHealthDeviceCount *float64 `json:"multiCastFairHealthDeviceCount,omitempty"` // Multi Cast Fair Health Device Count
+
+	MultiCastNoHealthDeviceCount *float64 `json:"multiCastNoHealthDeviceCount,omitempty"` // Multi Cast No Health Device Count
+
+	InternetAvailGoodHealthPercentage *int `json:"internetAvailGoodHealthPercentage,omitempty"` // Internet Availability Good Health Percentage
+
+	InternetAvailTotalDeviceCount *int `json:"internetAvailTotalDeviceCount,omitempty"` // Internet Availability Total Device Count
+
+	InternetAvailGoodHealthDeviceCount *int `json:"internetAvailGoodHealthDeviceCount,omitempty"` // Internet Availability Good Health Device Count
+
+	InternetAvailPoorHealthDeviceCount *int `json:"internetAvailPoorHealthDeviceCount,omitempty"` // Internet Availability Poor Health Device Count
+
+	InternetAvailFairHealthDeviceCount *int `json:"internetAvailFairHealthDeviceCount,omitempty"` // Internet Availability Fair Health Device Count
+
+	InternetAvailNoHealthDeviceCount *int `json:"internetAvailNoHealthDeviceCount,omitempty"` // Internet Availability No Health Device Count
+
+	BgpPeerGoodHealthPercentage *int `json:"bgpPeerGoodHealthPercentage,omitempty"` // Bgp Peer Good Health Percentage
+
+	BgpPeerTotalDeviceCount *int `json:"bgpPeerTotalDeviceCount,omitempty"` // Bgp Peer Total Device Count
+
+	BgpPeerGoodHealthDeviceCount *int `json:"bgpPeerGoodHealthDeviceCount,omitempty"` // Bgp Peer Good Health Device Count
+
+	BgpPeerPoorHealthDeviceCount *int `json:"bgpPeerPoorHealthDeviceCount,omitempty"` // Bgp Peer Poor Health Device Count
+
+	BgpPeerFairHealthDeviceCount *float64 `json:"bgpPeerFairHealthDeviceCount,omitempty"` // Bgp Peer Fair Health Device Count
+
+	BgpPeerNoHealthDeviceCount *float64 `json:"bgpPeerNoHealthDeviceCount,omitempty"` // Bgp Peer No Health Device Count
+
+	VniGoodHealthPercentage *ResponseSdaReadVirtualNetworkWithItsHealthSummaryFromIDV1ResponseVniGoodHealthPercentage `json:"vniGoodHealthPercentage,omitempty"` // Vni Good Health Percentage
+
+	VniTotalDeviceCount *float64 `json:"vniTotalDeviceCount,omitempty"` // Vni Total Device Count
+
+	VniGoodHealthDeviceCount *float64 `json:"vniGoodHealthDeviceCount,omitempty"` // Vni Good Health Device Count
+
+	VniPoorHealthDeviceCount *float64 `json:"vniPoorHealthDeviceCount,omitempty"` // Vni Poor Health Device Count
+
+	VniFairHealthDeviceCount *float64 `json:"vniFairHealthDeviceCount,omitempty"` // Vni Fair Health Device Count
+
+	VniNoHealthDeviceCount *float64 `json:"vniNoHealthDeviceCount,omitempty"` // Vni No Health Device Count
+}
+type ResponseSdaReadVirtualNetworkWithItsHealthSummaryFromIDV1ResponseVLAN interface{}
+type ResponseSdaReadVirtualNetworkWithItsHealthSummaryFromIDV1ResponseLayer interface{}
+type ResponseSdaReadVirtualNetworkWithItsHealthSummaryFromIDV1ResponseAssociatedL3Vn interface{}
+type ResponseSdaReadVirtualNetworkWithItsHealthSummaryFromIDV1ResponseVnStatusHealthPercentage interface{}
+type ResponseSdaReadVirtualNetworkWithItsHealthSummaryFromIDV1ResponseMultiCastGoodHealthPercentage interface{}
+type ResponseSdaReadVirtualNetworkWithItsHealthSummaryFromIDV1ResponseVniGoodHealthPercentage interface{}
+type ResponseSdaTheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1 struct {
+	Response *[]ResponseSdaTheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1Response `json:"response,omitempty"` //
+
+	Page *ResponseSdaTheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1Page `json:"page,omitempty"` //
+
+	Version *int `json:"version,omitempty"` // Version
+}
+type ResponseSdaTheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1Response struct {
+	Timestamp *int `json:"timestamp,omitempty"` // Timestamp
+
+	Attributes *[]ResponseSdaTheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1ResponseAttributes `json:"attributes,omitempty"` //
+}
+type ResponseSdaTheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1ResponseAttributes struct {
+	Name string `json:"name,omitempty"` // Name
+
+	Value *int `json:"value,omitempty"` // Value
+}
+type ResponseSdaTheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1Page struct {
+	Limit *int `json:"limit,omitempty"` // Limit
+
+	Offset *float64 `json:"offset,omitempty"` // Offset
+
+	TimeSortOrder string `json:"timeSortOrder,omitempty"` // Time Sort Order
+}
 type ResponseSdaGetDefaultAuthenticationProfileFromSdaFabricV1 struct {
-	SiteNameHierarchy         string `json:"siteNameHierarchy,omitempty"`         // Path of sda Fabric Site
-	AuthenticateTemplateName  string `json:"authenticateTemplateName,omitempty"`  // Authenticate Template Name
-	AuthenticationOrder       string `json:"authenticationOrder,omitempty"`       // Authentication Order
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Path of sda Fabric Site
+
+	AuthenticateTemplateName string `json:"authenticateTemplateName,omitempty"` // Authenticate Template Name
+
+	AuthenticationOrder string `json:"authenticationOrder,omitempty"` // Authentication Order
+
 	Dot1XToMabFallbackTimeout string `json:"dot1xToMabFallbackTimeout,omitempty"` // Dot1x To Mab Fallback Timeout
-	WakeOnLan                 *bool  `json:"wakeOnLan,omitempty"`                 // Wake On Lan
-	NumberOfHosts             string `json:"numberOfHosts,omitempty"`             // Number Of Hosts
-	Status                    string `json:"status,omitempty"`                    // Status
-	Description               string `json:"description,omitempty"`               // Authenticate Template info reterieved successfully in sda fabric site
-	ExecutionID               string `json:"executionId,omitempty"`               // Execution Id
+
+	WakeOnLan *bool `json:"wakeOnLan,omitempty"` // Wake On Lan
+
+	NumberOfHosts string `json:"numberOfHosts,omitempty"` // Number Of Hosts
+
+	Status string `json:"status,omitempty"` // Status
+
+	Description string `json:"description,omitempty"` // Authenticate Template info reterieved successfully in sda fabric site
+
+	ExecutionID string `json:"executionId,omitempty"` // Execution Id
 }
 type ResponseSdaAddDefaultAuthenticationTemplateInSdaFabricV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaUpdateDefaultAuthenticationProfileInSdaFabricV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaDeleteDefaultAuthenticationProfileFromSdaFabricV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaAddBorderDeviceInSdaFabricV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1 struct {
-	Status      string                                                  `json:"status,omitempty"`      // Status
-	Description string                                                  `json:"description,omitempty"` // Description
-	Payload     *ResponseSdaGetBorderDeviceDetailFromSdaFabricV1Payload `json:"payload,omitempty"`     //
+	Status string `json:"status,omitempty"` // Status
+
+	Description string `json:"description,omitempty"` // Description
+
+	Payload *ResponseSdaGetBorderDeviceDetailFromSdaFabricV1Payload `json:"payload,omitempty"` //
 }
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1Payload struct {
-	ID                             string                                                                       `json:"id,omitempty"`                             // Id
-	InstanceID                     *int                                                                         `json:"instanceId,omitempty"`                     // Instance Id
-	AuthEntityID                   *int                                                                         `json:"authEntityId,omitempty"`                   // Auth Entity Id
-	DisplayName                    string                                                                       `json:"displayName,omitempty"`                    // Display Name
-	AuthEntityClass                *int                                                                         `json:"authEntityClass,omitempty"`                // Auth Entity Class
-	InstanceTenantID               string                                                                       `json:"instanceTenantId,omitempty"`               // Instance Tenant Id
-	DeployPending                  string                                                                       `json:"deployPending,omitempty"`                  // Deploy Pending
-	InstanceVersion                *int                                                                         `json:"instanceVersion,omitempty"`                // Instance Version
-	CreateTime                     *int                                                                         `json:"createTime,omitempty"`                     // Create Time
-	Deployed                       *bool                                                                        `json:"deployed,omitempty"`                       // Deployed
-	IsSeeded                       *bool                                                                        `json:"isSeeded,omitempty"`                       // Is Seeded
-	IsStale                        *bool                                                                        `json:"isStale,omitempty"`                        // Is Stale
-	LastUpdateTime                 *int                                                                         `json:"lastUpdateTime,omitempty"`                 // Last Update Time
-	Name                           string                                                                       `json:"name,omitempty"`                           // Name
-	Namespace                      string                                                                       `json:"namespace,omitempty"`                      // Namespace
-	ProvisioningState              string                                                                       `json:"provisioningState,omitempty"`              // Provisioning State
-	ResourceVersion                *int                                                                         `json:"resourceVersion,omitempty"`                // Resource Version
-	TargetIDList                   *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadTargetIDList        `json:"targetIdList,omitempty"`                   // Target Id List
-	Type                           string                                                                       `json:"type,omitempty"`                           // Type
-	CfsChangeInfo                  *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadCfsChangeInfo       `json:"cfsChangeInfo,omitempty"`                  // Cfs Change Info
-	CustomProvisions               *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadCustomProvisions    `json:"customProvisions,omitempty"`               // Custom Provisions
-	Configs                        *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadConfigs             `json:"configs,omitempty"`                        // Configs
-	ManagedSites                   *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadManagedSites        `json:"managedSites,omitempty"`                   // Managed Sites
-	NetworkDeviceID                string                                                                       `json:"networkDeviceId,omitempty"`                // Network Device Id
-	Roles                          []string                                                                     `json:"roles,omitempty"`                          // Roles
-	SaveWanConnectivityDetailsOnly *bool                                                                        `json:"saveWanConnectivityDetailsOnly,omitempty"` // Save Wan Connectivity Details Only
-	SiteID                         string                                                                       `json:"siteId,omitempty"`                         // Site Id
-	AkcSettingsCfs                 *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadAkcSettingsCfs      `json:"akcSettingsCfs,omitempty"`                 // Akc Settings Cfs
-	DeviceInterfaceInfo            *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceInterfaceInfo `json:"deviceInterfaceInfo,omitempty"`            // Device Interface Info
-	DeviceSettings                 *ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceSettings        `json:"deviceSettings,omitempty"`                 //
-	NetworkWidesettings            *ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettings   `json:"networkWideSettings,omitempty"`            //
-	OtherDevice                    *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadOtherDevice         `json:"otherDevice,omitempty"`                    // Other Device
-	TransitNetworks                *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadTransitNetworks     `json:"transitNetworks,omitempty"`                //
-	VirtualNetwork                 *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadVirtualNetwork      `json:"virtualNetwork,omitempty"`                 // Virtual Network
-	WLAN                           *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadWLAN                `json:"wlan,omitempty"`                           // Wlan
+	ID string `json:"id,omitempty"` // Id
+
+	InstanceID *int `json:"instanceId,omitempty"` // Instance Id
+
+	AuthEntityID *int `json:"authEntityId,omitempty"` // Auth Entity Id
+
+	DisplayName string `json:"displayName,omitempty"` // Display Name
+
+	AuthEntityClass *int `json:"authEntityClass,omitempty"` // Auth Entity Class
+
+	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Instance Tenant Id
+
+	DeployPending string `json:"deployPending,omitempty"` // Deploy Pending
+
+	InstanceVersion *int `json:"instanceVersion,omitempty"` // Instance Version
+
+	CreateTime *int `json:"createTime,omitempty"` // Create Time
+
+	Deployed *bool `json:"deployed,omitempty"` // Deployed
+
+	IsSeeded *bool `json:"isSeeded,omitempty"` // Is Seeded
+
+	IsStale *bool `json:"isStale,omitempty"` // Is Stale
+
+	LastUpdateTime *int `json:"lastUpdateTime,omitempty"` // Last Update Time
+
+	Name string `json:"name,omitempty"` // Name
+
+	Namespace string `json:"namespace,omitempty"` // Namespace
+
+	ProvisioningState string `json:"provisioningState,omitempty"` // Provisioning State
+
+	ResourceVersion *int `json:"resourceVersion,omitempty"` // Resource Version
+
+	TargetIDList *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadTargetIDList `json:"targetIdList,omitempty"` // Target Id List
+
+	Type string `json:"type,omitempty"` // Type
+
+	CfsChangeInfo *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadCfsChangeInfo `json:"cfsChangeInfo,omitempty"` // Cfs Change Info
+
+	CustomProvisions *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadCustomProvisions `json:"customProvisions,omitempty"` // Custom Provisions
+
+	Configs *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadConfigs `json:"configs,omitempty"` // Configs
+
+	ManagedSites *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadManagedSites `json:"managedSites,omitempty"` // Managed Sites
+
+	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Network Device Id
+
+	Roles []string `json:"roles,omitempty"` // Roles
+
+	SaveWanConnectivityDetailsOnly *bool `json:"saveWanConnectivityDetailsOnly,omitempty"` // Save Wan Connectivity Details Only
+
+	SiteID string `json:"siteId,omitempty"` // Site Id
+
+	AkcSettingsCfs *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadAkcSettingsCfs `json:"akcSettingsCfs,omitempty"` // Akc Settings Cfs
+
+	DeviceInterfaceInfo *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceInterfaceInfo `json:"deviceInterfaceInfo,omitempty"` // Device Interface Info
+
+	DeviceSettings *ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceSettings `json:"deviceSettings,omitempty"` //
+
+	NetworkWidesettings *ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettings `json:"networkWideSettings,omitempty"` //
+
+	OtherDevice *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadOtherDevice `json:"otherDevice,omitempty"` // Other Device
+
+	TransitNetworks *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadTransitNetworks `json:"transitNetworks,omitempty"` //
+
+	VirtualNetwork *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadVirtualNetwork `json:"virtualNetwork,omitempty"` // Virtual Network
+
+	WLAN *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadWLAN `json:"wlan,omitempty"` // Wlan
 }
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadTargetIDList interface{}
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadCfsChangeInfo interface{}
@@ -424,94 +1600,153 @@ type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadManagedSites interfac
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadAkcSettingsCfs interface{}
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceInterfaceInfo interface{}
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceSettings struct {
-	ID                            string                                                                                         `json:"id,omitempty"`                            // Id
-	InstanceID                    *int                                                                                           `json:"instanceId,omitempty"`                    // Instance Id
-	DisplayName                   string                                                                                         `json:"displayName,omitempty"`                   // Display Name
-	InstanceTenantID              string                                                                                         `json:"instanceTenantId,omitempty"`              // Instance Tenant Id
-	DeployPending                 string                                                                                         `json:"deployPending,omitempty"`                 // Deploy Pending
-	InstanceVersion               *int                                                                                           `json:"instanceVersion,omitempty"`               // Instance Version
-	ConnectedTo                   *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceSettingsConnectedTo             `json:"connectedTo,omitempty"`                   // Connected To
-	CPU                           *float64                                                                                       `json:"cpu,omitempty"`                           // Cpu
-	DhcpEnabled                   *bool                                                                                          `json:"dhcpEnabled,omitempty"`                   // Dhcp Enabled
-	ExternalConnectivityIPPool    string                                                                                         `json:"externalConnectivityIpPool,omitempty"`    // External Connectivity Ip Pool
-	ExternalDomainRoutingProtocol string                                                                                         `json:"externalDomainRoutingProtocol,omitempty"` // External Domain Routing Protocol
-	InternalDomainProtocolNumber  string                                                                                         `json:"internalDomainProtocolNumber,omitempty"`  // Internal Domain Protocol Number
-	Memory                        *float64                                                                                       `json:"memory,omitempty"`                        // Memory
-	NodeType                      []string                                                                                       `json:"nodeType,omitempty"`                      // Node Type
-	Storage                       *float64                                                                                       `json:"storage,omitempty"`                       // Storage
-	ExtConnectivitySettings       *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceSettingsExtConnectivitySettings `json:"extConnectivitySettings,omitempty"`       //
+	ID string `json:"id,omitempty"` // Id
+
+	InstanceID *int `json:"instanceId,omitempty"` // Instance Id
+
+	DisplayName string `json:"displayName,omitempty"` // Display Name
+
+	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Instance Tenant Id
+
+	DeployPending string `json:"deployPending,omitempty"` // Deploy Pending
+
+	InstanceVersion *int `json:"instanceVersion,omitempty"` // Instance Version
+
+	ConnectedTo *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceSettingsConnectedTo `json:"connectedTo,omitempty"` // Connected To
+
+	CPU *float64 `json:"cpu,omitempty"` // Cpu
+
+	DhcpEnabled *bool `json:"dhcpEnabled,omitempty"` // Dhcp Enabled
+
+	ExternalConnectivityIPPool string `json:"externalConnectivityIpPool,omitempty"` // External Connectivity Ip Pool
+
+	ExternalDomainRoutingProtocol string `json:"externalDomainRoutingProtocol,omitempty"` // External Domain Routing Protocol
+
+	InternalDomainProtocolNumber string `json:"internalDomainProtocolNumber,omitempty"` // Internal Domain Protocol Number
+
+	Memory *float64 `json:"memory,omitempty"` // Memory
+
+	NodeType []string `json:"nodeType,omitempty"` // Node Type
+
+	Storage *float64 `json:"storage,omitempty"` // Storage
+
+	ExtConnectivitySettings *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceSettingsExtConnectivitySettings `json:"extConnectivitySettings,omitempty"` //
 }
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceSettingsConnectedTo interface{}
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceSettingsExtConnectivitySettings struct {
-	ID                           string                                                                                                  `json:"id,omitempty"`                           // Id
-	InstanceID                   *int                                                                                                    `json:"instanceId,omitempty"`                   // Instance Id
-	DisplayName                  string                                                                                                  `json:"displayName,omitempty"`                  // Display Name
-	InstanceTenantID             string                                                                                                  `json:"instanceTenantId,omitempty"`             // Instance Tenant Id
-	DeployPending                string                                                                                                  `json:"deployPending,omitempty"`                // Deploy Pending
-	InstanceVersion              *int                                                                                                    `json:"instanceVersion,omitempty"`              // Instance Version
-	ExternalDomainProtocolNumber string                                                                                                  `json:"externalDomainProtocolNumber,omitempty"` // External Domain Protocol Number
-	InterfaceUUID                string                                                                                                  `json:"interfaceUuid,omitempty"`                // Interface Uuid
-	PolicyPropagationEnabled     *bool                                                                                                   `json:"policyPropagationEnabled,omitempty"`     // Policy Propagation Enabled
-	PolicySgtTag                 *float64                                                                                                `json:"policySgtTag,omitempty"`                 // Policy Sgt Tag
-	L2Handoff                    *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceSettingsExtConnectivitySettingsL2Handoff `json:"l2Handoff,omitempty"`                    // L2 Handoff
-	L3Handoff                    *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceSettingsExtConnectivitySettingsL3Handoff `json:"l3Handoff,omitempty"`                    //
+	ID string `json:"id,omitempty"` // Id
+
+	InstanceID *int `json:"instanceId,omitempty"` // Instance Id
+
+	DisplayName string `json:"displayName,omitempty"` // Display Name
+
+	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Instance Tenant Id
+
+	DeployPending string `json:"deployPending,omitempty"` // Deploy Pending
+
+	InstanceVersion *int `json:"instanceVersion,omitempty"` // Instance Version
+
+	ExternalDomainProtocolNumber string `json:"externalDomainProtocolNumber,omitempty"` // External Domain Protocol Number
+
+	InterfaceUUID string `json:"interfaceUuid,omitempty"` // Interface Uuid
+
+	PolicyPropagationEnabled *bool `json:"policyPropagationEnabled,omitempty"` // Policy Propagation Enabled
+
+	PolicySgtTag *float64 `json:"policySgtTag,omitempty"` // Policy Sgt Tag
+
+	L2Handoff *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceSettingsExtConnectivitySettingsL2Handoff `json:"l2Handoff,omitempty"` // L2 Handoff
+
+	L3Handoff *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceSettingsExtConnectivitySettingsL3Handoff `json:"l3Handoff,omitempty"` //
 }
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceSettingsExtConnectivitySettingsL2Handoff interface{}
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceSettingsExtConnectivitySettingsL3Handoff struct {
-	ID               string                                                                                                              `json:"id,omitempty"`               // Id
-	InstanceID       *int                                                                                                                `json:"instanceId,omitempty"`       // Instance Id
-	DisplayName      string                                                                                                              `json:"displayName,omitempty"`      // Display Name
-	InstanceTenantID string                                                                                                              `json:"instanceTenantId,omitempty"` // Instance Tenant Id
-	DeployPending    string                                                                                                              `json:"deployPending,omitempty"`    // Deploy Pending
-	InstanceVersion  *float64                                                                                                            `json:"instanceVersion,omitempty"`  // Instance Version
-	LocalIPAddress   string                                                                                                              `json:"localIpAddress,omitempty"`   // Local Ip Address
-	RemoteIPAddress  string                                                                                                              `json:"remoteIpAddress,omitempty"`  // Remote Ip Address
-	VLANID           *int                                                                                                                `json:"vlanId,omitempty"`           // Vlan Id
-	VirtualNetwork   *ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceSettingsExtConnectivitySettingsL3HandoffVirtualNetwork `json:"virtualNetwork,omitempty"`   //
+	ID string `json:"id,omitempty"` // Id
+
+	InstanceID *int `json:"instanceId,omitempty"` // Instance Id
+
+	DisplayName string `json:"displayName,omitempty"` // Display Name
+
+	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Instance Tenant Id
+
+	DeployPending string `json:"deployPending,omitempty"` // Deploy Pending
+
+	InstanceVersion *float64 `json:"instanceVersion,omitempty"` // Instance Version
+
+	LocalIPAddress string `json:"localIpAddress,omitempty"` // Local Ip Address
+
+	RemoteIPAddress string `json:"remoteIpAddress,omitempty"` // Remote Ip Address
+
+	VLANID *int `json:"vlanId,omitempty"` // Vlan Id
+
+	VirtualNetwork *ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceSettingsExtConnectivitySettingsL3HandoffVirtualNetwork `json:"virtualNetwork,omitempty"` //
 }
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadDeviceSettingsExtConnectivitySettingsL3HandoffVirtualNetwork struct {
 	IDRef string `json:"idRef,omitempty"` // Id Ref
 }
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettings struct {
-	ID               string                                                                                 `json:"id,omitempty"`               // Id
-	InstanceID       *int                                                                                   `json:"instanceId,omitempty"`       // Instance Id
-	DisplayName      string                                                                                 `json:"displayName,omitempty"`      // Display Name
-	InstanceTenantID string                                                                                 `json:"instanceTenantId,omitempty"` // Instance Tenant Id
-	DeployPending    string                                                                                 `json:"deployPending,omitempty"`    // Deploy Pending
-	InstanceVersion  *int                                                                                   `json:"instanceVersion,omitempty"`  // Instance Version
-	AAA              *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsAAA        `json:"aaa,omitempty"`              // Aaa
-	Cmx              *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsCmx        `json:"cmx,omitempty"`              // Cmx
-	Dhcp             *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsDhcp       `json:"dhcp,omitempty"`             //
-	DNS              *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsDNS        `json:"dns,omitempty"`              //
-	Ldap             *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsLdap       `json:"ldap,omitempty"`             // Ldap
-	NativeVLAN       *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsNativeVLAN `json:"nativeVlan,omitempty"`       // Native Vlan
-	Netflow          *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsNetflow    `json:"netflow,omitempty"`          // Netflow
-	Ntp              *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsNtp        `json:"ntp,omitempty"`              // Ntp
-	SNMP             *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsSNMP       `json:"snmp,omitempty"`             // Snmp
-	Syslogs          *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsSyslogs    `json:"syslogs,omitempty"`          // Syslogs
+	ID string `json:"id,omitempty"` // Id
+
+	InstanceID *int `json:"instanceId,omitempty"` // Instance Id
+
+	DisplayName string `json:"displayName,omitempty"` // Display Name
+
+	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Instance Tenant Id
+
+	DeployPending string `json:"deployPending,omitempty"` // Deploy Pending
+
+	InstanceVersion *int `json:"instanceVersion,omitempty"` // Instance Version
+
+	AAA *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsAAA `json:"aaa,omitempty"` // Aaa
+
+	Cmx *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsCmx `json:"cmx,omitempty"` // Cmx
+
+	Dhcp *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsDhcp `json:"dhcp,omitempty"` //
+
+	DNS *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsDNS `json:"dns,omitempty"` //
+
+	Ldap *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsLdap `json:"ldap,omitempty"` // Ldap
+
+	NativeVLAN *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsNativeVLAN `json:"nativeVlan,omitempty"` // Native Vlan
+
+	Netflow *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsNetflow `json:"netflow,omitempty"` // Netflow
+
+	Ntp *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsNtp `json:"ntp,omitempty"` // Ntp
+
+	SNMP *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsSNMP `json:"snmp,omitempty"` // Snmp
+
+	Syslogs *[]ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsSyslogs `json:"syslogs,omitempty"` // Syslogs
 }
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsAAA interface{}
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsCmx interface{}
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsDhcp struct {
-	ID        string                                                                                  `json:"id,omitempty"`        // Id
+	ID string `json:"id,omitempty"` // Id
+
 	IPAddress *ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsDhcpIPAddress `json:"ipAddress,omitempty"` //
 }
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsDhcpIPAddress struct {
-	ID            string `json:"id,omitempty"`            // Id
+	ID string `json:"id,omitempty"` // Id
+
 	PaddedAddress string `json:"paddedAddress,omitempty"` // Padded Address
-	AddressType   string `json:"addressType,omitempty"`   // Address Type
-	Address       string `json:"address,omitempty"`       // Address
+
+	AddressType string `json:"addressType,omitempty"` // Address Type
+
+	Address string `json:"address,omitempty"` // Address
 }
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsDNS struct {
-	ID         string                                                                          `json:"id,omitempty"`         // Id
-	DomainName string                                                                          `json:"domainName,omitempty"` // Domain Name
-	IP         *ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsDNSIP `json:"ip,omitempty"`         //
+	ID string `json:"id,omitempty"` // Id
+
+	DomainName string `json:"domainName,omitempty"` // Domain Name
+
+	IP *ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsDNSIP `json:"ip,omitempty"` //
 }
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsDNSIP struct {
-	ID            string `json:"id,omitempty"`            // Id
+	ID string `json:"id,omitempty"` // Id
+
 	PaddedAddress string `json:"paddedAddress,omitempty"` // Padded Address
-	AddressType   string `json:"addressType,omitempty"`   // Address Type
-	Address       string `json:"address,omitempty"`       // Address
+
+	AddressType string `json:"addressType,omitempty"` // Address Type
+
+	Address string `json:"address,omitempty"` // Address
 }
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsLdap interface{}
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadNetworkWidesettingsNativeVLAN interface{}
@@ -526,1653 +1761,3168 @@ type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadTransitNetworks struc
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadVirtualNetwork interface{}
 type ResponseSdaGetBorderDeviceDetailFromSdaFabricV1PayloadWLAN interface{}
 type ResponseSdaDeleteBorderDeviceFromSdaFabricV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaDeleteControlPlaneDeviceInSdaFabricV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaGetControlPlaneDeviceFromSdaFabricV1 struct {
 	DeviceManagementIPAddress string `json:"deviceManagementIpAddress,omitempty"` // Management Ip Address of the Device which is provisioned successfully
-	DeviceName                string `json:"deviceName,omitempty"`                // Device Name
-	Roles                     string `json:"roles,omitempty"`                     // Assigned roles
-	SiteNameHierarchy         string `json:"siteNameHierarchy,omitempty"`         // Site Name Hierarchy
+
+	DeviceName string `json:"deviceName,omitempty"` // Device Name
+
+	Roles string `json:"roles,omitempty"` // Assigned roles
+
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Site Name Hierarchy
+
 	RouteDistributionProtocol string `json:"routeDistributionProtocol,omitempty"` // routeDistributionProtocol
-	Status                    string `json:"status,omitempty"`                    // Status
-	Description               string `json:"description,omitempty"`               // Control plane device info retrieved successfully in sda fabric
+
+	Status string `json:"status,omitempty"` // Status
+
+	Description string `json:"description,omitempty"` // Control plane device info retrieved successfully in sda fabric
 }
 type ResponseSdaAddControlPlaneDeviceInSdaFabricV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaGetDeviceInfoFromSdaFabricV1 struct {
-	Status                    string   `json:"status,omitempty"`                    // Status
-	Description               string   `json:"description,omitempty"`               // Description
-	Name                      string   `json:"name,omitempty"`                      // Name
-	Roles                     []string `json:"roles,omitempty"`                     // Roles
-	DeviceManagementIPAddress string   `json:"deviceManagementIpAddress,omitempty"` // Device Management Ip Address
-	SiteHierarchy             string   `json:"siteHierarchy,omitempty"`             // Site Hierarchy
+	Status string `json:"status,omitempty"` // Status
+
+	Description string `json:"description,omitempty"` // Description
+
+	Name string `json:"name,omitempty"` // Name
+
+	Roles []string `json:"roles,omitempty"` // Roles
+
+	DeviceManagementIPAddress string `json:"deviceManagementIpAddress,omitempty"` // Device Management Ip Address
+
+	SiteHierarchy string `json:"siteHierarchy,omitempty"` // Site Hierarchy
 }
 type ResponseSdaGetDeviceRoleInSdaFabricV1 struct {
-	Roles       []string `json:"roles,omitempty"`       // Assigned device roles. Possible roles are [Edge Node, Control Plane, Border Node, Extended Node, Wireless Controller, Transit Control Plane]
-	Status      string   `json:"status,omitempty"`      // Status indicates if API failed or passed.
-	Description string   `json:"description,omitempty"` // Device role successfully retrieved from sda fabric.
+	Roles []string `json:"roles,omitempty"` // Assigned device roles. Possible roles are [Edge Node, Control Plane, Border Node, Extended Node, Wireless Controller, Transit Control Plane]
+
+	Status string `json:"status,omitempty"` // Status indicates if API failed or passed.
+
+	Description string `json:"description,omitempty"` // Device role successfully retrieved from sda fabric.
 }
 type ResponseSdaAddEdgeDeviceInSdaFabricV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaDeleteEdgeDeviceFromSdaFabricV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaGetEdgeDeviceFromSdaFabricV1 struct {
 	DeviceManagementIPAddress string `json:"deviceManagementIpAddress,omitempty"` // Management Ip Address of the Device which is provisioned successfully
-	DeviceName                string `json:"deviceName,omitempty"`                // Device Name
-	Roles                     string `json:"roles,omitempty"`                     // Assigned roles
-	SiteNameHierarchy         string `json:"siteNameHierarchy,omitempty"`         // Site Name Hierarchy
-	FabricSiteNameHierarchy   string `json:"fabricSiteNameHierarchy,omitempty"`   // Fabric Site Name Hierarchy
-	Status                    string `json:"status,omitempty"`                    // Status
-	Description               string `json:"description,omitempty"`               // Edge device info retrieved successfully in sda fabric
+
+	DeviceName string `json:"deviceName,omitempty"` // Device Name
+
+	Roles string `json:"roles,omitempty"` // Assigned roles
+
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Site Name Hierarchy
+
+	FabricSiteNameHierarchy string `json:"fabricSiteNameHierarchy,omitempty"` // Fabric Site Name Hierarchy
+
+	Status string `json:"status,omitempty"` // Status
+
+	Description string `json:"description,omitempty"` // Edge device info retrieved successfully in sda fabric
 }
 type ResponseSdaGetSiteFromSdaFabricV1 struct {
 	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Site Name Hierarchy
-	FabricName        string `json:"fabricName,omitempty"`        // Fabric Name
-	FabricType        string `json:"fabricType,omitempty"`        // Fabric Type
-	FabricDomainType  string `json:"fabricDomainType,omitempty"`  // Fabric Domain Type
-	Status            string `json:"status,omitempty"`            // Status
-	Description       string `json:"description,omitempty"`       // Fabric Site info successfully retrieved from sda fabric
+
+	FabricName string `json:"fabricName,omitempty"` // Fabric Name
+
+	FabricType string `json:"fabricType,omitempty"` // Fabric Type
+
+	FabricDomainType string `json:"fabricDomainType,omitempty"` // Fabric Domain Type
+
+	Status string `json:"status,omitempty"` // Status
+
+	Description string `json:"description,omitempty"` // Fabric Site info successfully retrieved from sda fabric
 }
 type ResponseSdaDeleteSiteFromSdaFabricV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaAddSiteInSdaFabricV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaAddPortAssignmentForAccessPointInSdaFabricV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaDeletePortAssignmentForAccessPointInSdaFabricV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaGetPortAssignmentForAccessPointInSdaFabricV1 struct {
-	Status                    string `json:"status,omitempty"`                    // Status
-	Description               string `json:"description,omitempty"`               // Description
-	SiteNameHierarchy         string `json:"siteNameHierarchy,omitempty"`         // Site Name Hierarchy
+	Status string `json:"status,omitempty"` // Status
+
+	Description string `json:"description,omitempty"` // Description
+
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Site Name Hierarchy
+
 	DeviceManagementIPAddress string `json:"deviceManagementIpAddress,omitempty"` // Device Management Ip Address
-	InterfaceName             string `json:"interfaceName,omitempty"`             // Interface Name
-	DataIPAddressPoolName     string `json:"dataIpAddressPoolName,omitempty"`     // Data Ip Address Pool Name
-	VoiceIPAddressPoolName    string `json:"voiceIpAddressPoolName,omitempty"`    // Voice Ip Address Pool Name
-	ScalableGroupName         string `json:"scalableGroupName,omitempty"`         // Scalable Group Name
-	AuthenticateTemplateName  string `json:"authenticateTemplateName,omitempty"`  // Authenticate Template Name
+
+	InterfaceName string `json:"interfaceName,omitempty"` // Interface Name
+
+	DataIPAddressPoolName string `json:"dataIpAddressPoolName,omitempty"` // Data Ip Address Pool Name
+
+	VoiceIPAddressPoolName string `json:"voiceIpAddressPoolName,omitempty"` // Voice Ip Address Pool Name
+
+	ScalableGroupName string `json:"scalableGroupName,omitempty"` // Scalable Group Name
+
+	AuthenticateTemplateName string `json:"authenticateTemplateName,omitempty"` // Authenticate Template Name
 }
 type ResponseSdaDeletePortAssignmentForUserDeviceInSdaFabricV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaAddPortAssignmentForUserDeviceInSdaFabricV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaGetPortAssignmentForUserDeviceInSdaFabricV1 struct {
-	Status                    string `json:"status,omitempty"`                    // Status
-	Description               string `json:"description,omitempty"`               // Description
-	SiteNameHierarchy         string `json:"siteNameHierarchy,omitempty"`         // Site Name Hierarchy
+	Status string `json:"status,omitempty"` // Status
+
+	Description string `json:"description,omitempty"` // Description
+
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Site Name Hierarchy
+
 	DeviceManagementIPAddress string `json:"deviceManagementIpAddress,omitempty"` // Device Management Ip Address
-	InterfaceName             string `json:"interfaceName,omitempty"`             // Interface Name
-	DataIPAddressPoolName     string `json:"dataIpAddressPoolName,omitempty"`     // Data Ip Address Pool Name
-	VoiceIPAddressPoolName    string `json:"voiceIpAddressPoolName,omitempty"`    // Voice Ip Address Pool Name
-	ScalableGroupName         string `json:"scalableGroupName,omitempty"`         // Scalable Group Name
-	AuthenticateTemplateName  string `json:"authenticateTemplateName,omitempty"`  // Authenticate Template Name
+
+	InterfaceName string `json:"interfaceName,omitempty"` // Interface Name
+
+	DataIPAddressPoolName string `json:"dataIpAddressPoolName,omitempty"` // Data Ip Address Pool Name
+
+	VoiceIPAddressPoolName string `json:"voiceIpAddressPoolName,omitempty"` // Voice Ip Address Pool Name
+
+	ScalableGroupName string `json:"scalableGroupName,omitempty"` // Scalable Group Name
+
+	AuthenticateTemplateName string `json:"authenticateTemplateName,omitempty"` // Authenticate Template Name
 }
 type ResponseSdaAddMulticastInSdaFabricV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaGetMulticastDetailsFromSdaFabricV1 struct {
-	MulticastMethod string                                                          `json:"multicastMethod,omitempty"` // Multicast Method
-	MulticastType   string                                                          `json:"multicastType,omitempty"`   // Multicast Type
+	MulticastMethod string `json:"multicastMethod,omitempty"` // Multicast Method
+
+	MulticastType string `json:"multicastType,omitempty"` // Multicast Type
+
 	MulticastVnInfo *[]ResponseSdaGetMulticastDetailsFromSdaFabricV1MulticastVnInfo `json:"multicastVnInfo,omitempty"` //
-	Status          string                                                          `json:"status,omitempty"`          // Status
-	Description     string                                                          `json:"description,omitempty"`     // multicast configuration info retrieved successfully from sda fabric
+
+	Status string `json:"status,omitempty"` // Status
+
+	Description string `json:"description,omitempty"` // multicast configuration info retrieved successfully from sda fabric
 }
 type ResponseSdaGetMulticastDetailsFromSdaFabricV1MulticastVnInfo struct {
-	VirtualNetworkName  string                                                                 `json:"virtualNetworkName,omitempty"`  // Virtual Network Name, that is associated to Fabric Site
-	IPPoolName          string                                                                 `json:"ipPoolName,omitempty"`          // Ip Pool Name, that is reserved to Fabric Site
-	InternalRpIPAddress []string                                                               `json:"internalRpIpAddress,omitempty"` // InternalRpIpAddress
-	ExternalRpIPAddress string                                                                 `json:"externalRpIpAddress,omitempty"` // ExternalRpIpAddress
-	SsmInfo             *[]ResponseSdaGetMulticastDetailsFromSdaFabricV1MulticastVnInfoSsmInfo `json:"ssmInfo,omitempty"`             //
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Virtual Network Name, that is associated to Fabric Site
+
+	IPPoolName string `json:"ipPoolName,omitempty"` // Ip Pool Name, that is reserved to Fabric Site
+
+	InternalRpIPAddress []string `json:"internalRpIpAddress,omitempty"` // InternalRpIpAddress
+
+	ExternalRpIPAddress string `json:"externalRpIpAddress,omitempty"` // ExternalRpIpAddress
+
+	SsmInfo *[]ResponseSdaGetMulticastDetailsFromSdaFabricV1MulticastVnInfoSsmInfo `json:"ssmInfo,omitempty"` //
 }
 type ResponseSdaGetMulticastDetailsFromSdaFabricV1MulticastVnInfoSsmInfo struct {
-	SsmGroupRange   string `json:"ssmGroupRange,omitempty"`   // SSM group range
+	SsmGroupRange string `json:"ssmGroupRange,omitempty"` // SSM group range
+
 	SsmWildcardMask string `json:"ssmWildcardMask,omitempty"` // SSM Wildcard Mask
 }
 type ResponseSdaDeleteMulticastFromSdaFabricV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaDeleteProvisionedWiredDeviceV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaReProvisionWiredDeviceV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaProvisionWiredDeviceV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaGetProvisionedWiredDeviceV1 struct {
 	DeviceManagementIPAddress string `json:"deviceManagementIpAddress,omitempty"` // Management Ip Address of the device to be provisioned
-	SiteNameHierarchy         string `json:"siteNameHierarchy,omitempty"`         // Site Name Hierarchy for device location(only building / floor level)
-	Status                    string `json:"status,omitempty"`                    // Status
-	Description               string `json:"description,omitempty"`               // Wired Provisioned device detail retrieved successfully
+
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Site Name Hierarchy for device location(only building / floor level)
+
+	Status string `json:"status,omitempty"` // Status
+
+	Description string `json:"description,omitempty"` // Wired Provisioned device detail retrieved successfully
 }
 type ResponseSdaDeleteTransitPeerNetworkV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaGetTransitPeerNetworkInfoV1 struct {
-	TransitPeerNetworkName string                                                    `json:"transitPeerNetworkName,omitempty"` // Transit Peer Network Name
-	TransitPeerNetworkType string                                                    `json:"transitPeerNetworkType,omitempty"` // Transit Peer Network Type
-	IPTransitSettings      *ResponseSdaGetTransitPeerNetworkInfoV1IPTransitSettings  `json:"ipTransitSettings,omitempty"`      //
-	SdaTransitSettings     *ResponseSdaGetTransitPeerNetworkInfoV1SdaTransitSettings `json:"sdaTransitSettings,omitempty"`     //
-	Status                 string                                                    `json:"status,omitempty"`                 // status
-	Description            string                                                    `json:"description,omitempty"`            // Transit Peer network info retrieved successfully
-	TransitPeerNetworkID   string                                                    `json:"transitPeerNetworkId,omitempty"`   // Transit Peer Network Id
+	TransitPeerNetworkName string `json:"transitPeerNetworkName,omitempty"` // Transit Peer Network Name
+
+	TransitPeerNetworkType string `json:"transitPeerNetworkType,omitempty"` // Transit Peer Network Type
+
+	IPTransitSettings *ResponseSdaGetTransitPeerNetworkInfoV1IPTransitSettings `json:"ipTransitSettings,omitempty"` //
+
+	SdaTransitSettings *ResponseSdaGetTransitPeerNetworkInfoV1SdaTransitSettings `json:"sdaTransitSettings,omitempty"` //
+
+	Status string `json:"status,omitempty"` // status
+
+	Description string `json:"description,omitempty"` // Transit Peer network info retrieved successfully
+
+	TransitPeerNetworkID string `json:"transitPeerNetworkId,omitempty"` // Transit Peer Network Id
 }
 type ResponseSdaGetTransitPeerNetworkInfoV1IPTransitSettings struct {
-	RoutingProtocolName    string `json:"routingProtocolName,omitempty"`    // Routing Protocol Name
+	RoutingProtocolName string `json:"routingProtocolName,omitempty"` // Routing Protocol Name
+
 	AutonomousSystemNumber string `json:"autonomousSystemNumber,omitempty"` // Autonomous System Number
 }
 type ResponseSdaGetTransitPeerNetworkInfoV1SdaTransitSettings struct {
 	TransitControlPlaneSettings *[]ResponseSdaGetTransitPeerNetworkInfoV1SdaTransitSettingsTransitControlPlaneSettings `json:"transitControlPlaneSettings,omitempty"` //
 }
 type ResponseSdaGetTransitPeerNetworkInfoV1SdaTransitSettingsTransitControlPlaneSettings struct {
-	SiteNameHierarchy         string `json:"siteNameHierarchy,omitempty"`         // Site Name Hierarchy
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Site Name Hierarchy
+
 	DeviceManagementIPAddress string `json:"deviceManagementIpAddress,omitempty"` // Device Management Ip Address
 }
 type ResponseSdaAddTransitPeerNetworkV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaDeleteVnFromSdaFabricV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaGetVnFromSdaFabricV1 struct {
-	SiteNameHierarchy       string `json:"siteNameHierarchy,omitempty"`       // Path of sda Fabric Site
-	VirtualNetworkName      string `json:"virtualNetworkName,omitempty"`      // Virtual Network Name
-	FabricName              string `json:"fabricName,omitempty"`              // Fabric Name
-	IsInfraVn               *bool  `json:"isInfraVN,omitempty"`               // Infra VN
-	IsDefaultVn             *bool  `json:"isDefaultVN,omitempty"`             // Default VN
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Path of sda Fabric Site
+
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Virtual Network Name
+
+	FabricName string `json:"fabricName,omitempty"` // Fabric Name
+
+	IsInfraVn *bool `json:"isInfraVN,omitempty"` // Infra VN
+
+	IsDefaultVn *bool `json:"isDefaultVN,omitempty"` // Default VN
+
 	VirtualNetworkContextID string `json:"virtualNetworkContextId,omitempty"` // Virtual Network Context Id
-	VirtualNetworkID        string `json:"virtualNetworkId,omitempty"`        // Virtual Network Id
-	Status                  string `json:"status,omitempty"`                  // Status
-	Description             string `json:"description,omitempty"`             // Virtual Network info retrieved successfully from SDA Fabric
-	ExecutionID             string `json:"executionId,omitempty"`             // Execution Id
+
+	VirtualNetworkID string `json:"virtualNetworkId,omitempty"` // Virtual Network Id
+
+	Status string `json:"status,omitempty"` // Status
+
+	Description string `json:"description,omitempty"` // Virtual Network info retrieved successfully from SDA Fabric
+
+	ExecutionID string `json:"executionId,omitempty"` // Execution Id
 }
 type ResponseSdaAddVnInFabricV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaGetVirtualNetworkSummaryV1 struct {
-	VirtualNetworkCount   *int                                                          `json:"virtualNetworkCount,omitempty"`   // Virtual Networks Count
+	VirtualNetworkCount *int `json:"virtualNetworkCount,omitempty"` // Virtual Networks Count
+
 	VirtualNetworkSummary *[]ResponseSdaGetVirtualNetworkSummaryV1VirtualNetworkSummary `json:"virtualNetworkSummary,omitempty"` //
-	Status                string                                                        `json:"status,omitempty"`                // Status
-	Description           string                                                        `json:"description,omitempty"`           // Virtual Network summary retrieved successfully from SDA Fabric
-	ExecutionID           string                                                        `json:"executionId,omitempty"`           // Execution Id
+
+	Status string `json:"status,omitempty"` // Status
+
+	Description string `json:"description,omitempty"` // Virtual Network summary retrieved successfully from SDA Fabric
+
+	ExecutionID string `json:"executionId,omitempty"` // Execution Id
 }
 type ResponseSdaGetVirtualNetworkSummaryV1VirtualNetworkSummary struct {
 	VirtualNetworkContextID string `json:"virtualNetworkContextId,omitempty"` // Virtual Network Context Id
-	VirtualNetworkID        string `json:"virtualNetworkId,omitempty"`        // Virtual Network Id
-	SiteNameHierarchy       string `json:"siteNameHierarchy,omitempty"`       // Site Name Hierarchy
-	VirtualNetworkName      string `json:"virtualNetworkName,omitempty"`      // Virtual Network Name
-	Layer3Instance          *int   `json:"layer3Instance,omitempty"`          // layer3 Instance
-	VirtualNetworkStatus    string `json:"virtualNetworkStatus,omitempty"`    // Virtual Network Status
+
+	VirtualNetworkID string `json:"virtualNetworkId,omitempty"` // Virtual Network Id
+
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Site Name Hierarchy
+
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Virtual Network Name
+
+	Layer3Instance *int `json:"layer3Instance,omitempty"` // layer3 Instance
+
+	VirtualNetworkStatus string `json:"virtualNetworkStatus,omitempty"` // Virtual Network Status
 }
 type ResponseSdaGetIPPoolFromSdaVirtualNetworkV1 struct {
-	Status                   string `json:"status,omitempty"`                   // Status
-	Description              string `json:"description,omitempty"`              // Description
-	VirtualNetworkName       string `json:"virtualNetworkName,omitempty"`       // Virtual Network Name
-	IPPoolName               string `json:"ipPoolName,omitempty"`               // Ip Pool Name
+	Status string `json:"status,omitempty"` // Status
+
+	Description string `json:"description,omitempty"` // Description
+
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Virtual Network Name
+
+	IPPoolName string `json:"ipPoolName,omitempty"` // Ip Pool Name
+
 	AuthenticationPolicyName string `json:"authenticationPolicyName,omitempty"` // Authentication Policy Name
-	TrafficType              string `json:"trafficType,omitempty"`              // Traffic Type
-	ScalableGroupName        string `json:"scalableGroupName,omitempty"`        // Scalable Group Name
-	IsL2FloodingEnabled      *bool  `json:"isL2FloodingEnabled,omitempty"`      // Is L2 Flooding Enabled
-	IsThisCriticalPool       *bool  `json:"isThisCriticalPool,omitempty"`       // Is This Critical Pool
+
+	TrafficType string `json:"trafficType,omitempty"` // Traffic Type
+
+	ScalableGroupName string `json:"scalableGroupName,omitempty"` // Scalable Group Name
+
+	IsL2FloodingEnabled *bool `json:"isL2FloodingEnabled,omitempty"` // Is L2 Flooding Enabled
+
+	IsThisCriticalPool *bool `json:"isThisCriticalPool,omitempty"` // Is This Critical Pool
 }
 type ResponseSdaDeleteIPPoolFromSdaVirtualNetworkV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaAddIPPoolInSdaVirtualNetworkV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaUpdateAnycastGatewaysV1 struct {
 	Response *ResponseSdaUpdateAnycastGatewaysV1Response `json:"response,omitempty"` //
-	Version  string                                      `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaUpdateAnycastGatewaysV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaAddAnycastGatewaysV1 struct {
 	Response *ResponseSdaAddAnycastGatewaysV1Response `json:"response,omitempty"` //
-	Version  string                                   `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaAddAnycastGatewaysV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaGetAnycastGatewaysV1 struct {
 	Response *[]ResponseSdaGetAnycastGatewaysV1Response `json:"response,omitempty"` //
-	Version  string                                     `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetAnycastGatewaysV1Response struct {
-	ID                                      string `json:"id,omitempty"`                                      // ID of the anycast gateway.
-	FabricID                                string `json:"fabricId,omitempty"`                                // ID of the fabric this anycast gateway is assigned to.
-	VirtualNetworkName                      string `json:"virtualNetworkName,omitempty"`                      // Name of the layer 3 virtual network associated with the anycast gateway.
-	IPPoolName                              string `json:"ipPoolName,omitempty"`                              // Name of the IP pool associated with the anycast gateway.
-	TCPMssAdjustment                        *int   `json:"tcpMssAdjustment,omitempty"`                        // TCP maximum segment size adjustment.
-	VLANName                                string `json:"vlanName,omitempty"`                                // Name of the VLAN of the anycast gateway.
-	VLANID                                  *int   `json:"vlanId,omitempty"`                                  // ID of the VLAN of the anycast gateway.
-	TrafficType                             string `json:"trafficType,omitempty"`                             // The type of traffic the anycast gateway serves.
-	PoolType                                string `json:"poolType,omitempty"`                                // The pool type of the anycast gateway (applicable only to INFRA_VN).
-	SecurityGroupName                       string `json:"securityGroupName,omitempty"`                       // Name of the associated Security Group (not applicable to INFRA_VN).
-	IsCriticalPool                          *bool  `json:"isCriticalPool,omitempty"`                          // Enable/disable critical VLAN (not applicable to INFRA_VN).
-	IsLayer2FloodingEnabled                 *bool  `json:"isLayer2FloodingEnabled,omitempty"`                 // Enable/disable layer 2 flooding (not applicable to INFRA_VN).
-	IsWirelessPool                          *bool  `json:"isWirelessPool,omitempty"`                          // Enable/disable fabric-enabled wireless (not applicable to INFRA_VN).
-	IsIPDirectedBroadcast                   *bool  `json:"isIpDirectedBroadcast,omitempty"`                   // Enable/disable IP-directed broadcast (not applicable to INFRA_VN).
-	IsIntraSubnetRoutingEnabled             *bool  `json:"isIntraSubnetRoutingEnabled,omitempty"`             // Enable/disable Intra-Subnet Routing (not applicable to INFRA_VN).
-	IsMultipleIPToMacAddresses              *bool  `json:"isMultipleIpToMacAddresses,omitempty"`              // Enable/disable multiple IP-to-MAC Addresses (Wireless Bridged-Network Virtual Machine; not applicable to INFRA_VN).
-	IsSupplicantBasedExtendedNodeOnboarding *bool  `json:"isSupplicantBasedExtendedNodeOnboarding,omitempty"` // Enable/disable Supplicant-Based Extended Node Onboarding (applicable only to INFRA_VN).
-	IsGroupBasedPolicyEnforcementEnabled    *bool  `json:"isGroupBasedPolicyEnforcementEnabled,omitempty"`    // Enable/disable Group-Based Policy Enforcement (applicable only to INFRA_VN).
+	ID string `json:"id,omitempty"` // ID of the anycast gateway.
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric this anycast gateway is assigned to.
+
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Name of the layer 3 virtual network associated with the anycast gateway.
+
+	IPPoolName string `json:"ipPoolName,omitempty"` // Name of the IP pool associated with the anycast gateway.
+
+	TCPMssAdjustment *int `json:"tcpMssAdjustment,omitempty"` // TCP maximum segment size adjustment.
+
+	VLANName string `json:"vlanName,omitempty"` // Name of the VLAN of the anycast gateway.
+
+	VLANID *int `json:"vlanId,omitempty"` // ID of the VLAN of the anycast gateway.
+
+	TrafficType string `json:"trafficType,omitempty"` // The type of traffic the anycast gateway serves.
+
+	PoolType string `json:"poolType,omitempty"` // The pool type of the anycast gateway (applicable only to INFRA_VN).
+
+	SecurityGroupName string `json:"securityGroupName,omitempty"` // Name of the associated Security Group (not applicable to INFRA_VN).
+
+	IsCriticalPool *bool `json:"isCriticalPool,omitempty"` // Enable/disable critical VLAN (not applicable to INFRA_VN).
+
+	IsLayer2FloodingEnabled *bool `json:"isLayer2FloodingEnabled,omitempty"` // Enable/disable layer 2 flooding (not applicable to INFRA_VN).
+
+	IsWirelessPool *bool `json:"isWirelessPool,omitempty"` // Enable/disable fabric-enabled wireless (not applicable to INFRA_VN).
+
+	IsIPDirectedBroadcast *bool `json:"isIpDirectedBroadcast,omitempty"` // Enable/disable IP-directed broadcast (not applicable to INFRA_VN).
+
+	IsIntraSubnetRoutingEnabled *bool `json:"isIntraSubnetRoutingEnabled,omitempty"` // Enable/disable Intra-Subnet Routing (not applicable to INFRA_VN).
+
+	IsMultipleIPToMacAddresses *bool `json:"isMultipleIpToMacAddresses,omitempty"` // Enable/disable multiple IP-to-MAC Addresses (Wireless Bridged-Network Virtual Machine; not applicable to INFRA_VN).
+
+	IsSupplicantBasedExtendedNodeOnboarding *bool `json:"isSupplicantBasedExtendedNodeOnboarding,omitempty"` // Enable/disable Supplicant-Based Extended Node Onboarding (applicable only to INFRA_VN).
+
+	IsGroupBasedPolicyEnforcementEnabled *bool `json:"isGroupBasedPolicyEnforcementEnabled,omitempty"` // Enable/disable Group-Based Policy Enforcement (applicable only to INFRA_VN).
 }
 type ResponseSdaGetAnycastGatewayCountV1 struct {
 	Response *ResponseSdaGetAnycastGatewayCountV1Response `json:"response,omitempty"` //
-	Version  string                                       `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetAnycastGatewayCountV1Response struct {
 	Count *int `json:"count,omitempty"` // The number of anycast gateways.
 }
 type ResponseSdaDeleteAnycastGatewayByIDV1 struct {
 	Response *ResponseSdaDeleteAnycastGatewayByIDV1Response `json:"response,omitempty"` //
-	Version  string                                         `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaDeleteAnycastGatewayByIDV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaGetAuthenticationProfilesV1 struct {
 	Response *[]ResponseSdaGetAuthenticationProfilesV1Response `json:"response,omitempty"` //
-	Version  string                                            `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetAuthenticationProfilesV1Response struct {
-	ID                        string `json:"id,omitempty"`                        // ID of the authentication profile.
-	FabricID                  string `json:"fabricId,omitempty"`                  // ID of the fabric this authentication profile is assigned to.
+	ID string `json:"id,omitempty"` // ID of the authentication profile.
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric this authentication profile is assigned to. (This property is not applicable to global authentication profiles and will not be present in such cases.)
+
 	AuthenticationProfileName string `json:"authenticationProfileName,omitempty"` // The default host authentication template.
-	AuthenticationOrder       string `json:"authenticationOrder,omitempty"`       // First authentication method.
-	Dot1XToMabFallbackTimeout *int   `json:"dot1xToMabFallbackTimeout,omitempty"` // 802.1x Timeout.
-	WakeOnLan                 *bool  `json:"wakeOnLan,omitempty"`                 // Wake on LAN.
-	NumberOfHosts             string `json:"numberOfHosts,omitempty"`             // Number of Hosts.
-	IsBpduGuardEnabled        *bool  `json:"isBpduGuardEnabled,omitempty"`        // Enable/disable BPDU Guard. Only applicable when authenticationProfileName is set to "Closed Authentication".
+
+	AuthenticationOrder string `json:"authenticationOrder,omitempty"` // First authentication method.
+
+	Dot1XToMabFallbackTimeout *int `json:"dot1xToMabFallbackTimeout,omitempty"` // 802.1x Timeout.
+
+	WakeOnLan *bool `json:"wakeOnLan,omitempty"` // Wake on LAN.
+
+	NumberOfHosts string `json:"numberOfHosts,omitempty"` // Number of Hosts.
+
+	IsBpduGuardEnabled *bool `json:"isBpduGuardEnabled,omitempty"` // Enable/disable BPDU Guard. Only applicable when authenticationProfileName is set to "Closed Authentication".
+
+	PreAuthACL *ResponseSdaGetAuthenticationProfilesV1ResponsePreAuthACL `json:"preAuthAcl,omitempty"` //
+}
+type ResponseSdaGetAuthenticationProfilesV1ResponsePreAuthACL struct {
+	Enabled *bool `json:"enabled,omitempty"` // Enable/disable Pre-Authentication ACL.
+
+	ImplicitAction string `json:"implicitAction,omitempty"` // Implicit behaviour unless overridden.
+
+	Description string `json:"description,omitempty"` // Description of this Pre-Authentication ACL.
+
+	AccessContracts *[]ResponseSdaGetAuthenticationProfilesV1ResponsePreAuthACLAccessContracts `json:"accessContracts,omitempty"` //
+}
+type ResponseSdaGetAuthenticationProfilesV1ResponsePreAuthACLAccessContracts struct {
+	Action string `json:"action,omitempty"` // Contract behaviour.
+
+	Protocol string `json:"protocol,omitempty"` // Protocol for the access contract.
+
+	Port string `json:"port,omitempty"` // Port for the access contract.
 }
 type ResponseSdaUpdateAuthenticationProfileV1 struct {
 	Response *ResponseSdaUpdateAuthenticationProfileV1Response `json:"response,omitempty"` //
-	Version  string                                            `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaUpdateAuthenticationProfileV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaDeleteExtranetPoliciesV1 struct {
 	Response *ResponseSdaDeleteExtranetPoliciesV1Response `json:"response,omitempty"` //
-	Version  string                                       `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaDeleteExtranetPoliciesV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaUpdateExtranetPolicyV1 struct {
 	Response *ResponseSdaUpdateExtranetPolicyV1Response `json:"response,omitempty"` //
-	Version  string                                     `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaUpdateExtranetPolicyV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaAddExtranetPolicyV1 struct {
 	Response *ResponseSdaAddExtranetPolicyV1Response `json:"response,omitempty"` //
-	Version  string                                  `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaAddExtranetPolicyV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaGetExtranetPoliciesV1 struct {
 	Response *[]ResponseSdaGetExtranetPoliciesV1Response `json:"response,omitempty"` //
-	Version  string                                      `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetExtranetPoliciesV1Response struct {
-	ID                            string   `json:"id,omitempty"`                            // ID of the extranet policy.
-	ExtranetPolicyName            string   `json:"extranetPolicyName,omitempty"`            // Name of the extranet policy.
-	FabricIDs                     []string `json:"fabricIds,omitempty"`                     // IDs of the fabric sites associated with this extranet policy.
-	ProviderVirtualNetworkName    string   `json:"providerVirtualNetworkName,omitempty"`    // Name of the provider virtual network.
+	ID string `json:"id,omitempty"` // ID of the extranet policy.
+
+	ExtranetPolicyName string `json:"extranetPolicyName,omitempty"` // Name of the extranet policy.
+
+	FabricIDs []string `json:"fabricIds,omitempty"` // IDs of the fabric sites associated with this extranet policy.
+
+	ProviderVirtualNetworkName string `json:"providerVirtualNetworkName,omitempty"` // Name of the provider virtual network.
+
 	SubscriberVirtualNetworkNames []string `json:"subscriberVirtualNetworkNames,omitempty"` // Name of the subscriber virtual network names.
 }
 type ResponseSdaGetExtranetPolicyCountV1 struct {
 	Response *ResponseSdaGetExtranetPolicyCountV1Response `json:"response,omitempty"` //
-	Version  string                                       `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetExtranetPolicyCountV1Response struct {
 	Count *int `json:"count,omitempty"` // Number of extranet policies.
 }
 type ResponseSdaDeleteExtranetPolicyByIDV1 struct {
 	Response *ResponseSdaDeleteExtranetPolicyByIDV1Response `json:"response,omitempty"` //
-	Version  string                                         `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaDeleteExtranetPolicyByIDV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaGetFabricDevicesV1 struct {
 	Response *[]ResponseSdaGetFabricDevicesV1Response `json:"response,omitempty"` //
-	Version  string                                   `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetFabricDevicesV1Response struct {
-	ID                   string                                                     `json:"id,omitempty"`                   // ID of the fabric device.
-	NetworkDeviceID      string                                                     `json:"networkDeviceId,omitempty"`      // Network device ID of the fabric device.
-	FabricID             string                                                     `json:"fabricId,omitempty"`             // ID of the fabric of this fabric device.
-	DeviceRoles          []string                                                   `json:"deviceRoles,omitempty"`          // List of the roles of the fabric device. Allowed values are [CONTROL_PLANE_NODE, EDGE_NODE, BORDER_NODE, WIRELESS_CONTROLLER_NODE, EXTENDED_NODE].
+	ID string `json:"id,omitempty"` // ID of the fabric device.
+
+	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Network device ID of the fabric device.
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric of this fabric device.
+
+	DeviceRoles []string `json:"deviceRoles,omitempty"` // List of the roles of the fabric device. Allowed values are [CONTROL_PLANE_NODE, EDGE_NODE, BORDER_NODE, WIRELESS_CONTROLLER_NODE, EXTENDED_NODE].
+
 	BorderDeviceSettings *ResponseSdaGetFabricDevicesV1ResponseBorderDeviceSettings `json:"borderDeviceSettings,omitempty"` //
 }
 type ResponseSdaGetFabricDevicesV1ResponseBorderDeviceSettings struct {
-	BorderTypes    []string                                                                 `json:"borderTypes,omitempty"`    // List of the border types of the fabric device. Allowed values are [LAYER_2, LAYER_3].
+	BorderTypes []string `json:"borderTypes,omitempty"` // List of the border types of the fabric device. Allowed values are [LAYER_2, LAYER_3].
+
 	Layer3Settings *ResponseSdaGetFabricDevicesV1ResponseBorderDeviceSettingsLayer3Settings `json:"layer3Settings,omitempty"` //
 }
 type ResponseSdaGetFabricDevicesV1ResponseBorderDeviceSettingsLayer3Settings struct {
-	LocalAutonomousSystemNumber  string `json:"localAutonomousSystemNumber,omitempty"`  // BGP Local autonomous system number of the fabric border device.
-	IsDefaultExit                *bool  `json:"isDefaultExit,omitempty"`                // Is default exit value of the fabric border device.
-	ImportExternalRoutes         *bool  `json:"importExternalRoutes,omitempty"`         // Import external routes value of the fabric border device.
-	BorderPriority               *int   `json:"borderPriority,omitempty"`               // Border priority of the fabric border device.  A lower value indicates higher priority. E.g., a priority of 1 takes precedence over 5.
-	PrependAutonomousSystemCount *int   `json:"prependAutonomousSystemCount,omitempty"` // Prepend autonomous system count of the fabric border device.
+	LocalAutonomousSystemNumber string `json:"localAutonomousSystemNumber,omitempty"` // BGP Local autonomous system number of the fabric border device.
+
+	IsDefaultExit *bool `json:"isDefaultExit,omitempty"` // Is default exit value of the fabric border device.
+
+	ImportExternalRoutes *bool `json:"importExternalRoutes,omitempty"` // Import external routes value of the fabric border device.
+
+	BorderPriority *int `json:"borderPriority,omitempty"` // Border priority of the fabric border device.  A lower value indicates higher priority. E.g., a priority of 1 takes precedence over 5.
+
+	PrependAutonomousSystemCount *int `json:"prependAutonomousSystemCount,omitempty"` // Prepend autonomous system count of the fabric border device.
 }
 type ResponseSdaUpdateFabricDevicesV1 struct {
 	Response *ResponseSdaUpdateFabricDevicesV1Response `json:"response,omitempty"` //
-	Version  string                                    `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaUpdateFabricDevicesV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+
+	URL string `json:"url,omitempty"` // Task status lookup url.
 }
 type ResponseSdaDeleteFabricDevicesV1 struct {
 	Response *ResponseSdaDeleteFabricDevicesV1Response `json:"response,omitempty"` //
-	Version  string                                    `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaDeleteFabricDevicesV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+
+	URL string `json:"url,omitempty"` // Task status lookup url.
 }
 type ResponseSdaAddFabricDevicesV1 struct {
 	Response *ResponseSdaAddFabricDevicesV1Response `json:"response,omitempty"` //
-	Version  string                                 `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaAddFabricDevicesV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+
+	URL string `json:"url,omitempty"` // Task status lookup url.
 }
 type ResponseSdaGetFabricDevicesCountV1 struct {
 	Response *ResponseSdaGetFabricDevicesCountV1Response `json:"response,omitempty"` //
-	Version  string                                      `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetFabricDevicesCountV1Response struct {
 	Count *int `json:"count,omitempty"` // Number of fabric devices.
 }
 type ResponseSdaDeleteFabricDeviceLayer2HandoffsV1 struct {
 	Response *ResponseSdaDeleteFabricDeviceLayer2HandoffsV1Response `json:"response,omitempty"` //
-	Version  string                                                 `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaDeleteFabricDeviceLayer2HandoffsV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+
+	URL string `json:"url,omitempty"` // Task status lookup url.
 }
 type ResponseSdaGetFabricDevicesLayer2HandoffsV1 struct {
 	Response *[]ResponseSdaGetFabricDevicesLayer2HandoffsV1Response `json:"response,omitempty"` //
-	Version  string                                                 `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetFabricDevicesLayer2HandoffsV1Response struct {
-	ID              string `json:"id,omitempty"`              // ID of the layer 2 handoff of a fabric device.
+	ID string `json:"id,omitempty"` // ID of the layer 2 handoff of a fabric device.
+
 	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Network device ID of the fabric device.
-	FabricID        string `json:"fabricId,omitempty"`        // ID of the fabric this device is assigned to.
-	InterfaceName   string `json:"interfaceName,omitempty"`   // Interface name of the layer 2 handoff.
-	InternalVLANID  *int   `json:"internalVlanId,omitempty"`  // VLAN number associated with this fabric.
-	ExternalVLANID  *int   `json:"externalVlanId,omitempty"`  // External VLAN number into which the fabric is extended.
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric this device is assigned to.
+
+	InterfaceName string `json:"interfaceName,omitempty"` // Interface name of the layer 2 handoff.
+
+	InternalVLANID *int `json:"internalVlanId,omitempty"` // VLAN number associated with this fabric.
+
+	ExternalVLANID *int `json:"externalVlanId,omitempty"` // External VLAN number into which the fabric is extended.
 }
 type ResponseSdaAddFabricDevicesLayer2HandoffsV1 struct {
 	Response *ResponseSdaAddFabricDevicesLayer2HandoffsV1Response `json:"response,omitempty"` //
-	Version  string                                               `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaAddFabricDevicesLayer2HandoffsV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+
+	URL string `json:"url,omitempty"` // Task status lookup url.
 }
 type ResponseSdaGetFabricDevicesLayer2HandoffsCountV1 struct {
 	Response *ResponseSdaGetFabricDevicesLayer2HandoffsCountV1Response `json:"response,omitempty"` //
-	Version  string                                                    `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetFabricDevicesLayer2HandoffsCountV1Response struct {
 	Count *int `json:"count,omitempty"` // Number of fabric device layer 2 handoffs.
 }
 type ResponseSdaDeleteFabricDeviceLayer2HandoffByIDV1 struct {
 	Response *ResponseSdaDeleteFabricDeviceLayer2HandoffByIDV1Response `json:"response,omitempty"` //
-	Version  string                                                    `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaDeleteFabricDeviceLayer2HandoffByIDV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+
+	URL string `json:"url,omitempty"` // Task status lookup url.
 }
 type ResponseSdaAddFabricDevicesLayer3HandoffsWithIPTransitV1 struct {
 	Response *ResponseSdaAddFabricDevicesLayer3HandoffsWithIPTransitV1Response `json:"response,omitempty"` //
-	Version  string                                                            `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaAddFabricDevicesLayer3HandoffsWithIPTransitV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+
+	URL string `json:"url,omitempty"` // Task status lookup url.
 }
 type ResponseSdaUpdateFabricDevicesLayer3HandoffsWithIPTransitV1 struct {
 	Response *ResponseSdaUpdateFabricDevicesLayer3HandoffsWithIPTransitV1Response `json:"response,omitempty"` //
-	Version  string                                                               `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaUpdateFabricDevicesLayer3HandoffsWithIPTransitV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+
+	URL string `json:"url,omitempty"` // Task status lookup url.
 }
 type ResponseSdaDeleteFabricDeviceLayer3HandoffsWithIPTransitV1 struct {
 	Response *ResponseSdaDeleteFabricDeviceLayer3HandoffsWithIPTransitV1Response `json:"response,omitempty"` //
-	Version  string                                                              `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaDeleteFabricDeviceLayer3HandoffsWithIPTransitV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+
+	URL string `json:"url,omitempty"` // Task status lookup url.
 }
 type ResponseSdaGetFabricDevicesLayer3HandoffsWithIPTransitV1 struct {
 	Response *[]ResponseSdaGetFabricDevicesLayer3HandoffsWithIPTransitV1Response `json:"response,omitempty"` //
-	Version  string                                                              `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetFabricDevicesLayer3HandoffsWithIPTransitV1Response struct {
-	ID                             string `json:"id,omitempty"`                             // ID of the fabric device layer 3 handoff ip transit.
-	NetworkDeviceID                string `json:"networkDeviceId,omitempty"`                // Network device ID of the fabric device.
-	FabricID                       string `json:"fabricId,omitempty"`                       // ID of the fabric this device is assigned to.
-	TransitNetworkID               string `json:"transitNetworkId,omitempty"`               // ID of the transit network of the layer 3 handoff ip transit.
-	InterfaceName                  string `json:"interfaceName,omitempty"`                  // Interface name of the layer 3 handoff ip transit.
+	ID string `json:"id,omitempty"` // ID of the fabric device layer 3 handoff ip transit.
+
+	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Network device ID of the fabric device.
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric this device is assigned to.
+
+	TransitNetworkID string `json:"transitNetworkId,omitempty"` // ID of the transit network of the layer 3 handoff ip transit.
+
+	InterfaceName string `json:"interfaceName,omitempty"` // Interface name of the layer 3 handoff ip transit.
+
 	ExternalConnectivityIPPoolName string `json:"externalConnectivityIpPoolName,omitempty"` // External connectivity ip pool is used by Catalyst Center to allocate IP address for the connection between the border node and peer.
-	VirtualNetworkName             string `json:"virtualNetworkName,omitempty"`             // Name of the virtual network associated with this fabric site.
-	VLANID                         *int   `json:"vlanId,omitempty"`                         // VLAN number for the Switch Virtual Interface (SVI) used to establish BGP peering with the external domain for the virtual network. Allowed VLAN range is 2-4094 except for reserved vlans (1, 1002-1005, 2046, 4094).
-	TCPMssAdjustment               *int   `json:"tcpMssAdjustment,omitempty"`               // TCP maximum segment size (mss) value for the layer 3 handoff. Allowed range is [500-1440]. TCP MSS Adjustment value is applicable for the TCP sessions over both IPv4 and IPv6.
-	LocalIPAddress                 string `json:"localIpAddress,omitempty"`                 // Local ipv4 address for the selected virtual network. IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). Not applicable if an external connectivity ip pool name is present.
-	RemoteIPAddress                string `json:"remoteIpAddress,omitempty"`                // Remote ipv4 address for the selected virtual network. IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). Not applicable if an external connectivity ip pool name is present.
-	LocalIPv6Address               string `json:"localIpv6Address,omitempty"`               // Local ipv6 address for the selected virtual network. IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). Not applicable if an external connectivity ip pool name is present.
-	RemoteIPv6Address              string `json:"remoteIpv6Address,omitempty"`              // Remote ipv6 address for the selected virtual network. IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). Not applicable if an external connectivity ip pool name is present.
+
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Name of the virtual network associated with this fabric site.
+
+	VLANID *int `json:"vlanId,omitempty"` // VLAN number for the Switch Virtual Interface (SVI) used to establish BGP peering with the external domain for the virtual network. Allowed VLAN range is 2-4094 except for reserved vlans (1, 1002-1005, 2046, 4094).
+
+	TCPMssAdjustment *int `json:"tcpMssAdjustment,omitempty"` // TCP maximum segment size (mss) value for the layer 3 handoff. Allowed range is [500-1440]. TCP MSS Adjustment value is applicable for the TCP sessions over both IPv4 and IPv6.
+
+	LocalIPAddress string `json:"localIpAddress,omitempty"` // Local ipv4 address for the selected virtual network. IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). Not applicable if an external connectivity ip pool name is present.
+
+	RemoteIPAddress string `json:"remoteIpAddress,omitempty"` // Remote ipv4 address for the selected virtual network. IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). Not applicable if an external connectivity ip pool name is present.
+
+	LocalIPv6Address string `json:"localIpv6Address,omitempty"` // Local ipv6 address for the selected virtual network. IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). Not applicable if an external connectivity ip pool name is present.
+
+	RemoteIPv6Address string `json:"remoteIpv6Address,omitempty"` // Remote ipv6 address for the selected virtual network. IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). Not applicable if an external connectivity ip pool name is present.
 }
 type ResponseSdaGetFabricDevicesLayer3HandoffsWithIPTransitCountV1 struct {
 	Response *ResponseSdaGetFabricDevicesLayer3HandoffsWithIPTransitCountV1Response `json:"response,omitempty"` //
-	Version  string                                                                 `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetFabricDevicesLayer3HandoffsWithIPTransitCountV1Response struct {
 	Count *int `json:"count,omitempty"` // Number of fabric device layer 3 handoffs with IP transit.
 }
 type ResponseSdaDeleteFabricDeviceLayer3HandoffWithIPTransitByIDV1 struct {
 	Response *ResponseSdaDeleteFabricDeviceLayer3HandoffWithIPTransitByIDV1Response `json:"response,omitempty"` //
-	Version  string                                                                 `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaDeleteFabricDeviceLayer3HandoffWithIPTransitByIDV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+
+	URL string `json:"url,omitempty"` // Task status lookup url.
 }
 type ResponseSdaUpdateFabricDevicesLayer3HandoffsWithSdaTransitV1 struct {
 	Response *ResponseSdaUpdateFabricDevicesLayer3HandoffsWithSdaTransitV1Response `json:"response,omitempty"` //
-	Version  string                                                                `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaUpdateFabricDevicesLayer3HandoffsWithSdaTransitV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+
+	URL string `json:"url,omitempty"` // Task status lookup url.
 }
 type ResponseSdaGetFabricDevicesLayer3HandoffsWithSdaTransitV1 struct {
 	Response *[]ResponseSdaGetFabricDevicesLayer3HandoffsWithSdaTransitV1Response `json:"response,omitempty"` //
-	Version  string                                                               `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetFabricDevicesLayer3HandoffsWithSdaTransitV1Response struct {
-	NetworkDeviceID               string `json:"networkDeviceId,omitempty"`               // Network device ID of the fabric device.
-	FabricID                      string `json:"fabricId,omitempty"`                      // ID of the fabric this device is assigned to.
-	TransitNetworkID              string `json:"transitNetworkId,omitempty"`              // ID of the transit network of the layer 3 handoff sda transit.
-	AffinityIDPrime               *int   `json:"affinityIdPrime,omitempty"`               // Affinity id prime value of the border node. It supersedes the border priority to determine border node preference. Allowed range is [0-2147483647]. The lower the relative value of affinity id prime, the higher the preference for a destination border node.
-	AffinityIDDecider             *int   `json:"affinityIdDecider,omitempty"`             // Affinity id decider value of the border node. When the affinity id prime value is the same on multiple devices, the affinity id decider value is used as a tiebreaker. Allowed range is [0-2147483647]. The lower the relative value of affinity id decider, the higher the preference for a destination border node.
-	ConnectedToInternet           *bool  `json:"connectedToInternet,omitempty"`           // True value for this allows associated site to provide internet access to other sites through sd-access.
-	IsMulticastOverTransitEnabled *bool  `json:"isMulticastOverTransitEnabled,omitempty"` // True value for this configures native multicast over multiple sites that are connected to an sd-access transit.
+	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Network device ID of the fabric device.
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric this device is assigned to.
+
+	TransitNetworkID string `json:"transitNetworkId,omitempty"` // ID of the transit network of the layer 3 handoff sda transit.
+
+	AffinityIDPrime *int `json:"affinityIdPrime,omitempty"` // Affinity id prime value of the border node. It supersedes the border priority to determine border node preference. Allowed range is [0-2147483647]. The lower the relative value of affinity id prime, the higher the preference for a destination border node.
+
+	AffinityIDDecider *int `json:"affinityIdDecider,omitempty"` // Affinity id decider value of the border node. When the affinity id prime value is the same on multiple devices, the affinity id decider value is used as a tiebreaker. Allowed range is [0-2147483647]. The lower the relative value of affinity id decider, the higher the preference for a destination border node.
+
+	ConnectedToInternet *bool `json:"connectedToInternet,omitempty"` // True value for this allows associated site to provide internet access to other sites through sd-access.
+
+	IsMulticastOverTransitEnabled *bool `json:"isMulticastOverTransitEnabled,omitempty"` // True value for this configures native multicast over multiple sites that are connected to an sd-access transit.
 }
 type ResponseSdaDeleteFabricDeviceLayer3HandoffsWithSdaTransitV1 struct {
 	Response *ResponseSdaDeleteFabricDeviceLayer3HandoffsWithSdaTransitV1Response `json:"response,omitempty"` //
-	Version  string                                                               `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaDeleteFabricDeviceLayer3HandoffsWithSdaTransitV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+
+	URL string `json:"url,omitempty"` // Task status lookup url.
 }
 type ResponseSdaAddFabricDevicesLayer3HandoffsWithSdaTransitV1 struct {
 	Response *ResponseSdaAddFabricDevicesLayer3HandoffsWithSdaTransitV1Response `json:"response,omitempty"` //
-	Version  string                                                             `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaAddFabricDevicesLayer3HandoffsWithSdaTransitV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+
+	URL string `json:"url,omitempty"` // Task status lookup url.
 }
 type ResponseSdaGetFabricDevicesLayer3HandoffsWithSdaTransitCountV1 struct {
 	Response *ResponseSdaGetFabricDevicesLayer3HandoffsWithSdaTransitCountV1Response `json:"response,omitempty"` //
-	Version  string                                                                  `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetFabricDevicesLayer3HandoffsWithSdaTransitCountV1Response struct {
 	Count *int `json:"count,omitempty"` // Number of fabric device layer 3 handoffs with sda transit.
 }
 type ResponseSdaDeleteFabricDeviceByIDV1 struct {
 	Response *ResponseSdaDeleteFabricDeviceByIDV1Response `json:"response,omitempty"` //
-	Version  string                                       `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaDeleteFabricDeviceByIDV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+
+	URL string `json:"url,omitempty"` // Task status lookup url.
 }
 type ResponseSdaGetFabricSitesV1 struct {
 	Response *[]ResponseSdaGetFabricSitesV1Response `json:"response,omitempty"` //
-	Version  string                                 `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetFabricSitesV1Response struct {
-	ID                        string `json:"id,omitempty"`                        // ID of the fabric site.
-	SiteID                    string `json:"siteId,omitempty"`                    // ID of the network hierarchy.
+	ID string `json:"id,omitempty"` // ID of the fabric site.
+
+	SiteID string `json:"siteId,omitempty"` // ID of the network hierarchy.
+
 	AuthenticationProfileName string `json:"authenticationProfileName,omitempty"` // Authentication profile used for this fabric.
-	IsPubSubEnabled           *bool  `json:"isPubSubEnabled,omitempty"`           // Specifies whether this fabric site will use pub/sub for control nodes.
+
+	IsPubSubEnabled *bool `json:"isPubSubEnabled,omitempty"` // Specifies whether this fabric site will use pub/sub for control nodes.
 }
 type ResponseSdaAddFabricSiteV1 struct {
 	Response *ResponseSdaAddFabricSiteV1Response `json:"response,omitempty"` //
-	Version  string                              `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaAddFabricSiteV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaUpdateFabricSiteV1 struct {
 	Response *ResponseSdaUpdateFabricSiteV1Response `json:"response,omitempty"` //
-	Version  string                                 `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaUpdateFabricSiteV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaGetFabricSiteCountV1 struct {
 	Response *ResponseSdaGetFabricSiteCountV1Response `json:"response,omitempty"` //
-	Version  string                                   `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetFabricSiteCountV1Response struct {
 	Count *int `json:"count,omitempty"` // The number of fabric sites.
 }
 type ResponseSdaDeleteFabricSiteByIDV1 struct {
 	Response *ResponseSdaDeleteFabricSiteByIDV1Response `json:"response,omitempty"` //
-	Version  string                                     `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaDeleteFabricSiteByIDV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaGetFabricZonesV1 struct {
 	Response *[]ResponseSdaGetFabricZonesV1Response `json:"response,omitempty"` //
-	Version  string                                 `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetFabricZonesV1Response struct {
-	ID                        string `json:"id,omitempty"`                        // ID of the fabric zone.
-	SiteID                    string `json:"siteId,omitempty"`                    // ID of the network hierarchy.
+	ID string `json:"id,omitempty"` // ID of the fabric zone.
+
+	SiteID string `json:"siteId,omitempty"` // ID of the network hierarchy.
+
 	AuthenticationProfileName string `json:"authenticationProfileName,omitempty"` // Authentication profile used for this fabric.
 }
 type ResponseSdaUpdateFabricZoneV1 struct {
 	Response *ResponseSdaUpdateFabricZoneV1Response `json:"response,omitempty"` //
-	Version  string                                 `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaUpdateFabricZoneV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaAddFabricZoneV1 struct {
 	Response *ResponseSdaAddFabricZoneV1Response `json:"response,omitempty"` //
-	Version  string                              `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaAddFabricZoneV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaGetFabricZoneCountV1 struct {
 	Response *ResponseSdaGetFabricZoneCountV1Response `json:"response,omitempty"` //
-	Version  string                                   `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetFabricZoneCountV1Response struct {
 	Count *int `json:"count,omitempty"` // The number of fabric zones.
 }
 type ResponseSdaDeleteFabricZoneByIDV1 struct {
 	Response *ResponseSdaDeleteFabricZoneByIDV1Response `json:"response,omitempty"` //
-	Version  string                                     `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaDeleteFabricZoneByIDV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaAddLayer2VirtualNetworksV1 struct {
 	Response *ResponseSdaAddLayer2VirtualNetworksV1Response `json:"response,omitempty"` //
-	Version  string                                         `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaAddLayer2VirtualNetworksV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaDeleteLayer2VirtualNetworksV1 struct {
 	Response *ResponseSdaDeleteLayer2VirtualNetworksV1Response `json:"response,omitempty"` //
-	Version  string                                            `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaDeleteLayer2VirtualNetworksV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaGetLayer2VirtualNetworksV1 struct {
 	Response *[]ResponseSdaGetLayer2VirtualNetworksV1Response `json:"response,omitempty"` //
-	Version  string                                           `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetLayer2VirtualNetworksV1Response struct {
-	ID                                 string `json:"id,omitempty"`                                 // ID of the layer 2 virtual network.
-	FabricID                           string `json:"fabricId,omitempty"`                           // ID of the fabric this layer 2 virtual network is assigned to.
-	VLANName                           string `json:"vlanName,omitempty"`                           // Name of the VLAN of the layer 2 virtual network.
-	VLANID                             *int   `json:"vlanId,omitempty"`                             // ID of the VLAN of the layer 2 virtual network.
-	TrafficType                        string `json:"trafficType,omitempty"`                        // The type of traffic that is served.
-	IsFabricEnabledWireless            *bool  `json:"isFabricEnabledWireless,omitempty"`            // Set to true to enable wireless.
+	ID string `json:"id,omitempty"` // ID of the layer 2 virtual network.
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric this layer 2 virtual network is assigned to.
+
+	VLANName string `json:"vlanName,omitempty"` // Name of the VLAN of the layer 2 virtual network.
+
+	VLANID *int `json:"vlanId,omitempty"` // ID of the VLAN of the layer 2 virtual network.
+
+	TrafficType string `json:"trafficType,omitempty"` // The type of traffic that is served.
+
+	IsFabricEnabledWireless *bool `json:"isFabricEnabledWireless,omitempty"` // Set to true to enable wireless.
+
+	IsMultipleIPToMacAddresses *bool `json:"isMultipleIpToMacAddresses,omitempty"` // Set to true to enable multiple IP-to-MAC Addresses (Wireless Bridged-Network Virtual Machine). This field will only be present on layer 2 virtual networks associated with a layer 3 virtual network.
+
 	AssociatedLayer3VirtualNetworkName string `json:"associatedLayer3VirtualNetworkName,omitempty"` // Name of the layer 3 virtual network associated with the layer 2 virtual network. This field is provided to support requests related to virtual network anchoring.
 }
 type ResponseSdaUpdateLayer2VirtualNetworksV1 struct {
 	Response *ResponseSdaUpdateLayer2VirtualNetworksV1Response `json:"response,omitempty"` //
-	Version  string                                            `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaUpdateLayer2VirtualNetworksV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaGetLayer2VirtualNetworkCountV1 struct {
 	Response *ResponseSdaGetLayer2VirtualNetworkCountV1Response `json:"response,omitempty"` //
-	Version  string                                             `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetLayer2VirtualNetworkCountV1Response struct {
 	Count *int `json:"count,omitempty"` // The number of layer 2 virtual networks
 }
 type ResponseSdaDeleteLayer2VirtualNetworkByIDV1 struct {
 	Response *ResponseSdaDeleteLayer2VirtualNetworkByIDV1Response `json:"response,omitempty"` //
-	Version  string                                               `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaDeleteLayer2VirtualNetworkByIDV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaAddLayer3VirtualNetworksV1 struct {
 	Response *ResponseSdaAddLayer3VirtualNetworksV1Response `json:"response,omitempty"` //
-	Version  string                                         `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaAddLayer3VirtualNetworksV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaGetLayer3VirtualNetworksV1 struct {
 	Response *[]ResponseSdaGetLayer3VirtualNetworksV1Response `json:"response,omitempty"` //
-	Version  string                                           `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetLayer3VirtualNetworksV1Response struct {
-	ID                 string   `json:"id,omitempty"`                 // ID of the layer 3 virtual network.
-	VirtualNetworkName string   `json:"virtualNetworkName,omitempty"` // Name of the layer 3 virtual network.
-	FabricIDs          []string `json:"fabricIds,omitempty"`          // IDs of the fabrics this layer 3 virtual network is assigned to.
-	AnchoredSiteID     string   `json:"anchoredSiteId,omitempty"`     // Fabric ID of the fabric site this layer 3 virtual network is anchored at.
+	ID string `json:"id,omitempty"` // ID of the layer 3 virtual network.
+
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Name of the layer 3 virtual network.
+
+	FabricIDs []string `json:"fabricIds,omitempty"` // IDs of the fabrics this layer 3 virtual network is assigned to.
+
+	AnchoredSiteID string `json:"anchoredSiteId,omitempty"` // Fabric ID of the fabric site this layer 3 virtual network is anchored at.
 }
 type ResponseSdaDeleteLayer3VirtualNetworksV1 struct {
 	Response *ResponseSdaDeleteLayer3VirtualNetworksV1Response `json:"response,omitempty"` //
-	Version  string                                            `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaDeleteLayer3VirtualNetworksV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaUpdateLayer3VirtualNetworksV1 struct {
 	Response *ResponseSdaUpdateLayer3VirtualNetworksV1Response `json:"response,omitempty"` //
-	Version  string                                            `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaUpdateLayer3VirtualNetworksV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaGetLayer3VirtualNetworksCountV1 struct {
 	Response *ResponseSdaGetLayer3VirtualNetworksCountV1Response `json:"response,omitempty"` //
-	Version  string                                              `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetLayer3VirtualNetworksCountV1Response struct {
 	Count *int `json:"count,omitempty"` // Number of layer 3 virtual networks.
 }
 type ResponseSdaDeleteLayer3VirtualNetworkByIDV1 struct {
 	Response *ResponseSdaDeleteLayer3VirtualNetworkByIDV1Response `json:"response,omitempty"` //
-	Version  string                                               `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaDeleteLayer3VirtualNetworkByIDV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaUpdateMulticastV1 struct {
 	Response *ResponseSdaUpdateMulticastV1Response `json:"response,omitempty"` //
-	Version  string                                `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaUpdateMulticastV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaGetMulticastV1 struct {
 	Response *[]ResponseSdaGetMulticastV1Response `json:"response,omitempty"` //
-	Version  string                               `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetMulticastV1Response struct {
-	FabricID        string `json:"fabricId,omitempty"`        // ID of the fabric site.
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric site.
+
 	ReplicationMode string `json:"replicationMode,omitempty"` // Replication Mode deployed in the fabric site.
 }
 type ResponseSdaAddMulticastVirtualNetworksV1 struct {
 	Response *ResponseSdaAddMulticastVirtualNetworksV1Response `json:"response,omitempty"` //
-	Version  string                                            `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaAddMulticastVirtualNetworksV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaGetMulticastVirtualNetworksV1 struct {
 	Response *[]ResponseSdaGetMulticastVirtualNetworksV1Response `json:"response,omitempty"` //
-	Version  string                                              `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetMulticastVirtualNetworksV1Response struct {
-	ID                 string                                                          `json:"id,omitempty"`                 // ID of the multicast configuration.
-	FabricID           string                                                          `json:"fabricId,omitempty"`           // ID of the fabric site.
-	VirtualNetworkName string                                                          `json:"virtualNetworkName,omitempty"` // Name of the virtual network.
-	IPPoolName         string                                                          `json:"ipPoolName,omitempty"`         // Name of the IP Pool.
-	IPv4SsmRanges      []string                                                        `json:"ipv4SsmRanges,omitempty"`      // IPv4 Source Specific Multicast (SSM) ranges. Allowed ranges are from 225.0.0.0/8 to 239.0.0.0/8. SSM ranges should not conflict with ranges provided for ASM multicast.
-	MulticastRPs       *[]ResponseSdaGetMulticastVirtualNetworksV1ResponseMulticastRPs `json:"multicastRPs,omitempty"`       //
+	ID string `json:"id,omitempty"` // ID of the multicast configuration.
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric site.
+
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Name of the virtual network.
+
+	IPPoolName string `json:"ipPoolName,omitempty"` // Name of the IP Pool.
+
+	IPv4SsmRanges []string `json:"ipv4SsmRanges,omitempty"` // IPv4 Source Specific Multicast (SSM) ranges. Allowed ranges are from 225.0.0.0/8 to 239.0.0.0/8. SSM ranges should not conflict with ranges provided for ASM multicast.
+
+	MulticastRPs *[]ResponseSdaGetMulticastVirtualNetworksV1ResponseMulticastRPs `json:"multicastRPs,omitempty"` //
 }
 type ResponseSdaGetMulticastVirtualNetworksV1ResponseMulticastRPs struct {
-	RpDeviceLocation string   `json:"rpDeviceLocation,omitempty"` // Device location of the RP.
-	IPv4Address      string   `json:"ipv4Address,omitempty"`      // IPv4 address of the RP. For external RP configuration, exactly one of ipv4Address or ipv6Address must be provided. For fabric RP, this address is allocated by SDA and should not be provided during RP creation request and SDA allocated address should be retained in subsequent requests.
-	IPv6Address      string   `json:"ipv6Address,omitempty"`      // IPv6 address of the RP. For external RP configuration, exactly one of ipv4Address or ipv6Address must be provided. For fabric RP, this address is allocated by SDA and should not be provided during RP creation request and SDA allocated address should be retained in subsequent requests. ipv6Address can only be provided for virtual networks with dual stack (IPv4 + IPv6) multicast pool.
-	IsDefaultV4RP    *bool    `json:"isDefaultV4RP,omitempty"`    // Specifies whether it is a default IPv4 RP.
-	IsDefaultV6RP    *bool    `json:"isDefaultV6RP,omitempty"`    // Specifies whether it is a default IPv6 RP.
+	RpDeviceLocation string `json:"rpDeviceLocation,omitempty"` // Device location of the RP.
+
+	IPv4Address string `json:"ipv4Address,omitempty"` // IPv4 address of the RP. For external RP configuration, exactly one of ipv4Address or ipv6Address must be provided. For fabric RP, this address is allocated by SDA and should not be provided during RP creation request and SDA allocated address should be retained in subsequent requests.
+
+	IPv6Address string `json:"ipv6Address,omitempty"` // IPv6 address of the RP. For external RP configuration, exactly one of ipv4Address or ipv6Address must be provided. For fabric RP, this address is allocated by SDA and should not be provided during RP creation request and SDA allocated address should be retained in subsequent requests. ipv6Address can only be provided for virtual networks with dual stack (IPv4 + IPv6) multicast pool.
+
+	IsDefaultV4RP *bool `json:"isDefaultV4RP,omitempty"` // Specifies whether it is a default IPv4 RP.
+
+	IsDefaultV6RP *bool `json:"isDefaultV6RP,omitempty"` // Specifies whether it is a default IPv6 RP.
+
 	NetworkDeviceIDs []string `json:"networkDeviceIds,omitempty"` // IDs of the network devices. This is a required field for fabric RPs. There can be maximum of two fabric RPs for a fabric site and these are shared across all multicast virtual networks. For configuring two fabric RPs in a fabric site both devices must have border roles. Only one RP can be configured in scenarios where a fabric edge device is used as RP or a dual stack multicast pool is used.
-	IPv4AsmRanges    []string `json:"ipv4AsmRanges,omitempty"`    // IPv4 Any Source Multicast ranges. Comma seperated list of IPv4 multicast group ranges that will be served by a given Multicast RP. Only IPv4 ranges can be provided. For fabric RP, both IPv4 and IPv6 ranges can be provided together. For external RP, IPv4 ranges should be provided for IPv4 external RP and IPv6 ranges should be provided for IPv6 external RP.
-	IPv6AsmRanges    []string `json:"ipv6AsmRanges,omitempty"`    // IPv6 Any Source Multicast ranges. Comma seperated list of IPv6 multicast group ranges that will be served by a given Multicast RP. Only IPv6 ranges can be provided. IPv6 ranges can only be provided for dual stack multicast pool. For fabric RP, both IPv4 and IPv6 ranges can be provided together. For external RP, IPv4 ranges should be provided for IPv4 external RP and IPv6 ranges should be provided for IPv6 external RP.
+
+	IPv4AsmRanges []string `json:"ipv4AsmRanges,omitempty"` // IPv4 Any Source Multicast ranges. Comma seperated list of IPv4 multicast group ranges that will be served by a given Multicast RP. Only IPv4 ranges can be provided. For fabric RP, both IPv4 and IPv6 ranges can be provided together. For external RP, IPv4 ranges should be provided for IPv4 external RP and IPv6 ranges should be provided for IPv6 external RP.
+
+	IPv6AsmRanges []string `json:"ipv6AsmRanges,omitempty"` // IPv6 Any Source Multicast ranges. Comma seperated list of IPv6 multicast group ranges that will be served by a given Multicast RP. Only IPv6 ranges can be provided. IPv6 ranges can only be provided for dual stack multicast pool. For fabric RP, both IPv4 and IPv6 ranges can be provided together. For external RP, IPv4 ranges should be provided for IPv4 external RP and IPv6 ranges should be provided for IPv6 external RP.
 }
 type ResponseSdaUpdateMulticastVirtualNetworksV1 struct {
 	Response *ResponseSdaUpdateMulticastVirtualNetworksV1Response `json:"response,omitempty"` //
-	Version  string                                               `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaUpdateMulticastVirtualNetworksV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaGetMulticastVirtualNetworkCountV1 struct {
 	Response *ResponseSdaGetMulticastVirtualNetworkCountV1Response `json:"response,omitempty"` //
-	Version  string                                                `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetMulticastVirtualNetworkCountV1Response struct {
 	Count *int `json:"count,omitempty"` // Number of multicast configurations.
 }
 type ResponseSdaDeleteMulticastVirtualNetworkByIDV1 struct {
 	Response *ResponseSdaDeleteMulticastVirtualNetworkByIDV1Response `json:"response,omitempty"` //
-	Version  string                                                  `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaDeleteMulticastVirtualNetworkByIDV1Response struct {
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
+}
+type ResponseSdaGetPendingFabricEventsV1 struct {
+	Response *[]ResponseSdaGetPendingFabricEventsV1Response `json:"response,omitempty"` //
+
+	Version string `json:"version,omitempty"` // Version number.
+}
+type ResponseSdaGetPendingFabricEventsV1Response struct {
+	ID string `json:"id,omitempty"` // ID of the pending fabric event.
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric.
+
+	Detail string `json:"detail,omitempty"` // Detail of the pending fabric event.
+}
+type ResponseSdaApplyPendingFabricEventsV1 struct {
+	Response *ResponseSdaApplyPendingFabricEventsV1Response `json:"response,omitempty"` //
+
+	Version string `json:"version,omitempty"` // Version number.
+}
+type ResponseSdaApplyPendingFabricEventsV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+
+	URL string `json:"url,omitempty"` // Task status lookup url.
 }
 type ResponseSdaAddPortAssignmentsV1 struct {
 	Response *ResponseSdaAddPortAssignmentsV1Response `json:"response,omitempty"` //
-	Version  string                                   `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaAddPortAssignmentsV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaGetPortAssignmentsV1 struct {
 	Response *[]ResponseSdaGetPortAssignmentsV1Response `json:"response,omitempty"` //
-	Version  string                                     `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetPortAssignmentsV1Response struct {
-	ID                       string `json:"id,omitempty"`                       // ID of the port assignment.
-	FabricID                 string `json:"fabricId,omitempty"`                 // ID of the fabric the device is assigned to.
-	NetworkDeviceID          string `json:"networkDeviceId,omitempty"`          // Network device ID of the port assignment.
-	InterfaceName            string `json:"interfaceName,omitempty"`            // Interface name of the port assignment.
-	ConnectedDeviceType      string `json:"connectedDeviceType,omitempty"`      // Connected device type of the port assignment.
-	DataVLANName             string `json:"dataVlanName,omitempty"`             // Data VLAN name of the port assignment.
-	VoiceVLANName            string `json:"voiceVlanName,omitempty"`            // Voice VLAN name of the port assignment.
+	ID string `json:"id,omitempty"` // ID of the port assignment.
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric the device is assigned to.
+
+	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Network device ID of the port assignment.
+
+	InterfaceName string `json:"interfaceName,omitempty"` // Interface name of the port assignment.
+
+	ConnectedDeviceType string `json:"connectedDeviceType,omitempty"` // Connected device type of the port assignment.
+
+	DataVLANName string `json:"dataVlanName,omitempty"` // Data VLAN name of the port assignment.
+
+	VoiceVLANName string `json:"voiceVlanName,omitempty"` // Voice VLAN name of the port assignment.
+
 	AuthenticateTemplateName string `json:"authenticateTemplateName,omitempty"` // Authenticate template name of the port assignment.
-	SecurityGroupName        string `json:"securityGroupName,omitempty"`        // Security group name of the port assignment.
-	InterfaceDescription     string `json:"interfaceDescription,omitempty"`     // Interface description of the port assignment.
+
+	SecurityGroupName string `json:"securityGroupName,omitempty"` // Security group name of the port assignment.
+
+	InterfaceDescription string `json:"interfaceDescription,omitempty"` // Interface description of the port assignment.
 }
 type ResponseSdaUpdatePortAssignmentsV1 struct {
 	Response *ResponseSdaUpdatePortAssignmentsV1Response `json:"response,omitempty"` //
-	Version  string                                      `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaUpdatePortAssignmentsV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaDeletePortAssignmentsV1 struct {
 	Response *ResponseSdaDeletePortAssignmentsV1Response `json:"response,omitempty"` //
-	Version  string                                      `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaDeletePortAssignmentsV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaGetPortAssignmentCountV1 struct {
 	Response *ResponseSdaGetPortAssignmentCountV1Response `json:"response,omitempty"` //
-	Version  string                                       `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetPortAssignmentCountV1Response struct {
 	Count *int `json:"count,omitempty"` // Number of port assignments.
 }
 type ResponseSdaDeletePortAssignmentByIDV1 struct {
 	Response *ResponseSdaDeletePortAssignmentByIDV1Response `json:"response,omitempty"` //
-	Version  string                                         `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaDeletePortAssignmentByIDV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaGetPortChannelsV1 struct {
 	Response *[]ResponseSdaGetPortChannelsV1Response `json:"response,omitempty"` //
-	Version  string                                  `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetPortChannelsV1Response struct {
-	ID                  string   `json:"id,omitempty"`                  // ID of the port channel.
-	FabricID            string   `json:"fabricId,omitempty"`            // ID of the fabric the device is assigned to.
-	NetworkDeviceID     string   `json:"networkDeviceId,omitempty"`     // ID of the network device.
-	PortChannelName     string   `json:"portChannelName,omitempty"`     // Name of the port channel.
-	InterfaceNames      []string `json:"interfaceNames,omitempty"`      // Interface names of this port channel.
-	ConnectedDeviceType string   `json:"connectedDeviceType,omitempty"` // Connected device type of the port channel.
-	Protocol            string   `json:"protocol,omitempty"`            // Protocol of the port channel.
-	Description         string   `json:"description,omitempty"`         // Description of the port channel.
+	ID string `json:"id,omitempty"` // ID of the port channel.
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric the device is assigned to.
+
+	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // ID of the network device.
+
+	PortChannelName string `json:"portChannelName,omitempty"` // Name of the port channel.
+
+	InterfaceNames []string `json:"interfaceNames,omitempty"` // Interface names of this port channel.
+
+	ConnectedDeviceType string `json:"connectedDeviceType,omitempty"` // Connected device type of the port channel.
+
+	Protocol string `json:"protocol,omitempty"` // Protocol of the port channel.
+
+	Description string `json:"description,omitempty"` // Description of the port channel.
 }
 type ResponseSdaAddPortChannelsV1 struct {
 	Response *ResponseSdaAddPortChannelsV1Response `json:"response,omitempty"` //
-	Version  string                                `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaAddPortChannelsV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaUpdatePortChannelsV1 struct {
 	Response *ResponseSdaUpdatePortChannelsV1Response `json:"response,omitempty"` //
-	Version  string                                   `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaUpdatePortChannelsV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaDeletePortChannelsV1 struct {
 	Response *ResponseSdaDeletePortChannelsV1Response `json:"response,omitempty"` //
-	Version  string                                   `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaDeletePortChannelsV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaGetPortChannelCountV1 struct {
 	Response *ResponseSdaGetPortChannelCountV1Response `json:"response,omitempty"` //
-	Version  string                                    `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetPortChannelCountV1Response struct {
 	Count *int `json:"count,omitempty"` // Number of port channels.
 }
 type ResponseSdaDeletePortChannelByIDV1 struct {
 	Response *ResponseSdaDeletePortChannelByIDV1Response `json:"response,omitempty"` //
-	Version  string                                      `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaDeletePortChannelByIDV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaDeleteProvisionedDevicesV1 struct {
 	Response *ResponseSdaDeleteProvisionedDevicesV1Response `json:"response,omitempty"` //
-	Version  string                                         `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaDeleteProvisionedDevicesV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaProvisionDevicesV1 struct {
 	Response *ResponseSdaProvisionDevicesV1Response `json:"response,omitempty"` //
-	Version  string                                 `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaProvisionDevicesV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaGetProvisionedDevicesV1 struct {
 	Response *[]ResponseSdaGetProvisionedDevicesV1Response `json:"response,omitempty"` //
-	Version  string                                        `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetProvisionedDevicesV1Response struct {
-	ID              string `json:"id,omitempty"`              // ID of the provisioned device.
-	SiteID          string `json:"siteId,omitempty"`          // ID of the site this device is provisioned to.
+	ID string `json:"id,omitempty"` // ID of the provisioned device.
+
+	SiteID string `json:"siteId,omitempty"` // ID of the site this device is provisioned to.
+
 	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // ID of the network device.
 }
 type ResponseSdaReProvisionDevicesV1 struct {
 	Response *ResponseSdaReProvisionDevicesV1Response `json:"response,omitempty"` //
-	Version  string                                   `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaReProvisionDevicesV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaGetProvisionedDevicesCountV1 struct {
 	Response *ResponseSdaGetProvisionedDevicesCountV1Response `json:"response,omitempty"` //
-	Version  string                                           `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetProvisionedDevicesCountV1Response struct {
 	Count *int `json:"count,omitempty"` // Number of provisioned devices.
 }
 type ResponseSdaDeleteProvisionedDeviceByIDV1 struct {
 	Response *ResponseSdaDeleteProvisionedDeviceByIDV1Response `json:"response,omitempty"` //
-	Version  string                                            `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // version number.
 }
 type ResponseSdaDeleteProvisionedDeviceByIDV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+	TaskID string `json:"taskId,omitempty"` // id of the submitted task.
+
+	URL string `json:"url,omitempty"` // url for querying the task's status.
 }
 type ResponseSdaUpdateTransitNetworksV1 struct {
 	Response *ResponseSdaUpdateTransitNetworksV1Response `json:"response,omitempty"` //
-	Version  string                                      `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaUpdateTransitNetworksV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+
+	URL string `json:"url,omitempty"` // Task status lookup url.
 }
 type ResponseSdaGetTransitNetworksV1 struct {
 	Response *[]ResponseSdaGetTransitNetworksV1Response `json:"response,omitempty"` //
-	Version  string                                     `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetTransitNetworksV1Response struct {
-	ID                 string                                                     `json:"id,omitempty"`                 // ID of the transit network.
-	Name               string                                                     `json:"name,omitempty"`               // Name of the transit network.
-	Type               string                                                     `json:"type,omitempty"`               // Type of the transit network.
-	IPTransitSettings  *ResponseSdaGetTransitNetworksV1ResponseIPTransitSettings  `json:"ipTransitSettings,omitempty"`  //
+	ID string `json:"id,omitempty"` // ID of the transit network.
+
+	Name string `json:"name,omitempty"` // Name of the transit network.
+
+	Type string `json:"type,omitempty"` // Type of the transit network.
+
+	IPTransitSettings *ResponseSdaGetTransitNetworksV1ResponseIPTransitSettings `json:"ipTransitSettings,omitempty"` //
+
 	SdaTransitSettings *ResponseSdaGetTransitNetworksV1ResponseSdaTransitSettings `json:"sdaTransitSettings,omitempty"` //
 }
 type ResponseSdaGetTransitNetworksV1ResponseIPTransitSettings struct {
-	RoutingProtocolName    string `json:"routingProtocolName,omitempty"`    // Routing Protocol Name of the IP transit network.
+	RoutingProtocolName string `json:"routingProtocolName,omitempty"` // Routing Protocol Name of the IP transit network.
+
 	AutonomousSystemNumber string `json:"autonomousSystemNumber,omitempty"` // Autonomous System Number of the IP transit network. Allowed range is [1 to 4294967295].
 }
 type ResponseSdaGetTransitNetworksV1ResponseSdaTransitSettings struct {
-	IsMulticastOverTransitEnabled *bool    `json:"isMulticastOverTransitEnabled,omitempty"` // This indicates that multicast is enabled over SD-Access Transit. This supports Native Multicast over SD-Access Transit. This is only applicable for transit of type SDA_LISP_PUB_SUB_TRANSIT.
-	ControlPlaneNetworkDeviceIDs  []string `json:"controlPlaneNetworkDeviceIds,omitempty"`  // List of network device IDs that are used as control plane nodes.
+	IsMulticastOverTransitEnabled *bool `json:"isMulticastOverTransitEnabled,omitempty"` // This indicates that multicast is enabled over SD-Access Transit. This supports Native Multicast over SD-Access Transit. This is only applicable for transit of type SDA_LISP_PUB_SUB_TRANSIT.
+
+	ControlPlaneNetworkDeviceIDs []string `json:"controlPlaneNetworkDeviceIds,omitempty"` // List of network device IDs that are used as control plane nodes.
 }
 type ResponseSdaAddTransitNetworksV1 struct {
 	Response *ResponseSdaAddTransitNetworksV1Response `json:"response,omitempty"` //
-	Version  string                                   `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaAddTransitNetworksV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+
+	URL string `json:"url,omitempty"` // Task status lookup url.
 }
 type ResponseSdaGetTransitNetworksCountV1 struct {
 	Response *ResponseSdaGetTransitNetworksCountV1Response `json:"response,omitempty"` //
-	Version  string                                        `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaGetTransitNetworksCountV1Response struct {
 	Count *int `json:"count,omitempty"` // Number of transit networks.
 }
 type ResponseSdaDeleteTransitNetworkByIDV1 struct {
 	Response *ResponseSdaDeleteTransitNetworkByIDV1Response `json:"response,omitempty"` //
-	Version  string                                         `json:"version,omitempty"`  // Version number.
+
+	Version string `json:"version,omitempty"` // Version number.
 }
 type ResponseSdaDeleteTransitNetworkByIDV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // ID of the task.
-	URL    string `json:"url,omitempty"`    // Task status lookup url.
+
+	URL string `json:"url,omitempty"` // Task status lookup url.
 }
 type ResponseSdaAddVirtualNetworkWithScalableGroupsV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaDeleteVirtualNetworkWithScalableGroupsV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type ResponseSdaGetVirtualNetworkWithScalableGroupsV1 struct {
-	VirtualNetworkName      string   `json:"virtualNetworkName,omitempty"`      // Virtual Network Name to be assigned at global level
-	IsGuestVirtualNetwork   *bool    `json:"isGuestVirtualNetwork,omitempty"`   // Guest Virtual Network
-	ScalableGroupNames      []string `json:"scalableGroupNames,omitempty"`      // Scalable Group Names
-	VManageVpnID            string   `json:"vManageVpnId,omitempty"`            // vManage vpn id for SD-WAN
-	VirtualNetworkContextID string   `json:"virtualNetworkContextId,omitempty"` // Virtual Network Context Id for Global Virtual Network
-	Status                  string   `json:"status,omitempty"`                  // Status
-	Description             string   `json:"description,omitempty"`             // Virtual network info retrieved successfully
-	ExecutionID             string   `json:"executionId,omitempty"`             // Execution Id
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Virtual Network Name to be assigned at global level
+
+	IsGuestVirtualNetwork *bool `json:"isGuestVirtualNetwork,omitempty"` // Guest Virtual Network
+
+	ScalableGroupNames []string `json:"scalableGroupNames,omitempty"` // Scalable Group Names
+
+	VManageVpnID string `json:"vManageVpnId,omitempty"` // vManage vpn id for SD-WAN
+
+	VirtualNetworkContextID string `json:"virtualNetworkContextId,omitempty"` // Virtual Network Context Id for Global Virtual Network
+
+	Status string `json:"status,omitempty"` // Status
+
+	Description string `json:"description,omitempty"` // Virtual network info retrieved successfully
+
+	ExecutionID string `json:"executionId,omitempty"` // Execution Id
 }
 type ResponseSdaUpdateVirtualNetworkWithScalableGroupsV1 struct {
-	Status             string `json:"status,omitempty"`             // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
-	Description        string `json:"description,omitempty"`        // provides detailed information for API success or failure.
-	TaskID             string `json:"taskId,omitempty"`             // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
-	TaskStatusURL      string `json:"taskStatusUrl,omitempty"`      // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+	Status string `json:"status,omitempty"` // represents return status of API. status=success when API completed successfully, status=failed when API failed and has not completed the user request, status=pending when API execution is still in progression and user needs to track its further progress via taskId field.
+
+	Description string `json:"description,omitempty"` // provides detailed information for API success or failure.
+
+	TaskID string `json:"taskId,omitempty"` // Catalyst Center taskId that carried out the API execution. It will be provided if task was generated by API. For failed status, taskId may not be available
+
+	TaskStatusURL string `json:"taskStatusUrl,omitempty"` // /dna/intent/api/v1/task/<taskId> , allows API progression via taskId for async API
+
 	ExecutionStatusURL string `json:"executionStatusUrl,omitempty"` // /dna/intent/api/v1/dnacaap/management/execution-status/<executionId>
-	ExecutionID        string `json:"executionId,omitempty"`        // uuid for API execution status
+
+	ExecutionID string `json:"executionId,omitempty"` // uuid for API execution status
 }
 type RequestSdaAddDefaultAuthenticationTemplateInSdaFabricV1 []RequestItemSdaAddDefaultAuthenticationTemplateInSdaFabricV1 // Array of RequestSdaAddDefaultAuthenticationTemplateInSDAFabricV1
 type RequestItemSdaAddDefaultAuthenticationTemplateInSdaFabricV1 struct {
-	SiteNameHierarchy        string `json:"siteNameHierarchy,omitempty"`        // Path of sda Fabric Site
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Path of sda Fabric Site
+
 	AuthenticateTemplateName string `json:"authenticateTemplateName,omitempty"` // Authenticate Template Name
 }
 type RequestSdaUpdateDefaultAuthenticationProfileInSdaFabricV1 []RequestItemSdaUpdateDefaultAuthenticationProfileInSdaFabricV1 // Array of RequestSdaUpdateDefaultAuthenticationProfileInSDAFabricV1
 type RequestItemSdaUpdateDefaultAuthenticationProfileInSdaFabricV1 struct {
-	SiteNameHierarchy         string `json:"siteNameHierarchy,omitempty"`         // Path of sda Fabric Site
-	AuthenticateTemplateName  string `json:"authenticateTemplateName,omitempty"`  // Authenticate Template Name
-	AuthenticationOrder       string `json:"authenticationOrder,omitempty"`       // Authentication Order
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Path of sda Fabric Site
+
+	AuthenticateTemplateName string `json:"authenticateTemplateName,omitempty"` // Authenticate Template Name
+
+	AuthenticationOrder string `json:"authenticationOrder,omitempty"` // Authentication Order
+
 	Dot1XToMabFallbackTimeout string `json:"dot1xToMabFallbackTimeout,omitempty"` // Dot1x To MabFallback Timeout( Allowed range is [3-120])
-	WakeOnLan                 *bool  `json:"wakeOnLan,omitempty"`                 // Wake On Lan
-	NumberOfHosts             string `json:"numberOfHosts,omitempty"`             // Number Of Hosts
+
+	WakeOnLan *bool `json:"wakeOnLan,omitempty"` // Wake On Lan
+
+	NumberOfHosts string `json:"numberOfHosts,omitempty"` // Number Of Hosts
 }
 type RequestSdaAddBorderDeviceInSdaFabricV1 []RequestItemSdaAddBorderDeviceInSdaFabricV1 // Array of RequestSdaAddBorderDeviceInSDAFabricV1
 type RequestItemSdaAddBorderDeviceInSdaFabricV1 struct {
-	DeviceManagementIPAddress         string                                                                    `json:"deviceManagementIpAddress,omitempty"`         // Management Ip Address of the provisioned Device
-	SiteNameHierarchy                 string                                                                    `json:"siteNameHierarchy,omitempty"`                 // Site Name Hierarchy of provisioned Device(site should be part of Fabric Site)
-	DeviceRole                        []string                                                                  `json:"deviceRole,omitempty"`                        // Supported Device Roles in SD-Access fabric. Allowed roles are "Border_Node","Control_Plane_Node","Edge_Node". E.g. ["Border_Node"] or ["Border_Node", "Control_Plane_Node"] or ["Border_Node", "Control_Plane_Node","Edge_Node"]
-	RouteDistributionProtocol         string                                                                    `json:"routeDistributionProtocol,omitempty"`         // Route Distribution Protocol for Control Plane Device. Allowed values are "LISP_BGP" or "LISP_PUB_SUB". Default value is "LISP_BGP"
-	ExternalDomainRoutingProtocolName string                                                                    `json:"externalDomainRoutingProtocolName,omitempty"` // External Domain Routing Protocol Name
-	ExternalConnectivityIPPoolName    string                                                                    `json:"externalConnectivityIpPoolName,omitempty"`    // External Connectivity IpPool Name
-	InternalAutonomouSystemNumber     string                                                                    `json:"internalAutonomouSystemNumber,omitempty"`     // Internal Autonomous System Number
-	BorderPriority                    string                                                                    `json:"borderPriority,omitempty"`                    // Border priority associated with a given device. Allowed range for Border Priority is [1-9]. A lower value indicates higher priority. E.g., a priority of 1 takes precedence over 5. Default priority would be set to 10.
-	BorderSessionType                 string                                                                    `json:"borderSessionType,omitempty"`                 // Border Session Type
-	ConnectedToInternet               *bool                                                                     `json:"connectedToInternet,omitempty"`               // Connected to Internet
-	SdaTransitNetworkName             string                                                                    `json:"sdaTransitNetworkName,omitempty"`             // SD-Access Transit Network Name
-	BorderWithExternalConnectivity    *bool                                                                     `json:"borderWithExternalConnectivity,omitempty"`    // Border With External Connectivity (Note: True for transit and False for non-transit border)
-	ExternalConnectivitySettings      *[]RequestItemSdaAddBorderDeviceInSdaFabricV1ExternalConnectivitySettings `json:"externalConnectivitySettings,omitempty"`      //
+	DeviceManagementIPAddress string `json:"deviceManagementIpAddress,omitempty"` // Management Ip Address of the provisioned Device
+
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Site Name Hierarchy of provisioned Device(site should be part of Fabric Site)
+
+	DeviceRole []string `json:"deviceRole,omitempty"` // Supported Device Roles in SD-Access fabric. Allowed roles are "Border_Node","Control_Plane_Node","Edge_Node". E.g. ["Border_Node"] or ["Border_Node", "Control_Plane_Node"] or ["Border_Node", "Control_Plane_Node","Edge_Node"]
+
+	RouteDistributionProtocol string `json:"routeDistributionProtocol,omitempty"` // Route Distribution Protocol for Control Plane Device. Allowed values are "LISP_BGP" or "LISP_PUB_SUB". Default value is "LISP_BGP"
+
+	ExternalDomainRoutingProtocolName string `json:"externalDomainRoutingProtocolName,omitempty"` // External Domain Routing Protocol Name
+
+	ExternalConnectivityIPPoolName string `json:"externalConnectivityIpPoolName,omitempty"` // External Connectivity IpPool Name
+
+	InternalAutonomouSystemNumber string `json:"internalAutonomouSystemNumber,omitempty"` // Internal Autonomous System Number
+
+	BorderPriority string `json:"borderPriority,omitempty"` // Border priority associated with a given device. Allowed range for Border Priority is [1-9]. A lower value indicates higher priority. E.g., a priority of 1 takes precedence over 5. Default priority would be set to 10.
+
+	BorderSessionType string `json:"borderSessionType,omitempty"` // Border Session Type
+
+	ConnectedToInternet *bool `json:"connectedToInternet,omitempty"` // Connected to Internet
+
+	SdaTransitNetworkName string `json:"sdaTransitNetworkName,omitempty"` // SD-Access Transit Network Name
+
+	BorderWithExternalConnectivity *bool `json:"borderWithExternalConnectivity,omitempty"` // Border With External Connectivity (Note: True for transit and False for non-transit border)
+
+	ExternalConnectivitySettings *[]RequestItemSdaAddBorderDeviceInSdaFabricV1ExternalConnectivitySettings `json:"externalConnectivitySettings,omitempty"` //
 }
 type RequestItemSdaAddBorderDeviceInSdaFabricV1ExternalConnectivitySettings struct {
-	InterfaceName                 string                                                                             `json:"interfaceName,omitempty"`                 // Interface Name
-	InterfaceDescription          string                                                                             `json:"interfaceDescription,omitempty"`          // Interface Description
-	ExternalAutonomouSystemNumber string                                                                             `json:"externalAutonomouSystemNumber,omitempty"` // External Autonomous System Number peer (e.g.,1-65535)
-	L3Handoff                     *[]RequestItemSdaAddBorderDeviceInSdaFabricV1ExternalConnectivitySettingsL3Handoff `json:"l3Handoff,omitempty"`                     //
-	L2Handoff                     *[]RequestItemSdaAddBorderDeviceInSdaFabricV1ExternalConnectivitySettingsL2Handoff `json:"l2Handoff,omitempty"`                     //
+	InterfaceName string `json:"interfaceName,omitempty"` // Interface Name
+
+	InterfaceDescription string `json:"interfaceDescription,omitempty"` // Interface Description
+
+	ExternalAutonomouSystemNumber string `json:"externalAutonomouSystemNumber,omitempty"` // External Autonomous System Number peer (e.g.,1-65535)
+
+	L3Handoff *[]RequestItemSdaAddBorderDeviceInSdaFabricV1ExternalConnectivitySettingsL3Handoff `json:"l3Handoff,omitempty"` //
+
+	L2Handoff *[]RequestItemSdaAddBorderDeviceInSdaFabricV1ExternalConnectivitySettingsL2Handoff `json:"l2Handoff,omitempty"` //
 }
 type RequestItemSdaAddBorderDeviceInSdaFabricV1ExternalConnectivitySettingsL3Handoff struct {
 	VirtualNetwork *RequestItemSdaAddBorderDeviceInSdaFabricV1ExternalConnectivitySettingsL3HandoffVirtualNetwork `json:"virtualNetwork,omitempty"` //
 }
 type RequestItemSdaAddBorderDeviceInSdaFabricV1ExternalConnectivitySettingsL3HandoffVirtualNetwork struct {
 	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Virtual Network Name, that is associated to Fabric Site
-	VLANID             string `json:"vlanId,omitempty"`             // Vlan Id (e.g.,2-4096 except for reserved VLANs (1002-1005, 2046, 4095))
+
+	VLANID string `json:"vlanId,omitempty"` // Vlan Id (e.g.,2-4096 except for reserved VLANs (1002-1005, 2046, 4095))
 }
 type RequestItemSdaAddBorderDeviceInSdaFabricV1ExternalConnectivitySettingsL2Handoff struct {
 	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Virtual Network Name, that is associated to Fabric Site
-	VLANName           string `json:"vlanName,omitempty"`           // Vlan Name of L2 Handoff
+
+	VLANName string `json:"vlanName,omitempty"` // Vlan Name of L2 Handoff
 }
 type RequestSdaAddControlPlaneDeviceInSdaFabricV1 struct {
 	DeviceManagementIPAddress string `json:"deviceManagementIpAddress,omitempty"` // Management Ip Address of the Device which is provisioned successfully
-	SiteNameHierarchy         string `json:"siteNameHierarchy,omitempty"`         // siteNameHierarchy of the Provisioned Device(site should be part of Fabric Site)
+
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // siteNameHierarchy of the Provisioned Device(site should be part of Fabric Site)
+
 	RouteDistributionProtocol string `json:"routeDistributionProtocol,omitempty"` // Route Distribution Protocol for Control Plane Device. Allowed values are "LISP_BGP" or "LISP_PUB_SUB". Default value is "LISP_BGP"
 }
 type RequestSdaAddEdgeDeviceInSdaFabricV1 struct {
 	DeviceManagementIPAddress string `json:"deviceManagementIpAddress,omitempty"` // Management Ip Address of the Device which is provisioned successfully
-	SiteNameHierarchy         string `json:"siteNameHierarchy,omitempty"`         // siteNameHierarchy of the Provisioned Device(site should be part of Fabric Site)
+
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // siteNameHierarchy of the Provisioned Device(site should be part of Fabric Site)
 }
 type RequestSdaAddSiteInSdaFabricV1 struct {
-	FabricName        string `json:"fabricName,omitempty"`        // Warning - Starting DNA Center 2.2.3.5 release, this field has been deprecated. SD-Access Fabric does not need it anymore.  It will be removed in future DNA Center releases.
+	FabricName string `json:"fabricName,omitempty"` // Warning - Starting DNA Center 2.2.3.5 release, this field has been deprecated. SD-Access Fabric does not need it anymore.  It will be removed in future DNA Center releases.
+
 	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Existing site name hierarchy available at global level. For Example "Global/Chicago/Building21/Floor1"
-	FabricType        string `json:"fabricType,omitempty"`        // Type of SD-Access Fabric. Allowed values are "FABRIC_SITE" or "FABRIC_ZONE".  Default value is "FABRIC_SITE".
+
+	FabricType string `json:"fabricType,omitempty"` // Type of SD-Access Fabric. Allowed values are "FABRIC_SITE" or "FABRIC_ZONE".  Default value is "FABRIC_SITE".
 }
 type RequestSdaAddPortAssignmentForAccessPointInSdaFabricV1 struct {
-	SiteNameHierarchy         string `json:"siteNameHierarchy,omitempty"`         // Path of sda Fabric Site
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Path of sda Fabric Site
+
 	DeviceManagementIPAddress string `json:"deviceManagementIpAddress,omitempty"` // Management Ip Address of the edge device
-	InterfaceName             string `json:"interfaceName,omitempty"`             // Interface Name of the edge device
-	DataIPAddressPoolName     string `json:"dataIpAddressPoolName,omitempty"`     // Ip Pool Name, that is assigned to INFRA_VN
-	AuthenticateTemplateName  string `json:"authenticateTemplateName,omitempty"`  // Authenticate TemplateName associated to Fabric Site
-	InterfaceDescription      string `json:"interfaceDescription,omitempty"`      // Details or note of interface port assignment
+
+	InterfaceName string `json:"interfaceName,omitempty"` // Interface Name of the edge device
+
+	DataIPAddressPoolName string `json:"dataIpAddressPoolName,omitempty"` // Ip Pool Name, that is assigned to INFRA_VN
+
+	AuthenticateTemplateName string `json:"authenticateTemplateName,omitempty"` // Authenticate TemplateName associated to Fabric Site
+
+	InterfaceDescription string `json:"interfaceDescription,omitempty"` // Details or note of interface port assignment
 }
 type RequestSdaAddPortAssignmentForUserDeviceInSdaFabricV1 struct {
-	SiteNameHierarchy         string   `json:"siteNameHierarchy,omitempty"`         // Complete Path of SD-Access Fabric Site.
-	DeviceManagementIPAddress string   `json:"deviceManagementIpAddress,omitempty"` // Management Ip Address of the Edge Node Device.
-	InterfaceName             string   `json:"interfaceName,omitempty"`             // Interface Name on the Edge Node Device.
-	InterfaceNames            []string `json:"interfaceNames,omitempty"`            // List of Interface Names on the Edge Node Device. E.g.["GigabitEthernet1/0/3","GigabitEthernet1/0/4"]
-	DataIPAddressPoolName     string   `json:"dataIpAddressPoolName,omitempty"`     // Ip Pool Name, that is assigned to virtual network with traffic type as DATA(can't be empty if voiceIpAddressPoolName is empty)
-	VoiceIPAddressPoolName    string   `json:"voiceIpAddressPoolName,omitempty"`    // Ip Pool Name, that is assigned to virtual network with traffic type as VOICE(can't be empty if dataIpAddressPoolName is empty)
-	AuthenticateTemplateName  string   `json:"authenticateTemplateName,omitempty"`  // Authenticate TemplateName associated with siteNameHierarchy
-	ScalableGroupName         string   `json:"scalableGroupName,omitempty"`         // Scalable Group name associated with VN
-	InterfaceDescription      string   `json:"interfaceDescription,omitempty"`      // User defined text message for port assignment
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Complete Path of SD-Access Fabric Site.
+
+	DeviceManagementIPAddress string `json:"deviceManagementIpAddress,omitempty"` // Management Ip Address of the Edge Node Device.
+
+	InterfaceName string `json:"interfaceName,omitempty"` // Interface Name on the Edge Node Device.
+
+	InterfaceNames []string `json:"interfaceNames,omitempty"` // List of Interface Names on the Edge Node Device. E.g.["GigabitEthernet1/0/3","GigabitEthernet1/0/4"]
+
+	DataIPAddressPoolName string `json:"dataIpAddressPoolName,omitempty"` // Ip Pool Name, that is assigned to virtual network with traffic type as DATA(can't be empty if voiceIpAddressPoolName is empty)
+
+	VoiceIPAddressPoolName string `json:"voiceIpAddressPoolName,omitempty"` // Ip Pool Name, that is assigned to virtual network with traffic type as VOICE(can't be empty if dataIpAddressPoolName is empty)
+
+	AuthenticateTemplateName string `json:"authenticateTemplateName,omitempty"` // Authenticate TemplateName associated with siteNameHierarchy
+
+	ScalableGroupName string `json:"scalableGroupName,omitempty"` // Scalable Group name associated with VN
+
+	InterfaceDescription string `json:"interfaceDescription,omitempty"` // User defined text message for port assignment
 }
 type RequestSdaAddMulticastInSdaFabricV1 struct {
-	SiteNameHierarchy string                                                `json:"siteNameHierarchy,omitempty"` // Full path of sda Fabric Site
-	MulticastMethod   string                                                `json:"multicastMethod,omitempty"`   // Multicast Method
-	MulticastType     string                                                `json:"multicastType,omitempty"`     // Multicast Type
-	MulticastVnInfo   *[]RequestSdaAddMulticastInSdaFabricV1MulticastVnInfo `json:"multicastVnInfo,omitempty"`   //
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Full path of sda Fabric Site
+
+	MulticastMethod string `json:"multicastMethod,omitempty"` // Multicast Method
+
+	MulticastType string `json:"multicastType,omitempty"` // Multicast Type
+
+	MulticastVnInfo *[]RequestSdaAddMulticastInSdaFabricV1MulticastVnInfo `json:"multicastVnInfo,omitempty"` //
 }
 type RequestSdaAddMulticastInSdaFabricV1MulticastVnInfo struct {
-	VirtualNetworkName  string                                                       `json:"virtualNetworkName,omitempty"`  // Virtual Network Name, that is associated to Fabric Site
-	IPPoolName          string                                                       `json:"ipPoolName,omitempty"`          // Ip Pool Name, that is reserved to Fabric Site
-	InternalRpIPAddress []string                                                     `json:"internalRpIpAddress,omitempty"` // InternalRpIpAddress, required if multicastType is asm_with_internal_rp
-	ExternalRpIPAddress string                                                       `json:"externalRpIpAddress,omitempty"` // ExternalRpIpAddress, required if multicastType is asm_with_external_rp
-	SsmInfo             *[]RequestSdaAddMulticastInSdaFabricV1MulticastVnInfoSsmInfo `json:"ssmInfo,omitempty"`             //
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Virtual Network Name, that is associated to Fabric Site
+
+	IPPoolName string `json:"ipPoolName,omitempty"` // Ip Pool Name, that is reserved to Fabric Site
+
+	InternalRpIPAddress []string `json:"internalRpIpAddress,omitempty"` // InternalRpIpAddress, required if multicastType is asm_with_internal_rp
+
+	ExternalRpIPAddress string `json:"externalRpIpAddress,omitempty"` // ExternalRpIpAddress, required if multicastType is asm_with_external_rp
+
+	SsmInfo *[]RequestSdaAddMulticastInSdaFabricV1MulticastVnInfoSsmInfo `json:"ssmInfo,omitempty"` //
 }
 type RequestSdaAddMulticastInSdaFabricV1MulticastVnInfoSsmInfo struct {
-	SsmGroupRange   string `json:"ssmGroupRange,omitempty"`   // Valid SSM group range ip address(e.g., 230.0.0.0)
+	SsmGroupRange string `json:"ssmGroupRange,omitempty"` // Valid SSM group range ip address(e.g., 230.0.0.0)
+
 	SsmWildcardMask string `json:"ssmWildcardMask,omitempty"` // Valid SSM Wildcard Mask ip address(e.g.,0.255.255.255)
 }
 type RequestSdaReProvisionWiredDeviceV1 struct {
 	DeviceManagementIPAddress string `json:"deviceManagementIpAddress,omitempty"` // Management Ip Address of the device to be re-provisioned
-	SiteNameHierarchy         string `json:"siteNameHierarchy,omitempty"`         // siteNameHierarchy of the provisioned device
+
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // siteNameHierarchy of the provisioned device
 }
 type RequestSdaProvisionWiredDeviceV1 struct {
 	DeviceManagementIPAddress string `json:"deviceManagementIpAddress,omitempty"` // Management Ip Address of the device to be provisioned
-	SiteNameHierarchy         string `json:"siteNameHierarchy,omitempty"`         // Site Name Hierarchy for device location(only building / floor level)
+
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Site Name Hierarchy for device location(only building / floor level)
 }
 type RequestSdaAddTransitPeerNetworkV1 struct {
-	TransitPeerNetworkName string                                               `json:"transitPeerNetworkName,omitempty"` // Transit Peer Network Name
-	TransitPeerNetworkType string                                               `json:"transitPeerNetworkType,omitempty"` // Transit Peer Network Type
-	IPTransitSettings      *RequestSdaAddTransitPeerNetworkV1IPTransitSettings  `json:"ipTransitSettings,omitempty"`      //
-	SdaTransitSettings     *RequestSdaAddTransitPeerNetworkV1SdaTransitSettings `json:"sdaTransitSettings,omitempty"`     //
+	TransitPeerNetworkName string `json:"transitPeerNetworkName,omitempty"` // Transit Peer Network Name
+
+	TransitPeerNetworkType string `json:"transitPeerNetworkType,omitempty"` // Transit Peer Network Type
+
+	IPTransitSettings *RequestSdaAddTransitPeerNetworkV1IPTransitSettings `json:"ipTransitSettings,omitempty"` //
+
+	SdaTransitSettings *RequestSdaAddTransitPeerNetworkV1SdaTransitSettings `json:"sdaTransitSettings,omitempty"` //
 }
 type RequestSdaAddTransitPeerNetworkV1IPTransitSettings struct {
-	RoutingProtocolName    string `json:"routingProtocolName,omitempty"`    // Routing Protocol Name
+	RoutingProtocolName string `json:"routingProtocolName,omitempty"` // Routing Protocol Name
+
 	AutonomousSystemNumber string `json:"autonomousSystemNumber,omitempty"` // Autonomous System Number
 }
 type RequestSdaAddTransitPeerNetworkV1SdaTransitSettings struct {
 	TransitControlPlaneSettings *[]RequestSdaAddTransitPeerNetworkV1SdaTransitSettingsTransitControlPlaneSettings `json:"transitControlPlaneSettings,omitempty"` //
 }
 type RequestSdaAddTransitPeerNetworkV1SdaTransitSettingsTransitControlPlaneSettings struct {
-	SiteNameHierarchy         string `json:"siteNameHierarchy,omitempty"`         // Site Name Hierarchy where device is provisioned
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Site Name Hierarchy where device is provisioned
+
 	DeviceManagementIPAddress string `json:"deviceManagementIpAddress,omitempty"` // Device Management Ip Address of provisioned device
 }
 type RequestSdaAddVnInFabricV1 struct {
 	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Virtual Network Name, that is created at Global level
-	SiteNameHierarchy  string `json:"siteNameHierarchy,omitempty"`  // Path of sda Fabric Site
+
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Path of sda Fabric Site
 }
 type RequestSdaAddIPPoolInSdaVirtualNetworkV1 struct {
-	SiteNameHierarchy     string `json:"siteNameHierarchy,omitempty"`     // Path of sda Fabric Site
-	VirtualNetworkName    string `json:"virtualNetworkName,omitempty"`    // Virtual Network Name, that is associated to Fabric Site
-	IsLayer2Only          *bool  `json:"isLayer2Only,omitempty"`          // Layer2 Only enablement flag and default value is False
-	IPPoolName            string `json:"ipPoolName,omitempty"`            // Ip Pool Name, that is reserved to Fabric Site (Required for L3 and INFRA_VN)
-	VLANID                string `json:"vlanId,omitempty"`                // vlan Id(applicable for L3 , L2 and  INFRA_VN)
-	VLANName              string `json:"vlanName,omitempty"`              // Vlan name represent the segment name, if empty, vlanName would be auto generated by API
-	AutoGenerateVLANName  *bool  `json:"autoGenerateVlanName,omitempty"`  // It will auto generate vlanName, if vlanName is empty(applicable for L3  and INFRA_VN)
-	TrafficType           string `json:"trafficType,omitempty"`           // Traffic type(applicable for L3  and L2)
-	ScalableGroupName     string `json:"scalableGroupName,omitempty"`     // Scalable Group Name(applicable for L3)
-	IsL2FloodingEnabled   *bool  `json:"isL2FloodingEnabled,omitempty"`   // Layer2 flooding enablement flag(applicable for L3 , L2 and always true for L2 and default value is False )
-	IsThisCriticalPool    *bool  `json:"isThisCriticalPool,omitempty"`    // Critical pool enablement flag(applicable for L3 and default value is False )
-	IsWirelessPool        *bool  `json:"isWirelessPool,omitempty"`        // Wireless Pool enablement flag(applicable for L3  and L2 and default value is False )
-	IsIPDirectedBroadcast *bool  `json:"isIpDirectedBroadcast,omitempty"` // Ip Directed Broadcast enablement flag(applicable for L3 and default value is False )
-	IsCommonPool          *bool  `json:"isCommonPool,omitempty"`          // Common Pool enablement flag(applicable for L3 and L2 and default value is False )
-	IsBridgeModeVm        *bool  `json:"isBridgeModeVm,omitempty"`        // Bridge Mode Vm enablement flag (applicable for L3 and L2 and default value is False )
-	PoolType              string `json:"poolType,omitempty"`              // Pool Type (applicable for INFRA_VN)
+	SiteNameHierarchy string `json:"siteNameHierarchy,omitempty"` // Path of sda Fabric Site
+
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Virtual Network Name, that is associated to Fabric Site
+
+	IsLayer2Only *bool `json:"isLayer2Only,omitempty"` // Layer2 Only enablement flag and default value is False
+
+	IPPoolName string `json:"ipPoolName,omitempty"` // Ip Pool Name, that is reserved to Fabric Site (Required for L3 and INFRA_VN)
+
+	VLANID string `json:"vlanId,omitempty"` // vlan Id(applicable for L3 , L2 and  INFRA_VN)
+
+	VLANName string `json:"vlanName,omitempty"` // Vlan name represent the segment name, if empty, vlanName would be auto generated by API
+
+	AutoGenerateVLANName *bool `json:"autoGenerateVlanName,omitempty"` // It will auto generate vlanName, if vlanName is empty(applicable for L3  and INFRA_VN)
+
+	TrafficType string `json:"trafficType,omitempty"` // Traffic type(applicable for L3  and L2)
+
+	ScalableGroupName string `json:"scalableGroupName,omitempty"` // Scalable Group Name(applicable for L3)
+
+	IsL2FloodingEnabled *bool `json:"isL2FloodingEnabled,omitempty"` // Layer2 flooding enablement flag(applicable for L3 , L2 and always true for L2 and default value is False )
+
+	IsThisCriticalPool *bool `json:"isThisCriticalPool,omitempty"` // Critical pool enablement flag(applicable for L3 and default value is False )
+
+	IsWirelessPool *bool `json:"isWirelessPool,omitempty"` // Wireless Pool enablement flag(applicable for L3  and L2 and default value is False )
+
+	IsIPDirectedBroadcast *bool `json:"isIpDirectedBroadcast,omitempty"` // Ip Directed Broadcast enablement flag(applicable for L3 and default value is False )
+
+	IsCommonPool *bool `json:"isCommonPool,omitempty"` // Common Pool enablement flag(applicable for L3 and L2 and default value is False )
+
+	IsBridgeModeVm *bool `json:"isBridgeModeVm,omitempty"` // Bridge Mode Vm enablement flag (applicable for L3 and L2 and default value is False )
+
+	PoolType string `json:"poolType,omitempty"` // Pool Type (applicable for INFRA_VN)
 }
 type RequestSdaUpdateAnycastGatewaysV1 []RequestItemSdaUpdateAnycastGatewaysV1 // Array of RequestSdaUpdateAnycastGatewaysV1
 type RequestItemSdaUpdateAnycastGatewaysV1 struct {
-	ID                                      string `json:"id,omitempty"`                                      // ID of the anycast gateway (updating this field is not allowed).
-	FabricID                                string `json:"fabricId,omitempty"`                                // ID of the fabric this anycast gateway is assigned to. Updating anycast gateways on fabric zones is not allowed--instead, update the corresponding anycast gateway on the fabric site and the updates will be applied on all applicable fabric zones (updating this field is not allowed).
-	VirtualNetworkName                      string `json:"virtualNetworkName,omitempty"`                      // Name of the layer 3 virtual network associated with the anycast gateway (updating this field is not allowed).
-	IPPoolName                              string `json:"ipPoolName,omitempty"`                              // Name of the IP pool associated with the anycast gateway (updating this field is not allowed).
-	TCPMssAdjustment                        *int   `json:"tcpMssAdjustment,omitempty"`                        // TCP maximum segment size adjustment.
-	VLANName                                string `json:"vlanName,omitempty"`                                // Name of the VLAN of the anycast gateway (updating this field is not allowed).
-	VLANID                                  *int   `json:"vlanId,omitempty"`                                  // ID of the VLAN of the anycast gateway (updating this field is not allowed).
-	TrafficType                             string `json:"trafficType,omitempty"`                             // The type of traffic the anycast gateway serves.
-	PoolType                                string `json:"poolType,omitempty"`                                // The pool type of the anycast gateway (required for & applicable only to INFRA_VN; updating this field is not allowed).
-	SecurityGroupName                       string `json:"securityGroupName,omitempty"`                       // Name of the associated Security Group (not applicable to INFRA_VN).
-	IsCriticalPool                          *bool  `json:"isCriticalPool,omitempty"`                          // Enable/disable critical VLAN (not applicable to INFRA_VN; updating this field is not allowed).
-	IsLayer2FloodingEnabled                 *bool  `json:"isLayer2FloodingEnabled,omitempty"`                 // Enable/disable layer 2 flooding (not applicable to INFRA_VN).
-	IsWirelessPool                          *bool  `json:"isWirelessPool,omitempty"`                          // Enable/disable fabric-enabled wireless (not applicable to INFRA_VN).
-	IsIPDirectedBroadcast                   *bool  `json:"isIpDirectedBroadcast,omitempty"`                   // Enable/disable IP-directed broadcast (not applicable to INFRA_VN).
-	IsIntraSubnetRoutingEnabled             *bool  `json:"isIntraSubnetRoutingEnabled,omitempty"`             // Enable/disable Intra-Subnet Routing (not applicable to INFRA_VN; updating this field is not allowed).
-	IsMultipleIPToMacAddresses              *bool  `json:"isMultipleIpToMacAddresses,omitempty"`              // Enable/disable multiple IP-to-MAC Addresses (Wireless Bridged-Network Virtual Machine; not applicable to INFRA_VN).
-	IsSupplicantBasedExtendedNodeOnboarding *bool  `json:"isSupplicantBasedExtendedNodeOnboarding,omitempty"` // Enable/disable Supplicant-Based Extended Node Onboarding (applicable only to INFRA_VN requests; must not be null when poolType is EXTENDED_NODE).
-	IsGroupBasedPolicyEnforcementEnabled    *bool  `json:"isGroupBasedPolicyEnforcementEnabled,omitempty"`    // Enable/disable Group-Based Policy Enforcement (applicable only to INFRA_VN; defaults to false).
+	ID string `json:"id,omitempty"` // ID of the anycast gateway (updating this field is not allowed).
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric this anycast gateway is assigned to. Updating anycast gateways on fabric zones is not allowed--instead, update the corresponding anycast gateway on the fabric site and the updates will be applied on all applicable fabric zones (updating this field is not allowed).
+
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Name of the layer 3 virtual network associated with the anycast gateway (updating this field is not allowed).
+
+	IPPoolName string `json:"ipPoolName,omitempty"` // Name of the IP pool associated with the anycast gateway (updating this field is not allowed).
+
+	TCPMssAdjustment *int `json:"tcpMssAdjustment,omitempty"` // TCP maximum segment size adjustment.
+
+	VLANName string `json:"vlanName,omitempty"` // Name of the VLAN of the anycast gateway (updating this field is not allowed).
+
+	VLANID *int `json:"vlanId,omitempty"` // ID of the VLAN of the anycast gateway (updating this field is not allowed).
+
+	TrafficType string `json:"trafficType,omitempty"` // The type of traffic the anycast gateway serves.
+
+	PoolType string `json:"poolType,omitempty"` // The pool type of the anycast gateway (required for & applicable only to INFRA_VN; updating this field is not allowed).
+
+	SecurityGroupName string `json:"securityGroupName,omitempty"` // Name of the associated Security Group (not applicable to INFRA_VN).
+
+	IsCriticalPool *bool `json:"isCriticalPool,omitempty"` // Enable/disable critical VLAN (not applicable to INFRA_VN; updating this field is not allowed).
+
+	IsLayer2FloodingEnabled *bool `json:"isLayer2FloodingEnabled,omitempty"` // Enable/disable layer 2 flooding (not applicable to INFRA_VN).
+
+	IsWirelessPool *bool `json:"isWirelessPool,omitempty"` // Enable/disable fabric-enabled wireless (not applicable to INFRA_VN).
+
+	IsIPDirectedBroadcast *bool `json:"isIpDirectedBroadcast,omitempty"` // Enable/disable IP-directed broadcast (not applicable to INFRA_VN).
+
+	IsIntraSubnetRoutingEnabled *bool `json:"isIntraSubnetRoutingEnabled,omitempty"` // Enable/disable Intra-Subnet Routing (not applicable to INFRA_VN; updating this field is not allowed).
+
+	IsMultipleIPToMacAddresses *bool `json:"isMultipleIpToMacAddresses,omitempty"` // Enable/disable multiple IP-to-MAC Addresses (Wireless Bridged-Network Virtual Machine; not applicable to INFRA_VN).
+
+	IsSupplicantBasedExtendedNodeOnboarding *bool `json:"isSupplicantBasedExtendedNodeOnboarding,omitempty"` // Enable/disable Supplicant-Based Extended Node Onboarding (applicable only to INFRA_VN requests; must not be null when poolType is EXTENDED_NODE).
+
+	IsGroupBasedPolicyEnforcementEnabled *bool `json:"isGroupBasedPolicyEnforcementEnabled,omitempty"` // Enable/disable Group-Based Policy Enforcement (applicable only to INFRA_VN; defaults to false).
 }
 type RequestSdaAddAnycastGatewaysV1 []RequestItemSdaAddAnycastGatewaysV1 // Array of RequestSdaAddAnycastGatewaysV1
 type RequestItemSdaAddAnycastGatewaysV1 struct {
-	FabricID                                string `json:"fabricId,omitempty"`                                // ID of the fabric this anycast gateway is to be assigned to.
-	VirtualNetworkName                      string `json:"virtualNetworkName,omitempty"`                      // Name of the layer 3 virtual network associated with the anycast gateway. the virtual network must have already been added to the site before creating an anycast gateway with it.
-	IPPoolName                              string `json:"ipPoolName,omitempty"`                              // Name of the IP pool associated with the anycast gateway.
-	TCPMssAdjustment                        *int   `json:"tcpMssAdjustment,omitempty"`                        // TCP maximum segment size adjustment.
-	VLANName                                string `json:"vlanName,omitempty"`                                // Name of the VLAN of the anycast gateway.
-	VLANID                                  *int   `json:"vlanId,omitempty"`                                  // ID of the VLAN of the anycast gateway. allowed VLAN range is 2-4093 except for reserved VLANs 1002-1005, 2046, and 4094. if deploying an anycast gateway on a fabric zone, this vlanId must match the vlanId of the corresponding anycast gateway on the fabric site.
-	TrafficType                             string `json:"trafficType,omitempty"`                             // The type of traffic the anycast gateway serves.
-	PoolType                                string `json:"poolType,omitempty"`                                // The pool type of the anycast gateway (required for & applicable only to INFRA_VN).
-	SecurityGroupName                       string `json:"securityGroupName,omitempty"`                       // Name of the associated Security Group (not applicable to INFRA_VN).
-	IsCriticalPool                          *bool  `json:"isCriticalPool,omitempty"`                          // Enable/disable critical VLAN. if true, autoGenerateVlanName must also be true. (isCriticalPool is not applicable to INFRA_VN).
-	IsLayer2FloodingEnabled                 *bool  `json:"isLayer2FloodingEnabled,omitempty"`                 // Enable/disable layer 2 flooding (not applicable to INFRA_VN).
-	IsWirelessPool                          *bool  `json:"isWirelessPool,omitempty"`                          // Enable/disable fabric-enabled wireless (not applicable to INFRA_VN).
-	IsIPDirectedBroadcast                   *bool  `json:"isIpDirectedBroadcast,omitempty"`                   // Enable/disable IP-directed broadcast (not applicable to INFRA_VN).
-	IsIntraSubnetRoutingEnabled             *bool  `json:"isIntraSubnetRoutingEnabled,omitempty"`             // Enable/disable Intra-Subnet Routing (not applicable to INFRA_VN).
-	IsMultipleIPToMacAddresses              *bool  `json:"isMultipleIpToMacAddresses,omitempty"`              // Enable/disable multiple IP-to-MAC Addresses (Wireless Bridged-Network Virtual Machine; not applicable to INFRA_VN).
-	IsSupplicantBasedExtendedNodeOnboarding *bool  `json:"isSupplicantBasedExtendedNodeOnboarding,omitempty"` // Enable/disable Supplicant-Based Extended Node Onboarding (applicable only to INFRA_VN).
-	IsGroupBasedPolicyEnforcementEnabled    *bool  `json:"isGroupBasedPolicyEnforcementEnabled,omitempty"`    // Enable/disable Group-Based Policy Enforcement (applicable only to INFRA_VN; defaults to false).
-	AutoGenerateVLANName                    *bool  `json:"autoGenerateVlanName,omitempty"`                    // This field cannot be true when vlanName is provided. the vlanName will be generated as "{ipPoolGroupV4Cidr}-{virtualNetworkName}" for non-critical VLANs. for critical VLANs with DATA trafficType, vlanName will be "CRITICAL_VLAN". for critical VLANs with VOICE trafficType, vlanName will be "VOICE_VLAN".
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric this anycast gateway is to be assigned to.
+
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Name of the layer 3 virtual network associated with the anycast gateway. the virtual network must have already been added to the site before creating an anycast gateway with it.
+
+	IPPoolName string `json:"ipPoolName,omitempty"` // Name of the IP pool associated with the anycast gateway.
+
+	TCPMssAdjustment *int `json:"tcpMssAdjustment,omitempty"` // TCP maximum segment size adjustment.
+
+	VLANName string `json:"vlanName,omitempty"` // Name of the VLAN of the anycast gateway.
+
+	VLANID *int `json:"vlanId,omitempty"` // ID of the VLAN of the anycast gateway. allowed VLAN range is 2-4093 except for reserved VLANs 1002-1005, 2046, and 4094. if deploying an anycast gateway on a fabric zone, this vlanId must match the vlanId of the corresponding anycast gateway on the fabric site.
+
+	TrafficType string `json:"trafficType,omitempty"` // The type of traffic the anycast gateway serves.
+
+	PoolType string `json:"poolType,omitempty"` // The pool type of the anycast gateway (required for & applicable only to INFRA_VN).
+
+	SecurityGroupName string `json:"securityGroupName,omitempty"` // Name of the associated Security Group (not applicable to INFRA_VN).
+
+	IsCriticalPool *bool `json:"isCriticalPool,omitempty"` // Enable/disable critical VLAN. if true, autoGenerateVlanName must also be true. (isCriticalPool is not applicable to INFRA_VN).
+
+	IsLayer2FloodingEnabled *bool `json:"isLayer2FloodingEnabled,omitempty"` // Enable/disable layer 2 flooding (not applicable to INFRA_VN).
+
+	IsWirelessPool *bool `json:"isWirelessPool,omitempty"` // Enable/disable fabric-enabled wireless (not applicable to INFRA_VN).
+
+	IsIPDirectedBroadcast *bool `json:"isIpDirectedBroadcast,omitempty"` // Enable/disable IP-directed broadcast (not applicable to INFRA_VN).
+
+	IsIntraSubnetRoutingEnabled *bool `json:"isIntraSubnetRoutingEnabled,omitempty"` // Enable/disable Intra-Subnet Routing (not applicable to INFRA_VN).
+
+	IsMultipleIPToMacAddresses *bool `json:"isMultipleIpToMacAddresses,omitempty"` // Enable/disable multiple IP-to-MAC Addresses (Wireless Bridged-Network Virtual Machine; not applicable to INFRA_VN).
+
+	IsSupplicantBasedExtendedNodeOnboarding *bool `json:"isSupplicantBasedExtendedNodeOnboarding,omitempty"` // Enable/disable Supplicant-Based Extended Node Onboarding (applicable only to INFRA_VN).
+
+	IsGroupBasedPolicyEnforcementEnabled *bool `json:"isGroupBasedPolicyEnforcementEnabled,omitempty"` // Enable/disable Group-Based Policy Enforcement (applicable only to INFRA_VN; defaults to false).
+
+	AutoGenerateVLANName *bool `json:"autoGenerateVlanName,omitempty"` // This field cannot be true when vlanName is provided. the vlanName will be generated as "{ipPoolGroupV4Cidr}-{virtualNetworkName}" for non-critical VLANs. for critical VLANs with DATA trafficType, vlanName will be "CRITICAL_VLAN". for critical VLANs with VOICE trafficType, vlanName will be "VOICE_VLAN".
 }
 type RequestSdaUpdateAuthenticationProfileV1 []RequestItemSdaUpdateAuthenticationProfileV1 // Array of RequestSdaUpdateAuthenticationProfileV1
 type RequestItemSdaUpdateAuthenticationProfileV1 struct {
-	ID                        string `json:"id,omitempty"`                        // ID of the authentication profile (updating this field is not allowed).
-	FabricID                  string `json:"fabricId,omitempty"`                  // ID of the fabric this authentication profile is assigned to (updating this field is not allowed).
+	ID string `json:"id,omitempty"` // ID of the authentication profile (updating this field is not allowed).
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric this authentication profile is assigned to (updating this field is not allowed). To update a global authentication profile, either remove this property or set its value to null.
+
 	AuthenticationProfileName string `json:"authenticationProfileName,omitempty"` // The default host authentication template (updating this field is not allowed).
-	AuthenticationOrder       string `json:"authenticationOrder,omitempty"`       // First authentication method.
-	Dot1XToMabFallbackTimeout *int   `json:"dot1xToMabFallbackTimeout,omitempty"` // 802.1x Timeout.
-	WakeOnLan                 *bool  `json:"wakeOnLan,omitempty"`                 // Wake on LAN.
-	NumberOfHosts             string `json:"numberOfHosts,omitempty"`             // Number of Hosts.
-	IsBpduGuardEnabled        *bool  `json:"isBpduGuardEnabled,omitempty"`        // Enable/disable BPDU Guard. Only applicable when authenticationProfileName is set to "Closed Authentication" (defaults to true).
+
+	AuthenticationOrder string `json:"authenticationOrder,omitempty"` // First authentication method.
+
+	Dot1XToMabFallbackTimeout *int `json:"dot1xToMabFallbackTimeout,omitempty"` // 802.1x Timeout.
+
+	WakeOnLan *bool `json:"wakeOnLan,omitempty"` // Wake on LAN.
+
+	NumberOfHosts string `json:"numberOfHosts,omitempty"` // Number of Hosts.
+
+	IsBpduGuardEnabled *bool `json:"isBpduGuardEnabled,omitempty"` // Enable/disable BPDU Guard. Only applicable when authenticationProfileName is set to "Closed Authentication" (defaults to true).
+
+	PreAuthACL *RequestItemSdaUpdateAuthenticationProfileV1PreAuthACL `json:"preAuthAcl,omitempty"` //
+}
+type RequestItemSdaUpdateAuthenticationProfileV1PreAuthACL struct {
+	Enabled *bool `json:"enabled,omitempty"` // Enable/disable Pre-Authentication ACL.
+
+	ImplicitAction string `json:"implicitAction,omitempty"` // Implicit behaviour unless overridden (defaults to "DENY").
+
+	Description string `json:"description,omitempty"` // Description of this Pre-Authentication ACL.
+
+	AccessContracts *[]RequestItemSdaUpdateAuthenticationProfileV1PreAuthACLAccessContracts `json:"accessContracts,omitempty"` //
+}
+type RequestItemSdaUpdateAuthenticationProfileV1PreAuthACLAccessContracts struct {
+	Action string `json:"action,omitempty"` // Contract behaviour.
+
+	Protocol string `json:"protocol,omitempty"` // Protocol for the access contract. "TCP" and "TCP_UDP" are only allowed when the contract port is "domain".
+
+	Port string `json:"port,omitempty"` // Port for the access contract. The port can only be used once in the Access Contract list.
 }
 type RequestSdaUpdateExtranetPolicyV1 []RequestItemSdaUpdateExtranetPolicyV1 // Array of RequestSdaUpdateExtranetPolicyV1
 type RequestItemSdaUpdateExtranetPolicyV1 struct {
-	ID                            string   `json:"id,omitempty"`                            // ID of the existing extranet policy (updating this field is not allowed).
-	ExtranetPolicyName            string   `json:"extranetPolicyName,omitempty"`            // Name of the existing extranet policy (updating this field is not allowed).
-	FabricIDs                     []string `json:"fabricIds,omitempty"`                     // IDs of the fabric sites associated with this extranet policy.
-	ProviderVirtualNetworkName    string   `json:"providerVirtualNetworkName,omitempty"`    // Name of the existing provider virtual network (updating this field is not allowed).
+	ID string `json:"id,omitempty"` // ID of the existing extranet policy (updating this field is not allowed).
+
+	ExtranetPolicyName string `json:"extranetPolicyName,omitempty"` // Name of the existing extranet policy (updating this field is not allowed).
+
+	FabricIDs []string `json:"fabricIds,omitempty"` // IDs of the fabric sites associated with this extranet policy.
+
+	ProviderVirtualNetworkName string `json:"providerVirtualNetworkName,omitempty"` // Name of the existing provider virtual network (updating this field is not allowed).
+
 	SubscriberVirtualNetworkNames []string `json:"subscriberVirtualNetworkNames,omitempty"` // Name of the subscriber virtual networks.
 }
 type RequestSdaAddExtranetPolicyV1 []RequestItemSdaAddExtranetPolicyV1 // Array of RequestSdaAddExtranetPolicyV1
 type RequestItemSdaAddExtranetPolicyV1 struct {
-	ExtranetPolicyName            string   `json:"extranetPolicyName,omitempty"`            // Name of the extranet policy to be created.
-	FabricIDs                     []string `json:"fabricIds,omitempty"`                     // IDs of the fabric sites to be associated with this extranet policy.
-	ProviderVirtualNetworkName    string   `json:"providerVirtualNetworkName,omitempty"`    // Name of the existing provider virtual network.
+	ExtranetPolicyName string `json:"extranetPolicyName,omitempty"` // Name of the extranet policy to be created.
+
+	FabricIDs []string `json:"fabricIds,omitempty"` // IDs of the fabric sites to be associated with this extranet policy.
+
+	ProviderVirtualNetworkName string `json:"providerVirtualNetworkName,omitempty"` // Name of the existing provider virtual network.
+
 	SubscriberVirtualNetworkNames []string `json:"subscriberVirtualNetworkNames,omitempty"` // Name of the subscriber virtual networks.
 }
 type RequestSdaUpdateFabricDevicesV1 []RequestItemSdaUpdateFabricDevicesV1 // Array of RequestSdaUpdateFabricDevicesV1
 type RequestItemSdaUpdateFabricDevicesV1 struct {
-	ID                   string                                                   `json:"id,omitempty"`                   // ID of the fabric device. (updating this field is not allowed).
-	NetworkDeviceID      string                                                   `json:"networkDeviceId,omitempty"`      // Network device ID of the fabric device. (updating this field is not allowed).
-	FabricID             string                                                   `json:"fabricId,omitempty"`             // ID of the fabric of this fabric device. (updating this field is not allowed).
-	DeviceRoles          []string                                                 `json:"deviceRoles,omitempty"`          // List of the roles of the fabric device. Allowed values are [CONTROL_PLANE_NODE, EDGE_NODE, BORDER_NODE, WIRELESS_CONTROLLER_NODE]. (updating this field is not allowed).
+	ID string `json:"id,omitempty"` // ID of the fabric device. (updating this field is not allowed).
+
+	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Network device ID of the fabric device. (updating this field is not allowed).
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric of this fabric device. (updating this field is not allowed).
+
+	DeviceRoles []string `json:"deviceRoles,omitempty"` // List of the roles of the fabric device. Allowed values are [CONTROL_PLANE_NODE, EDGE_NODE, BORDER_NODE, WIRELESS_CONTROLLER_NODE]. (updating this field is not allowed).
+
 	BorderDeviceSettings *RequestItemSdaUpdateFabricDevicesV1BorderDeviceSettings `json:"borderDeviceSettings,omitempty"` //
 }
 type RequestItemSdaUpdateFabricDevicesV1BorderDeviceSettings struct {
-	BorderTypes    []string                                                               `json:"borderTypes,omitempty"`    // List of the border types of the fabric device. Allowed values are [LAYER_2, LAYER_3].
+	BorderTypes []string `json:"borderTypes,omitempty"` // List of the border types of the fabric device. Allowed values are [LAYER_2, LAYER_3].
+
 	Layer3Settings *RequestItemSdaUpdateFabricDevicesV1BorderDeviceSettingsLayer3Settings `json:"layer3Settings,omitempty"` //
 }
 type RequestItemSdaUpdateFabricDevicesV1BorderDeviceSettingsLayer3Settings struct {
-	LocalAutonomousSystemNumber  string `json:"localAutonomousSystemNumber,omitempty"`  // BGP Local autonomous system number of the fabric border device. Allowed range is [1 to 4294967295]. (updating this field is not allowed).
-	IsDefaultExit                *bool  `json:"isDefaultExit,omitempty"`                // Set this to make the fabric border device the gateway of last resort for this site. Any unknown traffic will be sent to this fabric border device from edge nodes. (updating this field is not allowed).
-	ImportExternalRoutes         *bool  `json:"importExternalRoutes,omitempty"`         // Set this to import external routes from other routing protocols (such as BGP) to the fabric control plane. (updating this field is not allowed).
-	BorderPriority               *int   `json:"borderPriority,omitempty"`               // Border priority of the fabric border device. Allowed range is [1-9]. A lower value indicates higher priority. E.g., a priority of 1 takes precedence over 5. Default priority would be set to 10.
-	PrependAutonomousSystemCount *int   `json:"prependAutonomousSystemCount,omitempty"` // Prepend autonomous system count of the fabric border device. Allowed range is [1 to 10].
+	LocalAutonomousSystemNumber string `json:"localAutonomousSystemNumber,omitempty"` // BGP Local autonomous system number of the fabric border device. Allowed range is [1 to 4294967295]. (updating this field is not allowed).
+
+	IsDefaultExit *bool `json:"isDefaultExit,omitempty"` // Set this to make the fabric border device the gateway of last resort for this site. Any unknown traffic will be sent to this fabric border device from edge nodes. (updating this field is not allowed).
+
+	ImportExternalRoutes *bool `json:"importExternalRoutes,omitempty"` // Set this to import external routes from other routing protocols (such as BGP) to the fabric control plane. (updating this field is not allowed).
+
+	BorderPriority *int `json:"borderPriority,omitempty"` // Border priority of the fabric border device. Allowed range is [1-9]. A lower value indicates higher priority. E.g., a priority of 1 takes precedence over 5. Default priority would be set to 10.
+
+	PrependAutonomousSystemCount *int `json:"prependAutonomousSystemCount,omitempty"` // Prepend autonomous system count of the fabric border device. Allowed range is [1 to 10].
 }
 type RequestSdaAddFabricDevicesV1 []RequestItemSdaAddFabricDevicesV1 // Array of RequestSdaAddFabricDevicesV1
 type RequestItemSdaAddFabricDevicesV1 struct {
-	NetworkDeviceID      string                                                `json:"networkDeviceId,omitempty"`      // Network device ID of the fabric device.
-	FabricID             string                                                `json:"fabricId,omitempty"`             // ID of the fabric of this fabric device.
-	DeviceRoles          []string                                              `json:"deviceRoles,omitempty"`          // List of the roles of the fabric device. Allowed values are [CONTROL_PLANE_NODE, EDGE_NODE, BORDER_NODE, WIRELESS_CONTROLLER_NODE].
+	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Network device ID of the fabric device.
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric of this fabric device.
+
+	DeviceRoles []string `json:"deviceRoles,omitempty"` // List of the roles of the fabric device. Allowed values are [CONTROL_PLANE_NODE, EDGE_NODE, BORDER_NODE, WIRELESS_CONTROLLER_NODE].
+
 	BorderDeviceSettings *RequestItemSdaAddFabricDevicesV1BorderDeviceSettings `json:"borderDeviceSettings,omitempty"` //
 }
 type RequestItemSdaAddFabricDevicesV1BorderDeviceSettings struct {
-	BorderTypes    []string                                                            `json:"borderTypes,omitempty"`    // List of the border types of the fabric device. Allowed values are [LAYER_2, LAYER_3].
+	BorderTypes []string `json:"borderTypes,omitempty"` // List of the border types of the fabric device. Allowed values are [LAYER_2, LAYER_3].
+
 	Layer3Settings *RequestItemSdaAddFabricDevicesV1BorderDeviceSettingsLayer3Settings `json:"layer3Settings,omitempty"` //
 }
 type RequestItemSdaAddFabricDevicesV1BorderDeviceSettingsLayer3Settings struct {
-	LocalAutonomousSystemNumber  string `json:"localAutonomousSystemNumber,omitempty"`  // BGP Local autonomous system number of the fabric border device. Allowed range is [1 to 4294967295].
-	IsDefaultExit                *bool  `json:"isDefaultExit,omitempty"`                // Set this to make the fabric border device the gateway of last resort for this site. Any unknown traffic will be sent to this fabric border device from edge nodes.
-	ImportExternalRoutes         *bool  `json:"importExternalRoutes,omitempty"`         // Set this to import external routes from other routing protocols (such as BGP) to the fabric control plane.
-	BorderPriority               *int   `json:"borderPriority,omitempty"`               // Border priority of the fabric border device. Allowed range is [1-9]. A lower value indicates higher priority. E.g., a priority of 1 takes precedence over 5. Default priority would be set to 10.
-	PrependAutonomousSystemCount *int   `json:"prependAutonomousSystemCount,omitempty"` // Prepend autonomous system count of the fabric border device. Allowed range is [1 to 10].
+	LocalAutonomousSystemNumber string `json:"localAutonomousSystemNumber,omitempty"` // BGP Local autonomous system number of the fabric border device. Allowed range is [1 to 4294967295].
+
+	IsDefaultExit *bool `json:"isDefaultExit,omitempty"` // Set this to make the fabric border device the gateway of last resort for this site. Any unknown traffic will be sent to this fabric border device from edge nodes.
+
+	ImportExternalRoutes *bool `json:"importExternalRoutes,omitempty"` // Set this to import external routes from other routing protocols (such as BGP) to the fabric control plane.
+
+	BorderPriority *int `json:"borderPriority,omitempty"` // Border priority of the fabric border device. Allowed range is [1-9]. A lower value indicates higher priority. E.g., a priority of 1 takes precedence over 5. Default priority would be set to 10.
+
+	PrependAutonomousSystemCount *int `json:"prependAutonomousSystemCount,omitempty"` // Prepend autonomous system count of the fabric border device. Allowed range is [1 to 10].
 }
 type RequestSdaAddFabricDevicesLayer2HandoffsV1 []RequestItemSdaAddFabricDevicesLayer2HandoffsV1 // Array of RequestSdaAddFabricDevicesLayer2HandoffsV1
 type RequestItemSdaAddFabricDevicesLayer2HandoffsV1 struct {
 	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Network device ID of the fabric device.
-	FabricID        string `json:"fabricId,omitempty"`        // ID of the fabric this device is assigned to.
-	InterfaceName   string `json:"interfaceName,omitempty"`   // Interface name of the layer 2 handoff. E.g., GigabitEthernet1/0/4
-	InternalVLANID  *int   `json:"internalVlanId,omitempty"`  // VLAN number associated with this fabric. Allowed VLAN range is 2-4094 except for reserved vlans (1, 1002-1005, 2046, 4094).
-	ExternalVLANID  *int   `json:"externalVlanId,omitempty"`  // External VLAN number into which the fabric must be extended. Allowed VLAN range is 2-4094 except for reserved vlans (1, 1002-1005, 2046, 4094).
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric this device is assigned to.
+
+	InterfaceName string `json:"interfaceName,omitempty"` // Interface name of the layer 2 handoff. E.g., GigabitEthernet1/0/4
+
+	InternalVLANID *int `json:"internalVlanId,omitempty"` // VLAN number associated with this fabric. Allowed VLAN range is 2-4094 except for reserved vlans (1, 1002-1005, 2046, 4094).
+
+	ExternalVLANID *int `json:"externalVlanId,omitempty"` // External VLAN number into which the fabric must be extended. Allowed VLAN range is 2-4094 except for reserved vlans (1, 1002-1005, 2046, 4094).
 }
 type RequestSdaAddFabricDevicesLayer3HandoffsWithIPTransitV1 []RequestItemSdaAddFabricDevicesLayer3HandoffsWithIPTransitV1 // Array of RequestSdaAddFabricDevicesLayer3HandoffsWithIpTransitV1
 type RequestItemSdaAddFabricDevicesLayer3HandoffsWithIPTransitV1 struct {
-	NetworkDeviceID                string `json:"networkDeviceId,omitempty"`                // Network device ID of the fabric device.
-	FabricID                       string `json:"fabricId,omitempty"`                       // ID of the fabric this device is assigned to.
-	TransitNetworkID               string `json:"transitNetworkId,omitempty"`               // ID of the transit network of the layer 3 handoff ip transit.
-	InterfaceName                  string `json:"interfaceName,omitempty"`                  // Interface name of the layer 3 handoff ip transit.
+	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Network device ID of the fabric device.
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric this device is assigned to.
+
+	TransitNetworkID string `json:"transitNetworkId,omitempty"` // ID of the transit network of the layer 3 handoff ip transit.
+
+	InterfaceName string `json:"interfaceName,omitempty"` // Interface name of the layer 3 handoff ip transit.
+
 	ExternalConnectivityIPPoolName string `json:"externalConnectivityIpPoolName,omitempty"` // External connectivity ip pool will be used by Catalyst Center to allocate IP address for the connection between the border node and peer.
-	VirtualNetworkName             string `json:"virtualNetworkName,omitempty"`             // Name of the virtual network associated with this fabric site.
-	VLANID                         *int   `json:"vlanId,omitempty"`                         // VLAN number for the Switch Virtual Interface (SVI) used to establish BGP peering with the external domain for the virtual network.  Allowed VLAN range is 2-4094 except for reserved vlans (1, 1002-1005, 2046, 4094).
-	TCPMssAdjustment               *int   `json:"tcpMssAdjustment,omitempty"`               // TCP maximum segment size (mss) value for the layer 3 handoff. Allowed range is [500-1440]. TCP MSS Adjustment value is applicable for the TCP sessions over both IPv4 and IPv6.
-	LocalIPAddress                 string `json:"localIpAddress,omitempty"`                 // Local ipv4 address for the selected virtual network. Enter the IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). Not applicable if you have already provided an external connectivity ip pool name.
-	RemoteIPAddress                string `json:"remoteIpAddress,omitempty"`                // Remote ipv4 address for the selected virtual network. Enter the IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). Not applicable if you have already provided an external connectivity ip pool name.
-	LocalIPv6Address               string `json:"localIpv6Address,omitempty"`               // Local ipv6 address for the selected virtual network. Enter the IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). Not applicable if you have already provided an external connectivity ip pool name.
-	RemoteIPv6Address              string `json:"remoteIpv6Address,omitempty"`              // Remote ipv6 address for the selected virtual network. Enter the IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). Not applicable if you have already provided an external connectivity ip pool name.
+
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Name of the virtual network associated with this fabric site.
+
+	VLANID *int `json:"vlanId,omitempty"` // VLAN number for the Switch Virtual Interface (SVI) used to establish BGP peering with the external domain for the virtual network.  Allowed VLAN range is 2-4094 except for reserved vlans (1, 1002-1005, 2046, 4094).
+
+	TCPMssAdjustment *int `json:"tcpMssAdjustment,omitempty"` // TCP maximum segment size (mss) value for the layer 3 handoff. Allowed range is [500-1440]. TCP MSS Adjustment value is applicable for the TCP sessions over both IPv4 and IPv6.
+
+	LocalIPAddress string `json:"localIpAddress,omitempty"` // Local ipv4 address for the selected virtual network. Enter the IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). Not applicable if you have already provided an external connectivity ip pool name.
+
+	RemoteIPAddress string `json:"remoteIpAddress,omitempty"` // Remote ipv4 address for the selected virtual network. Enter the IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). Not applicable if you have already provided an external connectivity ip pool name.
+
+	LocalIPv6Address string `json:"localIpv6Address,omitempty"` // Local ipv6 address for the selected virtual network. Enter the IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). Not applicable if you have already provided an external connectivity ip pool name.
+
+	RemoteIPv6Address string `json:"remoteIpv6Address,omitempty"` // Remote ipv6 address for the selected virtual network. Enter the IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). Not applicable if you have already provided an external connectivity ip pool name.
 }
 type RequestSdaUpdateFabricDevicesLayer3HandoffsWithIPTransitV1 []RequestItemSdaUpdateFabricDevicesLayer3HandoffsWithIPTransitV1 // Array of RequestSdaUpdateFabricDevicesLayer3HandoffsWithIpTransitV1
 type RequestItemSdaUpdateFabricDevicesLayer3HandoffsWithIPTransitV1 struct {
-	ID                             string `json:"id,omitempty"`                             // ID of the fabric device layer 3 handoff ip transit. (updating this field is not allowed).
-	NetworkDeviceID                string `json:"networkDeviceId,omitempty"`                // Network device ID of the fabric device. (updating this field is not allowed).
-	FabricID                       string `json:"fabricId,omitempty"`                       // ID of the fabric this device is assigned to. (updating this field is not allowed).
-	TransitNetworkID               string `json:"transitNetworkId,omitempty"`               // ID of the transit network of the layer 3 handoff ip transit. (updating this field is not allowed).
-	InterfaceName                  string `json:"interfaceName,omitempty"`                  // Interface name of the layer 3 handoff ip transit. (updating this field is not allowed).
+	ID string `json:"id,omitempty"` // ID of the fabric device layer 3 handoff ip transit. (updating this field is not allowed).
+
+	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Network device ID of the fabric device. (updating this field is not allowed).
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric this device is assigned to. (updating this field is not allowed).
+
+	TransitNetworkID string `json:"transitNetworkId,omitempty"` // ID of the transit network of the layer 3 handoff ip transit. (updating this field is not allowed).
+
+	InterfaceName string `json:"interfaceName,omitempty"` // Interface name of the layer 3 handoff ip transit. (updating this field is not allowed).
+
 	ExternalConnectivityIPPoolName string `json:"externalConnectivityIpPoolName,omitempty"` // External connectivity ip pool will be used by Catalyst Center to allocate IP address for the connection between the border node and peer. (updating this field is not allowed).
-	VirtualNetworkName             string `json:"virtualNetworkName,omitempty"`             // Name of the virtual network associated with this fabric site. (updating this field is not allowed).
-	VLANID                         *int   `json:"vlanId,omitempty"`                         // VLAN number for the Switch Virtual Interface (SVI) used to establish BGP peering with the external domain for the virtual network. Allowed VLAN range is 2-4094 except for reserved vlans (1, 1002-1005, 2046, 4094). (updating this field is not allowed).
-	TCPMssAdjustment               *int   `json:"tcpMssAdjustment,omitempty"`               // TCP maximum segment size (mss) value for the layer 3 handoff. Allowed range is [500-1440]. TCP MSS Adjustment value is applicable for the TCP sessions over both IPv4 and IPv6.
-	LocalIPAddress                 string `json:"localIpAddress,omitempty"`                 // Local ipv4 address for the selected virtual network. Enter the IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). (updating this field is not allowed).
-	RemoteIPAddress                string `json:"remoteIpAddress,omitempty"`                // Remote ipv4 address for the selected virtual network. Enter the IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). (updating this field is not allowed).
-	LocalIPv6Address               string `json:"localIpv6Address,omitempty"`               // Local ipv6 address for the selected virtual network. Enter the IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). If the value has already been set, it cannot be updated.
-	RemoteIPv6Address              string `json:"remoteIpv6Address,omitempty"`              // Remote ipv6 address for the selected virtual network. Enter the IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). If the value has already been set, it cannot be updated.
+
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Name of the virtual network associated with this fabric site. (updating this field is not allowed).
+
+	VLANID *int `json:"vlanId,omitempty"` // VLAN number for the Switch Virtual Interface (SVI) used to establish BGP peering with the external domain for the virtual network. Allowed VLAN range is 2-4094 except for reserved vlans (1, 1002-1005, 2046, 4094). (updating this field is not allowed).
+
+	TCPMssAdjustment *int `json:"tcpMssAdjustment,omitempty"` // TCP maximum segment size (mss) value for the layer 3 handoff. Allowed range is [500-1440]. TCP MSS Adjustment value is applicable for the TCP sessions over both IPv4 and IPv6.
+
+	LocalIPAddress string `json:"localIpAddress,omitempty"` // Local ipv4 address for the selected virtual network. Enter the IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). (updating this field is not allowed).
+
+	RemoteIPAddress string `json:"remoteIpAddress,omitempty"` // Remote ipv4 address for the selected virtual network. Enter the IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). (updating this field is not allowed).
+
+	LocalIPv6Address string `json:"localIpv6Address,omitempty"` // Local ipv6 address for the selected virtual network. Enter the IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). If the value has already been set, it cannot be updated.
+
+	RemoteIPv6Address string `json:"remoteIpv6Address,omitempty"` // Remote ipv6 address for the selected virtual network. Enter the IP addresses and subnet mask in the CIDR notation (IP address/prefix-length). If the value has already been set, it cannot be updated.
 }
 type RequestSdaUpdateFabricDevicesLayer3HandoffsWithSdaTransitV1 []RequestItemSdaUpdateFabricDevicesLayer3HandoffsWithSdaTransitV1 // Array of RequestSdaUpdateFabricDevicesLayer3HandoffsWithSdaTransitV1
 type RequestItemSdaUpdateFabricDevicesLayer3HandoffsWithSdaTransitV1 struct {
-	NetworkDeviceID               string `json:"networkDeviceId,omitempty"`               // Network device ID of the fabric device. (updating this field is not allowed).
-	FabricID                      string `json:"fabricId,omitempty"`                      // ID of the fabric this device is assigned to. (updating this field is not allowed).
-	TransitNetworkID              string `json:"transitNetworkId,omitempty"`              // ID of the transit network of the layer 3 handoff sda transit. (updating this field is not allowed).
-	AffinityIDPrime               *int   `json:"affinityIdPrime,omitempty"`               // Affinity id prime value of the border node. It supersedes the border priority to determine border node preference. Allowed range is [0-2147483647]. The lower the relative value of affinity id prime, the higher the preference for a destination border node.
-	AffinityIDDecider             *int   `json:"affinityIdDecider,omitempty"`             // Affinity id decider value of the border node. When the affinity id prime value is the same on multiple devices, the affinity id decider value is used as a tiebreaker. Allowed range is [0-2147483647]. The lower the relative value of affinity id decider, the higher the preference for a destination border node.
-	ConnectedToInternet           *bool  `json:"connectedToInternet,omitempty"`           // Set this true to allow associated site to provide internet access to other sites through sd-access.
-	IsMulticastOverTransitEnabled *bool  `json:"isMulticastOverTransitEnabled,omitempty"` // Set this true to configure native multicast over multiple sites that are connected to an sd-access transit.
+	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Network device ID of the fabric device. (updating this field is not allowed).
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric this device is assigned to. (updating this field is not allowed).
+
+	TransitNetworkID string `json:"transitNetworkId,omitempty"` // ID of the transit network of the layer 3 handoff sda transit. (updating this field is not allowed).
+
+	AffinityIDPrime *int `json:"affinityIdPrime,omitempty"` // Affinity id prime value of the border node. It supersedes the border priority to determine border node preference. Allowed range is [0-2147483647]. The lower the relative value of affinity id prime, the higher the preference for a destination border node.
+
+	AffinityIDDecider *int `json:"affinityIdDecider,omitempty"` // Affinity id decider value of the border node. When the affinity id prime value is the same on multiple devices, the affinity id decider value is used as a tiebreaker. Allowed range is [0-2147483647]. The lower the relative value of affinity id decider, the higher the preference for a destination border node.
+
+	ConnectedToInternet *bool `json:"connectedToInternet,omitempty"` // Set this true to allow associated site to provide internet access to other sites through sd-access.
+
+	IsMulticastOverTransitEnabled *bool `json:"isMulticastOverTransitEnabled,omitempty"` // Set this true to configure native multicast over multiple sites that are connected to an sd-access transit.
 }
 type RequestSdaAddFabricDevicesLayer3HandoffsWithSdaTransitV1 []RequestItemSdaAddFabricDevicesLayer3HandoffsWithSdaTransitV1 // Array of RequestSdaAddFabricDevicesLayer3HandoffsWithSdaTransitV1
 type RequestItemSdaAddFabricDevicesLayer3HandoffsWithSdaTransitV1 struct {
-	NetworkDeviceID               string `json:"networkDeviceId,omitempty"`               // Network device ID of the fabric device.
-	FabricID                      string `json:"fabricId,omitempty"`                      // ID of the fabric this device is assigned to.
-	TransitNetworkID              string `json:"transitNetworkId,omitempty"`              // ID of the transit network of the layer 3 handoff sda transit.
-	AffinityIDPrime               *int   `json:"affinityIdPrime,omitempty"`               // Affinity id prime value of the border node. It supersedes the border priority to determine border node preference. Allowed range is [0-2147483647]. The lower the relative value of affinity id prime, the higher the preference for a destination border node.
-	AffinityIDDecider             *int   `json:"affinityIdDecider,omitempty"`             // Affinity id decider value of the border node. When the affinity id prime value is the same on multiple devices, the affinity id decider value is used as a tiebreaker. Allowed range is [0-2147483647]. The lower the relative value of affinity id decider, the higher the preference for a destination border node.
-	ConnectedToInternet           *bool  `json:"connectedToInternet,omitempty"`           // Set this true to allow associated site to provide internet access to other sites through sd-access.
-	IsMulticastOverTransitEnabled *bool  `json:"isMulticastOverTransitEnabled,omitempty"` // Set this true to configure native multicast over multiple sites that are connected to an sd-access transit.
+	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Network device ID of the fabric device.
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric this device is assigned to.
+
+	TransitNetworkID string `json:"transitNetworkId,omitempty"` // ID of the transit network of the layer 3 handoff sda transit.
+
+	AffinityIDPrime *int `json:"affinityIdPrime,omitempty"` // Affinity id prime value of the border node. It supersedes the border priority to determine border node preference. Allowed range is [0-2147483647]. The lower the relative value of affinity id prime, the higher the preference for a destination border node.
+
+	AffinityIDDecider *int `json:"affinityIdDecider,omitempty"` // Affinity id decider value of the border node. When the affinity id prime value is the same on multiple devices, the affinity id decider value is used as a tiebreaker. Allowed range is [0-2147483647]. The lower the relative value of affinity id decider, the higher the preference for a destination border node.
+
+	ConnectedToInternet *bool `json:"connectedToInternet,omitempty"` // Set this true to allow associated site to provide internet access to other sites through sd-access.
+
+	IsMulticastOverTransitEnabled *bool `json:"isMulticastOverTransitEnabled,omitempty"` // Set this true to configure native multicast over multiple sites that are connected to an sd-access transit.
 }
 type RequestSdaAddFabricSiteV1 []RequestItemSdaAddFabricSiteV1 // Array of RequestSdaAddFabricSiteV1
 type RequestItemSdaAddFabricSiteV1 struct {
-	SiteID                    string `json:"siteId,omitempty"`                    // ID of the network hierarchy.
+	SiteID string `json:"siteId,omitempty"` // ID of the network hierarchy.
+
 	AuthenticationProfileName string `json:"authenticationProfileName,omitempty"` // Authentication profile used for this fabric.
-	IsPubSubEnabled           *bool  `json:"isPubSubEnabled,omitempty"`           // Specifies whether this fabric site will use pub/sub for control nodes.
+
+	IsPubSubEnabled *bool `json:"isPubSubEnabled,omitempty"` // Specifies whether this fabric site will use pub/sub for control nodes.
 }
 type RequestSdaUpdateFabricSiteV1 []RequestItemSdaUpdateFabricSiteV1 // Array of RequestSdaUpdateFabricSiteV1
 type RequestItemSdaUpdateFabricSiteV1 struct {
-	ID                        string `json:"id,omitempty"`                        // ID of the fabric site (updating this field is not allowed).
-	SiteID                    string `json:"siteId,omitempty"`                    // ID of the network hierarchy (updating this field is not allowed).
+	ID string `json:"id,omitempty"` // ID of the fabric site (updating this field is not allowed).
+
+	SiteID string `json:"siteId,omitempty"` // ID of the network hierarchy (updating this field is not allowed).
+
 	AuthenticationProfileName string `json:"authenticationProfileName,omitempty"` // Authentication profile used for this fabric.
-	IsPubSubEnabled           *bool  `json:"isPubSubEnabled,omitempty"`           // Specifies whether this fabric site will use pub/sub for control nodes.
+
+	IsPubSubEnabled *bool `json:"isPubSubEnabled,omitempty"` // Specifies whether this fabric site will use pub/sub for control nodes.
 }
 type RequestSdaUpdateFabricZoneV1 []RequestItemSdaUpdateFabricZoneV1 // Array of RequestSdaUpdateFabricZoneV1
 type RequestItemSdaUpdateFabricZoneV1 struct {
-	ID                        string `json:"id,omitempty"`                        // ID of the fabric zone (updating this field is not allowed).
-	SiteID                    string `json:"siteId,omitempty"`                    // ID of the network hierarchy (updating this field is not allowed).
+	ID string `json:"id,omitempty"` // ID of the fabric zone (updating this field is not allowed).
+
+	SiteID string `json:"siteId,omitempty"` // ID of the network hierarchy (updating this field is not allowed).
+
 	AuthenticationProfileName string `json:"authenticationProfileName,omitempty"` // Authentication profile used for this fabric.
 }
 type RequestSdaAddFabricZoneV1 []RequestItemSdaAddFabricZoneV1 // Array of RequestSdaAddFabricZoneV1
 type RequestItemSdaAddFabricZoneV1 struct {
-	SiteID                    string `json:"siteId,omitempty"`                    // ID of the network hierarchy.
+	SiteID string `json:"siteId,omitempty"` // ID of the network hierarchy.
+
 	AuthenticationProfileName string `json:"authenticationProfileName,omitempty"` // Authentication profile used for this fabric.
 }
 type RequestSdaAddLayer2VirtualNetworksV1 []RequestItemSdaAddLayer2VirtualNetworksV1 // Array of RequestSdaAddLayer2VirtualNetworksV1
 type RequestItemSdaAddLayer2VirtualNetworksV1 struct {
-	FabricID                           string `json:"fabricId,omitempty"`                           // ID of the fabric this layer 2 virtual network is to be assigned to.
-	VLANName                           string `json:"vlanName,omitempty"`                           // Name of the VLAN of the layer 2 virtual network. Must contain only alphanumeric characters, underscores, and hyphens.
-	VLANID                             *int   `json:"vlanId,omitempty"`                             // ID of the VLAN of the layer 2 virtual network. Allowed VLAN range is 2-4093 except for reserved VLANs 1002-1005, and 2046. If deploying on a fabric zone, this vlanId must match the vlanId of the corresponding layer 2 virtual network on the fabric site.
-	TrafficType                        string `json:"trafficType,omitempty"`                        // The type of traffic that is served.
-	IsFabricEnabledWireless            *bool  `json:"isFabricEnabledWireless,omitempty"`            // Set to true to enable wireless. Default is false.
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric this layer 2 virtual network is to be assigned to.
+
+	VLANName string `json:"vlanName,omitempty"` // Name of the VLAN of the layer 2 virtual network. Must contain only alphanumeric characters, underscores, and hyphens.
+
+	VLANID *int `json:"vlanId,omitempty"` // ID of the VLAN of the layer 2 virtual network. Allowed VLAN range is 2-4093 except for reserved VLANs 1002-1005, and 2046. If deploying on a fabric zone, this vlanId must match the vlanId of the corresponding layer 2 virtual network on the fabric site.
+
+	TrafficType string `json:"trafficType,omitempty"` // The type of traffic that is served.
+
+	IsFabricEnabledWireless *bool `json:"isFabricEnabledWireless,omitempty"` // Set to true to enable wireless. Default is false.
+
+	IsMultipleIPToMacAddresses *bool `json:"isMultipleIpToMacAddresses,omitempty"` // Set to true to enable multiple IP-to-MAC addresses (Wireless Bridged-Network Virtual Machine). This field defaults to false when associated with a layer 3 virtual network and cannot be used when not associated with a layer 3 virtual network.
+
 	AssociatedLayer3VirtualNetworkName string `json:"associatedLayer3VirtualNetworkName,omitempty"` // Name of the layer 3 virtual network associated with the layer 2 virtual network. This field is provided to support requests related to virtual network anchoring. The layer 3 virtual network must have already been added to the fabric before association. This field must either be present in all payload elements or none.
 }
 type RequestSdaUpdateLayer2VirtualNetworksV1 []RequestItemSdaUpdateLayer2VirtualNetworksV1 // Array of RequestSdaUpdateLayer2VirtualNetworksV1
 type RequestItemSdaUpdateLayer2VirtualNetworksV1 struct {
-	ID                                 string `json:"id,omitempty"`                                 // ID of the layer 2 virtual network (updating this field is not allowed).
-	FabricID                           string `json:"fabricId,omitempty"`                           // ID of the fabric this layer 2 virtual network is assigned to (updating this field is not allowed).
-	VLANName                           string `json:"vlanName,omitempty"`                           // Name of the VLAN of the layer 2 virtual network. Must contain only alphanumeric characters, underscores, and hyphens (updating this field is not allowed).
-	VLANID                             *int   `json:"vlanId,omitempty"`                             // ID of the VLAN of the layer 2 virtual network (updating this field is not allowed).
-	TrafficType                        string `json:"trafficType,omitempty"`                        // The type of traffic that is served.
-	IsFabricEnabledWireless            *bool  `json:"isFabricEnabledWireless,omitempty"`            // Set to true to enable wireless.
+	ID string `json:"id,omitempty"` // ID of the layer 2 virtual network (updating this field is not allowed).
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric this layer 2 virtual network is assigned to (updating this field is not allowed).
+
+	VLANName string `json:"vlanName,omitempty"` // Name of the VLAN of the layer 2 virtual network. Must contain only alphanumeric characters, underscores, and hyphens (updating this field is not allowed).
+
+	VLANID *int `json:"vlanId,omitempty"` // ID of the VLAN of the layer 2 virtual network (updating this field is not allowed).
+
+	TrafficType string `json:"trafficType,omitempty"` // The type of traffic that is served.
+
+	IsFabricEnabledWireless *bool `json:"isFabricEnabledWireless,omitempty"` // Set to true to enable wireless.
+
+	IsMultipleIPToMacAddresses *bool `json:"isMultipleIpToMacAddresses,omitempty"` // Set to true to enable multiple IP-to-MAC addresses (Wireless Bridged-Network Virtual Machine). This field defaults to false when associated with a layer 3 virtual network and cannot be used when not associated with a layer 3 virtual network.
+
 	AssociatedLayer3VirtualNetworkName string `json:"associatedLayer3VirtualNetworkName,omitempty"` // Name of the layer 3 virtual network associated with the layer 2 virtual network. This field is provided to support requests related to virtual network anchoring. This field must either be present in all payload elements or none (updating this field is not allowed).
 }
 type RequestSdaAddLayer3VirtualNetworksV1 []RequestItemSdaAddLayer3VirtualNetworksV1 // Array of RequestSdaAddLayer3VirtualNetworksV1
 type RequestItemSdaAddLayer3VirtualNetworksV1 struct {
-	VirtualNetworkName string   `json:"virtualNetworkName,omitempty"` // Name of the layer 3 virtual network.
-	FabricIDs          []string `json:"fabricIds,omitempty"`          // IDs of the fabrics this layer 3 virtual network is to be assigned to.
-	AnchoredSiteID     string   `json:"anchoredSiteId,omitempty"`     // Fabric ID of the fabric site this layer 3 virtual network is to be anchored at.
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Name of the layer 3 virtual network.
+
+	FabricIDs []string `json:"fabricIds,omitempty"` // IDs of the fabrics this layer 3 virtual network is to be assigned to.
+
+	AnchoredSiteID string `json:"anchoredSiteId,omitempty"` // Fabric ID of the fabric site this layer 3 virtual network is to be anchored at.
 }
 type RequestSdaUpdateLayer3VirtualNetworksV1 []RequestItemSdaUpdateLayer3VirtualNetworksV1 // Array of RequestSdaUpdateLayer3VirtualNetworksV1
 type RequestItemSdaUpdateLayer3VirtualNetworksV1 struct {
-	ID                 string   `json:"id,omitempty"`                 // ID of the layer 3 virtual network (updating this field is not allowed).
-	VirtualNetworkName string   `json:"virtualNetworkName,omitempty"` // Name of the layer 3 virtual network (updating this field is not allowed).
-	FabricIDs          []string `json:"fabricIds,omitempty"`          // IDs of the fabrics this layer 3 virtual network is assigned to.
-	AnchoredSiteID     string   `json:"anchoredSiteId,omitempty"`     // Fabric ID of the fabric site this layer 3 virtual network is anchored at.
+	ID string `json:"id,omitempty"` // ID of the layer 3 virtual network (updating this field is not allowed).
+
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Name of the layer 3 virtual network (updating this field is not allowed).
+
+	FabricIDs []string `json:"fabricIds,omitempty"` // IDs of the fabrics this layer 3 virtual network is assigned to.
+
+	AnchoredSiteID string `json:"anchoredSiteId,omitempty"` // Fabric ID of the fabric site this layer 3 virtual network is anchored at.
 }
 type RequestSdaUpdateMulticastV1 []RequestItemSdaUpdateMulticastV1 // Array of RequestSdaUpdateMulticastV1
 type RequestItemSdaUpdateMulticastV1 struct {
-	FabricID        string `json:"fabricId,omitempty"`        // ID of the fabric site (updating this field is not allowed).
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric site (updating this field is not allowed).
+
 	ReplicationMode string `json:"replicationMode,omitempty"` // Replication Mode deployed in the fabric site.
 }
 type RequestSdaAddMulticastVirtualNetworksV1 []RequestItemSdaAddMulticastVirtualNetworksV1 // Array of RequestSdaAddMulticastVirtualNetworksV1
 type RequestItemSdaAddMulticastVirtualNetworksV1 struct {
-	FabricID           string                                                     `json:"fabricId,omitempty"`           // ID of the fabric site this multicast configuration is associated with.
-	VirtualNetworkName string                                                     `json:"virtualNetworkName,omitempty"` // Name of the virtual network associated with the fabric site.
-	IPPoolName         string                                                     `json:"ipPoolName,omitempty"`         // Name of the IP Pool associated with the fabric site.
-	IPv4SsmRanges      []string                                                   `json:"ipv4SsmRanges,omitempty"`      // IPv4 Source Specific Multicast (SSM) ranges. Allowed ranges are from 225.0.0.0/8 to 239.0.0.0/8. SSM ranges should not conflict with ranges provided for ASM multicast.
-	MulticastRPs       *[]RequestItemSdaAddMulticastVirtualNetworksV1MulticastRPs `json:"multicastRPs,omitempty"`       //
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric site this multicast configuration is associated with.
+
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Name of the virtual network associated with the fabric site.
+
+	IPPoolName string `json:"ipPoolName,omitempty"` // Name of the IP Pool associated with the fabric site.
+
+	IPv4SsmRanges []string `json:"ipv4SsmRanges,omitempty"` // IPv4 Source Specific Multicast (SSM) ranges. Allowed ranges are from 225.0.0.0/8 to 239.0.0.0/8. SSM ranges should not conflict with ranges provided for ASM multicast.
+
+	MulticastRPs *[]RequestItemSdaAddMulticastVirtualNetworksV1MulticastRPs `json:"multicastRPs,omitempty"` //
 }
 type RequestItemSdaAddMulticastVirtualNetworksV1MulticastRPs struct {
-	RpDeviceLocation string   `json:"rpDeviceLocation,omitempty"` // Device location of the RP.
-	IPv4Address      string   `json:"ipv4Address,omitempty"`      // IPv4 address of the RP. For external RP configuration, exactly one of ipv4Address or ipv6Address must be provided. For fabric RP, this address is allocated by SDA and should not be provided during RP creation request and SDA allocated address should be retained in subsequent requests.
-	IPv6Address      string   `json:"ipv6Address,omitempty"`      // IPv6 address of the RP. For external RP configuration, exactly one of ipv4Address or ipv6Address must be provided. For fabric RP, this address is allocated by SDA and should not be provided during RP creation request and SDA allocated address should be retained in subsequent requests. ipv6Address can only be provided for virtual networks with dual stack (IPv4 + IPv6) multicast pool.
-	IsDefaultV4RP    *bool    `json:"isDefaultV4RP,omitempty"`    // Specifies whether it is a default IPv4 RP.
-	IsDefaultV6RP    *bool    `json:"isDefaultV6RP,omitempty"`    // Specifies whether it is a default IPv6 RP.
+	RpDeviceLocation string `json:"rpDeviceLocation,omitempty"` // Device location of the RP.
+
+	IPv4Address string `json:"ipv4Address,omitempty"` // IPv4 address of the RP. For external RP configuration, exactly one of ipv4Address or ipv6Address must be provided. For fabric RP, this address is allocated by SDA and should not be provided during RP creation request and SDA allocated address should be retained in subsequent requests.
+
+	IPv6Address string `json:"ipv6Address,omitempty"` // IPv6 address of the RP. For external RP configuration, exactly one of ipv4Address or ipv6Address must be provided. For fabric RP, this address is allocated by SDA and should not be provided during RP creation request and SDA allocated address should be retained in subsequent requests. ipv6Address can only be provided for virtual networks with dual stack (IPv4 + IPv6) multicast pool.
+
+	IsDefaultV4RP *bool `json:"isDefaultV4RP,omitempty"` // Specifies whether it is a default IPv4 RP.
+
+	IsDefaultV6RP *bool `json:"isDefaultV6RP,omitempty"` // Specifies whether it is a default IPv6 RP.
+
 	NetworkDeviceIDs []string `json:"networkDeviceIds,omitempty"` // IDs of the network devices. This is a required field for fabric RPs. There can be maximum of two fabric RPs for a fabric site and these are shared across all multicast virtual networks. For configuring two fabric RPs in a fabric site both devices must have border roles. Only one RP can be configured in scenarios where a fabric edge device is used as RP or a dual stack multicast pool is used.
-	IPv4AsmRanges    []string `json:"ipv4AsmRanges,omitempty"`    // IPv4 Any Source Multicast ranges. Comma seperated list of IPv4 multicast group ranges that will be served by a given Multicast RP. Only IPv4 ranges can be provided. For fabric RP, both IPv4 and IPv6 ranges can be provided together. For external RP, IPv4 ranges should be provided for IPv4 external RP and IPv6 ranges should be provided for IPv6 external RP.
-	IPv6AsmRanges    []string `json:"ipv6AsmRanges,omitempty"`    // IPv6 Any Source Multicast ranges. Comma seperated list of IPv6 multicast group ranges that will be served by a given Multicast RP. Only IPv6 ranges can be provided. IPv6 ranges can only be provided for dual stack multicast pool. For fabric RP, both IPv4 and IPv6 ranges can be provided together. For external RP, IPv4 ranges should be provided for IPv4 external RP and IPv6 ranges should be provided for IPv6 external RP.
+
+	IPv4AsmRanges []string `json:"ipv4AsmRanges,omitempty"` // IPv4 Any Source Multicast ranges. Comma seperated list of IPv4 multicast group ranges that will be served by a given Multicast RP. Only IPv4 ranges can be provided. For fabric RP, both IPv4 and IPv6 ranges can be provided together. For external RP, IPv4 ranges should be provided for IPv4 external RP and IPv6 ranges should be provided for IPv6 external RP.
+
+	IPv6AsmRanges []string `json:"ipv6AsmRanges,omitempty"` // IPv6 Any Source Multicast ranges. Comma seperated list of IPv6 multicast group ranges that will be served by a given Multicast RP. Only IPv6 ranges can be provided. IPv6 ranges can only be provided for dual stack multicast pool. For fabric RP, both IPv4 and IPv6 ranges can be provided together. For external RP, IPv4 ranges should be provided for IPv4 external RP and IPv6 ranges should be provided for IPv6 external RP.
 }
 type RequestSdaUpdateMulticastVirtualNetworksV1 []RequestItemSdaUpdateMulticastVirtualNetworksV1 // Array of RequestSdaUpdateMulticastVirtualNetworksV1
 type RequestItemSdaUpdateMulticastVirtualNetworksV1 struct {
-	ID                 string                                                        `json:"id,omitempty"`                 // ID of the multicast configuration (updating this field is not allowed).
-	FabricID           string                                                        `json:"fabricId,omitempty"`           // ID of the fabric site this multicast configuration is associated with (updating this field is not allowed).
-	VirtualNetworkName string                                                        `json:"virtualNetworkName,omitempty"` // Name of the virtual network associated with the fabric site (updating this field is not allowed).
-	IPPoolName         string                                                        `json:"ipPoolName,omitempty"`         // Name of the IP Pool associated with the fabric site (updating this field is not allowed).
-	IPv4SsmRanges      []string                                                      `json:"ipv4SsmRanges,omitempty"`      // IPv4 Source Specific Multicast (SSM) ranges. Allowed ranges are from 225.0.0.0/8 to 239.0.0.0/8. SSM ranges should not conflict with ranges provided for ASM multicast.
-	MulticastRPs       *[]RequestItemSdaUpdateMulticastVirtualNetworksV1MulticastRPs `json:"multicastRPs,omitempty"`       //
+	ID string `json:"id,omitempty"` // ID of the multicast configuration (updating this field is not allowed).
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric site this multicast configuration is associated with (updating this field is not allowed).
+
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Name of the virtual network associated with the fabric site (updating this field is not allowed).
+
+	IPPoolName string `json:"ipPoolName,omitempty"` // Name of the IP Pool associated with the fabric site (updating this field is not allowed).
+
+	IPv4SsmRanges []string `json:"ipv4SsmRanges,omitempty"` // IPv4 Source Specific Multicast (SSM) ranges. Allowed ranges are from 225.0.0.0/8 to 239.0.0.0/8. SSM ranges should not conflict with ranges provided for ASM multicast.
+
+	MulticastRPs *[]RequestItemSdaUpdateMulticastVirtualNetworksV1MulticastRPs `json:"multicastRPs,omitempty"` //
 }
 type RequestItemSdaUpdateMulticastVirtualNetworksV1MulticastRPs struct {
-	RpDeviceLocation string   `json:"rpDeviceLocation,omitempty"` // Device location of the RP.
-	IPv4Address      string   `json:"ipv4Address,omitempty"`      // IPv4 address of the RP. For external RP configuration, exactly one of ipv4Address or ipv6Address must be provided. For fabric RP, this address is allocated by SDA and should not be provided during RP creation request and SDA allocated address should be retained in subsequent requests.
-	IPv6Address      string   `json:"ipv6Address,omitempty"`      // IPv6 address of the RP. For external RP configuration, exactly one of ipv4Address or ipv6Address must be provided. For fabric RP, this address is allocated by SDA and should not be provided during RP creation request and SDA allocated address should be retained in subsequent requests. ipv6Address can only be provided for virtual networks with dual stack (IPv4 + IPv6) multicast pool.
-	IsDefaultV4RP    *bool    `json:"isDefaultV4RP,omitempty"`    // Specifies whether it is a default IPv4 RP.
-	IsDefaultV6RP    *bool    `json:"isDefaultV6RP,omitempty"`    // Specifies whether it is a default IPv6 RP.
+	RpDeviceLocation string `json:"rpDeviceLocation,omitempty"` // Device location of the RP.
+
+	IPv4Address string `json:"ipv4Address,omitempty"` // IPv4 address of the RP. For external RP configuration, exactly one of ipv4Address or ipv6Address must be provided. For fabric RP, this address is allocated by SDA and should not be provided during RP creation request and SDA allocated address should be retained in subsequent requests.
+
+	IPv6Address string `json:"ipv6Address,omitempty"` // IPv6 address of the RP. For external RP configuration, exactly one of ipv4Address or ipv6Address must be provided. For fabric RP, this address is allocated by SDA and should not be provided during RP creation request and SDA allocated address should be retained in subsequent requests. ipv6Address can only be provided for virtual networks with dual stack (IPv4 + IPv6) multicast pool.
+
+	IsDefaultV4RP *bool `json:"isDefaultV4RP,omitempty"` // Specifies whether it is a default IPv4 RP.
+
+	IsDefaultV6RP *bool `json:"isDefaultV6RP,omitempty"` // Specifies whether it is a default IPv6 RP.
+
 	NetworkDeviceIDs []string `json:"networkDeviceIds,omitempty"` // IDs of the network devices. This is a required field for fabric RPs. There can be maximum of two fabric RPs for a fabric site and these are shared across all multicast virtual networks. For configuring two fabric RPs in a fabric site both devices must have border roles. Only one RP can be configured in scenarios where a fabric edge device is used as RP or a dual stack multicast pool is used.
-	IPv4AsmRanges    []string `json:"ipv4AsmRanges,omitempty"`    // IPv4 Any Source Multicast ranges. Comma seperated list of IPv4 multicast group ranges that will be served by a given Multicast RP. Only IPv4 ranges can be provided. For fabric RP, both IPv4 and IPv6 ranges can be provided together. For external RP, IPv4 ranges should be provided for IPv4 external RP and IPv6 ranges should be provided for IPv6 external RP.
-	IPv6AsmRanges    []string `json:"ipv6AsmRanges,omitempty"`    // IPv6 Any Source Multicast ranges. Comma seperated list of IPv6 multicast group ranges that will be served by a given Multicast RP. Only IPv6 ranges can be provided. IPv6 ranges can only be provided for dual stack multicast pool. For fabric RP, both IPv4 and IPv6 ranges can be provided together. For external RP, IPv4 ranges should be provided for IPv4 external RP and IPv6 ranges should be provided for IPv6 external RP.
+
+	IPv4AsmRanges []string `json:"ipv4AsmRanges,omitempty"` // IPv4 Any Source Multicast ranges. Comma seperated list of IPv4 multicast group ranges that will be served by a given Multicast RP. Only IPv4 ranges can be provided. For fabric RP, both IPv4 and IPv6 ranges can be provided together. For external RP, IPv4 ranges should be provided for IPv4 external RP and IPv6 ranges should be provided for IPv6 external RP.
+
+	IPv6AsmRanges []string `json:"ipv6AsmRanges,omitempty"` // IPv6 Any Source Multicast ranges. Comma seperated list of IPv6 multicast group ranges that will be served by a given Multicast RP. Only IPv6 ranges can be provided. IPv6 ranges can only be provided for dual stack multicast pool. For fabric RP, both IPv4 and IPv6 ranges can be provided together. For external RP, IPv4 ranges should be provided for IPv4 external RP and IPv6 ranges should be provided for IPv6 external RP.
+}
+type RequestSdaApplyPendingFabricEventsV1 []RequestItemSdaApplyPendingFabricEventsV1 // Array of RequestSdaApplyPendingFabricEventsV1
+type RequestItemSdaApplyPendingFabricEventsV1 struct {
+	ID string `json:"id,omitempty"` // ID of the pending fabric event to be applied.
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric.
 }
 type RequestSdaAddPortAssignmentsV1 []RequestItemSdaAddPortAssignmentsV1 // Array of RequestSdaAddPortAssignmentsV1
 type RequestItemSdaAddPortAssignmentsV1 struct {
-	FabricID                 string `json:"fabricId,omitempty"`                 // ID of the fabric the device is assigned to.
-	NetworkDeviceID          string `json:"networkDeviceId,omitempty"`          // Network device ID of the port assignment.
-	InterfaceName            string `json:"interfaceName,omitempty"`            // Interface name of the port assignment.
-	ConnectedDeviceType      string `json:"connectedDeviceType,omitempty"`      // Connected device type of the port assignment.
-	DataVLANName             string `json:"dataVlanName,omitempty"`             // Data VLAN name of the port assignment.
-	VoiceVLANName            string `json:"voiceVlanName,omitempty"`            // Voice VLAN name of the port assignment.
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric the device is assigned to.
+
+	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Network device ID of the port assignment.
+
+	InterfaceName string `json:"interfaceName,omitempty"` // Interface name of the port assignment.
+
+	ConnectedDeviceType string `json:"connectedDeviceType,omitempty"` // Connected device type of the port assignment.
+
+	DataVLANName string `json:"dataVlanName,omitempty"` // Data VLAN name of the port assignment.
+
+	VoiceVLANName string `json:"voiceVlanName,omitempty"` // Voice VLAN name of the port assignment.
+
 	AuthenticateTemplateName string `json:"authenticateTemplateName,omitempty"` // Authenticate template name of the port assignment.
-	SecurityGroupName        string `json:"securityGroupName,omitempty"`        // Security group name of the port assignment.
-	InterfaceDescription     string `json:"interfaceDescription,omitempty"`     // Interface description of the port assignment.
+
+	SecurityGroupName string `json:"securityGroupName,omitempty"` // Security group name of the port assignment.
+
+	InterfaceDescription string `json:"interfaceDescription,omitempty"` // Interface description of the port assignment.
 }
 type RequestSdaUpdatePortAssignmentsV1 []RequestItemSdaUpdatePortAssignmentsV1 // Array of RequestSdaUpdatePortAssignmentsV1
 type RequestItemSdaUpdatePortAssignmentsV1 struct {
-	ID                       string `json:"id,omitempty"`                       // ID of the port assignment.
-	FabricID                 string `json:"fabricId,omitempty"`                 // ID of the fabric the device is assigned to (updating this filed is not allowed).
-	NetworkDeviceID          string `json:"networkDeviceId,omitempty"`          // Network device ID of the port assignment (updating this field is not allowed).
-	InterfaceName            string `json:"interfaceName,omitempty"`            // Interface name of the port assignment (updating this field is not allowed).
-	ConnectedDeviceType      string `json:"connectedDeviceType,omitempty"`      // Connected device type of the port assignment (updating this field is not allowed).
-	DataVLANName             string `json:"dataVlanName,omitempty"`             // Data VLAN name of the port assignment.
-	VoiceVLANName            string `json:"voiceVlanName,omitempty"`            // Voice VLAN name of the port assignment.
+	ID string `json:"id,omitempty"` // ID of the port assignment.
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric the device is assigned to (updating this filed is not allowed).
+
+	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Network device ID of the port assignment (updating this field is not allowed).
+
+	InterfaceName string `json:"interfaceName,omitempty"` // Interface name of the port assignment (updating this field is not allowed).
+
+	ConnectedDeviceType string `json:"connectedDeviceType,omitempty"` // Connected device type of the port assignment (updating this field is not allowed).
+
+	DataVLANName string `json:"dataVlanName,omitempty"` // Data VLAN name of the port assignment.
+
+	VoiceVLANName string `json:"voiceVlanName,omitempty"` // Voice VLAN name of the port assignment.
+
 	AuthenticateTemplateName string `json:"authenticateTemplateName,omitempty"` // Authenticate template name of the port assignment.
-	ScalableGroupName        string `json:"scalableGroupName,omitempty"`        // Scalable group name of the port assignment.
-	InterfaceDescription     string `json:"interfaceDescription,omitempty"`     // Interface description of the port assignment.
+
+	ScalableGroupName string `json:"scalableGroupName,omitempty"` // Scalable group name of the port assignment.
+
+	InterfaceDescription string `json:"interfaceDescription,omitempty"` // Interface description of the port assignment.
 }
 type RequestSdaAddPortChannelsV1 []RequestItemSdaAddPortChannelsV1 // Array of RequestSdaAddPortChannelsV1
 type RequestItemSdaAddPortChannelsV1 struct {
-	FabricID            string   `json:"fabricId,omitempty"`            // ID of the fabric the device is assigned to.
-	NetworkDeviceID     string   `json:"networkDeviceId,omitempty"`     // ID of the network device.
-	InterfaceNames      []string `json:"interfaceNames,omitempty"`      // Interface names for this port channel (Maximum 16 ports for LACP protocol, Maximum 8 ports for PAGP and ON protocol).
-	ConnectedDeviceType string   `json:"connectedDeviceType,omitempty"` // Connected device type of the port channel.
-	Protocol            string   `json:"protocol,omitempty"`            // Protocol of the port channel (only PAGP is allowed if connectedDeviceType is EXTENDED_NODE).
-	Description         string   `json:"description,omitempty"`         // Description of the port channel.
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric the device is assigned to.
+
+	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // ID of the network device.
+
+	InterfaceNames []string `json:"interfaceNames,omitempty"` // Interface names for this port channel (Maximum 16 ports for LACP protocol, Maximum 8 ports for PAGP and ON protocol).
+
+	ConnectedDeviceType string `json:"connectedDeviceType,omitempty"` // Connected device type of the port channel.
+
+	Protocol string `json:"protocol,omitempty"` // Protocol of the port channel (only PAGP is allowed if connectedDeviceType is EXTENDED_NODE).
+
+	Description string `json:"description,omitempty"` // Description of the port channel.
 }
 type RequestSdaUpdatePortChannelsV1 []RequestItemSdaUpdatePortChannelsV1 // Array of RequestSdaUpdatePortChannelsV1
 type RequestItemSdaUpdatePortChannelsV1 struct {
-	ID                  string   `json:"id,omitempty"`                  // ID of the port channel (updating this field is not allowed).
-	FabricID            string   `json:"fabricId,omitempty"`            // ID of the fabric the device is assigned to (updating this field is not allowed).
-	NetworkDeviceID     string   `json:"networkDeviceId,omitempty"`     // ID of the network device (updating this field is not allowed).
-	PortChannelName     string   `json:"portChannelName,omitempty"`     // Name of the port channel (updating this field is not allowed).
-	InterfaceNames      []string `json:"interfaceNames,omitempty"`      // Interface names for this port channel (Maximum 16 ports for LACP protocol, Maximum 8 ports for PAGP and ON protocol).
-	ConnectedDeviceType string   `json:"connectedDeviceType,omitempty"` // Connected device type of the port channel.
-	Protocol            string   `json:"protocol,omitempty"`            // Protocol of the port channel (updating this field is not allowed).
-	Description         string   `json:"description,omitempty"`         // Description of the port channel.
+	ID string `json:"id,omitempty"` // ID of the port channel (updating this field is not allowed).
+
+	FabricID string `json:"fabricId,omitempty"` // ID of the fabric the device is assigned to (updating this field is not allowed).
+
+	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // ID of the network device (updating this field is not allowed).
+
+	PortChannelName string `json:"portChannelName,omitempty"` // Name of the port channel (updating this field is not allowed).
+
+	InterfaceNames []string `json:"interfaceNames,omitempty"` // Interface names for this port channel (Maximum 16 ports for LACP protocol, Maximum 8 ports for PAGP and ON protocol).
+
+	ConnectedDeviceType string `json:"connectedDeviceType,omitempty"` // Connected device type of the port channel.
+
+	Protocol string `json:"protocol,omitempty"` // Protocol of the port channel (updating this field is not allowed).
+
+	Description string `json:"description,omitempty"` // Description of the port channel.
 }
 type RequestSdaProvisionDevicesV1 []RequestItemSdaProvisionDevicesV1 // Array of RequestSdaProvisionDevicesV1
 type RequestItemSdaProvisionDevicesV1 struct {
-	SiteID          string `json:"siteId,omitempty"`          // ID of the site this network device needs to be provisioned.
+	SiteID string `json:"siteId,omitempty"` // ID of the site this network device needs to be provisioned.
+
 	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // ID of network device to be provisioned.
 }
 type RequestSdaReProvisionDevicesV1 []RequestItemSdaReProvisionDevicesV1 // Array of RequestSdaReProvisionDevicesV1
 type RequestItemSdaReProvisionDevicesV1 struct {
-	ID              string `json:"id,omitempty"`              // ID of the provisioned device.
-	SiteID          string `json:"siteId,omitempty"`          // ID of the site this device is already provisioned to. (updating this field is not allowed).
+	ID string `json:"id,omitempty"` // ID of the provisioned device.
+
+	SiteID string `json:"siteId,omitempty"` // ID of the site this device is already provisioned to. (updating this field is not allowed).
+
 	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // ID of the network device to be re-provisioned. (updating this field is not allowed).
 }
 type RequestSdaUpdateTransitNetworksV1 []RequestItemSdaUpdateTransitNetworksV1 // Array of RequestSdaUpdateTransitNetworksV1
 type RequestItemSdaUpdateTransitNetworksV1 struct {
-	ID                 string                                                   `json:"id,omitempty"`                 // ID of the transit network (updating this field is not allowed).
-	Name               string                                                   `json:"name,omitempty"`               // Name of the transit network (updating this field is not allowed).
-	Type               string                                                   `json:"type,omitempty"`               // Type of the transit network (updating this field is not allowed).
-	IPTransitSettings  *RequestItemSdaUpdateTransitNetworksV1IPTransitSettings  `json:"ipTransitSettings,omitempty"`  //
+	ID string `json:"id,omitempty"` // ID of the transit network (updating this field is not allowed).
+
+	Name string `json:"name,omitempty"` // Name of the transit network (updating this field is not allowed).
+
+	Type string `json:"type,omitempty"` // Type of the transit network (updating this field is not allowed).
+
+	IPTransitSettings *RequestItemSdaUpdateTransitNetworksV1IPTransitSettings `json:"ipTransitSettings,omitempty"` //
+
 	SdaTransitSettings *RequestItemSdaUpdateTransitNetworksV1SdaTransitSettings `json:"sdaTransitSettings,omitempty"` //
 }
 type RequestItemSdaUpdateTransitNetworksV1IPTransitSettings struct {
-	RoutingProtocolName    string `json:"routingProtocolName,omitempty"`    // Routing Protocol Name of the IP transit network (updating this field is not allowed).
+	RoutingProtocolName string `json:"routingProtocolName,omitempty"` // Routing Protocol Name of the IP transit network (updating this field is not allowed).
+
 	AutonomousSystemNumber string `json:"autonomousSystemNumber,omitempty"` // Autonomous System Number of the IP transit network. Allowed range is [1 to 4294967295] (updating this field is not allowed).
 }
 type RequestItemSdaUpdateTransitNetworksV1SdaTransitSettings struct {
-	IsMulticastOverTransitEnabled *bool    `json:"isMulticastOverTransitEnabled,omitempty"` // Set this to true to enable multicast over SD-Access transit. This supports Native Multicast over SD-Access Transit. This is only applicable for transit of type SDA_LISP_PUB_SUB_TRANSIT.
-	ControlPlaneNetworkDeviceIDs  []string `json:"controlPlaneNetworkDeviceIds,omitempty"`  // List of network device IDs that will be used as control plane nodes. Maximum 2 network device IDs can be provided for transit of type SDA_LISP_BGP_TRANSIT and maximum 4 network device IDs can be provided for transit of type SDA_LISP_PUB_SUB_TRANSIT.
+	IsMulticastOverTransitEnabled *bool `json:"isMulticastOverTransitEnabled,omitempty"` // Set this to true to enable multicast over SD-Access transit. This supports Native Multicast over SD-Access Transit. This is only applicable for transit of type SDA_LISP_PUB_SUB_TRANSIT.
+
+	ControlPlaneNetworkDeviceIDs []string `json:"controlPlaneNetworkDeviceIds,omitempty"` // List of network device IDs that will be used as control plane nodes. Maximum 2 network device IDs can be provided for transit of type SDA_LISP_BGP_TRANSIT and maximum 4 network device IDs can be provided for transit of type SDA_LISP_PUB_SUB_TRANSIT.
 }
 type RequestSdaAddTransitNetworksV1 []RequestItemSdaAddTransitNetworksV1 // Array of RequestSdaAddTransitNetworksV1
 type RequestItemSdaAddTransitNetworksV1 struct {
-	Name               string                                                `json:"name,omitempty"`               // Name of the transit network.
-	Type               string                                                `json:"type,omitempty"`               // Type of the transit network.
-	IPTransitSettings  *RequestItemSdaAddTransitNetworksV1IPTransitSettings  `json:"ipTransitSettings,omitempty"`  //
+	Name string `json:"name,omitempty"` // Name of the transit network.
+
+	Type string `json:"type,omitempty"` // Type of the transit network.
+
+	IPTransitSettings *RequestItemSdaAddTransitNetworksV1IPTransitSettings `json:"ipTransitSettings,omitempty"` //
+
 	SdaTransitSettings *RequestItemSdaAddTransitNetworksV1SdaTransitSettings `json:"sdaTransitSettings,omitempty"` //
 }
 type RequestItemSdaAddTransitNetworksV1IPTransitSettings struct {
-	RoutingProtocolName    string `json:"routingProtocolName,omitempty"`    // Routing protocol name of the IP transit network.
+	RoutingProtocolName string `json:"routingProtocolName,omitempty"` // Routing protocol name of the IP transit network.
+
 	AutonomousSystemNumber string `json:"autonomousSystemNumber,omitempty"` // Autonomous system number of the IP transit network. Allowed range is [1 to 4294967295].
 }
 type RequestItemSdaAddTransitNetworksV1SdaTransitSettings struct {
-	IsMulticastOverTransitEnabled *bool    `json:"isMulticastOverTransitEnabled,omitempty"` // Set this to true to enable multicast over SD-Access transit.  This supports Native Multicast over SD-Access Transit. This is only applicable for transit of type SDA_LISP_PUB_SUB_TRANSIT.
-	ControlPlaneNetworkDeviceIDs  []string `json:"controlPlaneNetworkDeviceIds,omitempty"`  // List of network device IDs that will be used as control plane nodes. Maximum 2 network device IDs can be provided for transit of type SDA_LISP_BGP_TRANSIT and maximum 4 network device IDs can be provided for transit of type SDA_LISP_PUB_SUB_TRANSIT.
+	IsMulticastOverTransitEnabled *bool `json:"isMulticastOverTransitEnabled,omitempty"` // Set this to true to enable multicast over SD-Access transit.  This supports Native Multicast over SD-Access Transit. This is only applicable for transit of type SDA_LISP_PUB_SUB_TRANSIT.
+
+	ControlPlaneNetworkDeviceIDs []string `json:"controlPlaneNetworkDeviceIds,omitempty"` // List of network device IDs that will be used as control plane nodes. Maximum 2 network device IDs can be provided for transit of type SDA_LISP_BGP_TRANSIT and maximum 4 network device IDs can be provided for transit of type SDA_LISP_PUB_SUB_TRANSIT.
 }
 type RequestSdaAddVirtualNetworkWithScalableGroupsV1 struct {
-	VirtualNetworkName    string   `json:"virtualNetworkName,omitempty"`    // Virtual Network Name to be assigned at global level
-	IsGuestVirtualNetwork *bool    `json:"isGuestVirtualNetwork,omitempty"` // Guest Virtual Network enablement flag, default value is False.
-	ScalableGroupNames    []string `json:"scalableGroupNames,omitempty"`    // Scalable Group to be associated to virtual network
-	VManageVpnID          string   `json:"vManageVpnId,omitempty"`          // vManage vpn id for SD-WAN
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Virtual Network Name to be assigned at global level
+
+	IsGuestVirtualNetwork *bool `json:"isGuestVirtualNetwork,omitempty"` // Guest Virtual Network enablement flag, default value is False.
+
+	ScalableGroupNames []string `json:"scalableGroupNames,omitempty"` // Scalable Group to be associated to virtual network
+
+	VManageVpnID string `json:"vManageVpnId,omitempty"` // vManage vpn id for SD-WAN
 }
 type RequestSdaUpdateVirtualNetworkWithScalableGroupsV1 struct {
-	VirtualNetworkName    string   `json:"virtualNetworkName,omitempty"`    // Virtual Network Name to be assigned global level
-	IsGuestVirtualNetwork *bool    `json:"isGuestVirtualNetwork,omitempty"` // Indicates whether to set this as guest virtual network or not, default value is False.
-	ScalableGroupNames    []string `json:"scalableGroupNames,omitempty"`    // Scalable Group Name to be associated to virtual network
-	VManageVpnID          string   `json:"vManageVpnId,omitempty"`          // vManage vpn id for SD-WAN
+	VirtualNetworkName string `json:"virtualNetworkName,omitempty"` // Virtual Network Name to be assigned global level
+
+	IsGuestVirtualNetwork *bool `json:"isGuestVirtualNetwork,omitempty"` // Indicates whether to set this as guest virtual network or not, default value is False.
+
+	ScalableGroupNames []string `json:"scalableGroupNames,omitempty"` // Scalable Group Name to be associated to virtual network
+
+	VManageVpnID string `json:"vManageVpnId,omitempty"` // vManage vpn id for SD-WAN
+}
+
+//ReadListOfFabricSitesWithTheirHealthSummaryV1 Read list of Fabric Sites with their health summary - 1c9a-8a15-4848-aa79
+/* Get a paginated list of Fabric sites Networks with health summary.
+This API provides the latest health data until the given `endTime`. If data is not ready for the provided endTime, the request will fail with error code `400 Bad Request`, and the error message will indicate the recommended endTime to use to retrieve a complete data set. This behavior may occur if the provided endTime=currentTime, since we are not a real time system. When `endTime` is not provided, the API returns the latest data.
+For detailed information about the usage of the API, please refer to the Open API specification document https://github.com/cisco-en-programmability/catalyst-center-api-specs/blob/main/Assurance/CE_Cat_Center_Org-fabricSiteHealthSummaries-1.0.1-resolved.yaml
+
+
+@param ReadListOfFabricSitesWithTheirHealthSummaryV1HeaderParams Custom header parameters
+@param ReadListOfFabricSitesWithTheirHealthSummaryV1QueryParams Filtering parameter
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!read-list-of-fabric-sites-with-their-health-summary
+*/
+func (s *SdaService) ReadListOfFabricSitesWithTheirHealthSummaryV1(ReadListOfFabricSitesWithTheirHealthSummaryV1HeaderParams *ReadListOfFabricSitesWithTheirHealthSummaryV1HeaderParams, ReadListOfFabricSitesWithTheirHealthSummaryV1QueryParams *ReadListOfFabricSitesWithTheirHealthSummaryV1QueryParams) (*ResponseSdaReadListOfFabricSitesWithTheirHealthSummaryV1, *resty.Response, error) {
+	path := "/dna/data/api/v1/fabricSiteHealthSummaries"
+
+	queryString, _ := query.Values(ReadListOfFabricSitesWithTheirHealthSummaryV1QueryParams)
+
+	var response *resty.Response
+	var err error
+	clientRequest := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json")
+
+	if ReadListOfFabricSitesWithTheirHealthSummaryV1HeaderParams != nil {
+
+		if ReadListOfFabricSitesWithTheirHealthSummaryV1HeaderParams.XCaLLERID != "" {
+			clientRequest = clientRequest.SetHeader("X-CALLER-ID", ReadListOfFabricSitesWithTheirHealthSummaryV1HeaderParams.XCaLLERID)
+		}
+
+	}
+
+	response, err = clientRequest.
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSdaReadListOfFabricSitesWithTheirHealthSummaryV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.ReadListOfFabricSitesWithTheirHealthSummaryV1(ReadListOfFabricSitesWithTheirHealthSummaryV1HeaderParams, ReadListOfFabricSitesWithTheirHealthSummaryV1QueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation ReadListOfFabricSitesWithTheirHealthSummaryV1")
+	}
+
+	result := response.Result().(*ResponseSdaReadListOfFabricSitesWithTheirHealthSummaryV1)
+	return result, response, err
+
+}
+
+//ReadFabricSiteCountV1 Read fabric site count - b99f-5a81-44fb-b518
+/* Get a count of Fabric sites. Use available query parameters to get the count of a subset of fabric sites.
+This API provides the latest health data until the given `endTime`. If data is not ready for the provided endTime, the request will fail with error code `400 Bad Request`, and the error message will indicate the recommended endTime to use to retrieve a complete data set. This behavior may occur if the provided endTime=currentTime, since we are not a real time system. When `endTime` is not provided, the API returns the latest data.
+For detailed information about the usage of the API, please refer to the Open API specification document https://github.com/cisco-en-programmability/catalyst-center-api-specs/blob/main/Assurance/CE_Cat_Center_Org-fabricSiteHealthSummaries-1.0.1-resolved.yaml
+
+
+@param ReadFabricSiteCountV1HeaderParams Custom header parameters
+@param ReadFabricSiteCountV1QueryParams Filtering parameter
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!read-fabric-site-count
+*/
+func (s *SdaService) ReadFabricSiteCountV1(ReadFabricSiteCountV1HeaderParams *ReadFabricSiteCountV1HeaderParams, ReadFabricSiteCountV1QueryParams *ReadFabricSiteCountV1QueryParams) (*ResponseSdaReadFabricSiteCountV1, *resty.Response, error) {
+	path := "/dna/data/api/v1/fabricSiteHealthSummaries/count"
+
+	queryString, _ := query.Values(ReadFabricSiteCountV1QueryParams)
+
+	var response *resty.Response
+	var err error
+	clientRequest := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json")
+
+	if ReadFabricSiteCountV1HeaderParams != nil {
+
+		if ReadFabricSiteCountV1HeaderParams.XCaLLERID != "" {
+			clientRequest = clientRequest.SetHeader("X-CALLER-ID", ReadFabricSiteCountV1HeaderParams.XCaLLERID)
+		}
+
+	}
+
+	response, err = clientRequest.
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSdaReadFabricSiteCountV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.ReadFabricSiteCountV1(ReadFabricSiteCountV1HeaderParams, ReadFabricSiteCountV1QueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation ReadFabricSiteCountV1")
+	}
+
+	result := response.Result().(*ResponseSdaReadFabricSiteCountV1)
+	return result, response, err
+
+}
+
+//ReadFabricSitesWithHealthSummaryFromIDV1 Read Fabric Sites with health summary from id - f196-7bdb-4fcb-8bf5
+/* Get Fabric site health summary for a specific fabric site by providing the unique fabric site id in the url path.
+This API provides the latest health data until the given `endTime`. If data is not ready for the provided endTime, the request will fail with error code `400 Bad Request`, and the error message will indicate the recommended endTime to use to retrieve a complete data set. This behavior may occur if the provided endTime=currentTime, since we are not a real time system. When `endTime` is not provided, the API returns the latest data.
+For detailed information about the usage of the API, please refer to the Open API specification document https://github.com/cisco-en-programmability/catalyst-center-api-specs/blob/main/Assurance/CE_Cat_Center_Org-fabricSiteHealthSummaries-1.0.1-resolved.yaml
+
+
+@param id id path parameter. unique fabric site id
+
+@param ReadFabricSitesWithHealthSummaryFromIdV1HeaderParams Custom header parameters
+@param ReadFabricSitesWithHealthSummaryFromIdV1QueryParams Filtering parameter
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!read-fabric-sites-with-health-summary-from-id
+*/
+func (s *SdaService) ReadFabricSitesWithHealthSummaryFromIDV1(id string, ReadFabricSitesWithHealthSummaryFromIdV1HeaderParams *ReadFabricSitesWithHealthSummaryFromIDV1HeaderParams, ReadFabricSitesWithHealthSummaryFromIdV1QueryParams *ReadFabricSitesWithHealthSummaryFromIDV1QueryParams) (*ResponseSdaReadFabricSitesWithHealthSummaryFromIDV1, *resty.Response, error) {
+	path := "/dna/data/api/v1/fabricSiteHealthSummaries/{id}"
+	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
+
+	queryString, _ := query.Values(ReadFabricSitesWithHealthSummaryFromIdV1QueryParams)
+
+	var response *resty.Response
+	var err error
+	clientRequest := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json")
+
+	if ReadFabricSitesWithHealthSummaryFromIdV1HeaderParams != nil {
+
+		if ReadFabricSitesWithHealthSummaryFromIdV1HeaderParams.XCaLLERID != "" {
+			clientRequest = clientRequest.SetHeader("X-CALLER-ID", ReadFabricSitesWithHealthSummaryFromIdV1HeaderParams.XCaLLERID)
+		}
+
+	}
+
+	response, err = clientRequest.
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSdaReadFabricSitesWithHealthSummaryFromIDV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.ReadFabricSitesWithHealthSummaryFromIDV1(id, ReadFabricSitesWithHealthSummaryFromIdV1HeaderParams, ReadFabricSitesWithHealthSummaryFromIdV1QueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation ReadFabricSitesWithHealthSummaryFromIdV1")
+	}
+
+	result := response.Result().(*ResponseSdaReadFabricSitesWithHealthSummaryFromIDV1)
+	return result, response, err
+
+}
+
+//TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1 The Trend analytics data for a fabric site in the specified time range - 798b-bbc6-4839-85ff
+/* Get health time series for a specific Fabric Site by providing the unique Fabric site id in the url path. The data will be grouped based on the specified trend time interval. If startTime and endTime are not provided, the API defaults to the last 24 hours.
+By default: the number of records returned will be 500. the records will be sorted in time ascending (`asc`) order
+ex: id:93a25378-7740-4e20-8d90-0060ad9a1be0
+This API provides the latest health data until the given `endTime`. If data is not ready for the provided endTime, the request will fail with error code `400 Bad Request`, and the error message will indicate the recommended endTime to use to retrieve a complete data set. This behavior may occur if the provided endTime=currentTime, since we are not a real time system. When `endTime` is not provided, the API returns the latest data.
+For detailed information about the usage of the API, please refer to the Open API specification document https://github.com/cisco-en-programmability/catalyst-center-api-specs/blob/main/Assurance/CE_Cat_Center_Org-fabricSiteHealthSummaries-1.0.1-resolved.yaml
+
+
+@param id id path parameter. unique fabric site id
+
+@param TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1HeaderParams Custom header parameters
+@param TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1QueryParams Filtering parameter
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!the-trend-analytics-data-for-a-fabric-site-in-the-specified-time-range
+*/
+func (s *SdaService) TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1(id string, TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1HeaderParams *TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1HeaderParams, TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1QueryParams *TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1QueryParams) (*ResponseSdaTheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1, *resty.Response, error) {
+	path := "/dna/data/api/v1/fabricSiteHealthSummaries/{id}/trendAnalytics"
+	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
+
+	queryString, _ := query.Values(TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1QueryParams)
+
+	var response *resty.Response
+	var err error
+	clientRequest := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json")
+
+	if TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1HeaderParams != nil {
+
+		if TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1HeaderParams.XCaLLERID != "" {
+			clientRequest = clientRequest.SetHeader("X-CALLER-ID", TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1HeaderParams.XCaLLERID)
+		}
+
+	}
+
+	response, err = clientRequest.
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSdaTheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1(id, TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1HeaderParams, TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1QueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1")
+	}
+
+	result := response.Result().(*ResponseSdaTheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1)
+	return result, response, err
+
+}
+
+//ReadFabricEntitySummaryV1 Read Fabric entity summary - c9b6-8967-4feb-8337
+/* Read Fabric summary for overall deployment. Get an aggregated summary of all fabric entities in a deployment including the entity health.
+This API provides the latest health data until the given `endTime`. If data is not ready for the provided endTime, the request will fail with error code `400 Bad Request`, and the error message will indicate the recommended endTime to use to retrieve a complete data set. This behavior may occur if the provided endTime=currentTime, since we are not a real time system. When `endTime` is not provided, the API returns the latest data.
+For detailed information about the usage of the API, please refer to the Open API specification document https://github.com/cisco-en-programmability/catalyst-center-api-specs/blob/main/Assurance/CE_Cat_Center_Org-fabricSummary-1.0.1-oas3-resolved.yaml
+
+
+@param ReadFabricEntitySummaryV1HeaderParams Custom header parameters
+@param ReadFabricEntitySummaryV1QueryParams Filtering parameter
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!read-fabric-entity-summary
+*/
+func (s *SdaService) ReadFabricEntitySummaryV1(ReadFabricEntitySummaryV1HeaderParams *ReadFabricEntitySummaryV1HeaderParams, ReadFabricEntitySummaryV1QueryParams *ReadFabricEntitySummaryV1QueryParams) (*ResponseSdaReadFabricEntitySummaryV1, *resty.Response, error) {
+	path := "/dna/data/api/v1/fabricSummary"
+
+	queryString, _ := query.Values(ReadFabricEntitySummaryV1QueryParams)
+
+	var response *resty.Response
+	var err error
+	clientRequest := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json")
+
+	if ReadFabricEntitySummaryV1HeaderParams != nil {
+
+		if ReadFabricEntitySummaryV1HeaderParams.XCaLLERID != "" {
+			clientRequest = clientRequest.SetHeader("X-CALLER-ID", ReadFabricEntitySummaryV1HeaderParams.XCaLLERID)
+		}
+
+	}
+
+	response, err = clientRequest.
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSdaReadFabricEntitySummaryV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.ReadFabricEntitySummaryV1(ReadFabricEntitySummaryV1HeaderParams, ReadFabricEntitySummaryV1QueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation ReadFabricEntitySummaryV1")
+	}
+
+	result := response.Result().(*ResponseSdaReadFabricEntitySummaryV1)
+	return result, response, err
+
+}
+
+//ReadListOfTransitNetworksWithTheirHealthSummaryV1 Read list of Transit Networks with their health summary - 4b91-1aae-43f8-9ba8
+/* Get a paginated list of Transit Networks with health summary.
+This API provides the latest health data until the given `endTime`. If data is not ready for the provided endTime, the request will fail with error code `400 Bad Request`, and the error message will indicate the recommended endTime to use to retrieve a complete data set. This behavior may occur if the provided endTime=currentTime, since we are not a real time system. When `endTime` is not provided, the API returns the latest data.
+For detailed information about the usage of the API, please refer to the Open API specification document https://github.com/cisco-en-programmability/catalyst-center-api-specs/blob/main/Assurance/CE_Cat_Center_Org-transitNetworkHealthSummaries-1.0.1-resolved.yaml
+
+
+@param ReadListOfTransitNetworksWithTheirHealthSummaryV1HeaderParams Custom header parameters
+@param ReadListOfTransitNetworksWithTheirHealthSummaryV1QueryParams Filtering parameter
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!read-list-of-transit-networks-with-their-health-summary
+*/
+func (s *SdaService) ReadListOfTransitNetworksWithTheirHealthSummaryV1(ReadListOfTransitNetworksWithTheirHealthSummaryV1HeaderParams *ReadListOfTransitNetworksWithTheirHealthSummaryV1HeaderParams, ReadListOfTransitNetworksWithTheirHealthSummaryV1QueryParams *ReadListOfTransitNetworksWithTheirHealthSummaryV1QueryParams) (*ResponseSdaReadListOfTransitNetworksWithTheirHealthSummaryV1, *resty.Response, error) {
+	path := "/dna/data/api/v1/transitNetworkHealthSummaries"
+
+	queryString, _ := query.Values(ReadListOfTransitNetworksWithTheirHealthSummaryV1QueryParams)
+
+	var response *resty.Response
+	var err error
+	clientRequest := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json")
+
+	if ReadListOfTransitNetworksWithTheirHealthSummaryV1HeaderParams != nil {
+
+		if ReadListOfTransitNetworksWithTheirHealthSummaryV1HeaderParams.XCaLLERID != "" {
+			clientRequest = clientRequest.SetHeader("X-CALLER-ID", ReadListOfTransitNetworksWithTheirHealthSummaryV1HeaderParams.XCaLLERID)
+		}
+
+	}
+
+	response, err = clientRequest.
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSdaReadListOfTransitNetworksWithTheirHealthSummaryV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.ReadListOfTransitNetworksWithTheirHealthSummaryV1(ReadListOfTransitNetworksWithTheirHealthSummaryV1HeaderParams, ReadListOfTransitNetworksWithTheirHealthSummaryV1QueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation ReadListOfTransitNetworksWithTheirHealthSummaryV1")
+	}
+
+	result := response.Result().(*ResponseSdaReadListOfTransitNetworksWithTheirHealthSummaryV1)
+	return result, response, err
+
+}
+
+//ReadTransitNetworksCountV1 Read Transit Networks count - 63ac-f8e3-4a28-aee6
+/* Get a count of transit networks. Use available query parameters to get the count of a subset of transit networks.
+This API provides the latest health data until the given `endTime`. If data is not ready for the provided endTime, the request will fail with error code `400 Bad Request`, and the error message will indicate the recommended endTime to use to retrieve a complete data set. This behavior may occur if the provided endTime=currentTime, since we are not a real time system. When `endTime` is not provided, the API returns the latest data.
+For detailed information about the usage of the API, please refer to the Open API specification document https://github.com/cisco-en-programmability/catalyst-center-api-specs/blob/main/Assurance/CE_Cat_Center_Org-transitNetworkHealthSummaries-1.0.1-resolved.yaml
+
+
+@param ReadTransitNetworksCountV1HeaderParams Custom header parameters
+@param ReadTransitNetworksCountV1QueryParams Filtering parameter
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!read-transit-networks-count
+*/
+func (s *SdaService) ReadTransitNetworksCountV1(ReadTransitNetworksCountV1HeaderParams *ReadTransitNetworksCountV1HeaderParams, ReadTransitNetworksCountV1QueryParams *ReadTransitNetworksCountV1QueryParams) (*ResponseSdaReadTransitNetworksCountV1, *resty.Response, error) {
+	path := "/dna/data/api/v1/transitNetworkHealthSummaries/count"
+
+	queryString, _ := query.Values(ReadTransitNetworksCountV1QueryParams)
+
+	var response *resty.Response
+	var err error
+	clientRequest := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json")
+
+	if ReadTransitNetworksCountV1HeaderParams != nil {
+
+		if ReadTransitNetworksCountV1HeaderParams.XCaLLERID != "" {
+			clientRequest = clientRequest.SetHeader("X-CALLER-ID", ReadTransitNetworksCountV1HeaderParams.XCaLLERID)
+		}
+
+	}
+
+	response, err = clientRequest.
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSdaReadTransitNetworksCountV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.ReadTransitNetworksCountV1(ReadTransitNetworksCountV1HeaderParams, ReadTransitNetworksCountV1QueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation ReadTransitNetworksCountV1")
+	}
+
+	result := response.Result().(*ResponseSdaReadTransitNetworksCountV1)
+	return result, response, err
+
+}
+
+//ReadTransitNetworkWithItsHealthSummaryFromIDV1 Read transit network with its health summary from id - 278c-0877-4ba9-919b
+/* Get health summary for a specific transit Network by providing the unique transit networks id in the url path.
+This API provides the latest health data until the given `endTime`. If data is not ready for the provided endTime, the request will fail with error code `400 Bad Request`, and the error message will indicate the recommended endTime to use to retrieve a complete data set. This behavior may occur if the provided endTime=currentTime, since we are not a real time system. When `endTime` is not provided, the API returns the latest data.
+For detailed information about the usage of the API, please refer to the Open API specification document https://github.com/cisco-en-programmability/catalyst-center-api-specs/blob/main/Assurance/CE_Cat_Center_Org-transitNetworkHealthSummaries-1.0.1-resolved.yaml
+
+
+@param id id path parameter. The unique transit network id, Ex “1551156a-bc97-3c63-aeda-8a6d3765b5b9"
+
+@param ReadTransitNetworkWithItsHealthSummaryFromIdV1HeaderParams Custom header parameters
+@param ReadTransitNetworkWithItsHealthSummaryFromIdV1QueryParams Filtering parameter
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!read-transit-network-with-its-health-summary-from-id
+*/
+func (s *SdaService) ReadTransitNetworkWithItsHealthSummaryFromIDV1(id string, ReadTransitNetworkWithItsHealthSummaryFromIdV1HeaderParams *ReadTransitNetworkWithItsHealthSummaryFromIDV1HeaderParams, ReadTransitNetworkWithItsHealthSummaryFromIdV1QueryParams *ReadTransitNetworkWithItsHealthSummaryFromIDV1QueryParams) (*ResponseSdaReadTransitNetworkWithItsHealthSummaryFromIDV1, *resty.Response, error) {
+	path := "/dna/data/api/v1/transitNetworkHealthSummaries/{id}"
+	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
+
+	queryString, _ := query.Values(ReadTransitNetworkWithItsHealthSummaryFromIdV1QueryParams)
+
+	var response *resty.Response
+	var err error
+	clientRequest := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json")
+
+	if ReadTransitNetworkWithItsHealthSummaryFromIdV1HeaderParams != nil {
+
+		if ReadTransitNetworkWithItsHealthSummaryFromIdV1HeaderParams.XCaLLERID != "" {
+			clientRequest = clientRequest.SetHeader("X-CALLER-ID", ReadTransitNetworkWithItsHealthSummaryFromIdV1HeaderParams.XCaLLERID)
+		}
+
+	}
+
+	response, err = clientRequest.
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSdaReadTransitNetworkWithItsHealthSummaryFromIDV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.ReadTransitNetworkWithItsHealthSummaryFromIDV1(id, ReadTransitNetworkWithItsHealthSummaryFromIdV1HeaderParams, ReadTransitNetworkWithItsHealthSummaryFromIdV1QueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation ReadTransitNetworkWithItsHealthSummaryFromIdV1")
+	}
+
+	result := response.Result().(*ResponseSdaReadTransitNetworkWithItsHealthSummaryFromIDV1)
+	return result, response, err
+
+}
+
+//TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1 The Trend analytics data for a transit network in the specified time range - 10a2-0bed-4cda-8fd3
+/* Get health time series for a specific Transit Network by providing the unique Transit Network id in the url path. The data will be grouped based on the specified trend time interval. If startTime and endTime are not provided, the API defaults to the last 24 hours.
+By default: the number of records returned will be 500. the records will be sorted in time ascending (`asc`) order
+This API provides the latest health data until the given `endTime`. If data is not ready for the provided endTime, the request will fail with error code `400 Bad Request`, and the error message will indicate the recommended endTime to use to retrieve a complete data set. This behavior may occur if the provided endTime=currentTime, since we are not a real time system. When `endTime` is not provided, the API returns the latest data.
+For detailed information about the usage of the API, please refer to the Open API specification document https://github.com/cisco-en-programmability/catalyst-center-api-specs/blob/main/Assurance/CE_Cat_Center_Org-transitNetworkHealthSummaries-1.0.1-resolved.yaml
+
+
+@param id id path parameter. The unique transit network id, Ex “1551156a-bc97-3c63-aeda-8a6d3765b5b9"
+
+@param TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1HeaderParams Custom header parameters
+@param TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1QueryParams Filtering parameter
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!the-trend-analytics-data-for-a-transit-network-in-the-specified-time-range
+*/
+func (s *SdaService) TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1(id string, TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1HeaderParams *TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1HeaderParams, TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1QueryParams *TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1QueryParams) (*ResponseSdaTheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1, *resty.Response, error) {
+	path := "/dna/data/api/v1/transitNetworkHealthSummaries/{id}/trendAnalytics"
+	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
+
+	queryString, _ := query.Values(TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1QueryParams)
+
+	var response *resty.Response
+	var err error
+	clientRequest := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json")
+
+	if TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1HeaderParams != nil {
+
+		if TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1HeaderParams.XCaLLERID != "" {
+			clientRequest = clientRequest.SetHeader("X-CALLER-ID", TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1HeaderParams.XCaLLERID)
+		}
+
+	}
+
+	response, err = clientRequest.
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSdaTheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1(id, TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1HeaderParams, TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1QueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1")
+	}
+
+	result := response.Result().(*ResponseSdaTheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1)
+	return result, response, err
+
+}
+
+//ReadListOfVirtualNetworksWithTheirHealthSummaryV1 Read list of Virtual Networks with their health summary - 95a0-580c-422a-bd8b
+/* Get a paginated list of Virtual Networks with health summary. Layer 2 Virtual Networks are only included in health reporting for EVPN protocol deployments. The special Layer 3 VN called ‘INFRA_VN’ is also not included for user access through Assurance virtualNetworkHealthSummaries APIS. Please find INFRA_VN related health metrics under /data/api/v1/fabricSiteHealthSummaries (Ex: attributes ‘pubsubInfraVnGoodHealthPercentage’ and ‘bgpPeerInfraVnScoreGoodHealthPercentage’).
+This API provides the latest health data until the given `endTime`. If data is not ready for the provided endTime, the request will fail with error code `400 Bad Request`, and the error message will indicate the recommended endTime to use to retrieve a complete data set. This behavior may occur if the provided endTime=currentTime, since we are not a real time system. When `endTime` is not provided, the API returns the latest data.
+For detailed information about the usage of the API, please refer to the Open API specification document https://github.com/cisco-en-programmability/catalyst-center-api-specs/blob/main/Assurance/CE_Cat_Center_Org-virtualNetworkHealthSummaries-1.0.1-resolved.yaml
+
+
+@param ReadListOfVirtualNetworksWithTheirHealthSummaryV1HeaderParams Custom header parameters
+@param ReadListOfVirtualNetworksWithTheirHealthSummaryV1QueryParams Filtering parameter
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!read-list-of-virtual-networks-with-their-health-summary
+*/
+func (s *SdaService) ReadListOfVirtualNetworksWithTheirHealthSummaryV1(ReadListOfVirtualNetworksWithTheirHealthSummaryV1HeaderParams *ReadListOfVirtualNetworksWithTheirHealthSummaryV1HeaderParams, ReadListOfVirtualNetworksWithTheirHealthSummaryV1QueryParams *ReadListOfVirtualNetworksWithTheirHealthSummaryV1QueryParams) (*ResponseSdaReadListOfVirtualNetworksWithTheirHealthSummaryV1, *resty.Response, error) {
+	path := "/dna/data/api/v1/virtualNetworkHealthSummaries"
+
+	queryString, _ := query.Values(ReadListOfVirtualNetworksWithTheirHealthSummaryV1QueryParams)
+
+	var response *resty.Response
+	var err error
+	clientRequest := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json")
+
+	if ReadListOfVirtualNetworksWithTheirHealthSummaryV1HeaderParams != nil {
+
+		if ReadListOfVirtualNetworksWithTheirHealthSummaryV1HeaderParams.XCaLLERID != "" {
+			clientRequest = clientRequest.SetHeader("X-CALLER-ID", ReadListOfVirtualNetworksWithTheirHealthSummaryV1HeaderParams.XCaLLERID)
+		}
+
+	}
+
+	response, err = clientRequest.
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSdaReadListOfVirtualNetworksWithTheirHealthSummaryV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.ReadListOfVirtualNetworksWithTheirHealthSummaryV1(ReadListOfVirtualNetworksWithTheirHealthSummaryV1HeaderParams, ReadListOfVirtualNetworksWithTheirHealthSummaryV1QueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation ReadListOfVirtualNetworksWithTheirHealthSummaryV1")
+	}
+
+	result := response.Result().(*ResponseSdaReadListOfVirtualNetworksWithTheirHealthSummaryV1)
+	return result, response, err
+
+}
+
+//ReadVirtualNetworksCountV1 Read Virtual Networks count - a892-d9f5-4669-8725
+/* Get a count of virtual networks. Use available query parameters to get the count of a subset of virtual networks. Layer 2 Virtual Networks are only included for EVPN protocol deployments. The special Layer 3 VN called ‘INFRA_VN’ is also not included.
+This API provides the latest health data until the given `endTime`. If data is not ready for the provided endTime, the request will fail with error code `400 Bad Request`, and the error message will indicate the recommended endTime to use to retrieve a complete data set. This behavior may occur if the provided endTime=currentTime, since we are not a real time system. When `endTime` is not provided, the API returns the latest data.
+For detailed information about the usage of the API, please refer to the Open API specification document https://github.com/cisco-en-programmability/catalyst-center-api-specs/blob/main/Assurance/CE_Cat_Center_Org-virtualNetworkHealthSummaries-1.0.1-resolved.yaml
+
+
+@param ReadVirtualNetworksCountV1HeaderParams Custom header parameters
+@param ReadVirtualNetworksCountV1QueryParams Filtering parameter
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!read-virtual-networks-count
+*/
+func (s *SdaService) ReadVirtualNetworksCountV1(ReadVirtualNetworksCountV1HeaderParams *ReadVirtualNetworksCountV1HeaderParams, ReadVirtualNetworksCountV1QueryParams *ReadVirtualNetworksCountV1QueryParams) (*ResponseSdaReadVirtualNetworksCountV1, *resty.Response, error) {
+	path := "/dna/data/api/v1/virtualNetworkHealthSummaries/count"
+
+	queryString, _ := query.Values(ReadVirtualNetworksCountV1QueryParams)
+
+	var response *resty.Response
+	var err error
+	clientRequest := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json")
+
+	if ReadVirtualNetworksCountV1HeaderParams != nil {
+
+		if ReadVirtualNetworksCountV1HeaderParams.XCaLLERID != "" {
+			clientRequest = clientRequest.SetHeader("X-CALLER-ID", ReadVirtualNetworksCountV1HeaderParams.XCaLLERID)
+		}
+
+	}
+
+	response, err = clientRequest.
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSdaReadVirtualNetworksCountV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.ReadVirtualNetworksCountV1(ReadVirtualNetworksCountV1HeaderParams, ReadVirtualNetworksCountV1QueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation ReadVirtualNetworksCountV1")
+	}
+
+	result := response.Result().(*ResponseSdaReadVirtualNetworksCountV1)
+	return result, response, err
+
+}
+
+//ReadVirtualNetworkWithItsHealthSummaryFromIDV1 Read virtual network with its health summary from id - 3883-1b45-4be9-9fef
+/* Get health summary for a specific Virtual Network by providing the unique virtual networks id in the url path. L2 Virtual Networks are only included in health reporting for EVPN protocol deployments. The special Layer 3 VN called ‘INFRA_VN’ is also not included for user access through Assurance virtualNetworkHealthSummaries APIS. Please find INFRA_VN related health metrics under /data/api/v1/fabricSiteHealthSummaries (Ex: attributes ‘pubsubInfraVnGoodHealthPercentage’ and ‘bgpPeerInfraVnScoreGoodHealthPercentage’).
+This API provides the latest health data until the given `endTime`. If data is not ready for the provided endTime, the request will fail with error code `400 Bad Request`, and the error message will indicate the recommended endTime to use to retrieve a complete data set. This behavior may occur if the provided endTime=currentTime, since we are not a real time system. When `endTime` is not provided, the API returns the latest data.
+For detailed information about the usage of the API, please refer to the Open API specification document https://github.com/cisco-en-programmability/catalyst-center-api-specs/blob/main/Assurance/CE_Cat_Center_Org-virtualNetworkHealthSummaries-1.0.1-resolved.yaml
+
+
+@param id id path parameter. unique virtual networks id
+
+@param ReadVirtualNetworkWithItsHealthSummaryFromIdV1HeaderParams Custom header parameters
+@param ReadVirtualNetworkWithItsHealthSummaryFromIdV1QueryParams Filtering parameter
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!read-virtual-network-with-its-health-summary-from-id
+*/
+func (s *SdaService) ReadVirtualNetworkWithItsHealthSummaryFromIDV1(id string, ReadVirtualNetworkWithItsHealthSummaryFromIdV1HeaderParams *ReadVirtualNetworkWithItsHealthSummaryFromIDV1HeaderParams, ReadVirtualNetworkWithItsHealthSummaryFromIdV1QueryParams *ReadVirtualNetworkWithItsHealthSummaryFromIDV1QueryParams) (*ResponseSdaReadVirtualNetworkWithItsHealthSummaryFromIDV1, *resty.Response, error) {
+	path := "/dna/data/api/v1/virtualNetworkHealthSummaries/{id}"
+	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
+
+	queryString, _ := query.Values(ReadVirtualNetworkWithItsHealthSummaryFromIdV1QueryParams)
+
+	var response *resty.Response
+	var err error
+	clientRequest := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json")
+
+	if ReadVirtualNetworkWithItsHealthSummaryFromIdV1HeaderParams != nil {
+
+		if ReadVirtualNetworkWithItsHealthSummaryFromIdV1HeaderParams.XCaLLERID != "" {
+			clientRequest = clientRequest.SetHeader("X-CALLER-ID", ReadVirtualNetworkWithItsHealthSummaryFromIdV1HeaderParams.XCaLLERID)
+		}
+
+	}
+
+	response, err = clientRequest.
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSdaReadVirtualNetworkWithItsHealthSummaryFromIDV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.ReadVirtualNetworkWithItsHealthSummaryFromIDV1(id, ReadVirtualNetworkWithItsHealthSummaryFromIdV1HeaderParams, ReadVirtualNetworkWithItsHealthSummaryFromIdV1QueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation ReadVirtualNetworkWithItsHealthSummaryFromIdV1")
+	}
+
+	result := response.Result().(*ResponseSdaReadVirtualNetworkWithItsHealthSummaryFromIDV1)
+	return result, response, err
+
+}
+
+//TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1 The Trend analytics data for a virtual network in the specified time range - b0a9-69dd-4eda-bb56
+/* Get health time series for a specific Virtual Network by providing the unique Virtual Network id in the url path. Layer 2 Virtual Networks are only included in health reporting for EVPN protocol deployments. The special Layer 3 VN called ‘INFRA_VN’ is also not included for user access through Assurance virtualNetworkHealthSummaries APIS.
+The data will be grouped based on the specified trend time interval. If startTime and endTime are not provided, the API defaults to the last 24 hours.
+By default: the number of records returned will be 500. the records will be sorted in time ascending (`asc`) order
+For EVPN , {id} is a combination of VN:FabrisiteId. ex: L2VN1:93a25378-7740-4e20-8d90-0060ad9a1be0
+This API provides the latest health data until the given `endTime`. If data is not ready for the provided endTime, the request will fail with error code `400 Bad Request`, and the error message will indicate the recommended endTime to use to retrieve a complete data set. This behavior may occur if the provided endTime=currentTime, since we are not a real time system. When `endTime` is not provided, the API returns the latest data.
+For detailed information about the usage of the API, please refer to the Open API specification document https://github.com/cisco-en-programmability/catalyst-center-api-specs/blob/main/Assurance/CE_Cat_Center_Org-virtualNetworkHealthSummaries-1.0.1-resolved.yaml
+
+
+@param id id path parameter. unique virtual network id
+
+@param TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1HeaderParams Custom header parameters
+@param TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1QueryParams Filtering parameter
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!the-trend-analytics-data-for-a-virtual-network-in-the-specified-time-range
+*/
+func (s *SdaService) TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1(id string, TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1HeaderParams *TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1HeaderParams, TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1QueryParams *TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1QueryParams) (*ResponseSdaTheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1, *resty.Response, error) {
+	path := "/dna/data/api/v1/virtualNetworkHealthSummaries/{id}/trendAnalytics"
+	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
+
+	queryString, _ := query.Values(TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1QueryParams)
+
+	var response *resty.Response
+	var err error
+	clientRequest := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json")
+
+	if TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1HeaderParams != nil {
+
+		if TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1HeaderParams.XCaLLERID != "" {
+			clientRequest = clientRequest.SetHeader("X-CALLER-ID", TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1HeaderParams.XCaLLERID)
+		}
+
+	}
+
+	response, err = clientRequest.
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSdaTheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1(id, TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1HeaderParams, TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1QueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1")
+	}
+
+	result := response.Result().(*ResponseSdaTheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1)
+	return result, response, err
+
 }
 
 //GetDefaultAuthenticationProfileFromSdaFabricV1 Get default authentication profile from SDA Fabric - 8b90-8a4e-4c5a-9a23
@@ -2181,7 +4931,7 @@ type RequestSdaUpdateVirtualNetworkWithScalableGroupsV1 struct {
 
 @param GetDefaultAuthenticationProfileFromSDAFabricV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-default-authentication-profile-from-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-default-authentication-profile-from-sda-fabric
 */
 func (s *SdaService) GetDefaultAuthenticationProfileFromSdaFabricV1(GetDefaultAuthenticationProfileFromSDAFabricV1QueryParams *GetDefaultAuthenticationProfileFromSdaFabricV1QueryParams) (*ResponseSdaGetDefaultAuthenticationProfileFromSdaFabricV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/authentication-profile"
@@ -2218,7 +4968,7 @@ func (s *SdaService) GetDefaultAuthenticationProfileFromSdaFabricV1(GetDefaultAu
 
 @param GetBorderDeviceDetailFromSDAFabricV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-border-device-detail-from-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-border-device-detail-from-sda-fabric
 */
 func (s *SdaService) GetBorderDeviceDetailFromSdaFabricV1(GetBorderDeviceDetailFromSDAFabricV1QueryParams *GetBorderDeviceDetailFromSdaFabricV1QueryParams) (*ResponseSdaGetBorderDeviceDetailFromSdaFabricV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/border-device"
@@ -2255,7 +5005,7 @@ func (s *SdaService) GetBorderDeviceDetailFromSdaFabricV1(GetBorderDeviceDetailF
 
 @param GetControlPlaneDeviceFromSDAFabricV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-control-plane-device-from-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-control-plane-device-from-sda-fabric
 */
 func (s *SdaService) GetControlPlaneDeviceFromSdaFabricV1(GetControlPlaneDeviceFromSDAFabricV1QueryParams *GetControlPlaneDeviceFromSdaFabricV1QueryParams) (*ResponseSdaGetControlPlaneDeviceFromSdaFabricV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/control-plane-device"
@@ -2292,7 +5042,7 @@ func (s *SdaService) GetControlPlaneDeviceFromSdaFabricV1(GetControlPlaneDeviceF
 
 @param GetDeviceInfoFromSDAFabricV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-device-info-from-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-device-info-from-sda-fabric
 */
 func (s *SdaService) GetDeviceInfoFromSdaFabricV1(GetDeviceInfoFromSDAFabricV1QueryParams *GetDeviceInfoFromSdaFabricV1QueryParams) (*ResponseSdaGetDeviceInfoFromSdaFabricV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/device"
@@ -2329,7 +5079,7 @@ func (s *SdaService) GetDeviceInfoFromSdaFabricV1(GetDeviceInfoFromSDAFabricV1Qu
 
 @param GetDeviceRoleInSDAFabricV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-device-role-in-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-device-role-in-sda-fabric
 */
 func (s *SdaService) GetDeviceRoleInSdaFabricV1(GetDeviceRoleInSDAFabricV1QueryParams *GetDeviceRoleInSdaFabricV1QueryParams) (*ResponseSdaGetDeviceRoleInSdaFabricV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/device/role"
@@ -2366,7 +5116,7 @@ func (s *SdaService) GetDeviceRoleInSdaFabricV1(GetDeviceRoleInSDAFabricV1QueryP
 
 @param GetEdgeDeviceFromSDAFabricV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-edge-device-from-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-edge-device-from-sda-fabric
 */
 func (s *SdaService) GetEdgeDeviceFromSdaFabricV1(GetEdgeDeviceFromSDAFabricV1QueryParams *GetEdgeDeviceFromSdaFabricV1QueryParams) (*ResponseSdaGetEdgeDeviceFromSdaFabricV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/edge-device"
@@ -2403,7 +5153,7 @@ func (s *SdaService) GetEdgeDeviceFromSdaFabricV1(GetEdgeDeviceFromSDAFabricV1Qu
 
 @param GetSiteFromSDAFabricV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-site-from-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-site-from-sda-fabric
 */
 func (s *SdaService) GetSiteFromSdaFabricV1(GetSiteFromSDAFabricV1QueryParams *GetSiteFromSdaFabricV1QueryParams) (*ResponseSdaGetSiteFromSdaFabricV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/fabric-site"
@@ -2440,7 +5190,7 @@ func (s *SdaService) GetSiteFromSdaFabricV1(GetSiteFromSDAFabricV1QueryParams *G
 
 @param GetPortAssignmentForAccessPointInSDAFabricV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-port-assignment-for-access-point-in-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-port-assignment-for-access-point-in-sda-fabric
 */
 func (s *SdaService) GetPortAssignmentForAccessPointInSdaFabricV1(GetPortAssignmentForAccessPointInSDAFabricV1QueryParams *GetPortAssignmentForAccessPointInSdaFabricV1QueryParams) (*ResponseSdaGetPortAssignmentForAccessPointInSdaFabricV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/hostonboarding/access-point"
@@ -2477,7 +5227,7 @@ func (s *SdaService) GetPortAssignmentForAccessPointInSdaFabricV1(GetPortAssignm
 
 @param GetPortAssignmentForUserDeviceInSDAFabricV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-port-assignment-for-user-device-in-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-port-assignment-for-user-device-in-sda-fabric
 */
 func (s *SdaService) GetPortAssignmentForUserDeviceInSdaFabricV1(GetPortAssignmentForUserDeviceInSDAFabricV1QueryParams *GetPortAssignmentForUserDeviceInSdaFabricV1QueryParams) (*ResponseSdaGetPortAssignmentForUserDeviceInSdaFabricV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/hostonboarding/user-device"
@@ -2514,7 +5264,7 @@ func (s *SdaService) GetPortAssignmentForUserDeviceInSdaFabricV1(GetPortAssignme
 
 @param GetMulticastDetailsFromSDAFabricV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-multicast-details-from-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-multicast-details-from-sda-fabric
 */
 func (s *SdaService) GetMulticastDetailsFromSdaFabricV1(GetMulticastDetailsFromSDAFabricV1QueryParams *GetMulticastDetailsFromSdaFabricV1QueryParams) (*ResponseSdaGetMulticastDetailsFromSdaFabricV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/multicast"
@@ -2551,7 +5301,7 @@ func (s *SdaService) GetMulticastDetailsFromSdaFabricV1(GetMulticastDetailsFromS
 
 @param GetProvisionedWiredDeviceV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-provisioned-wired-device-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-provisioned-wired-device
 */
 func (s *SdaService) GetProvisionedWiredDeviceV1(GetProvisionedWiredDeviceV1QueryParams *GetProvisionedWiredDeviceV1QueryParams) (*ResponseSdaGetProvisionedWiredDeviceV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/provision-device"
@@ -2588,7 +5338,7 @@ func (s *SdaService) GetProvisionedWiredDeviceV1(GetProvisionedWiredDeviceV1Quer
 
 @param GetTransitPeerNetworkInfoV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-transit-peer-network-info-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-transit-peer-network-info
 */
 func (s *SdaService) GetTransitPeerNetworkInfoV1(GetTransitPeerNetworkInfoV1QueryParams *GetTransitPeerNetworkInfoV1QueryParams) (*ResponseSdaGetTransitPeerNetworkInfoV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/transit-peer-network"
@@ -2625,7 +5375,7 @@ func (s *SdaService) GetTransitPeerNetworkInfoV1(GetTransitPeerNetworkInfoV1Quer
 
 @param GetVNFromSDAFabricV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-vn-from-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-vn-from-sda-fabric
 */
 func (s *SdaService) GetVnFromSdaFabricV1(GetVNFromSDAFabricV1QueryParams *GetVnFromSdaFabricV1QueryParams) (*ResponseSdaGetVnFromSdaFabricV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/virtual-network"
@@ -2662,7 +5412,7 @@ func (s *SdaService) GetVnFromSdaFabricV1(GetVNFromSDAFabricV1QueryParams *GetVn
 
 @param GetVirtualNetworkSummaryV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-virtual-network-summary-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-virtual-network-summary
 */
 func (s *SdaService) GetVirtualNetworkSummaryV1(GetVirtualNetworkSummaryV1QueryParams *GetVirtualNetworkSummaryV1QueryParams) (*ResponseSdaGetVirtualNetworkSummaryV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/virtual-network/summary"
@@ -2699,7 +5449,7 @@ func (s *SdaService) GetVirtualNetworkSummaryV1(GetVirtualNetworkSummaryV1QueryP
 
 @param GetIPPoolFromSDAVirtualNetworkV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-ip-pool-from-sda-virtual-network-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-ip-pool-from-sda-virtual-network
 */
 func (s *SdaService) GetIPPoolFromSdaVirtualNetworkV1(GetIPPoolFromSDAVirtualNetworkV1QueryParams *GetIPPoolFromSdaVirtualNetworkV1QueryParams) (*ResponseSdaGetIPPoolFromSdaVirtualNetworkV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/virtualnetwork/ippool"
@@ -2736,7 +5486,7 @@ func (s *SdaService) GetIPPoolFromSdaVirtualNetworkV1(GetIPPoolFromSDAVirtualNet
 
 @param GetAnycastGatewaysV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-anycast-gateways-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-anycast-gateways
 */
 func (s *SdaService) GetAnycastGatewaysV1(GetAnycastGatewaysV1QueryParams *GetAnycastGatewaysV1QueryParams) (*ResponseSdaGetAnycastGatewaysV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/anycastGateways"
@@ -2773,7 +5523,7 @@ func (s *SdaService) GetAnycastGatewaysV1(GetAnycastGatewaysV1QueryParams *GetAn
 
 @param GetAnycastGatewayCountV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-anycast-gateway-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-anycast-gateway-count
 */
 func (s *SdaService) GetAnycastGatewayCountV1(GetAnycastGatewayCountV1QueryParams *GetAnycastGatewayCountV1QueryParams) (*ResponseSdaGetAnycastGatewayCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/anycastGateways/count"
@@ -2810,7 +5560,7 @@ func (s *SdaService) GetAnycastGatewayCountV1(GetAnycastGatewayCountV1QueryParam
 
 @param GetAuthenticationProfilesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-authentication-profiles-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-authentication-profiles
 */
 func (s *SdaService) GetAuthenticationProfilesV1(GetAuthenticationProfilesV1QueryParams *GetAuthenticationProfilesV1QueryParams) (*ResponseSdaGetAuthenticationProfilesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/authenticationProfiles"
@@ -2847,7 +5597,7 @@ func (s *SdaService) GetAuthenticationProfilesV1(GetAuthenticationProfilesV1Quer
 
 @param GetExtranetPoliciesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-extranet-policies-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-extranet-policies
 */
 func (s *SdaService) GetExtranetPoliciesV1(GetExtranetPoliciesV1QueryParams *GetExtranetPoliciesV1QueryParams) (*ResponseSdaGetExtranetPoliciesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/extranetPolicies"
@@ -2883,7 +5633,7 @@ func (s *SdaService) GetExtranetPoliciesV1(GetExtranetPoliciesV1QueryParams *Get
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-extranet-policy-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-extranet-policy-count
 */
 func (s *SdaService) GetExtranetPolicyCountV1() (*ResponseSdaGetExtranetPolicyCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/extranetPolicies/count"
@@ -2918,7 +5668,7 @@ func (s *SdaService) GetExtranetPolicyCountV1() (*ResponseSdaGetExtranetPolicyCo
 
 @param GetFabricDevicesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-devices-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-devices
 */
 func (s *SdaService) GetFabricDevicesV1(GetFabricDevicesV1QueryParams *GetFabricDevicesV1QueryParams) (*ResponseSdaGetFabricDevicesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/fabricDevices"
@@ -2955,7 +5705,7 @@ func (s *SdaService) GetFabricDevicesV1(GetFabricDevicesV1QueryParams *GetFabric
 
 @param GetFabricDevicesCountV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-devices-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-devices-count
 */
 func (s *SdaService) GetFabricDevicesCountV1(GetFabricDevicesCountV1QueryParams *GetFabricDevicesCountV1QueryParams) (*ResponseSdaGetFabricDevicesCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/fabricDevices/count"
@@ -2992,7 +5742,7 @@ func (s *SdaService) GetFabricDevicesCountV1(GetFabricDevicesCountV1QueryParams 
 
 @param GetFabricDevicesLayer2HandoffsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-devices-layer2-handoffs-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-devices-layer2-handoffs
 */
 func (s *SdaService) GetFabricDevicesLayer2HandoffsV1(GetFabricDevicesLayer2HandoffsV1QueryParams *GetFabricDevicesLayer2HandoffsV1QueryParams) (*ResponseSdaGetFabricDevicesLayer2HandoffsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/fabricDevices/layer2Handoffs"
@@ -3029,7 +5779,7 @@ func (s *SdaService) GetFabricDevicesLayer2HandoffsV1(GetFabricDevicesLayer2Hand
 
 @param GetFabricDevicesLayer2HandoffsCountV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-devices-layer2-handoffs-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-devices-layer2-handoffs-count
 */
 func (s *SdaService) GetFabricDevicesLayer2HandoffsCountV1(GetFabricDevicesLayer2HandoffsCountV1QueryParams *GetFabricDevicesLayer2HandoffsCountV1QueryParams) (*ResponseSdaGetFabricDevicesLayer2HandoffsCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/fabricDevices/layer2Handoffs/count"
@@ -3066,7 +5816,7 @@ func (s *SdaService) GetFabricDevicesLayer2HandoffsCountV1(GetFabricDevicesLayer
 
 @param GetFabricDevicesLayer3HandoffsWithIpTransitV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-devices-layer3-handoffs-with-ip-transit-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-devices-layer3-handoffs-with-ip-transit
 */
 func (s *SdaService) GetFabricDevicesLayer3HandoffsWithIPTransitV1(GetFabricDevicesLayer3HandoffsWithIpTransitV1QueryParams *GetFabricDevicesLayer3HandoffsWithIPTransitV1QueryParams) (*ResponseSdaGetFabricDevicesLayer3HandoffsWithIPTransitV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/fabricDevices/layer3Handoffs/ipTransits"
@@ -3103,7 +5853,7 @@ func (s *SdaService) GetFabricDevicesLayer3HandoffsWithIPTransitV1(GetFabricDevi
 
 @param GetFabricDevicesLayer3HandoffsWithIpTransitCountV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-devices-layer3-handoffs-with-ip-transit-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-devices-layer3-handoffs-with-ip-transit-count
 */
 func (s *SdaService) GetFabricDevicesLayer3HandoffsWithIPTransitCountV1(GetFabricDevicesLayer3HandoffsWithIpTransitCountV1QueryParams *GetFabricDevicesLayer3HandoffsWithIPTransitCountV1QueryParams) (*ResponseSdaGetFabricDevicesLayer3HandoffsWithIPTransitCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/fabricDevices/layer3Handoffs/ipTransits/count"
@@ -3140,7 +5890,7 @@ func (s *SdaService) GetFabricDevicesLayer3HandoffsWithIPTransitCountV1(GetFabri
 
 @param GetFabricDevicesLayer3HandoffsWithSdaTransitV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-devices-layer3-handoffs-with-sda-transit-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-devices-layer3-handoffs-with-sda-transit
 */
 func (s *SdaService) GetFabricDevicesLayer3HandoffsWithSdaTransitV1(GetFabricDevicesLayer3HandoffsWithSdaTransitV1QueryParams *GetFabricDevicesLayer3HandoffsWithSdaTransitV1QueryParams) (*ResponseSdaGetFabricDevicesLayer3HandoffsWithSdaTransitV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/fabricDevices/layer3Handoffs/sdaTransits"
@@ -3177,7 +5927,7 @@ func (s *SdaService) GetFabricDevicesLayer3HandoffsWithSdaTransitV1(GetFabricDev
 
 @param GetFabricDevicesLayer3HandoffsWithSdaTransitCountV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-devices-layer3-handoffs-with-sda-transit-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-devices-layer3-handoffs-with-sda-transit-count
 */
 func (s *SdaService) GetFabricDevicesLayer3HandoffsWithSdaTransitCountV1(GetFabricDevicesLayer3HandoffsWithSdaTransitCountV1QueryParams *GetFabricDevicesLayer3HandoffsWithSdaTransitCountV1QueryParams) (*ResponseSdaGetFabricDevicesLayer3HandoffsWithSdaTransitCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/fabricDevices/layer3Handoffs/sdaTransits/count"
@@ -3214,7 +5964,7 @@ func (s *SdaService) GetFabricDevicesLayer3HandoffsWithSdaTransitCountV1(GetFabr
 
 @param GetFabricSitesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-sites-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-sites
 */
 func (s *SdaService) GetFabricSitesV1(GetFabricSitesV1QueryParams *GetFabricSitesV1QueryParams) (*ResponseSdaGetFabricSitesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/fabricSites"
@@ -3250,7 +6000,7 @@ func (s *SdaService) GetFabricSitesV1(GetFabricSitesV1QueryParams *GetFabricSite
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-site-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-site-count
 */
 func (s *SdaService) GetFabricSiteCountV1() (*ResponseSdaGetFabricSiteCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/fabricSites/count"
@@ -3285,7 +6035,7 @@ func (s *SdaService) GetFabricSiteCountV1() (*ResponseSdaGetFabricSiteCountV1, *
 
 @param GetFabricZonesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-zones-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-zones
 */
 func (s *SdaService) GetFabricZonesV1(GetFabricZonesV1QueryParams *GetFabricZonesV1QueryParams) (*ResponseSdaGetFabricZonesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/fabricZones"
@@ -3321,7 +6071,7 @@ func (s *SdaService) GetFabricZonesV1(GetFabricZonesV1QueryParams *GetFabricZone
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-zone-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-fabric-zone-count
 */
 func (s *SdaService) GetFabricZoneCountV1() (*ResponseSdaGetFabricZoneCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/fabricZones/count"
@@ -3356,7 +6106,7 @@ func (s *SdaService) GetFabricZoneCountV1() (*ResponseSdaGetFabricZoneCountV1, *
 
 @param GetLayer2VirtualNetworksV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-layer2-virtual-networks-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-layer2-virtual-networks
 */
 func (s *SdaService) GetLayer2VirtualNetworksV1(GetLayer2VirtualNetworksV1QueryParams *GetLayer2VirtualNetworksV1QueryParams) (*ResponseSdaGetLayer2VirtualNetworksV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/layer2VirtualNetworks"
@@ -3393,7 +6143,7 @@ func (s *SdaService) GetLayer2VirtualNetworksV1(GetLayer2VirtualNetworksV1QueryP
 
 @param GetLayer2VirtualNetworkCountV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-layer2-virtual-network-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-layer2-virtual-network-count
 */
 func (s *SdaService) GetLayer2VirtualNetworkCountV1(GetLayer2VirtualNetworkCountV1QueryParams *GetLayer2VirtualNetworkCountV1QueryParams) (*ResponseSdaGetLayer2VirtualNetworkCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/layer2VirtualNetworks/count"
@@ -3430,7 +6180,7 @@ func (s *SdaService) GetLayer2VirtualNetworkCountV1(GetLayer2VirtualNetworkCount
 
 @param GetLayer3VirtualNetworksV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-layer3-virtual-networks-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-layer3-virtual-networks
 */
 func (s *SdaService) GetLayer3VirtualNetworksV1(GetLayer3VirtualNetworksV1QueryParams *GetLayer3VirtualNetworksV1QueryParams) (*ResponseSdaGetLayer3VirtualNetworksV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/layer3VirtualNetworks"
@@ -3467,7 +6217,7 @@ func (s *SdaService) GetLayer3VirtualNetworksV1(GetLayer3VirtualNetworksV1QueryP
 
 @param GetLayer3VirtualNetworksCountV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-layer3-virtual-networks-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-layer3-virtual-networks-count
 */
 func (s *SdaService) GetLayer3VirtualNetworksCountV1(GetLayer3VirtualNetworksCountV1QueryParams *GetLayer3VirtualNetworksCountV1QueryParams) (*ResponseSdaGetLayer3VirtualNetworksCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/layer3VirtualNetworks/count"
@@ -3504,7 +6254,7 @@ func (s *SdaService) GetLayer3VirtualNetworksCountV1(GetLayer3VirtualNetworksCou
 
 @param GetMulticastV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-multicast-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-multicast
 */
 func (s *SdaService) GetMulticastV1(GetMulticastV1QueryParams *GetMulticastV1QueryParams) (*ResponseSdaGetMulticastV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/multicast"
@@ -3541,7 +6291,7 @@ func (s *SdaService) GetMulticastV1(GetMulticastV1QueryParams *GetMulticastV1Que
 
 @param GetMulticastVirtualNetworksV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-multicast-virtual-networks-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-multicast-virtual-networks
 */
 func (s *SdaService) GetMulticastVirtualNetworksV1(GetMulticastVirtualNetworksV1QueryParams *GetMulticastVirtualNetworksV1QueryParams) (*ResponseSdaGetMulticastVirtualNetworksV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/multicast/virtualNetworks"
@@ -3578,7 +6328,7 @@ func (s *SdaService) GetMulticastVirtualNetworksV1(GetMulticastVirtualNetworksV1
 
 @param GetMulticastVirtualNetworkCountV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-multicast-virtual-network-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-multicast-virtual-network-count
 */
 func (s *SdaService) GetMulticastVirtualNetworkCountV1(GetMulticastVirtualNetworkCountV1QueryParams *GetMulticastVirtualNetworkCountV1QueryParams) (*ResponseSdaGetMulticastVirtualNetworkCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/multicast/virtualNetworks/count"
@@ -3609,13 +6359,50 @@ func (s *SdaService) GetMulticastVirtualNetworkCountV1(GetMulticastVirtualNetwor
 
 }
 
+//GetPendingFabricEventsV1 Get pending fabric events - 46aa-996a-4eda-a8fc
+/* Returns a list of pending fabric events that match the provided query parameters.
+
+
+@param GetPendingFabricEventsV1QueryParams Filtering parameter
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-pending-fabric-events
+*/
+func (s *SdaService) GetPendingFabricEventsV1(GetPendingFabricEventsV1QueryParams *GetPendingFabricEventsV1QueryParams) (*ResponseSdaGetPendingFabricEventsV1, *resty.Response, error) {
+	path := "/dna/intent/api/v1/sda/pendingFabricEvents"
+
+	queryString, _ := query.Values(GetPendingFabricEventsV1QueryParams)
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetQueryString(queryString.Encode()).SetResult(&ResponseSdaGetPendingFabricEventsV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.GetPendingFabricEventsV1(GetPendingFabricEventsV1QueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation GetPendingFabricEventsV1")
+	}
+
+	result := response.Result().(*ResponseSdaGetPendingFabricEventsV1)
+	return result, response, err
+
+}
+
 //GetPortAssignmentsV1 Get port assignments - c199-09a2-4619-a140
 /* Returns a list of port assignments that match the provided query parameters.
 
 
 @param GetPortAssignmentsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-port-assignments-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-port-assignments
 */
 func (s *SdaService) GetPortAssignmentsV1(GetPortAssignmentsV1QueryParams *GetPortAssignmentsV1QueryParams) (*ResponseSdaGetPortAssignmentsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/portAssignments"
@@ -3652,7 +6439,7 @@ func (s *SdaService) GetPortAssignmentsV1(GetPortAssignmentsV1QueryParams *GetPo
 
 @param GetPortAssignmentCountV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-port-assignment-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-port-assignment-count
 */
 func (s *SdaService) GetPortAssignmentCountV1(GetPortAssignmentCountV1QueryParams *GetPortAssignmentCountV1QueryParams) (*ResponseSdaGetPortAssignmentCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/portAssignments/count"
@@ -3689,7 +6476,7 @@ func (s *SdaService) GetPortAssignmentCountV1(GetPortAssignmentCountV1QueryParam
 
 @param GetPortChannelsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-port-channels-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-port-channels
 */
 func (s *SdaService) GetPortChannelsV1(GetPortChannelsV1QueryParams *GetPortChannelsV1QueryParams) (*ResponseSdaGetPortChannelsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/portChannels"
@@ -3726,7 +6513,7 @@ func (s *SdaService) GetPortChannelsV1(GetPortChannelsV1QueryParams *GetPortChan
 
 @param GetPortChannelCountV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-port-channel-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-port-channel-count
 */
 func (s *SdaService) GetPortChannelCountV1(GetPortChannelCountV1QueryParams *GetPortChannelCountV1QueryParams) (*ResponseSdaGetPortChannelCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/portChannels/count"
@@ -3763,7 +6550,7 @@ func (s *SdaService) GetPortChannelCountV1(GetPortChannelCountV1QueryParams *Get
 
 @param GetProvisionedDevicesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-provisioned-devices-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-provisioned-devices
 */
 func (s *SdaService) GetProvisionedDevicesV1(GetProvisionedDevicesV1QueryParams *GetProvisionedDevicesV1QueryParams) (*ResponseSdaGetProvisionedDevicesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/provisionDevices"
@@ -3800,7 +6587,7 @@ func (s *SdaService) GetProvisionedDevicesV1(GetProvisionedDevicesV1QueryParams 
 
 @param GetProvisionedDevicesCountV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-provisioned-devices-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-provisioned-devices-count
 */
 func (s *SdaService) GetProvisionedDevicesCountV1(GetProvisionedDevicesCountV1QueryParams *GetProvisionedDevicesCountV1QueryParams) (*ResponseSdaGetProvisionedDevicesCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/provisionDevices/count"
@@ -3837,7 +6624,7 @@ func (s *SdaService) GetProvisionedDevicesCountV1(GetProvisionedDevicesCountV1Qu
 
 @param GetTransitNetworksV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-transit-networks-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-transit-networks
 */
 func (s *SdaService) GetTransitNetworksV1(GetTransitNetworksV1QueryParams *GetTransitNetworksV1QueryParams) (*ResponseSdaGetTransitNetworksV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/transitNetworks"
@@ -3874,7 +6661,7 @@ func (s *SdaService) GetTransitNetworksV1(GetTransitNetworksV1QueryParams *GetTr
 
 @param GetTransitNetworksCountV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-transit-networks-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-transit-networks-count
 */
 func (s *SdaService) GetTransitNetworksCountV1(GetTransitNetworksCountV1QueryParams *GetTransitNetworksCountV1QueryParams) (*ResponseSdaGetTransitNetworksCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/transitNetworks/count"
@@ -3911,7 +6698,7 @@ func (s *SdaService) GetTransitNetworksCountV1(GetTransitNetworksCountV1QueryPar
 
 @param GetVirtualNetworkWithScalableGroupsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-virtual-network-with-scalable-groups-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-virtual-network-with-scalable-groups
 */
 func (s *SdaService) GetVirtualNetworkWithScalableGroupsV1(GetVirtualNetworkWithScalableGroupsV1QueryParams *GetVirtualNetworkWithScalableGroupsV1QueryParams) (*ResponseSdaGetVirtualNetworkWithScalableGroupsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/virtual-network"
@@ -3947,7 +6734,7 @@ func (s *SdaService) GetVirtualNetworkWithScalableGroupsV1(GetVirtualNetworkWith
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-default-authentication-template-in-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-default-authentication-template-in-sda-fabric
 */
 func (s *SdaService) AddDefaultAuthenticationTemplateInSdaFabricV1(requestSdaAddDefaultAuthenticationTemplateInSDAFabricV1 *RequestSdaAddDefaultAuthenticationTemplateInSdaFabricV1) (*ResponseSdaAddDefaultAuthenticationTemplateInSdaFabricV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/authentication-profile"
@@ -3984,7 +6771,7 @@ func (s *SdaService) AddDefaultAuthenticationTemplateInSdaFabricV1(requestSdaAdd
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-border-device-in-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-border-device-in-sda-fabric
 */
 func (s *SdaService) AddBorderDeviceInSdaFabricV1(requestSdaAddBorderDeviceInSDAFabricV1 *RequestSdaAddBorderDeviceInSdaFabricV1) (*ResponseSdaAddBorderDeviceInSdaFabricV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/border-device"
@@ -4021,7 +6808,7 @@ func (s *SdaService) AddBorderDeviceInSdaFabricV1(requestSdaAddBorderDeviceInSDA
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-control-plane-device-in-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-control-plane-device-in-sda-fabric
 */
 func (s *SdaService) AddControlPlaneDeviceInSdaFabricV1(requestSdaAddControlPlaneDeviceInSDAFabricV1 *RequestSdaAddControlPlaneDeviceInSdaFabricV1) (*ResponseSdaAddControlPlaneDeviceInSdaFabricV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/control-plane-device"
@@ -4058,7 +6845,7 @@ func (s *SdaService) AddControlPlaneDeviceInSdaFabricV1(requestSdaAddControlPlan
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-edge-device-in-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-edge-device-in-sda-fabric
 */
 func (s *SdaService) AddEdgeDeviceInSdaFabricV1(requestSdaAddEdgeDeviceInSDAFabricV1 *RequestSdaAddEdgeDeviceInSdaFabricV1) (*ResponseSdaAddEdgeDeviceInSdaFabricV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/edge-device"
@@ -4095,7 +6882,7 @@ func (s *SdaService) AddEdgeDeviceInSdaFabricV1(requestSdaAddEdgeDeviceInSDAFabr
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-site-in-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-site-in-sda-fabric
 */
 func (s *SdaService) AddSiteInSdaFabricV1(requestSdaAddSiteInSDAFabricV1 *RequestSdaAddSiteInSdaFabricV1) (*ResponseSdaAddSiteInSdaFabricV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/fabric-site"
@@ -4132,7 +6919,7 @@ func (s *SdaService) AddSiteInSdaFabricV1(requestSdaAddSiteInSDAFabricV1 *Reques
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-port-assignment-for-access-point-in-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-port-assignment-for-access-point-in-sda-fabric
 */
 func (s *SdaService) AddPortAssignmentForAccessPointInSdaFabricV1(requestSdaAddPortAssignmentForAccessPointInSDAFabricV1 *RequestSdaAddPortAssignmentForAccessPointInSdaFabricV1) (*ResponseSdaAddPortAssignmentForAccessPointInSdaFabricV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/hostonboarding/access-point"
@@ -4169,7 +6956,7 @@ func (s *SdaService) AddPortAssignmentForAccessPointInSdaFabricV1(requestSdaAddP
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-port-assignment-for-user-device-in-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-port-assignment-for-user-device-in-sda-fabric
 */
 func (s *SdaService) AddPortAssignmentForUserDeviceInSdaFabricV1(requestSdaAddPortAssignmentForUserDeviceInSDAFabricV1 *RequestSdaAddPortAssignmentForUserDeviceInSdaFabricV1) (*ResponseSdaAddPortAssignmentForUserDeviceInSdaFabricV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/hostonboarding/user-device"
@@ -4206,7 +6993,7 @@ func (s *SdaService) AddPortAssignmentForUserDeviceInSdaFabricV1(requestSdaAddPo
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-multicast-in-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-multicast-in-sda-fabric
 */
 func (s *SdaService) AddMulticastInSdaFabricV1(requestSdaAddMulticastInSDAFabricV1 *RequestSdaAddMulticastInSdaFabricV1) (*ResponseSdaAddMulticastInSdaFabricV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/multicast"
@@ -4243,7 +7030,7 @@ func (s *SdaService) AddMulticastInSdaFabricV1(requestSdaAddMulticastInSDAFabric
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!provision-wired-device-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!provision-wired-device
 */
 func (s *SdaService) ProvisionWiredDeviceV1(requestSdaProvisionWiredDeviceV1 *RequestSdaProvisionWiredDeviceV1) (*ResponseSdaProvisionWiredDeviceV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/provision-device"
@@ -4280,7 +7067,7 @@ func (s *SdaService) ProvisionWiredDeviceV1(requestSdaProvisionWiredDeviceV1 *Re
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-transit-peer-network-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-transit-peer-network
 */
 func (s *SdaService) AddTransitPeerNetworkV1(requestSdaAddTransitPeerNetworkV1 *RequestSdaAddTransitPeerNetworkV1) (*ResponseSdaAddTransitPeerNetworkV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/transit-peer-network"
@@ -4317,7 +7104,7 @@ func (s *SdaService) AddTransitPeerNetworkV1(requestSdaAddTransitPeerNetworkV1 *
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-vn-in-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-vn-in-fabric
 */
 func (s *SdaService) AddVnInFabricV1(requestSdaAddVNInFabricV1 *RequestSdaAddVnInFabricV1) (*ResponseSdaAddVnInFabricV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/virtual-network"
@@ -4354,7 +7141,7 @@ func (s *SdaService) AddVnInFabricV1(requestSdaAddVNInFabricV1 *RequestSdaAddVnI
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-ip-pool-in-sda-virtual-network-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-ip-pool-in-sda-virtual-network
 */
 func (s *SdaService) AddIPPoolInSdaVirtualNetworkV1(requestSdaAddIPPoolInSDAVirtualNetworkV1 *RequestSdaAddIPPoolInSdaVirtualNetworkV1) (*ResponseSdaAddIPPoolInSdaVirtualNetworkV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/business/sda/virtualnetwork/ippool"
@@ -4391,7 +7178,7 @@ func (s *SdaService) AddIPPoolInSdaVirtualNetworkV1(requestSdaAddIPPoolInSDAVirt
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-anycast-gateways-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-anycast-gateways
 */
 func (s *SdaService) AddAnycastGatewaysV1(requestSdaAddAnycastGatewaysV1 *RequestSdaAddAnycastGatewaysV1) (*ResponseSdaAddAnycastGatewaysV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/anycastGateways"
@@ -4428,7 +7215,7 @@ func (s *SdaService) AddAnycastGatewaysV1(requestSdaAddAnycastGatewaysV1 *Reques
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-extranet-policy-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-extranet-policy
 */
 func (s *SdaService) AddExtranetPolicyV1(requestSdaAddExtranetPolicyV1 *RequestSdaAddExtranetPolicyV1) (*ResponseSdaAddExtranetPolicyV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/extranetPolicies"
@@ -4465,7 +7252,7 @@ func (s *SdaService) AddExtranetPolicyV1(requestSdaAddExtranetPolicyV1 *RequestS
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-fabric-devices-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-fabric-devices
 */
 func (s *SdaService) AddFabricDevicesV1(requestSdaAddFabricDevicesV1 *RequestSdaAddFabricDevicesV1) (*ResponseSdaAddFabricDevicesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/fabricDevices"
@@ -4502,7 +7289,7 @@ func (s *SdaService) AddFabricDevicesV1(requestSdaAddFabricDevicesV1 *RequestSda
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-fabric-devices-layer2-handoffs-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-fabric-devices-layer2-handoffs
 */
 func (s *SdaService) AddFabricDevicesLayer2HandoffsV1(requestSdaAddFabricDevicesLayer2HandoffsV1 *RequestSdaAddFabricDevicesLayer2HandoffsV1) (*ResponseSdaAddFabricDevicesLayer2HandoffsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/fabricDevices/layer2Handoffs"
@@ -4539,7 +7326,7 @@ func (s *SdaService) AddFabricDevicesLayer2HandoffsV1(requestSdaAddFabricDevices
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-fabric-devices-layer3-handoffs-with-ip-transit-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-fabric-devices-layer3-handoffs-with-ip-transit
 */
 func (s *SdaService) AddFabricDevicesLayer3HandoffsWithIPTransitV1(requestSdaAddFabricDevicesLayer3HandoffsWithIpTransitV1 *RequestSdaAddFabricDevicesLayer3HandoffsWithIPTransitV1) (*ResponseSdaAddFabricDevicesLayer3HandoffsWithIPTransitV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/fabricDevices/layer3Handoffs/ipTransits"
@@ -4576,7 +7363,7 @@ func (s *SdaService) AddFabricDevicesLayer3HandoffsWithIPTransitV1(requestSdaAdd
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-fabric-devices-layer3-handoffs-with-sda-transit-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-fabric-devices-layer3-handoffs-with-sda-transit
 */
 func (s *SdaService) AddFabricDevicesLayer3HandoffsWithSdaTransitV1(requestSdaAddFabricDevicesLayer3HandoffsWithSdaTransitV1 *RequestSdaAddFabricDevicesLayer3HandoffsWithSdaTransitV1) (*ResponseSdaAddFabricDevicesLayer3HandoffsWithSdaTransitV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/fabricDevices/layer3Handoffs/sdaTransits"
@@ -4613,7 +7400,7 @@ func (s *SdaService) AddFabricDevicesLayer3HandoffsWithSdaTransitV1(requestSdaAd
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-fabric-site-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-fabric-site
 */
 func (s *SdaService) AddFabricSiteV1(requestSdaAddFabricSiteV1 *RequestSdaAddFabricSiteV1) (*ResponseSdaAddFabricSiteV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/fabricSites"
@@ -4650,7 +7437,7 @@ func (s *SdaService) AddFabricSiteV1(requestSdaAddFabricSiteV1 *RequestSdaAddFab
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-fabric-zone-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-fabric-zone
 */
 func (s *SdaService) AddFabricZoneV1(requestSdaAddFabricZoneV1 *RequestSdaAddFabricZoneV1) (*ResponseSdaAddFabricZoneV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/fabricZones"
@@ -4687,7 +7474,7 @@ func (s *SdaService) AddFabricZoneV1(requestSdaAddFabricZoneV1 *RequestSdaAddFab
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-layer2-virtual-networks-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-layer2-virtual-networks
 */
 func (s *SdaService) AddLayer2VirtualNetworksV1(requestSdaAddLayer2VirtualNetworksV1 *RequestSdaAddLayer2VirtualNetworksV1) (*ResponseSdaAddLayer2VirtualNetworksV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/layer2VirtualNetworks"
@@ -4724,7 +7511,7 @@ func (s *SdaService) AddLayer2VirtualNetworksV1(requestSdaAddLayer2VirtualNetwor
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-layer3-virtual-networks-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-layer3-virtual-networks
 */
 func (s *SdaService) AddLayer3VirtualNetworksV1(requestSdaAddLayer3VirtualNetworksV1 *RequestSdaAddLayer3VirtualNetworksV1) (*ResponseSdaAddLayer3VirtualNetworksV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/layer3VirtualNetworks"
@@ -4761,7 +7548,7 @@ func (s *SdaService) AddLayer3VirtualNetworksV1(requestSdaAddLayer3VirtualNetwor
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-multicast-virtual-networks-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-multicast-virtual-networks
 */
 func (s *SdaService) AddMulticastVirtualNetworksV1(requestSdaAddMulticastVirtualNetworksV1 *RequestSdaAddMulticastVirtualNetworksV1) (*ResponseSdaAddMulticastVirtualNetworksV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/multicast/virtualNetworks"
@@ -4793,12 +7580,49 @@ func (s *SdaService) AddMulticastVirtualNetworksV1(requestSdaAddMulticastVirtual
 
 }
 
+//ApplyPendingFabricEventsV1 Apply pending fabric events - 7b9b-1887-4688-abc7
+/* Applies pending fabric events based on user input.
+
+
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!apply-pending-fabric-events
+*/
+func (s *SdaService) ApplyPendingFabricEventsV1(requestSdaApplyPendingFabricEventsV1 *RequestSdaApplyPendingFabricEventsV1) (*ResponseSdaApplyPendingFabricEventsV1, *resty.Response, error) {
+	path := "/dna/intent/api/v1/sda/pendingFabricEvents/apply"
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetBody(requestSdaApplyPendingFabricEventsV1).
+		SetResult(&ResponseSdaApplyPendingFabricEventsV1{}).
+		SetError(&Error).
+		Post(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.ApplyPendingFabricEventsV1(requestSdaApplyPendingFabricEventsV1)
+		}
+
+		return nil, response, fmt.Errorf("error with operation ApplyPendingFabricEventsV1")
+	}
+
+	result := response.Result().(*ResponseSdaApplyPendingFabricEventsV1)
+	return result, response, err
+
+}
+
 //AddPortAssignmentsV1 Add port assignments - d8bb-0923-498a-9f63
 /* Adds port assignments based on user input.
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-port-assignments-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-port-assignments
 */
 func (s *SdaService) AddPortAssignmentsV1(requestSdaAddPortAssignmentsV1 *RequestSdaAddPortAssignmentsV1) (*ResponseSdaAddPortAssignmentsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/portAssignments"
@@ -4835,7 +7659,7 @@ func (s *SdaService) AddPortAssignmentsV1(requestSdaAddPortAssignmentsV1 *Reques
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-port-channels-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-port-channels
 */
 func (s *SdaService) AddPortChannelsV1(requestSdaAddPortChannelsV1 *RequestSdaAddPortChannelsV1) (*ResponseSdaAddPortChannelsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/portChannels"
@@ -4872,7 +7696,7 @@ func (s *SdaService) AddPortChannelsV1(requestSdaAddPortChannelsV1 *RequestSdaAd
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!provision-devices-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!provision-devices
 */
 func (s *SdaService) ProvisionDevicesV1(requestSdaProvisionDevicesV1 *RequestSdaProvisionDevicesV1) (*ResponseSdaProvisionDevicesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/provisionDevices"
@@ -4909,7 +7733,7 @@ func (s *SdaService) ProvisionDevicesV1(requestSdaProvisionDevicesV1 *RequestSda
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-transit-networks-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-transit-networks
 */
 func (s *SdaService) AddTransitNetworksV1(requestSdaAddTransitNetworksV1 *RequestSdaAddTransitNetworksV1) (*ResponseSdaAddTransitNetworksV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/sda/transitNetworks"
@@ -4946,7 +7770,7 @@ func (s *SdaService) AddTransitNetworksV1(requestSdaAddTransitNetworksV1 *Reques
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-virtual-network-with-scalable-groups-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-virtual-network-with-scalable-groups
 */
 func (s *SdaService) AddVirtualNetworkWithScalableGroupsV1(requestSdaAddVirtualNetworkWithScalableGroupsV1 *RequestSdaAddVirtualNetworkWithScalableGroupsV1) (*ResponseSdaAddVirtualNetworkWithScalableGroupsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/virtual-network"
@@ -5611,7 +8435,7 @@ func (s *SdaService) UpdateVirtualNetworkWithScalableGroupsV1(requestSdaUpdateVi
 
 @param DeleteDefaultAuthenticationProfileFromSDAFabricV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-default-authentication-profile-from-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-default-authentication-profile-from-sda-fabric
 */
 func (s *SdaService) DeleteDefaultAuthenticationProfileFromSdaFabricV1(DeleteDefaultAuthenticationProfileFromSDAFabricV1QueryParams *DeleteDefaultAuthenticationProfileFromSdaFabricV1QueryParams) (*ResponseSdaDeleteDefaultAuthenticationProfileFromSdaFabricV1, *resty.Response, error) {
 	//DeleteDefaultAuthenticationProfileFromSDAFabricV1QueryParams *DeleteDefaultAuthenticationProfileFromSdaFabricV1QueryParams
@@ -5649,7 +8473,7 @@ func (s *SdaService) DeleteDefaultAuthenticationProfileFromSdaFabricV1(DeleteDef
 
 @param DeleteBorderDeviceFromSDAFabricV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-border-device-from-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-border-device-from-sda-fabric
 */
 func (s *SdaService) DeleteBorderDeviceFromSdaFabricV1(DeleteBorderDeviceFromSDAFabricV1QueryParams *DeleteBorderDeviceFromSdaFabricV1QueryParams) (*ResponseSdaDeleteBorderDeviceFromSdaFabricV1, *resty.Response, error) {
 	//DeleteBorderDeviceFromSDAFabricV1QueryParams *DeleteBorderDeviceFromSdaFabricV1QueryParams
@@ -5687,7 +8511,7 @@ func (s *SdaService) DeleteBorderDeviceFromSdaFabricV1(DeleteBorderDeviceFromSDA
 
 @param DeleteControlPlaneDeviceInSDAFabricV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-control-plane-device-in-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-control-plane-device-in-sda-fabric
 */
 func (s *SdaService) DeleteControlPlaneDeviceInSdaFabricV1(DeleteControlPlaneDeviceInSDAFabricV1QueryParams *DeleteControlPlaneDeviceInSdaFabricV1QueryParams) (*ResponseSdaDeleteControlPlaneDeviceInSdaFabricV1, *resty.Response, error) {
 	//DeleteControlPlaneDeviceInSDAFabricV1QueryParams *DeleteControlPlaneDeviceInSdaFabricV1QueryParams
@@ -5725,7 +8549,7 @@ func (s *SdaService) DeleteControlPlaneDeviceInSdaFabricV1(DeleteControlPlaneDev
 
 @param DeleteEdgeDeviceFromSDAFabricV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-edge-device-from-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-edge-device-from-sda-fabric
 */
 func (s *SdaService) DeleteEdgeDeviceFromSdaFabricV1(DeleteEdgeDeviceFromSDAFabricV1QueryParams *DeleteEdgeDeviceFromSdaFabricV1QueryParams) (*ResponseSdaDeleteEdgeDeviceFromSdaFabricV1, *resty.Response, error) {
 	//DeleteEdgeDeviceFromSDAFabricV1QueryParams *DeleteEdgeDeviceFromSdaFabricV1QueryParams
@@ -5763,7 +8587,7 @@ func (s *SdaService) DeleteEdgeDeviceFromSdaFabricV1(DeleteEdgeDeviceFromSDAFabr
 
 @param DeleteSiteFromSDAFabricV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-site-from-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-site-from-sda-fabric
 */
 func (s *SdaService) DeleteSiteFromSdaFabricV1(DeleteSiteFromSDAFabricV1QueryParams *DeleteSiteFromSdaFabricV1QueryParams) (*ResponseSdaDeleteSiteFromSdaFabricV1, *resty.Response, error) {
 	//DeleteSiteFromSDAFabricV1QueryParams *DeleteSiteFromSdaFabricV1QueryParams
@@ -5801,7 +8625,7 @@ func (s *SdaService) DeleteSiteFromSdaFabricV1(DeleteSiteFromSDAFabricV1QueryPar
 
 @param DeletePortAssignmentForAccessPointInSDAFabricV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-port-assignment-for-access-point-in-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-port-assignment-for-access-point-in-sda-fabric
 */
 func (s *SdaService) DeletePortAssignmentForAccessPointInSdaFabricV1(DeletePortAssignmentForAccessPointInSDAFabricV1QueryParams *DeletePortAssignmentForAccessPointInSdaFabricV1QueryParams) (*ResponseSdaDeletePortAssignmentForAccessPointInSdaFabricV1, *resty.Response, error) {
 	//DeletePortAssignmentForAccessPointInSDAFabricV1QueryParams *DeletePortAssignmentForAccessPointInSdaFabricV1QueryParams
@@ -5839,7 +8663,7 @@ func (s *SdaService) DeletePortAssignmentForAccessPointInSdaFabricV1(DeletePortA
 
 @param DeletePortAssignmentForUserDeviceInSDAFabricV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-port-assignment-for-user-device-in-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-port-assignment-for-user-device-in-sda-fabric
 */
 func (s *SdaService) DeletePortAssignmentForUserDeviceInSdaFabricV1(DeletePortAssignmentForUserDeviceInSDAFabricV1QueryParams *DeletePortAssignmentForUserDeviceInSdaFabricV1QueryParams) (*ResponseSdaDeletePortAssignmentForUserDeviceInSdaFabricV1, *resty.Response, error) {
 	//DeletePortAssignmentForUserDeviceInSDAFabricV1QueryParams *DeletePortAssignmentForUserDeviceInSdaFabricV1QueryParams
@@ -5877,7 +8701,7 @@ func (s *SdaService) DeletePortAssignmentForUserDeviceInSdaFabricV1(DeletePortAs
 
 @param DeleteMulticastFromSDAFabricV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-multicast-from-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-multicast-from-sda-fabric
 */
 func (s *SdaService) DeleteMulticastFromSdaFabricV1(DeleteMulticastFromSDAFabricV1QueryParams *DeleteMulticastFromSdaFabricV1QueryParams) (*ResponseSdaDeleteMulticastFromSdaFabricV1, *resty.Response, error) {
 	//DeleteMulticastFromSDAFabricV1QueryParams *DeleteMulticastFromSdaFabricV1QueryParams
@@ -5915,7 +8739,7 @@ func (s *SdaService) DeleteMulticastFromSdaFabricV1(DeleteMulticastFromSDAFabric
 
 @param DeleteProvisionedWiredDeviceV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-provisioned-wired-device-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-provisioned-wired-device
 */
 func (s *SdaService) DeleteProvisionedWiredDeviceV1(DeleteProvisionedWiredDeviceV1QueryParams *DeleteProvisionedWiredDeviceV1QueryParams) (*ResponseSdaDeleteProvisionedWiredDeviceV1, *resty.Response, error) {
 	//DeleteProvisionedWiredDeviceV1QueryParams *DeleteProvisionedWiredDeviceV1QueryParams
@@ -5953,7 +8777,7 @@ func (s *SdaService) DeleteProvisionedWiredDeviceV1(DeleteProvisionedWiredDevice
 
 @param DeleteTransitPeerNetworkV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-transit-peer-network-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-transit-peer-network
 */
 func (s *SdaService) DeleteTransitPeerNetworkV1(DeleteTransitPeerNetworkV1QueryParams *DeleteTransitPeerNetworkV1QueryParams) (*ResponseSdaDeleteTransitPeerNetworkV1, *resty.Response, error) {
 	//DeleteTransitPeerNetworkV1QueryParams *DeleteTransitPeerNetworkV1QueryParams
@@ -5991,7 +8815,7 @@ func (s *SdaService) DeleteTransitPeerNetworkV1(DeleteTransitPeerNetworkV1QueryP
 
 @param DeleteVNFromSDAFabricV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-vn-from-sda-fabric-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-vn-from-sda-fabric
 */
 func (s *SdaService) DeleteVnFromSdaFabricV1(DeleteVNFromSDAFabricV1QueryParams *DeleteVnFromSdaFabricV1QueryParams) (*ResponseSdaDeleteVnFromSdaFabricV1, *resty.Response, error) {
 	//DeleteVNFromSDAFabricV1QueryParams *DeleteVnFromSdaFabricV1QueryParams
@@ -6029,7 +8853,7 @@ func (s *SdaService) DeleteVnFromSdaFabricV1(DeleteVNFromSDAFabricV1QueryParams 
 
 @param DeleteIPPoolFromSDAVirtualNetworkV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-ip-pool-from-sda-virtual-network-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-ip-pool-from-sda-virtual-network
 */
 func (s *SdaService) DeleteIPPoolFromSdaVirtualNetworkV1(DeleteIPPoolFromSDAVirtualNetworkV1QueryParams *DeleteIPPoolFromSdaVirtualNetworkV1QueryParams) (*ResponseSdaDeleteIPPoolFromSdaVirtualNetworkV1, *resty.Response, error) {
 	//DeleteIPPoolFromSDAVirtualNetworkV1QueryParams *DeleteIPPoolFromSdaVirtualNetworkV1QueryParams
@@ -6068,7 +8892,7 @@ func (s *SdaService) DeleteIPPoolFromSdaVirtualNetworkV1(DeleteIPPoolFromSDAVirt
 @param id id path parameter. ID of the anycast gateway.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-anycast-gateway-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-anycast-gateway-by-id
 */
 func (s *SdaService) DeleteAnycastGatewayByIDV1(id string) (*ResponseSdaDeleteAnycastGatewayByIDV1, *resty.Response, error) {
 	//id string
@@ -6105,7 +8929,7 @@ func (s *SdaService) DeleteAnycastGatewayByIDV1(id string) (*ResponseSdaDeleteAn
 
 @param DeleteExtranetPoliciesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-extranet-policies-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-extranet-policies
 */
 func (s *SdaService) DeleteExtranetPoliciesV1(DeleteExtranetPoliciesV1QueryParams *DeleteExtranetPoliciesV1QueryParams) (*ResponseSdaDeleteExtranetPoliciesV1, *resty.Response, error) {
 	//DeleteExtranetPoliciesV1QueryParams *DeleteExtranetPoliciesV1QueryParams
@@ -6144,7 +8968,7 @@ func (s *SdaService) DeleteExtranetPoliciesV1(DeleteExtranetPoliciesV1QueryParam
 @param id id path parameter. ID of the extranet policy.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-extranet-policy-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-extranet-policy-by-id
 */
 func (s *SdaService) DeleteExtranetPolicyByIDV1(id string) (*ResponseSdaDeleteExtranetPolicyByIDV1, *resty.Response, error) {
 	//id string
@@ -6181,7 +9005,7 @@ func (s *SdaService) DeleteExtranetPolicyByIDV1(id string) (*ResponseSdaDeleteEx
 
 @param DeleteFabricDevicesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-fabric-devices-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-fabric-devices
 */
 func (s *SdaService) DeleteFabricDevicesV1(DeleteFabricDevicesV1QueryParams *DeleteFabricDevicesV1QueryParams) (*ResponseSdaDeleteFabricDevicesV1, *resty.Response, error) {
 	//DeleteFabricDevicesV1QueryParams *DeleteFabricDevicesV1QueryParams
@@ -6219,7 +9043,7 @@ func (s *SdaService) DeleteFabricDevicesV1(DeleteFabricDevicesV1QueryParams *Del
 
 @param DeleteFabricDeviceLayer2HandoffsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-fabric-device-layer2-handoffs-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-fabric-device-layer2-handoffs
 */
 func (s *SdaService) DeleteFabricDeviceLayer2HandoffsV1(DeleteFabricDeviceLayer2HandoffsV1QueryParams *DeleteFabricDeviceLayer2HandoffsV1QueryParams) (*ResponseSdaDeleteFabricDeviceLayer2HandoffsV1, *resty.Response, error) {
 	//DeleteFabricDeviceLayer2HandoffsV1QueryParams *DeleteFabricDeviceLayer2HandoffsV1QueryParams
@@ -6258,7 +9082,7 @@ func (s *SdaService) DeleteFabricDeviceLayer2HandoffsV1(DeleteFabricDeviceLayer2
 @param id id path parameter. ID of the layer 2 handoff of a fabric device.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-fabric-device-layer2-handoff-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-fabric-device-layer2-handoff-by-id
 */
 func (s *SdaService) DeleteFabricDeviceLayer2HandoffByIDV1(id string) (*ResponseSdaDeleteFabricDeviceLayer2HandoffByIDV1, *resty.Response, error) {
 	//id string
@@ -6295,7 +9119,7 @@ func (s *SdaService) DeleteFabricDeviceLayer2HandoffByIDV1(id string) (*Response
 
 @param DeleteFabricDeviceLayer3HandoffsWithIpTransitV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-fabric-device-layer3-handoffs-with-ip-transit-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-fabric-device-layer3-handoffs-with-ip-transit
 */
 func (s *SdaService) DeleteFabricDeviceLayer3HandoffsWithIPTransitV1(DeleteFabricDeviceLayer3HandoffsWithIpTransitV1QueryParams *DeleteFabricDeviceLayer3HandoffsWithIPTransitV1QueryParams) (*ResponseSdaDeleteFabricDeviceLayer3HandoffsWithIPTransitV1, *resty.Response, error) {
 	//DeleteFabricDeviceLayer3HandoffsWithIpTransitV1QueryParams *DeleteFabricDeviceLayer3HandoffsWithIPTransitV1QueryParams
@@ -6334,7 +9158,7 @@ func (s *SdaService) DeleteFabricDeviceLayer3HandoffsWithIPTransitV1(DeleteFabri
 @param id id path parameter. ID of the layer 3 handoff with ip transit of a fabric device.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-fabric-device-layer3-handoff-with-ip-transit-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-fabric-device-layer3-handoff-with-ip-transit-by-id
 */
 func (s *SdaService) DeleteFabricDeviceLayer3HandoffWithIPTransitByIDV1(id string) (*ResponseSdaDeleteFabricDeviceLayer3HandoffWithIPTransitByIDV1, *resty.Response, error) {
 	//id string
@@ -6371,7 +9195,7 @@ func (s *SdaService) DeleteFabricDeviceLayer3HandoffWithIPTransitByIDV1(id strin
 
 @param DeleteFabricDeviceLayer3HandoffsWithSdaTransitV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-fabric-device-layer3-handoffs-with-sda-transit-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-fabric-device-layer3-handoffs-with-sda-transit
 */
 func (s *SdaService) DeleteFabricDeviceLayer3HandoffsWithSdaTransitV1(DeleteFabricDeviceLayer3HandoffsWithSdaTransitV1QueryParams *DeleteFabricDeviceLayer3HandoffsWithSdaTransitV1QueryParams) (*ResponseSdaDeleteFabricDeviceLayer3HandoffsWithSdaTransitV1, *resty.Response, error) {
 	//DeleteFabricDeviceLayer3HandoffsWithSdaTransitV1QueryParams *DeleteFabricDeviceLayer3HandoffsWithSdaTransitV1QueryParams
@@ -6393,8 +9217,7 @@ func (s *SdaService) DeleteFabricDeviceLayer3HandoffsWithSdaTransitV1(DeleteFabr
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeleteFabricDeviceLayer3HandoffsWithSdaTransitV1(
-				DeleteFabricDeviceLayer3HandoffsWithSdaTransitV1QueryParams)
+			return s.DeleteFabricDeviceLayer3HandoffsWithSdaTransitV1(DeleteFabricDeviceLayer3HandoffsWithSdaTransitV1QueryParams)
 		}
 		return nil, response, fmt.Errorf("error with operation DeleteFabricDeviceLayer3HandoffsWithSdaTransitV1")
 	}
@@ -6411,7 +9234,7 @@ func (s *SdaService) DeleteFabricDeviceLayer3HandoffsWithSdaTransitV1(DeleteFabr
 @param id id path parameter. ID of the fabric device.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-fabric-device-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-fabric-device-by-id
 */
 func (s *SdaService) DeleteFabricDeviceByIDV1(id string) (*ResponseSdaDeleteFabricDeviceByIDV1, *resty.Response, error) {
 	//id string
@@ -6449,7 +9272,7 @@ func (s *SdaService) DeleteFabricDeviceByIDV1(id string) (*ResponseSdaDeleteFabr
 @param id id path parameter. ID of the fabric site.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-fabric-site-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-fabric-site-by-id
 */
 func (s *SdaService) DeleteFabricSiteByIDV1(id string) (*ResponseSdaDeleteFabricSiteByIDV1, *resty.Response, error) {
 	//id string
@@ -6487,7 +9310,7 @@ func (s *SdaService) DeleteFabricSiteByIDV1(id string) (*ResponseSdaDeleteFabric
 @param id id path parameter. ID of the fabric zone.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-fabric-zone-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-fabric-zone-by-id
 */
 func (s *SdaService) DeleteFabricZoneByIDV1(id string) (*ResponseSdaDeleteFabricZoneByIDV1, *resty.Response, error) {
 	//id string
@@ -6524,7 +9347,7 @@ func (s *SdaService) DeleteFabricZoneByIDV1(id string) (*ResponseSdaDeleteFabric
 
 @param DeleteLayer2VirtualNetworksV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-layer2-virtual-networks-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-layer2-virtual-networks
 */
 func (s *SdaService) DeleteLayer2VirtualNetworksV1(DeleteLayer2VirtualNetworksV1QueryParams *DeleteLayer2VirtualNetworksV1QueryParams) (*ResponseSdaDeleteLayer2VirtualNetworksV1, *resty.Response, error) {
 	//DeleteLayer2VirtualNetworksV1QueryParams *DeleteLayer2VirtualNetworksV1QueryParams
@@ -6563,7 +9386,7 @@ func (s *SdaService) DeleteLayer2VirtualNetworksV1(DeleteLayer2VirtualNetworksV1
 @param id id path parameter. ID of the layer 2 virtual network.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-layer2-virtual-network-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-layer2-virtual-network-by-id
 */
 func (s *SdaService) DeleteLayer2VirtualNetworkByIDV1(id string) (*ResponseSdaDeleteLayer2VirtualNetworkByIDV1, *resty.Response, error) {
 	//id string
@@ -6600,7 +9423,7 @@ func (s *SdaService) DeleteLayer2VirtualNetworkByIDV1(id string) (*ResponseSdaDe
 
 @param DeleteLayer3VirtualNetworksV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-layer3-virtual-networks-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-layer3-virtual-networks
 */
 func (s *SdaService) DeleteLayer3VirtualNetworksV1(DeleteLayer3VirtualNetworksV1QueryParams *DeleteLayer3VirtualNetworksV1QueryParams) (*ResponseSdaDeleteLayer3VirtualNetworksV1, *resty.Response, error) {
 	//DeleteLayer3VirtualNetworksV1QueryParams *DeleteLayer3VirtualNetworksV1QueryParams
@@ -6639,7 +9462,7 @@ func (s *SdaService) DeleteLayer3VirtualNetworksV1(DeleteLayer3VirtualNetworksV1
 @param id id path parameter. ID of the layer 3 virtual network.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-layer3-virtual-network-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-layer3-virtual-network-by-id
 */
 func (s *SdaService) DeleteLayer3VirtualNetworkByIDV1(id string) (*ResponseSdaDeleteLayer3VirtualNetworkByIDV1, *resty.Response, error) {
 	//id string
@@ -6677,7 +9500,7 @@ func (s *SdaService) DeleteLayer3VirtualNetworkByIDV1(id string) (*ResponseSdaDe
 @param id id path parameter. ID of the multicast configuration.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-multicast-virtual-network-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-multicast-virtual-network-by-id
 */
 func (s *SdaService) DeleteMulticastVirtualNetworkByIDV1(id string) (*ResponseSdaDeleteMulticastVirtualNetworkByIDV1, *resty.Response, error) {
 	//id string
@@ -6714,7 +9537,7 @@ func (s *SdaService) DeleteMulticastVirtualNetworkByIDV1(id string) (*ResponseSd
 
 @param DeletePortAssignmentsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-port-assignments-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-port-assignments
 */
 func (s *SdaService) DeletePortAssignmentsV1(DeletePortAssignmentsV1QueryParams *DeletePortAssignmentsV1QueryParams) (*ResponseSdaDeletePortAssignmentsV1, *resty.Response, error) {
 	//DeletePortAssignmentsV1QueryParams *DeletePortAssignmentsV1QueryParams
@@ -6753,7 +9576,7 @@ func (s *SdaService) DeletePortAssignmentsV1(DeletePortAssignmentsV1QueryParams 
 @param id id path parameter. ID of the port assignment.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-port-assignment-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-port-assignment-by-id
 */
 func (s *SdaService) DeletePortAssignmentByIDV1(id string) (*ResponseSdaDeletePortAssignmentByIDV1, *resty.Response, error) {
 	//id string
@@ -6790,7 +9613,7 @@ func (s *SdaService) DeletePortAssignmentByIDV1(id string) (*ResponseSdaDeletePo
 
 @param DeletePortChannelsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-port-channels-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-port-channels
 */
 func (s *SdaService) DeletePortChannelsV1(DeletePortChannelsV1QueryParams *DeletePortChannelsV1QueryParams) (*ResponseSdaDeletePortChannelsV1, *resty.Response, error) {
 	//DeletePortChannelsV1QueryParams *DeletePortChannelsV1QueryParams
@@ -6829,7 +9652,7 @@ func (s *SdaService) DeletePortChannelsV1(DeletePortChannelsV1QueryParams *Delet
 @param id id path parameter. ID of the port channel.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-port-channel-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-port-channel-by-id
 */
 func (s *SdaService) DeletePortChannelByIDV1(id string) (*ResponseSdaDeletePortChannelByIDV1, *resty.Response, error) {
 	//id string
@@ -6866,7 +9689,7 @@ func (s *SdaService) DeletePortChannelByIDV1(id string) (*ResponseSdaDeletePortC
 
 @param DeleteProvisionedDevicesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-provisioned-devices-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-provisioned-devices
 */
 func (s *SdaService) DeleteProvisionedDevicesV1(DeleteProvisionedDevicesV1QueryParams *DeleteProvisionedDevicesV1QueryParams) (*ResponseSdaDeleteProvisionedDevicesV1, *resty.Response, error) {
 	//DeleteProvisionedDevicesV1QueryParams *DeleteProvisionedDevicesV1QueryParams
@@ -6905,7 +9728,7 @@ func (s *SdaService) DeleteProvisionedDevicesV1(DeleteProvisionedDevicesV1QueryP
 @param id id path parameter. ID of the provisioned device.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-provisioned-device-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-provisioned-device-by-id
 */
 func (s *SdaService) DeleteProvisionedDeviceByIDV1(id string) (*ResponseSdaDeleteProvisionedDeviceByIDV1, *resty.Response, error) {
 	//id string
@@ -6943,7 +9766,7 @@ func (s *SdaService) DeleteProvisionedDeviceByIDV1(id string) (*ResponseSdaDelet
 @param id id path parameter. ID of the transit network.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-transit-network-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-transit-network-by-id
 */
 func (s *SdaService) DeleteTransitNetworkByIDV1(id string) (*ResponseSdaDeleteTransitNetworkByIDV1, *resty.Response, error) {
 	//id string
@@ -6980,7 +9803,7 @@ func (s *SdaService) DeleteTransitNetworkByIDV1(id string) (*ResponseSdaDeleteTr
 
 @param DeleteVirtualNetworkWithScalableGroupsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-virtual-network-with-scalable-groups-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-virtual-network-with-scalable-groups
 */
 func (s *SdaService) DeleteVirtualNetworkWithScalableGroupsV1(DeleteVirtualNetworkWithScalableGroupsV1QueryParams *DeleteVirtualNetworkWithScalableGroupsV1QueryParams) (*ResponseSdaDeleteVirtualNetworkWithScalableGroupsV1, *resty.Response, error) {
 	//DeleteVirtualNetworkWithScalableGroupsV1QueryParams *DeleteVirtualNetworkWithScalableGroupsV1QueryParams
@@ -7030,6 +9853,14 @@ func (s *SdaService) GetDeviceInfoFromSdaFabric(GetDeviceInfoFromSDAFabricV1Quer
 
 // Alias Function
 /*
+This method acts as an alias for the method `ReadListOfFabricSitesWithTheirHealthSummaryV1`
+*/
+func (s *SdaService) ReadListOfFabricSitesWithTheirHealthSummary(ReadListOfFabricSitesWithTheirHealthSummaryV1HeaderParams *ReadListOfFabricSitesWithTheirHealthSummaryV1HeaderParams, ReadListOfFabricSitesWithTheirHealthSummaryV1QueryParams *ReadListOfFabricSitesWithTheirHealthSummaryV1QueryParams) (*ResponseSdaReadListOfFabricSitesWithTheirHealthSummaryV1, *resty.Response, error) {
+	return s.ReadListOfFabricSitesWithTheirHealthSummaryV1(ReadListOfFabricSitesWithTheirHealthSummaryV1HeaderParams, ReadListOfFabricSitesWithTheirHealthSummaryV1QueryParams)
+}
+
+// Alias Function
+/*
 This method acts as an alias for the method `AddBorderDeviceInSdaFabricV1`
 */
 func (s *SdaService) AddBorderDeviceInSdaFabric(requestSdaAddBorderDeviceInSDAFabricV1 *RequestSdaAddBorderDeviceInSdaFabricV1) (*ResponseSdaAddBorderDeviceInSdaFabricV1, *resty.Response, error) {
@@ -7074,6 +9905,14 @@ This method acts as an alias for the method `AddAnycastGatewaysV1`
 */
 func (s *SdaService) AddAnycastGateways(requestSdaAddAnycastGatewaysV1 *RequestSdaAddAnycastGatewaysV1) (*ResponseSdaAddAnycastGatewaysV1, *resty.Response, error) {
 	return s.AddAnycastGatewaysV1(requestSdaAddAnycastGatewaysV1)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `ReadFabricSitesWithHealthSummaryFromIDV1`
+*/
+func (s *SdaService) ReadFabricSitesWithHealthSummaryFromID(id string, ReadFabricSitesWithHealthSummaryFromIdV1HeaderParams *ReadFabricSitesWithHealthSummaryFromIDV1HeaderParams, ReadFabricSitesWithHealthSummaryFromIdV1QueryParams *ReadFabricSitesWithHealthSummaryFromIDV1QueryParams) (*ResponseSdaReadFabricSitesWithHealthSummaryFromIDV1, *resty.Response, error) {
+	return s.ReadFabricSitesWithHealthSummaryFromIDV1(id, ReadFabricSitesWithHealthSummaryFromIdV1HeaderParams, ReadFabricSitesWithHealthSummaryFromIdV1QueryParams)
 }
 
 // Alias Function
@@ -7238,6 +10077,14 @@ func (s *SdaService) GetFabricDevicesLayer2Handoffs(GetFabricDevicesLayer2Handof
 
 // Alias Function
 /*
+This method acts as an alias for the method `TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1`
+*/
+func (s *SdaService) TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRange(id string, TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1HeaderParams *TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1HeaderParams, TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1QueryParams *TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1QueryParams) (*ResponseSdaTheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1, *resty.Response, error) {
+	return s.TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1(id, TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1HeaderParams, TheTrendAnalyticsDataForAFabricSiteInTheSpecifiedTimeRangeV1QueryParams)
+}
+
+// Alias Function
+/*
 This method acts as an alias for the method `GetFabricDevicesCountV1`
 */
 func (s *SdaService) GetFabricDevicesCount(GetFabricDevicesCountV1QueryParams *GetFabricDevicesCountV1QueryParams) (*ResponseSdaGetFabricDevicesCountV1, *resty.Response, error) {
@@ -7274,6 +10121,14 @@ This method acts as an alias for the method `GetDeviceRoleInSdaFabricV1`
 */
 func (s *SdaService) GetDeviceRoleInSdaFabric(GetDeviceRoleInSDAFabricV1QueryParams *GetDeviceRoleInSdaFabricV1QueryParams) (*ResponseSdaGetDeviceRoleInSdaFabricV1, *resty.Response, error) {
 	return s.GetDeviceRoleInSdaFabricV1(GetDeviceRoleInSDAFabricV1QueryParams)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `ReadTransitNetworksCountV1`
+*/
+func (s *SdaService) ReadTransitNetworksCount(ReadTransitNetworksCountV1HeaderParams *ReadTransitNetworksCountV1HeaderParams, ReadTransitNetworksCountV1QueryParams *ReadTransitNetworksCountV1QueryParams) (*ResponseSdaReadTransitNetworksCountV1, *resty.Response, error) {
+	return s.ReadTransitNetworksCountV1(ReadTransitNetworksCountV1HeaderParams, ReadTransitNetworksCountV1QueryParams)
 }
 
 // Alias Function
@@ -7322,6 +10177,14 @@ This method acts as an alias for the method `GetLayer3VirtualNetworksV1`
 */
 func (s *SdaService) GetLayer3VirtualNetworks(GetLayer3VirtualNetworksV1QueryParams *GetLayer3VirtualNetworksV1QueryParams) (*ResponseSdaGetLayer3VirtualNetworksV1, *resty.Response, error) {
 	return s.GetLayer3VirtualNetworksV1(GetLayer3VirtualNetworksV1QueryParams)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1`
+*/
+func (s *SdaService) TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRange(id string, TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1HeaderParams *TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1HeaderParams, TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1QueryParams *TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1QueryParams) (*ResponseSdaTheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1, *resty.Response, error) {
+	return s.TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1(id, TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1HeaderParams, TheTrendAnalyticsDataForAVirtualNetworkInTheSpecifiedTimeRangeV1QueryParams)
 }
 
 // Alias Function
@@ -7406,6 +10269,14 @@ func (s *SdaService) AddMulticastVirtualNetworks(requestSdaAddMulticastVirtualNe
 
 // Alias Function
 /*
+This method acts as an alias for the method `ReadVirtualNetworkWithItsHealthSummaryFromIDV1`
+*/
+func (s *SdaService) ReadVirtualNetworkWithItsHealthSummaryFromID(id string, ReadVirtualNetworkWithItsHealthSummaryFromIdV1HeaderParams *ReadVirtualNetworkWithItsHealthSummaryFromIDV1HeaderParams, ReadVirtualNetworkWithItsHealthSummaryFromIdV1QueryParams *ReadVirtualNetworkWithItsHealthSummaryFromIDV1QueryParams) (*ResponseSdaReadVirtualNetworkWithItsHealthSummaryFromIDV1, *resty.Response, error) {
+	return s.ReadVirtualNetworkWithItsHealthSummaryFromIDV1(id, ReadVirtualNetworkWithItsHealthSummaryFromIdV1HeaderParams, ReadVirtualNetworkWithItsHealthSummaryFromIdV1QueryParams)
+}
+
+// Alias Function
+/*
 This method acts as an alias for the method `GetTransitNetworksV1`
 */
 func (s *SdaService) GetTransitNetworks(GetTransitNetworksV1QueryParams *GetTransitNetworksV1QueryParams) (*ResponseSdaGetTransitNetworksV1, *resty.Response, error) {
@@ -7458,6 +10329,14 @@ This method acts as an alias for the method `GetTransitPeerNetworkInfoV1`
 */
 func (s *SdaService) GetTransitPeerNetworkInfo(GetTransitPeerNetworkInfoV1QueryParams *GetTransitPeerNetworkInfoV1QueryParams) (*ResponseSdaGetTransitPeerNetworkInfoV1, *resty.Response, error) {
 	return s.GetTransitPeerNetworkInfoV1(GetTransitPeerNetworkInfoV1QueryParams)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `GetPendingFabricEventsV1`
+*/
+func (s *SdaService) GetPendingFabricEvents(GetPendingFabricEventsV1QueryParams *GetPendingFabricEventsV1QueryParams) (*ResponseSdaGetPendingFabricEventsV1, *resty.Response, error) {
+	return s.GetPendingFabricEventsV1(GetPendingFabricEventsV1QueryParams)
 }
 
 // Alias Function
@@ -7614,6 +10493,14 @@ func (s *SdaService) AddLayer2VirtualNetworks(requestSdaAddLayer2VirtualNetworks
 
 // Alias Function
 /*
+This method acts as an alias for the method `ReadVirtualNetworksCountV1`
+*/
+func (s *SdaService) ReadVirtualNetworksCount(ReadVirtualNetworksCountV1HeaderParams *ReadVirtualNetworksCountV1HeaderParams, ReadVirtualNetworksCountV1QueryParams *ReadVirtualNetworksCountV1QueryParams) (*ResponseSdaReadVirtualNetworksCountV1, *resty.Response, error) {
+	return s.ReadVirtualNetworksCountV1(ReadVirtualNetworksCountV1HeaderParams, ReadVirtualNetworksCountV1QueryParams)
+}
+
+// Alias Function
+/*
 This method acts as an alias for the method `AddFabricDevicesLayer3HandoffsWithSdaTransitV1`
 */
 func (s *SdaService) AddFabricDevicesLayer3HandoffsWithSdaTransit(requestSdaAddFabricDevicesLayer3HandoffsWithSdaTransitV1 *RequestSdaAddFabricDevicesLayer3HandoffsWithSdaTransitV1) (*ResponseSdaAddFabricDevicesLayer3HandoffsWithSdaTransitV1, *resty.Response, error) {
@@ -7734,6 +10621,14 @@ func (s *SdaService) ReProvisionWiredDevice(requestSdaReProvisionWiredDeviceV1 *
 
 // Alias Function
 /*
+This method acts as an alias for the method `ReadFabricEntitySummaryV1`
+*/
+func (s *SdaService) ReadFabricEntitySummary(ReadFabricEntitySummaryV1HeaderParams *ReadFabricEntitySummaryV1HeaderParams, ReadFabricEntitySummaryV1QueryParams *ReadFabricEntitySummaryV1QueryParams) (*ResponseSdaReadFabricEntitySummaryV1, *resty.Response, error) {
+	return s.ReadFabricEntitySummaryV1(ReadFabricEntitySummaryV1HeaderParams, ReadFabricEntitySummaryV1QueryParams)
+}
+
+// Alias Function
+/*
 This method acts as an alias for the method `DeletePortAssignmentByIDV1`
 */
 func (s *SdaService) DeletePortAssignmentByID(id string) (*ResponseSdaDeletePortAssignmentByIDV1, *resty.Response, error) {
@@ -7782,6 +10677,14 @@ func (s *SdaService) GetFabricZoneCount() (*ResponseSdaGetFabricZoneCountV1, *re
 
 // Alias Function
 /*
+This method acts as an alias for the method `ApplyPendingFabricEventsV1`
+*/
+func (s *SdaService) ApplyPendingFabricEvents(requestSdaApplyPendingFabricEventsV1 *RequestSdaApplyPendingFabricEventsV1) (*ResponseSdaApplyPendingFabricEventsV1, *resty.Response, error) {
+	return s.ApplyPendingFabricEventsV1(requestSdaApplyPendingFabricEventsV1)
+}
+
+// Alias Function
+/*
 This method acts as an alias for the method `AddPortAssignmentForUserDeviceInSdaFabricV1`
 */
 func (s *SdaService) AddPortAssignmentForUserDeviceInSdaFabric(requestSdaAddPortAssignmentForUserDeviceInSDAFabricV1 *RequestSdaAddPortAssignmentForUserDeviceInSdaFabricV1) (*ResponseSdaAddPortAssignmentForUserDeviceInSdaFabricV1, *resty.Response, error) {
@@ -7818,6 +10721,14 @@ This method acts as an alias for the method `AddFabricSiteV1`
 */
 func (s *SdaService) AddFabricSite(requestSdaAddFabricSiteV1 *RequestSdaAddFabricSiteV1) (*ResponseSdaAddFabricSiteV1, *resty.Response, error) {
 	return s.AddFabricSiteV1(requestSdaAddFabricSiteV1)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `ReadTransitNetworkWithItsHealthSummaryFromIDV1`
+*/
+func (s *SdaService) ReadTransitNetworkWithItsHealthSummaryFromID(id string, ReadTransitNetworkWithItsHealthSummaryFromIdV1HeaderParams *ReadTransitNetworkWithItsHealthSummaryFromIDV1HeaderParams, ReadTransitNetworkWithItsHealthSummaryFromIdV1QueryParams *ReadTransitNetworkWithItsHealthSummaryFromIDV1QueryParams) (*ResponseSdaReadTransitNetworkWithItsHealthSummaryFromIDV1, *resty.Response, error) {
+	return s.ReadTransitNetworkWithItsHealthSummaryFromIDV1(id, ReadTransitNetworkWithItsHealthSummaryFromIdV1HeaderParams, ReadTransitNetworkWithItsHealthSummaryFromIdV1QueryParams)
 }
 
 // Alias Function
@@ -7950,6 +10861,14 @@ func (s *SdaService) GetEdgeDeviceFromSdaFabric(GetEdgeDeviceFromSDAFabricV1Quer
 
 // Alias Function
 /*
+This method acts as an alias for the method `ReadListOfTransitNetworksWithTheirHealthSummaryV1`
+*/
+func (s *SdaService) ReadListOfTransitNetworksWithTheirHealthSummary(ReadListOfTransitNetworksWithTheirHealthSummaryV1HeaderParams *ReadListOfTransitNetworksWithTheirHealthSummaryV1HeaderParams, ReadListOfTransitNetworksWithTheirHealthSummaryV1QueryParams *ReadListOfTransitNetworksWithTheirHealthSummaryV1QueryParams) (*ResponseSdaReadListOfTransitNetworksWithTheirHealthSummaryV1, *resty.Response, error) {
+	return s.ReadListOfTransitNetworksWithTheirHealthSummaryV1(ReadListOfTransitNetworksWithTheirHealthSummaryV1HeaderParams, ReadListOfTransitNetworksWithTheirHealthSummaryV1QueryParams)
+}
+
+// Alias Function
+/*
 This method acts as an alias for the method `GetFabricSiteCountV1`
 */
 func (s *SdaService) GetFabricSiteCount() (*ResponseSdaGetFabricSiteCountV1, *resty.Response, error) {
@@ -7978,6 +10897,14 @@ This method acts as an alias for the method `GetProvisionedWiredDeviceV1`
 */
 func (s *SdaService) GetProvisionedWiredDevice(GetProvisionedWiredDeviceV1QueryParams *GetProvisionedWiredDeviceV1QueryParams) (*ResponseSdaGetProvisionedWiredDeviceV1, *resty.Response, error) {
 	return s.GetProvisionedWiredDeviceV1(GetProvisionedWiredDeviceV1QueryParams)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `ReadListOfVirtualNetworksWithTheirHealthSummaryV1`
+*/
+func (s *SdaService) ReadListOfVirtualNetworksWithTheirHealthSummary(ReadListOfVirtualNetworksWithTheirHealthSummaryV1HeaderParams *ReadListOfVirtualNetworksWithTheirHealthSummaryV1HeaderParams, ReadListOfVirtualNetworksWithTheirHealthSummaryV1QueryParams *ReadListOfVirtualNetworksWithTheirHealthSummaryV1QueryParams) (*ResponseSdaReadListOfVirtualNetworksWithTheirHealthSummaryV1, *resty.Response, error) {
+	return s.ReadListOfVirtualNetworksWithTheirHealthSummaryV1(ReadListOfVirtualNetworksWithTheirHealthSummaryV1HeaderParams, ReadListOfVirtualNetworksWithTheirHealthSummaryV1QueryParams)
 }
 
 // Alias Function
@@ -8022,10 +10949,26 @@ func (s *SdaService) DeleteBorderDeviceFromSdaFabric(DeleteBorderDeviceFromSDAFa
 
 // Alias Function
 /*
+This method acts as an alias for the method `TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1`
+*/
+func (s *SdaService) TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRange(id string, TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1HeaderParams *TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1HeaderParams, TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1QueryParams *TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1QueryParams) (*ResponseSdaTheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1, *resty.Response, error) {
+	return s.TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1(id, TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1HeaderParams, TheTrendAnalyticsDataForATransitNetworkInTheSpecifiedTimeRangeV1QueryParams)
+}
+
+// Alias Function
+/*
 This method acts as an alias for the method `GetLayer2VirtualNetworksV1`
 */
 func (s *SdaService) GetLayer2VirtualNetworks(GetLayer2VirtualNetworksV1QueryParams *GetLayer2VirtualNetworksV1QueryParams) (*ResponseSdaGetLayer2VirtualNetworksV1, *resty.Response, error) {
 	return s.GetLayer2VirtualNetworksV1(GetLayer2VirtualNetworksV1QueryParams)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `ReadFabricSiteCountV1`
+*/
+func (s *SdaService) ReadFabricSiteCount(ReadFabricSiteCountV1HeaderParams *ReadFabricSiteCountV1HeaderParams, ReadFabricSiteCountV1QueryParams *ReadFabricSiteCountV1QueryParams) (*ResponseSdaReadFabricSiteCountV1, *resty.Response, error) {
+	return s.ReadFabricSiteCountV1(ReadFabricSiteCountV1HeaderParams, ReadFabricSiteCountV1QueryParams)
 }
 
 // Alias Function

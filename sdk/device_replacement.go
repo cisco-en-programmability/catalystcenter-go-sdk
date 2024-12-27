@@ -3,6 +3,7 @@ package catalyst
 import (
 	"fmt"
 	"net/http"
+	"strings"
 
 	"github.com/go-resty/resty/v2"
 	"github.com/google/go-querystring/query"
@@ -25,6 +26,19 @@ type ReturnListOfReplacementDevicesWithReplacementDetailsV1QueryParams struct {
 }
 type ReturnReplacementDevicesCountV1QueryParams struct {
 	ReplacementStatus []string `url:"replacementStatus,omitempty"` //Device Replacement status list[READY-FOR-REPLACEMENT, REPLACEMENT-IN-PROGRESS, REPLACEMENT-SCHEDULED, REPLACED, ERROR]
+}
+type RetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1QueryParams struct {
+	Family                        string  `url:"family,omitempty"`                        //Faulty device family.
+	FaultyDeviceName              string  `url:"faultyDeviceName,omitempty"`              //Faulty device name.
+	FaultyDevicePlatform          string  `url:"faultyDevicePlatform,omitempty"`          //Faulty device platform.
+	FaultyDeviceSerialNumber      string  `url:"faultyDeviceSerialNumber,omitempty"`      //Faulty device serial number.
+	ReplacementDevicePlatform     string  `url:"replacementDevicePlatform,omitempty"`     //Replacement device platform.
+	ReplacementDeviceSerialNumber string  `url:"replacementDeviceSerialNumber,omitempty"` //Replacement device serial number.
+	ReplacementStatus             string  `url:"replacementStatus,omitempty"`             //Device replacement status. Available values : MARKED_FOR_REPLACEMENT, NETWORK_READINESS_REQUESTED, NETWORK_READINESS_FAILED, READY_FOR_REPLACEMENT, REPLACEMENT_SCHEDULED, REPLACEMENT_IN_PROGRESS, REPLACED, ERROR. Replacement status: 'MARKED_FOR_REPLACEMENT' - The faulty device has been marked for replacement. 'NETWORK_READINESS_REQUESTED' - Initiated steps to shut down neighboring device interfaces and create a DHCP server on the uplink neighbor if the faulty device is part of a fabric setup. 'NETWORK_READINESS_FAILED' - Preparation of the network failed. Neighboring device interfaces were not shut down, and the DHCP server on the uplink neighbor was not created. 'READY_FOR_REPLACEMENT' - The network is prepared for the faulty device replacement. Neighboring device interfaces are shut down, and the DHCP server on the uplink neighbor is set up. 'REPLACEMENT_SCHEDULED' - Device replacement has been scheduled. 'REPLACEMENT_IN_PROGRESS' - Device replacement is currently in progress. 'REPLACED' - Device replacement was successful. 'ERROR' - Device replacement has failed.
+	Offset                        float64 `url:"offset,omitempty"`                        //The first record to show for this page; the first record is numbered 1.
+	Limit                         float64 `url:"limit,omitempty"`                         //The number of records to show for this page. Maximum value can be 500.
+	SortBy                        string  `url:"sortBy,omitempty"`                        //A property within the response to sort by. Available values : id, creationTime, family, faultyDeviceId, fautyDeviceName, faultyDevicePlatform, faultyDeviceSerialNumber, replacementDevicePlatform, replacementDeviceSerialNumber, replacementTime.
+	SortOrder                     string  `url:"sortOrder,omitempty"`                     //Whether ascending or descending order should be used to sort the response. Available values : ASC, DESC
 }
 
 type ResponseDeviceReplacementReturnListOfReplacementDevicesWithReplacementDetailsV1 struct {
@@ -77,6 +91,74 @@ type ResponseDeviceReplacementDeployDeviceReplacementWorkflowV1Response struct {
 	TaskID string `json:"taskId,omitempty"` //
 	URL    string `json:"url,omitempty"`    //
 }
+type ResponseDeviceReplacementRetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1 struct {
+	Response *[]ResponseDeviceReplacementRetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1Response `json:"response,omitempty"` //
+	Version  string                                                                                    `json:"version,omitempty"`  // The version of the response.
+}
+type ResponseDeviceReplacementRetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1Response struct {
+	CreationTime                  *int                                                                                            `json:"creationTime,omitempty"`                  // Time of marking the device for replacement in Unix epoch time in milliseconds
+	Family                        string                                                                                          `json:"family,omitempty"`                        // Faulty device family
+	FaultyDeviceID                string                                                                                          `json:"faultyDeviceId,omitempty"`                // Faulty device id
+	FaultyDeviceName              string                                                                                          `json:"faultyDeviceName,omitempty"`              // Faulty device name
+	FaultyDevicePlatform          string                                                                                          `json:"faultyDevicePlatform,omitempty"`          // Faulty device platform
+	FaultyDeviceSerialNumber      string                                                                                          `json:"faultyDeviceSerialNumber,omitempty"`      // Faulty device serial number
+	ID                            string                                                                                          `json:"id,omitempty"`                            // Unique identifier of the device replacement resource
+	NeighborDeviceID              string                                                                                          `json:"neighborDeviceId,omitempty"`              // Unique identifier of the neighbor device to create the DHCP server
+	ReplacementDevicePlatform     string                                                                                          `json:"replacementDevicePlatform,omitempty"`     // Replacement device platform
+	ReplacementDeviceSerialNumber string                                                                                          `json:"replacementDeviceSerialNumber,omitempty"` // Replacement device serial number
+	ReplacementStatus             string                                                                                          `json:"replacementStatus,omitempty"`             // Device Replacement status. 'MARKED_FOR_REPLACEMENT' - The faulty device has been marked for replacement. 'NETWORK_READINESS_REQUESTED' - Initiated steps to shut down neighboring device interfaces and create a DHCP server on the uplink neighbor if the faulty device is part of a fabric setup. 'NETWORK_READINESS_FAILED' - Preparation of the network failed. Neighboring device interfaces were not shut down, and the DHCP server on the uplink neighbor was not created. 'READY_FOR_REPLACEMENT' - The network is prepared for the faulty device replacement. Neighboring device interfaces are shut down, and the DHCP server on the uplink neighbor is set up. 'REPLACEMENT_SCHEDULED' - Device replacement has been scheduled. 'REPLACEMENT_IN_PROGRESS' - Device replacement is currently in progress. 'REPLACED' - Device replacement was successful. 'ERROR' - Device replacement has failed.
+	ReplacementTime               *int                                                                                            `json:"replacementTime,omitempty"`               // The Unix epoch time in milliseconds at which the device was replaced successfully
+	Workflow                      *ResponseDeviceReplacementRetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1ResponseWorkflow `json:"workflow,omitempty"`                      //
+}
+type ResponseDeviceReplacementRetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1ResponseWorkflow struct {
+	ID             string                                                                                                 `json:"id,omitempty"`             // Workflow id
+	Name           string                                                                                                 `json:"name,omitempty"`           // Name of the workflow
+	WorkflowStatus string                                                                                                 `json:"workflowStatus,omitempty"` // Workflow status. 'RUNNING' - Workflow is currently in progress. 'SUCCESS' - Workflow completed successfully. 'FAILED' - Workflow completed with failure.
+	StartTime      *int                                                                                                   `json:"startTime,omitempty"`      // Start time of the workflow in Unix epoch time in milliseconds
+	EndTime        *int                                                                                                   `json:"endTime,omitempty"`        // Completion time of the workflow in Unix epoch time in milliseconds
+	Steps          *[]ResponseDeviceReplacementRetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1ResponseWorkflowSteps `json:"steps,omitempty"`          //
+}
+type ResponseDeviceReplacementRetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1ResponseWorkflowSteps struct {
+	Name          string `json:"name,omitempty"`          // Workflow step name
+	Status        string `json:"status,omitempty"`        // Workflow step status. 'INIT' - Workflow step has not started execution. 'RUNNING' - Workflow step is currently in progress. 'SUCCESS' - Workflow step completed successfully. 'FAILED' - Workflow step completed with failure. 'ABORTED' - Workflow step aborted execution due to failure of the previous step. 'TIMEOUT' - Workflow step timedout to complete execution.
+	StatusMessage string `json:"statusMessage,omitempty"` // Detailed status message for the step
+	StartTime     *int   `json:"startTime,omitempty"`     // Start time of the workflow step in Unix epoch time in milliseconds
+	EndTime       *int   `json:"endTime,omitempty"`       // Completion time of the workflow step in Unix epoch time in milliseconds
+}
+type ResponseDeviceReplacementRetrieveTheStatusOfDeviceReplacementWorkflowThatReplacesAFaultyDeviceWithAReplacementDeviceV1 struct {
+	Response *ResponseDeviceReplacementRetrieveTheStatusOfDeviceReplacementWorkflowThatReplacesAFaultyDeviceWithAReplacementDeviceV1Response `json:"response,omitempty"` //
+	Version  string                                                                                                                          `json:"version,omitempty"`  // The version of the response.
+}
+type ResponseDeviceReplacementRetrieveTheStatusOfDeviceReplacementWorkflowThatReplacesAFaultyDeviceWithAReplacementDeviceV1Response struct {
+	CreationTime                  *int                                                                                                                                    `json:"creationTime,omitempty"`                  // Time of marking the device for replacement in Unix epoch time in milliseconds
+	Family                        string                                                                                                                                  `json:"family,omitempty"`                        // Faulty device family
+	FaultyDeviceID                string                                                                                                                                  `json:"faultyDeviceId,omitempty"`                // Faulty device id
+	FaultyDeviceName              string                                                                                                                                  `json:"faultyDeviceName,omitempty"`              // Faulty device name
+	FaultyDevicePlatform          string                                                                                                                                  `json:"faultyDevicePlatform,omitempty"`          // Faulty device platform
+	FaultyDeviceSerialNumber      string                                                                                                                                  `json:"faultyDeviceSerialNumber,omitempty"`      // Faulty device serial number
+	ID                            string                                                                                                                                  `json:"id,omitempty"`                            // Unique identifier of the device replacement resource
+	NeighborDeviceID              string                                                                                                                                  `json:"neighborDeviceId,omitempty"`              // Unique identifier of the neighbor device to create the DHCP server
+	ReplacementDevicePlatform     string                                                                                                                                  `json:"replacementDevicePlatform,omitempty"`     // Replacement device platform
+	ReplacementDeviceSerialNumber string                                                                                                                                  `json:"replacementDeviceSerialNumber,omitempty"` // Replacement device serial number
+	ReplacementStatus             string                                                                                                                                  `json:"replacementStatus,omitempty"`             // Device Replacement status. 'MARKED_FOR_REPLACEMENT' - The faulty device has been marked for replacement. 'NETWORK_READINESS_REQUESTED' - Initiated steps to shut down neighboring device interfaces and create a DHCP server on the uplink neighbor if the faulty device is part of a fabric setup. 'NETWORK_READINESS_FAILED' - Preparation of the network failed. Neighboring device interfaces were not shut down, and the DHCP server on the uplink neighbor was not created. 'READY_FOR_REPLACEMENT' - The network is prepared for the faulty device replacement. Neighboring device interfaces are shut down, and the DHCP server on the uplink neighbor is set up. 'REPLACEMENT_SCHEDULED' - Device replacement has been scheduled. 'REPLACEMENT_IN_PROGRESS' - Device replacement is currently in progress. 'REPLACED' - Device replacement was successful. 'ERROR' - Device replacement has failed.
+	ReplacementTime               *int                                                                                                                                    `json:"replacementTime,omitempty"`               // The Unix epoch time in milliseconds at which the device was replaced successfully
+	Workflow                      *ResponseDeviceReplacementRetrieveTheStatusOfDeviceReplacementWorkflowThatReplacesAFaultyDeviceWithAReplacementDeviceV1ResponseWorkflow `json:"workflow,omitempty"`                      //
+}
+type ResponseDeviceReplacementRetrieveTheStatusOfDeviceReplacementWorkflowThatReplacesAFaultyDeviceWithAReplacementDeviceV1ResponseWorkflow struct {
+	ID             string                                                                                                                                         `json:"id,omitempty"`             // Workflow id
+	Name           string                                                                                                                                         `json:"name,omitempty"`           // Name of the workflow
+	WorkflowStatus string                                                                                                                                         `json:"workflowStatus,omitempty"` // Workflow status. 'RUNNING' - Workflow is currently in progress. 'SUCCESS' - Workflow completed successfully. 'FAILED' - Workflow completed with failure.
+	StartTime      *int                                                                                                                                           `json:"startTime,omitempty"`      // Start time of the workflow in Unix epoch time in milliseconds
+	EndTime        *int                                                                                                                                           `json:"endTime,omitempty"`        // Completion time of the workflow in Unix epoch time in milliseconds
+	Steps          *[]ResponseDeviceReplacementRetrieveTheStatusOfDeviceReplacementWorkflowThatReplacesAFaultyDeviceWithAReplacementDeviceV1ResponseWorkflowSteps `json:"steps,omitempty"`          //
+}
+type ResponseDeviceReplacementRetrieveTheStatusOfDeviceReplacementWorkflowThatReplacesAFaultyDeviceWithAReplacementDeviceV1ResponseWorkflowSteps struct {
+	Name          string `json:"name,omitempty"`          // Workflow step name
+	Status        string `json:"status,omitempty"`        // Workflow step status. 'INIT' - Workflow step has not started execution. 'RUNNING' - Workflow step is currently in progress. 'SUCCESS' - Workflow step completed successfully. 'FAILED' - Workflow step completed with failure. 'ABORTED' - Workflow step aborted execution due to failure of the previous step. 'TIMEOUT' - Workflow step timedout to complete execution.
+	StatusMessage string `json:"statusMessage,omitempty"` // Detailed status message for the step
+	StartTime     *int   `json:"startTime,omitempty"`     // Start time of the workflow step in Unix epoch time in milliseconds
+	EndTime       *int   `json:"endTime,omitempty"`       // Completion time of the workflow step in Unix epoch time in milliseconds
+}
 type RequestDeviceReplacementUnmarkDeviceForReplacementV1 []RequestItemDeviceReplacementUnmarkDeviceForReplacementV1 // Array of RequestDeviceReplacementUnMarkDeviceForReplacementV1
 type RequestItemDeviceReplacementUnmarkDeviceForReplacementV1 struct {
 	CreationTime                  *int   `json:"creationTime,omitempty"`                  // Date and time of marking the device for replacement
@@ -122,7 +204,7 @@ type RequestDeviceReplacementDeployDeviceReplacementWorkflowV1 struct {
 
 @param ReturnListOfReplacementDevicesWithReplacementDetailsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!return-list-of-replacement-devices-with-replacement-details-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!return-list-of-replacement-devices-with-replacement-details
 */
 func (s *DeviceReplacementService) ReturnListOfReplacementDevicesWithReplacementDetailsV1(ReturnListOfReplacementDevicesWithReplacementDetailsV1QueryParams *ReturnListOfReplacementDevicesWithReplacementDetailsV1QueryParams) (*ResponseDeviceReplacementReturnListOfReplacementDevicesWithReplacementDetailsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/device-replacement"
@@ -159,7 +241,7 @@ func (s *DeviceReplacementService) ReturnListOfReplacementDevicesWithReplacement
 
 @param ReturnReplacementDevicesCountV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!return-replacement-devices-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!return-replacement-devices-count
 */
 func (s *DeviceReplacementService) ReturnReplacementDevicesCountV1(ReturnReplacementDevicesCountV1QueryParams *ReturnReplacementDevicesCountV1QueryParams) (*ResponseDeviceReplacementReturnReplacementDevicesCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/device-replacement/count"
@@ -190,12 +272,86 @@ func (s *DeviceReplacementService) ReturnReplacementDevicesCountV1(ReturnReplace
 
 }
 
+//RetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1 Retrieve the status of all the device replacement workflows. - e6b8-0a1a-4929-a7a9
+/* Retrieve the list of device replacements with replacement details. Filters can be applied based on faulty device name, faulty device platform, faulty device serial number, replacement device platform, replacement device serial number, device replacement status, device family.
+
+
+@param RetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1QueryParams Filtering parameter
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieve-the-status-of-all-the-device-replacement-workflows
+*/
+func (s *DeviceReplacementService) RetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1(RetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1QueryParams *RetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1QueryParams) (*ResponseDeviceReplacementRetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1, *resty.Response, error) {
+	path := "/dna/intent/api/v1/networkDeviceReplacements"
+
+	queryString, _ := query.Values(RetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1QueryParams)
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetQueryString(queryString.Encode()).SetResult(&ResponseDeviceReplacementRetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.RetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1(RetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1QueryParams)
+		}
+		return nil, response, fmt.Errorf("error with operation RetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1")
+	}
+
+	result := response.Result().(*ResponseDeviceReplacementRetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1)
+	return result, response, err
+
+}
+
+//RetrieveTheStatusOfDeviceReplacementWorkflowThatReplacesAFaultyDeviceWithAReplacementDeviceV1 Retrieve the status of device replacement workflow that replaces a faulty device with a replacement device. - 92ba-aa03-43c8-9d62
+/* Fetches the status of the device replacement workflow for a given device replacement `id`. Invoke the API `/dna/intent/api/v1/networkDeviceReplacements` to `GET` the list of all device replacements and use the `id` field data as input to this API.
+
+
+@param id id path parameter. Instance UUID of the device replacement
+
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieve-the-status-of-device-replacement-workflow-that-replaces-a-faulty-device-with-a-replacement-device
+*/
+func (s *DeviceReplacementService) RetrieveTheStatusOfDeviceReplacementWorkflowThatReplacesAFaultyDeviceWithAReplacementDeviceV1(id string) (*ResponseDeviceReplacementRetrieveTheStatusOfDeviceReplacementWorkflowThatReplacesAFaultyDeviceWithAReplacementDeviceV1, *resty.Response, error) {
+	path := "/dna/intent/api/v1/networkDeviceReplacements/{id}"
+	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetResult(&ResponseDeviceReplacementRetrieveTheStatusOfDeviceReplacementWorkflowThatReplacesAFaultyDeviceWithAReplacementDeviceV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.RetrieveTheStatusOfDeviceReplacementWorkflowThatReplacesAFaultyDeviceWithAReplacementDeviceV1(id)
+		}
+		return nil, response, fmt.Errorf("error with operation RetrieveTheStatusOfDeviceReplacementWorkflowThatReplacesAFaultyDeviceWithAReplacementDeviceV1")
+	}
+
+	result := response.Result().(*ResponseDeviceReplacementRetrieveTheStatusOfDeviceReplacementWorkflowThatReplacesAFaultyDeviceWithAReplacementDeviceV1)
+	return result, response, err
+
+}
+
 //MarkDeviceForReplacementV1 Mark device for replacement - 64b9-dad0-403a-aca1
 /* Marks device for replacement
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!mark-device-for-replacement-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!mark-device-for-replacement
 */
 func (s *DeviceReplacementService) MarkDeviceForReplacementV1(requestDeviceReplacementMarkDeviceForReplacementV1 *RequestDeviceReplacementMarkDeviceForReplacementV1) (*ResponseDeviceReplacementMarkDeviceForReplacementV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/device-replacement"
@@ -232,7 +388,7 @@ func (s *DeviceReplacementService) MarkDeviceForReplacementV1(requestDeviceRepla
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!deploy-device-replacement-workflow-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!deploy-device-replacement-workflow
 */
 func (s *DeviceReplacementService) DeployDeviceReplacementWorkflowV1(requestDeviceReplacementDeployDeviceReplacementWorkflowV1 *RequestDeviceReplacementDeployDeviceReplacementWorkflowV1) (*ResponseDeviceReplacementDeployDeviceReplacementWorkflowV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/device-replacement/workflow"
@@ -319,6 +475,22 @@ This method acts as an alias for the method `ReturnReplacementDevicesCountV1`
 */
 func (s *DeviceReplacementService) ReturnReplacementDevicesCount(ReturnReplacementDevicesCountV1QueryParams *ReturnReplacementDevicesCountV1QueryParams) (*ResponseDeviceReplacementReturnReplacementDevicesCountV1, *resty.Response, error) {
 	return s.ReturnReplacementDevicesCountV1(ReturnReplacementDevicesCountV1QueryParams)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `RetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1`
+*/
+func (s *DeviceReplacementService) RetrieveTheStatusOfAllTheDeviceReplacementWorkflows(RetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1QueryParams *RetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1QueryParams) (*ResponseDeviceReplacementRetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1, *resty.Response, error) {
+	return s.RetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1(RetrieveTheStatusOfAllTheDeviceReplacementWorkflowsV1QueryParams)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `RetrieveTheStatusOfDeviceReplacementWorkflowThatReplacesAFaultyDeviceWithAReplacementDeviceV1`
+*/
+func (s *DeviceReplacementService) RetrieveTheStatusOfDeviceReplacementWorkflowThatReplacesAFaultyDeviceWithAReplacementDevice(id string) (*ResponseDeviceReplacementRetrieveTheStatusOfDeviceReplacementWorkflowThatReplacesAFaultyDeviceWithAReplacementDeviceV1, *resty.Response, error) {
+	return s.RetrieveTheStatusOfDeviceReplacementWorkflowThatReplacesAFaultyDeviceWithAReplacementDeviceV1(id)
 }
 
 // Alias Function

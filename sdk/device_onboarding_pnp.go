@@ -12,8 +12,8 @@ import (
 type DeviceOnboardingPnpService service
 
 type GetDeviceListSiteManagementV1QueryParams struct {
-	Limit            int      `url:"limit,omitempty"`            //Limits number of results
-	Offset           int      `url:"offset,omitempty"`           //Index of first result
+	Limit            float64  `url:"limit,omitempty"`            //The number of records to show for this page. The minimum and maximum values are 0 and 500, respectively
+	Offset           float64  `url:"offset,omitempty"`           //The first record to show for this page; the first record is numbered 0. The Minimum value is 0
 	Sort             []string `url:"sort,omitempty"`             //Comma seperated list of fields to sort on
 	SortOrder        string   `url:"sortOrder,omitempty"`        //Sort Order Ascending (asc) or Descending (des)
 	SerialNumber     []string `url:"serialNumber,omitempty"`     //Device Serial Number
@@ -54,8 +54,8 @@ type DeregisterVirtualAccountV1QueryParams struct {
 	Name   string `url:"name,omitempty"`   //Virtual Account Name
 }
 type GetWorkflowsV1QueryParams struct {
-	Limit     int      `url:"limit,omitempty"`     //Limits number of results
-	Offset    int      `url:"offset,omitempty"`    //Index of first result
+	Limit     float64  `url:"limit,omitempty"`     //The number of records to show for this page. The minimum and maximum values are 0 and 500, respectively
+	Offset    float64  `url:"offset,omitempty"`    //The first record to show for this page; the first record is numbered 0. The Minimum value is 0
 	Sort      []string `url:"sort,omitempty"`      //Comma seperated lost of fields to sort on
 	SortOrder string   `url:"sortOrder,omitempty"` //Sort Order Ascending (asc) or Descending (des)
 	Type      []string `url:"type,omitempty"`      //Workflow Type
@@ -412,8 +412,6 @@ type ResponseItemDeviceOnboardingPnpGetDeviceListSiteManagementV1 struct {
 	DayZeroConfigPreview *ResponseItemDeviceOnboardingPnpGetDeviceListSiteManagementV1DayZeroConfigPreview `json:"dayZeroConfigPreview,omitempty"` // Day Zero Config Preview
 	Version              *float64                                                                          `json:"version,omitempty"`              // Version
 	TenantID             string                                                                            `json:"tenantId,omitempty"`             // Tenant Id
-	Progress             *ResponseItemDeviceOnboardingPnpGetDeviceListSiteManagementV1Progress             `json:"progress,omitempty"`             //
-	ID                   string                                                                            `json:"id,omitempty"`                   // Id
 }
 type ResponseItemDeviceOnboardingPnpGetDeviceListSiteManagementV1DeviceInfo struct {
 	Source                    string                                                                                        `json:"source,omitempty"`                    // Source
@@ -733,11 +731,6 @@ type ResponseDeviceOnboardingPnpClaimDeviceV1 struct {
 	JSONResponse      *ResponseDeviceOnboardingPnpClaimDeviceV1JSONResponse        `json:"jsonResponse,omitempty"`      // Json Response
 	Message           string                                                       `json:"message,omitempty"`           // Message
 	StatusCode        *float64                                                     `json:"statusCode,omitempty"`        // Status Code
-}
-type ResponseItemDeviceOnboardingPnpGetDeviceListSiteManagementV1Progress struct {
-	Message         string `json:"message,omitempty"`
-	InProgress      bool   `json:"inProgress,omitempty"`
-	ProgressPercent int    `json:"progressPercent,omitempty"`
 }
 type ResponseDeviceOnboardingPnpClaimDeviceV1JSONArrayResponse interface{}
 type ResponseDeviceOnboardingPnpClaimDeviceV1JSONResponse interface{}
@@ -2387,73 +2380,8 @@ type ResponseDeviceOnboardingPnpDeregisterVirtualAccountV1Profile struct {
 	Cert        string `json:"cert,omitempty"`        // Cert
 	Proxy       *bool  `json:"proxy,omitempty"`       // Proxy
 }
-type ResponseDeviceOnboardingPnpGetWorkflowsV1 []ResponseItemDeviceOnboardingPnpGetWorkflowsV1 // Array of ResponseDeviceOnboardingPnpGetWorkflows
+type ResponseDeviceOnboardingPnpGetWorkflowsV1 []ResponseItemDeviceOnboardingPnpGetWorkflowsV1 // Array of ResponseDeviceOnboardingPnpGetWorkflowsV1
 type ResponseItemDeviceOnboardingPnpGetWorkflowsV1 struct {
-	TypeID         string                                                `json:"_id,omitempty"`            // Id
-	State          string                                                `json:"state,omitempty"`          // State
-	Type           string                                                `json:"type,omitempty"`           // Type
-	Description    string                                                `json:"description,omitempty"`    // Description
-	LastupdateOn   *float64                                              `json:"lastupdateOn,omitempty"`   // Lastupdate On
-	ImageID        string                                                `json:"imageId,omitempty"`        // Image Id
-	CurrTaskIDx    *float64                                              `json:"currTaskIdx,omitempty"`    // Curr Task Idx
-	AddedOn        *float64                                              `json:"addedOn,omitempty"`        // Added On
-	Tasks          *[]ResponseItemDeviceOnboardingPnpGetWorkflowsV1Tasks `json:"tasks,omitempty"`          //
-	AddToInventory *bool                                                 `json:"addToInventory,omitempty"` // Add To Inventory
-	InstanceType   string                                                `json:"instanceType,omitempty"`   // Instance Type
-	EndTime        *float64                                              `json:"endTime,omitempty"`        // End Time
-	ExecTime       *float64                                              `json:"execTime,omitempty"`       // Exec Time
-	StartTime      *float64                                              `json:"startTime,omitempty"`      // Start Time
-	UseState       string                                                `json:"useState,omitempty"`       // Use State
-	ConfigID       string                                                `json:"configId,omitempty"`       // Config Id
-	Name           string                                                `json:"name,omitempty"`           // Name
-	Version        *float64                                              `json:"version,omitempty"`        // Version
-	TenantID       string                                                `json:"tenantId,omitempty"`       // Tenant Id
-}
-
-type ResponseDeviceOnboardingPnpGetWorkflowCount struct {
-	Response *float64 `json:"response,omitempty"` // Response
-}
-type ResponseDeviceOnboardingPnpGetWorkflowByID struct {
-	TypeID         string                                             `json:"_id,omitempty"`            // Id
-	State          string                                             `json:"state,omitempty"`          // State
-	Type           string                                             `json:"type,omitempty"`           // Type
-	Description    string                                             `json:"description,omitempty"`    // Description
-	LastupdateOn   *float64                                           `json:"lastupdateOn,omitempty"`   // Lastupdate On
-	ImageID        string                                             `json:"imageId,omitempty"`        // Image Id
-	CurrTaskIDx    *float64                                           `json:"currTaskIdx,omitempty"`    // Curr Task Idx
-	AddedOn        *float64                                           `json:"addedOn,omitempty"`        // Added On
-	Tasks          *[]ResponseDeviceOnboardingPnpGetWorkflowByIDTasks `json:"tasks,omitempty"`          //
-	AddToInventory *bool                                              `json:"addToInventory,omitempty"` // Add To Inventory
-	InstanceType   string                                             `json:"instanceType,omitempty"`   // Instance Type
-	EndTime        *float64                                           `json:"endTime,omitempty"`        // End Time
-	ExecTime       *float64                                           `json:"execTime,omitempty"`       // Exec Time
-	StartTime      *float64                                           `json:"startTime,omitempty"`      // Start Time
-	UseState       string                                             `json:"useState,omitempty"`       // Use State
-	ConfigID       string                                             `json:"configId,omitempty"`       // Config Id
-	Name           string                                             `json:"name,omitempty"`           // Name
-	Version        *float64                                           `json:"version,omitempty"`        // Version
-	TenantID       string                                             `json:"tenantId,omitempty"`       // Tenant Id
-}
-type ResponseDeviceOnboardingPnpGetWorkflowByIDTasks struct {
-	State           string                                                         `json:"state,omitempty"`           // State
-	Type            string                                                         `json:"type,omitempty"`            // Type
-	CurrWorkItemIDx *float64                                                       `json:"currWorkItemIdx,omitempty"` // Curr Work Item Idx
-	TaskSeqNo       *float64                                                       `json:"taskSeqNo,omitempty"`       // Task Seq No
-	EndTime         *float64                                                       `json:"endTime,omitempty"`         // End Time
-	StartTime       *float64                                                       `json:"startTime,omitempty"`       // Start Time
-	WorkItemList    *[]ResponseDeviceOnboardingPnpGetWorkflowByIDTasksWorkItemList `json:"workItemList,omitempty"`    //
-	TimeTaken       *float64                                                       `json:"timeTaken,omitempty"`       // Time Taken
-	Name            string                                                         `json:"name,omitempty"`            // Name
-}
-type ResponseDeviceOnboardingPnpGetWorkflowByIDTasksWorkItemList struct {
-	State     string   `json:"state,omitempty"`     // State
-	Command   string   `json:"command,omitempty"`   // Command
-	OutputStr string   `json:"outputStr,omitempty"` // Output Str
-	EndTime   *float64 `json:"endTime,omitempty"`   // End Time
-	StartTime *float64 `json:"startTime,omitempty"` // Start Time
-	TimeTaken *float64 `json:"timeTaken,omitempty"` // Time Taken
-}
-type ResponseDeviceOnboardingPnpDeleteWorkflowV1ByID struct {
 	TypeID         string                                                `json:"_id,omitempty"`            // Id
 	State          string                                                `json:"state,omitempty"`          // State
 	Type           string                                                `json:"type,omitempty"`           // Type
@@ -3038,7 +2966,7 @@ type RequestDeviceOnboardingPnpUpdateWorkflowV1TasksWorkItemList struct {
 
 @param GetDeviceListSiteManagementV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-device-list-site-management-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-device-list-site-management
 */
 func (s *DeviceOnboardingPnpService) GetDeviceListSiteManagementV1(GetDeviceListSiteManagementV1QueryParams *GetDeviceListSiteManagementV1QueryParams) (*ResponseDeviceOnboardingPnpGetDeviceListSiteManagementV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-device"
@@ -3075,7 +3003,7 @@ func (s *DeviceOnboardingPnpService) GetDeviceListSiteManagementV1(GetDeviceList
 
 @param GetDeviceCountV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-device-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-device-count
 */
 func (s *DeviceOnboardingPnpService) GetDeviceCountV1(GetDeviceCountV1QueryParams *GetDeviceCountV1QueryParams) (*ResponseDeviceOnboardingPnpGetDeviceCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-device/count"
@@ -3112,7 +3040,7 @@ func (s *DeviceOnboardingPnpService) GetDeviceCountV1(GetDeviceCountV1QueryParam
 
 @param GetDeviceHistoryV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-device-history-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-device-history
 */
 func (s *DeviceOnboardingPnpService) GetDeviceHistoryV1(GetDeviceHistoryV1QueryParams *GetDeviceHistoryV1QueryParams) (*ResponseDeviceOnboardingPnpGetDeviceHistoryV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-device/history"
@@ -3152,7 +3080,7 @@ func (s *DeviceOnboardingPnpService) GetDeviceHistoryV1(GetDeviceHistoryV1QueryP
 @param name name path parameter. Virtual Account Name
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-sync-result-for-virtual-account-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-sync-result-for-virtual-account
 */
 func (s *DeviceOnboardingPnpService) GetSyncResultForVirtualAccountV1(domain string, name string) (*ResponseDeviceOnboardingPnpGetSyncResultForVirtualAccountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-device/sacct/{domain}/vacct/{name}/sync-result"
@@ -3189,7 +3117,7 @@ func (s *DeviceOnboardingPnpService) GetSyncResultForVirtualAccountV1(domain str
 
 @param id id path parameter.
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-device-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-device-by-id
 */
 func (s *DeviceOnboardingPnpService) GetDeviceByIDV1(id string) (*ResponseDeviceOnboardingPnpGetDeviceByIDV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-device/{id}"
@@ -3224,7 +3152,7 @@ func (s *DeviceOnboardingPnpService) GetDeviceByIDV1(id string) (*ResponseDevice
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-pnp-global-settings-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-pnp-global-settings
 */
 func (s *DeviceOnboardingPnpService) GetPnpGlobalSettingsV1() (*ResponseDeviceOnboardingPnpGetPnpGlobalSettingsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-settings"
@@ -3258,7 +3186,7 @@ func (s *DeviceOnboardingPnpService) GetPnpGlobalSettingsV1() (*ResponseDeviceOn
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-smart-account-list-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-smart-account-list
 */
 func (s *DeviceOnboardingPnpService) GetSmartAccountListV1() (*ResponseDeviceOnboardingPnpGetSmartAccountListV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-settings/sacct"
@@ -3294,7 +3222,7 @@ func (s *DeviceOnboardingPnpService) GetSmartAccountListV1() (*ResponseDeviceOnb
 @param domain domain path parameter. Smart Account Domain
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-virtual-account-list-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-virtual-account-list
 */
 func (s *DeviceOnboardingPnpService) GetVirtualAccountListV1(domain string) (*ResponseDeviceOnboardingPnpGetVirtualAccountListV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-settings/sacct/{domain}/vacct"
@@ -3330,7 +3258,7 @@ func (s *DeviceOnboardingPnpService) GetVirtualAccountListV1(domain string) (*Re
 
 @param GetWorkflowsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-workflows-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-workflows
 */
 func (s *DeviceOnboardingPnpService) GetWorkflowsV1(GetWorkflowsV1QueryParams *GetWorkflowsV1QueryParams) (*ResponseDeviceOnboardingPnpGetWorkflowsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-workflow"
@@ -3367,7 +3295,7 @@ func (s *DeviceOnboardingPnpService) GetWorkflowsV1(GetWorkflowsV1QueryParams *G
 
 @param GetWorkflowCountV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-workflow-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-workflow-count
 */
 func (s *DeviceOnboardingPnpService) GetWorkflowCountV1(GetWorkflowCountV1QueryParams *GetWorkflowCountV1QueryParams) (*ResponseDeviceOnboardingPnpGetWorkflowCountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-workflow/count"
@@ -3404,7 +3332,7 @@ func (s *DeviceOnboardingPnpService) GetWorkflowCountV1(GetWorkflowCountV1QueryP
 
 @param id id path parameter.
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-workflow-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-workflow-by-id
 */
 func (s *DeviceOnboardingPnpService) GetWorkflowByIDV1(id string) (*ResponseDeviceOnboardingPnpGetWorkflowByIDV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-workflow/{id}"
@@ -3439,7 +3367,7 @@ func (s *DeviceOnboardingPnpService) GetWorkflowByIDV1(id string) (*ResponseDevi
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!authorize-device-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!authorize-device
 */
 func (s *DeviceOnboardingPnpService) AuthorizeDeviceV1(requestDeviceOnboardingPnpAuthorizeDeviceV1 *RequestDeviceOnboardingPnpAuthorizeDeviceV1) (*ResponseDeviceOnboardingPnpAuthorizeDeviceV1, *resty.Response, error) {
 	path := "/api/v1/onboarding/pnp-device/authorize"
@@ -3476,7 +3404,7 @@ func (s *DeviceOnboardingPnpService) AuthorizeDeviceV1(requestDeviceOnboardingPn
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-device-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-device
 */
 func (s *DeviceOnboardingPnpService) AddDeviceV1(requestDeviceOnboardingPnpAddDeviceV1 *RequestDeviceOnboardingPnpAddDeviceV1) (*ResponseDeviceOnboardingPnpAddDeviceV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-device"
@@ -3513,7 +3441,7 @@ func (s *DeviceOnboardingPnpService) AddDeviceV1(requestDeviceOnboardingPnpAddDe
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!claim-device-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!claim-device
 */
 func (s *DeviceOnboardingPnpService) ClaimDeviceV1(requestDeviceOnboardingPnpClaimDeviceV1 *RequestDeviceOnboardingPnpClaimDeviceV1) (*ResponseDeviceOnboardingPnpClaimDeviceV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-device/claim"
@@ -3550,7 +3478,7 @@ func (s *DeviceOnboardingPnpService) ClaimDeviceV1(requestDeviceOnboardingPnpCla
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!import-devices-in-bulk-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!import-devices-in-bulk
 */
 func (s *DeviceOnboardingPnpService) ImportDevicesInBulkV1(requestDeviceOnboardingPnpImportDevicesInBulkV1 *RequestDeviceOnboardingPnpImportDevicesInBulkV1) (*ResponseDeviceOnboardingPnpImportDevicesInBulkV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-device/import"
@@ -3587,7 +3515,7 @@ func (s *DeviceOnboardingPnpService) ImportDevicesInBulkV1(requestDeviceOnboardi
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!reset-device-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!reset-device
 */
 func (s *DeviceOnboardingPnpService) ResetDeviceV1(requestDeviceOnboardingPnpResetDeviceV1 *RequestDeviceOnboardingPnpResetDeviceV1) (*ResponseDeviceOnboardingPnpResetDeviceV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-device/reset"
@@ -3628,7 +3556,7 @@ CatalystWLC/MobilityExpress/EWC: staticIP, subnetMask, gateway. vlanId and ipInt
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!claim-a-device-to-a-site-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!claim-a-device-to-a-site
 */
 func (s *DeviceOnboardingPnpService) ClaimADeviceToASiteV1(requestDeviceOnboardingPnpClaimADeviceToASiteV1 *RequestDeviceOnboardingPnpClaimADeviceToASiteV1) (*ResponseDeviceOnboardingPnpClaimADeviceToASiteV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-device/site-claim"
@@ -3665,7 +3593,7 @@ func (s *DeviceOnboardingPnpService) ClaimADeviceToASiteV1(requestDeviceOnboardi
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!preview-config-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!preview-config
 */
 func (s *DeviceOnboardingPnpService) PreviewConfigV1(requestDeviceOnboardingPnpPreviewConfigV1 *RequestDeviceOnboardingPnpPreviewConfigV1) (*ResponseDeviceOnboardingPnpPreviewConfigV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-device/site-config-preview"
@@ -3702,7 +3630,7 @@ func (s *DeviceOnboardingPnpService) PreviewConfigV1(requestDeviceOnboardingPnpP
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!un-claim-device-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!un-claim-device
 */
 func (s *DeviceOnboardingPnpService) UnClaimDeviceV1(requestDeviceOnboardingPnpUnClaimDeviceV1 *RequestDeviceOnboardingPnpUnClaimDeviceV1) (*ResponseDeviceOnboardingPnpUnClaimDeviceV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-device/unclaim"
@@ -3739,7 +3667,7 @@ func (s *DeviceOnboardingPnpService) UnClaimDeviceV1(requestDeviceOnboardingPnpU
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!sync-virtual-account-devices-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!sync-virtual-account-devices
 */
 func (s *DeviceOnboardingPnpService) SyncVirtualAccountDevicesV1(requestDeviceOnboardingPnpSyncVirtualAccountDevicesV1 *RequestDeviceOnboardingPnpSyncVirtualAccountDevicesV1) (*ResponseDeviceOnboardingPnpSyncVirtualAccountDevicesV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-device/vacct-sync"
@@ -3776,7 +3704,7 @@ func (s *DeviceOnboardingPnpService) SyncVirtualAccountDevicesV1(requestDeviceOn
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-virtual-account-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-virtual-account
 */
 func (s *DeviceOnboardingPnpService) AddVirtualAccountV1(requestDeviceOnboardingPnpAddVirtualAccountV1 *RequestDeviceOnboardingPnpAddVirtualAccountV1) (*ResponseDeviceOnboardingPnpAddVirtualAccountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-settings/savacct"
@@ -3813,7 +3741,7 @@ func (s *DeviceOnboardingPnpService) AddVirtualAccountV1(requestDeviceOnboarding
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-a-workflow-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-a-workflow
 */
 func (s *DeviceOnboardingPnpService) AddAWorkflowV1(requestDeviceOnboardingPnpAddAWorkflowV1 *RequestDeviceOnboardingPnpAddAWorkflowV1) (*ResponseDeviceOnboardingPnpAddAWorkflowV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/onboarding/pnp-workflow"
@@ -3987,7 +3915,7 @@ func (s *DeviceOnboardingPnpService) UpdateWorkflowV1(id string, requestDeviceOn
 
 @param id id path parameter.
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-device-by-id-from-pnp-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-device-by-id-from-pnp
 */
 func (s *DeviceOnboardingPnpService) DeleteDeviceByIDFromPnpV1(id string) (*ResponseDeviceOnboardingPnpDeleteDeviceByIDFromPnpV1, *resty.Response, error) {
 	//id string
@@ -4008,8 +3936,7 @@ func (s *DeviceOnboardingPnpService) DeleteDeviceByIDFromPnpV1(id string) (*Resp
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeleteDeviceByIDFromPnpV1(
-				id)
+			return s.DeleteDeviceByIDFromPnpV1(id)
 		}
 		return nil, response, fmt.Errorf("error with operation DeleteDeviceByIdFromPnpV1")
 	}
@@ -4025,7 +3952,7 @@ func (s *DeviceOnboardingPnpService) DeleteDeviceByIDFromPnpV1(id string) (*Resp
 
 @param DeregisterVirtualAccountV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!deregister-virtual-account-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!deregister-virtual-account
 */
 func (s *DeviceOnboardingPnpService) DeregisterVirtualAccountV1(DeregisterVirtualAccountV1QueryParams *DeregisterVirtualAccountV1QueryParams) (*ResponseDeviceOnboardingPnpDeregisterVirtualAccountV1, *resty.Response, error) {
 	//DeregisterVirtualAccountV1QueryParams *DeregisterVirtualAccountV1QueryParams
@@ -4047,8 +3974,7 @@ func (s *DeviceOnboardingPnpService) DeregisterVirtualAccountV1(DeregisterVirtua
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeregisterVirtualAccountV1(
-				DeregisterVirtualAccountV1QueryParams)
+			return s.DeregisterVirtualAccountV1(DeregisterVirtualAccountV1QueryParams)
 		}
 		return nil, response, fmt.Errorf("error with operation DeregisterVirtualAccountV1")
 	}
@@ -4064,7 +3990,7 @@ func (s *DeviceOnboardingPnpService) DeregisterVirtualAccountV1(DeregisterVirtua
 
 @param id id path parameter.
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-workflow-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-workflow-by-id
 */
 func (s *DeviceOnboardingPnpService) DeleteWorkflowByIDV1(id string) (*ResponseDeviceOnboardingPnpDeleteWorkflowByIDV1, *resty.Response, error) {
 	//id string
@@ -4085,8 +4011,7 @@ func (s *DeviceOnboardingPnpService) DeleteWorkflowByIDV1(id string) (*ResponseD
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeleteWorkflowByIDV1(
-				id)
+			return s.DeleteWorkflowByIDV1(id)
 		}
 		return nil, response, fmt.Errorf("error with operation DeleteWorkflowByIdV1")
 	}
