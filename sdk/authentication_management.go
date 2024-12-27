@@ -2,6 +2,7 @@ package catalyst
 
 import (
 	"fmt"
+	"io"
 	"net/http"
 
 	"github.com/go-resty/resty/v2"
@@ -18,6 +19,18 @@ type ImportCertificateP12V1QueryParams struct {
 	P12Password string   `url:"p12Password,omitempty"` //The password for PKCS12 certificate bundle
 	PkPassword  string   `url:"pkPassword,omitempty"`  //Password for encrypted private key
 	ListOfUsers []string `url:"listOfUsers,omitempty"` //Specify whether the certificate will be used for controller ("server"), disaster recovery ("ipsec") or both ("server, ipsec"). If no value is provided, the default value taken will be "server"
+}
+
+type ImportCertificateMultipartFields struct {
+	PkFileUploadName   string
+	PkFileUpload       io.Reader
+	CertFileUploadName string
+	CertFileUpload     io.Reader
+}
+
+type ImportCertificateP12MultipartFields struct {
+	P12FileUpload     io.Reader
+	P12FileUploadName string
 }
 
 type ResponseAuthenticationManagementImportCertificateV1 struct {
@@ -52,14 +65,23 @@ type ResponseAuthenticationManagementAuthenticationAPIV1 struct {
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!import-certificate
 */
-func (s *AuthenticationManagementService) ImportCertificateV1(ImportCertificateV1QueryParams *ImportCertificateV1QueryParams) (*ResponseAuthenticationManagementImportCertificateV1, *resty.Response, error) {
+func (s *AuthenticationManagementService) ImportCertificateV1(ImportCertificateV1QueryParams *ImportCertificateV1QueryParams, ImportCertificateMultipartFields *ImportCertificateMultipartFields) (*ResponseAuthenticationManagementImportCertificateV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/certificate"
 
 	queryString, _ := query.Values(ImportCertificateV1QueryParams)
 
-	response, err := s.client.R().
+	var response *resty.Response
+	var err error
+	clientRequest := s.client.R().
 		SetHeader("Content-Type", "application/json").
-		SetHeader("Accept", "application/json").
+		SetHeader("Accept", "application/json")
+
+	if ImportCertificateMultipartFields != nil {
+		clientRequest = clientRequest.SetFileReader("pkFileUpload", ImportCertificateMultipartFields.PkFileUploadName, ImportCertificateMultipartFields.PkFileUpload)
+		clientRequest = clientRequest.SetFileReader("certFileUpload", ImportCertificateMultipartFields.CertFileUploadName, ImportCertificateMultipartFields.CertFileUpload)
+	}
+
+	response, err = clientRequest.
 		SetQueryString(queryString.Encode()).
 		SetResult(&ResponseAuthenticationManagementImportCertificateV1{}).
 		SetError(&Error).
@@ -73,10 +95,10 @@ func (s *AuthenticationManagementService) ImportCertificateV1(ImportCertificateV
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.ImportCertificateV1(ImportCertificateV1QueryParams)
+			return s.ImportCertificateV1(ImportCertificateV1QueryParams, ImportCertificateMultipartFields)
 		}
 
-		return nil, response, fmt.Errorf("error with operation ImportCertificateV1")
+		return nil, response, fmt.Errorf("error with operation ImportCertificate")
 	}
 
 	result := response.Result().(*ResponseAuthenticationManagementImportCertificateV1)
@@ -92,14 +114,22 @@ func (s *AuthenticationManagementService) ImportCertificateV1(ImportCertificateV
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!import-certificate-p12
 */
-func (s *AuthenticationManagementService) ImportCertificateP12V1(ImportCertificateP12V1QueryParams *ImportCertificateP12V1QueryParams) (*ResponseAuthenticationManagementImportCertificateP12V1, *resty.Response, error) {
+func (s *AuthenticationManagementService) ImportCertificateP12V1(ImportCertificateP12V1QueryParams *ImportCertificateP12V1QueryParams, ImportCertificateP12MultipartFields *ImportCertificateP12MultipartFields) (*ResponseAuthenticationManagementImportCertificateP12V1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/certificate-p12"
 
 	queryString, _ := query.Values(ImportCertificateP12V1QueryParams)
 
-	response, err := s.client.R().
+	var response *resty.Response
+	var err error
+	clientRequest := s.client.R().
 		SetHeader("Content-Type", "application/json").
-		SetHeader("Accept", "application/json").
+		SetHeader("Accept", "application/json")
+
+	if ImportCertificateP12MultipartFields != nil {
+		clientRequest = clientRequest.SetFileReader("p12FileUpload", ImportCertificateP12MultipartFields.P12FileUploadName, ImportCertificateP12MultipartFields.P12FileUpload)
+	}
+
+	response, err = clientRequest.
 		SetQueryString(queryString.Encode()).
 		SetResult(&ResponseAuthenticationManagementImportCertificateP12V1{}).
 		SetError(&Error).
@@ -113,10 +143,10 @@ func (s *AuthenticationManagementService) ImportCertificateP12V1(ImportCertifica
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.ImportCertificateP12V1(ImportCertificateP12V1QueryParams)
+			return s.ImportCertificateP12V1(ImportCertificateP12V1QueryParams, ImportCertificateP12MultipartFields)
 		}
 
-		return nil, response, fmt.Errorf("error with operation ImportCertificateP12V1")
+		return nil, response, fmt.Errorf("error with operation ImportCertificateP12")
 	}
 
 	result := response.Result().(*ResponseAuthenticationManagementImportCertificateP12V1)
@@ -172,14 +202,14 @@ func (s *AuthenticationManagementService) AuthenticationAPI() (*ResponseAuthenti
 /*
 This method acts as an alias for the method `ImportCertificateP12V1`
 */
-func (s *AuthenticationManagementService) ImportCertificateP12(ImportCertificateP12V1QueryParams *ImportCertificateP12V1QueryParams) (*ResponseAuthenticationManagementImportCertificateP12V1, *resty.Response, error) {
-	return s.ImportCertificateP12V1(ImportCertificateP12V1QueryParams)
+func (s *AuthenticationManagementService) ImportCertificateP12(ImportCertificateP12V1QueryParams *ImportCertificateP12V1QueryParams, ImportCertificateP12MultipartFields *ImportCertificateP12MultipartFields) (*ResponseAuthenticationManagementImportCertificateP12V1, *resty.Response, error) {
+	return s.ImportCertificateP12V1(ImportCertificateP12V1QueryParams, ImportCertificateP12MultipartFields)
 }
 
 // Alias Function
 /*
 This method acts as an alias for the method `ImportCertificateV1`
 */
-func (s *AuthenticationManagementService) ImportCertificate(ImportCertificateV1QueryParams *ImportCertificateV1QueryParams) (*ResponseAuthenticationManagementImportCertificateV1, *resty.Response, error) {
-	return s.ImportCertificateV1(ImportCertificateV1QueryParams)
+func (s *AuthenticationManagementService) ImportCertificate(ImportCertificateV1QueryParams *ImportCertificateV1QueryParams, ImportCertificateMultipartFields *ImportCertificateMultipartFields) (*ResponseAuthenticationManagementImportCertificateV1, *resty.Response, error) {
+	return s.ImportCertificateV1(ImportCertificateV1QueryParams, ImportCertificateMultipartFields)
 }

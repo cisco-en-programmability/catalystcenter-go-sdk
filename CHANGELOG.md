@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1] - 2024-12-27
+### Changes
+- User Agent Modification
+- Update authentication_management module
+- Update configuration template module
+
 ## [2.0.0] - 2024-12-27
 
 ### Added
