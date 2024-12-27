@@ -26,6 +26,7 @@ const CATALYST_SSL_VERIFY = "CATALYST_SSL_VERIFY"
 const CATALYST_WAIT_TIME = "CATALYST_WAIT_TIME"
 
 var VERSION = "2.3.7.9"
+var CATALYST_USER_STRING = "CATALYST_USER_STRING"
 var USER_AGENT = "go-cisco-catalystsdk/" + VERSION
 
 type FileDownload struct {
@@ -123,7 +124,7 @@ func NewClientWithOptions(baseURL string, username string, password string, debu
 	var err error
 
 	var user string
-	if len(userString) > 0 && userString != nil {
+	if len(userString) > 0 {
 		user = "-" + string(userString[0])
 	} else {
 		user = " "
@@ -159,8 +160,9 @@ func SetOptions(baseURL string, username string, password string, debug string, 
 	if err != nil {
 		return err
 	}
-	if userString != "" {
-		USER_AGENT = USER_AGENT + userString
+	err = os.Setenv(CATALYST_USER_STRING, userString)
+	if err != nil {
+		return err
 	}
 	if waitTimeToManyRequest != nil {
 		err = os.Setenv(CATALYST_WAIT_TIME, strconv.Itoa(*waitTimeToManyRequest))
@@ -176,12 +178,16 @@ func SetOptions(baseURL string, username string, password string, debug string, 
 	return nil
 }
 
+func GetUserAgent() string {
+	return USER_AGENT + os.Getenv(CATALYST_USER_STRING)
+}
+
 // NewClientNoAuth returns the client object without trying to authenticate
 func NewClientNoAuth() (*Client, error) {
 	var err error
 
 	client := resty.New()
-	client.SetHeader("User-Agent", USER_AGENT)
+	client.SetHeader("User-Agent", GetUserAgent())
 	c := &Client{}
 	c.common.client = client
 	waitTimeToManyRequest := 0
@@ -215,7 +221,7 @@ func NewClientNoAuth() (*Client, error) {
 			retry := false
 			if r.StatusCode() == http.StatusUnauthorized {
 				cl := resty.New()
-				cl.SetHeader("User-Agent", USER_AGENT)
+				cl.SetHeader("User-Agent", GetUserAgent())
 
 				username := os.Getenv("CATALYST_USERNAME")
 				password := os.Getenv("CATALYST_PASSWORD")
@@ -316,7 +322,7 @@ func NewClientWithOptionsNoAuth(baseURL string, username string, password string
 	var err error
 
 	var user string
-	if len(userString) > 0 && userString != nil {
+	if len(userString) > 0 {
 		user = "-" + userString[0]
 	} else {
 		user = ""
@@ -367,7 +373,7 @@ func (s *Client) AuthClient() error {
 
 // RestyClient returns the resty.Client used by the sdk
 func (s *Client) RestyClient() *resty.Client {
-	s.common.client.SetHeader("User-Agent", USER_AGENT)
+	s.common.client.SetHeader("User-Agent", GetUserAgent())
 	return s.common.client
 }
 
