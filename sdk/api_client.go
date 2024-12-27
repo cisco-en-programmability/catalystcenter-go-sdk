@@ -25,9 +25,8 @@ const CATALYST_DEBUG = "CATALYST_DEBUG"
 const CATALYST_SSL_VERIFY = "CATALYST_SSL_VERIFY"
 const CATALYST_WAIT_TIME = "CATALYST_WAIT_TIME"
 
-var VERSION = "2.3.7.6.1"
-var USER_STRING = "USER_STRING"
-var USER_AGENT = "go-cisco-catalystsdk/" + VERSION + USER_STRING
+var VERSION = "2.3.7.9"
+var USER_AGENT = "go-cisco-catalystsdk/" + VERSION
 
 type FileDownload struct {
 	FileName string
@@ -48,6 +47,7 @@ type Client struct {
 	AIEndpointAnalytics         *AIEndpointAnalyticsService
 	ApplicationPolicy           *ApplicationPolicyService
 	Applications                *ApplicationsService
+	AuthenticationManagement    *AuthenticationManagementService
 	CiscoTrustedCertificates    *CiscoTrustedCertificatesService
 	Clients                     *ClientsService
 	CommandRunner               *CommandRunnerService
@@ -123,12 +123,11 @@ func NewClientWithOptions(baseURL string, username string, password string, debu
 	var err error
 
 	var user string
-	if len(userString) > 0 {
-		user = "-" + userString[0]
+	if len(userString) > 0 && userString != nil {
+		user = "-" + string(userString[0])
 	} else {
-		user = ""
+		user = " "
 	}
-
 	err = SetOptions(baseURL, username, password, debug, sslVerify, waitTimeToManyRequest, user)
 	if err != nil {
 		return nil, err
@@ -160,9 +159,8 @@ func SetOptions(baseURL string, username string, password string, debug string, 
 	if err != nil {
 		return err
 	}
-	err = os.Setenv(USER_STRING, userString)
-	if err != nil {
-		return err
+	if userString != "" {
+		USER_AGENT = USER_AGENT + userString
 	}
 	if waitTimeToManyRequest != nil {
 		err = os.Setenv(CATALYST_WAIT_TIME, strconv.Itoa(*waitTimeToManyRequest))
@@ -269,6 +267,7 @@ func NewClientNoAuth() (*Client, error) {
 	c.AIEndpointAnalytics = (*AIEndpointAnalyticsService)(&c.common)
 	c.ApplicationPolicy = (*ApplicationPolicyService)(&c.common)
 	c.Applications = (*ApplicationsService)(&c.common)
+	c.AuthenticationManagement = (*AuthenticationManagementService)(&c.common)
 	c.CiscoTrustedCertificates = (*CiscoTrustedCertificatesService)(&c.common)
 	c.Clients = (*ClientsService)(&c.common)
 	c.CommandRunner = (*CommandRunnerService)(&c.common)
@@ -317,7 +316,7 @@ func NewClientWithOptionsNoAuth(baseURL string, username string, password string
 	var err error
 
 	var user string
-	if len(userString) > 0 {
+	if len(userString) > 0 && userString != nil {
 		user = "-" + userString[0]
 	} else {
 		user = ""

@@ -22,12 +22,12 @@ type DeviceLicenseSummaryV1QueryParams struct {
 	PageNumber         float64 `url:"page_number,omitempty"`          //Page number of response
 	Order              string  `url:"order,omitempty"`                //Sorting order
 	SortBy             string  `url:"sort_by,omitempty"`              //Sort result by field
-	DnaLevel           string  `url:"dna_level,omitempty"`            //Device Cisco DNA license level. The valid values are Advantage, Essentials
-	DeviceType         string  `url:"device_type,omitempty"`          //Type of device. The valid values are Routers, Switches and Hubs, Wireless Controller
-	Limit              float64 `url:"limit,omitempty"`                //Limit
-	RegistrationStatus string  `url:"registration_status,omitempty"`  //Smart license registration status of device. The valid values are Unknown, NA, Unregistered, Registered, Registration_expired, Reservation_in_progress, Registered_slr, Registered_plr, Registered_satellite
+	DnaLevel           string  `url:"dna_level,omitempty"`            //Device Cisco DNA license level
+	DeviceType         string  `url:"device_type,omitempty"`          //Type of device
+	Limit              float64 `url:"limit,omitempty"`                //Specifies the maximum number of device license summaries to return per page. Must be an integer between 1 and 500, inclusive.
+	RegistrationStatus string  `url:"registration_status,omitempty"`  //Smart license registration status of device
 	VirtualAccountName string  `url:"virtual_account_name,omitempty"` //Name of virtual account
-	SmartAccountID     string  `url:"smart_account_id,omitempty"`     //Id of smart account
+	SmartAccountID     float64 `url:"smart_account_id,omitempty"`     //Id of smart account
 	DeviceUUID         string  `url:"device_uuid,omitempty"`          //Id of device
 }
 type LicenseTermDetailsV1QueryParams struct {
@@ -37,6 +37,33 @@ type LicenseUsageDetailsV1QueryParams struct {
 	DeviceType string `url:"device_type,omitempty"` //Type of device like router, switch, wireless or ise
 }
 
+type ResponseLicensesRetrievesCSSMConnectionModeV1 struct {
+	Response *ResponseLicensesRetrievesCSSMConnectionModeV1Response `json:"response,omitempty"` //
+
+	Version string `json:"version,omitempty"` // API version
+}
+type ResponseLicensesRetrievesCSSMConnectionModeV1Response struct {
+	ConnectionMode string `json:"connectionMode,omitempty"` // The CSSM connection modes of Catalyst Center are DIRECT, ON_PREMISE and SMART_PROXY
+
+	Parameters *ResponseLicensesRetrievesCSSMConnectionModeV1ResponseParameters `json:"parameters,omitempty"` //
+}
+type ResponseLicensesRetrievesCSSMConnectionModeV1ResponseParameters struct {
+	OnPremiseHost string `json:"onPremiseHost,omitempty"` // On-premise host
+
+	SmartAccountName string `json:"smartAccountName,omitempty"` // On-premise CSSM local smart account name
+
+	ClientID string `json:"clientId,omitempty"` // On-premise CSSM client id
+}
+type ResponseLicensesUpdateCSSMConnectionModeV1 struct {
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
+	Response *ResponseLicensesUpdateCSSMConnectionModeV1Response `json:"response,omitempty"` //
+}
+type ResponseLicensesUpdateCSSMConnectionModeV1Response struct {
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
+	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
+}
 type ResponseLicensesRetrieveLicenseSettingV1 struct {
 	Response *ResponseLicensesRetrieveLicenseSettingV1Response `json:"response,omitempty"` //
 	Version  string                                            `json:"version,omitempty"`  // API version
@@ -202,12 +229,13 @@ type ResponseLicensesLicenseTermDetailsV1LicenseDetails struct {
 	IsLicenseExpired         string `json:"is_license_expired,omitempty"`          // Is license expired
 }
 type ResponseLicensesLicenseUsageDetailsV1 struct {
-	PurchasedDnaLicense     *ResponseLicensesLicenseUsageDetailsV1PurchasedDnaLicense     `json:"purchased_dna_license,omitempty"`     //
+	PurchasedDnaLicense *ResponseLicensesLicenseUsageDetailsV1PurchasedDnaLicense `json:"purchased_dna_license,omitempty"` //
+
 	PurchasedNetworkLicense *ResponseLicensesLicenseUsageDetailsV1PurchasedNetworkLicense `json:"purchased_network_license,omitempty"` //
-	UsedDnaLicense          *ResponseLicensesLicenseUsageDetailsV1UsedDnaLicense          `json:"used_dna_license,omitempty"`          //
-	UsedNetworkLicense      *ResponseLicensesLicenseUsageDetailsV1UsedNetworkLicense      `json:"used_network_license,omitempty"`      //
-	PurchasedIseLicense     *ResponseLicensesLicenseUsageDetailsV1PurchasedIseLicense     `json:"purchased_ise_license,omitempty"`     //
-	UsedIseLicense          *ResponseLicensesLicenseUsageDetailsV1UsedIseLicense          `json:"used_ise_license,omitempty"`          //
+
+	UsedDnaLicense *ResponseLicensesLicenseUsageDetailsV1UsedDnaLicense `json:"used_dna_license,omitempty"` //
+
+	UsedNetworkLicense *ResponseLicensesLicenseUsageDetailsV1UsedNetworkLicense `json:"used_network_license,omitempty"` //
 }
 type ResponseLicensesLicenseUsageDetailsV1PurchasedDnaLicense struct {
 	TotalLicenseCount  *int                                                                          `json:"total_license_count,omitempty"`   // Total number of licenses
@@ -241,24 +269,120 @@ type ResponseLicensesLicenseUsageDetailsV1UsedNetworkLicenseLicenseCountByType s
 	LicenseType  string `json:"license_type,omitempty"`  // Type of license
 	LicenseCount *int   `json:"license_count,omitempty"` // Number of licenses
 }
-type ResponseLicensesLicenseUsageDetailsV1PurchasedIseLicense struct {
-	TotalLicenseCount  *int                                                                          `json:"total_license_count,omitempty"`   // Total number of licenses
-	LicenseCountByType *[]ResponseLicensesLicenseUsageDetailsV1PurchasedIseLicenseLicenseCountByType `json:"license_count_by_type,omitempty"` //
+type ResponseLicensesSmartLicensingDeregistrationV1 struct {
+	Response *ResponseLicensesSmartLicensingDeregistrationV1Response `json:"response,omitempty"` //
+
+	Version string `json:"version,omitempty"` // API version
 }
-type ResponseLicensesLicenseUsageDetailsV1PurchasedIseLicenseLicenseCountByType struct {
-	LicenseType  string `json:"license_type,omitempty"`  // Type of license
-	LicenseCount *int   `json:"license_count,omitempty"` // Number of licenses
+type ResponseLicensesSmartLicensingDeregistrationV1Response struct {
+	URL string `json:"url,omitempty"` // URL to track the operation status
 }
-type ResponseLicensesLicenseUsageDetailsV1UsedIseLicense struct {
-	TotalLicenseCount  *int                                                                     `json:"total_license_count,omitempty"`   // Total number of licenses
-	LicenseCountByType *[]ResponseLicensesLicenseUsageDetailsV1UsedIseLicenseLicenseCountByType `json:"license_count_by_type,omitempty"` //
+type ResponseLicensesSystemLicensingLastOperationStatusV1 struct {
+	Response *ResponseLicensesSystemLicensingLastOperationStatusV1Response `json:"response,omitempty"` //
+
+	Version string `json:"version,omitempty"` // API version
 }
-type ResponseLicensesLicenseUsageDetailsV1UsedIseLicenseLicenseCountByType struct {
-	LicenseType  string `json:"license_type,omitempty"`  // Type of license
-	LicenseCount *int   `json:"license_count,omitempty"` // Number of licenses
+type ResponseLicensesSystemLicensingLastOperationStatusV1Response struct {
+	ID string `json:"id,omitempty"` // The ID of this task
+
+	Status string `json:"status,omitempty"` // Summarizes the status of a task
+
+	IsError *bool `json:"isError,omitempty"` // A boolean indicating if this task has ended with or without error. true indicates a failure, whereas false indicates a success.
+
+	FailureReason string `json:"failureReason,omitempty"` // A textual description indicating the reason why a task has failed
+
+	ErrorCode string `json:"errorCode,omitempty"` // An error code if in case this task has failed in its execution
+
+	LastUpdate *float64 `json:"lastUpdate,omitempty"` // A timestamp of when this task was last updated; as measured in Unix epoch time in milliseconds
+}
+type ResponseLicensesSystemLicensingRegistrationV1 struct {
+	Response *ResponseLicensesSystemLicensingRegistrationV1Response `json:"response,omitempty"` //
+
+	Version string `json:"version,omitempty"` // API version
+}
+type ResponseLicensesSystemLicensingRegistrationV1Response struct {
+	URL string `json:"url,omitempty"` // URL to track the operation status
+}
+type ResponseLicensesSmartLicensingRenewOperationV1 struct {
+	Response *ResponseLicensesSmartLicensingRenewOperationV1Response `json:"response,omitempty"` //
+
+	Version string `json:"version,omitempty"` // API version
+}
+type ResponseLicensesSmartLicensingRenewOperationV1Response struct {
+	URL string `json:"url,omitempty"` // URL to track the operation status
+}
+type ResponseLicensesSystemLicensingStatusV1 struct {
+	Response *ResponseLicensesSystemLicensingStatusV1Response `json:"response,omitempty"` //
+
+	Version string `json:"version,omitempty"` // API version
+}
+type ResponseLicensesSystemLicensingStatusV1Response struct {
+	RegistrationStatus *ResponseLicensesSystemLicensingStatusV1ResponseRegistrationStatus `json:"registrationStatus,omitempty"` //
+
+	AuthorizationStatus *ResponseLicensesSystemLicensingStatusV1ResponseAuthorizationStatus `json:"authorizationStatus,omitempty"` //
+
+	Entitlements *ResponseLicensesSystemLicensingStatusV1ResponseEntitlements `json:"entitlements,omitempty"` //
+
+	SmartAccountID string `json:"smartAccountId,omitempty"` // Smart Account id to which the system is registered
+
+	VirtualAccountID string `json:"virtualAccountId,omitempty"` // Virtual Account id to which the system is registered
+
+	ExportControl string `json:"exportControl,omitempty"` // Export-Controlled setting of Smart Account
+}
+type ResponseLicensesSystemLicensingStatusV1ResponseRegistrationStatus struct {
+	Status string `json:"status,omitempty"` // REGISTERED if the system is registered with CSSM, otherwise UNREGISTERED.
+
+	LastAttemptTimestamp *float64 `json:"lastAttemptTimestamp,omitempty"` // A date and time represented as milliseconds since the Unix epoch.
+
+	ExpiryTimestamp *float64 `json:"expiryTimestamp,omitempty"` // A date and time represented as milliseconds since the Unix epoch.
+
+	NextAttemptTimestamp *float64 `json:"nextAttemptTimestamp,omitempty"` // A date and time represented as milliseconds since the Unix epoch.
+
+	LastAttemptStatus string `json:"lastAttemptStatus,omitempty"` // The last registration request's status
+
+	LastAttemptFailReason string `json:"lastAttemptFailReason,omitempty"` // The reason for last registration request failure
+}
+type ResponseLicensesSystemLicensingStatusV1ResponseAuthorizationStatus struct {
+	Status string `json:"status,omitempty"` // This denotes the authorization status of the system.
+
+	LastAttemptTimestamp *float64 `json:"lastAttemptTimestamp,omitempty"` // A date and time represented as milliseconds since the Unix epoch.
+
+	EvaluationRemainderTimestamp *float64 `json:"evaluationRemainderTimestamp,omitempty"` // A date and time represented as milliseconds since the Unix epoch.
+
+	ExpiryTimestamp *float64 `json:"expiryTimestamp,omitempty"` // A date and time represented as milliseconds since the Unix epoch.
+
+	NextAttemptTimestamp *float64 `json:"nextAttemptTimestamp,omitempty"` // A date and time represented as milliseconds since the Unix epoch.
+
+	LastAttemptStatus string `json:"lastAttemptStatus,omitempty"` // The last authorization request's status
+
+	LastAttemptFailReason string `json:"lastAttemptFailReason,omitempty"` // The reason for last authorization request failure
+}
+type ResponseLicensesSystemLicensingStatusV1ResponseEntitlements struct {
+	Tag string `json:"tag,omitempty"` // Entitlement tag associated with the available licenses
+
+	Description string `json:"description,omitempty"` // Name or description of the license entitlement
+
+	UsageCount *int `json:"usageCount,omitempty"` // Available license count
+
+	Status string `json:"status,omitempty"` // This denotes the authorization status of the available licenses.
+}
+type RequestLicensesUpdateCSSMConnectionModeV1 struct {
+	ConnectionMode string `json:"connectionMode,omitempty"` // The CSSM connection modes of Catalyst Center are DIRECT, ON_PREMISE and SMART_PROXY.
+
+	Parameters *RequestLicensesUpdateCSSMConnectionModeV1Parameters `json:"parameters,omitempty"` //
+}
+type RequestLicensesUpdateCSSMConnectionModeV1Parameters struct {
+	OnPremiseHost string `json:"onPremiseHost,omitempty"` // On-premise CSSM hostname or IP address
+
+	SmartAccountName string `json:"smartAccountName,omitempty"` // On-premise CSSM local smart account name
+
+	ClientID string `json:"clientId,omitempty"` // On-premise CSSM client id
+
+	ClientSecret string `json:"clientSecret,omitempty"` // On-premise CSSM client secret
 }
 type RequestLicensesUpdateLicenseSettingV1 struct {
-	DefaultSmartAccountID            string `json:"defaultSmartAccountId,omitempty"`            // Default smart account id
+	DefaultSmartAccountID string `json:"defaultSmartAccountId,omitempty"` // Default smart account id
+
 	AutoRegistrationVirtualAccountID string `json:"autoRegistrationVirtualAccountId,omitempty"` // Virtual account id
 }
 type RequestLicensesDeviceDeregistrationV1 struct {
@@ -270,13 +394,51 @@ type RequestLicensesDeviceRegistrationV1 struct {
 type RequestLicensesChangeVirtualAccountV1 struct {
 	DeviceUUIDs []string `json:"device_uuids,omitempty"` // Comma separated device ids
 }
+type RequestLicensesSystemLicensingRegistrationV1 struct {
+	SmartAccountID   string `json:"smartAccountId,omitempty"`   // The ID of the Smart Account to which the system is registered
+	VirtualAccountID string `json:"virtualAccountId,omitempty"` // The ID of the Virtual Account to which the system is registered
+}
+
+//RetrievesCSSMConnectionModeV1 Retrieves CSSM Connection Mode - 1098-3a93-47a9-bf2c
+/* Retrieves Cisco Smart Software Manager (CSSM) connection mode setting.
+
+
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-c-s-s-m-connection-mode
+*/
+func (s *LicensesService) RetrievesCSSMConnectionModeV1() (*ResponseLicensesRetrievesCSSMConnectionModeV1, *resty.Response, error) {
+	path := "/dna/intent/api/v1/connectionModeSetting"
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetResult(&ResponseLicensesRetrievesCSSMConnectionModeV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.RetrievesCSSMConnectionModeV1()
+		}
+		return nil, response, fmt.Errorf("error with operation RetrievesCSSMConnectionModeV1")
+	}
+
+	result := response.Result().(*ResponseLicensesRetrievesCSSMConnectionModeV1)
+	return result, response, err
+
+}
 
 //RetrieveLicenseSettingV1 Retrieve license setting - c489-d9a3-4c09-84c7
 /* Retrieves license setting Default smart account id and virtual account id for auto registration of devices for smart license flow. If default smart account is not configured, 'defaultSmartAccountId' is 'null'. Similarly, if auto registration of devices for smart license flow is not enabled, 'autoRegistrationVirtualAccountId' is 'null'. For smart proxy connection mode, 'autoRegistrationVirtualAccountId' is always 'null'.
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieve-license-setting-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieve-license-setting
 */
 func (s *LicensesService) RetrieveLicenseSettingV1() (*ResponseLicensesRetrieveLicenseSettingV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/licenseSetting"
@@ -311,7 +473,7 @@ func (s *LicensesService) RetrieveLicenseSettingV1() (*ResponseLicensesRetrieveL
 
 @param DeviceCountDetailsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!device-count-details-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!device-count-details
 */
 func (s *LicensesService) DeviceCountDetailsV1(DeviceCountDetailsV1QueryParams *DeviceCountDetailsV1QueryParams) (*ResponseLicensesDeviceCountDetailsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/licenses/device/count"
@@ -348,7 +510,7 @@ func (s *LicensesService) DeviceCountDetailsV1(DeviceCountDetailsV1QueryParams *
 
 @param DeviceLicenseSummaryV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!device-license-summary-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!device-license-summary
 */
 func (s *LicensesService) DeviceLicenseSummaryV1(DeviceLicenseSummaryV1QueryParams *DeviceLicenseSummaryV1QueryParams) (*ResponseLicensesDeviceLicenseSummaryV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/licenses/device/summary"
@@ -386,7 +548,7 @@ func (s *LicensesService) DeviceLicenseSummaryV1(DeviceLicenseSummaryV1QueryPara
 @param deviceuuid device_uuid path parameter. Id of device
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!device-license-details-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!device-license-details
 */
 func (s *LicensesService) DeviceLicenseDetailsV1(deviceuuid string) (*ResponseLicensesDeviceLicenseDetailsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/licenses/device/{device_uuid}/details"
@@ -423,7 +585,7 @@ func (s *LicensesService) DeviceLicenseDetailsV1(deviceuuid string) (*ResponseLi
 @param smartaccountTypeID smart_account_id path parameter. Id of smart account
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!virtual-account-details-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!virtual-account-details
 */
 func (s *LicensesService) VirtualAccountDetailsV1(smartaccountTypeID string) (*ResponseLicensesVirtualAccountDetailsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/licenses/smartAccount/{smart_account_id}/virtualAccounts"
@@ -458,7 +620,7 @@ func (s *LicensesService) VirtualAccountDetailsV1(smartaccountTypeID string) (*R
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!smart-account-details-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!smart-account-details
 */
 func (s *LicensesService) SmartAccountDetailsV1() (*ResponseLicensesSmartAccountDetailsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/licenses/smartAccounts"
@@ -497,7 +659,7 @@ func (s *LicensesService) SmartAccountDetailsV1() (*ResponseLicensesSmartAccount
 
 @param LicenseTermDetailsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!license-term-details-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!license-term-details
 */
 func (s *LicensesService) LicenseTermDetailsV1(smartaccountTypeID string, virtualaccountname string, LicenseTermDetailsV1QueryParams *LicenseTermDetailsV1QueryParams) (*ResponseLicensesLicenseTermDetailsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/licenses/term/smartAccount/{smart_account_id}/virtualAccount/{virtual_account_name}"
@@ -540,7 +702,7 @@ func (s *LicensesService) LicenseTermDetailsV1(smartaccountTypeID string, virtua
 
 @param LicenseUsageDetailsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!license-usage-details-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!license-usage-details
 */
 func (s *LicensesService) LicenseUsageDetailsV1(smartaccountTypeID string, virtualaccountname string, LicenseUsageDetailsV1QueryParams *LicenseUsageDetailsV1QueryParams) (*ResponseLicensesLicenseUsageDetailsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/licenses/usage/smartAccount/{smart_account_id}/virtualAccount/{virtual_account_name}"
@@ -573,6 +735,74 @@ func (s *LicensesService) LicenseUsageDetailsV1(smartaccountTypeID string, virtu
 
 }
 
+//SystemLicensingLastOperationStatusV1 System Licensing Last Operation Status - 458d-da00-4e18-b4ec
+/* Retrieves the status of the last system licensing operation.
+
+
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!system-licensing-last-operation-status
+*/
+func (s *LicensesService) SystemLicensingLastOperationStatusV1() (*ResponseLicensesSystemLicensingLastOperationStatusV1, *resty.Response, error) {
+	path := "/dna/system/api/v1/license/lastOperationStatus"
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetResult(&ResponseLicensesSystemLicensingLastOperationStatusV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.SystemLicensingLastOperationStatusV1()
+		}
+		return nil, response, fmt.Errorf("error with operation SystemLicensingLastOperationStatusV1")
+	}
+
+	result := response.Result().(*ResponseLicensesSystemLicensingLastOperationStatusV1)
+	return result, response, err
+
+}
+
+//SystemLicensingStatusV1 System Licensing Status - 64a5-0bcb-414b-89e1
+/* Fetches registration status, authorization status and entitlements of the system with Cisco Smart Software Manage (CSSM).
+
+
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!system-licensing-status
+*/
+func (s *LicensesService) SystemLicensingStatusV1() (*ResponseLicensesSystemLicensingStatusV1, *resty.Response, error) {
+	path := "/dna/system/api/v1/license/status"
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetResult(&ResponseLicensesSystemLicensingStatusV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.SystemLicensingStatusV1()
+		}
+		return nil, response, fmt.Errorf("error with operation SystemLicensingStatusV1")
+	}
+
+	result := response.Result().(*ResponseLicensesSystemLicensingStatusV1)
+	return result, response, err
+
+}
+
 //ChangeVirtualAccountV1 Change Virtual Account - bea7-4a0b-4778-8c89
 /* Transfer device(s) from one virtual account to another within same smart account.
 
@@ -582,7 +812,7 @@ func (s *LicensesService) LicenseUsageDetailsV1(smartaccountTypeID string, virtu
 @param virtualaccountname virtual_account_name path parameter. Name of target virtual account
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!change-virtual-account-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!change-virtual-account
 */
 func (s *LicensesService) ChangeVirtualAccountV1(smartaccountTypeID string, virtualaccountname string, requestLicensesChangeVirtualAccountV1 *RequestLicensesChangeVirtualAccountV1) (*ResponseLicensesChangeVirtualAccountV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/licenses/smartAccount/{smart_account_id}/virtualAccount/{virtual_account_name}/device/transfer"
@@ -612,6 +842,148 @@ func (s *LicensesService) ChangeVirtualAccountV1(smartaccountTypeID string, virt
 	}
 
 	result := response.Result().(*ResponseLicensesChangeVirtualAccountV1)
+	return result, response, err
+
+}
+
+//SmartLicensingDeregistrationV1 Smart Licensing Deregistration - 8489-ea73-4838-a40e
+/* Deregisters the system with Cisco Smart Software Manager (CSSM)
+
+
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!smart-licensing-deregistration
+*/
+func (s *LicensesService) SmartLicensingDeregistrationV1() (*ResponseLicensesSmartLicensingDeregistrationV1, *resty.Response, error) {
+	path := "/dna/system/api/v1/license/deregister"
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetResult(&ResponseLicensesSmartLicensingDeregistrationV1{}).
+		SetError(&Error).
+		Post(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.SmartLicensingDeregistrationV1()
+		}
+
+		return nil, response, fmt.Errorf("error with operation SmartLicensingDeregistrationV1")
+	}
+
+	result := response.Result().(*ResponseLicensesSmartLicensingDeregistrationV1)
+	return result, response, err
+
+}
+
+//SystemLicensingRegistrationV1 System Licensing Registration - eda9-ea64-4ce8-ad1e
+/* Registers the system with Cisco Smart Software Manager (CSSM)
+
+
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!system-licensing-registration
+*/
+func (s *LicensesService) SystemLicensingRegistrationV1(requestLicensesSystemLicensingRegistrationV1 *RequestLicensesSystemLicensingRegistrationV1) (*ResponseLicensesSystemLicensingRegistrationV1, *resty.Response, error) {
+	path := "/dna/system/api/v1/license/register"
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetBody(requestLicensesSystemLicensingRegistrationV1).
+		SetResult(&ResponseLicensesSystemLicensingRegistrationV1{}).
+		SetError(&Error).
+		Post(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.SystemLicensingRegistrationV1(requestLicensesSystemLicensingRegistrationV1)
+		}
+
+		return nil, response, fmt.Errorf("error with operation SystemLicensingRegistrationV1")
+	}
+
+	result := response.Result().(*ResponseLicensesSystemLicensingRegistrationV1)
+	return result, response, err
+
+}
+
+//SmartLicensingRenewOperationV1 Smart Licensing Renew Operation - d288-fb7f-45b8-87d7
+/* Renews license registration and authorization status of the system with Cisco Smart Software Manager (CSSM)
+
+
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!smart-licensing-renew-operation
+*/
+func (s *LicensesService) SmartLicensingRenewOperationV1() (*ResponseLicensesSmartLicensingRenewOperationV1, *resty.Response, error) {
+	path := "/dna/system/api/v1/license/renew"
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetResult(&ResponseLicensesSmartLicensingRenewOperationV1{}).
+		SetError(&Error).
+		Post(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.SmartLicensingRenewOperationV1()
+		}
+
+		return nil, response, fmt.Errorf("error with operation SmartLicensingRenewOperationV1")
+	}
+
+	result := response.Result().(*ResponseLicensesSmartLicensingRenewOperationV1)
+	return result, response, err
+
+}
+
+//UpdateCSSMConnectionModeV1 Update CSSM Connection Mode - cfb4-18c6-4eb8-959a
+/* Update Cisco Smart Software Manager (CSSM) connection mode for the system.
+
+
+ */
+func (s *LicensesService) UpdateCSSMConnectionModeV1(requestLicensesUpdateCSSMConnectionModeV1 *RequestLicensesUpdateCSSMConnectionModeV1) (*ResponseLicensesUpdateCSSMConnectionModeV1, *resty.Response, error) {
+	path := "/dna/intent/api/v1/connectionModeSetting"
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetBody(requestLicensesUpdateCSSMConnectionModeV1).
+		SetResult(&ResponseLicensesUpdateCSSMConnectionModeV1{}).
+		SetError(&Error).
+		Put(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.UpdateCSSMConnectionModeV1(requestLicensesUpdateCSSMConnectionModeV1)
+		}
+		return nil, response, fmt.Errorf("error with operation UpdateCSSMConnectionModeV1")
+	}
+
+	result := response.Result().(*ResponseLicensesUpdateCSSMConnectionModeV1)
 	return result, response, err
 
 }
@@ -736,6 +1108,14 @@ func (s *LicensesService) LicenseTermDetails(smartaccountTypeID string, virtuala
 
 // Alias Function
 /*
+This method acts as an alias for the method `SystemLicensingRegistrationV1`
+*/
+func (s *LicensesService) SystemLicensingRegistration(requestLicensesSystemLicensingRegistrationV1 *RequestLicensesSystemLicensingRegistrationV1) (*ResponseLicensesSystemLicensingRegistrationV1, *resty.Response, error) {
+	return s.SystemLicensingRegistrationV1(requestLicensesSystemLicensingRegistrationV1)
+}
+
+// Alias Function
+/*
 This method acts as an alias for the method `DeviceCountDetailsV1`
 */
 func (s *LicensesService) DeviceCountDetails(DeviceCountDetailsV1QueryParams *DeviceCountDetailsV1QueryParams) (*ResponseLicensesDeviceCountDetailsV1, *resty.Response, error) {
@@ -744,10 +1124,26 @@ func (s *LicensesService) DeviceCountDetails(DeviceCountDetailsV1QueryParams *De
 
 // Alias Function
 /*
+This method acts as an alias for the method `SmartLicensingDeregistrationV1`
+*/
+func (s *LicensesService) SmartLicensingDeregistration() (*ResponseLicensesSmartLicensingDeregistrationV1, *resty.Response, error) {
+	return s.SmartLicensingDeregistrationV1()
+}
+
+// Alias Function
+/*
 This method acts as an alias for the method `RetrieveLicenseSettingV1`
 */
 func (s *LicensesService) RetrieveLicenseSetting() (*ResponseLicensesRetrieveLicenseSettingV1, *resty.Response, error) {
 	return s.RetrieveLicenseSettingV1()
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `SmartLicensingRenewOperationV1`
+*/
+func (s *LicensesService) SmartLicensingRenewOperation() (*ResponseLicensesSmartLicensingRenewOperationV1, *resty.Response, error) {
+	return s.SmartLicensingRenewOperationV1()
 }
 
 // Alias Function
@@ -776,6 +1172,22 @@ func (s *LicensesService) DeviceRegistration(virtualaccountname string, requestL
 
 // Alias Function
 /*
+This method acts as an alias for the method `RetrievesCSSMConnectionModeV1`
+*/
+func (s *LicensesService) RetrievesCSSMConnectionMode() (*ResponseLicensesRetrievesCSSMConnectionModeV1, *resty.Response, error) {
+	return s.RetrievesCSSMConnectionModeV1()
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `UpdateCSSMConnectionModeV1`
+*/
+func (s *LicensesService) UpdateCSSMConnectionMode(requestLicensesUpdateCSSMConnectionModeV1 *RequestLicensesUpdateCSSMConnectionModeV1) (*ResponseLicensesUpdateCSSMConnectionModeV1, *resty.Response, error) {
+	return s.UpdateCSSMConnectionModeV1(requestLicensesUpdateCSSMConnectionModeV1)
+}
+
+// Alias Function
+/*
 This method acts as an alias for the method `SmartAccountDetailsV1`
 */
 func (s *LicensesService) SmartAccountDetails() (*ResponseLicensesSmartAccountDetailsV1, *resty.Response, error) {
@@ -784,10 +1196,26 @@ func (s *LicensesService) SmartAccountDetails() (*ResponseLicensesSmartAccountDe
 
 // Alias Function
 /*
+This method acts as an alias for the method `SystemLicensingLastOperationStatusV1`
+*/
+func (s *LicensesService) SystemLicensingLastOperationStatus() (*ResponseLicensesSystemLicensingLastOperationStatusV1, *resty.Response, error) {
+	return s.SystemLicensingLastOperationStatusV1()
+}
+
+// Alias Function
+/*
 This method acts as an alias for the method `UpdateLicenseSettingV1`
 */
 func (s *LicensesService) UpdateLicenseSetting(requestLicensesUpdateLicenseSettingV1 *RequestLicensesUpdateLicenseSettingV1) (*ResponseLicensesUpdateLicenseSettingV1, *resty.Response, error) {
 	return s.UpdateLicenseSettingV1(requestLicensesUpdateLicenseSettingV1)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `SystemLicensingStatusV1`
+*/
+func (s *LicensesService) SystemLicensingStatus() (*ResponseLicensesSystemLicensingStatusV1, *resty.Response, error) {
+	return s.SystemLicensingStatusV1()
 }
 
 // Alias Function

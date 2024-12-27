@@ -66,7 +66,7 @@ type RequestItsmRetryIntegrationEventsV1 []string // Array of RequestItsmRetryIn
 
 @param GetCMDBSyncStatusV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-cmdb-sync-status-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-cmdb-sync-status
 */
 func (s *ItsmService) GetCmdbSyncStatusV1(GetCMDBSyncStatusV1QueryParams *GetCmdbSyncStatusV1QueryParams) (*ResponseItsmGetCmdbSyncStatusV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/cmdb-sync/detail"
@@ -103,7 +103,7 @@ func (s *ItsmService) GetCmdbSyncStatusV1(GetCMDBSyncStatusV1QueryParams *GetCmd
 
 @param GetFailedITSMEventsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-failed-itsm-events-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-failed-itsm-events
 */
 func (s *ItsmService) GetFailedItsmEventsV1(GetFailedITSMEventsV1QueryParams *GetFailedItsmEventsV1QueryParams) (*ResponseItsmGetFailedItsmEventsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/integration/events"
@@ -139,7 +139,7 @@ func (s *ItsmService) GetFailedItsmEventsV1(GetFailedITSMEventsV1QueryParams *Ge
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!retry-integration-events-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retry-integration-events
 */
 func (s *ItsmService) RetryIntegrationEventsV1(requestItsmRetryIntegrationEventsV1 *RequestItsmRetryIntegrationEventsV1) (*ResponseItsmRetryIntegrationEventsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/integration/events"

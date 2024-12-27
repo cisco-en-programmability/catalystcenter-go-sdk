@@ -6,9 +6,15 @@ import (
 	"strings"
 
 	"github.com/go-resty/resty/v2"
+	"github.com/google/go-querystring/query"
 )
 
 type EoXService service
+
+type GetEoXStatusForAllDevicesV1QueryParams struct {
+	Limit  float64 `url:"limit,omitempty"`  //The number of records to show for this page. Default is 500 if not specified. Maximum allowed limit is 500.
+	Offset float64 `url:"offset,omitempty"` //The first record to show for this page, the first record is numbered 1
+}
 
 type ResponseEoXGetEoXStatusForAllDevicesV1 struct {
 	Response *[]ResponseEoXGetEoXStatusForAllDevicesV1Response `json:"response,omitempty"` //
@@ -23,7 +29,7 @@ type ResponseEoXGetEoXStatusForAllDevicesV1Response struct {
 	LastScanTime *int                                                     `json:"lastScanTime,omitempty"` // Time at which the network device was scanned. The representation is unix time.
 }
 type ResponseEoXGetEoXStatusForAllDevicesV1ResponseSummary struct {
-	EoXType string `json:"EoXType,omitempty"` // Type of EoX Alert
+	EoXType string `json:"eoxType,omitempty"` // Type of EoX Alert
 }
 type ResponseEoXGetEoXDetailsPerDeviceV1 struct {
 	Response *ResponseEoXGetEoXDetailsPerDeviceV1Response `json:"response,omitempty"` //
@@ -73,16 +79,19 @@ type ResponseEoXGetEoXSummaryV1Response struct {
 /* Retrieves EoX status for all devices in the network
 
 
+@param GetEoXStatusForAllDevicesV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-EoX-status-for-all-devices-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-eox-status-for-all-devices
 */
-func (s *EoXService) GetEoXStatusForAllDevicesV1() (*ResponseEoXGetEoXStatusForAllDevicesV1, *resty.Response, error) {
-	path := "/dna/intent/api/v1/EoX-status/device"
+func (s *EoXService) GetEoXStatusForAllDevicesV1(GetEoXStatusForAllDevicesV1QueryParams *GetEoXStatusForAllDevicesV1QueryParams) (*ResponseEoXGetEoXStatusForAllDevicesV1, *resty.Response, error) {
+	path := "/dna/intent/api/v1/eox-status/device"
+
+	queryString, _ := query.Values(GetEoXStatusForAllDevicesV1QueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseEoXGetEoXStatusForAllDevicesV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEoXGetEoXStatusForAllDevicesV1{}).
 		SetError(&Error).
 		Get(path)
 
@@ -93,7 +102,7 @@ func (s *EoXService) GetEoXStatusForAllDevicesV1() (*ResponseEoXGetEoXStatusForA
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetEoXStatusForAllDevicesV1()
+			return s.GetEoXStatusForAllDevicesV1(GetEoXStatusForAllDevicesV1QueryParams)
 		}
 		return nil, response, fmt.Errorf("error with operation GetEoXStatusForAllDevicesV1")
 	}
@@ -110,10 +119,10 @@ func (s *EoXService) GetEoXStatusForAllDevicesV1() (*ResponseEoXGetEoXStatusForA
 @param deviceID deviceId path parameter. Device instance UUID
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-EoX-details-per-device-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-eox-details-per-device
 */
 func (s *EoXService) GetEoXDetailsPerDeviceV1(deviceID string) (*ResponseEoXGetEoXDetailsPerDeviceV1, *resty.Response, error) {
-	path := "/dna/intent/api/v1/EoX-status/device/{deviceId}"
+	path := "/dna/intent/api/v1/eox-status/device/{deviceId}"
 	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceID), -1)
 
 	response, err := s.client.R().
@@ -145,10 +154,10 @@ func (s *EoXService) GetEoXDetailsPerDeviceV1(deviceID string) (*ResponseEoXGetE
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-EoX-summary-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-eox-summary
 */
 func (s *EoXService) GetEoXSummaryV1() (*ResponseEoXGetEoXSummaryV1, *resty.Response, error) {
-	path := "/dna/intent/api/v1/EoX-status/summary"
+	path := "/dna/intent/api/v1/eox-status/summary"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
@@ -186,8 +195,8 @@ func (s *EoXService) GetEoXDetailsPerDevice(deviceID string) (*ResponseEoXGetEoX
 /*
 This method acts as an alias for the method `GetEoXStatusForAllDevicesV1`
 */
-func (s *EoXService) GetEoXStatusForAllDevices() (*ResponseEoXGetEoXStatusForAllDevicesV1, *resty.Response, error) {
-	return s.GetEoXStatusForAllDevicesV1()
+func (s *EoXService) GetEoXStatusForAllDevices(GetEoXStatusForAllDevicesV1QueryParams *GetEoXStatusForAllDevicesV1QueryParams) (*ResponseEoXGetEoXStatusForAllDevicesV1, *resty.Response, error) {
+	return s.GetEoXStatusForAllDevicesV1(GetEoXStatusForAllDevicesV1QueryParams)
 }
 
 // Alias Function

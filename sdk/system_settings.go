@@ -13,61 +13,98 @@ type SystemSettingsService service
 
 type GetAuthenticationAndPolicyServersV1QueryParams struct {
 	IsIseEnabled bool   `url:"isIseEnabled,omitempty"` //Valid values are : true, false
-	State        string `url:"state,omitempty"`        //Valid values are: ACTIVE, INACTIVE, RBAC_SUCCESS, RBAC_FAILURE, DELETED, FAILED, INPROGRESS
+	State        string `url:"state,omitempty"`        //Valid values are: ACTIVE, DELETED, FAILED, INACTIVE, INPROGRESS, RBAC-FAILURE, RBAC-SUCCESS
 	Role         string `url:"role,omitempty"`         //Authentication and Policy Server Role (Example: primary, secondary)
 }
 
 type ResponseSystemSettingsAddAuthenticationAndPolicyServerAccessConfigurationV1 struct {
 	Response *ResponseSystemSettingsAddAuthenticationAndPolicyServerAccessConfigurationV1Response `json:"response,omitempty"` //
-	Version  string                                                                               `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseSystemSettingsAddAuthenticationAndPolicyServerAccessConfigurationV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task Id
-	URL    string `json:"url,omitempty"`    // Url
+
+	URL string `json:"url,omitempty"` // Url
 }
 type ResponseSystemSettingsGetAuthenticationAndPolicyServersV1 struct {
 	Response *[]ResponseSystemSettingsGetAuthenticationAndPolicyServersV1Response `json:"response,omitempty"` //
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseSystemSettingsGetAuthenticationAndPolicyServersV1Response struct {
-	IPAddress            string                                                                           `json:"ipAddress,omitempty"`            // IP address of authentication and policy server
-	SharedSecret         string                                                                           `json:"sharedSecret,omitempty"`         // Shared secret between devices and authentication and policy server
-	Protocol             string                                                                           `json:"protocol,omitempty"`             // Type of protocol for authentication and policy server
-	Role                 string                                                                           `json:"role,omitempty"`                 // Role of authentication and policy server (Example: primary, secondary)
-	Port                 *int                                                                             `json:"port,omitempty"`                 // Port of TACACS server (Default: 49)
-	AuthenticationPort   *int                                                                             `json:"authenticationPort,omitempty"`   // Authentication port of RADIUS server (Default: 1812)
-	AccountingPort       *int                                                                             `json:"accountingPort,omitempty"`       // Accounting port of RADIUS server (Default: 1813)
-	Retries              *int                                                                             `json:"retries,omitempty"`              // Number of communication retries between devices and authentication and policy server (Default: 3)
-	TimeoutSeconds       *int                                                                             `json:"timeoutSeconds,omitempty"`       // Number of seconds before timing out between devices and authentication and policy server (Default: 4 seconds)
-	IsIseEnabled         *bool                                                                            `json:"isIseEnabled,omitempty"`         // If server type is ISE, value will be true otherwise false
-	InstanceUUID         string                                                                           `json:"instanceUuid,omitempty"`         // Internal record identifier
-	State                string                                                                           `json:"state,omitempty"`                // State of authentication and policy server
-	CiscoIseDtos         *[]ResponseSystemSettingsGetAuthenticationAndPolicyServersV1ResponseCiscoIseDtos `json:"ciscoIseDtos,omitempty"`         //
-	EncryptionScheme     string                                                                           `json:"encryptionScheme,omitempty"`     // Type of encryption scheme for additional security
-	MessageKey           string                                                                           `json:"messageKey,omitempty"`           // Message key used to encrypt shared secret
-	EncryptionKey        string                                                                           `json:"encryptionKey,omitempty"`        // Encryption key used to encrypt shared secret
-	UseDnacCertForPxgrid *bool                                                                            `json:"useDnacCertForPxgrid,omitempty"` // Use DNAC Certificate For Pxgrid
-	IseEnabled           *bool                                                                            `json:"iseEnabled,omitempty"`           // If server type is ISE, value will be true otherwise false
-	PxgridEnabled        *bool                                                                            `json:"pxgridEnabled,omitempty"`        // If pxgrid enabled, value will be true otherwise false
-	RbacUUID             string                                                                           `json:"rbacUuid,omitempty"`             // Internal use only
-	MultiDnacEnabled     *bool                                                                            `json:"multiDnacEnabled,omitempty"`     // Internal use only
+	IPAddress string `json:"ipAddress,omitempty"` // IP address of authentication and policy server (readonly)
+
+	SharedSecret string `json:"sharedSecret,omitempty"` // Shared secret between devices and authentication and policy server (readonly)
+
+	Protocol string `json:"protocol,omitempty"` // Type of protocol for authentication and policy server. If already saved with RADIUS, can update to RADIUS_TACACS. If already saved with TACACS, can update to RADIUS_TACACS
+
+	Role string `json:"role,omitempty"` // Role of authentication and policy server (readonly). E.g. primary, secondary
+
+	Port *int `json:"port,omitempty"` // Port of TACACS server (readonly). The range is from 1 to 65535. Default is 49.
+
+	AuthenticationPort *int `json:"authenticationPort,omitempty"` // Authentication port of RADIUS server (readonly). The range is from 1 to 65535. Default is 1812. E.g. 1812
+
+	AccountingPort *int `json:"accountingPort,omitempty"` // Accounting port of RADIUS server (readonly). The range is from 1 to 65535. Default is 1813. E.g. 1813
+
+	Retries *int `json:"retries,omitempty"` // Number of communication retries between devices and authentication and policy server. The range is from 1 to 3. Default is 3
+
+	TimeoutSeconds *int `json:"timeoutSeconds,omitempty"` // Number of seconds before timing out between devices and authentication and policy server. The range is from 2 to 20
+
+	IsIseEnabled *bool `json:"isIseEnabled,omitempty"` // Value true for Cisco ISE Server (readonly). Default value is false
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Internal record identifier
+
+	State string `json:"state,omitempty"` // State of authentication and policy server
+
+	CiscoIseDtos *[]ResponseSystemSettingsGetAuthenticationAndPolicyServersV1ResponseCiscoIseDtos `json:"ciscoIseDtos,omitempty"` //
+
+	EncryptionScheme string `json:"encryptionScheme,omitempty"` // Type of encryption scheme for additional security (readonly)
+
+	MessageKey string `json:"messageKey,omitempty"` // Encryption key used to encrypt shared secret (readonly)
+
+	EncryptionKey string `json:"encryptionKey,omitempty"` // Encryption key used to encrypt shared secret
+
+	UseDnacCertForPxgrid *bool `json:"useDnacCertForPxgrid,omitempty"` // Value true to use DNAC certificate for Pxgrid. Default value is false
+
+	IseEnabled *bool `json:"iseEnabled,omitempty"` // Value true for Cisco ISE Server (readonly). Default value is false
+
+	PxgridEnabled *bool `json:"pxgridEnabled,omitempty"` // Value true for enable, false for disable. Default value is true
+
+	RbacUUID string `json:"rbacUuid,omitempty"` // Internal use only
+
+	MultiDnacEnabled *bool `json:"multiDnacEnabled,omitempty"` // Internal use only
 }
 type ResponseSystemSettingsGetAuthenticationAndPolicyServersV1ResponseCiscoIseDtos struct {
-	SubscriberName             string                                                                                                   `json:"subscriberName,omitempty"`             // Subscriber name of the ISE server (Example: pxgrid_client_1662589467)
-	Description                string                                                                                                   `json:"description,omitempty"`                // Description about the ISE server
-	Password                   string                                                                                                   `json:"password,omitempty"`                   // For security reasons the value will always be empty
-	UserName                   string                                                                                                   `json:"userName,omitempty"`                   // User name of the ISE server
-	Fqdn                       string                                                                                                   `json:"fqdn,omitempty"`                       // Fully-qualified domain name of the ISE server (Example: xi-62.my.com)
-	IPAddress                  string                                                                                                   `json:"ipAddress,omitempty"`                  // IP Address of the ISE server
-	TrustState                 string                                                                                                   `json:"trustState,omitempty"`                 // Trust State between DNAC and the ISE server
-	InstanceUUID               string                                                                                                   `json:"instanceUuid,omitempty"`               // Internal record identifier
-	SSHkey                     string                                                                                                   `json:"sshkey,omitempty"`                     // For security reasons the value will always be empty
-	Type                       string                                                                                                   `json:"type,omitempty"`                       // Type (Example: ISE)
-	FailureReason              string                                                                                                   `json:"failureReason,omitempty"`              // Reason for integration failure between DNAC and the ISE server
-	Role                       string                                                                                                   `json:"role,omitempty"`                       // Role of the ISE server
+	SubscriberName string `json:"subscriberName,omitempty"` // Subscriber name of the Cisco ISE server (readonly). E.g. pxgrid_client_1662589467
+
+	Description string `json:"description,omitempty"` // Description about the Cisco ISE server
+
+	Password string `json:"password,omitempty"` // Password of the Cisco ISE server. For security reasons the value will always be empty
+
+	UserName string `json:"userName,omitempty"` // User name of the Cisco ISE server
+
+	Fqdn string `json:"fqdn,omitempty"` // Fully-qualified domain name of the Cisco ISE server (readonly). E.g. xi-62.my.com
+
+	IPAddress string `json:"ipAddress,omitempty"` // IP Address of the Cisco ISE Server (readonly)
+
+	TrustState string `json:"trustState,omitempty"` // Trust State between DNAC and the ISE server
+
+	InstanceUUID string `json:"instanceUuid,omitempty"` // Internal record identifier
+
+	SSHkey string `json:"sshkey,omitempty"` // SSH key of the Cisco ISE server. For security reasons the value will always be empty
+
+	Type string `json:"type,omitempty"` // Type (Example: ISE)
+
+	FailureReason string `json:"failureReason,omitempty"` // Reason for integration failure between DNAC and the ISE server
+
+	Role string `json:"role,omitempty"` // Role of the Cisco ISE server
+
 	ExternalCiscoIseIPAddrDtos *ResponseSystemSettingsGetAuthenticationAndPolicyServersV1ResponseCiscoIseDtosExternalCiscoIseIPAddrDtos `json:"externalCiscoIseIpAddrDtos,omitempty"` //
 }
 type ResponseSystemSettingsGetAuthenticationAndPolicyServersV1ResponseCiscoIseDtosExternalCiscoIseIPAddrDtos struct {
-	Type                        string                                                                                                                                `json:"type,omitempty"`                        // Type
+	Type string `json:"type,omitempty"` // Type
+
 	ExternalCiscoIseIPAddresses *[]ResponseSystemSettingsGetAuthenticationAndPolicyServersV1ResponseCiscoIseDtosExternalCiscoIseIPAddrDtosExternalCiscoIseIPAddresses `json:"externalCiscoIseIpAddresses,omitempty"` //
 }
 type ResponseSystemSettingsGetAuthenticationAndPolicyServersV1ResponseCiscoIseDtosExternalCiscoIseIPAddrDtosExternalCiscoIseIPAddresses struct {
@@ -75,137 +112,195 @@ type ResponseSystemSettingsGetAuthenticationAndPolicyServersV1ResponseCiscoIseDt
 }
 type ResponseSystemSettingsDeleteAuthenticationAndPolicyServerAccessConfigurationV1 struct {
 	Response *ResponseSystemSettingsDeleteAuthenticationAndPolicyServerAccessConfigurationV1Response `json:"response,omitempty"` //
-	Version  string                                                                                  `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseSystemSettingsDeleteAuthenticationAndPolicyServerAccessConfigurationV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task Id
-	URL    string `json:"url,omitempty"`    // Url
+
+	URL string `json:"url,omitempty"` // Url
 }
 type ResponseSystemSettingsEditAuthenticationAndPolicyServerAccessConfigurationV1 struct {
 	Response *ResponseSystemSettingsEditAuthenticationAndPolicyServerAccessConfigurationV1Response `json:"response,omitempty"` //
-	Version  string                                                                                `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseSystemSettingsEditAuthenticationAndPolicyServerAccessConfigurationV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task Id
-	URL    string `json:"url,omitempty"`    // Url
+
+	URL string `json:"url,omitempty"` // Url
 }
 type ResponseSystemSettingsAcceptCiscoIseServerCertificateForCiscoIseServerIntegrationV1 interface{}
 type ResponseSystemSettingsCreatesConfigurationDetailsOfTheExternalIPAMServerV1 struct {
 	Response *ResponseSystemSettingsCreatesConfigurationDetailsOfTheExternalIPAMServerV1Response `json:"response,omitempty"` //
-	Version  string                                                                              `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseSystemSettingsCreatesConfigurationDetailsOfTheExternalIPAMServerV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // Task Id
-	URL    string `json:"url,omitempty"`    // Url
+	TaskID string `json:"taskId,omitempty"` // Id of the task for this external IPAM integration process.
+
+	URL string `json:"url,omitempty"` // URL to call to check status of this task.
 }
 type ResponseSystemSettingsRetrievesConfigurationDetailsOfTheExternalIPAMServerV1 struct {
 	Response *ResponseSystemSettingsRetrievesConfigurationDetailsOfTheExternalIPAMServerV1Response `json:"response,omitempty"` //
-	Version  string                                                                                `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseSystemSettingsRetrievesConfigurationDetailsOfTheExternalIPAMServerV1Response struct {
-	Provider   string `json:"provider,omitempty"`   // Type of external IPAM. Can be either INFOBLOX, BLUECAT or GENERIC.
+	Provider string `json:"provider,omitempty"` // Type of external IPAM. Can be either INFOBLOX, BLUECAT or GENERIC.
+
 	ServerName string `json:"serverName,omitempty"` // A descriptive name of this external server, used for identification purposes
-	ServerURL  string `json:"serverUrl,omitempty"`  // The URL of this external server
-	State      string `json:"state,omitempty"`      // State of the the external IPAM.* OK indicates success of most recent periodic communication check with external IPAM.* CRITICAL indicates failure of most recent attempt to communicate with the external IPAM.* SYNCHRONIZING indicates that the process of synchronizing the external IPAM database with the local IPAM database is running and all other IPAM processes will be blocked until the completes.* DISCONNECTED indicates the external IPAM is no longer being used.
-	UserName   string `json:"userName,omitempty"`   // The external IPAM server login username
-	View       string `json:"view,omitempty"`       // The view under which pools are created in the external IPAM server.
+
+	ServerURL string `json:"serverUrl,omitempty"` // The URL of this external server
+
+	State string `json:"state,omitempty"` // State of the the external IPAM.* OK indicates success of most recent periodic communication check with external IPAM.* CRITICAL indicates failure of most recent attempt to communicate with the external IPAM.* SYNCHRONIZING indicates that the process of synchronizing the external IPAM database with the local IPAM database is running and all other IPAM processes will be blocked until the completes.* DISCONNECTED indicates the external IPAM is no longer being used.
+
+	UserName string `json:"userName,omitempty"` // The external IPAM server login username
+
+	View string `json:"view,omitempty"` // The view under which pools are created in the external IPAM server.
 }
 type ResponseSystemSettingsDeletesConfigurationDetailsOfTheExternalIPAMServerV1 struct {
 	Response *ResponseSystemSettingsDeletesConfigurationDetailsOfTheExternalIPAMServerV1Response `json:"response,omitempty"` //
-	Version  string                                                                              `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseSystemSettingsDeletesConfigurationDetailsOfTheExternalIPAMServerV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // Task Id
-	URL    string `json:"url,omitempty"`    // Url
+	TaskID string `json:"taskId,omitempty"` // Id of the task for this external IPAM removal process.
+
+	URL string `json:"url,omitempty"` // URL to call to check status of this task.
 }
 type ResponseSystemSettingsUpdatesConfigurationDetailsOfTheExternalIPAMServerV1 struct {
 	Response *ResponseSystemSettingsUpdatesConfigurationDetailsOfTheExternalIPAMServerV1Response `json:"response,omitempty"` //
-	Version  string                                                                              `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseSystemSettingsUpdatesConfigurationDetailsOfTheExternalIPAMServerV1Response struct {
-	TaskID string `json:"taskId,omitempty"` // Task Id
-	URL    string `json:"url,omitempty"`    // Url
+	TaskID string `json:"taskId,omitempty"` // Id of the task for this external IPAM update process.
+
+	URL string `json:"url,omitempty"` // URL to call to check status of this task.
 }
 type ResponseSystemSettingsCiscoIseServerIntegrationStatusV1 struct {
-	AAAServerSettingID  string                                                          `json:"aaaServerSettingId,omitempty"`  // Cisco ISE Server setting identifier (E.g. 867e46c9-f8f5-40b1-8de2-62f7744f75f6)
-	OverallStatus       string                                                          `json:"overallStatus,omitempty"`       // Cisco ISE Server integration status
-	OverallErrorMessage string                                                          `json:"overallErrorMessage,omitempty"` // Cisco ISE Server integration failure message
-	Steps               *[]ResponseSystemSettingsCiscoIseServerIntegrationStatusV1Steps `json:"steps,omitempty"`               //
+	AAAServerSettingID string `json:"aaaServerSettingId,omitempty"` // Cisco ISE Server setting identifier (E.g. 867e46c9-f8f5-40b1-8de2-62f7744f75f6)
+
+	OverallStatus string `json:"overallStatus,omitempty"` // Cisco ISE Server integration status
+
+	OverallErrorMessage string `json:"overallErrorMessage,omitempty"` // Cisco ISE Server integration failure message
+
+	Steps *[]ResponseSystemSettingsCiscoIseServerIntegrationStatusV1Steps `json:"steps,omitempty"` //
 }
 type ResponseSystemSettingsCiscoIseServerIntegrationStatusV1Steps struct {
-	StepID             string `json:"stepId,omitempty"`             // Cisco ISE Server integration step identifier (E.g. 1)
-	StepOrder          *int   `json:"stepOrder,omitempty"`          // Cisco ISE Server integration step order (E.g. 1)
-	StepName           string `json:"stepName,omitempty"`           // Cisco ISE Server integration step name
-	StepDescription    string `json:"stepDescription,omitempty"`    // Cisco ISE Server step description
-	StepStatus         string `json:"stepStatus,omitempty"`         // Cisco ISE Server integration step status
-	CertAcceptedByUser *bool  `json:"certAcceptedByUser,omitempty"` // If user accept Cisco ISE Server certificate, value will be true otherwise it will be false
-	StepTime           *int   `json:"stepTime,omitempty"`           // Last updated epoc time  by the step (E.g. 1677745739314)
+	StepID string `json:"stepId,omitempty"` // Cisco ISE Server integration step identifier (E.g. 1)
+
+	StepOrder *int `json:"stepOrder,omitempty"` // Cisco ISE Server integration step order (E.g. 1)
+
+	StepName string `json:"stepName,omitempty"` // Cisco ISE Server integration step name
+
+	StepDescription string `json:"stepDescription,omitempty"` // Cisco ISE Server step description
+
+	StepStatus string `json:"stepStatus,omitempty"` // Cisco ISE Server integration step status
+
+	CertAcceptedByUser *bool `json:"certAcceptedByUser,omitempty"` // If user accept Cisco ISE Server certificate, value will be true otherwise it will be false
+
+	StepTime *int `json:"stepTime,omitempty"` // Last updated epoc time  by the step (E.g. 1677745739314)
 }
 type ResponseSystemSettingsCustomPromptSupportGETAPIV1 struct {
 	Response *ResponseSystemSettingsCustomPromptSupportGETAPIV1Response `json:"response,omitempty"` //
-	Version  string                                                     `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseSystemSettingsCustomPromptSupportGETAPIV1Response struct {
-	CustomUsernamePrompt  string `json:"customUsernamePrompt,omitempty"`  // Username for Custom Prompt
-	CustomPasswordPrompt  string `json:"customPasswordPrompt,omitempty"`  // Password for Custom Prompt
+	CustomUsernamePrompt string `json:"customUsernamePrompt,omitempty"` // Username for Custom Prompt
+
+	CustomPasswordPrompt string `json:"customPasswordPrompt,omitempty"` // Password for Custom Prompt
+
 	DefaultUsernamePrompt string `json:"defaultUsernamePrompt,omitempty"` // Default Username for Custom Prompt
+
 	DefaultPasswordPrompt string `json:"defaultPasswordPrompt,omitempty"` // Default Password for Custom Prompt
 }
 type ResponseSystemSettingsCustomPromptPOSTAPIV1 struct {
 	Response *ResponseSystemSettingsCustomPromptPOSTAPIV1Response `json:"response,omitempty"` //
-	Version  string                                               `json:"version,omitempty"`  // Version
+
+	Version string `json:"version,omitempty"` // Version
 }
 type ResponseSystemSettingsCustomPromptPOSTAPIV1Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task Id
-	URL    string `json:"url,omitempty"`    // Url
+
+	URL string `json:"url,omitempty"` // Url
 }
 type ResponseSystemSettingsSetProvisioningSettingsV1 struct {
-	Version  string                                                   `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Version string `json:"version,omitempty"` // Response Version e.g. : 1.0
+
 	Response *ResponseSystemSettingsSetProvisioningSettingsV1Response `json:"response,omitempty"` //
 }
 type ResponseSystemSettingsSetProvisioningSettingsV1Response struct {
-	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+	URL string `json:"url,omitempty"` // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
+
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
 type ResponseSystemSettingsGetProvisioningSettingsV1 struct {
 	Response *ResponseSystemSettingsGetProvisioningSettingsV1Response `json:"response,omitempty"` //
-	Version  string                                                   `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponseSystemSettingsGetProvisioningSettingsV1Response struct {
 	RequireItsmApproval *bool `json:"requireItsmApproval,omitempty"` // If require ITSM approval is enabled, the planned configurations must be submitted for ITSM approval. Also if enabled, requirePreview will default to enabled.
-	RequirePreview      *bool `json:"requirePreview,omitempty"`      // If require preview is enabled, the device configurations must be reviewed before deploying them
+
+	RequirePreview *bool `json:"requirePreview,omitempty"` // If require preview is enabled, the device configurations must be reviewed before deploying them
 }
 type RequestSystemSettingsAddAuthenticationAndPolicyServerAccessConfigurationV1 struct {
-	AuthenticationPort         *int                                                                                                    `json:"authenticationPort,omitempty"`         // Authentication port of RADIUS server (readonly). The range is from 1 to 65535. E.g. 1812
-	AccountingPort             *int                                                                                                    `json:"accountingPort,omitempty"`             // Accounting port of RADIUS server (readonly). The range is from 1 to 65535. E.g. 1813
-	CiscoIseDtos               *[]RequestSystemSettingsAddAuthenticationAndPolicyServerAccessConfigurationV1CiscoIseDtos               `json:"ciscoIseDtos,omitempty"`               //
-	IPAddress                  string                                                                                                  `json:"ipAddress,omitempty"`                  // IP address of authentication and policy server (readonly)
-	PxgridEnabled              *bool                                                                                                   `json:"pxgridEnabled,omitempty"`              // Value true for enable, false for disable. Default value is true
-	UseDnacCertForPxgrid       *bool                                                                                                   `json:"useDnacCertForPxgrid,omitempty"`       // Value true to use DNAC certificate for Pxgrid. Default value is false
-	IsIseEnabled               *bool                                                                                                   `json:"isIseEnabled,omitempty"`               // Value true for Cisco ISE Server (readonly). Default value is false
-	Port                       *int                                                                                                    `json:"port,omitempty"`                       // Port of TACACS server (readonly). The range is from 1 to 65535
-	Protocol                   string                                                                                                  `json:"protocol,omitempty"`                   // Type of protocol for authentication and policy server. If already saved with RADIUS, can update to RADIUS_TACACS. If already saved with TACACS, can update to RADIUS_TACACS
-	Retries                    string                                                                                                  `json:"retries,omitempty"`                    // Number of communication retries between devices and authentication and policy server. The range is from 1 to 3
-	Role                       string                                                                                                  `json:"role,omitempty"`                       // Role of authentication and policy server (readonly). E.g. primary, secondary
-	SharedSecret               string                                                                                                  `json:"sharedSecret,omitempty"`               // Shared secret between devices and authentication and policy server (readonly)
-	TimeoutSeconds             string                                                                                                  `json:"timeoutSeconds,omitempty"`             // Number of seconds before timing out between devices and authentication and policy server. The range is from 2 to 20
-	EncryptionScheme           string                                                                                                  `json:"encryptionScheme,omitempty"`           // Type of encryption scheme for additional security (readonly)
-	MessageKey                 string                                                                                                  `json:"messageKey,omitempty"`                 // Message key used to encrypt shared secret (readonly)
-	EncryptionKey              string                                                                                                  `json:"encryptionKey,omitempty"`              // Encryption key used to encrypt shared secret (readonly)
+	AuthenticationPort *int `json:"authenticationPort,omitempty"` // Authentication port of RADIUS server. It is required for RADIUS server. The range is from 1 to 65535. E.g. 1812
+
+	AccountingPort *int `json:"accountingPort,omitempty"` // Accounting port of RADIUS server. It is required for RADIUS server. The range is from 1 to 65535. E.g. 1813
+
+	CiscoIseDtos *[]RequestSystemSettingsAddAuthenticationAndPolicyServerAccessConfigurationV1CiscoIseDtos `json:"ciscoIseDtos,omitempty"` //
+
+	IPAddress string `json:"ipAddress,omitempty"` // IP address of authentication and policy server
+
+	PxgridEnabled *bool `json:"pxgridEnabled,omitempty"` // Value true for enable, false for disable. Default value is true
+
+	UseDnacCertForPxgrid *bool `json:"useDnacCertForPxgrid,omitempty"` // Value true to use Catalyst Center certificate for Pxgrid. Default value is false
+
+	IsIseEnabled *bool `json:"isIseEnabled,omitempty"` // Value true for Cisco ISE Server. Default value is false
+
+	Port *int `json:"port,omitempty"` // Port of TACACS server. It is required for TACACS server. The range is from 1 to 65535
+
+	Protocol string `json:"protocol,omitempty"` // Type of protocol for authentication and policy server. If already saved with RADIUS, can update to RADIUS_TACACS. If already saved with TACACS, can update to RADIUS_TACACS
+
+	Retries string `json:"retries,omitempty"` // Number of communication retries between devices and authentication and policy server. The range is from 1 to 3.
+
+	Role string `json:"role,omitempty"` // Role of authentication and policy server. E.g. primary, secondary
+
+	SharedSecret string `json:"sharedSecret,omitempty"` // Shared secret between devices and authentication and policy server
+
+	TimeoutSeconds string `json:"timeoutSeconds,omitempty"` // Number of seconds before timing out between devices and authentication and policy server. The range is from 2 to 20
+
+	EncryptionScheme string `json:"encryptionScheme,omitempty"` // Type of encryption scheme for additional security
+
+	MessageKey string `json:"messageKey,omitempty"` // Message key used to encrypt shared secret
+
+	EncryptionKey string `json:"encryptionKey,omitempty"` // Encryption key used to encrypt shared secret
+
 	ExternalCiscoIseIPAddrDtos *[]RequestSystemSettingsAddAuthenticationAndPolicyServerAccessConfigurationV1ExternalCiscoIseIPAddrDtos `json:"externalCiscoIseIpAddrDtos,omitempty"` //
 }
 type RequestSystemSettingsAddAuthenticationAndPolicyServerAccessConfigurationV1CiscoIseDtos struct {
-	Description    string `json:"description,omitempty"`    // Description about the Cisco ISE server
-	Fqdn           string `json:"fqdn,omitempty"`           // Fully-qualified domain name of the Cisco ISE server (readonly). E.g. xi-62.my.com
-	Password       string `json:"password,omitempty"`       // Password of the Cisco ISE server
-	SSHkey         string `json:"sshkey,omitempty"`         // SSH key of the Cisco ISE server
-	IPAddress      string `json:"ipAddress,omitempty"`      // IP Address of the Cisco ISE Server (readonly)
-	SubscriberName string `json:"subscriberName,omitempty"` // Subscriber name of the Cisco ISE server (readonly). E.g. pxgrid_client_1662589467
-	UserName       string `json:"userName,omitempty"`       // User name of the Cisco ISE server
+	Description string `json:"description,omitempty"` // Description about the Cisco ISE server
+
+	Fqdn string `json:"fqdn,omitempty"` // Fully-qualified domain name of the Cisco ISE server. E.g. xi-62.my.com
+
+	Password string `json:"password,omitempty"` // Password of the Cisco ISE server
+
+	SSHkey string `json:"sshkey,omitempty"` // SSH key of the Cisco ISE server
+
+	IPAddress string `json:"ipAddress,omitempty"` // IP Address of the Cisco ISE Server
+
+	SubscriberName string `json:"subscriberName,omitempty"` // Subscriber name of the Cisco ISE server. E.g. pxgrid_client_1662589467
+
+	UserName string `json:"userName,omitempty"` // User name of the Cisco ISE server
 }
 type RequestSystemSettingsAddAuthenticationAndPolicyServerAccessConfigurationV1ExternalCiscoIseIPAddrDtos struct {
 	ExternalCiscoIseIPAddresses *[]RequestSystemSettingsAddAuthenticationAndPolicyServerAccessConfigurationV1ExternalCiscoIseIPAddrDtosExternalCiscoIseIPAddresses `json:"externalCiscoIseIpAddresses,omitempty"` //
-	Type                        string                                                                                                                             `json:"type,omitempty"`                        // Type
+
+	Type string `json:"type,omitempty"` // Type
 }
 type RequestSystemSettingsAddAuthenticationAndPolicyServerAccessConfigurationV1ExternalCiscoIseIPAddrDtosExternalCiscoIseIPAddresses struct {
 	ExternalIPAddress string `json:"externalIpAddress,omitempty"` // External IP Address
@@ -250,28 +345,41 @@ type RequestSystemSettingsAcceptCiscoIseServerCertificateForCiscoIseServerIntegr
 }
 type RequestSystemSettingsCreatesConfigurationDetailsOfTheExternalIPAMServerV1 struct {
 	ServerName string `json:"serverName,omitempty"` // A descriptive name of this external server, used for identification purposes
-	ServerURL  string `json:"serverUrl,omitempty"`  // The URL of this external server
-	Password   string `json:"password,omitempty"`   // The password for the external IPAM server login username
-	UserName   string `json:"userName,omitempty"`   // The external IPAM server login username
-	Provider   string `json:"provider,omitempty"`   // Type of external IPAM. Can be either INFOBLOX, BLUECAT or GENERIC.
-	View       string `json:"view,omitempty"`       // The view under which pools are created in the external IPAM server.
-	SyncView   *bool  `json:"syncView,omitempty"`   // Synchronize the IP pools from the local IPAM to this external server
+
+	ServerURL string `json:"serverUrl,omitempty"` // The URL of this external server
+
+	Password string `json:"password,omitempty"` // The password for the external IPAM server login username
+
+	UserName string `json:"userName,omitempty"` // The external IPAM server login username
+
+	Provider string `json:"provider,omitempty"` // Type of external IPAM. Can be either INFOBLOX, BLUECAT or GENERIC.
+
+	View string `json:"view,omitempty"` // The view under which pools are created in the external IPAM server.
+
+	SyncView *bool `json:"syncView,omitempty"` // Synchronize the IP pools from the local IPAM to this external server
 }
 type RequestSystemSettingsUpdatesConfigurationDetailsOfTheExternalIPAMServerV1 struct {
 	ServerName string `json:"serverName,omitempty"` // A descriptive name of this external server, used for identification purposes
-	ServerURL  string `json:"serverUrl,omitempty"`  // The URL of this external server
-	Password   string `json:"password,omitempty"`   // The password for the external IPAM server login username
-	UserName   string `json:"userName,omitempty"`   // The external IPAM server login username
-	View       string `json:"view,omitempty"`       // The view under which pools are created in the external IPAM server.
-	SyncView   *bool  `json:"syncView,omitempty"`   // Synchronize the IP pools from the local IPAM to this external server
+
+	ServerURL string `json:"serverUrl,omitempty"` // The URL of this external server
+
+	Password string `json:"password,omitempty"` // The password for the external IPAM server login username
+
+	UserName string `json:"userName,omitempty"` // The external IPAM server login username
+
+	View string `json:"view,omitempty"` // The view under which pools are created in the external IPAM server.
+
+	SyncView *bool `json:"syncView,omitempty"` // Synchronize the IP pools from the local IPAM to this external server
 }
 type RequestSystemSettingsCustomPromptPOSTAPIV1 struct {
 	UsernamePrompt string `json:"usernamePrompt,omitempty"` // Username for Custom Prompt
+
 	PasswordPrompt string `json:"passwordPrompt,omitempty"` // Password for Custom Prompt
 }
 type RequestSystemSettingsSetProvisioningSettingsV1 struct {
 	RequireItsmApproval *bool `json:"requireItsmApproval,omitempty"` // If require ITSM approval is enabled, the planned configurations must be submitted for ITSM approval. Also if enabled, requirePreview will default to enabled.
-	RequirePreview      *bool `json:"requirePreview,omitempty"`      // If require preview is enabled, the device configurations must be reviewed before deploying them
+
+	RequirePreview *bool `json:"requirePreview,omitempty"` // If require preview is enabled, the device configurations must be reviewed before deploying them
 }
 
 //GetAuthenticationAndPolicyServersV1 Get Authentication and Policy Servers - a4b4-c849-4be8-b362
@@ -280,7 +388,7 @@ type RequestSystemSettingsSetProvisioningSettingsV1 struct {
 
 @param GetAuthenticationAndPolicyServersV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-authentication-and-policy-servers-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-authentication-and-policy-servers
 */
 func (s *SystemSettingsService) GetAuthenticationAndPolicyServersV1(GetAuthenticationAndPolicyServersV1QueryParams *GetAuthenticationAndPolicyServersV1QueryParams) (*ResponseSystemSettingsGetAuthenticationAndPolicyServersV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/authentication-policy-servers"
@@ -316,7 +424,7 @@ func (s *SystemSettingsService) GetAuthenticationAndPolicyServersV1(GetAuthentic
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-configuration-details-of-the-external-ip-a-m-server-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-configuration-details-of-the-external-ip-a-m-server
 */
 func (s *SystemSettingsService) RetrievesConfigurationDetailsOfTheExternalIPAMServerV1() (*ResponseSystemSettingsRetrievesConfigurationDetailsOfTheExternalIPAMServerV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/ipam/serverSetting"
@@ -350,7 +458,7 @@ func (s *SystemSettingsService) RetrievesConfigurationDetailsOfTheExternalIPAMSe
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!cisco-ise-server-integration-status-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!cisco-ise-server-integration-status
 */
 func (s *SystemSettingsService) CiscoIseServerIntegrationStatusV1() (*ResponseSystemSettingsCiscoIseServerIntegrationStatusV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/ise-integration-status"
@@ -384,7 +492,7 @@ func (s *SystemSettingsService) CiscoIseServerIntegrationStatusV1() (*ResponseSy
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!custom-prompt-support-g-e-t-api-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!custom-prompt-support-g-e-t-api
 */
 func (s *SystemSettingsService) CustomPromptSupportGETAPIV1() (*ResponseSystemSettingsCustomPromptSupportGETAPIV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/network-device/custom-prompt"
@@ -418,7 +526,7 @@ func (s *SystemSettingsService) CustomPromptSupportGETAPIV1() (*ResponseSystemSe
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-provisioning-settings-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-provisioning-settings
 */
 func (s *SystemSettingsService) GetProvisioningSettingsV1() (*ResponseSystemSettingsGetProvisioningSettingsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/provisioningSettings"
@@ -452,7 +560,7 @@ func (s *SystemSettingsService) GetProvisioningSettingsV1() (*ResponseSystemSett
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-authentication-and-policy-server-access-configuration-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!add-authentication-and-policy-server-access-configuration
 */
 func (s *SystemSettingsService) AddAuthenticationAndPolicyServerAccessConfigurationV1(requestSystemSettingsAddAuthenticationAndPolicyServerAccessConfigurationV1 *RequestSystemSettingsAddAuthenticationAndPolicyServerAccessConfigurationV1) (*ResponseSystemSettingsAddAuthenticationAndPolicyServerAccessConfigurationV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/authentication-policy-servers"
@@ -489,7 +597,7 @@ func (s *SystemSettingsService) AddAuthenticationAndPolicyServerAccessConfigurat
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!creates-configuration-details-of-the-external-ip-a-m-server-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!creates-configuration-details-of-the-external-ip-a-m-server
 */
 func (s *SystemSettingsService) CreatesConfigurationDetailsOfTheExternalIPAMServerV1(requestSystemSettingsCreatesConfigurationDetailsOfTheExternalIPAMServerV1 *RequestSystemSettingsCreatesConfigurationDetailsOfTheExternalIPAMServerV1) (*ResponseSystemSettingsCreatesConfigurationDetailsOfTheExternalIPAMServerV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/ipam/serverSetting"
@@ -526,7 +634,7 @@ func (s *SystemSettingsService) CreatesConfigurationDetailsOfTheExternalIPAMServ
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!custom-prompt-p-o-s-t-api-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!custom-prompt-p-o-s-t-api
 */
 func (s *SystemSettingsService) CustomPromptPOSTAPIV1(requestSystemSettingsCustomPromptPOSTAPIV1 *RequestSystemSettingsCustomPromptPOSTAPIV1) (*ResponseSystemSettingsCustomPromptPOSTAPIV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/network-device/custom-prompt"
@@ -701,7 +809,7 @@ func (s *SystemSettingsService) SetProvisioningSettingsV1(requestSystemSettingsS
 @param id id path parameter. Authentication and Policy Server Identifier. Use 'Get Authentication and Policy Servers' intent API to find the identifier.
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-authentication-and-policy-server-access-configuration-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-authentication-and-policy-server-access-configuration
 */
 func (s *SystemSettingsService) DeleteAuthenticationAndPolicyServerAccessConfigurationV1(id string) (*ResponseSystemSettingsDeleteAuthenticationAndPolicyServerAccessConfigurationV1, *resty.Response, error) {
 	//id string
@@ -737,7 +845,7 @@ func (s *SystemSettingsService) DeleteAuthenticationAndPolicyServerAccessConfigu
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!deletes-configuration-details-of-the-external-ip-a-m-server-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!deletes-configuration-details-of-the-external-ip-a-m-server
 */
 func (s *SystemSettingsService) DeletesConfigurationDetailsOfTheExternalIPAMServerV1() (*ResponseSystemSettingsDeletesConfigurationDetailsOfTheExternalIPAMServerV1, *resty.Response, error) {
 	//

@@ -462,471 +462,761 @@ type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsIngress
 	RefreshedAt        *int   `json:"refreshedAt,omitempty"`        //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsPerfMonStatistics struct {
-	ByteRate             *int     `json:"byteRate,omitempty"`             //
-	DestIPAddress        string   `json:"destIpAddress,omitempty"`        //
-	DestPort             string   `json:"destPort,omitempty"`             //
-	InputInterface       string   `json:"inputInterface,omitempty"`       //
-	IPv4DSCP             string   `json:"ipv4DSCP,omitempty"`             //
-	IPv4TTL              *int     `json:"ipv4TTL,omitempty"`              //
-	OutputInterface      string   `json:"outputInterface,omitempty"`      //
-	PacketBytes          *int     `json:"packetBytes,omitempty"`          //
-	PacketCount          *int     `json:"packetCount,omitempty"`          //
-	PacketLoss           *int     `json:"packetLoss,omitempty"`           //
+	ByteRate *int `json:"byteRate,omitempty"` //
+
+	DestIPAddress string `json:"destIpAddress,omitempty"` //
+
+	DestPort string `json:"destPort,omitempty"` //
+
+	InputInterface string `json:"inputInterface,omitempty"` //
+
+	IPv4DSCP string `json:"ipv4DSCP,omitempty"` //
+
+	IPv4TTL *int `json:"ipv4TTL,omitempty"` //
+
+	OutputInterface string `json:"outputInterface,omitempty"` //
+
+	PacketBytes *int `json:"packetBytes,omitempty"` //
+
+	PacketCount *int `json:"packetCount,omitempty"` //
+
+	PacketLoss *int `json:"packetLoss,omitempty"` //
+
 	PacketLossPercentage *float64 `json:"packetLossPercentage,omitempty"` //
-	Protocol             string   `json:"protocol,omitempty"`             //
-	RefreshedAt          *int     `json:"refreshedAt,omitempty"`          //
-	RtpJitterMax         *int     `json:"rtpJitterMax,omitempty"`         //
-	RtpJitterMean        *int     `json:"rtpJitterMean,omitempty"`        //
-	RtpJitterMin         *int     `json:"rtpJitterMin,omitempty"`         //
-	SourceIPAddress      string   `json:"sourceIpAddress,omitempty"`      //
-	SourcePort           string   `json:"sourcePort,omitempty"`           //
+
+	Protocol string `json:"protocol,omitempty"` //
+
+	RefreshedAt *int `json:"refreshedAt,omitempty"` //
+
+	RtpJitterMax *int `json:"rtpJitterMax,omitempty"` //
+
+	RtpJitterMean *int `json:"rtpJitterMean,omitempty"` //
+
+	RtpJitterMin *int `json:"rtpJitterMin,omitempty"` //
+
+	SourceIPAddress string `json:"sourceIpAddress,omitempty"` //
+
+	SourcePort string `json:"sourcePort,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfo struct {
-	AccuracyList                       *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoAccuracyList          `json:"accuracyList,omitempty"`                       //
-	DetailedStatus                     *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoDetailedStatus          `json:"detailedStatus,omitempty"`                     //
-	DeviceStatistics                   *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoDeviceStatistics        `json:"deviceStatistics,omitempty"`                   //
-	DeviceStatsCollection              string                                                                                           `json:"deviceStatsCollection,omitempty"`              //
-	DeviceStatsCollectionFailureReason string                                                                                           `json:"deviceStatsCollectionFailureReason,omitempty"` //
-	EgressInterface                    *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterface         `json:"egressInterface,omitempty"`                    //
-	FlexConnect                        *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnect             `json:"flexConnect,omitempty"`                        //
-	ID                                 string                                                                                           `json:"id,omitempty"`                                 //
-	IngressInterface                   *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterface        `json:"ingressInterface,omitempty"`                   //
-	IP                                 string                                                                                           `json:"ip,omitempty"`                                 //
-	LinkInformationSource              string                                                                                           `json:"linkInformationSource,omitempty"`              //
-	Name                               string                                                                                           `json:"name,omitempty"`                               //
-	PerfMonCollection                  string                                                                                           `json:"perfMonCollection,omitempty"`                  //
-	PerfMonCollectionFailureReason     string                                                                                           `json:"perfMonCollectionFailureReason,omitempty"`     //
-	PerfMonitorStatistics              *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoPerfMonitorStatistics `json:"perfMonitorStatistics,omitempty"`              //
-	Role                               string                                                                                           `json:"role,omitempty"`                               //
-	SSID                               string                                                                                           `json:"ssid,omitempty"`                               //
-	Tunnels                            []string                                                                                         `json:"tunnels,omitempty"`                            //
-	Type                               string                                                                                           `json:"type,omitempty"`                               //
-	WLANID                             string                                                                                           `json:"wlanId,omitempty"`                             //
+	AccuracyList *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoAccuracyList `json:"accuracyList,omitempty"` //
+
+	DetailedStatus *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoDetailedStatus `json:"detailedStatus,omitempty"` //
+
+	DeviceStatistics *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoDeviceStatistics `json:"deviceStatistics,omitempty"` //
+
+	DeviceStatsCollection string `json:"deviceStatsCollection,omitempty"` //
+
+	DeviceStatsCollectionFailureReason string `json:"deviceStatsCollectionFailureReason,omitempty"` //
+
+	EgressInterface *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterface `json:"egressInterface,omitempty"` //
+
+	FlexConnect *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnect `json:"flexConnect,omitempty"` //
+
+	ID string `json:"id,omitempty"` //
+
+	IngressInterface *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterface `json:"ingressInterface,omitempty"` //
+
+	IP string `json:"ip,omitempty"` //
+
+	LinkInformationSource string `json:"linkInformationSource,omitempty"` //
+
+	Name string `json:"name,omitempty"` //
+
+	PerfMonCollection string `json:"perfMonCollection,omitempty"` //
+
+	PerfMonCollectionFailureReason string `json:"perfMonCollectionFailureReason,omitempty"` //
+
+	PerfMonitorStatistics *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoPerfMonitorStatistics `json:"perfMonitorStatistics,omitempty"` //
+
+	Role string `json:"role,omitempty"` //
+
+	SSID string `json:"ssid,omitempty"` //
+
+	Tunnels []string `json:"tunnels,omitempty"` //
+
+	Type string `json:"type,omitempty"` //
+
+	WLANID string `json:"wlanId,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoAccuracyList struct {
-	Percent *int   `json:"percent,omitempty"` //
-	Reason  string `json:"reason,omitempty"`  //
+	Percent *int `json:"percent,omitempty"` //
+
+	Reason string `json:"reason,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoDetailedStatus struct {
-	ACLTraceCalculation              string `json:"aclTraceCalculation,omitempty"`              //
+	ACLTraceCalculation string `json:"aclTraceCalculation,omitempty"` //
+
 	ACLTraceCalculationFailureReason string `json:"aclTraceCalculationFailureReason,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoDeviceStatistics struct {
-	CPUStatistics    *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoDeviceStatisticsCPUStatistics    `json:"cpuStatistics,omitempty"`    //
+	CPUStatistics *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoDeviceStatisticsCPUStatistics `json:"cpuStatistics,omitempty"` //
+
 	MemoryStatistics *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoDeviceStatisticsMemoryStatistics `json:"memoryStatistics,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoDeviceStatisticsCPUStatistics struct {
-	FiveMinUsageInPercentage  *float64 `json:"fiveMinUsageInPercentage,omitempty"`  //
+	FiveMinUsageInPercentage *float64 `json:"fiveMinUsageInPercentage,omitempty"` //
+
 	FiveSecsUsageInPercentage *float64 `json:"fiveSecsUsageInPercentage,omitempty"` //
-	OneMinUsageInPercentage   *float64 `json:"oneMinUsageInPercentage,omitempty"`   //
-	RefreshedAt               *int     `json:"refreshedAt,omitempty"`               //
+
+	OneMinUsageInPercentage *float64 `json:"oneMinUsageInPercentage,omitempty"` //
+
+	RefreshedAt *int `json:"refreshedAt,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoDeviceStatisticsMemoryStatistics struct {
 	MemoryUsage *int `json:"memoryUsage,omitempty"` //
+
 	RefreshedAt *int `json:"refreshedAt,omitempty"` //
+
 	TotalMemory *int `json:"totalMemory,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterface struct {
-	PhysicalInterface *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterface  `json:"physicalInterface,omitempty"` //
-	VirtualInterface  *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterface `json:"virtualInterface,omitempty"`  //
+	PhysicalInterface *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterface `json:"physicalInterface,omitempty"` //
+
+	VirtualInterface *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterface `json:"virtualInterface,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterface struct {
-	ACLAnalysis                           *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfaceACLAnalysis         `json:"aclAnalysis,omitempty"`                           //
-	ID                                    string                                                                                                                       `json:"id,omitempty"`                                    //
-	InterfaceStatistics                   *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfaceInterfaceStatistics `json:"interfaceStatistics,omitempty"`                   //
-	InterfaceStatsCollection              string                                                                                                                       `json:"interfaceStatsCollection,omitempty"`              //
-	InterfaceStatsCollectionFailureReason string                                                                                                                       `json:"interfaceStatsCollectionFailureReason,omitempty"` //
-	Name                                  string                                                                                                                       `json:"name,omitempty"`                                  //
-	PathOverlayInfo                       *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfacePathOverlayInfo   `json:"pathOverlayInfo,omitempty"`                       //
-	QosStatistics                         *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfaceQosStatistics     `json:"qosStatistics,omitempty"`                         //
-	QosStatsCollection                    string                                                                                                                       `json:"qosStatsCollection,omitempty"`                    //
-	QosStatsCollectionFailureReason       string                                                                                                                       `json:"qosStatsCollectionFailureReason,omitempty"`       //
-	UsedVLAN                              string                                                                                                                       `json:"usedVlan,omitempty"`                              //
-	VrfName                               string                                                                                                                       `json:"vrfName,omitempty"`                               //
+	ACLAnalysis *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfaceACLAnalysis `json:"aclAnalysis,omitempty"` //
+
+	ID string `json:"id,omitempty"` //
+
+	InterfaceStatistics *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfaceInterfaceStatistics `json:"interfaceStatistics,omitempty"` //
+
+	InterfaceStatsCollection string `json:"interfaceStatsCollection,omitempty"` //
+
+	InterfaceStatsCollectionFailureReason string `json:"interfaceStatsCollectionFailureReason,omitempty"` //
+
+	Name string `json:"name,omitempty"` //
+
+	PathOverlayInfo *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfacePathOverlayInfo `json:"pathOverlayInfo,omitempty"` //
+
+	QosStatistics *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfaceQosStatistics `json:"qosStatistics,omitempty"` //
+
+	QosStatsCollection string `json:"qosStatsCollection,omitempty"` //
+
+	QosStatsCollectionFailureReason string `json:"qosStatsCollectionFailureReason,omitempty"` //
+
+	UsedVLAN string `json:"usedVlan,omitempty"` //
+
+	VrfName string `json:"vrfName,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfaceACLAnalysis struct {
-	ACLName      string                                                                                                                             `json:"aclName,omitempty"`      //
+	ACLName string `json:"aclName,omitempty"` //
+
 	MatchingAces *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfaceACLAnalysisMatchingAces `json:"matchingAces,omitempty"` //
-	Result       string                                                                                                                             `json:"result,omitempty"`       //
+
+	Result string `json:"result,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfaceACLAnalysisMatchingAces struct {
-	Ace           string                                                                                                                                          `json:"ace,omitempty"`           //
+	Ace string `json:"ace,omitempty"` //
+
 	MatchingPorts *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfaceACLAnalysisMatchingAcesMatchingPorts `json:"matchingPorts,omitempty"` //
-	Result        string                                                                                                                                          `json:"result,omitempty"`        //
+
+	Result string `json:"result,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfaceACLAnalysisMatchingAcesMatchingPorts struct {
-	Ports    *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfaceACLAnalysisMatchingAcesMatchingPortsPorts `json:"ports,omitempty"`    //
-	Protocol string                                                                                                                                               `json:"protocol,omitempty"` //
+	Ports *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfaceACLAnalysisMatchingAcesMatchingPortsPorts `json:"ports,omitempty"` //
+
+	Protocol string `json:"protocol,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfaceACLAnalysisMatchingAcesMatchingPortsPorts struct {
-	DestPorts   []string `json:"destPorts,omitempty"`   //
+	DestPorts []string `json:"destPorts,omitempty"` //
+
 	SourcePorts []string `json:"sourcePorts,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfaceInterfaceStatistics struct {
-	AdminStatus        string `json:"adminStatus,omitempty"`        //
-	InputPackets       *int   `json:"inputPackets,omitempty"`       //
-	InputQueueCount    *int   `json:"inputQueueCount,omitempty"`    //
-	InputQueueDrops    *int   `json:"inputQueueDrops,omitempty"`    //
-	InputQueueFlushes  *int   `json:"inputQueueFlushes,omitempty"`  //
-	InputQueueMaxDepth *int   `json:"inputQueueMaxDepth,omitempty"` //
-	InputRatebps       *int   `json:"inputRatebps,omitempty"`       //
-	OperationalStatus  string `json:"operationalStatus,omitempty"`  //
-	OutputDrop         *int   `json:"outputDrop,omitempty"`         //
-	OutputPackets      *int   `json:"outputPackets,omitempty"`      //
-	OutputQueueCount   *int   `json:"outputQueueCount,omitempty"`   //
-	OutputQueueDepth   *int   `json:"outputQueueDepth,omitempty"`   //
-	OutputRatebps      *int   `json:"outputRatebps,omitempty"`      //
-	RefreshedAt        *int   `json:"refreshedAt,omitempty"`        //
+	AdminStatus string `json:"adminStatus,omitempty"` //
+
+	InputPackets *int `json:"inputPackets,omitempty"` //
+
+	InputQueueCount *int `json:"inputQueueCount,omitempty"` //
+
+	InputQueueDrops *int `json:"inputQueueDrops,omitempty"` //
+
+	InputQueueFlushes *int `json:"inputQueueFlushes,omitempty"` //
+
+	InputQueueMaxDepth *int `json:"inputQueueMaxDepth,omitempty"` //
+
+	InputRatebps *int `json:"inputRatebps,omitempty"` //
+
+	OperationalStatus string `json:"operationalStatus,omitempty"` //
+
+	OutputDrop *int `json:"outputDrop,omitempty"` //
+
+	OutputPackets *int `json:"outputPackets,omitempty"` //
+
+	OutputQueueCount *int `json:"outputQueueCount,omitempty"` //
+
+	OutputQueueDepth *int `json:"outputQueueDepth,omitempty"` //
+
+	OutputRatebps *int `json:"outputRatebps,omitempty"` //
+
+	RefreshedAt *int `json:"refreshedAt,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfacePathOverlayInfo struct {
-	ControlPlane            string                                                                                                                            `json:"controlPlane,omitempty"`            //
-	DataPacketEncapsulation string                                                                                                                            `json:"dataPacketEncapsulation,omitempty"` //
-	DestIP                  string                                                                                                                            `json:"destIp,omitempty"`                  //
-	DestPort                string                                                                                                                            `json:"destPort,omitempty"`                //
-	Protocol                string                                                                                                                            `json:"protocol,omitempty"`                //
-	SourceIP                string                                                                                                                            `json:"sourceIp,omitempty"`                //
-	SourcePort              string                                                                                                                            `json:"sourcePort,omitempty"`              //
-	VxlanInfo               *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfacePathOverlayInfoVxlanInfo `json:"vxlanInfo,omitempty"`               //
+	ControlPlane string `json:"controlPlane,omitempty"` //
+
+	DataPacketEncapsulation string `json:"dataPacketEncapsulation,omitempty"` //
+
+	DestIP string `json:"destIp,omitempty"` //
+
+	DestPort string `json:"destPort,omitempty"` //
+
+	Protocol string `json:"protocol,omitempty"` //
+
+	SourceIP string `json:"sourceIp,omitempty"` //
+
+	SourcePort string `json:"sourcePort,omitempty"` //
+
+	VxlanInfo *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfacePathOverlayInfoVxlanInfo `json:"vxlanInfo,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfacePathOverlayInfoVxlanInfo struct {
 	Dscp string `json:"dscp,omitempty"` //
+
 	Vnid string `json:"vnid,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfacePhysicalInterfaceQosStatistics struct {
-	ClassMapName       string `json:"classMapName,omitempty"`       //
-	DropRate           *int   `json:"dropRate,omitempty"`           //
-	NumBytes           *int   `json:"numBytes,omitempty"`           //
-	NumPackets         *int   `json:"numPackets,omitempty"`         //
-	OfferedRate        *int   `json:"offeredRate,omitempty"`        //
-	QueueBandwidthbps  string `json:"queueBandwidthbps,omitempty"`  //
-	QueueDepth         *int   `json:"queueDepth,omitempty"`         //
-	QueueNoBufferDrops *int   `json:"queueNoBufferDrops,omitempty"` //
-	QueueTotalDrops    *int   `json:"queueTotalDrops,omitempty"`    //
-	RefreshedAt        *int   `json:"refreshedAt,omitempty"`        //
+	ClassMapName string `json:"classMapName,omitempty"` //
+
+	DropRate *int `json:"dropRate,omitempty"` //
+
+	NumBytes *int `json:"numBytes,omitempty"` //
+
+	NumPackets *int `json:"numPackets,omitempty"` //
+
+	OfferedRate *int `json:"offeredRate,omitempty"` //
+
+	QueueBandwidthbps string `json:"queueBandwidthbps,omitempty"` //
+
+	QueueDepth *int `json:"queueDepth,omitempty"` //
+
+	QueueNoBufferDrops *int `json:"queueNoBufferDrops,omitempty"` //
+
+	QueueTotalDrops *int `json:"queueTotalDrops,omitempty"` //
+
+	RefreshedAt *int `json:"refreshedAt,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterface struct {
-	ACLAnalysis                           *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfaceACLAnalysis         `json:"aclAnalysis,omitempty"`                           //
-	ID                                    string                                                                                                                      `json:"id,omitempty"`                                    //
-	InterfaceStatistics                   *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfaceInterfaceStatistics `json:"interfaceStatistics,omitempty"`                   //
-	InterfaceStatsCollection              string                                                                                                                      `json:"interfaceStatsCollection,omitempty"`              //
-	InterfaceStatsCollectionFailureReason string                                                                                                                      `json:"interfaceStatsCollectionFailureReason,omitempty"` //
-	Name                                  string                                                                                                                      `json:"name,omitempty"`                                  //
-	PathOverlayInfo                       *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfacePathOverlayInfo   `json:"pathOverlayInfo,omitempty"`                       //
-	QosStatistics                         *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfaceQosStatistics     `json:"qosStatistics,omitempty"`                         //
-	QosStatsCollection                    string                                                                                                                      `json:"qosStatsCollection,omitempty"`                    //
-	QosStatsCollectionFailureReason       string                                                                                                                      `json:"qosStatsCollectionFailureReason,omitempty"`       //
-	UsedVLAN                              string                                                                                                                      `json:"usedVlan,omitempty"`                              //
-	VrfName                               string                                                                                                                      `json:"vrfName,omitempty"`                               //
+	ACLAnalysis *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfaceACLAnalysis `json:"aclAnalysis,omitempty"` //
+
+	ID string `json:"id,omitempty"` //
+
+	InterfaceStatistics *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfaceInterfaceStatistics `json:"interfaceStatistics,omitempty"` //
+
+	InterfaceStatsCollection string `json:"interfaceStatsCollection,omitempty"` //
+
+	InterfaceStatsCollectionFailureReason string `json:"interfaceStatsCollectionFailureReason,omitempty"` //
+
+	Name string `json:"name,omitempty"` //
+
+	PathOverlayInfo *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfacePathOverlayInfo `json:"pathOverlayInfo,omitempty"` //
+
+	QosStatistics *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfaceQosStatistics `json:"qosStatistics,omitempty"` //
+
+	QosStatsCollection string `json:"qosStatsCollection,omitempty"` //
+
+	QosStatsCollectionFailureReason string `json:"qosStatsCollectionFailureReason,omitempty"` //
+
+	UsedVLAN string `json:"usedVlan,omitempty"` //
+
+	VrfName string `json:"vrfName,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfaceACLAnalysis struct {
-	ACLName      string                                                                                                                            `json:"aclName,omitempty"`      //
+	ACLName string `json:"aclName,omitempty"` //
+
 	MatchingAces *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfaceACLAnalysisMatchingAces `json:"matchingAces,omitempty"` //
-	Result       string                                                                                                                            `json:"result,omitempty"`       //
+
+	Result string `json:"result,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfaceACLAnalysisMatchingAces struct {
-	Ace           string                                                                                                                                         `json:"ace,omitempty"`           //
+	Ace string `json:"ace,omitempty"` //
+
 	MatchingPorts *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfaceACLAnalysisMatchingAcesMatchingPorts `json:"matchingPorts,omitempty"` //
-	Result        string                                                                                                                                         `json:"result,omitempty"`        //
+
+	Result string `json:"result,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfaceACLAnalysisMatchingAcesMatchingPorts struct {
-	Ports    *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfaceACLAnalysisMatchingAcesMatchingPortsPorts `json:"ports,omitempty"`    //
-	Protocol string                                                                                                                                              `json:"protocol,omitempty"` //
+	Ports *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfaceACLAnalysisMatchingAcesMatchingPortsPorts `json:"ports,omitempty"` //
+
+	Protocol string `json:"protocol,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfaceACLAnalysisMatchingAcesMatchingPortsPorts struct {
-	DestPorts   []string `json:"destPorts,omitempty"`   //
+	DestPorts []string `json:"destPorts,omitempty"` //
+
 	SourcePorts []string `json:"sourcePorts,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfaceInterfaceStatistics struct {
-	AdminStatus        string `json:"adminStatus,omitempty"`        //
-	InputPackets       *int   `json:"inputPackets,omitempty"`       //
-	InputQueueCount    *int   `json:"inputQueueCount,omitempty"`    //
-	InputQueueDrops    *int   `json:"inputQueueDrops,omitempty"`    //
-	InputQueueFlushes  *int   `json:"inputQueueFlushes,omitempty"`  //
-	InputQueueMaxDepth *int   `json:"inputQueueMaxDepth,omitempty"` //
-	InputRatebps       *int   `json:"inputRatebps,omitempty"`       //
-	OperationalStatus  string `json:"operationalStatus,omitempty"`  //
-	OutputDrop         *int   `json:"outputDrop,omitempty"`         //
-	OutputPackets      *int   `json:"outputPackets,omitempty"`      //
-	OutputQueueCount   *int   `json:"outputQueueCount,omitempty"`   //
-	OutputQueueDepth   *int   `json:"outputQueueDepth,omitempty"`   //
-	OutputRatebps      *int   `json:"outputRatebps,omitempty"`      //
-	RefreshedAt        *int   `json:"refreshedAt,omitempty"`        //
+	AdminStatus string `json:"adminStatus,omitempty"` //
+
+	InputPackets *int `json:"inputPackets,omitempty"` //
+
+	InputQueueCount *int `json:"inputQueueCount,omitempty"` //
+
+	InputQueueDrops *int `json:"inputQueueDrops,omitempty"` //
+
+	InputQueueFlushes *int `json:"inputQueueFlushes,omitempty"` //
+
+	InputQueueMaxDepth *int `json:"inputQueueMaxDepth,omitempty"` //
+
+	InputRatebps *int `json:"inputRatebps,omitempty"` //
+
+	OperationalStatus string `json:"operationalStatus,omitempty"` //
+
+	OutputDrop *int `json:"outputDrop,omitempty"` //
+
+	OutputPackets *int `json:"outputPackets,omitempty"` //
+
+	OutputQueueCount *int `json:"outputQueueCount,omitempty"` //
+
+	OutputQueueDepth *int `json:"outputQueueDepth,omitempty"` //
+
+	OutputRatebps *int `json:"outputRatebps,omitempty"` //
+
+	RefreshedAt *int `json:"refreshedAt,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfacePathOverlayInfo struct {
-	ControlPlane            string                                                                                                                           `json:"controlPlane,omitempty"`            //
-	DataPacketEncapsulation string                                                                                                                           `json:"dataPacketEncapsulation,omitempty"` //
-	DestIP                  string                                                                                                                           `json:"destIp,omitempty"`                  //
-	DestPort                string                                                                                                                           `json:"destPort,omitempty"`                //
-	Protocol                string                                                                                                                           `json:"protocol,omitempty"`                //
-	SourceIP                string                                                                                                                           `json:"sourceIp,omitempty"`                //
-	SourcePort              string                                                                                                                           `json:"sourcePort,omitempty"`              //
-	VxlanInfo               *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfacePathOverlayInfoVxlanInfo `json:"vxlanInfo,omitempty"`               //
+	ControlPlane string `json:"controlPlane,omitempty"` //
+
+	DataPacketEncapsulation string `json:"dataPacketEncapsulation,omitempty"` //
+
+	DestIP string `json:"destIp,omitempty"` //
+
+	DestPort string `json:"destPort,omitempty"` //
+
+	Protocol string `json:"protocol,omitempty"` //
+
+	SourceIP string `json:"sourceIp,omitempty"` //
+
+	SourcePort string `json:"sourcePort,omitempty"` //
+
+	VxlanInfo *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfacePathOverlayInfoVxlanInfo `json:"vxlanInfo,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfacePathOverlayInfoVxlanInfo struct {
 	Dscp string `json:"dscp,omitempty"` //
+
 	Vnid string `json:"vnid,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoEgressInterfaceVirtualInterfaceQosStatistics struct {
-	ClassMapName       string `json:"classMapName,omitempty"`       //
-	DropRate           *int   `json:"dropRate,omitempty"`           //
-	NumBytes           *int   `json:"numBytes,omitempty"`           //
-	NumPackets         *int   `json:"numPackets,omitempty"`         //
-	OfferedRate        *int   `json:"offeredRate,omitempty"`        //
-	QueueBandwidthbps  string `json:"queueBandwidthbps,omitempty"`  //
-	QueueDepth         *int   `json:"queueDepth,omitempty"`         //
-	QueueNoBufferDrops *int   `json:"queueNoBufferDrops,omitempty"` //
-	QueueTotalDrops    *int   `json:"queueTotalDrops,omitempty"`    //
-	RefreshedAt        *int   `json:"refreshedAt,omitempty"`        //
+	ClassMapName string `json:"classMapName,omitempty"` //
+
+	DropRate *int `json:"dropRate,omitempty"` //
+
+	NumBytes *int `json:"numBytes,omitempty"` //
+
+	NumPackets *int `json:"numPackets,omitempty"` //
+
+	OfferedRate *int `json:"offeredRate,omitempty"` //
+
+	QueueBandwidthbps string `json:"queueBandwidthbps,omitempty"` //
+
+	QueueDepth *int `json:"queueDepth,omitempty"` //
+
+	QueueNoBufferDrops *int `json:"queueNoBufferDrops,omitempty"` //
+
+	QueueTotalDrops *int `json:"queueTotalDrops,omitempty"` //
+
+	RefreshedAt *int `json:"refreshedAt,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnect struct {
-	Authentication            string                                                                                                 `json:"authentication,omitempty"`            //
-	DataSwitching             string                                                                                                 `json:"dataSwitching,omitempty"`             //
-	EgressACLAnalysis         *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnectEgressACLAnalysis  `json:"egressAclAnalysis,omitempty"`         //
-	IngressACLAnalysis        *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnectIngressACLAnalysis `json:"ingressAclAnalysis,omitempty"`        //
-	WirelessLanControllerID   string                                                                                                 `json:"wirelessLanControllerId,omitempty"`   //
-	WirelessLanControllerName string                                                                                                 `json:"wirelessLanControllerName,omitempty"` //
+	Authentication string `json:"authentication,omitempty"` //
+
+	DataSwitching string `json:"dataSwitching,omitempty"` //
+
+	EgressACLAnalysis *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnectEgressACLAnalysis `json:"egressAclAnalysis,omitempty"` //
+
+	IngressACLAnalysis *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnectIngressACLAnalysis `json:"ingressAclAnalysis,omitempty"` //
+
+	WirelessLanControllerID string `json:"wirelessLanControllerId,omitempty"` //
+
+	WirelessLanControllerName string `json:"wirelessLanControllerName,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnectEgressACLAnalysis struct {
-	ACLName      string                                                                                                              `json:"aclName,omitempty"`      //
+	ACLName string `json:"aclName,omitempty"` //
+
 	MatchingAces *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnectEgressACLAnalysisMatchingAces `json:"matchingAces,omitempty"` //
-	Result       string                                                                                                              `json:"result,omitempty"`       //
+
+	Result string `json:"result,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnectEgressACLAnalysisMatchingAces struct {
-	Ace           string                                                                                                                           `json:"ace,omitempty"`           //
+	Ace string `json:"ace,omitempty"` //
+
 	MatchingPorts *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnectEgressACLAnalysisMatchingAcesMatchingPorts `json:"matchingPorts,omitempty"` //
-	Result        string                                                                                                                           `json:"result,omitempty"`        //
+
+	Result string `json:"result,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnectEgressACLAnalysisMatchingAcesMatchingPorts struct {
-	Ports    *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnectEgressACLAnalysisMatchingAcesMatchingPortsPorts `json:"ports,omitempty"`    //
-	Protocol string                                                                                                                                `json:"protocol,omitempty"` //
+	Ports *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnectEgressACLAnalysisMatchingAcesMatchingPortsPorts `json:"ports,omitempty"` //
+
+	Protocol string `json:"protocol,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnectEgressACLAnalysisMatchingAcesMatchingPortsPorts struct {
-	DestPorts   []string `json:"destPorts,omitempty"`   //
+	DestPorts []string `json:"destPorts,omitempty"` //
+
 	SourcePorts []string `json:"sourcePorts,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnectIngressACLAnalysis struct {
-	ACLName      string                                                                                                               `json:"aclName,omitempty"`      //
+	ACLName string `json:"aclName,omitempty"` //
+
 	MatchingAces *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnectIngressACLAnalysisMatchingAces `json:"matchingAces,omitempty"` //
-	Result       string                                                                                                               `json:"result,omitempty"`       //
+
+	Result string `json:"result,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnectIngressACLAnalysisMatchingAces struct {
-	Ace           string                                                                                                                            `json:"ace,omitempty"`           //
+	Ace string `json:"ace,omitempty"` //
+
 	MatchingPorts *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnectIngressACLAnalysisMatchingAcesMatchingPorts `json:"matchingPorts,omitempty"` //
-	Result        string                                                                                                                            `json:"result,omitempty"`        //
+
+	Result string `json:"result,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnectIngressACLAnalysisMatchingAcesMatchingPorts struct {
-	Ports    *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnectIngressACLAnalysisMatchingAcesMatchingPortsPorts `json:"ports,omitempty"`    //
-	Protocol string                                                                                                                                 `json:"protocol,omitempty"` //
+	Ports *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnectIngressACLAnalysisMatchingAcesMatchingPortsPorts `json:"ports,omitempty"` //
+
+	Protocol string `json:"protocol,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoFlexConnectIngressACLAnalysisMatchingAcesMatchingPortsPorts struct {
-	DestPorts   []string `json:"destPorts,omitempty"`   //
+	DestPorts []string `json:"destPorts,omitempty"` //
+
 	SourcePorts []string `json:"sourcePorts,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterface struct {
-	PhysicalInterface *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterface  `json:"physicalInterface,omitempty"` //
-	VirtualInterface  *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterface `json:"virtualInterface,omitempty"`  //
+	PhysicalInterface *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterface `json:"physicalInterface,omitempty"` //
+
+	VirtualInterface *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterface `json:"virtualInterface,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterface struct {
-	ACLAnalysis                           *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfaceACLAnalysis         `json:"aclAnalysis,omitempty"`                           //
-	ID                                    string                                                                                                                        `json:"id,omitempty"`                                    //
-	InterfaceStatistics                   *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfaceInterfaceStatistics `json:"interfaceStatistics,omitempty"`                   //
-	InterfaceStatsCollection              string                                                                                                                        `json:"interfaceStatsCollection,omitempty"`              //
-	InterfaceStatsCollectionFailureReason string                                                                                                                        `json:"interfaceStatsCollectionFailureReason,omitempty"` //
-	Name                                  string                                                                                                                        `json:"name,omitempty"`                                  //
-	PathOverlayInfo                       *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfacePathOverlayInfo   `json:"pathOverlayInfo,omitempty"`                       //
-	QosStatistics                         *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfaceQosStatistics     `json:"qosStatistics,omitempty"`                         //
-	QosStatsCollection                    string                                                                                                                        `json:"qosStatsCollection,omitempty"`                    //
-	QosStatsCollectionFailureReason       string                                                                                                                        `json:"qosStatsCollectionFailureReason,omitempty"`       //
-	UsedVLAN                              string                                                                                                                        `json:"usedVlan,omitempty"`                              //
-	VrfName                               string                                                                                                                        `json:"vrfName,omitempty"`                               //
+	ACLAnalysis *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfaceACLAnalysis `json:"aclAnalysis,omitempty"` //
+
+	ID string `json:"id,omitempty"` //
+
+	InterfaceStatistics *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfaceInterfaceStatistics `json:"interfaceStatistics,omitempty"` //
+
+	InterfaceStatsCollection string `json:"interfaceStatsCollection,omitempty"` //
+
+	InterfaceStatsCollectionFailureReason string `json:"interfaceStatsCollectionFailureReason,omitempty"` //
+
+	Name string `json:"name,omitempty"` //
+
+	PathOverlayInfo *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfacePathOverlayInfo `json:"pathOverlayInfo,omitempty"` //
+
+	QosStatistics *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfaceQosStatistics `json:"qosStatistics,omitempty"` //
+
+	QosStatsCollection string `json:"qosStatsCollection,omitempty"` //
+
+	QosStatsCollectionFailureReason string `json:"qosStatsCollectionFailureReason,omitempty"` //
+
+	UsedVLAN string `json:"usedVlan,omitempty"` //
+
+	VrfName string `json:"vrfName,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfaceACLAnalysis struct {
-	ACLName      string                                                                                                                              `json:"aclName,omitempty"`      //
+	ACLName string `json:"aclName,omitempty"` //
+
 	MatchingAces *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfaceACLAnalysisMatchingAces `json:"matchingAces,omitempty"` //
-	Result       string                                                                                                                              `json:"result,omitempty"`       //
+
+	Result string `json:"result,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfaceACLAnalysisMatchingAces struct {
-	Ace           string                                                                                                                                           `json:"ace,omitempty"`           //
+	Ace string `json:"ace,omitempty"` //
+
 	MatchingPorts *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfaceACLAnalysisMatchingAcesMatchingPorts `json:"matchingPorts,omitempty"` //
-	Result        string                                                                                                                                           `json:"result,omitempty"`        //
+
+	Result string `json:"result,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfaceACLAnalysisMatchingAcesMatchingPorts struct {
-	Ports    *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfaceACLAnalysisMatchingAcesMatchingPortsPorts `json:"ports,omitempty"`    //
-	Protocol string                                                                                                                                                `json:"protocol,omitempty"` //
+	Ports *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfaceACLAnalysisMatchingAcesMatchingPortsPorts `json:"ports,omitempty"` //
+
+	Protocol string `json:"protocol,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfaceACLAnalysisMatchingAcesMatchingPortsPorts struct {
-	DestPorts   []string `json:"destPorts,omitempty"`   //
+	DestPorts []string `json:"destPorts,omitempty"` //
+
 	SourcePorts []string `json:"sourcePorts,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfaceInterfaceStatistics struct {
-	AdminStatus        string `json:"adminStatus,omitempty"`        //
-	InputPackets       *int   `json:"inputPackets,omitempty"`       //
-	InputQueueCount    *int   `json:"inputQueueCount,omitempty"`    //
-	InputQueueDrops    *int   `json:"inputQueueDrops,omitempty"`    //
-	InputQueueFlushes  *int   `json:"inputQueueFlushes,omitempty"`  //
-	InputQueueMaxDepth *int   `json:"inputQueueMaxDepth,omitempty"` //
-	InputRatebps       *int   `json:"inputRatebps,omitempty"`       //
-	OperationalStatus  string `json:"operationalStatus,omitempty"`  //
-	OutputDrop         *int   `json:"outputDrop,omitempty"`         //
-	OutputPackets      *int   `json:"outputPackets,omitempty"`      //
-	OutputQueueCount   *int   `json:"outputQueueCount,omitempty"`   //
-	OutputQueueDepth   *int   `json:"outputQueueDepth,omitempty"`   //
-	OutputRatebps      *int   `json:"outputRatebps,omitempty"`      //
-	RefreshedAt        *int   `json:"refreshedAt,omitempty"`        //
+	AdminStatus string `json:"adminStatus,omitempty"` //
+
+	InputPackets *int `json:"inputPackets,omitempty"` //
+
+	InputQueueCount *int `json:"inputQueueCount,omitempty"` //
+
+	InputQueueDrops *int `json:"inputQueueDrops,omitempty"` //
+
+	InputQueueFlushes *int `json:"inputQueueFlushes,omitempty"` //
+
+	InputQueueMaxDepth *int `json:"inputQueueMaxDepth,omitempty"` //
+
+	InputRatebps *int `json:"inputRatebps,omitempty"` //
+
+	OperationalStatus string `json:"operationalStatus,omitempty"` //
+
+	OutputDrop *int `json:"outputDrop,omitempty"` //
+
+	OutputPackets *int `json:"outputPackets,omitempty"` //
+
+	OutputQueueCount *int `json:"outputQueueCount,omitempty"` //
+
+	OutputQueueDepth *int `json:"outputQueueDepth,omitempty"` //
+
+	OutputRatebps *int `json:"outputRatebps,omitempty"` //
+
+	RefreshedAt *int `json:"refreshedAt,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfacePathOverlayInfo struct {
-	ControlPlane            string                                                                                                                             `json:"controlPlane,omitempty"`            //
-	DataPacketEncapsulation string                                                                                                                             `json:"dataPacketEncapsulation,omitempty"` //
-	DestIP                  string                                                                                                                             `json:"destIp,omitempty"`                  //
-	DestPort                string                                                                                                                             `json:"destPort,omitempty"`                //
-	Protocol                string                                                                                                                             `json:"protocol,omitempty"`                //
-	SourceIP                string                                                                                                                             `json:"sourceIp,omitempty"`                //
-	SourcePort              string                                                                                                                             `json:"sourcePort,omitempty"`              //
-	VxlanInfo               *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfacePathOverlayInfoVxlanInfo `json:"vxlanInfo,omitempty"`               //
+	ControlPlane string `json:"controlPlane,omitempty"` //
+
+	DataPacketEncapsulation string `json:"dataPacketEncapsulation,omitempty"` //
+
+	DestIP string `json:"destIp,omitempty"` //
+
+	DestPort string `json:"destPort,omitempty"` //
+
+	Protocol string `json:"protocol,omitempty"` //
+
+	SourceIP string `json:"sourceIp,omitempty"` //
+
+	SourcePort string `json:"sourcePort,omitempty"` //
+
+	VxlanInfo *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfacePathOverlayInfoVxlanInfo `json:"vxlanInfo,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfacePathOverlayInfoVxlanInfo struct {
 	Dscp string `json:"dscp,omitempty"` //
+
 	Vnid string `json:"vnid,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfacePhysicalInterfaceQosStatistics struct {
-	ClassMapName       string `json:"classMapName,omitempty"`       //
-	DropRate           *int   `json:"dropRate,omitempty"`           //
-	NumBytes           *int   `json:"numBytes,omitempty"`           //
-	NumPackets         *int   `json:"numPackets,omitempty"`         //
-	OfferedRate        *int   `json:"offeredRate,omitempty"`        //
-	QueueBandwidthbps  string `json:"queueBandwidthbps,omitempty"`  //
-	QueueDepth         *int   `json:"queueDepth,omitempty"`         //
-	QueueNoBufferDrops *int   `json:"queueNoBufferDrops,omitempty"` //
-	QueueTotalDrops    *int   `json:"queueTotalDrops,omitempty"`    //
-	RefreshedAt        *int   `json:"refreshedAt,omitempty"`        //
+	ClassMapName string `json:"classMapName,omitempty"` //
+
+	DropRate *int `json:"dropRate,omitempty"` //
+
+	NumBytes *int `json:"numBytes,omitempty"` //
+
+	NumPackets *int `json:"numPackets,omitempty"` //
+
+	OfferedRate *int `json:"offeredRate,omitempty"` //
+
+	QueueBandwidthbps string `json:"queueBandwidthbps,omitempty"` //
+
+	QueueDepth *int `json:"queueDepth,omitempty"` //
+
+	QueueNoBufferDrops *int `json:"queueNoBufferDrops,omitempty"` //
+
+	QueueTotalDrops *int `json:"queueTotalDrops,omitempty"` //
+
+	RefreshedAt *int `json:"refreshedAt,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterface struct {
-	ACLAnalysis                           *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfaceACLAnalysis         `json:"aclAnalysis,omitempty"`                           //
-	ID                                    string                                                                                                                       `json:"id,omitempty"`                                    //
-	InterfaceStatistics                   *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfaceInterfaceStatistics `json:"interfaceStatistics,omitempty"`                   //
-	InterfaceStatsCollection              string                                                                                                                       `json:"interfaceStatsCollection,omitempty"`              //
-	InterfaceStatsCollectionFailureReason string                                                                                                                       `json:"interfaceStatsCollectionFailureReason,omitempty"` //
-	Name                                  string                                                                                                                       `json:"name,omitempty"`                                  //
-	PathOverlayInfo                       *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfacePathOverlayInfo   `json:"pathOverlayInfo,omitempty"`                       //
-	QosStatistics                         *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfaceQosStatistics     `json:"qosStatistics,omitempty"`                         //
-	QosStatsCollection                    string                                                                                                                       `json:"qosStatsCollection,omitempty"`                    //
-	QosStatsCollectionFailureReason       string                                                                                                                       `json:"qosStatsCollectionFailureReason,omitempty"`       //
-	UsedVLAN                              string                                                                                                                       `json:"usedVlan,omitempty"`                              //
-	VrfName                               string                                                                                                                       `json:"vrfName,omitempty"`                               //
+	ACLAnalysis *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfaceACLAnalysis `json:"aclAnalysis,omitempty"` //
+
+	ID string `json:"id,omitempty"` //
+
+	InterfaceStatistics *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfaceInterfaceStatistics `json:"interfaceStatistics,omitempty"` //
+
+	InterfaceStatsCollection string `json:"interfaceStatsCollection,omitempty"` //
+
+	InterfaceStatsCollectionFailureReason string `json:"interfaceStatsCollectionFailureReason,omitempty"` //
+
+	Name string `json:"name,omitempty"` //
+
+	PathOverlayInfo *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfacePathOverlayInfo `json:"pathOverlayInfo,omitempty"` //
+
+	QosStatistics *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfaceQosStatistics `json:"qosStatistics,omitempty"` //
+
+	QosStatsCollection string `json:"qosStatsCollection,omitempty"` //
+
+	QosStatsCollectionFailureReason string `json:"qosStatsCollectionFailureReason,omitempty"` //
+
+	UsedVLAN string `json:"usedVlan,omitempty"` //
+
+	VrfName string `json:"vrfName,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfaceACLAnalysis struct {
-	ACLName      string                                                                                                                             `json:"aclName,omitempty"`      //
+	ACLName string `json:"aclName,omitempty"` //
+
 	MatchingAces *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfaceACLAnalysisMatchingAces `json:"matchingAces,omitempty"` //
-	Result       string                                                                                                                             `json:"result,omitempty"`       //
+
+	Result string `json:"result,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfaceACLAnalysisMatchingAces struct {
-	Ace           string                                                                                                                                          `json:"ace,omitempty"`           //
+	Ace string `json:"ace,omitempty"` //
+
 	MatchingPorts *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfaceACLAnalysisMatchingAcesMatchingPorts `json:"matchingPorts,omitempty"` //
-	Result        string                                                                                                                                          `json:"result,omitempty"`        //
+
+	Result string `json:"result,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfaceACLAnalysisMatchingAcesMatchingPorts struct {
-	Ports    *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfaceACLAnalysisMatchingAcesMatchingPortsPorts `json:"ports,omitempty"`    //
-	Protocol string                                                                                                                                               `json:"protocol,omitempty"` //
+	Ports *[]ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfaceACLAnalysisMatchingAcesMatchingPortsPorts `json:"ports,omitempty"` //
+
+	Protocol string `json:"protocol,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfaceACLAnalysisMatchingAcesMatchingPortsPorts struct {
-	DestPorts   []string `json:"destPorts,omitempty"`   //
+	DestPorts []string `json:"destPorts,omitempty"` //
+
 	SourcePorts []string `json:"sourcePorts,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfaceInterfaceStatistics struct {
-	AdminStatus        string `json:"adminStatus,omitempty"`        //
-	InputPackets       *int   `json:"inputPackets,omitempty"`       //
-	InputQueueCount    *int   `json:"inputQueueCount,omitempty"`    //
-	InputQueueDrops    *int   `json:"inputQueueDrops,omitempty"`    //
-	InputQueueFlushes  *int   `json:"inputQueueFlushes,omitempty"`  //
-	InputQueueMaxDepth *int   `json:"inputQueueMaxDepth,omitempty"` //
-	InputRatebps       *int   `json:"inputRatebps,omitempty"`       //
-	OperationalStatus  string `json:"operationalStatus,omitempty"`  //
-	OutputDrop         *int   `json:"outputDrop,omitempty"`         //
-	OutputPackets      *int   `json:"outputPackets,omitempty"`      //
-	OutputQueueCount   *int   `json:"outputQueueCount,omitempty"`   //
-	OutputQueueDepth   *int   `json:"outputQueueDepth,omitempty"`   //
-	OutputRatebps      *int   `json:"outputRatebps,omitempty"`      //
-	RefreshedAt        *int   `json:"refreshedAt,omitempty"`        //
+	AdminStatus string `json:"adminStatus,omitempty"` //
+
+	InputPackets *int `json:"inputPackets,omitempty"` //
+
+	InputQueueCount *int `json:"inputQueueCount,omitempty"` //
+
+	InputQueueDrops *int `json:"inputQueueDrops,omitempty"` //
+
+	InputQueueFlushes *int `json:"inputQueueFlushes,omitempty"` //
+
+	InputQueueMaxDepth *int `json:"inputQueueMaxDepth,omitempty"` //
+
+	InputRatebps *int `json:"inputRatebps,omitempty"` //
+
+	OperationalStatus string `json:"operationalStatus,omitempty"` //
+
+	OutputDrop *int `json:"outputDrop,omitempty"` //
+
+	OutputPackets *int `json:"outputPackets,omitempty"` //
+
+	OutputQueueCount *int `json:"outputQueueCount,omitempty"` //
+
+	OutputQueueDepth *int `json:"outputQueueDepth,omitempty"` //
+
+	OutputRatebps *int `json:"outputRatebps,omitempty"` //
+
+	RefreshedAt *int `json:"refreshedAt,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfacePathOverlayInfo struct {
-	ControlPlane            string                                                                                                                            `json:"controlPlane,omitempty"`            //
-	DataPacketEncapsulation string                                                                                                                            `json:"dataPacketEncapsulation,omitempty"` //
-	DestIP                  string                                                                                                                            `json:"destIp,omitempty"`                  //
-	DestPort                string                                                                                                                            `json:"destPort,omitempty"`                //
-	Protocol                string                                                                                                                            `json:"protocol,omitempty"`                //
-	SourceIP                string                                                                                                                            `json:"sourceIp,omitempty"`                //
-	SourcePort              string                                                                                                                            `json:"sourcePort,omitempty"`              //
-	VxlanInfo               *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfacePathOverlayInfoVxlanInfo `json:"vxlanInfo,omitempty"`               //
+	ControlPlane string `json:"controlPlane,omitempty"` //
+
+	DataPacketEncapsulation string `json:"dataPacketEncapsulation,omitempty"` //
+
+	DestIP string `json:"destIp,omitempty"` //
+
+	DestPort string `json:"destPort,omitempty"` //
+
+	Protocol string `json:"protocol,omitempty"` //
+
+	SourceIP string `json:"sourceIp,omitempty"` //
+
+	SourcePort string `json:"sourcePort,omitempty"` //
+
+	VxlanInfo *ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfacePathOverlayInfoVxlanInfo `json:"vxlanInfo,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfacePathOverlayInfoVxlanInfo struct {
 	Dscp string `json:"dscp,omitempty"` //
+
 	Vnid string `json:"vnid,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoIngressInterfaceVirtualInterfaceQosStatistics struct {
-	ClassMapName       string `json:"classMapName,omitempty"`       //
-	DropRate           *int   `json:"dropRate,omitempty"`           //
-	NumBytes           *int   `json:"numBytes,omitempty"`           //
-	NumPackets         *int   `json:"numPackets,omitempty"`         //
-	OfferedRate        *int   `json:"offeredRate,omitempty"`        //
-	QueueBandwidthbps  string `json:"queueBandwidthbps,omitempty"`  //
-	QueueDepth         *int   `json:"queueDepth,omitempty"`         //
-	QueueNoBufferDrops *int   `json:"queueNoBufferDrops,omitempty"` //
-	QueueTotalDrops    *int   `json:"queueTotalDrops,omitempty"`    //
-	RefreshedAt        *int   `json:"refreshedAt,omitempty"`        //
+	ClassMapName string `json:"classMapName,omitempty"` //
+
+	DropRate *int `json:"dropRate,omitempty"` //
+
+	NumBytes *int `json:"numBytes,omitempty"` //
+
+	NumPackets *int `json:"numPackets,omitempty"` //
+
+	OfferedRate *int `json:"offeredRate,omitempty"` //
+
+	QueueBandwidthbps string `json:"queueBandwidthbps,omitempty"` //
+
+	QueueDepth *int `json:"queueDepth,omitempty"` //
+
+	QueueNoBufferDrops *int `json:"queueNoBufferDrops,omitempty"` //
+
+	QueueTotalDrops *int `json:"queueTotalDrops,omitempty"` //
+
+	RefreshedAt *int `json:"refreshedAt,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseNetworkElementsInfoPerfMonitorStatistics struct {
-	ByteRate             *int     `json:"byteRate,omitempty"`             //
-	DestIPAddress        string   `json:"destIpAddress,omitempty"`        //
-	DestPort             string   `json:"destPort,omitempty"`             //
-	InputInterface       string   `json:"inputInterface,omitempty"`       //
-	IPv4DSCP             string   `json:"ipv4DSCP,omitempty"`             //
-	IPv4TTL              *int     `json:"ipv4TTL,omitempty"`              //
-	OutputInterface      string   `json:"outputInterface,omitempty"`      //
-	PacketBytes          *int     `json:"packetBytes,omitempty"`          //
-	PacketCount          *int     `json:"packetCount,omitempty"`          //
-	PacketLoss           *int     `json:"packetLoss,omitempty"`           //
+	ByteRate *int `json:"byteRate,omitempty"` //
+
+	DestIPAddress string `json:"destIpAddress,omitempty"` //
+
+	DestPort string `json:"destPort,omitempty"` //
+
+	InputInterface string `json:"inputInterface,omitempty"` //
+
+	IPv4DSCP string `json:"ipv4DSCP,omitempty"` //
+
+	IPv4TTL *int `json:"ipv4TTL,omitempty"` //
+
+	OutputInterface string `json:"outputInterface,omitempty"` //
+
+	PacketBytes *int `json:"packetBytes,omitempty"` //
+
+	PacketCount *int `json:"packetCount,omitempty"` //
+
+	PacketLoss *int `json:"packetLoss,omitempty"` //
+
 	PacketLossPercentage *float64 `json:"packetLossPercentage,omitempty"` //
-	Protocol             string   `json:"protocol,omitempty"`             //
-	RefreshedAt          *int     `json:"refreshedAt,omitempty"`          //
-	RtpJitterMax         *int     `json:"rtpJitterMax,omitempty"`         //
-	RtpJitterMean        *int     `json:"rtpJitterMean,omitempty"`        //
-	RtpJitterMin         *int     `json:"rtpJitterMin,omitempty"`         //
-	SourceIPAddress      string   `json:"sourceIpAddress,omitempty"`      //
-	SourcePort           string   `json:"sourcePort,omitempty"`           //
+
+	Protocol string `json:"protocol,omitempty"` //
+
+	RefreshedAt *int `json:"refreshedAt,omitempty"` //
+
+	RtpJitterMax *int `json:"rtpJitterMax,omitempty"` //
+
+	RtpJitterMean *int `json:"rtpJitterMean,omitempty"` //
+
+	RtpJitterMin *int `json:"rtpJitterMin,omitempty"` //
+
+	SourceIPAddress string `json:"sourceIpAddress,omitempty"` //
+
+	SourcePort string `json:"sourcePort,omitempty"` //
 }
 type ResponsePathTraceRetrievesPreviousPathtraceV1ResponseRequest struct {
-	ControlPath            *bool    `json:"controlPath,omitempty"`            // Control path tracing
-	CreateTime             *int     `json:"createTime,omitempty"`             // Timestamp when the Path Trace request was first received
-	DestIP                 string   `json:"destIP,omitempty"`                 // IP Address of the destination device
-	DestPort               string   `json:"destPort,omitempty"`               // Port on the destination device
-	FailureReason          string   `json:"failureReason,omitempty"`          // Reason for failure
-	ID                     string   `json:"id,omitempty"`                     // Unique ID for the Path Trace request
-	Inclusions             []string `json:"inclusions,omitempty"`             // Subset of {INTERFACE-STATS, QOS-STATS, DEVICE-STATS, PERFORMANCE-STATS, ACL-TRACE}
-	LastUpdateTime         *int     `json:"lastUpdateTime,omitempty"`         // Last timestamp when the path trace response was updated
-	PeriodicRefresh        *bool    `json:"periodicRefresh,omitempty"`        // Re-run the Path Trace every 30 seconds
-	Protocol               string   `json:"protocol,omitempty"`               // One of TCP/UDP or either (null)
-	SourceIP               string   `json:"sourceIP,omitempty"`               // IP Address of the source device
-	SourcePort             string   `json:"sourcePort,omitempty"`             // Port on the source device
-	Status                 string   `json:"status,omitempty"`                 // One of {SUCCESS, INPROGRESS, FAILED, SCHEDULED, PENDING, COMPLETED}
-	PreviousFlowAnalysisID string   `json:"previousFlowAnalysisId,omitempty"` // When periodicRefresh is true, this field holds the original Path Trace request ID
+	ControlPath *bool `json:"controlPath,omitempty"` // Control path tracing
+
+	CreateTime *int `json:"createTime,omitempty"` // Timestamp when the Path Trace request was first received
+
+	DestIP string `json:"destIP,omitempty"` // IP Address of the destination device
+
+	DestPort string `json:"destPort,omitempty"` // Port on the destination device
+
+	FailureReason string `json:"failureReason,omitempty"` // Reason for failure
+
+	ID string `json:"id,omitempty"` // Unique ID for the Path Trace request
+
+	Inclusions []string `json:"inclusions,omitempty"` // Subset of {INTERFACE-STATS, QOS-STATS, DEVICE-STATS, PERFORMANCE-STATS, ACL-TRACE}
+
+	LastUpdateTime *int `json:"lastUpdateTime,omitempty"` // Last timestamp when the path trace response was updated
+
+	PeriodicRefresh *bool `json:"periodicRefresh,omitempty"` // Re-run the Path Trace every 30 seconds
+
+	Protocol string `json:"protocol,omitempty"` // One of TCP/UDP or either (null)
+
+	SourceIP string `json:"sourceIP,omitempty"` // IP Address of the source device
+
+	SourcePort string `json:"sourcePort,omitempty"` // Port on the source device
+
+	Status string `json:"status,omitempty"` // One of {SUCCESS, INPROGRESS, FAILED, SCHEDULED, PENDING, COMPLETED}
+
+	PreviousFlowAnalysisID string `json:"previousFlowAnalysisId,omitempty"` // When periodicRefresh is true, this field holds the original Path Trace request ID
 }
 type ResponsePathTraceDeletesPathtraceByIDV1 struct {
 	Response *ResponsePathTraceDeletesPathtraceByIDV1Response `json:"response,omitempty"` //
-	Version  string                                           `json:"version,omitempty"`  //
+
+	Version string `json:"version,omitempty"` //
 }
 type ResponsePathTraceDeletesPathtraceByIDV1Response struct {
 	TaskID string `json:"taskId,omitempty"` //
-	URL    string `json:"url,omitempty"`    //
+
+	URL string `json:"url,omitempty"` //
 }
 type RequestPathTraceInitiateANewPathtraceV1 struct {
-	ControlPath     *bool    `json:"controlPath,omitempty"`     // Control path tracing
-	DestIP          string   `json:"destIP,omitempty"`          // Destination IP address
-	DestPort        string   `json:"destPort,omitempty"`        // Destination Port, range: 1-65535
-	Inclusions      []string `json:"inclusions,omitempty"`      // Subset of {INTERFACE-STATS, QOS-STATS, DEVICE-STATS, PERFORMANCE-STATS, ACL-TRACE}
-	PeriodicRefresh *bool    `json:"periodicRefresh,omitempty"` // Periodic refresh of path for every 30 sec
-	Protocol        string   `json:"protocol,omitempty"`        // Protocol - one of [TCP, UDP] - checks both when left blank
-	SourceIP        string   `json:"sourceIP,omitempty"`        // Source IP address
-	SourcePort      string   `json:"sourcePort,omitempty"`      // Source Port, range: 1-65535
+	ControlPath *bool `json:"controlPath,omitempty"` // Control path tracing
+
+	DestIP string `json:"destIP,omitempty"` // Destination IP address
+
+	DestPort string `json:"destPort,omitempty"` // Destination Port, range: 1-65535
+
+	Inclusions []string `json:"inclusions,omitempty"` // Subset of {INTERFACE-STATS, QOS-STATS, DEVICE-STATS, PERFORMANCE-STATS, ACL-TRACE}
+
+	PeriodicRefresh *bool `json:"periodicRefresh,omitempty"` // Periodic refresh of path for every 30 sec
+
+	Protocol string `json:"protocol,omitempty"` // Protocol - one of [TCP, UDP] - checks both when left blank
+
+	SourceIP string `json:"sourceIP,omitempty"` // Source IP address
+
+	SourcePort string `json:"sourcePort,omitempty"` // Source Port, range: 1-65535
 }
 
 //RetrievesAllPreviousPathtracesSummaryV1 Retrieves all previous Pathtraces summary - 55bc-3bf9-4e38-b6ff
@@ -935,7 +1225,7 @@ type RequestPathTraceInitiateANewPathtraceV1 struct {
 
 @param RetrievesAllPreviousPathtracesSummaryV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-all-previous-pathtraces-summary-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-all-previous-pathtraces-summary
 */
 func (s *PathTraceService) RetrievesAllPreviousPathtracesSummaryV1(RetrievesAllPreviousPathtracesSummaryV1QueryParams *RetrievesAllPreviousPathtracesSummaryV1QueryParams) (*ResponsePathTraceRetrievesAllPreviousPathtracesSummaryV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/flow-analysis"
@@ -973,7 +1263,7 @@ func (s *PathTraceService) RetrievesAllPreviousPathtracesSummaryV1(RetrievesAllP
 @param flowAnalysisID flowAnalysisId path parameter. Flow analysis request id
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-previous-pathtrace-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-previous-pathtrace
 */
 func (s *PathTraceService) RetrievesPreviousPathtraceV1(flowAnalysisID string) (*ResponsePathTraceRetrievesPreviousPathtraceV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/flow-analysis/{flowAnalysisId}"
@@ -1008,7 +1298,7 @@ func (s *PathTraceService) RetrievesPreviousPathtraceV1(flowAnalysisID string) (
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!initiate-a-new-pathtrace-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!initiate-a-new-pathtrace
 */
 func (s *PathTraceService) InitiateANewPathtraceV1(requestPathTraceInitiateANewPathtraceV1 *RequestPathTraceInitiateANewPathtraceV1) (*ResponsePathTraceInitiateANewPathtraceV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/flow-analysis"
@@ -1047,7 +1337,7 @@ func (s *PathTraceService) InitiateANewPathtraceV1(requestPathTraceInitiateANewP
 @param flowAnalysisID flowAnalysisId path parameter. Flow analysis request id
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!deletes-pathtrace-by-id-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!deletes-pathtrace-by-id
 */
 func (s *PathTraceService) DeletesPathtraceByIDV1(flowAnalysisID string) (*ResponsePathTraceDeletesPathtraceByIDV1, *resty.Response, error) {
 	//flowAnalysisID string

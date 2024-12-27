@@ -794,6 +794,7 @@ type ResponseItemEventManagementGetEventArtifactsV1 struct {
 	EventTemplates          *[]ResponseItemEventManagementGetEventArtifactsV1EventTemplates `json:"eventTemplates,omitempty"`          // Event Templates
 	IsTenantAware           *bool                                                           `json:"isTenantAware,omitempty"`           // Is Tenant Aware
 	SupportedConnectorTypes []string                                                        `json:"supportedConnectorTypes,omitempty"` // Supported Connector Types
+	Configs                 *ResponseItemEventManagementGetEventArtifactsV1Configs          `json:"configs,omitempty"`                 //
 	TenantID                string                                                          `json:"tenantId,omitempty"`                // Tenant Id
 }
 type ResponseItemEventManagementGetEventArtifactsV1EventPayload struct {
@@ -812,6 +813,11 @@ type ResponseItemEventManagementGetEventArtifactsV1EventPayloadDetails struct {
 }
 type ResponseItemEventManagementGetEventArtifactsV1EventPayloadAdditionalDetails interface{}
 type ResponseItemEventManagementGetEventArtifactsV1EventTemplates interface{}
+type ResponseItemEventManagementGetEventArtifactsV1Configs struct {
+	IsAlert *bool `json:"isAlert,omitempty"` // Is Alert
+
+	IsACKnowledgeable *bool `json:"isACKnowledgeable,omitempty"` // Is A C Knowledgeable
+}
 type ResponseEventManagementEventArtifactCountV1 struct {
 	Response *float64 `json:"response,omitempty"` // Response
 }
@@ -1192,7 +1198,7 @@ type RequestEventManagementUpdateWebhookDestinationV1Headers struct {
 
 @param GetAuditLogParentRecordsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-audit-log-parent-records-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-audit-log-parent-records
 */
 func (s *EventManagementService) GetAuditLogParentRecordsV1(GetAuditLogParentRecordsV1QueryParams *GetAuditLogParentRecordsV1QueryParams) (*ResponseEventManagementGetAuditLogParentRecordsV1, *resty.Response, error) {
 	path := "/dna/data/api/v1/event/event-series/audit-log/parent-records"
@@ -1229,7 +1235,7 @@ func (s *EventManagementService) GetAuditLogParentRecordsV1(GetAuditLogParentRec
 
 @param GetAuditLogSummaryV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-audit-log-summary-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-audit-log-summary
 */
 func (s *EventManagementService) GetAuditLogSummaryV1(GetAuditLogSummaryV1QueryParams *GetAuditLogSummaryV1QueryParams) (*ResponseEventManagementGetAuditLogSummaryV1, *resty.Response, error) {
 	path := "/dna/data/api/v1/event/event-series/audit-log/summary"
@@ -1266,7 +1272,7 @@ func (s *EventManagementService) GetAuditLogSummaryV1(GetAuditLogSummaryV1QueryP
 
 @param GetAuditLogRecordsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-audit-log-records-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-audit-log-records
 */
 func (s *EventManagementService) GetAuditLogRecordsV1(GetAuditLogRecordsV1QueryParams *GetAuditLogRecordsV1QueryParams) (*ResponseEventManagementGetAuditLogRecordsV1, *resty.Response, error) {
 	path := "/dna/data/api/v1/event/event-series/audit-logs"
@@ -1303,7 +1309,7 @@ func (s *EventManagementService) GetAuditLogRecordsV1(GetAuditLogRecordsV1QueryP
 
 @param GetSNMPDestinationV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-snmp-destination-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-snmp-destination
 */
 func (s *EventManagementService) GetSNMPDestinationV1(GetSNMPDestinationV1QueryParams *GetSNMPDestinationV1QueryParams) (*ResponseEventManagementGetSNMPDestinationV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/dna-event/snmp-config"
@@ -1341,7 +1347,7 @@ func (s *EventManagementService) GetSNMPDestinationV1(GetSNMPDestinationV1QueryP
 @param executionID executionId path parameter. Execution ID
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-status-api-for-events-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-status-api-for-events
 */
 func (s *EventManagementService) GetStatusAPIForEventsV1(executionID string) (*ResponseEventManagementGetStatusAPIForEventsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/api-status/{executionId}"
@@ -1376,7 +1382,7 @@ func (s *EventManagementService) GetStatusAPIForEventsV1(executionID string) (*R
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-email-destination-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-email-destination
 */
 func (s *EventManagementService) GetEmailDestinationV1() (*ResponseEventManagementGetEmailDestinationV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/email-config"
@@ -1411,7 +1417,7 @@ func (s *EventManagementService) GetEmailDestinationV1() (*ResponseEventManageme
 
 @param GetNotificationsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-notifications-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-notifications
 */
 func (s *EventManagementService) GetNotificationsV1(GetNotificationsV1QueryParams *GetNotificationsV1QueryParams) (*ResponseEventManagementGetNotificationsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/event-series"
@@ -1448,7 +1454,7 @@ func (s *EventManagementService) GetNotificationsV1(GetNotificationsV1QueryParam
 
 @param CountOfNotificationsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!count-of-notifications-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!count-of-notifications
 */
 func (s *EventManagementService) CountOfNotificationsV1(CountOfNotificationsV1QueryParams *CountOfNotificationsV1QueryParams) (*ResponseEventManagementCountOfNotificationsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/event-series/count"
@@ -1480,12 +1486,12 @@ func (s *EventManagementService) CountOfNotificationsV1(CountOfNotificationsV1Qu
 }
 
 //GetEventSubscriptionsV1 Get Event Subscriptions - dcaa-6bde-4feb-9152
-/* Gets the list of Subscriptions's based on provided offset and limit (Deprecated)
+/* Gets the list of Subscriptions's based on provided offset and limit. Deprecated since Guardian release. Alternative: GET /intent/api/v1/event/subscription/rest
 
 
 @param GetEventSubscriptionsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-event-subscriptions-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-event-subscriptions
 */
 func (s *EventManagementService) GetEventSubscriptionsV1(GetEventSubscriptionsV1QueryParams *GetEventSubscriptionsV1QueryParams) (*ResponseEventManagementGetEventSubscriptionsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription"
@@ -1522,7 +1528,7 @@ func (s *EventManagementService) GetEventSubscriptionsV1(GetEventSubscriptionsV1
 
 @param GetEmailSubscriptionDetailsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-email-subscription-details-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-email-subscription-details
 */
 func (s *EventManagementService) GetEmailSubscriptionDetailsV1(GetEmailSubscriptionDetailsV1QueryParams *GetEmailSubscriptionDetailsV1QueryParams) (*ResponseEventManagementGetEmailSubscriptionDetailsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription-details/email"
@@ -1559,7 +1565,7 @@ func (s *EventManagementService) GetEmailSubscriptionDetailsV1(GetEmailSubscript
 
 @param GetRestWebhookSubscriptionDetailsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-rest-webhook-subscription-details-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-rest-webhook-subscription-details
 */
 func (s *EventManagementService) GetRestWebhookSubscriptionDetailsV1(GetRestWebhookSubscriptionDetailsV1QueryParams *GetRestWebhookSubscriptionDetailsV1QueryParams) (*ResponseEventManagementGetRestWebhookSubscriptionDetailsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription-details/rest"
@@ -1596,7 +1602,7 @@ func (s *EventManagementService) GetRestWebhookSubscriptionDetailsV1(GetRestWebh
 
 @param GetSyslogSubscriptionDetailsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-syslog-subscription-details-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-syslog-subscription-details
 */
 func (s *EventManagementService) GetSyslogSubscriptionDetailsV1(GetSyslogSubscriptionDetailsV1QueryParams *GetSyslogSubscriptionDetailsV1QueryParams) (*ResponseEventManagementGetSyslogSubscriptionDetailsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription-details/syslog"
@@ -1633,7 +1639,7 @@ func (s *EventManagementService) GetSyslogSubscriptionDetailsV1(GetSyslogSubscri
 
 @param CountOfEventSubscriptionsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!count-of-event-subscriptions-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!count-of-event-subscriptions
 */
 func (s *EventManagementService) CountOfEventSubscriptionsV1(CountOfEventSubscriptionsV1QueryParams *CountOfEventSubscriptionsV1QueryParams) (*ResponseEventManagementCountOfEventSubscriptionsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription/count"
@@ -1670,7 +1676,7 @@ func (s *EventManagementService) CountOfEventSubscriptionsV1(CountOfEventSubscri
 
 @param GetEmailEventSubscriptionsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-email-event-subscriptions-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-email-event-subscriptions
 */
 func (s *EventManagementService) GetEmailEventSubscriptionsV1(GetEmailEventSubscriptionsV1QueryParams *GetEmailEventSubscriptionsV1QueryParams) (*ResponseEventManagementGetEmailEventSubscriptionsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription/email"
@@ -1707,7 +1713,7 @@ func (s *EventManagementService) GetEmailEventSubscriptionsV1(GetEmailEventSubsc
 
 @param GetRestWebhookEventSubscriptionsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-rest-webhook-event-subscriptions-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-rest-webhook-event-subscriptions
 */
 func (s *EventManagementService) GetRestWebhookEventSubscriptionsV1(GetRestWebhookEventSubscriptionsV1QueryParams *GetRestWebhookEventSubscriptionsV1QueryParams) (*ResponseEventManagementGetRestWebhookEventSubscriptionsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription/rest"
@@ -1744,7 +1750,7 @@ func (s *EventManagementService) GetRestWebhookEventSubscriptionsV1(GetRestWebho
 
 @param GetSyslogEventSubscriptionsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-syslog-event-subscriptions-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-syslog-event-subscriptions
 */
 func (s *EventManagementService) GetSyslogEventSubscriptionsV1(GetSyslogEventSubscriptionsV1QueryParams *GetSyslogEventSubscriptionsV1QueryParams) (*ResponseEventManagementGetSyslogEventSubscriptionsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription/syslog"
@@ -1781,7 +1787,7 @@ func (s *EventManagementService) GetSyslogEventSubscriptionsV1(GetSyslogEventSub
 
 @param GetSyslogDestinationV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-syslog-destination-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-syslog-destination
 */
 func (s *EventManagementService) GetSyslogDestinationV1(GetSyslogDestinationV1QueryParams *GetSyslogDestinationV1QueryParams) (*ResponseEventManagementGetSyslogDestinationV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/syslog-config"
@@ -1818,7 +1824,7 @@ func (s *EventManagementService) GetSyslogDestinationV1(GetSyslogDestinationV1Qu
 
 @param GetWebhookDestinationV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-webhook-destination-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-webhook-destination
 */
 func (s *EventManagementService) GetWebhookDestinationV1(GetWebhookDestinationV1QueryParams *GetWebhookDestinationV1QueryParams) (*ResponseEventManagementGetWebhookDestinationV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/webhook"
@@ -1855,7 +1861,7 @@ func (s *EventManagementService) GetWebhookDestinationV1(GetWebhookDestinationV1
 
 @param GetEventsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-events-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-events
 */
 func (s *EventManagementService) GetEventsV1(GetEventsV1QueryParams *GetEventsV1QueryParams) (*ResponseEventManagementGetEventsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/events"
@@ -1892,7 +1898,7 @@ func (s *EventManagementService) GetEventsV1(GetEventsV1QueryParams *GetEventsV1
 
 @param CountOfEventsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!count-of-events-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!count-of-events
 */
 func (s *EventManagementService) CountOfEventsV1(CountOfEventsV1QueryParams *CountOfEventsV1QueryParams) (*ResponseEventManagementCountOfEventsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/events/count"
@@ -1929,7 +1935,7 @@ func (s *EventManagementService) CountOfEventsV1(CountOfEventsV1QueryParams *Cou
 
 @param GetEventArtifactsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-event-artifacts-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-event-artifacts
 */
 func (s *EventManagementService) GetEventArtifactsV1(GetEventArtifactsV1QueryParams *GetEventArtifactsV1QueryParams) (*ResponseEventManagementGetEventArtifactsV1, *resty.Response, error) {
 	path := "/dna/system/api/v1/event/artifact"
@@ -1965,7 +1971,7 @@ func (s *EventManagementService) GetEventArtifactsV1(GetEventArtifactsV1QueryPar
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!event-artifact-count-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!event-artifact-count
 */
 func (s *EventManagementService) EventArtifactCountV1() (*ResponseEventManagementEventArtifactCountV1, *resty.Response, error) {
 	path := "/dna/system/api/v1/event/artifact/count"
@@ -1999,7 +2005,7 @@ func (s *EventManagementService) EventArtifactCountV1() (*ResponseEventManagemen
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-connector-types-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-connector-types
 */
 func (s *EventManagementService) GetConnectorTypesV1() (*ResponseEventManagementGetConnectorTypesV1, *resty.Response, error) {
 	path := "/dna/system/api/v1/event/config/connector-types"
@@ -2033,7 +2039,7 @@ func (s *EventManagementService) GetConnectorTypesV1() (*ResponseEventManagement
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-email-destination-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-email-destination
 */
 func (s *EventManagementService) CreateEmailDestinationV1(requestEventManagementCreateEmailDestinationV1 *RequestEventManagementCreateEmailDestinationV1) (*ResponseEventManagementCreateEmailDestinationV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/email-config"
@@ -2070,7 +2076,7 @@ func (s *EventManagementService) CreateEmailDestinationV1(requestEventManagement
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-snmp-destination-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-snmp-destination
 */
 func (s *EventManagementService) CreateSNMPDestinationV1(requestEventManagementCreateSNMPDestinationV1 *RequestEventManagementCreateSNMPDestinationV1) (*ResponseEventManagementCreateSNMPDestinationV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/snmp-config"
@@ -2103,11 +2109,11 @@ func (s *EventManagementService) CreateSNMPDestinationV1(requestEventManagementC
 }
 
 //CreateEventSubscriptionsV1 Create Event Subscriptions - 4f9f-7a7b-40f9-90de
-/* Subscribe SubscriptionEndpoint to list of registered events (Deprecated)
+/* Subscribe SubscriptionEndpoint to list of registered events. Deprecated since Guardian release. Alternative: POST /intent/api/v1/event/subscription/rest
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-event-subscriptions-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-event-subscriptions
 */
 func (s *EventManagementService) CreateEventSubscriptionsV1(requestEventManagementCreateEventSubscriptionsV1 *RequestEventManagementCreateEventSubscriptionsV1) (*ResponseEventManagementCreateEventSubscriptionsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription"
@@ -2144,7 +2150,7 @@ func (s *EventManagementService) CreateEventSubscriptionsV1(requestEventManageme
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-email-event-subscription-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-email-event-subscription
 */
 func (s *EventManagementService) CreateEmailEventSubscriptionV1(requestEventManagementCreateEmailEventSubscriptionV1 *RequestEventManagementCreateEmailEventSubscriptionV1) (*ResponseEventManagementCreateEmailEventSubscriptionV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription/email"
@@ -2181,7 +2187,7 @@ func (s *EventManagementService) CreateEmailEventSubscriptionV1(requestEventMana
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-rest-webhook-event-subscription-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-rest-webhook-event-subscription
 */
 func (s *EventManagementService) CreateRestWebhookEventSubscriptionV1(requestEventManagementCreateRestWebhookEventSubscriptionV1 *RequestEventManagementCreateRestWebhookEventSubscriptionV1) (*ResponseEventManagementCreateRestWebhookEventSubscriptionV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription/rest"
@@ -2218,7 +2224,7 @@ func (s *EventManagementService) CreateRestWebhookEventSubscriptionV1(requestEve
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-syslog-event-subscription-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-syslog-event-subscription
 */
 func (s *EventManagementService) CreateSyslogEventSubscriptionV1(requestEventManagementCreateSyslogEventSubscriptionV1 *RequestEventManagementCreateSyslogEventSubscriptionV1) (*ResponseEventManagementCreateSyslogEventSubscriptionV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription/syslog"
@@ -2255,7 +2261,7 @@ func (s *EventManagementService) CreateSyslogEventSubscriptionV1(requestEventMan
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-syslog-destination-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-syslog-destination
 */
 func (s *EventManagementService) CreateSyslogDestinationV1(requestEventManagementCreateSyslogDestinationV1 *RequestEventManagementCreateSyslogDestinationV1) (*ResponseEventManagementCreateSyslogDestinationV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/syslog-config"
@@ -2292,7 +2298,7 @@ func (s *EventManagementService) CreateSyslogDestinationV1(requestEventManagemen
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-webhook-destination-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-webhook-destination
 */
 func (s *EventManagementService) CreateWebhookDestinationV1(requestEventManagementCreateWebhookDestinationV1 *RequestEventManagementCreateWebhookDestinationV1) (*ResponseEventManagementCreateWebhookDestinationV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/webhook"
@@ -2391,7 +2397,7 @@ func (s *EventManagementService) UpdateSNMPDestinationV1(requestEventManagementU
 }
 
 //UpdateEventSubscriptionsV1 Update Event Subscriptions - 579a-6a72-48cb-94cf
-/* Update SubscriptionEndpoint to list of registered events(Deprecated)
+/* Update SubscriptionEndpoint to list of registered events. Deprecated since Guardian release. Alternative: PUT /intent/api/v1/event/subscription/rest
 
 
  */
@@ -2594,7 +2600,7 @@ func (s *EventManagementService) UpdateWebhookDestinationV1(requestEventManageme
 
 @param DeleteEventSubscriptionsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-event-subscriptions-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-event-subscriptions
 */
 func (s *EventManagementService) DeleteEventSubscriptionsV1(DeleteEventSubscriptionsV1QueryParams *DeleteEventSubscriptionsV1QueryParams) (*ResponseEventManagementDeleteEventSubscriptionsV1, *resty.Response, error) {
 	//DeleteEventSubscriptionsV1QueryParams *DeleteEventSubscriptionsV1QueryParams
@@ -2616,8 +2622,7 @@ func (s *EventManagementService) DeleteEventSubscriptionsV1(DeleteEventSubscript
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeleteEventSubscriptionsV1(
-				DeleteEventSubscriptionsV1QueryParams)
+			return s.DeleteEventSubscriptionsV1(DeleteEventSubscriptionsV1QueryParams)
 		}
 		return nil, response, fmt.Errorf("error with operation DeleteEventSubscriptionsV1")
 	}

@@ -19,7 +19,7 @@ type RetrievesTheListOfValidationWorkflowsV1QueryParams struct {
 	EndTime   float64 `url:"endTime,omitempty"`   //Workflows started before the given time (as milliseconds since UNIX epoch).
 	RunStatus string  `url:"runStatus,omitempty"` //Execution status of the workflow. If the workflow is successfully submitted, runStatus is `PENDING`. If the workflow execution has started, runStatus is `IN_PROGRESS`. If the workflow executed is completed with all validations executed, runStatus is `COMPLETED`. If the workflow execution fails while running validations, runStatus is `FAILED`.
 	Offset    float64 `url:"offset,omitempty"`    //The first record to show for this page; the first record is numbered 1.
-	Limit     float64 `url:"limit,omitempty"`     //The number of records to show for this page.
+	Limit     float64 `url:"limit,omitempty"`     //Specifies the maximum number of workflows to return per page. Must be an integer between 1 and 500, inclusive.
 }
 type RetrievesTheCountOfValidationWorkflowsV1QueryParams struct {
 	StartTime float64 `url:"startTime,omitempty"` //Workflows started after the given time (as milliseconds since UNIX epoch).
@@ -30,8 +30,8 @@ type SystemHealthAPIV1QueryParams struct {
 	Summary   bool    `url:"summary,omitempty"`   //Fetch the latest high severity event
 	Domain    string  `url:"domain,omitempty"`    //Fetch system events with this domain. Possible values of domain are listed here : /dna/platform/app/consumer-portal/developer-toolkit/events
 	Subdomain string  `url:"subdomain,omitempty"` //Fetch system events with this subdomain. Possible values of subdomain are listed here : /dna/platform/app/consumer-portal/developer-toolkit/events
-	Limit     float64 `url:"limit,omitempty"`     //limit
-	Offset    float64 `url:"offset,omitempty"`    //offset
+	Limit     float64 `url:"limit,omitempty"`     //Specifies the maximum number of system health events to return per page. Must be an integer between 1 and 50, inclusive
+	Offset    float64 `url:"offset,omitempty"`    //Specifies the starting point for the list of system health events to return. Must be an integer greater than or equal to 0
 }
 type SystemHealthCountAPIV1QueryParams struct {
 	Domain    string `url:"domain,omitempty"`    //Fetch system events with this domain. Possible values of domain are listed here : /dna/platform/app/consumer-portal/developer-toolkit/events
@@ -49,6 +49,42 @@ type SystemPerformanceHistoricalAPIV1QueryParams struct {
 	EndTime   float64 `url:"endTime,omitempty"`   //This is the epoch end time in milliseconds upto which performance indicator need to be fetched
 }
 
+type ResponseHealthAndPerformanceRetrievesDiagnosticTaskByIDV1 struct {
+	Response *ResponseHealthAndPerformanceRetrievesDiagnosticTaskByIDV1Response `json:"response,omitempty"` //
+
+	Version string `json:"version,omitempty"` // The version of the response
+}
+type ResponseHealthAndPerformanceRetrievesDiagnosticTaskByIDV1Response struct {
+	ID string `json:"id,omitempty"` // The ID of this task
+
+	RootID string `json:"rootId,omitempty"` // The ID of the task representing the root node of the tree which this task belongs to.  In some cases, this may be the same as the ID or null, which indicates that this task is the root task
+
+	ParentID string `json:"parentId,omitempty"` // The ID of the parent task if this happens to be a subtask. In case this task is not a subtask, then the parentId is expected to be null.  To construct a task tree, this task will be the child of the task with the ID listed here, or the root of the tree if this task has no parentId
+
+	StartTime *int `json:"startTime,omitempty"` // An approximate time of when the task creation was triggered; as measured in Unix epoch time in milliseconds
+
+	ResultLocation string `json:"resultLocation,omitempty"` // A server-relative URL indicating where additional task-specific details may be found
+
+	Status string `json:"status,omitempty"` // Summarizes the status of a task
+
+	UpdatedTime *int `json:"updatedTime,omitempty"` // The last modification date and time of this task, expressed in Unix epoch time format to the millisecond precision.
+
+	EndTime *int `json:"endTime,omitempty"` // An approximate time of when this task has been marked completed; as measured in Unix epoch time in milliseconds
+}
+type ResponseHealthAndPerformanceRetrievesDiagnosticTaskDetailsByIDV1 struct {
+	Response *ResponseHealthAndPerformanceRetrievesDiagnosticTaskDetailsByIDV1Response `json:"response,omitempty"` //
+
+	Version string `json:"version,omitempty"` // The version of the response
+}
+type ResponseHealthAndPerformanceRetrievesDiagnosticTaskDetailsByIDV1Response struct {
+	Data string `json:"data,omitempty"` // Any data associated with this task; the value may vary significantly across different tasks
+
+	Progress string `json:"progress,omitempty"` // A textual representation which indicates the progress of this task; the value may vary significantly across different tasks
+
+	ErrorCode string `json:"errorCode,omitempty"` // An error code if in case this task has failed in its execution
+
+	FailureReason string `json:"failureReason,omitempty"` // A textual description indicating the reason why a task has failed
+}
 type ResponseHealthAndPerformanceRetrievesAllTheValidationSetsV1 struct {
 	Response *[]ResponseHealthAndPerformanceRetrievesAllTheValidationSetsV1Response `json:"response,omitempty"` //
 	Version  string                                                                 `json:"version,omitempty"`  // The version of the response
@@ -232,13 +268,87 @@ type RequestHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1 stru
 	ValidationSetIDs []string `json:"validationSetIds,omitempty"` // List of validation set ids
 }
 
+//RetrievesDiagnosticTaskByIDV1 Retrieves diagnostic task by ID - 0086-59cc-4338-ae89
+/* This API retrieves the diagnostic task identified by the specified `id`.
+
+
+@param id id path parameter. The `id` of the diagnostic task to be retrieved
+
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-diagnostic-task-by-id
+*/
+func (s *HealthAndPerformanceService) RetrievesDiagnosticTaskByIDV1(id string) (*ResponseHealthAndPerformanceRetrievesDiagnosticTaskByIDV1, *resty.Response, error) {
+	path := "/dna/intent/api/v1/diagnosticTasks/{id}"
+	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetResult(&ResponseHealthAndPerformanceRetrievesDiagnosticTaskByIDV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.RetrievesDiagnosticTaskByIDV1(id)
+		}
+		return nil, response, fmt.Errorf("error with operation RetrievesDiagnosticTaskByIdV1")
+	}
+
+	result := response.Result().(*ResponseHealthAndPerformanceRetrievesDiagnosticTaskByIDV1)
+	return result, response, err
+
+}
+
+//RetrievesDiagnosticTaskDetailsByIDV1 Retrieves diagnostic task details by ID - a78b-7907-4fb8-a0df
+/* This API retrieves the details of the diagnostic task identified by the specified `id`.
+
+
+@param id id path parameter. The `id` of the diagnostic task to be retrieved
+
+
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-diagnostic-task-details-by-id
+*/
+func (s *HealthAndPerformanceService) RetrievesDiagnosticTaskDetailsByIDV1(id string) (*ResponseHealthAndPerformanceRetrievesDiagnosticTaskDetailsByIDV1, *resty.Response, error) {
+	path := "/dna/intent/api/v1/diagnosticTasks/{id}/detail"
+	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
+
+	response, err := s.client.R().
+		SetHeader("Content-Type", "application/json").
+		SetHeader("Accept", "application/json").
+		SetResult(&ResponseHealthAndPerformanceRetrievesDiagnosticTaskDetailsByIDV1{}).
+		SetError(&Error).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+
+	}
+
+	if response.IsError() {
+		if response.StatusCode() == http.StatusUnauthorized {
+			return s.RetrievesDiagnosticTaskDetailsByIDV1(id)
+		}
+		return nil, response, fmt.Errorf("error with operation RetrievesDiagnosticTaskDetailsByIdV1")
+	}
+
+	result := response.Result().(*ResponseHealthAndPerformanceRetrievesDiagnosticTaskDetailsByIDV1)
+	return result, response, err
+
+}
+
 //RetrievesAllTheValidationSetsV1 Retrieves all the validation sets - 11bb-4b03-4059-a001
 /* Retrieves all the validation sets and optionally the contained validations
 
 
 @param RetrievesAllTheValidationSetsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-all-the-validation-sets-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-all-the-validation-sets
 */
 func (s *HealthAndPerformanceService) RetrievesAllTheValidationSetsV1(RetrievesAllTheValidationSetsV1QueryParams *RetrievesAllTheValidationSetsV1QueryParams) (*ResponseHealthAndPerformanceRetrievesAllTheValidationSetsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnosticValidationSets"
@@ -276,7 +386,7 @@ func (s *HealthAndPerformanceService) RetrievesAllTheValidationSetsV1(RetrievesA
 @param id id path parameter. Validation set id
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-validation-details-for-a-validation-set-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-validation-details-for-a-validation-set
 */
 func (s *HealthAndPerformanceService) RetrievesValidationDetailsForAValidationSetV1(id string) (*ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSetV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnosticValidationSets/{id}"
@@ -312,7 +422,7 @@ func (s *HealthAndPerformanceService) RetrievesValidationDetailsForAValidationSe
 
 @param RetrievesTheListOfValidationWorkflowsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-the-list-of-validation-workflows-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-the-list-of-validation-workflows
 */
 func (s *HealthAndPerformanceService) RetrievesTheListOfValidationWorkflowsV1(RetrievesTheListOfValidationWorkflowsV1QueryParams *RetrievesTheListOfValidationWorkflowsV1QueryParams) (*ResponseHealthAndPerformanceRetrievesTheListOfValidationWorkflowsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnosticValidationWorkflows"
@@ -349,7 +459,7 @@ func (s *HealthAndPerformanceService) RetrievesTheListOfValidationWorkflowsV1(Re
 
 @param RetrievesTheCountOfValidationWorkflowsV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-the-count-of-validation-workflows-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-the-count-of-validation-workflows
 */
 func (s *HealthAndPerformanceService) RetrievesTheCountOfValidationWorkflowsV1(RetrievesTheCountOfValidationWorkflowsV1QueryParams *RetrievesTheCountOfValidationWorkflowsV1QueryParams) (*ResponseHealthAndPerformanceRetrievesTheCountOfValidationWorkflowsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnosticValidationWorkflows/count"
@@ -387,7 +497,7 @@ func (s *HealthAndPerformanceService) RetrievesTheCountOfValidationWorkflowsV1(R
 @param id id path parameter. Workflow id
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-validation-workflow-details-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-validation-workflow-details
 */
 func (s *HealthAndPerformanceService) RetrievesValidationWorkflowDetailsV1(id string) (*ResponseHealthAndPerformanceRetrievesValidationWorkflowDetailsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnosticValidationWorkflows/{id}"
@@ -423,7 +533,7 @@ func (s *HealthAndPerformanceService) RetrievesValidationWorkflowDetailsV1(id st
 
 @param SystemHealthAPIV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!system-health-api-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!system-health-api
 */
 func (s *HealthAndPerformanceService) SystemHealthAPIV1(SystemHealthAPIV1QueryParams *SystemHealthAPIV1QueryParams) (*ResponseHealthAndPerformanceSystemHealthAPIV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnostics/system/health"
@@ -460,7 +570,7 @@ func (s *HealthAndPerformanceService) SystemHealthAPIV1(SystemHealthAPIV1QueryPa
 
 @param SystemHealthCountAPIV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!system-health-count-api-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!system-health-count-api
 */
 func (s *HealthAndPerformanceService) SystemHealthCountAPIV1(SystemHealthCountAPIV1QueryParams *SystemHealthCountAPIV1QueryParams) (*ResponseHealthAndPerformanceSystemHealthCountAPIV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnostics/system/health/count"
@@ -497,7 +607,7 @@ func (s *HealthAndPerformanceService) SystemHealthCountAPIV1(SystemHealthCountAP
 
 @param SystemPerformanceAPIV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!system-performance-api-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!system-performance-api
 */
 func (s *HealthAndPerformanceService) SystemPerformanceAPIV1(SystemPerformanceAPIV1QueryParams *SystemPerformanceAPIV1QueryParams) (*ResponseHealthAndPerformanceSystemPerformanceAPIV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnostics/system/performance"
@@ -534,7 +644,7 @@ func (s *HealthAndPerformanceService) SystemPerformanceAPIV1(SystemPerformanceAP
 
 @param SystemPerformanceHistoricalAPIV1QueryParams Filtering parameter
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!system-performance-historical-api-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!system-performance-historical-api
 */
 func (s *HealthAndPerformanceService) SystemPerformanceHistoricalAPIV1(SystemPerformanceHistoricalAPIV1QueryParams *SystemPerformanceHistoricalAPIV1QueryParams) (*ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnostics/system/performance/history"
@@ -570,7 +680,7 @@ func (s *HealthAndPerformanceService) SystemPerformanceHistoricalAPIV1(SystemPer
 
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!submits-the-workflow-for-executing-validations-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!submits-the-workflow-for-executing-validations
 */
 func (s *HealthAndPerformanceService) SubmitsTheWorkflowForExecutingValidationsV1(requestHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1 *RequestHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1) (*ResponseHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnosticValidationWorkflows"
@@ -609,7 +719,7 @@ func (s *HealthAndPerformanceService) SubmitsTheWorkflowForExecutingValidationsV
 @param id id path parameter. Workflow id
 
 
-Documentation Link: https://developer.cisco.com/docs/dna-center/#!deletes-a-validation-workflow-v1
+Documentation Link: https://developer.cisco.com/docs/dna-center/#!deletes-a-validation-workflow
 */
 func (s *HealthAndPerformanceService) DeletesAValidationWorkflowV1(id string) (*resty.Response, error) {
 	//id string
@@ -629,8 +739,7 @@ func (s *HealthAndPerformanceService) DeletesAValidationWorkflowV1(id string) (*
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeletesAValidationWorkflowV1(
-				id)
+			return s.DeletesAValidationWorkflowV1(id)
 		}
 		return response, fmt.Errorf("error with operation DeletesAValidationWorkflowV1")
 	}
@@ -705,6 +814,14 @@ func (s *HealthAndPerformanceService) SystemHealthCountAPI(SystemHealthCountAPIV
 
 // Alias Function
 /*
+This method acts as an alias for the method `RetrievesDiagnosticTaskByIDV1`
+*/
+func (s *HealthAndPerformanceService) RetrievesDiagnosticTaskByID(id string) (*ResponseHealthAndPerformanceRetrievesDiagnosticTaskByIDV1, *resty.Response, error) {
+	return s.RetrievesDiagnosticTaskByIDV1(id)
+}
+
+// Alias Function
+/*
 This method acts as an alias for the method `RetrievesValidationWorkflowDetailsV1`
 */
 func (s *HealthAndPerformanceService) RetrievesValidationWorkflowDetails(id string) (*ResponseHealthAndPerformanceRetrievesValidationWorkflowDetailsV1, *resty.Response, error) {
@@ -725,4 +842,12 @@ This method acts as an alias for the method `RetrievesAllTheValidationSetsV1`
 */
 func (s *HealthAndPerformanceService) RetrievesAllTheValidationSets(RetrievesAllTheValidationSetsV1QueryParams *RetrievesAllTheValidationSetsV1QueryParams) (*ResponseHealthAndPerformanceRetrievesAllTheValidationSetsV1, *resty.Response, error) {
 	return s.RetrievesAllTheValidationSetsV1(RetrievesAllTheValidationSetsV1QueryParams)
+}
+
+// Alias Function
+/*
+This method acts as an alias for the method `RetrievesDiagnosticTaskDetailsByIDV1`
+*/
+func (s *HealthAndPerformanceService) RetrievesDiagnosticTaskDetailsByID(id string) (*ResponseHealthAndPerformanceRetrievesDiagnosticTaskDetailsByIDV1, *resty.Response, error) {
+	return s.RetrievesDiagnosticTaskDetailsByIDV1(id)
 }
