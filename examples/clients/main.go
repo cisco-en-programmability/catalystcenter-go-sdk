@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/sdk"
+	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v2/sdk"
 )
 
 // Client is Catalyst Center API client

@@ -2200,9 +2200,7 @@ type RequestSensorsCreatesAICapConfigurationWorkflowForICapintentToRemoveTheICap
 type RequestSensorsDeploysTheICapConfigurationIntentByActivityIDV1 struct {
 	object string `json:"object,omitempty"` // object
 }
-type RequestSensorsGeneratesTheDevicesClisOfTheICapConfigurationIntentV1 struct {
-	object string `json:"object,omitempty"` // object
-}
+type RequestSensorsGeneratesTheDevicesClisOfTheICapConfigurationIntentV1 map[string]interface{}
 type RequestSensorsDeploysTheGivenICapConfigurationIntentWithoutPreviewAndApproveV1 []RequestItemSensorsDeploysTheGivenICapConfigurationIntentWithoutPreviewAndApproveV1 // Array of RequestSensorsDeploysTheGivenICAPConfigurationIntentWithoutPreviewAndApproveV1
 type RequestItemSensorsDeploysTheGivenICapConfigurationIntentWithoutPreviewAndApproveV1 struct {
 	CaptureType string `json:"captureType,omitempty"` // Capture Type
@@ -2765,7 +2763,7 @@ func (s *SensorsService) RetrievesDetailsOfASpecificICapPacketCaptureFileV1(id s
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!downloads-a-specific-i-cap-packet-capture-file
 */
-func (s *SensorsService) DownloadsASpecificICapPacketCaptureFileV1(id string, DownloadsASpecificICAPPacketCaptureFileV1HeaderParams *DownloadsASpecificICapPacketCaptureFileV1HeaderParams) (*ResponseSensorsDownloadsASpecificICapPacketCaptureFileV1, *resty.Response, error) {
+func (s *SensorsService) DownloadsASpecificICapPacketCaptureFileV1(id string, DownloadsASpecificICAPPacketCaptureFileV1HeaderParams *DownloadsASpecificICapPacketCaptureFileV1HeaderParams) (FileDownload, *resty.Response, error) {
 	path := "/dna/data/api/v1/icap/captureFiles/{id}/download"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
@@ -2787,9 +2785,9 @@ func (s *SensorsService) DownloadsASpecificICapPacketCaptureFileV1(id string, Do
 		SetResult(&ResponseSensorsDownloadsASpecificICapPacketCaptureFileV1{}).
 		SetError(&Error).
 		Get(path)
-
+	fdownload := FileDownload{}
 	if err != nil {
-		return nil, nil, err
+		return fdownload, nil, err
 
 	}
 
@@ -2797,11 +2795,15 @@ func (s *SensorsService) DownloadsASpecificICapPacketCaptureFileV1(id string, Do
 		if response.StatusCode() == http.StatusUnauthorized {
 			return s.DownloadsASpecificICapPacketCaptureFileV1(id, DownloadsASpecificICAPPacketCaptureFileV1HeaderParams)
 		}
-		return nil, response, fmt.Errorf("error with operation DownloadsASpecificICapPacketCaptureFileV1")
+		return fdownload, response, fmt.Errorf("error with operation DownloadsASpecificICapPacketCaptureFileV1")
 	}
 
-	result := response.Result().(*ResponseSensorsDownloadsASpecificICapPacketCaptureFileV1)
-	return result, response, err
+	fdownload.FileData = response.Body()
+	headerVal := response.Header()["Content-Disposition"][0]
+	fname := strings.SplitAfter(headerVal, "=")
+	fdownload.FileName = strings.ReplaceAll(fname[1], "\"", "")
+
+	return fdownload, response, err
 
 }
 
@@ -3924,7 +3926,7 @@ func (s *SensorsService) RetrievesTheSpectrumInterferenceDevicesReportsSentByWLC
 /*
 This method acts as an alias for the method `DownloadsASpecificICapPacketCaptureFileV1`
 */
-func (s *SensorsService) DownloadsASpecificICapPacketCaptureFile(id string, DownloadsASpecificICAPPacketCaptureFileV1HeaderParams *DownloadsASpecificICapPacketCaptureFileV1HeaderParams) (*ResponseSensorsDownloadsASpecificICapPacketCaptureFileV1, *resty.Response, error) {
+func (s *SensorsService) DownloadsASpecificICapPacketCaptureFile(id string, DownloadsASpecificICAPPacketCaptureFileV1HeaderParams *DownloadsASpecificICapPacketCaptureFileV1HeaderParams) (FileDownload, *resty.Response, error) {
 	return s.DownloadsASpecificICapPacketCaptureFileV1(id, DownloadsASpecificICAPPacketCaptureFileV1HeaderParams)
 }
 

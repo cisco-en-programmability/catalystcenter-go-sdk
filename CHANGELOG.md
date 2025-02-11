@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.2] - 2025-02-10
+### Changes
+- changes by terraform
+
 ## [2.0.1] - 2024-12-27
 ### Changes
 - User Agent Modification

@@ -958,9 +958,7 @@ type ResponseConfigurationTemplatesGetsDetailsOfAGivenTemplateV1ValidationErrors
 }
 type ResponseConfigurationTemplatesGetsDetailsOfAGivenTemplateV1ValidationErrorsRollbackTemplateErrors interface{}
 type ResponseConfigurationTemplatesGetsDetailsOfAGivenTemplateV1ValidationErrorsTemplateErrors interface{}
-type ResponseConfigurationTemplatesRetrieveTheNetworkProfilesAttachedToACLITemplateV1 struct {
-	object string `json:"object,omitempty"` // object
-}
+type ResponseConfigurationTemplatesRetrieveTheNetworkProfilesAttachedToACLITemplateV1 interface{}
 type ResponseConfigurationTemplatesAttachNetworkProfileToADayNCliTemplateV1 struct {
 	Version  string                                                                          `json:"version,omitempty"`  // Response Version e.g. : 1.0
 	Response *ResponseConfigurationTemplatesAttachNetworkProfileToADayNCliTemplateV1Response `json:"response,omitempty"` //
@@ -2373,19 +2371,18 @@ func (s *ConfigurationTemplatesService) GetsDetailsOfAGivenTemplateV1(templateID
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieve-the-network-profiles-attached-to-acl-i-template
 */
-func (s *ConfigurationTemplatesService) RetrieveTheNetworkProfilesAttachedToACLITemplateV1(templateID string) (*ResponseConfigurationTemplatesRetrieveTheNetworkProfilesAttachedToACLITemplateV1, *resty.Response, error) {
+func (s *ConfigurationTemplatesService) RetrieveTheNetworkProfilesAttachedToACLITemplateV1(templateID string) (*resty.Response, error) {
 	path := "/dna/intent/api/v1/templates/{templateId}/networkProfilesForSites"
 	path = strings.Replace(path, "{templateId}", fmt.Sprintf("%v", templateID), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseConfigurationTemplatesRetrieveTheNetworkProfilesAttachedToACLITemplateV1{}).
 		SetError(&Error).
 		Get(path)
 
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 
 	}
 
@@ -2393,11 +2390,10 @@ func (s *ConfigurationTemplatesService) RetrieveTheNetworkProfilesAttachedToACLI
 		if response.StatusCode() == http.StatusUnauthorized {
 			return s.RetrieveTheNetworkProfilesAttachedToACLITemplateV1(templateID)
 		}
-		return nil, response, fmt.Errorf("error with operation RetrieveTheNetworkProfilesAttachedToAclITemplateV1")
+		return response, fmt.Errorf("error with operation RetrieveTheNetworkProfilesAttachedToAclITemplateV1")
 	}
 
-	result := response.Result().(*ResponseConfigurationTemplatesRetrieveTheNetworkProfilesAttachedToACLITemplateV1)
-	return result, response, err
+	return response, err
 
 }
 
@@ -3565,7 +3561,7 @@ func (s *ConfigurationTemplatesService) CreateTemplate(projectID string, request
 /*
 This method acts as an alias for the method `RetrieveTheNetworkProfilesAttachedToACLITemplateV1`
 */
-func (s *ConfigurationTemplatesService) RetrieveTheNetworkProfilesAttachedToACLITemplate(templateID string) (*ResponseConfigurationTemplatesRetrieveTheNetworkProfilesAttachedToACLITemplateV1, *resty.Response, error) {
+func (s *ConfigurationTemplatesService) RetrieveTheNetworkProfilesAttachedToACLITemplate(templateID string) (*resty.Response, error) {
 	return s.RetrieveTheNetworkProfilesAttachedToACLITemplateV1(templateID)
 }
 

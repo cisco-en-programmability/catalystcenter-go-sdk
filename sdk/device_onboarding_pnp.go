@@ -411,8 +411,17 @@ type ResponseItemDeviceOnboardingPnpGetDeviceListSiteManagementV1 struct {
 	DayZeroConfig        *ResponseItemDeviceOnboardingPnpGetDeviceListSiteManagementV1DayZeroConfig        `json:"dayZeroConfig,omitempty"`        //
 	DayZeroConfigPreview *ResponseItemDeviceOnboardingPnpGetDeviceListSiteManagementV1DayZeroConfigPreview `json:"dayZeroConfigPreview,omitempty"` // Day Zero Config Preview
 	Version              *float64                                                                          `json:"version,omitempty"`              // Version
-	TenantID             string                                                                            `json:"tenantId,omitempty"`             // Tenant Id
+	TenantID             string                                                                            `json:"tenantId,omitempty"`
+	Progress             *ResponseItemDeviceOnboardingPnpGetDeviceListSiteManagementProgress               `json:"progress,omitempty"` //
+	ID                   string                                                                            `json:"id,omitempty"`
 }
+
+type ResponseItemDeviceOnboardingPnpGetDeviceListSiteManagementProgress struct {
+	Message         string `json:"message,omitempty"`
+	InProgress      bool   `json:"inProgress,omitempty"`
+	ProgressPercent int    `json:"progressPercent,omitempty"`
+}
+
 type ResponseItemDeviceOnboardingPnpGetDeviceListSiteManagementV1DeviceInfo struct {
 	Source                    string                                                                                        `json:"source,omitempty"`                    // Source
 	SerialNumber              string                                                                                        `json:"serialNumber,omitempty"`              // Serial Number
