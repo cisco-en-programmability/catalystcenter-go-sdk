@@ -27,7 +27,7 @@ type DeviceLicenseSummaryV1QueryParams struct {
 	Limit              float64 `url:"limit,omitempty"`                //Specifies the maximum number of device license summaries to return per page. Must be an integer between 1 and 500, inclusive.
 	RegistrationStatus string  `url:"registration_status,omitempty"`  //Smart license registration status of device
 	VirtualAccountName string  `url:"virtual_account_name,omitempty"` //Name of virtual account
-	SmartAccountID     float64 `url:"smart_account_id,omitempty"`     //Id of smart account
+	SmartAccountID     string  `url:"smart_account_id,omitempty"`     //Id of smart account
 	DeviceUUID         string  `url:"device_uuid,omitempty"`          //Id of device
 }
 type LicenseTermDetailsV1QueryParams struct {
@@ -236,6 +236,26 @@ type ResponseLicensesLicenseUsageDetailsV1 struct {
 	UsedDnaLicense *ResponseLicensesLicenseUsageDetailsV1UsedDnaLicense `json:"used_dna_license,omitempty"` //
 
 	UsedNetworkLicense *ResponseLicensesLicenseUsageDetailsV1UsedNetworkLicense `json:"used_network_license,omitempty"` //
+
+	PurchasedIseLicense *ResponseLicensesLicenseUsageDetailsPurchasedIseLicense `json:"purchased_ise_license,omitempty"`
+
+	UsedIseLicense *ResponseLicensesLicenseUsageDetailsUsedIseLicense `json:"used_ise_license,omitempty"`
+}
+type ResponseLicensesLicenseUsageDetailsUsedIseLicense struct {
+	TotalLicenseCount  *int                                                                   `json:"total_license_count,omitempty"`
+	LicenseCountByType *[]ResponseLicensesLicenseUsageDetailsUsedIseLicenseLicenseCountByType `json:"license_count_by_type,omitempty"`
+}
+type ResponseLicensesLicenseUsageDetailsUsedIseLicenseLicenseCountByType struct {
+	LicenseType  string `json:"license_type,omitempty"`
+	LicenseCount *int   `json:"license_count,omitempty"`
+}
+type ResponseLicensesLicenseUsageDetailsPurchasedIseLicense struct {
+	TotalLicenseCount  *int                                                                        `json:"total_license_count,omitempty"`
+	LicenseCountByType *[]ResponseLicensesLicenseUsageDetailsPurchasedIseLicenseLicenseCountByType `json:"license_count_by_type,omitempty"`
+}
+type ResponseLicensesLicenseUsageDetailsPurchasedIseLicenseLicenseCountByType struct {
+	LicenseType  string `json:"license_type,omitempty"`
+	LicenseCount *int   `json:"license_count,omitempty"`
 }
 type ResponseLicensesLicenseUsageDetailsV1PurchasedDnaLicense struct {
 	TotalLicenseCount  *int                                                                          `json:"total_license_count,omitempty"`   // Total number of licenses

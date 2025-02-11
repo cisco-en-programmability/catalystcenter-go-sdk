@@ -1,4 +1,4 @@
-module github.com/cisco-en-programmability/catalystcenter-go-sdk
+module github.com/cisco-en-programmability/catalystcenter-go-sdk/v2
 
 go 1.17
 

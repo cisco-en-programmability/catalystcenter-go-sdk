@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/sdk"
+	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v2/sdk"
 )
 
 // client is Catalyst Center API client

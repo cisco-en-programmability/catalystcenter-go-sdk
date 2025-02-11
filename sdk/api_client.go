@@ -49,6 +49,7 @@ type Client struct {
 	ApplicationPolicy           *ApplicationPolicyService
 	Applications                *ApplicationsService
 	AuthenticationManagement    *AuthenticationManagementService
+	CiscoIMC                    *CiscoIMCService
 	CiscoTrustedCertificates    *CiscoTrustedCertificatesService
 	Clients                     *ClientsService
 	CommandRunner               *CommandRunnerService
@@ -274,6 +275,7 @@ func NewClientNoAuth() (*Client, error) {
 	c.ApplicationPolicy = (*ApplicationPolicyService)(&c.common)
 	c.Applications = (*ApplicationsService)(&c.common)
 	c.AuthenticationManagement = (*AuthenticationManagementService)(&c.common)
+	c.CiscoIMC = (*CiscoIMCService)(&c.common)
 	c.CiscoTrustedCertificates = (*CiscoTrustedCertificatesService)(&c.common)
 	c.Clients = (*ClientsService)(&c.common)
 	c.CommandRunner = (*CommandRunnerService)(&c.common)

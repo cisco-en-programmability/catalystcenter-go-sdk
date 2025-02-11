@@ -1562,7 +1562,7 @@ type ResponseSitesGetSiteV1Response struct {
 
 	Name string `json:"name,omitempty"` // Name
 
-	AdditionalInfo []string `json:"additionalInfo,omitempty"` // Additional Info
+	AdditionalInfo []ResponseSitesGetSiteResponseAdditionalInfo `json:"additionalInfo,omitempty"` // Additional Info
 
 	SiteHierarchy string `json:"siteHierarchy,omitempty"` // Site Hierarchy
 
@@ -1571,6 +1571,29 @@ type ResponseSitesGetSiteV1Response struct {
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Instance Tenant Id
 
 	ID string `json:"id,omitempty"` // Id
+}
+
+type ResponseSitesGetSiteResponseAdditionalInfo struct {
+	Namespace  string                                               `json:"nameSpace,omitempty"`  //
+	Attributes ResponseSitesGetSiteResponseAdditionalInfoAttributes `json:"attributes,omitempty"` //
+}
+
+//type ResponseSitesGetSiteResponseAdditionalInfoAttributes map[string]string
+
+type ResponseSitesGetSiteResponseAdditionalInfoAttributes struct {
+	Country              string `json:"country,omitempty"`              //
+	Address              string `json:"address,omitempty"`              //
+	Latitude             string `json:"latitude,omitempty"`             //
+	AddressInheritedFrom string `json:"addressInheritedFrom,omitempty"` //
+	Type                 string `json:"type,omitempty"`                 //
+	Longitude            string `json:"longitude,omitempty"`            //
+	OffsetX              string `json:"offsetX,omitempty"`              //
+	OffsetY              string `json:"offsetY,omitempty"`              //
+	Length               string `json:"length,omitempty"`               //
+	Width                string `json:"width,omitempty"`                //
+	Height               string `json:"height,omitempty"`               //
+	RfModel              string `json:"rfModel,omitempty"`              //
+	FloorIndex           string `json:"floorIndex,omitempty"`           //
 }
 type ResponseSitesGetSiteHealthV1 struct {
 	Response *[]ResponseSitesGetSiteHealthV1Response `json:"response,omitempty"` //

@@ -1829,6 +1829,7 @@ type ResponseDevicesGetsInterfacesAlongWithStatisticsAndPoeDataFromAllNetworkDev
 	ConnectedSwitchUUID     string   `json:"connectedSwitchUuid,omitempty"`     // Connected Switch Uuid
 	IeeeCompliant           *bool    `json:"ieeeCompliant,omitempty"`           // Ieee Compliant
 	ConnectedSwitchType     string   `json:"connectedSwitchType,omitempty"`     // Connected Switch Type
+	SiteName                string   `json:"siteName,omitempty"`
 }
 type ResponseDevicesGetsInterfacesAlongWithStatisticsAndPoeDataFromAllNetworkDevicesV1Page struct {
 	Limit  *int                                                                                           `json:"limit,omitempty"`  // Limit
@@ -1987,6 +1988,7 @@ type ResponseDevicesGetTheInterfaceDataForTheGivenInterfaceIDinstanceUUIDAlongWi
 	ConnectedSwitchUUID     string   `json:"connectedSwitchUuid,omitempty"`     // Connected Switch Uuid
 	IeeeCompliant           *bool    `json:"ieeeCompliant,omitempty"`           // Ieee Compliant
 	ConnectedSwitchType     string   `json:"connectedSwitchType,omitempty"`     // Connected Switch Type
+	SiteName                string   `json:"siteName,omitempty"`
 }
 type ResponseDevicesTheTrendAnalytcisDataForTheInterfacesInTheSpecifiedTimeRangeV1 struct {
 	Response       *[]ResponseDevicesTheTrendAnalytcisDataForTheInterfacesInTheSpecifiedTimeRangeV1Response `json:"response,omitempty"`       //
@@ -2361,7 +2363,8 @@ type ResponseDevicesGetsTheListOfNetworkDevicesBasedOnTheProvidedComplexFiltersA
 	ClientCount  *int     `json:"clientCount,omitempty"`  // Client Count
 }
 type ResponseDevicesGetsTheListOfNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1ResponseMetricsDetails struct {
-	OverallHealthScore                 *int     `json:"overallHealthScore,omitempty"`                 // Overall Health Score
+	OverallHealthScore                 *int     `json:"overallHealthScore,omitempty"` // Overall Health Score
+	OverallFabricScore                 *int     `json:"overallFabricScore,omitempty"`
 	CPUUtilization                     *float64 `json:"cpuUtilization,omitempty"`                     // Cpu Utilization
 	CPUScore                           *int     `json:"cpuScore,omitempty"`                           // Cpu Score
 	MemoryUtilization                  *float64 `json:"memoryUtilization,omitempty"`                  // Memory Utilization
@@ -7668,6 +7671,28 @@ type RequestDevicesGetsTheTotalNumberNetworkDevicesBasedOnTheProvidedComplexFilt
 	EndTime *int `json:"endTime,omitempty"` // End Time
 
 	Filters *[]RequestDevicesGetsTheTotalNumberNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1Filters `json:"filters,omitempty"` //
+
+	Views []string `json:"views,omitempty"`
+
+	Attributes []string `json:"attributes,omitempty"`
+
+	AggregateAttributes []RequestDevicesGetsTheTotalNumberNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1AggregateAttributes `json:"aggregateAttributes,omitempty"`
+
+	Page *RequestDevicesGetsTheTotalNumberNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1Page `json:"page,omitempty"`
+}
+type RequestDevicesGetsTheTotalNumberNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1Page struct {
+	Limit  *int `json:"limit,omitempty"`
+	Offset *int `json:"offset,omitempty"`
+	SortBy *[]RequestDevicesGetsTheTotalNumberNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1PageSortBy
+}
+type RequestDevicesGetsTheTotalNumberNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1PageSortBy struct {
+	Name  string `json:"name,omitempty"`
+	Order string `json:"order,omitempty"`
+}
+
+type RequestDevicesGetsTheTotalNumberNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1AggregateAttributes struct {
+	Name     string `json:"name,omitempty"`
+	Function string `json:"function,omitempty"`
 }
 type RequestDevicesGetsTheTotalNumberNetworkDevicesBasedOnTheProvidedComplexFiltersAndAggregationFunctionsV1Filters struct {
 	Key string `json:"key,omitempty"` // Key

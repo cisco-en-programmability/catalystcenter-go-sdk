@@ -79,8 +79,15 @@ type ResponseItsmIntegrationGetItsmIntegrationSettingByIDV1DataConnectionSetting
 	AuthUserName string `json:"Auth_UserName,omitempty"` // Auth User Name
 	AuthPassword string `json:"Auth_Password,omitempty"` // Auth Password
 }
-type ResponseItsmIntegrationGetAllItsmIntegrationSettingsV1 []ResponseItemItsmIntegrationGetAllItsmIntegrationSettingsV1 // Array of ResponseItsmIntegrationGetAllITSMIntegrationSettingsV1
+type ResponseItsmIntegrationGetAllItsmIntegrationSettingsV1 struct { // Array of ResponseItsmIntegrationGetAllITSMIntegrationSettings
+	Page         *int                                                         `json:"page,omitempty"`
+	PageSize     *int                                                         `json:"pageSize,omitempty"`
+	TotalPages   *int                                                         `json:"totalPages,omitempty"`
+	Data         []ResponseItemItsmIntegrationGetAllItsmIntegrationSettingsV1 `json:"data,omitempty"`
+	TotalRecords *int                                                         `json:"totalRecords,omitempty"`
+}
 type ResponseItemItsmIntegrationGetAllItsmIntegrationSettingsV1 struct {
+	TypeID             string                                                                          `json:"_id,omitempty"`
 	ID                 string                                                                          `json:"id,omitempty"`                 // Id
 	DypID              string                                                                          `json:"dypId,omitempty"`              // Dyp Id
 	DypName            string                                                                          `json:"dypName,omitempty"`            // Dyp Name
