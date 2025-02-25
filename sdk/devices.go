@@ -4705,28 +4705,12 @@ type ResponseDevicesGetInterfaceByIDV1ResponseAddressesAddressIPMask struct {
 type ResponseDevicesUpdateInterfaceDetailsV1 struct {
 	Response *ResponseDevicesUpdateInterfaceDetailsV1Response `json:"response,omitempty"` //
 
-	Version *ResponseDevicesUpdateInterfaceDetailsV1Version `json:"version,omitempty"` //
+	Version string `json:"version,omitempty"` //
 }
 type ResponseDevicesUpdateInterfaceDetailsV1Response struct {
-	Type string `json:"type,omitempty"` // Type
+	TaskID string `json:"taskId,omitempty"` //
 
-	Properties *ResponseDevicesUpdateInterfaceDetailsV1ResponseProperties `json:"properties,omitempty"` //
-
-	Required []string `json:"required,omitempty"` // Required
-}
-type ResponseDevicesUpdateInterfaceDetailsV1ResponseProperties struct {
-	TaskID *ResponseDevicesUpdateInterfaceDetailsV1ResponsePropertiesTaskID `json:"taskId,omitempty"` //
-
-	URL *ResponseDevicesUpdateInterfaceDetailsV1ResponsePropertiesURL `json:"url,omitempty"` //
-}
-type ResponseDevicesUpdateInterfaceDetailsV1ResponsePropertiesTaskID struct {
-	Type string `json:"type,omitempty"` // Type
-}
-type ResponseDevicesUpdateInterfaceDetailsV1ResponsePropertiesURL struct {
-	Type string `json:"type,omitempty"` // Type
-}
-type ResponseDevicesUpdateInterfaceDetailsV1Version struct {
-	Type string `json:"type,omitempty"` // Type
+	URL string `json:"url,omitempty"` //
 }
 type ResponseDevicesLegitOperationsForInterfaceV1 struct {
 	Response *ResponseDevicesLegitOperationsForInterfaceV1Response `json:"response,omitempty"` //
