@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v2/sdk"
+	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v3/sdk"
 )
 
 // client is Catalyst Center API client
@@ -23,8 +23,8 @@ func main() {
 	// now := time.Now() // current local time
 	// sec := now.UnixNano()
 	vStack := false
-	request1 := catalyst.RequestDeviceOnboardingPnpAddDeviceV1{
-		DeviceInfo: &catalyst.RequestDeviceOnboardingPnpAddDeviceV1DeviceInfo{
+	request1 := catalyst.RequestDeviceOnboardingPnpAddDevice{
+		DeviceInfo: &catalyst.RequestDeviceOnboardingPnpAddDeviceDeviceInfo{
 			SerialNumber: "FLM2213W05S",
 			Stack:        &vStack,
 			SudiRequired: &vStack,

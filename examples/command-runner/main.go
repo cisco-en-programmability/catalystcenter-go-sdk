@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v2/sdk"
+	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v3/sdk"
 )
 
 // client is Catalyst Center API client
@@ -23,7 +23,7 @@ func main() {
 	}
 
 	fmt.Println("Printing device list  ... PlatformID is C9300-48U")
-	getDeviceListQueryParams := &catalyst.GetDeviceListV1QueryParams{
+	getDeviceListQueryParams := &catalyst.GetDeviceListQueryParams{
 		//PlatformID: []string{"C9300-48U"},
 	}
 
@@ -42,7 +42,7 @@ func main() {
 
 	commands := []string{"show version", "show ip interface brief"}
 	timeout := 0
-	runReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationRequest := &catalyst.RequestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationV1{
+	runReadOnlyCommandsOnDevicesToGetTheirRealTimeConfigurationRequest := &catalyst.RequestCommandRunnerRunReadOnlyCommandsOnDevicesToGetTheirRealTimeConfiguration{
 		Commands:    commands,
 		DeviceUUIDs: deviceIDs,
 		Timeout:     &(timeout),

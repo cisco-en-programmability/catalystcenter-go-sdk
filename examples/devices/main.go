@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v2/sdk"
+	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v3/sdk"
 )
 
 // Client is Catalyst Center API client
@@ -21,7 +21,7 @@ func main() {
 	}
 
 	fmt.Println("Getting device count")
-	devicesCount, _, err := Client.Devices.GetDeviceCountKnowYourNetworkV1(nil)
+	devicesCount, _, err := Client.Devices.GetDeviceCountKnowYourNetwork(nil)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -29,7 +29,7 @@ func main() {
 
 	fmt.Println("Printing device list ...")
 
-	getDeviceListQueryParams := &catalyst.GetDeviceListV1QueryParams{}
+	getDeviceListQueryParams := &catalyst.GetDeviceListQueryParams{}
 	devices, _, err := Client.Devices.GetDeviceList(getDeviceListQueryParams)
 	if err != nil {
 		fmt.Println(err)
@@ -40,7 +40,7 @@ func main() {
 		}
 	}
 
-	getDeviceListQueryParams = &catalyst.GetDeviceListV1QueryParams{
+	getDeviceListQueryParams = &catalyst.GetDeviceListQueryParams{
 		//PlatformID: []string{"C9300-24UX"},
 	}
 

@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v2/sdk"
+	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v3/sdk"
 )
 
 // Client is Catalyst Center API client
@@ -20,7 +20,7 @@ func main() {
 		return
 	}
 
-	getClientEnrichmentDetailsHeaderParams := &catalyst.GetClientEnrichmentDetailsV1HeaderParams{
+	getClientEnrichmentDetailsHeaderParams := &catalyst.GetClientEnrichmentDetailsHeaderParams{
 		EntityType:    "network_user_id",
 		EntityValue:   "test",
 		IssueCategory: "test",

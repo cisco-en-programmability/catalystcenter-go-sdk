@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.1.0.3.0]
+### Changes
+- New services for Cisco Catalyst Center 3.1.0.3's API
+
 ## [2.0.3] - 2025-02-25
 ### Changes
 - Response modification of the UpdateInterfaceDetailsV1 function
@@ -97,6 +101,12 @@ New services for Cisco Catalyst Center 2.3.7.6's API:
 - CiscoDnaCenterSystem * CiscoDnaCenterSystemService
 - CiscoTrustedCertificates * CiscoTrustedCertificatesService
 
-[1.0.1]: https://github.com/cisco-en-programmability/catalystcenter-go-sdk/commits/v1.0.1
 [1.0.0]: https://github.com/cisco-en-programmability/catalystcenter-go-sdk/commits/v1.0.0
-[Unreleased]: https://github.com/cisco-en-programmability/catalystcenter-go-sdk/compare/v1.0.1...main
+[1.0.1]: https://github.com/cisco-en-programmability/catalystcenter-go-sdk/compare/v1.0.0...v1.0.1
+[1.0.2]: https://github.com/cisco-en-programmability/catalystcenter-go-sdk/compare/v1.0.1...v1.0.2
+[2.0.0]: https://github.com/cisco-en-programmability/catalystcenter-go-sdk/compare/v1.0.2...v2.0.0
+[2.0.1]: https://github.com/cisco-en-programmability/catalystcenter-go-sdk/compare/v2.0.0...v2.0.1
+[2.0.2]: https://github.com/cisco-en-programmability/catalystcenter-go-sdk/compare/v2.0.1...v2.0.2
+[2.0.3]: https://github.com/cisco-en-programmability/catalystcenter-go-sdk/compare/v2.0.2...v2.0.3
+[3.1.0.3.0]: https://github.com/cisco-en-programmability/catalystcenter-go-sdk/compare/v2.0.3...v3.1.0.3.0
+[Unreleased]: https://github.com/cisco-en-programmability/catalystcenter-go-sdk/compare/v3.1.0.3.0...main

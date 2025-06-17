@@ -5,7 +5,7 @@ import (
 	"io"
 	"os"
 
-	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v2/sdk"
+	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v3/sdk"
 )
 
 // Client is Catalyst Center API client
@@ -37,7 +37,7 @@ func main() {
 	r = f
 
 	nResponse, _, err := client.SoftwareImageManagementSwim.ImportLocalSoftwareImage(
-		&catalyst.ImportLocalSoftwareImageV1QueryParams{},
+		&catalyst.ImportLocalSoftwareImageQueryParams{},
 		&catalyst.ImportLocalSoftwareImageMultipartFields{
 			File:     r,
 			FileName: "dnac_2-2-3-3_v2.zip",

@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v2/sdk"
+	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v3/sdk"
 )
 
 // Client is Catalyst Center API client
@@ -20,7 +20,7 @@ func main() {
 		return
 	}
 
-	queryParams := &catalyst.GetGlobalPoolV1QueryParams{
+	queryParams := &catalyst.GetGlobalPoolQueryParams{
 		Offset: 1,
 		Limit:  5,
 	}

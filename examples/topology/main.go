@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v2/sdk"
+	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v3/sdk"
 )
 
 // Client is Catalyst Center API client
@@ -33,7 +33,7 @@ func main() {
 
 	fmt.Println("Printing physical topology...")
 
-	getPhysicalTopologyQueryParams := &catalyst.GetPhysicalTopologyV1QueryParams{
+	getPhysicalTopologyQueryParams := &catalyst.GetPhysicalTopologyQueryParams{
 		NodeType: "",
 	}
 	physicalTopology, _, err := Client.Topology.GetPhysicalTopology(getPhysicalTopologyQueryParams)
@@ -67,7 +67,7 @@ func main() {
 	}
 
 	fmt.Println("Printing Network Health...")
-	getOverallNetworkHealthQueryParams := &catalyst.GetOverallNetworkHealthV1QueryParams{
+	getOverallNetworkHealthQueryParams := &catalyst.GetOverallNetworkHealthQueryParams{
 		Timestamp: 0,
 	}
 	networkHealth, _, err := Client.Topology.GetOverallNetworkHealth(getOverallNetworkHealthQueryParams)

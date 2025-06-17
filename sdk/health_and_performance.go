@@ -11,127 +11,115 @@ import (
 
 type HealthAndPerformanceService service
 
-type RetrievesAllTheValidationSetsV1QueryParams struct {
+type RetrievesAllTheValidationSetsQueryParams struct {
 	View string `url:"view,omitempty"` //When the query parameter `view=DETAIL` is passed, all validation sets and associated validations will be returned. When the query parameter `view=DEFAULT` is passed, only validation sets metadata will be returned.
 }
-type RetrievesTheListOfValidationWorkflowsV1QueryParams struct {
+type RetrievesTheListOfValidationWorkflowsQueryParams struct {
 	StartTime float64 `url:"startTime,omitempty"` //Workflows started after the given time (as milliseconds since UNIX epoch).
 	EndTime   float64 `url:"endTime,omitempty"`   //Workflows started before the given time (as milliseconds since UNIX epoch).
 	RunStatus string  `url:"runStatus,omitempty"` //Execution status of the workflow. If the workflow is successfully submitted, runStatus is `PENDING`. If the workflow execution has started, runStatus is `IN_PROGRESS`. If the workflow executed is completed with all validations executed, runStatus is `COMPLETED`. If the workflow execution fails while running validations, runStatus is `FAILED`.
 	Offset    float64 `url:"offset,omitempty"`    //The first record to show for this page; the first record is numbered 1.
 	Limit     float64 `url:"limit,omitempty"`     //Specifies the maximum number of workflows to return per page. Must be an integer between 1 and 500, inclusive.
 }
-type RetrievesTheCountOfValidationWorkflowsV1QueryParams struct {
+type RetrievesTheCountOfValidationWorkflowsQueryParams struct {
 	StartTime float64 `url:"startTime,omitempty"` //Workflows started after the given time (as milliseconds since UNIX epoch).
 	EndTime   float64 `url:"endTime,omitempty"`   //Workflows started before the given time (as milliseconds since UNIX epoch).
 	RunStatus string  `url:"runStatus,omitempty"` //Execution status of the workflow. If the workflow is successfully submitted, runStatus is `PENDING`. If the workflow execution has started, runStatus is `IN_PROGRESS`. If the workflow executed is completed with all validations executed, runStatus is `COMPLETED`. If the workflow execution fails while running validations, runStatus is `FAILED`.
 }
-type SystemHealthAPIV1QueryParams struct {
+type SystemHealthAPIQueryParams struct {
 	Summary   bool    `url:"summary,omitempty"`   //Fetch the latest high severity event
 	Domain    string  `url:"domain,omitempty"`    //Fetch system events with this domain. Possible values of domain are listed here : /dna/platform/app/consumer-portal/developer-toolkit/events
 	Subdomain string  `url:"subdomain,omitempty"` //Fetch system events with this subdomain. Possible values of subdomain are listed here : /dna/platform/app/consumer-portal/developer-toolkit/events
 	Limit     float64 `url:"limit,omitempty"`     //Specifies the maximum number of system health events to return per page. Must be an integer between 1 and 50, inclusive
 	Offset    float64 `url:"offset,omitempty"`    //Specifies the starting point for the list of system health events to return. Must be an integer greater than or equal to 0
 }
-type SystemHealthCountAPIV1QueryParams struct {
+type SystemHealthCountAPIQueryParams struct {
 	Domain    string `url:"domain,omitempty"`    //Fetch system events with this domain. Possible values of domain are listed here : /dna/platform/app/consumer-portal/developer-toolkit/events
 	Subdomain string `url:"subdomain,omitempty"` //Fetch system events with this subdomain. Possible values of subdomain are listed here : /dna/platform/app/consumer-portal/developer-toolkit/events
 }
-type SystemPerformanceAPIV1QueryParams struct {
+type SystemPerformanceAPIQueryParams struct {
 	Kpi       string  `url:"kpi,omitempty"`       //Valid values: cpu,memory,network
 	Function  string  `url:"function,omitempty"`  //Valid values: sum,average,max
 	StartTime float64 `url:"startTime,omitempty"` //This is the epoch start time in milliseconds from which performance indicator need to be fetched
 	EndTime   float64 `url:"endTime,omitempty"`   //This is the epoch end time in milliseconds upto which performance indicator need to be fetched
 }
-type SystemPerformanceHistoricalAPIV1QueryParams struct {
+type SystemPerformanceHistoricalAPIQueryParams struct {
 	Kpi       string  `url:"kpi,omitempty"`       //Fetch historical data for this kpi. Valid values: cpu,memory,network
 	StartTime float64 `url:"startTime,omitempty"` //This is the epoch start time in milliseconds from which performance indicator need to be fetched
 	EndTime   float64 `url:"endTime,omitempty"`   //This is the epoch end time in milliseconds upto which performance indicator need to be fetched
 }
 
-type ResponseHealthAndPerformanceRetrievesDiagnosticTaskByIDV1 struct {
-	Response *ResponseHealthAndPerformanceRetrievesDiagnosticTaskByIDV1Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` // The version of the response
+type ResponseHealthAndPerformanceRetrievesDiagnosticTaskByID struct {
+	Response *ResponseHealthAndPerformanceRetrievesDiagnosticTaskByIDResponse `json:"response,omitempty"` //
+	Version  string                                                           `json:"version,omitempty"`  // The version of the response
 }
-type ResponseHealthAndPerformanceRetrievesDiagnosticTaskByIDV1Response struct {
-	ID string `json:"id,omitempty"` // The ID of this task
-
-	RootID string `json:"rootId,omitempty"` // The ID of the task representing the root node of the tree which this task belongs to.  In some cases, this may be the same as the ID or null, which indicates that this task is the root task
-
-	ParentID string `json:"parentId,omitempty"` // The ID of the parent task if this happens to be a subtask. In case this task is not a subtask, then the parentId is expected to be null.  To construct a task tree, this task will be the child of the task with the ID listed here, or the root of the tree if this task has no parentId
-
-	StartTime *int `json:"startTime,omitempty"` // An approximate time of when the task creation was triggered; as measured in Unix epoch time in milliseconds
-
+type ResponseHealthAndPerformanceRetrievesDiagnosticTaskByIDResponse struct {
+	ID             string `json:"id,omitempty"`             // The ID of this task
+	RootID         string `json:"rootId,omitempty"`         // The ID of the task representing the root node of the tree which this task belongs to.  In some cases, this may be the same as the ID or null, which indicates that this task is the root task
+	ParentID       string `json:"parentId,omitempty"`       // The ID of the parent task if this happens to be a subtask. In case this task is not a subtask, then the parentId is expected to be null.  To construct a task tree, this task will be the child of the task with the ID listed here, or the root of the tree if this task has no parentId
+	StartTime      *int   `json:"startTime,omitempty"`      // An approximate time of when the task creation was triggered; as measured in Unix epoch time in milliseconds
 	ResultLocation string `json:"resultLocation,omitempty"` // A server-relative URL indicating where additional task-specific details may be found
-
-	Status string `json:"status,omitempty"` // Summarizes the status of a task
-
-	UpdatedTime *int `json:"updatedTime,omitempty"` // The last modification date and time of this task, expressed in Unix epoch time format to the millisecond precision.
-
-	EndTime *int `json:"endTime,omitempty"` // An approximate time of when this task has been marked completed; as measured in Unix epoch time in milliseconds
+	Status         string `json:"status,omitempty"`         // Summarizes the status of a task
+	UpdatedTime    *int   `json:"updatedTime,omitempty"`    // The last modification date and time of this task, expressed in Unix epoch time format to the millisecond precision.
+	EndTime        *int   `json:"endTime,omitempty"`        // An approximate time of when this task has been marked completed; as measured in Unix epoch time in milliseconds
 }
-type ResponseHealthAndPerformanceRetrievesDiagnosticTaskDetailsByIDV1 struct {
-	Response *ResponseHealthAndPerformanceRetrievesDiagnosticTaskDetailsByIDV1Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` // The version of the response
+type ResponseHealthAndPerformanceRetrievesDiagnosticTaskDetailsByID struct {
+	Response *ResponseHealthAndPerformanceRetrievesDiagnosticTaskDetailsByIDResponse `json:"response,omitempty"` //
+	Version  string                                                                  `json:"version,omitempty"`  // The version of the response
 }
-type ResponseHealthAndPerformanceRetrievesDiagnosticTaskDetailsByIDV1Response struct {
-	Data string `json:"data,omitempty"` // Any data associated with this task; the value may vary significantly across different tasks
-
-	Progress string `json:"progress,omitempty"` // A textual representation which indicates the progress of this task; the value may vary significantly across different tasks
-
-	ErrorCode string `json:"errorCode,omitempty"` // An error code if in case this task has failed in its execution
-
+type ResponseHealthAndPerformanceRetrievesDiagnosticTaskDetailsByIDResponse struct {
+	Data          string `json:"data,omitempty"`          // Any data associated with this task; the value may vary significantly across different tasks
+	Progress      string `json:"progress,omitempty"`      // A textual representation which indicates the progress of this task; the value may vary significantly across different tasks
+	ErrorCode     string `json:"errorCode,omitempty"`     // An error code if in case this task has failed in its execution
 	FailureReason string `json:"failureReason,omitempty"` // A textual description indicating the reason why a task has failed
 }
-type ResponseHealthAndPerformanceRetrievesAllTheValidationSetsV1 struct {
-	Response *[]ResponseHealthAndPerformanceRetrievesAllTheValidationSetsV1Response `json:"response,omitempty"` //
-	Version  string                                                                 `json:"version,omitempty"`  // The version of the response
+type ResponseHealthAndPerformanceRetrievesAllTheValidationSets struct {
+	Response *[]ResponseHealthAndPerformanceRetrievesAllTheValidationSetsResponse `json:"response,omitempty"` //
+	Version  string                                                               `json:"version,omitempty"`  // The version of the response
 }
-type ResponseHealthAndPerformanceRetrievesAllTheValidationSetsV1Response struct {
-	ID               string                                                                                 `json:"id,omitempty"`               // Validation set id
-	Name             string                                                                                 `json:"name,omitempty"`             // Name of the validation set
-	Description      string                                                                                 `json:"description,omitempty"`      // Description of the validation set
-	Version          string                                                                                 `json:"version,omitempty"`          // Version of the validation set
-	ValidationGroups *[]ResponseHealthAndPerformanceRetrievesAllTheValidationSetsV1ResponseValidationGroups `json:"validationGroups,omitempty"` //
+type ResponseHealthAndPerformanceRetrievesAllTheValidationSetsResponse struct {
+	ID               string                                                                               `json:"id,omitempty"`               // Validation set id
+	Name             string                                                                               `json:"name,omitempty"`             // Name of the validation set
+	Description      string                                                                               `json:"description,omitempty"`      // Description of the validation set
+	Version          string                                                                               `json:"version,omitempty"`          // Version of the validation set
+	ValidationGroups *[]ResponseHealthAndPerformanceRetrievesAllTheValidationSetsResponseValidationGroups `json:"validationGroups,omitempty"` //
 }
-type ResponseHealthAndPerformanceRetrievesAllTheValidationSetsV1ResponseValidationGroups struct {
-	Name        string                                                                                            `json:"name,omitempty"`        // Name of the validation group
-	ID          string                                                                                            `json:"id,omitempty"`          // Validation group id
-	Description string                                                                                            `json:"description,omitempty"` // Description of the validation group
-	Validations *[]ResponseHealthAndPerformanceRetrievesAllTheValidationSetsV1ResponseValidationGroupsValidations `json:"validations,omitempty"` //
+type ResponseHealthAndPerformanceRetrievesAllTheValidationSetsResponseValidationGroups struct {
+	Name        string                                                                                          `json:"name,omitempty"`        // Name of the validation group
+	ID          string                                                                                          `json:"id,omitempty"`          // Validation group id
+	Description string                                                                                          `json:"description,omitempty"` // Description of the validation group
+	Validations *[]ResponseHealthAndPerformanceRetrievesAllTheValidationSetsResponseValidationGroupsValidations `json:"validations,omitempty"` //
 }
-type ResponseHealthAndPerformanceRetrievesAllTheValidationSetsV1ResponseValidationGroupsValidations struct {
+type ResponseHealthAndPerformanceRetrievesAllTheValidationSetsResponseValidationGroupsValidations struct {
 	ID   string `json:"id,omitempty"`   // Validation id
 	Name string `json:"name,omitempty"` // Name of the validation
 }
-type ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSetV1 struct {
-	Response *ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSetV1Response `json:"response,omitempty"` //
-	Version  string                                                                             `json:"version,omitempty"`  // The version of the response
+type ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSet struct {
+	Response *ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSetResponse `json:"response,omitempty"` //
+	Version  string                                                                           `json:"version,omitempty"`  // The version of the response
 }
-type ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSetV1Response struct {
-	ID               string                                                                                               `json:"id,omitempty"`               // Validation set id
-	Name             string                                                                                               `json:"name,omitempty"`             // Name of the validation set
-	Description      string                                                                                               `json:"description,omitempty"`      // Description of the validation set
-	Version          string                                                                                               `json:"version,omitempty"`          // Version of validation set
-	ValidationGroups *[]ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSetV1ResponseValidationGroups `json:"validationGroups,omitempty"` //
+type ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSetResponse struct {
+	ID               string                                                                                             `json:"id,omitempty"`               // Validation set id
+	Name             string                                                                                             `json:"name,omitempty"`             // Name of the validation set
+	Description      string                                                                                             `json:"description,omitempty"`      // Description of the validation set
+	Version          string                                                                                             `json:"version,omitempty"`          // Version of validation set
+	ValidationGroups *[]ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSetResponseValidationGroups `json:"validationGroups,omitempty"` //
 }
-type ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSetV1ResponseValidationGroups struct {
-	Name        string                                                                                                          `json:"name,omitempty"`        // Name of the validation group
-	ID          string                                                                                                          `json:"id,omitempty"`          // Validation group id
-	Description string                                                                                                          `json:"description,omitempty"` // Description of the validation group
-	Validations *[]ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSetV1ResponseValidationGroupsValidations `json:"validations,omitempty"` //
+type ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSetResponseValidationGroups struct {
+	Name        string                                                                                                        `json:"name,omitempty"`        // Name of the validation group
+	ID          string                                                                                                        `json:"id,omitempty"`          // Validation group id
+	Description string                                                                                                        `json:"description,omitempty"` // Description of the validation group
+	Validations *[]ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSetResponseValidationGroupsValidations `json:"validations,omitempty"` //
 }
-type ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSetV1ResponseValidationGroupsValidations struct {
+type ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSetResponseValidationGroupsValidations struct {
 	ID   string `json:"id,omitempty"`   // Validation id
 	Name string `json:"name,omitempty"` // Name of the validation
 }
-type ResponseHealthAndPerformanceRetrievesTheListOfValidationWorkflowsV1 struct {
-	Response *[]ResponseHealthAndPerformanceRetrievesTheListOfValidationWorkflowsV1Response `json:"response,omitempty"` //
-	Version  string                                                                         `json:"version,omitempty"`  // The version of the response
+type ResponseHealthAndPerformanceRetrievesTheListOfValidationWorkflows struct {
+	Response *[]ResponseHealthAndPerformanceRetrievesTheListOfValidationWorkflowsResponse `json:"response,omitempty"` //
+	Version  string                                                                       `json:"version,omitempty"`  // The version of the response
 }
-type ResponseHealthAndPerformanceRetrievesTheListOfValidationWorkflowsV1Response struct {
+type ResponseHealthAndPerformanceRetrievesTheListOfValidationWorkflowsResponse struct {
 	ID               string   `json:"id,omitempty"`               // Workflow id
 	Name             string   `json:"name,omitempty"`             // Workflow name
 	Description      string   `json:"description,omitempty"`      // Workflow description
@@ -142,56 +130,56 @@ type ResponseHealthAndPerformanceRetrievesTheListOfValidationWorkflowsV1Response
 	ValidationStatus string   `json:"validationStatus,omitempty"` // Overall result of execution of the validation workflow
 	ValidationSetIDs []string `json:"validationSetIds,omitempty"` // List of validation set ids
 }
-type ResponseHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1 struct {
-	Response *ResponseHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1Response `json:"response,omitempty"` //
-	Version  string                                                                           `json:"version,omitempty"`  // The version of the response
+type ResponseHealthAndPerformanceSubmitsTheWorkflowForExecutingValidations struct {
+	Response *ResponseHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsResponse `json:"response,omitempty"` //
+	Version  string                                                                         `json:"version,omitempty"`  // The version of the response
 }
-type ResponseHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1Response struct {
+type ResponseHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsResponse struct {
 	ID string `json:"id,omitempty"` // UUID of the workflow submitted for executing validations
 }
-type ResponseHealthAndPerformanceRetrievesTheCountOfValidationWorkflowsV1 struct {
-	Response *ResponseHealthAndPerformanceRetrievesTheCountOfValidationWorkflowsV1Response `json:"response,omitempty"` //
-	Version  string                                                                        `json:"version,omitempty"`  // The version of the response
+type ResponseHealthAndPerformanceRetrievesTheCountOfValidationWorkflows struct {
+	Response *ResponseHealthAndPerformanceRetrievesTheCountOfValidationWorkflowsResponse `json:"response,omitempty"` //
+	Version  string                                                                      `json:"version,omitempty"`  // The version of the response
 }
-type ResponseHealthAndPerformanceRetrievesTheCountOfValidationWorkflowsV1Response struct {
+type ResponseHealthAndPerformanceRetrievesTheCountOfValidationWorkflowsResponse struct {
 	Count *int `json:"count,omitempty"` // The reported count.
 }
-type ResponseHealthAndPerformanceRetrievesValidationWorkflowDetailsV1 struct {
-	Response *ResponseHealthAndPerformanceRetrievesValidationWorkflowDetailsV1Response `json:"response,omitempty"` //
-	Version  string                                                                    `json:"version,omitempty"`  // The version of the response
+type ResponseHealthAndPerformanceRetrievesValidationWorkflowDetails struct {
+	Response *ResponseHealthAndPerformanceRetrievesValidationWorkflowDetailsResponse `json:"response,omitempty"` //
+	Version  string                                                                  `json:"version,omitempty"`  // The version of the response
 }
-type ResponseHealthAndPerformanceRetrievesValidationWorkflowDetailsV1Response struct {
-	ID                       string                                                                                              `json:"id,omitempty"`                       // Workflow id
-	Name                     string                                                                                              `json:"name,omitempty"`                     // Workflow name
-	Description              string                                                                                              `json:"description,omitempty"`              // Workflow description
-	RunStatus                string                                                                                              `json:"runStatus,omitempty"`                // Execution status of the workflow. If the workflow is successfully submitted, runStatus will return `PENDING`. If the workflow execution has started, runStatus will return `IN_PROGRESS`. If the workflow executed is completed with all validations executed, runStatus will return `COMPLETED`. If the workflow execution fails while running validations, runStatus will return `FAILED`.
-	SubmitTime               *int                                                                                                `json:"submitTime,omitempty"`               // Workflow submit time (as milliseconds since UNIX epoch).
-	ValidationSetIDs         []string                                                                                            `json:"validationSetIds,omitempty"`         // List of validation set ids
-	ReleaseVersion           string                                                                                              `json:"releaseVersion,omitempty"`           // Product version
-	ValidationSetsRunDetails *[]ResponseHealthAndPerformanceRetrievesValidationWorkflowDetailsV1ResponseValidationSetsRunDetails `json:"validationSetsRunDetails,omitempty"` //
-	ValidationStatus         string                                                                                              `json:"validationStatus,omitempty"`         // Overall result of the execution of all the validations. If any of the contained validation execution status is `CRITICAL`, this is marked as `CRITICAL`. Else, if any of the contained validation execution status is `WARNING`, this is marked as `WARNING`. Else, this is marked as `INFORMATION`.
+type ResponseHealthAndPerformanceRetrievesValidationWorkflowDetailsResponse struct {
+	ID                       string                                                                                            `json:"id,omitempty"`                       // Workflow id
+	Name                     string                                                                                            `json:"name,omitempty"`                     // Workflow name
+	Description              string                                                                                            `json:"description,omitempty"`              // Workflow description
+	RunStatus                string                                                                                            `json:"runStatus,omitempty"`                // Execution status of the workflow. If the workflow is successfully submitted, runStatus will return `PENDING`. If the workflow execution has started, runStatus will return `IN_PROGRESS`. If the workflow executed is completed with all validations executed, runStatus will return `COMPLETED`. If the workflow execution fails while running validations, runStatus will return `FAILED`.
+	SubmitTime               *int                                                                                              `json:"submitTime,omitempty"`               // Workflow submit time (as milliseconds since UNIX epoch).
+	ValidationSetIDs         []string                                                                                          `json:"validationSetIds,omitempty"`         // List of validation set ids
+	ReleaseVersion           string                                                                                            `json:"releaseVersion,omitempty"`           // Product version
+	ValidationSetsRunDetails *[]ResponseHealthAndPerformanceRetrievesValidationWorkflowDetailsResponseValidationSetsRunDetails `json:"validationSetsRunDetails,omitempty"` //
+	ValidationStatus         string                                                                                            `json:"validationStatus,omitempty"`         // Overall result of the execution of all the validations. If any of the contained validation execution status is `CRITICAL`, this is marked as `CRITICAL`. Else, if any of the contained validation execution status is `WARNING`, this is marked as `WARNING`. Else, this is marked as `INFORMATION`.
 }
-type ResponseHealthAndPerformanceRetrievesValidationWorkflowDetailsV1ResponseValidationSetsRunDetails struct {
-	ValidationSetID      string                                                                                                                  `json:"validationSetId,omitempty"`      // Validation set id
-	StartTime            *int                                                                                                                    `json:"startTime,omitempty"`            // Validation set run start time (as milliseconds since UNIX epoch).
-	EndTime              *int                                                                                                                    `json:"endTime,omitempty"`              // Validation set run finish time (as milliseconds since UNIX epoch).
-	ValidationStatus     string                                                                                                                  `json:"validationStatus,omitempty"`     // Overall result of the validation set execution. If any of the contained validation execution status is `CRITICAL`, this is marked as `CRITICAL`. Else, if any of the contained validation execution status is `WARNING`, this is marked as `WARNING`. Else, this is marked as `INFORMATION`. This is empty when the workflow is in progress.
-	Version              string                                                                                                                  `json:"version,omitempty"`              // Validation set version
-	ValidationRunDetails *[]ResponseHealthAndPerformanceRetrievesValidationWorkflowDetailsV1ResponseValidationSetsRunDetailsValidationRunDetails `json:"validationRunDetails,omitempty"` //
+type ResponseHealthAndPerformanceRetrievesValidationWorkflowDetailsResponseValidationSetsRunDetails struct {
+	ValidationSetID      string                                                                                                                `json:"validationSetId,omitempty"`      // Validation set id
+	StartTime            *int                                                                                                                  `json:"startTime,omitempty"`            // Validation set run start time (as milliseconds since UNIX epoch).
+	EndTime              *int                                                                                                                  `json:"endTime,omitempty"`              // Validation set run finish time (as milliseconds since UNIX epoch).
+	ValidationStatus     string                                                                                                                `json:"validationStatus,omitempty"`     // Overall result of the validation set execution. If any of the contained validation execution status is `CRITICAL`, this is marked as `CRITICAL`. Else, if any of the contained validation execution status is `WARNING`, this is marked as `WARNING`. Else, this is marked as `INFORMATION`. This is empty when the workflow is in progress.
+	Version              string                                                                                                                `json:"version,omitempty"`              // Validation set version
+	ValidationRunDetails *[]ResponseHealthAndPerformanceRetrievesValidationWorkflowDetailsResponseValidationSetsRunDetailsValidationRunDetails `json:"validationRunDetails,omitempty"` //
 }
-type ResponseHealthAndPerformanceRetrievesValidationWorkflowDetailsV1ResponseValidationSetsRunDetailsValidationRunDetails struct {
+type ResponseHealthAndPerformanceRetrievesValidationWorkflowDetailsResponseValidationSetsRunDetailsValidationRunDetails struct {
 	ValidationID      string `json:"validationId,omitempty"`      // Validation id
 	ValidationName    string `json:"validationName,omitempty"`    // Validation name
 	ValidationMessage string `json:"validationMessage,omitempty"` // Validation execution result detail message
 	ValidationStatus  string `json:"validationStatus,omitempty"`  // Validation execution result status
 }
-type ResponseHealthAndPerformanceSystemHealthAPIV1 struct {
-	HealthEvents *[]ResponseHealthAndPerformanceSystemHealthAPIV1HealthEvents `json:"healthEvents,omitempty"` //
-	Version      string                                                       `json:"version,omitempty"`      // API version
-	HostName     string                                                       `json:"hostName,omitempty"`     // Cluster name
-	Cimcaddress  []string                                                     `json:"cimcaddress,omitempty"`  // List of configured cimc addresse(s)
+type ResponseHealthAndPerformanceSystemHealthAPI struct {
+	HealthEvents *[]ResponseHealthAndPerformanceSystemHealthAPIHealthEvents `json:"healthEvents,omitempty"` //
+	Version      string                                                     `json:"version,omitempty"`      // API version
+	HostName     string                                                     `json:"hostName,omitempty"`     // Cluster name
+	Cimcaddress  []string                                                   `json:"cimcaddress,omitempty"`  // List of configured cimc addresse(s)
 }
-type ResponseHealthAndPerformanceSystemHealthAPIV1HealthEvents struct {
+type ResponseHealthAndPerformanceSystemHealthAPIHealthEvents struct {
 	Severity    string `json:"severity,omitempty"`    // Severity of the event
 	Hostname    string `json:"hostname,omitempty"`    // Hostname of the event
 	Instance    string `json:"instance,omitempty"`    // Instance of the event
@@ -202,73 +190,73 @@ type ResponseHealthAndPerformanceSystemHealthAPIV1HealthEvents struct {
 	Timestamp   string `json:"timestamp,omitempty"`   // Time of the event occurance
 	Status      string `json:"status,omitempty"`      // Event status
 }
-type ResponseHealthAndPerformanceSystemHealthCountAPIV1 struct {
+type ResponseHealthAndPerformanceSystemHealthCountAPI struct {
 	Count *float64 `json:"count,omitempty"` // Count of the events
 }
-type ResponseHealthAndPerformanceSystemPerformanceAPIV1 struct {
-	HostName string                                                  `json:"hostName,omitempty"` // Hostname
-	Version  string                                                  `json:"version,omitempty"`  // Version of the API
-	Kpis     *ResponseHealthAndPerformanceSystemPerformanceAPIV1Kpis `json:"kpis,omitempty"`     //
+type ResponseHealthAndPerformanceSystemPerformanceAPI struct {
+	HostName string                                                `json:"hostName,omitempty"` // Hostname
+	Version  string                                                `json:"version,omitempty"`  // Version of the API
+	Kpis     *ResponseHealthAndPerformanceSystemPerformanceAPIKpis `json:"kpis,omitempty"`     //
 }
-type ResponseHealthAndPerformanceSystemPerformanceAPIV1Kpis struct {
-	CPU           *ResponseHealthAndPerformanceSystemPerformanceAPIV1KpisCPU           `json:"cpu,omitempty"`             //
-	Memory        *ResponseHealthAndPerformanceSystemPerformanceAPIV1KpisMemory        `json:"memory,omitempty"`          //
-	NetworktxRate *ResponseHealthAndPerformanceSystemPerformanceAPIV1KpisNetworktxRate `json:"network tx_rate,omitempty"` //
-	NetworkrxRate *ResponseHealthAndPerformanceSystemPerformanceAPIV1KpisNetworkrxRate `json:"network rx_rate,omitempty"` //
+type ResponseHealthAndPerformanceSystemPerformanceAPIKpis struct {
+	CPU           *ResponseHealthAndPerformanceSystemPerformanceAPIKpisCPU           `json:"cpu,omitempty"`             //
+	Memory        *ResponseHealthAndPerformanceSystemPerformanceAPIKpisMemory        `json:"memory,omitempty"`          //
+	NetworktxRate *ResponseHealthAndPerformanceSystemPerformanceAPIKpisNetworktxRate `json:"network tx_rate,omitempty"` //
+	NetworkrxRate *ResponseHealthAndPerformanceSystemPerformanceAPIKpisNetworkrxRate `json:"network rx_rate,omitempty"` //
 }
-type ResponseHealthAndPerformanceSystemPerformanceAPIV1KpisCPU struct {
+type ResponseHealthAndPerformanceSystemPerformanceAPIKpisCPU struct {
 	Units       string `json:"units,omitempty"`       // Units for cpu usage
 	Utilization string `json:"utilization,omitempty"` // cpu usage in units
 }
-type ResponseHealthAndPerformanceSystemPerformanceAPIV1KpisMemory struct {
+type ResponseHealthAndPerformanceSystemPerformanceAPIKpisMemory struct {
 	Units       string `json:"units,omitempty"`       // Units for memory usage
 	Utilization string `json:"utilization,omitempty"` // Memory usage in units
 }
-type ResponseHealthAndPerformanceSystemPerformanceAPIV1KpisNetworktxRate struct {
+type ResponseHealthAndPerformanceSystemPerformanceAPIKpisNetworktxRate struct {
 	Units       string `json:"units,omitempty"`       // Units for network tx_rate
 	Utilization string `json:"utilization,omitempty"` // Network tx_rate in units
 }
-type ResponseHealthAndPerformanceSystemPerformanceAPIV1KpisNetworkrxRate struct {
+type ResponseHealthAndPerformanceSystemPerformanceAPIKpisNetworkrxRate struct {
 	Units       string `json:"units,omitempty"`       // Units for network rx_rate
 	Utilization string `json:"utilization,omitempty"` // Network rx_rate in units
 }
-type ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1 struct {
-	HostName string                                                            `json:"hostName,omitempty"` // Hostname
-	Version  string                                                            `json:"version,omitempty"`  // Version of the API
-	Kpis     *ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1Kpis `json:"kpis,omitempty"`     //
+type ResponseHealthAndPerformanceSystemPerformanceHistoricalAPI struct {
+	HostName string                                                          `json:"hostName,omitempty"` // Hostname
+	Version  string                                                          `json:"version,omitempty"`  // Version of the API
+	Kpis     *ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIKpis `json:"kpis,omitempty"`     //
 }
-type ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1Kpis struct {
-	Legends   *ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1KpisLegends `json:"legends,omitempty"`   //
-	Data      *ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1KpisData    `json:"data,omitempty"`      //
-	CPUAvg    string                                                                   `json:"cpuAvg,omitempty"`    // CPU average utilization
-	MemoryAvg string                                                                   `json:"memoryAvg,omitempty"` // Memory average utilization
+type ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIKpis struct {
+	Legends   *ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIKpisLegends `json:"legends,omitempty"`   //
+	Data      *ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIKpisData    `json:"data,omitempty"`      //
+	CPUAvg    string                                                                 `json:"cpuAvg,omitempty"`    // CPU average utilization
+	MemoryAvg string                                                                 `json:"memoryAvg,omitempty"` // Memory average utilization
 }
-type ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1KpisLegends struct {
-	CPU           *ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1KpisLegendsCPU           `json:"cpu,omitempty"`             //
-	Memory        *ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1KpisLegendsMemory        `json:"memory,omitempty"`          //
-	NetworktxRate *ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1KpisLegendsNetworktxRate `json:"network tx_rate,omitempty"` //
-	NetworkrxRate *ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1KpisLegendsNetworkrxRate `json:"network rx_rate,omitempty"` //
+type ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIKpisLegends struct {
+	CPU           *ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIKpisLegendsCPU           `json:"cpu,omitempty"`             //
+	Memory        *ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIKpisLegendsMemory        `json:"memory,omitempty"`          //
+	NetworktxRate *ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIKpisLegendsNetworktxRate `json:"network tx_rate,omitempty"` //
+	NetworkrxRate *ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIKpisLegendsNetworkrxRate `json:"network rx_rate,omitempty"` //
 }
-type ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1KpisLegendsCPU struct {
+type ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIKpisLegendsCPU struct {
 	Units string `json:"units,omitempty"` // Units for cpu usage
 }
-type ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1KpisLegendsMemory struct {
+type ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIKpisLegendsMemory struct {
 	Units string `json:"units,omitempty"` // Units for memory usage
 }
-type ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1KpisLegendsNetworktxRate struct {
+type ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIKpisLegendsNetworktxRate struct {
 	Units string `json:"units,omitempty"` // Units for network tx_rate
 }
-type ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1KpisLegendsNetworkrxRate struct {
+type ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIKpisLegendsNetworkrxRate struct {
 	Units string `json:"units,omitempty"` // Units for network rx_rate
 }
-type ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1KpisData map[string][]string // Time in 'YYYY-MM-DDT00:00:00Z' format with values for legends
-type RequestHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1 struct {
+type ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIKpisData map[string][]string // Time in 'YYYY-MM-DDT00:00:00Z' format with values for legends
+type RequestHealthAndPerformanceSubmitsTheWorkflowForExecutingValidations struct {
 	Name             string   `json:"name,omitempty"`             // Name of the workflow to run. It must be unique.
 	Description      string   `json:"description,omitempty"`      // Description of the workflow to run
 	ValidationSetIDs []string `json:"validationSetIds,omitempty"` // List of validation set ids
 }
 
-//RetrievesDiagnosticTaskByIDV1 Retrieves diagnostic task by ID - 0086-59cc-4338-ae89
+//RetrievesDiagnosticTaskByID Retrieves diagnostic task by ID - 0086-59cc-4338-ae89
 /* This API retrieves the diagnostic task identified by the specified `id`.
 
 
@@ -277,14 +265,14 @@ type RequestHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1 stru
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-diagnostic-task-by-id
 */
-func (s *HealthAndPerformanceService) RetrievesDiagnosticTaskByIDV1(id string) (*ResponseHealthAndPerformanceRetrievesDiagnosticTaskByIDV1, *resty.Response, error) {
+func (s *HealthAndPerformanceService) RetrievesDiagnosticTaskByID(id string) (*ResponseHealthAndPerformanceRetrievesDiagnosticTaskByID, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnosticTasks/{id}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseHealthAndPerformanceRetrievesDiagnosticTaskByIDV1{}).
+		SetResult(&ResponseHealthAndPerformanceRetrievesDiagnosticTaskByID{}).
 		SetError(&Error).
 		Get(path)
 
@@ -295,17 +283,17 @@ func (s *HealthAndPerformanceService) RetrievesDiagnosticTaskByIDV1(id string) (
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.RetrievesDiagnosticTaskByIDV1(id)
+			return s.RetrievesDiagnosticTaskByID(id)
 		}
-		return nil, response, fmt.Errorf("error with operation RetrievesDiagnosticTaskByIdV1")
+		return nil, response, fmt.Errorf("error with operation RetrievesDiagnosticTaskById")
 	}
 
-	result := response.Result().(*ResponseHealthAndPerformanceRetrievesDiagnosticTaskByIDV1)
+	result := response.Result().(*ResponseHealthAndPerformanceRetrievesDiagnosticTaskByID)
 	return result, response, err
 
 }
 
-//RetrievesDiagnosticTaskDetailsByIDV1 Retrieves diagnostic task details by ID - a78b-7907-4fb8-a0df
+//RetrievesDiagnosticTaskDetailsByID Retrieves diagnostic task details by ID - a78b-7907-4fb8-a0df
 /* This API retrieves the details of the diagnostic task identified by the specified `id`.
 
 
@@ -314,14 +302,14 @@ func (s *HealthAndPerformanceService) RetrievesDiagnosticTaskByIDV1(id string) (
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-diagnostic-task-details-by-id
 */
-func (s *HealthAndPerformanceService) RetrievesDiagnosticTaskDetailsByIDV1(id string) (*ResponseHealthAndPerformanceRetrievesDiagnosticTaskDetailsByIDV1, *resty.Response, error) {
+func (s *HealthAndPerformanceService) RetrievesDiagnosticTaskDetailsByID(id string) (*ResponseHealthAndPerformanceRetrievesDiagnosticTaskDetailsByID, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnosticTasks/{id}/detail"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseHealthAndPerformanceRetrievesDiagnosticTaskDetailsByIDV1{}).
+		SetResult(&ResponseHealthAndPerformanceRetrievesDiagnosticTaskDetailsByID{}).
 		SetError(&Error).
 		Get(path)
 
@@ -332,33 +320,33 @@ func (s *HealthAndPerformanceService) RetrievesDiagnosticTaskDetailsByIDV1(id st
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.RetrievesDiagnosticTaskDetailsByIDV1(id)
+			return s.RetrievesDiagnosticTaskDetailsByID(id)
 		}
-		return nil, response, fmt.Errorf("error with operation RetrievesDiagnosticTaskDetailsByIdV1")
+		return nil, response, fmt.Errorf("error with operation RetrievesDiagnosticTaskDetailsById")
 	}
 
-	result := response.Result().(*ResponseHealthAndPerformanceRetrievesDiagnosticTaskDetailsByIDV1)
+	result := response.Result().(*ResponseHealthAndPerformanceRetrievesDiagnosticTaskDetailsByID)
 	return result, response, err
 
 }
 
-//RetrievesAllTheValidationSetsV1 Retrieves all the validation sets - 11bb-4b03-4059-a001
+//RetrievesAllTheValidationSets Retrieves all the validation sets - 11bb-4b03-4059-a001
 /* Retrieves all the validation sets and optionally the contained validations
 
 
-@param RetrievesAllTheValidationSetsV1QueryParams Filtering parameter
+@param RetrievesAllTheValidationSetsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-all-the-validation-sets
 */
-func (s *HealthAndPerformanceService) RetrievesAllTheValidationSetsV1(RetrievesAllTheValidationSetsV1QueryParams *RetrievesAllTheValidationSetsV1QueryParams) (*ResponseHealthAndPerformanceRetrievesAllTheValidationSetsV1, *resty.Response, error) {
+func (s *HealthAndPerformanceService) RetrievesAllTheValidationSets(RetrievesAllTheValidationSetsQueryParams *RetrievesAllTheValidationSetsQueryParams) (*ResponseHealthAndPerformanceRetrievesAllTheValidationSets, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnosticValidationSets"
 
-	queryString, _ := query.Values(RetrievesAllTheValidationSetsV1QueryParams)
+	queryString, _ := query.Values(RetrievesAllTheValidationSetsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseHealthAndPerformanceRetrievesAllTheValidationSetsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseHealthAndPerformanceRetrievesAllTheValidationSets{}).
 		SetError(&Error).
 		Get(path)
 
@@ -369,17 +357,17 @@ func (s *HealthAndPerformanceService) RetrievesAllTheValidationSetsV1(RetrievesA
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.RetrievesAllTheValidationSetsV1(RetrievesAllTheValidationSetsV1QueryParams)
+			return s.RetrievesAllTheValidationSets(RetrievesAllTheValidationSetsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation RetrievesAllTheValidationSetsV1")
+		return nil, response, fmt.Errorf("error with operation RetrievesAllTheValidationSets")
 	}
 
-	result := response.Result().(*ResponseHealthAndPerformanceRetrievesAllTheValidationSetsV1)
+	result := response.Result().(*ResponseHealthAndPerformanceRetrievesAllTheValidationSets)
 	return result, response, err
 
 }
 
-//RetrievesValidationDetailsForAValidationSetV1 Retrieves validation details for a validation set - 37b7-88bd-47b9-8533
+//RetrievesValidationDetailsForAValidationSet Retrieves validation details for a validation set - 37b7-88bd-47b9-8533
 /* Retrieves validation details for the given validation set id
 
 
@@ -388,14 +376,14 @@ func (s *HealthAndPerformanceService) RetrievesAllTheValidationSetsV1(RetrievesA
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-validation-details-for-a-validation-set
 */
-func (s *HealthAndPerformanceService) RetrievesValidationDetailsForAValidationSetV1(id string) (*ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSetV1, *resty.Response, error) {
+func (s *HealthAndPerformanceService) RetrievesValidationDetailsForAValidationSet(id string) (*ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSet, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnosticValidationSets/{id}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSetV1{}).
+		SetResult(&ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSet{}).
 		SetError(&Error).
 		Get(path)
 
@@ -406,33 +394,33 @@ func (s *HealthAndPerformanceService) RetrievesValidationDetailsForAValidationSe
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.RetrievesValidationDetailsForAValidationSetV1(id)
+			return s.RetrievesValidationDetailsForAValidationSet(id)
 		}
-		return nil, response, fmt.Errorf("error with operation RetrievesValidationDetailsForAValidationSetV1")
+		return nil, response, fmt.Errorf("error with operation RetrievesValidationDetailsForAValidationSet")
 	}
 
-	result := response.Result().(*ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSetV1)
+	result := response.Result().(*ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSet)
 	return result, response, err
 
 }
 
-//RetrievesTheListOfValidationWorkflowsV1 Retrieves the list of validation workflows - 0fab-cafd-440b-98f8
+//RetrievesTheListOfValidationWorkflows Retrieves the list of validation workflows - 0fab-cafd-440b-98f8
 /* Retrieves the workflows that have been successfully submitted and are currently available. This is sorted by `submitTime`
 
 
-@param RetrievesTheListOfValidationWorkflowsV1QueryParams Filtering parameter
+@param RetrievesTheListOfValidationWorkflowsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-the-list-of-validation-workflows
 */
-func (s *HealthAndPerformanceService) RetrievesTheListOfValidationWorkflowsV1(RetrievesTheListOfValidationWorkflowsV1QueryParams *RetrievesTheListOfValidationWorkflowsV1QueryParams) (*ResponseHealthAndPerformanceRetrievesTheListOfValidationWorkflowsV1, *resty.Response, error) {
+func (s *HealthAndPerformanceService) RetrievesTheListOfValidationWorkflows(RetrievesTheListOfValidationWorkflowsQueryParams *RetrievesTheListOfValidationWorkflowsQueryParams) (*ResponseHealthAndPerformanceRetrievesTheListOfValidationWorkflows, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnosticValidationWorkflows"
 
-	queryString, _ := query.Values(RetrievesTheListOfValidationWorkflowsV1QueryParams)
+	queryString, _ := query.Values(RetrievesTheListOfValidationWorkflowsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseHealthAndPerformanceRetrievesTheListOfValidationWorkflowsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseHealthAndPerformanceRetrievesTheListOfValidationWorkflows{}).
 		SetError(&Error).
 		Get(path)
 
@@ -443,33 +431,33 @@ func (s *HealthAndPerformanceService) RetrievesTheListOfValidationWorkflowsV1(Re
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.RetrievesTheListOfValidationWorkflowsV1(RetrievesTheListOfValidationWorkflowsV1QueryParams)
+			return s.RetrievesTheListOfValidationWorkflows(RetrievesTheListOfValidationWorkflowsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation RetrievesTheListOfValidationWorkflowsV1")
+		return nil, response, fmt.Errorf("error with operation RetrievesTheListOfValidationWorkflows")
 	}
 
-	result := response.Result().(*ResponseHealthAndPerformanceRetrievesTheListOfValidationWorkflowsV1)
+	result := response.Result().(*ResponseHealthAndPerformanceRetrievesTheListOfValidationWorkflows)
 	return result, response, err
 
 }
 
-//RetrievesTheCountOfValidationWorkflowsV1 Retrieves the count of validation workflows - 4f91-8ac9-44c9-baef
+//RetrievesTheCountOfValidationWorkflows Retrieves the count of validation workflows - 4f91-8ac9-44c9-baef
 /* Retrieves the count of workflows that have been successfully submitted and are currently available.
 
 
-@param RetrievesTheCountOfValidationWorkflowsV1QueryParams Filtering parameter
+@param RetrievesTheCountOfValidationWorkflowsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-the-count-of-validation-workflows
 */
-func (s *HealthAndPerformanceService) RetrievesTheCountOfValidationWorkflowsV1(RetrievesTheCountOfValidationWorkflowsV1QueryParams *RetrievesTheCountOfValidationWorkflowsV1QueryParams) (*ResponseHealthAndPerformanceRetrievesTheCountOfValidationWorkflowsV1, *resty.Response, error) {
+func (s *HealthAndPerformanceService) RetrievesTheCountOfValidationWorkflows(RetrievesTheCountOfValidationWorkflowsQueryParams *RetrievesTheCountOfValidationWorkflowsQueryParams) (*ResponseHealthAndPerformanceRetrievesTheCountOfValidationWorkflows, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnosticValidationWorkflows/count"
 
-	queryString, _ := query.Values(RetrievesTheCountOfValidationWorkflowsV1QueryParams)
+	queryString, _ := query.Values(RetrievesTheCountOfValidationWorkflowsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseHealthAndPerformanceRetrievesTheCountOfValidationWorkflowsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseHealthAndPerformanceRetrievesTheCountOfValidationWorkflows{}).
 		SetError(&Error).
 		Get(path)
 
@@ -480,17 +468,17 @@ func (s *HealthAndPerformanceService) RetrievesTheCountOfValidationWorkflowsV1(R
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.RetrievesTheCountOfValidationWorkflowsV1(RetrievesTheCountOfValidationWorkflowsV1QueryParams)
+			return s.RetrievesTheCountOfValidationWorkflows(RetrievesTheCountOfValidationWorkflowsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation RetrievesTheCountOfValidationWorkflowsV1")
+		return nil, response, fmt.Errorf("error with operation RetrievesTheCountOfValidationWorkflows")
 	}
 
-	result := response.Result().(*ResponseHealthAndPerformanceRetrievesTheCountOfValidationWorkflowsV1)
+	result := response.Result().(*ResponseHealthAndPerformanceRetrievesTheCountOfValidationWorkflows)
 	return result, response, err
 
 }
 
-//RetrievesValidationWorkflowDetailsV1 Retrieves validation workflow details - eb8b-eaad-451a-9c09
+//RetrievesValidationWorkflowDetails Retrieves validation workflow details - eb8b-eaad-451a-9c09
 /* Retrieves workflow details for a workflow id
 
 
@@ -499,14 +487,14 @@ func (s *HealthAndPerformanceService) RetrievesTheCountOfValidationWorkflowsV1(R
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!retrieves-validation-workflow-details
 */
-func (s *HealthAndPerformanceService) RetrievesValidationWorkflowDetailsV1(id string) (*ResponseHealthAndPerformanceRetrievesValidationWorkflowDetailsV1, *resty.Response, error) {
+func (s *HealthAndPerformanceService) RetrievesValidationWorkflowDetails(id string) (*ResponseHealthAndPerformanceRetrievesValidationWorkflowDetails, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnosticValidationWorkflows/{id}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseHealthAndPerformanceRetrievesValidationWorkflowDetailsV1{}).
+		SetResult(&ResponseHealthAndPerformanceRetrievesValidationWorkflowDetails{}).
 		SetError(&Error).
 		Get(path)
 
@@ -517,33 +505,33 @@ func (s *HealthAndPerformanceService) RetrievesValidationWorkflowDetailsV1(id st
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.RetrievesValidationWorkflowDetailsV1(id)
+			return s.RetrievesValidationWorkflowDetails(id)
 		}
-		return nil, response, fmt.Errorf("error with operation RetrievesValidationWorkflowDetailsV1")
+		return nil, response, fmt.Errorf("error with operation RetrievesValidationWorkflowDetails")
 	}
 
-	result := response.Result().(*ResponseHealthAndPerformanceRetrievesValidationWorkflowDetailsV1)
+	result := response.Result().(*ResponseHealthAndPerformanceRetrievesValidationWorkflowDetails)
 	return result, response, err
 
 }
 
-//SystemHealthAPIV1 System Health API - 6085-eb1b-4f48-9740
+//SystemHealthAPI System Health API - 6085-eb1b-4f48-9740
 /* This API retrieves the latest system events
 
 
-@param SystemHealthAPIV1QueryParams Filtering parameter
+@param SystemHealthAPIQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!system-health-api
 */
-func (s *HealthAndPerformanceService) SystemHealthAPIV1(SystemHealthAPIV1QueryParams *SystemHealthAPIV1QueryParams) (*ResponseHealthAndPerformanceSystemHealthAPIV1, *resty.Response, error) {
+func (s *HealthAndPerformanceService) SystemHealthAPI(SystemHealthAPIQueryParams *SystemHealthAPIQueryParams) (*ResponseHealthAndPerformanceSystemHealthAPI, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnostics/system/health"
 
-	queryString, _ := query.Values(SystemHealthAPIV1QueryParams)
+	queryString, _ := query.Values(SystemHealthAPIQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseHealthAndPerformanceSystemHealthAPIV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseHealthAndPerformanceSystemHealthAPI{}).
 		SetError(&Error).
 		Get(path)
 
@@ -554,33 +542,33 @@ func (s *HealthAndPerformanceService) SystemHealthAPIV1(SystemHealthAPIV1QueryPa
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.SystemHealthAPIV1(SystemHealthAPIV1QueryParams)
+			return s.SystemHealthAPI(SystemHealthAPIQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation SystemHealthApiV1")
+		return nil, response, fmt.Errorf("error with operation SystemHealthApi")
 	}
 
-	result := response.Result().(*ResponseHealthAndPerformanceSystemHealthAPIV1)
+	result := response.Result().(*ResponseHealthAndPerformanceSystemHealthAPI)
 	return result, response, err
 
 }
 
-//SystemHealthCountAPIV1 System Health Count API - 5289-0891-4729-8714
+//SystemHealthCountAPI System Health Count API - 5289-0891-4729-8714
 /* This API gives the count of the latest system events
 
 
-@param SystemHealthCountAPIV1QueryParams Filtering parameter
+@param SystemHealthCountAPIQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!system-health-count-api
 */
-func (s *HealthAndPerformanceService) SystemHealthCountAPIV1(SystemHealthCountAPIV1QueryParams *SystemHealthCountAPIV1QueryParams) (*ResponseHealthAndPerformanceSystemHealthCountAPIV1, *resty.Response, error) {
+func (s *HealthAndPerformanceService) SystemHealthCountAPI(SystemHealthCountAPIQueryParams *SystemHealthCountAPIQueryParams) (*ResponseHealthAndPerformanceSystemHealthCountAPI, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnostics/system/health/count"
 
-	queryString, _ := query.Values(SystemHealthCountAPIV1QueryParams)
+	queryString, _ := query.Values(SystemHealthCountAPIQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseHealthAndPerformanceSystemHealthCountAPIV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseHealthAndPerformanceSystemHealthCountAPI{}).
 		SetError(&Error).
 		Get(path)
 
@@ -591,33 +579,33 @@ func (s *HealthAndPerformanceService) SystemHealthCountAPIV1(SystemHealthCountAP
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.SystemHealthCountAPIV1(SystemHealthCountAPIV1QueryParams)
+			return s.SystemHealthCountAPI(SystemHealthCountAPIQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation SystemHealthCountApiV1")
+		return nil, response, fmt.Errorf("error with operation SystemHealthCountApi")
 	}
 
-	result := response.Result().(*ResponseHealthAndPerformanceSystemHealthCountAPIV1)
+	result := response.Result().(*ResponseHealthAndPerformanceSystemHealthCountAPI)
 	return result, response, err
 
 }
 
-//SystemPerformanceAPIV1 System Performance API - f2a9-5b4d-48eb-a4f8
+//SystemPerformanceAPI System Performance API - f2a9-5b4d-48eb-a4f8
 /* Retrieves the aggregated metrics (total, average or maximum) of cluster key performance indicators (KPIs), such as CPU utilization, memory utilization or network rates recorded within a specified time period. The data will be available from the past 24 hours.
 
 
-@param SystemPerformanceAPIV1QueryParams Filtering parameter
+@param SystemPerformanceAPIQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!system-performance-api
 */
-func (s *HealthAndPerformanceService) SystemPerformanceAPIV1(SystemPerformanceAPIV1QueryParams *SystemPerformanceAPIV1QueryParams) (*ResponseHealthAndPerformanceSystemPerformanceAPIV1, *resty.Response, error) {
+func (s *HealthAndPerformanceService) SystemPerformanceAPI(SystemPerformanceAPIQueryParams *SystemPerformanceAPIQueryParams) (*ResponseHealthAndPerformanceSystemPerformanceAPI, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnostics/system/performance"
 
-	queryString, _ := query.Values(SystemPerformanceAPIV1QueryParams)
+	queryString, _ := query.Values(SystemPerformanceAPIQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseHealthAndPerformanceSystemPerformanceAPIV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseHealthAndPerformanceSystemPerformanceAPI{}).
 		SetError(&Error).
 		Get(path)
 
@@ -628,33 +616,33 @@ func (s *HealthAndPerformanceService) SystemPerformanceAPIV1(SystemPerformanceAP
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.SystemPerformanceAPIV1(SystemPerformanceAPIV1QueryParams)
+			return s.SystemPerformanceAPI(SystemPerformanceAPIQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation SystemPerformanceApiV1")
+		return nil, response, fmt.Errorf("error with operation SystemPerformanceApi")
 	}
 
-	result := response.Result().(*ResponseHealthAndPerformanceSystemPerformanceAPIV1)
+	result := response.Result().(*ResponseHealthAndPerformanceSystemPerformanceAPI)
 	return result, response, err
 
 }
 
-//SystemPerformanceHistoricalAPIV1 System Performance Historical API - 879b-ea1e-4389-83d7
+//SystemPerformanceHistoricalAPI System Performance Historical API - 879b-ea1e-4389-83d7
 /* Retrieves the average values of cluster key performance indicators (KPIs), like CPU utilization, memory utilization or network rates grouped by time intervals within a specified time range. The data will be available from the past 24 hours.
 
 
-@param SystemPerformanceHistoricalAPIV1QueryParams Filtering parameter
+@param SystemPerformanceHistoricalAPIQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!system-performance-historical-api
 */
-func (s *HealthAndPerformanceService) SystemPerformanceHistoricalAPIV1(SystemPerformanceHistoricalAPIV1QueryParams *SystemPerformanceHistoricalAPIV1QueryParams) (*ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1, *resty.Response, error) {
+func (s *HealthAndPerformanceService) SystemPerformanceHistoricalAPI(SystemPerformanceHistoricalAPIQueryParams *SystemPerformanceHistoricalAPIQueryParams) (*ResponseHealthAndPerformanceSystemPerformanceHistoricalAPI, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnostics/system/performance/history"
 
-	queryString, _ := query.Values(SystemPerformanceHistoricalAPIV1QueryParams)
+	queryString, _ := query.Values(SystemPerformanceHistoricalAPIQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseHealthAndPerformanceSystemPerformanceHistoricalAPI{}).
 		SetError(&Error).
 		Get(path)
 
@@ -665,31 +653,31 @@ func (s *HealthAndPerformanceService) SystemPerformanceHistoricalAPIV1(SystemPer
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.SystemPerformanceHistoricalAPIV1(SystemPerformanceHistoricalAPIV1QueryParams)
+			return s.SystemPerformanceHistoricalAPI(SystemPerformanceHistoricalAPIQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation SystemPerformanceHistoricalApiV1")
+		return nil, response, fmt.Errorf("error with operation SystemPerformanceHistoricalApi")
 	}
 
-	result := response.Result().(*ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1)
+	result := response.Result().(*ResponseHealthAndPerformanceSystemPerformanceHistoricalAPI)
 	return result, response, err
 
 }
 
-//SubmitsTheWorkflowForExecutingValidationsV1 Submits the workflow for executing validations - 52a0-7981-41ab-81d8
+//SubmitsTheWorkflowForExecutingValidations Submits the workflow for executing validations - 52a0-7981-41ab-81d8
 /* Submits the workflow for executing the validations for the given validation specifications
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!submits-the-workflow-for-executing-validations
 */
-func (s *HealthAndPerformanceService) SubmitsTheWorkflowForExecutingValidationsV1(requestHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1 *RequestHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1) (*ResponseHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1, *resty.Response, error) {
+func (s *HealthAndPerformanceService) SubmitsTheWorkflowForExecutingValidations(requestHealthAndPerformanceSubmitsTheWorkflowForExecutingValidations *RequestHealthAndPerformanceSubmitsTheWorkflowForExecutingValidations) (*ResponseHealthAndPerformanceSubmitsTheWorkflowForExecutingValidations, *resty.Response, error) {
 	path := "/dna/intent/api/v1/diagnosticValidationWorkflows"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1).
-		SetResult(&ResponseHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1{}).
+		SetBody(requestHealthAndPerformanceSubmitsTheWorkflowForExecutingValidations).
+		SetResult(&ResponseHealthAndPerformanceSubmitsTheWorkflowForExecutingValidations{}).
 		SetError(&Error).
 		Post(path)
 
@@ -701,18 +689,18 @@ func (s *HealthAndPerformanceService) SubmitsTheWorkflowForExecutingValidationsV
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.SubmitsTheWorkflowForExecutingValidationsV1(requestHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1)
+			return s.SubmitsTheWorkflowForExecutingValidations(requestHealthAndPerformanceSubmitsTheWorkflowForExecutingValidations)
 		}
 
-		return nil, response, fmt.Errorf("error with operation SubmitsTheWorkflowForExecutingValidationsV1")
+		return nil, response, fmt.Errorf("error with operation SubmitsTheWorkflowForExecutingValidations")
 	}
 
-	result := response.Result().(*ResponseHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1)
+	result := response.Result().(*ResponseHealthAndPerformanceSubmitsTheWorkflowForExecutingValidations)
 	return result, response, err
 
 }
 
-//DeletesAValidationWorkflowV1 Deletes a validation workflow - 8eb3-3959-47fa-9c50
+//DeletesAValidationWorkflow Deletes a validation workflow - 8eb3-3959-47fa-9c50
 /* Deletes the workflow for the given id
 
 
@@ -721,7 +709,7 @@ func (s *HealthAndPerformanceService) SubmitsTheWorkflowForExecutingValidationsV
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!deletes-a-validation-workflow
 */
-func (s *HealthAndPerformanceService) DeletesAValidationWorkflowV1(id string) (*resty.Response, error) {
+func (s *HealthAndPerformanceService) DeletesAValidationWorkflow(id string) (*resty.Response, error) {
 	//id string
 	path := "/dna/intent/api/v1/diagnosticValidationWorkflows/{id}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
@@ -739,115 +727,12 @@ func (s *HealthAndPerformanceService) DeletesAValidationWorkflowV1(id string) (*
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeletesAValidationWorkflowV1(id)
+			return s.DeletesAValidationWorkflow(
+				id)
 		}
-		return response, fmt.Errorf("error with operation DeletesAValidationWorkflowV1")
+		return response, fmt.Errorf("error with operation DeletesAValidationWorkflow")
 	}
 
 	return response, err
 
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `SystemPerformanceAPIV1`
-*/
-func (s *HealthAndPerformanceService) SystemPerformanceAPI(SystemPerformanceAPIV1QueryParams *SystemPerformanceAPIV1QueryParams) (*ResponseHealthAndPerformanceSystemPerformanceAPIV1, *resty.Response, error) {
-	return s.SystemPerformanceAPIV1(SystemPerformanceAPIV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `SystemPerformanceHistoricalAPIV1`
-*/
-func (s *HealthAndPerformanceService) SystemPerformanceHistoricalAPI(SystemPerformanceHistoricalAPIV1QueryParams *SystemPerformanceHistoricalAPIV1QueryParams) (*ResponseHealthAndPerformanceSystemPerformanceHistoricalAPIV1, *resty.Response, error) {
-	return s.SystemPerformanceHistoricalAPIV1(SystemPerformanceHistoricalAPIV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `SystemHealthAPIV1`
-*/
-func (s *HealthAndPerformanceService) SystemHealthAPI(SystemHealthAPIV1QueryParams *SystemHealthAPIV1QueryParams) (*ResponseHealthAndPerformanceSystemHealthAPIV1, *resty.Response, error) {
-	return s.SystemHealthAPIV1(SystemHealthAPIV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `DeletesAValidationWorkflowV1`
-*/
-func (s *HealthAndPerformanceService) DeletesAValidationWorkflow(id string) (*resty.Response, error) {
-	return s.DeletesAValidationWorkflowV1(id)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `RetrievesValidationDetailsForAValidationSetV1`
-*/
-func (s *HealthAndPerformanceService) RetrievesValidationDetailsForAValidationSet(id string) (*ResponseHealthAndPerformanceRetrievesValidationDetailsForAValidationSetV1, *resty.Response, error) {
-	return s.RetrievesValidationDetailsForAValidationSetV1(id)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `RetrievesTheCountOfValidationWorkflowsV1`
-*/
-func (s *HealthAndPerformanceService) RetrievesTheCountOfValidationWorkflows(RetrievesTheCountOfValidationWorkflowsV1QueryParams *RetrievesTheCountOfValidationWorkflowsV1QueryParams) (*ResponseHealthAndPerformanceRetrievesTheCountOfValidationWorkflowsV1, *resty.Response, error) {
-	return s.RetrievesTheCountOfValidationWorkflowsV1(RetrievesTheCountOfValidationWorkflowsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `RetrievesTheListOfValidationWorkflowsV1`
-*/
-func (s *HealthAndPerformanceService) RetrievesTheListOfValidationWorkflows(RetrievesTheListOfValidationWorkflowsV1QueryParams *RetrievesTheListOfValidationWorkflowsV1QueryParams) (*ResponseHealthAndPerformanceRetrievesTheListOfValidationWorkflowsV1, *resty.Response, error) {
-	return s.RetrievesTheListOfValidationWorkflowsV1(RetrievesTheListOfValidationWorkflowsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `SystemHealthCountAPIV1`
-*/
-func (s *HealthAndPerformanceService) SystemHealthCountAPI(SystemHealthCountAPIV1QueryParams *SystemHealthCountAPIV1QueryParams) (*ResponseHealthAndPerformanceSystemHealthCountAPIV1, *resty.Response, error) {
-	return s.SystemHealthCountAPIV1(SystemHealthCountAPIV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `RetrievesDiagnosticTaskByIDV1`
-*/
-func (s *HealthAndPerformanceService) RetrievesDiagnosticTaskByID(id string) (*ResponseHealthAndPerformanceRetrievesDiagnosticTaskByIDV1, *resty.Response, error) {
-	return s.RetrievesDiagnosticTaskByIDV1(id)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `RetrievesValidationWorkflowDetailsV1`
-*/
-func (s *HealthAndPerformanceService) RetrievesValidationWorkflowDetails(id string) (*ResponseHealthAndPerformanceRetrievesValidationWorkflowDetailsV1, *resty.Response, error) {
-	return s.RetrievesValidationWorkflowDetailsV1(id)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `SubmitsTheWorkflowForExecutingValidationsV1`
-*/
-func (s *HealthAndPerformanceService) SubmitsTheWorkflowForExecutingValidations(requestHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1 *RequestHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1) (*ResponseHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1, *resty.Response, error) {
-	return s.SubmitsTheWorkflowForExecutingValidationsV1(requestHealthAndPerformanceSubmitsTheWorkflowForExecutingValidationsV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `RetrievesAllTheValidationSetsV1`
-*/
-func (s *HealthAndPerformanceService) RetrievesAllTheValidationSets(RetrievesAllTheValidationSetsV1QueryParams *RetrievesAllTheValidationSetsV1QueryParams) (*ResponseHealthAndPerformanceRetrievesAllTheValidationSetsV1, *resty.Response, error) {
-	return s.RetrievesAllTheValidationSetsV1(RetrievesAllTheValidationSetsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `RetrievesDiagnosticTaskDetailsByIDV1`
-*/
-func (s *HealthAndPerformanceService) RetrievesDiagnosticTaskDetailsByID(id string) (*ResponseHealthAndPerformanceRetrievesDiagnosticTaskDetailsByIDV1, *resty.Response, error) {
-	return s.RetrievesDiagnosticTaskDetailsByIDV1(id)
 }

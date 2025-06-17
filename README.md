@@ -5,7 +5,7 @@ catalystcenter-go-sdk is a Go client library for [Catalyst Center Platform](http
 ## Usage
 
 ```go
-import catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v2/sdk"
+import catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v3/sdk"
 ```
 
 ## Introduction
@@ -95,10 +95,11 @@ if devices.Response != nil {
 
 ## Compatibility matrix
 
-| SDK versions | Cisco Catalyst Center version supported |
-| ------------ | --------------------------------------- |
-| 1.y.z        | 2.3.7.6                                 |
-| 2.y.z        | 2.3.7.9                                 |
+| SDK versions    | Cisco Catalyst Center version supported |
+| --------------- | --------------------------------------- |
+| 1.y.z           | 2.3.7.6                                 |
+| 2.y.z           | 2.3.7.9                                 |
+| 3.1.0.3.z       | 3.1.0.3                                 |
 
 ## Changelog
 

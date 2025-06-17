@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v2/sdk"
+	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v3/sdk"
 )
 
 // client is Catalyst Center API client
@@ -23,7 +23,7 @@ func main() {
 		fmt.Println("Printing site health...")
 		// now := time.Now() // current local time
 		// sec := now.UnixNano()
-		getSiteHealthQueryParams := &catalyst.GetSiteHealthV1QueryParams{
+		getSiteHealthQueryParams := &catalyst.GetSiteHealthQueryParams{
 			// Timestamp: strconv.Itoa(int(sec) / 1000000),
 		}
 		siteHealth, _, err := client.Sites.GetSiteHealth(getSiteHealthQueryParams)

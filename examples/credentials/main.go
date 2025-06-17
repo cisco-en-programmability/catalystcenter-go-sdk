@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v2/sdk"
+	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v3/sdk"
 )
 
 // client is Catalyst Center API client
@@ -21,8 +21,8 @@ func main() {
 	}
 
 	fmt.Println("Creating new SNMPv3 credentials...")
-	snmpv3Credentials := &catalyst.RequestDiscoveryCreateSNMPv3CredentialsV1{
-		catalyst.RequestItemDiscoveryCreateSNMPv3CredentialsV1{
+	snmpv3Credentials := &catalyst.RequestDiscoveryCreateSNMPv3Credentials{
+		catalyst.RequestItemDiscoveryCreateSNMPv3Credentials{
 			AuthType:        "SHA",
 			AuthPassword:    "CATALYST-2020",
 			SNMPMode:        "AUTHPRIV",
@@ -39,7 +39,7 @@ func main() {
 	fmt.Println(snmpv3CredentialsResponse)
 
 	fmt.Println("Printing SNMPv3 credentials...")
-	getGlobalCredentialsQueryParams := &catalyst.GetGlobalCredentialsV1QueryParams{
+	getGlobalCredentialsQueryParams := &catalyst.GetGlobalCredentialsQueryParams{
 		CredentialSubType: "SNMPV3",
 	}
 	credentialsListResponse, _, err := client.Discovery.GetGlobalCredentials(getGlobalCredentialsQueryParams)
@@ -59,8 +59,8 @@ func main() {
 	fmt.Println("Creating new HTTP Write credentials...")
 	port := 443
 	secure := true
-	httpWriteCredentials := &catalyst.RequestDiscoveryCreateHTTPWriteCredentialsV1{
-		catalyst.RequestItemDiscoveryCreateHTTPWriteCredentialsV1{
+	httpWriteCredentials := &catalyst.RequestDiscoveryCreateHTTPWriteCredentials{
+		catalyst.RequestItemDiscoveryCreateHTTPWriteCredentials{
 			Comments:    "Catalyst Center HTTP Credentials",
 			Description: "HTTP Creds",
 			Password:    "HTTP-cr3d$",
@@ -77,7 +77,7 @@ func main() {
 	fmt.Println(httpWriteCredentialsResponse)
 
 	fmt.Println("Printing HTTP Write credentials...")
-	getGlobalCredentialsQueryParams = &catalyst.GetGlobalCredentialsV1QueryParams{
+	getGlobalCredentialsQueryParams = &catalyst.GetGlobalCredentialsQueryParams{
 		CredentialSubType: "HTTP_WRITE",
 	}
 	credentialsListResponse, _, err = client.Discovery.GetGlobalCredentials(getGlobalCredentialsQueryParams)

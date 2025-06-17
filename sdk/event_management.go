@@ -11,7 +11,7 @@ import (
 
 type EventManagementService service
 
-type GetAuditLogParentRecordsV1QueryParams struct {
+type GetAuditLogParentRecordsQueryParams struct {
 	InstanceID     string  `url:"instanceId,omitempty"`     //InstanceID of the Audit Log.
 	Name           string  `url:"name,omitempty"`           //Audit Log notification event name.
 	EventID        string  `url:"eventId,omitempty"`        //Audit Log notification's event ID.
@@ -28,13 +28,13 @@ type GetAuditLogParentRecordsV1QueryParams struct {
 	IsSystemEvents bool    `url:"isSystemEvents,omitempty"` //Parameter to filter system generated audit-logs.
 	Description    string  `url:"description,omitempty"`    //String full/partial search - (Provided input string is case insensitively matched for records).
 	Offset         float64 `url:"offset,omitempty"`         //Position of a particular Audit Log record in the data.
-	Limit          float64 `url:"limit,omitempty"`          //Number of Audit Log records to be returned per page.
+	Limit          float64 `url:"limit,omitempty"`          //Number of Audit Log records to be returned per page. Default is 25 if not specified. Maximum allowed limit is 25
 	StartTime      float64 `url:"startTime,omitempty"`      //Start Time in milliseconds since Epoch Eg. 1597950637211 (when provided endTime is mandatory)
 	EndTime        float64 `url:"endTime,omitempty"`        //End Time in milliseconds since Epoch Eg. 1597961437211 (when provided startTime is mandatory)
 	SortBy         string  `url:"sortBy,omitempty"`         //Sort the Audit Logs by certain fields. Supported values are event notification header attributes.
 	Order          string  `url:"order,omitempty"`          //Order of the sorted Audit Log records. Default value is desc by timestamp. Supported values: asc, desc.
 }
-type GetAuditLogSummaryV1QueryParams struct {
+type GetAuditLogSummaryQueryParams struct {
 	ParentInstanceID string  `url:"parentInstanceId,omitempty"` //Parent Audit Log record's instanceID.
 	IsParentOnly     bool    `url:"isParentOnly,omitempty"`     //Parameter to filter parent only audit-logs.
 	InstanceID       string  `url:"instanceId,omitempty"`       //InstanceID of the Audit Log.
@@ -55,7 +55,7 @@ type GetAuditLogSummaryV1QueryParams struct {
 	StartTime        float64 `url:"startTime,omitempty"`        //Start Time in milliseconds since Epoch Eg. 1597950637211 (when provided endTime is mandatory)
 	EndTime          float64 `url:"endTime,omitempty"`          //End Time in milliseconds since Epoch Eg. 1597961437211 (when provided startTime is mandatory)
 }
-type GetAuditLogRecordsV1QueryParams struct {
+type GetAuditLogRecordsQueryParams struct {
 	ParentInstanceID string  `url:"parentInstanceId,omitempty"` //Parent Audit Log record's instanceID.
 	InstanceID       string  `url:"instanceId,omitempty"`       //InstanceID of the Audit Log.
 	Name             string  `url:"name,omitempty"`             //Audit Log notification event name.
@@ -73,20 +73,20 @@ type GetAuditLogRecordsV1QueryParams struct {
 	IsSystemEvents   bool    `url:"isSystemEvents,omitempty"`   //Parameter to filter system generated audit-logs.
 	Description      string  `url:"description,omitempty"`      //String full/partial search - (Provided input string is case insensitively matched for records).
 	Offset           float64 `url:"offset,omitempty"`           //Position of a particular Audit Log record in the data.
-	Limit            float64 `url:"limit,omitempty"`            //Number of Audit Log records to be returned per page.
+	Limit            float64 `url:"limit,omitempty"`            //Number of Audit Log records to be returned per page. Default is 25 if not specified. Maximum allowed limit is 25
 	StartTime        float64 `url:"startTime,omitempty"`        //Start Time in milliseconds since Epoch Eg. 1597950637211 (when provided endTime is mandatory)
 	EndTime          float64 `url:"endTime,omitempty"`          //End Time in milliseconds since Epoch Eg. 1597961437211 (when provided startTime is mandatory)
 	SortBy           string  `url:"sortBy,omitempty"`           //Sort the Audit Logs by certain fields. Supported values are event notification header attributes.
 	Order            string  `url:"order,omitempty"`            //Order of the sorted Audit Log records. Default value is desc by timestamp. Supported values: asc, desc.
 }
-type GetSNMPDestinationV1QueryParams struct {
+type GetSNMPDestinationQueryParams struct {
 	ConfigID string  `url:"configId,omitempty"` //List of SNMP configurations
 	Offset   float64 `url:"offset,omitempty"`   //The number of SNMP configuration's to offset in the resultset whose default value 0
 	Limit    float64 `url:"limit,omitempty"`    //The number of SNMP configuration's to limit in the resultset whose default value 10
 	SortBy   string  `url:"sortBy,omitempty"`   //SortBy field name
 	Order    string  `url:"order,omitempty"`    //order(asc/desc)
 }
-type GetNotificationsV1QueryParams struct {
+type GetNotificationsQueryParams struct {
 	EventIDs  string  `url:"eventIds,omitempty"`  //The registered EventId should be provided
 	StartTime float64 `url:"startTime,omitempty"` //Start Time in milliseconds
 	EndTime   float64 `url:"endTime,omitempty"`   //End Time in milliseconds
@@ -104,7 +104,7 @@ type GetNotificationsV1QueryParams struct {
 	Namespace string  `url:"namespace,omitempty"` //Namespace
 	SiteID    string  `url:"siteId,omitempty"`    //Site Id
 }
-type CountOfNotificationsV1QueryParams struct {
+type CountOfNotificationsQueryParams struct {
 	EventIDs  string  `url:"eventIds,omitempty"`  //The registered EventId should be provided
 	StartTime float64 `url:"startTime,omitempty"` //Start Time in milliseconds
 	EndTime   float64 `url:"endTime,omitempty"`   //End Time in milliseconds
@@ -115,17 +115,17 @@ type CountOfNotificationsV1QueryParams struct {
 	SubDomain string  `url:"subDomain,omitempty"` //Sub Domain
 	Source    string  `url:"source,omitempty"`    //Source
 }
-type GetEventSubscriptionsV1QueryParams struct {
+type GetEventSubscriptionsQueryParams struct {
 	EventIDs string  `url:"eventIds,omitempty"` //List of subscriptions related to the respective eventIds
 	Offset   float64 `url:"offset,omitempty"`   //The number of Subscriptions's to offset in the resultset whose default value 0
 	Limit    float64 `url:"limit,omitempty"`    //The number of Subscriptions's to limit in the resultset whose default value 10
 	SortBy   string  `url:"sortBy,omitempty"`   //SortBy field name
 	Order    string  `url:"order,omitempty"`    //order(asc/desc)
 }
-type DeleteEventSubscriptionsV1QueryParams struct {
+type DeleteEventSubscriptionsQueryParams struct {
 	Subscriptions string `url:"subscriptions,omitempty"` //List of EventSubscriptionId's for removal
 }
-type GetEmailSubscriptionDetailsV1QueryParams struct {
+type GetEmailSubscriptionDetailsQueryParams struct {
 	Name       string  `url:"name,omitempty"`       //Name of the specific configuration
 	InstanceID string  `url:"instanceId,omitempty"` //Instance Id of the specific configuration
 	Offset     float64 `url:"offset,omitempty"`     //The number of Email Subscription detail's to offset in the resultset whose default value 0
@@ -133,7 +133,7 @@ type GetEmailSubscriptionDetailsV1QueryParams struct {
 	SortBy     string  `url:"sortBy,omitempty"`     //SortBy field name
 	Order      string  `url:"order,omitempty"`      //order(asc/desc)
 }
-type GetRestWebhookSubscriptionDetailsV1QueryParams struct {
+type GetRestWebhookSubscriptionDetailsQueryParams struct {
 	Name       string  `url:"name,omitempty"`       //Name of the specific configuration
 	InstanceID string  `url:"instanceId,omitempty"` //Instance Id of the specific configuration
 	Offset     float64 `url:"offset,omitempty"`     //The number of Rest/Webhook Subscription detail's to offset in the resultset whose default value 0
@@ -141,7 +141,7 @@ type GetRestWebhookSubscriptionDetailsV1QueryParams struct {
 	SortBy     string  `url:"sortBy,omitempty"`     //SortBy field name
 	Order      string  `url:"order,omitempty"`      //order(asc/desc)
 }
-type GetSyslogSubscriptionDetailsV1QueryParams struct {
+type GetSyslogSubscriptionDetailsQueryParams struct {
 	Name       string  `url:"name,omitempty"`       //Name of the specific configuration
 	InstanceID string  `url:"instanceId,omitempty"` //Instance Id of the specific configuration
 	Offset     float64 `url:"offset,omitempty"`     //The number of Syslog Subscription detail's to offset in the resultset whose default value 0
@@ -149,10 +149,10 @@ type GetSyslogSubscriptionDetailsV1QueryParams struct {
 	SortBy     string  `url:"sortBy,omitempty"`     //SortBy field name
 	Order      string  `url:"order,omitempty"`      //order(asc/desc)
 }
-type CountOfEventSubscriptionsV1QueryParams struct {
+type CountOfEventSubscriptionsQueryParams struct {
 	EventIDs string `url:"eventIds,omitempty"` //List of subscriptions related to the respective eventIds
 }
-type GetEmailEventSubscriptionsV1QueryParams struct {
+type GetEmailEventSubscriptionsQueryParams struct {
 	EventIDs  string  `url:"eventIds,omitempty"`  //List of email subscriptions related to the respective eventIds (Comma separated event ids)
 	Offset    float64 `url:"offset,omitempty"`    //The number of Subscriptions's to offset in the resultset whose default value 0
 	Limit     float64 `url:"limit,omitempty"`     //The number of Subscriptions's to limit in the resultset whose default value 10
@@ -164,7 +164,7 @@ type GetEmailEventSubscriptionsV1QueryParams struct {
 	Type      string  `url:"type,omitempty"`      //List of email subscriptions related to the respective type
 	Name      string  `url:"name,omitempty"`      //List of email subscriptions related to the respective name
 }
-type GetRestWebhookEventSubscriptionsV1QueryParams struct {
+type GetRestWebhookEventSubscriptionsQueryParams struct {
 	EventIDs  string  `url:"eventIds,omitempty"`  //List of subscriptions related to the respective eventIds (Comma separated event ids)
 	Offset    float64 `url:"offset,omitempty"`    //The number of Subscriptions's to offset in the resultset whose default value 0
 	Limit     float64 `url:"limit,omitempty"`     //The number of Subscriptions's to limit in the resultset whose default value 10
@@ -176,7 +176,7 @@ type GetRestWebhookEventSubscriptionsV1QueryParams struct {
 	Type      string  `url:"type,omitempty"`      //List of subscriptions related to the respective type
 	Name      string  `url:"name,omitempty"`      //List of subscriptions related to the respective name
 }
-type GetSyslogEventSubscriptionsV1QueryParams struct {
+type GetSyslogEventSubscriptionsQueryParams struct {
 	EventIDs  string  `url:"eventIds,omitempty"`  //List of subscriptions related to the respective eventIds (Comma separated event ids)
 	Offset    float64 `url:"offset,omitempty"`    //The number of Subscriptions's to offset in the resultset whose default value 0
 	Limit     float64 `url:"limit,omitempty"`     //The number of Subscriptions's to limit in the resultset whose default value 10
@@ -188,7 +188,7 @@ type GetSyslogEventSubscriptionsV1QueryParams struct {
 	Type      string  `url:"type,omitempty"`      //List of subscriptions related to the respective type
 	Name      string  `url:"name,omitempty"`      //List of subscriptions related to the respective name
 }
-type GetSyslogDestinationV1QueryParams struct {
+type GetSyslogDestinationQueryParams struct {
 	ConfigID string  `url:"configId,omitempty"` //Config id of syslog server
 	Name     string  `url:"name,omitempty"`     //Name of syslog server
 	Protocol string  `url:"protocol,omitempty"` //Protocol of syslog server
@@ -197,14 +197,14 @@ type GetSyslogDestinationV1QueryParams struct {
 	SortBy   string  `url:"sortBy,omitempty"`   //SortBy field name
 	Order    string  `url:"order,omitempty"`    //order(asc/desc)
 }
-type GetWebhookDestinationV1QueryParams struct {
+type GetWebhookDestinationQueryParams struct {
 	WebhookIDs string  `url:"webhookIds,omitempty"` //List of webhook configurations
 	Offset     float64 `url:"offset,omitempty"`     //The number of webhook configuration's to offset in the resultset whose default value 0
 	Limit      float64 `url:"limit,omitempty"`      //The number of webhook configuration's to limit in the resultset whose default value 10
 	SortBy     string  `url:"sortBy,omitempty"`     //SortBy field name
 	Order      string  `url:"order,omitempty"`      //order(asc/desc)
 }
-type GetEventsV1QueryParams struct {
+type GetEventsQueryParams struct {
 	EventID string  `url:"eventId,omitempty"` //The registered EventId should be provided
 	Tags    string  `url:"tags,omitempty"`    //The registered Tags should be provided
 	Offset  float64 `url:"offset,omitempty"`  //The number of Registries to offset in the resultset whose default value 0
@@ -212,11 +212,11 @@ type GetEventsV1QueryParams struct {
 	SortBy  string  `url:"sortBy,omitempty"`  //SortBy field name
 	Order   string  `url:"order,omitempty"`   //order(asc/desc)
 }
-type CountOfEventsV1QueryParams struct {
+type CountOfEventsQueryParams struct {
 	EventID string `url:"eventId,omitempty"` //The registered EventId should be provided
 	Tags    string `url:"tags,omitempty"`    //The registered Tags should be provided
 }
-type GetEventArtifactsV1QueryParams struct {
+type GetEventArtifactsQueryParams struct {
 	EventIDs string  `url:"eventIds,omitempty"` //List of eventIds
 	Tags     string  `url:"tags,omitempty"`     //Tags defined
 	Offset   float64 `url:"offset,omitempty"`   //Record start offset
@@ -226,84 +226,84 @@ type GetEventArtifactsV1QueryParams struct {
 	Search   string  `url:"search,omitempty"`   //findd matches in name, description, eventId, type, category
 }
 
-type ResponseEventManagementGetAuditLogParentRecordsV1 []ResponseItemEventManagementGetAuditLogParentRecordsV1 // Array of ResponseEventManagementGetAuditLogParentRecordsV1
-type ResponseItemEventManagementGetAuditLogParentRecordsV1 struct {
-	Version           string                                                                  `json:"version,omitempty"`           // Version
-	InstanceID        string                                                                  `json:"instanceId,omitempty"`        // Instance Id
-	EventID           string                                                                  `json:"eventId,omitempty"`           // Event Id
-	Namespace         string                                                                  `json:"namespace,omitempty"`         // Namespace
-	Name              string                                                                  `json:"name,omitempty"`              // Name
-	Description       string                                                                  `json:"description,omitempty"`       // Description
-	Type              string                                                                  `json:"type,omitempty"`              // Type
-	Category          string                                                                  `json:"category,omitempty"`          // Category
-	Domain            string                                                                  `json:"domain,omitempty"`            // Domain
-	SubDomain         string                                                                  `json:"subDomain,omitempty"`         // Sub Domain
-	Severity          *int                                                                    `json:"severity,omitempty"`          // Severity
-	Source            string                                                                  `json:"source,omitempty"`            // Source
-	Timestamp         *int                                                                    `json:"timestamp,omitempty"`         // Timestamp
-	Tags              *[]ResponseItemEventManagementGetAuditLogParentRecordsV1Tags            `json:"tags,omitempty"`              // Tags
-	Details           *ResponseItemEventManagementGetAuditLogParentRecordsV1Details           `json:"details,omitempty"`           // Details
-	CiscoDnaEventLink string                                                                  `json:"ciscoDnaEventLink,omitempty"` // Cisco Dna Event Link
-	Note              string                                                                  `json:"note,omitempty"`              // Note
-	TntID             string                                                                  `json:"tntId,omitempty"`             // Tnt Id
-	Context           string                                                                  `json:"context,omitempty"`           // Context
-	UserID            string                                                                  `json:"userId,omitempty"`            // User Id
-	I18N              string                                                                  `json:"i18n,omitempty"`              // I18n
-	EventHierarchy    string                                                                  `json:"eventHierarchy,omitempty"`    // Event Hierarchy
-	Message           string                                                                  `json:"message,omitempty"`           // Message
-	MessageParams     string                                                                  `json:"messageParams,omitempty"`     // Message Params
-	AdditionalDetails *ResponseItemEventManagementGetAuditLogParentRecordsV1AdditionalDetails `json:"additionalDetails,omitempty"` // Additional Details
-	ParentInstanceID  string                                                                  `json:"parentInstanceId,omitempty"`  // Parent Instance Id
-	Network           string                                                                  `json:"network,omitempty"`           // Network
-	ChildCount        *float64                                                                `json:"childCount,omitempty"`        // Child Count
-	TenantID          string                                                                  `json:"tenantId,omitempty"`          // Tenant Id
+type ResponseEventManagementGetAuditLogParentRecords []ResponseItemEventManagementGetAuditLogParentRecords // Array of ResponseEventManagementGetAuditLogParentRecords
+type ResponseItemEventManagementGetAuditLogParentRecords struct {
+	Version           string                                                                `json:"version,omitempty"`           // Version
+	InstanceID        string                                                                `json:"instanceId,omitempty"`        // Instance Id
+	EventID           string                                                                `json:"eventId,omitempty"`           // Event Id
+	Namespace         string                                                                `json:"namespace,omitempty"`         // Namespace
+	Name              string                                                                `json:"name,omitempty"`              // Name
+	Description       string                                                                `json:"description,omitempty"`       // Description
+	Type              string                                                                `json:"type,omitempty"`              // Type
+	Category          string                                                                `json:"category,omitempty"`          // Category
+	Domain            string                                                                `json:"domain,omitempty"`            // Domain
+	SubDomain         string                                                                `json:"subDomain,omitempty"`         // Sub Domain
+	Severity          *int                                                                  `json:"severity,omitempty"`          // Severity
+	Source            string                                                                `json:"source,omitempty"`            // Source
+	Timestamp         *int                                                                  `json:"timestamp,omitempty"`         // Timestamp
+	Tags              *[]ResponseItemEventManagementGetAuditLogParentRecordsTags            `json:"tags,omitempty"`              // Tags
+	Details           *ResponseItemEventManagementGetAuditLogParentRecordsDetails           `json:"details,omitempty"`           // Details
+	CiscoDnaEventLink string                                                                `json:"ciscoDnaEventLink,omitempty"` // Cisco Dna Event Link
+	Note              string                                                                `json:"note,omitempty"`              // Note
+	TntID             string                                                                `json:"tntId,omitempty"`             // Tnt Id
+	Context           string                                                                `json:"context,omitempty"`           // Context
+	UserID            string                                                                `json:"userId,omitempty"`            // User Id
+	I18N              string                                                                `json:"i18n,omitempty"`              // I18n
+	EventHierarchy    string                                                                `json:"eventHierarchy,omitempty"`    // Event Hierarchy
+	Message           string                                                                `json:"message,omitempty"`           // Message
+	MessageParams     string                                                                `json:"messageParams,omitempty"`     // Message Params
+	AdditionalDetails *ResponseItemEventManagementGetAuditLogParentRecordsAdditionalDetails `json:"additionalDetails,omitempty"` // Additional Details
+	ParentInstanceID  string                                                                `json:"parentInstanceId,omitempty"`  // Parent Instance Id
+	Network           string                                                                `json:"network,omitempty"`           // Network
+	ChildCount        *float64                                                              `json:"childCount,omitempty"`        // Child Count
+	TenantID          string                                                                `json:"tenantId,omitempty"`          // Tenant Id
 }
-type ResponseItemEventManagementGetAuditLogParentRecordsV1Tags interface{}
-type ResponseItemEventManagementGetAuditLogParentRecordsV1Details interface{}
-type ResponseItemEventManagementGetAuditLogParentRecordsV1AdditionalDetails interface{}
-type ResponseEventManagementGetAuditLogSummaryV1 []ResponseItemEventManagementGetAuditLogSummaryV1 // Array of ResponseEventManagementGetAuditLogSummaryV1
-type ResponseItemEventManagementGetAuditLogSummaryV1 struct {
+type ResponseItemEventManagementGetAuditLogParentRecordsTags interface{}
+type ResponseItemEventManagementGetAuditLogParentRecordsDetails interface{}
+type ResponseItemEventManagementGetAuditLogParentRecordsAdditionalDetails interface{}
+type ResponseEventManagementGetAuditLogSummary []ResponseItemEventManagementGetAuditLogSummary // Array of ResponseEventManagementGetAuditLogSummary
+type ResponseItemEventManagementGetAuditLogSummary struct {
 	Count        *int `json:"count,omitempty"`        // Count
 	MaxTimestamp *int `json:"maxTimestamp,omitempty"` // Max Timestamp
 	MinTimestamp *int `json:"minTimestamp,omitempty"` // Min Timestamp
 }
-type ResponseEventManagementGetAuditLogRecordsV1 []ResponseItemEventManagementGetAuditLogRecordsV1 // Array of ResponseEventManagementGetAuditLogRecordsV1
-type ResponseItemEventManagementGetAuditLogRecordsV1 struct {
-	Version           string                                                            `json:"version,omitempty"`           // Version
-	InstanceID        string                                                            `json:"instanceId,omitempty"`        // Instance Id
-	EventID           string                                                            `json:"eventId,omitempty"`           // Event Id
-	Namespace         string                                                            `json:"namespace,omitempty"`         // Namespace
-	Name              string                                                            `json:"name,omitempty"`              // Name
-	Description       string                                                            `json:"description,omitempty"`       // Description
-	Type              string                                                            `json:"type,omitempty"`              // Type
-	Category          string                                                            `json:"category,omitempty"`          // Category
-	Domain            string                                                            `json:"domain,omitempty"`            // Domain
-	SubDomain         string                                                            `json:"subDomain,omitempty"`         // Sub Domain
-	Severity          *int                                                              `json:"severity,omitempty"`          // Severity
-	Source            string                                                            `json:"source,omitempty"`            // Source
-	Timestamp         *int                                                              `json:"timestamp,omitempty"`         // Timestamp
-	Tags              *[]ResponseItemEventManagementGetAuditLogRecordsV1Tags            `json:"tags,omitempty"`              // Tags
-	Details           *ResponseItemEventManagementGetAuditLogRecordsV1Details           `json:"details,omitempty"`           // Details
-	CiscoDnaEventLink string                                                            `json:"ciscoDnaEventLink,omitempty"` // Cisco Dna Event Link
-	Note              string                                                            `json:"note,omitempty"`              // Note
-	TntID             string                                                            `json:"tntId,omitempty"`             // Tnt Id
-	Context           string                                                            `json:"context,omitempty"`           // Context
-	UserID            string                                                            `json:"userId,omitempty"`            // User Id
-	I18N              string                                                            `json:"i18n,omitempty"`              // I18n
-	EventHierarchy    string                                                            `json:"eventHierarchy,omitempty"`    // Event Hierarchy
-	Message           string                                                            `json:"message,omitempty"`           // Message
-	MessageParams     string                                                            `json:"messageParams,omitempty"`     // Message Params
-	AdditionalDetails *ResponseItemEventManagementGetAuditLogRecordsV1AdditionalDetails `json:"additionalDetails,omitempty"` // Additional Details
-	ParentInstanceID  string                                                            `json:"parentInstanceId,omitempty"`  // Parent Instance Id
-	Network           string                                                            `json:"network,omitempty"`           // Network
-	ChildCount        *float64                                                          `json:"childCount,omitempty"`        // Child Count
-	TenantID          string                                                            `json:"tenantId,omitempty"`          // Tenant Id
+type ResponseEventManagementGetAuditLogRecords []ResponseItemEventManagementGetAuditLogRecords // Array of ResponseEventManagementGetAuditLogRecords
+type ResponseItemEventManagementGetAuditLogRecords struct {
+	Version           string                                                          `json:"version,omitempty"`           // Version
+	InstanceID        string                                                          `json:"instanceId,omitempty"`        // Instance Id
+	EventID           string                                                          `json:"eventId,omitempty"`           // Event Id
+	Namespace         string                                                          `json:"namespace,omitempty"`         // Namespace
+	Name              string                                                          `json:"name,omitempty"`              // Name
+	Description       string                                                          `json:"description,omitempty"`       // Description
+	Type              string                                                          `json:"type,omitempty"`              // Type
+	Category          string                                                          `json:"category,omitempty"`          // Category
+	Domain            string                                                          `json:"domain,omitempty"`            // Domain
+	SubDomain         string                                                          `json:"subDomain,omitempty"`         // Sub Domain
+	Severity          *int                                                            `json:"severity,omitempty"`          // Severity
+	Source            string                                                          `json:"source,omitempty"`            // Source
+	Timestamp         *int                                                            `json:"timestamp,omitempty"`         // Timestamp
+	Tags              *[]ResponseItemEventManagementGetAuditLogRecordsTags            `json:"tags,omitempty"`              // Tags
+	Details           *ResponseItemEventManagementGetAuditLogRecordsDetails           `json:"details,omitempty"`           // Details
+	CiscoDnaEventLink string                                                          `json:"ciscoDnaEventLink,omitempty"` // Cisco Dna Event Link
+	Note              string                                                          `json:"note,omitempty"`              // Note
+	TntID             string                                                          `json:"tntId,omitempty"`             // Tnt Id
+	Context           string                                                          `json:"context,omitempty"`           // Context
+	UserID            string                                                          `json:"userId,omitempty"`            // User Id
+	I18N              string                                                          `json:"i18n,omitempty"`              // I18n
+	EventHierarchy    string                                                          `json:"eventHierarchy,omitempty"`    // Event Hierarchy
+	Message           string                                                          `json:"message,omitempty"`           // Message
+	MessageParams     string                                                          `json:"messageParams,omitempty"`     // Message Params
+	AdditionalDetails *ResponseItemEventManagementGetAuditLogRecordsAdditionalDetails `json:"additionalDetails,omitempty"` // Additional Details
+	ParentInstanceID  string                                                          `json:"parentInstanceId,omitempty"`  // Parent Instance Id
+	Network           string                                                          `json:"network,omitempty"`           // Network
+	ChildCount        *float64                                                        `json:"childCount,omitempty"`        // Child Count
+	TenantID          string                                                          `json:"tenantId,omitempty"`          // Tenant Id
 }
-type ResponseItemEventManagementGetAuditLogRecordsV1Tags interface{}
-type ResponseItemEventManagementGetAuditLogRecordsV1Details interface{}
-type ResponseItemEventManagementGetAuditLogRecordsV1AdditionalDetails interface{}
-type ResponseEventManagementGetSNMPDestinationV1 []ResponseItemEventManagementGetSNMPDestinationV1 // Array of ResponseEventManagementGetSNMPDestinationV1
-type ResponseItemEventManagementGetSNMPDestinationV1 struct {
+type ResponseItemEventManagementGetAuditLogRecordsTags interface{}
+type ResponseItemEventManagementGetAuditLogRecordsDetails interface{}
+type ResponseItemEventManagementGetAuditLogRecordsAdditionalDetails interface{}
+type ResponseEventManagementGetSNMPDestination []ResponseItemEventManagementGetSNMPDestination // Array of ResponseEventManagementGetSNMPDestination
+type ResponseItemEventManagementGetSNMPDestination struct {
 	Version         string `json:"version,omitempty"`         // Version
 	TenantID        string `json:"tenantId,omitempty"`        // Tenant Id
 	ConfigID        string `json:"configId,omitempty"`        // Config Id
@@ -320,153 +320,153 @@ type ResponseItemEventManagementGetSNMPDestinationV1 struct {
 	SNMPPrivacyType string `json:"snmpPrivacyType,omitempty"` // Snmp Privacy Type
 	PrivacyPassword string `json:"privacyPassword,omitempty"` // Privacy Password
 }
-type ResponseEventManagementGetStatusAPIForEventsV1 struct {
-	ErrorMessage  *ResponseEventManagementGetStatusAPIForEventsV1ErrorMessage `json:"errorMessage,omitempty"`  // Error Message
-	APIStatus     string                                                      `json:"apiStatus,omitempty"`     // Api Status
-	StatusMessage string                                                      `json:"statusMessage,omitempty"` // Status Message
+type ResponseEventManagementGetStatusAPIForEvents struct {
+	ErrorMessage  *ResponseEventManagementGetStatusAPIForEventsErrorMessage `json:"errorMessage,omitempty"`  // Error Message
+	APIStatus     string                                                    `json:"apiStatus,omitempty"`     // Api Status
+	StatusMessage string                                                    `json:"statusMessage,omitempty"` // Status Message
 }
-type ResponseEventManagementGetStatusAPIForEventsV1ErrorMessage interface{}
-type ResponseEventManagementUpdateEmailDestinationV1 struct {
+type ResponseEventManagementGetStatusAPIForEventsErrorMessage interface{}
+type ResponseEventManagementUpdateEmailDestination struct {
 	StatusURI string `json:"statusUri,omitempty"` // Status Uri
 }
-type ResponseEventManagementGetEmailDestinationV1 []ResponseItemEventManagementGetEmailDestinationV1 // Array of ResponseEventManagementGetEmailDestinationV1
-type ResponseItemEventManagementGetEmailDestinationV1 struct {
-	EmailConfigID       string                                                               `json:"emailConfigId,omitempty"`       // UUID
-	PrimarySmtpConfig   *ResponseItemEventManagementGetEmailDestinationV1PrimarySmtpConfig   `json:"primarySMTPConfig,omitempty"`   //
-	SecondarySmtpConfig *ResponseItemEventManagementGetEmailDestinationV1SecondarySmtpConfig `json:"secondarySMTPConfig,omitempty"` //
-	FromEmail           string                                                               `json:"fromEmail,omitempty"`           // From Email
-	ToEmail             string                                                               `json:"toEmail,omitempty"`             // To Email
-	Subject             string                                                               `json:"subject,omitempty"`             // Subject
-	Version             string                                                               `json:"version,omitempty"`             // Version
-	TenantID            string                                                               `json:"tenantId,omitempty"`            // Tenant Id
+type ResponseEventManagementGetEmailDestination []ResponseItemEventManagementGetEmailDestination // Array of ResponseEventManagementGetEmailDestination
+type ResponseItemEventManagementGetEmailDestination struct {
+	EmailConfigID       string                                                             `json:"emailConfigId,omitempty"`       // UUID
+	PrimarySmtpConfig   *ResponseItemEventManagementGetEmailDestinationPrimarySmtpConfig   `json:"primarySMTPConfig,omitempty"`   //
+	SecondarySmtpConfig *ResponseItemEventManagementGetEmailDestinationSecondarySmtpConfig `json:"secondarySMTPConfig,omitempty"` //
+	FromEmail           string                                                             `json:"fromEmail,omitempty"`           // From Email
+	ToEmail             string                                                             `json:"toEmail,omitempty"`             // To Email
+	Subject             string                                                             `json:"subject,omitempty"`             // Subject
+	Version             string                                                             `json:"version,omitempty"`             // Version
+	TenantID            string                                                             `json:"tenantId,omitempty"`            // Tenant Id
 }
-type ResponseItemEventManagementGetEmailDestinationV1PrimarySmtpConfig struct {
+type ResponseItemEventManagementGetEmailDestinationPrimarySmtpConfig struct {
 	HostName string `json:"hostName,omitempty"` // Host Name
 	Port     string `json:"port,omitempty"`     // Port
 	UserName string `json:"userName,omitempty"` // User Name
 	Password string `json:"password,omitempty"` // Password
 	SmtpType string `json:"smtpType,omitempty"` // smtpType
 }
-type ResponseItemEventManagementGetEmailDestinationV1SecondarySmtpConfig struct {
+type ResponseItemEventManagementGetEmailDestinationSecondarySmtpConfig struct {
 	HostName string `json:"hostName,omitempty"` // Host Name
 	Port     string `json:"port,omitempty"`     // Port
 	UserName string `json:"userName,omitempty"` // User Name
 	Password string `json:"password,omitempty"` // Password
 	SmtpType string `json:"smtpType,omitempty"` // smtpType
 }
-type ResponseEventManagementCreateEmailDestinationV1 struct {
+type ResponseEventManagementCreateEmailDestination struct {
 	StatusURI string `json:"statusUri,omitempty"` // Status Uri
 }
-type ResponseEventManagementGetNotificationsV1 []ResponseItemEventManagementGetNotificationsV1 // Array of ResponseEventManagementGetNotificationsV1
-type ResponseItemEventManagementGetNotificationsV1 struct {
-	EventID        string                                                `json:"eventId,omitempty"`        // Event Id
-	InstanceID     string                                                `json:"instanceId,omitempty"`     // Instance Id
-	Namespace      string                                                `json:"namespace,omitempty"`      // Namespace
-	Name           string                                                `json:"name,omitempty"`           // Name
-	Description    string                                                `json:"description,omitempty"`    // Description
-	Version        string                                                `json:"version,omitempty"`        // Version
-	Category       string                                                `json:"category,omitempty"`       // Category
-	Domain         string                                                `json:"domain,omitempty"`         // Domain
-	SubDomain      string                                                `json:"subDomain,omitempty"`      // Sub Domain
-	Type           string                                                `json:"type,omitempty"`           // Type
-	Severity       string                                                `json:"severity,omitempty"`       // Severity
-	Source         string                                                `json:"source,omitempty"`         // Source
-	Timestamp      string                                                `json:"timestamp,omitempty"`      // Timestamp
-	Details        string                                                `json:"details,omitempty"`        // Details
-	EventHierarchy string                                                `json:"eventHierarchy,omitempty"` // Event Hierarchy
-	Network        *ResponseItemEventManagementGetNotificationsV1Network `json:"network,omitempty"`        //
+type ResponseEventManagementGetNotifications []ResponseItemEventManagementGetNotifications // Array of ResponseEventManagementGetNotifications
+type ResponseItemEventManagementGetNotifications struct {
+	EventID        string                                              `json:"eventId,omitempty"`        // Event Id
+	InstanceID     string                                              `json:"instanceId,omitempty"`     // Instance Id
+	Namespace      string                                              `json:"namespace,omitempty"`      // Namespace
+	Name           string                                              `json:"name,omitempty"`           // Name
+	Description    string                                              `json:"description,omitempty"`    // Description
+	Version        string                                              `json:"version,omitempty"`        // Version
+	Category       string                                              `json:"category,omitempty"`       // Category
+	Domain         string                                              `json:"domain,omitempty"`         // Domain
+	SubDomain      string                                              `json:"subDomain,omitempty"`      // Sub Domain
+	Type           string                                              `json:"type,omitempty"`           // Type
+	Severity       string                                              `json:"severity,omitempty"`       // Severity
+	Source         string                                              `json:"source,omitempty"`         // Source
+	Timestamp      string                                              `json:"timestamp,omitempty"`      // Timestamp
+	Details        string                                              `json:"details,omitempty"`        // Details
+	EventHierarchy string                                              `json:"eventHierarchy,omitempty"` // Event Hierarchy
+	Network        *ResponseItemEventManagementGetNotificationsNetwork `json:"network,omitempty"`        //
 }
-type ResponseItemEventManagementGetNotificationsV1Network struct {
+type ResponseItemEventManagementGetNotificationsNetwork struct {
 	SiteID   string `json:"siteId,omitempty"`   // Site Id
 	DeviceID string `json:"deviceId,omitempty"` // Device Id
 }
-type ResponseEventManagementCountOfNotificationsV1 struct {
+type ResponseEventManagementCountOfNotifications struct {
 	Response string `json:"response,omitempty"` // Response
 }
-type ResponseEventManagementCreateSNMPDestinationV1 struct {
-	ErrorMessage  *ResponseEventManagementCreateSNMPDestinationV1ErrorMessage `json:"errorMessage,omitempty"`  //
-	APIStatus     string                                                      `json:"apiStatus,omitempty"`     // Api Status
-	StatusMessage string                                                      `json:"statusMessage,omitempty"` // Status Message
+type ResponseEventManagementCreateSNMPDestination struct {
+	ErrorMessage  *ResponseEventManagementCreateSNMPDestinationErrorMessage `json:"errorMessage,omitempty"`  //
+	APIStatus     string                                                    `json:"apiStatus,omitempty"`     // Api Status
+	StatusMessage string                                                    `json:"statusMessage,omitempty"` // Status Message
 }
-type ResponseEventManagementCreateSNMPDestinationV1ErrorMessage struct {
-	Errors *[]ResponseEventManagementCreateSNMPDestinationV1ErrorMessageErrors `json:"errors,omitempty"` // Errors
+type ResponseEventManagementCreateSNMPDestinationErrorMessage struct {
+	Errors *[]ResponseEventManagementCreateSNMPDestinationErrorMessageErrors `json:"errors,omitempty"` // Errors
 }
-type ResponseEventManagementCreateSNMPDestinationV1ErrorMessageErrors interface{}
-type ResponseEventManagementUpdateSNMPDestinationV1 struct {
-	ErrorMessage  *ResponseEventManagementUpdateSNMPDestinationV1ErrorMessage `json:"errorMessage,omitempty"`  //
-	APIStatus     string                                                      `json:"apiStatus,omitempty"`     // Api Status
-	StatusMessage string                                                      `json:"statusMessage,omitempty"` // Status Message
+type ResponseEventManagementCreateSNMPDestinationErrorMessageErrors interface{}
+type ResponseEventManagementUpdateSNMPDestination struct {
+	ErrorMessage  *ResponseEventManagementUpdateSNMPDestinationErrorMessage `json:"errorMessage,omitempty"`  //
+	APIStatus     string                                                    `json:"apiStatus,omitempty"`     // Api Status
+	StatusMessage string                                                    `json:"statusMessage,omitempty"` // Status Message
 }
-type ResponseEventManagementUpdateSNMPDestinationV1ErrorMessage struct {
+type ResponseEventManagementUpdateSNMPDestinationErrorMessage struct {
 	Errors []string `json:"errors,omitempty"` // Errors
 }
-type ResponseEventManagementGetEventSubscriptionsV1 []ResponseItemEventManagementGetEventSubscriptionsV1 // Array of ResponseEventManagementGetEventSubscriptionsV1
-type ResponseItemEventManagementGetEventSubscriptionsV1 struct {
-	Version               string                                                                     `json:"version,omitempty"`               // Version
-	SubscriptionID        string                                                                     `json:"subscriptionId,omitempty"`        // Subscription Id
-	Name                  string                                                                     `json:"name,omitempty"`                  // Name
-	Description           string                                                                     `json:"description,omitempty"`           // Description
-	SubscriptionEndpoints *[]ResponseItemEventManagementGetEventSubscriptionsV1SubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
-	Filter                *ResponseItemEventManagementGetEventSubscriptionsV1Filter                  `json:"filter,omitempty"`                //
-	IsPrivate             *bool                                                                      `json:"isPrivate,omitempty"`             // Is Private
-	TenantID              string                                                                     `json:"tenantId,omitempty"`              // Tenant Id
+type ResponseEventManagementGetEventSubscriptions []ResponseItemEventManagementGetEventSubscriptions // Array of ResponseEventManagementGetEventSubscriptions
+type ResponseItemEventManagementGetEventSubscriptions struct {
+	Version               string                                                                   `json:"version,omitempty"`               // Version
+	SubscriptionID        string                                                                   `json:"subscriptionId,omitempty"`        // Subscription Id
+	Name                  string                                                                   `json:"name,omitempty"`                  // Name
+	Description           string                                                                   `json:"description,omitempty"`           // Description
+	SubscriptionEndpoints *[]ResponseItemEventManagementGetEventSubscriptionsSubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
+	Filter                *ResponseItemEventManagementGetEventSubscriptionsFilter                  `json:"filter,omitempty"`                //
+	IsPrivate             *bool                                                                    `json:"isPrivate,omitempty"`             // Is Private
+	TenantID              string                                                                   `json:"tenantId,omitempty"`              // Tenant Id
 }
-type ResponseItemEventManagementGetEventSubscriptionsV1SubscriptionEndpoints struct {
-	InstanceID          string                                                                                      `json:"instanceId,omitempty"`          // Instance Id
-	SubscriptionDetails *ResponseItemEventManagementGetEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
-	ConnectorType       string                                                                                      `json:"connectorType,omitempty"`       // Connector Type
+type ResponseItemEventManagementGetEventSubscriptionsSubscriptionEndpoints struct {
+	InstanceID          string                                                                                    `json:"instanceId,omitempty"`          // Instance Id
+	SubscriptionDetails *ResponseItemEventManagementGetEventSubscriptionsSubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
+	ConnectorType       string                                                                                    `json:"connectorType,omitempty"`       // Connector Type
 }
-type ResponseItemEventManagementGetEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetails struct {
-	ConnectorType  string                                                                                                   `json:"connectorType,omitempty"`  // Connector Type
-	InstanceID     string                                                                                                   `json:"instanceId,omitempty"`     // Instance Id
-	Name           string                                                                                                   `json:"name,omitempty"`           // Name
-	Description    string                                                                                                   `json:"description,omitempty"`    // Description
-	URL            string                                                                                                   `json:"url,omitempty"`            // Url
-	BasePath       string                                                                                                   `json:"basePath,omitempty"`       // Base Path
-	Resource       string                                                                                                   `json:"resource,omitempty"`       // Resource
-	Method         string                                                                                                   `json:"method,omitempty"`         // Method
-	TrustCert      *bool                                                                                                    `json:"trustCert,omitempty"`      // Trust Cert
-	Headers        *[]ResponseItemEventManagementGetEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetailsHeaders     `json:"headers,omitempty"`        //
-	QueryParams    *[]ResponseItemEventManagementGetEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetailsQueryParams `json:"queryParams,omitempty"`    //
-	PathParams     *[]ResponseItemEventManagementGetEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetailsPathParams  `json:"pathParams,omitempty"`     //
-	Body           string                                                                                                   `json:"body,omitempty"`           // Body
-	ConnectTimeout *int                                                                                                     `json:"connectTimeout,omitempty"` // Connect Timeout
-	ReadTimeout    *int                                                                                                     `json:"readTimeout,omitempty"`    // Read Timeout
+type ResponseItemEventManagementGetEventSubscriptionsSubscriptionEndpointsSubscriptionDetails struct {
+	ConnectorType  string                                                                                                 `json:"connectorType,omitempty"`  // Connector Type
+	InstanceID     string                                                                                                 `json:"instanceId,omitempty"`     // Instance Id
+	Name           string                                                                                                 `json:"name,omitempty"`           // Name
+	Description    string                                                                                                 `json:"description,omitempty"`    // Description
+	URL            string                                                                                                 `json:"url,omitempty"`            // Url
+	BasePath       string                                                                                                 `json:"basePath,omitempty"`       // Base Path
+	Resource       string                                                                                                 `json:"resource,omitempty"`       // Resource
+	Method         string                                                                                                 `json:"method,omitempty"`         // Method
+	TrustCert      *bool                                                                                                  `json:"trustCert,omitempty"`      // Trust Cert
+	Headers        *[]ResponseItemEventManagementGetEventSubscriptionsSubscriptionEndpointsSubscriptionDetailsHeaders     `json:"headers,omitempty"`        //
+	QueryParams    *[]ResponseItemEventManagementGetEventSubscriptionsSubscriptionEndpointsSubscriptionDetailsQueryParams `json:"queryParams,omitempty"`    //
+	PathParams     *[]ResponseItemEventManagementGetEventSubscriptionsSubscriptionEndpointsSubscriptionDetailsPathParams  `json:"pathParams,omitempty"`     //
+	Body           string                                                                                                 `json:"body,omitempty"`           // Body
+	ConnectTimeout *int                                                                                                   `json:"connectTimeout,omitempty"` // Connect Timeout
+	ReadTimeout    *int                                                                                                   `json:"readTimeout,omitempty"`    // Read Timeout
 }
-type ResponseItemEventManagementGetEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetailsHeaders struct {
+type ResponseItemEventManagementGetEventSubscriptionsSubscriptionEndpointsSubscriptionDetailsHeaders struct {
 	String string `json:"string,omitempty"` // String
 }
-type ResponseItemEventManagementGetEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetailsQueryParams struct {
+type ResponseItemEventManagementGetEventSubscriptionsSubscriptionEndpointsSubscriptionDetailsQueryParams struct {
 	String string `json:"string,omitempty"` // String
 }
-type ResponseItemEventManagementGetEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetailsPathParams struct {
+type ResponseItemEventManagementGetEventSubscriptionsSubscriptionEndpointsSubscriptionDetailsPathParams struct {
 	String string `json:"string,omitempty"` // String
 }
-type ResponseItemEventManagementGetEventSubscriptionsV1Filter struct {
-	EventIDs          []string                                                                     `json:"eventIds,omitempty"`          // Event Ids
-	Others            []string                                                                     `json:"others,omitempty"`            // Others
-	DomainsSubdomains *[]ResponseItemEventManagementGetEventSubscriptionsV1FilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
-	Types             []string                                                                     `json:"types,omitempty"`             // Types
-	Categories        []string                                                                     `json:"categories,omitempty"`        // Categories
-	Severities        []string                                                                     `json:"severities,omitempty"`        // Severities
-	Sources           []string                                                                     `json:"sources,omitempty"`           // Sources
-	SiteIDs           []string                                                                     `json:"siteIds,omitempty"`           // Site Ids
+type ResponseItemEventManagementGetEventSubscriptionsFilter struct {
+	EventIDs          []string                                                                   `json:"eventIds,omitempty"`          // Event Ids
+	Others            []string                                                                   `json:"others,omitempty"`            // Others
+	DomainsSubdomains *[]ResponseItemEventManagementGetEventSubscriptionsFilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
+	Types             []string                                                                   `json:"types,omitempty"`             // Types
+	Categories        []string                                                                   `json:"categories,omitempty"`        // Categories
+	Severities        []string                                                                   `json:"severities,omitempty"`        // Severities
+	Sources           []string                                                                   `json:"sources,omitempty"`           // Sources
+	SiteIDs           []string                                                                   `json:"siteIds,omitempty"`           // Site Ids
 }
-type ResponseItemEventManagementGetEventSubscriptionsV1FilterDomainsSubdomains struct {
+type ResponseItemEventManagementGetEventSubscriptionsFilterDomainsSubdomains struct {
 	Domain     string   `json:"domain,omitempty"`     // Domain
 	SubDomains []string `json:"subDomains,omitempty"` // Sub Domains
 }
-type ResponseEventManagementDeleteEventSubscriptionsV1 struct {
+type ResponseEventManagementDeleteEventSubscriptions struct {
 	StatusURI string `json:"statusUri,omitempty"` // Status Uri
 }
-type ResponseEventManagementUpdateEventSubscriptionsV1 struct {
+type ResponseEventManagementUpdateEventSubscriptions struct {
 	StatusURI string `json:"statusUri,omitempty"` // Status Uri
 }
-type ResponseEventManagementCreateEventSubscriptionsV1 struct {
+type ResponseEventManagementCreateEventSubscriptions struct {
 	StatusURI string `json:"statusUri,omitempty"` // Status Uri
 }
-type ResponseEventManagementGetEmailSubscriptionDetailsV1 []ResponseItemEventManagementGetEmailSubscriptionDetailsV1 // Array of ResponseEventManagementGetEmailSubscriptionDetailsV1
-type ResponseItemEventManagementGetEmailSubscriptionDetailsV1 struct {
+type ResponseEventManagementGetEmailSubscriptionDetails []ResponseItemEventManagementGetEmailSubscriptionDetails // Array of ResponseEventManagementGetEmailSubscriptionDetails
+type ResponseItemEventManagementGetEmailSubscriptionDetails struct {
 	InstanceID       string   `json:"instanceId,omitempty"`       // Instance Id
 	Name             string   `json:"name,omitempty"`             // Name
 	Description      string   `json:"description,omitempty"`      // Description
@@ -475,39 +475,39 @@ type ResponseItemEventManagementGetEmailSubscriptionDetailsV1 struct {
 	ToEmailAddresses []string `json:"toEmailAddresses,omitempty"` // To Email Addresses
 	Subject          string   `json:"subject,omitempty"`          // Subject
 }
-type ResponseEventManagementGetRestWebhookSubscriptionDetailsV1 []ResponseItemEventManagementGetRestWebhookSubscriptionDetailsV1 // Array of ResponseEventManagementGetRestWebhookSubscriptionDetailsV1
-type ResponseItemEventManagementGetRestWebhookSubscriptionDetailsV1 struct {
-	InstanceID     string                                                                   `json:"instanceId,omitempty"`     // Instance Id
-	Name           string                                                                   `json:"name,omitempty"`           // Name
-	Description    string                                                                   `json:"description,omitempty"`    // Description
-	ConnectorType  string                                                                   `json:"connectorType,omitempty"`  // Connector Type
-	URL            string                                                                   `json:"url,omitempty"`            // Url
-	Method         string                                                                   `json:"method,omitempty"`         // Method
-	TrustCert      *bool                                                                    `json:"trustCert,omitempty"`      // Trust Cert
-	Headers        *[]ResponseItemEventManagementGetRestWebhookSubscriptionDetailsV1Headers `json:"headers,omitempty"`        //
-	QueryParams    []string                                                                 `json:"queryParams,omitempty"`    // Query Params
-	PathParams     []string                                                                 `json:"pathParams,omitempty"`     // Path Params
-	Body           string                                                                   `json:"body,omitempty"`           // Body
-	ConnectTimeout *int                                                                     `json:"connectTimeout,omitempty"` // Connect Timeout
-	ReadTimeout    *int                                                                     `json:"readTimeout,omitempty"`    // Read Timeout
-	ServiceName    string                                                                   `json:"serviceName,omitempty"`    // Service Name
-	ServicePort    string                                                                   `json:"servicePort,omitempty"`    // Service Port
-	Namespace      string                                                                   `json:"namespace,omitempty"`      // Namespace
-	ProxyRoute     *bool                                                                    `json:"proxyRoute,omitempty"`     // Proxy Route
+type ResponseEventManagementGetRestWebhookSubscriptionDetails []ResponseItemEventManagementGetRestWebhookSubscriptionDetails // Array of ResponseEventManagementGetRestWebhookSubscriptionDetails
+type ResponseItemEventManagementGetRestWebhookSubscriptionDetails struct {
+	InstanceID     string                                                                 `json:"instanceId,omitempty"`     // Instance Id
+	Name           string                                                                 `json:"name,omitempty"`           // Name
+	Description    string                                                                 `json:"description,omitempty"`    // Description
+	ConnectorType  string                                                                 `json:"connectorType,omitempty"`  // Connector Type
+	URL            string                                                                 `json:"url,omitempty"`            // Url
+	Method         string                                                                 `json:"method,omitempty"`         // Method
+	TrustCert      *bool                                                                  `json:"trustCert,omitempty"`      // Trust Cert
+	Headers        *[]ResponseItemEventManagementGetRestWebhookSubscriptionDetailsHeaders `json:"headers,omitempty"`        //
+	QueryParams    []string                                                               `json:"queryParams,omitempty"`    // Query Params
+	PathParams     []string                                                               `json:"pathParams,omitempty"`     // Path Params
+	Body           string                                                                 `json:"body,omitempty"`           // Body
+	ConnectTimeout *int                                                                   `json:"connectTimeout,omitempty"` // Connect Timeout
+	ReadTimeout    *int                                                                   `json:"readTimeout,omitempty"`    // Read Timeout
+	ServiceName    string                                                                 `json:"serviceName,omitempty"`    // Service Name
+	ServicePort    string                                                                 `json:"servicePort,omitempty"`    // Service Port
+	Namespace      string                                                                 `json:"namespace,omitempty"`      // Namespace
+	ProxyRoute     *bool                                                                  `json:"proxyRoute,omitempty"`     // Proxy Route
 }
-type ResponseItemEventManagementGetRestWebhookSubscriptionDetailsV1Headers struct {
+type ResponseItemEventManagementGetRestWebhookSubscriptionDetailsHeaders struct {
 	Name  string `json:"name,omitempty"`  // Name
 	Value string `json:"value,omitempty"` // Value
 }
-type ResponseEventManagementGetSyslogSubscriptionDetailsV1 []ResponseItemEventManagementGetSyslogSubscriptionDetailsV1 // Array of ResponseEventManagementGetSyslogSubscriptionDetailsV1
-type ResponseItemEventManagementGetSyslogSubscriptionDetailsV1 struct {
-	InstanceID    string                                                                 `json:"instanceId,omitempty"`    // Instance Id
-	Name          string                                                                 `json:"name,omitempty"`          // Name
-	Description   string                                                                 `json:"description,omitempty"`   // Description
-	ConnectorType string                                                                 `json:"connectorType,omitempty"` // Connector Type
-	SyslogConfig  *ResponseItemEventManagementGetSyslogSubscriptionDetailsV1SyslogConfig `json:"syslogConfig,omitempty"`  //
+type ResponseEventManagementGetSyslogSubscriptionDetails []ResponseItemEventManagementGetSyslogSubscriptionDetails // Array of ResponseEventManagementGetSyslogSubscriptionDetails
+type ResponseItemEventManagementGetSyslogSubscriptionDetails struct {
+	InstanceID    string                                                               `json:"instanceId,omitempty"`    // Instance Id
+	Name          string                                                               `json:"name,omitempty"`          // Name
+	Description   string                                                               `json:"description,omitempty"`   // Description
+	ConnectorType string                                                               `json:"connectorType,omitempty"` // Connector Type
+	SyslogConfig  *ResponseItemEventManagementGetSyslogSubscriptionDetailsSyslogConfig `json:"syslogConfig,omitempty"`  //
 }
-type ResponseItemEventManagementGetSyslogSubscriptionDetailsV1SyslogConfig struct {
+type ResponseItemEventManagementGetSyslogSubscriptionDetailsSyslogConfig struct {
 	ConfigID    string `json:"configId,omitempty"`    // Config Id
 	Name        string `json:"name,omitempty"`        // Name
 	Description string `json:"description,omitempty"` // Description
@@ -515,32 +515,32 @@ type ResponseItemEventManagementGetSyslogSubscriptionDetailsV1SyslogConfig struc
 	Port        string `json:"port,omitempty"`        // Port
 	Protocol    string `json:"protocol,omitempty"`    // Protocol
 }
-type ResponseEventManagementCountOfEventSubscriptionsV1 struct {
+type ResponseEventManagementCountOfEventSubscriptions struct {
 	Response *float64 `json:"response,omitempty"` // Response
 }
-type ResponseEventManagementCreateEmailEventSubscriptionV1 struct {
+type ResponseEventManagementCreateEmailEventSubscription struct {
 	StatusURI string `json:"statusUri,omitempty"` // Status Uri
 }
-type ResponseEventManagementUpdateEmailEventSubscriptionV1 struct {
+type ResponseEventManagementUpdateEmailEventSubscription struct {
 	StatusURI string `json:"statusUri,omitempty"` // Status Uri
 }
-type ResponseEventManagementGetEmailEventSubscriptionsV1 []ResponseItemEventManagementGetEmailEventSubscriptionsV1 // Array of ResponseEventManagementGetEmailEventSubscriptionsV1
-type ResponseItemEventManagementGetEmailEventSubscriptionsV1 struct {
-	Version               string                                                                          `json:"version,omitempty"`               // Version
-	SubscriptionID        string                                                                          `json:"subscriptionId,omitempty"`        // Subscription Id
-	Name                  string                                                                          `json:"name,omitempty"`                  // Name
-	Description           string                                                                          `json:"description,omitempty"`           // Description
-	SubscriptionEndpoints *[]ResponseItemEventManagementGetEmailEventSubscriptionsV1SubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
-	Filter                *ResponseItemEventManagementGetEmailEventSubscriptionsV1Filter                  `json:"filter,omitempty"`                //
-	IsPrivate             *bool                                                                           `json:"isPrivate,omitempty"`             // Is Private
-	TenantID              string                                                                          `json:"tenantId,omitempty"`              // Tenant Id
+type ResponseEventManagementGetEmailEventSubscriptions []ResponseItemEventManagementGetEmailEventSubscriptions // Array of ResponseEventManagementGetEmailEventSubscriptions
+type ResponseItemEventManagementGetEmailEventSubscriptions struct {
+	Version               string                                                                        `json:"version,omitempty"`               // Version
+	SubscriptionID        string                                                                        `json:"subscriptionId,omitempty"`        // Subscription Id
+	Name                  string                                                                        `json:"name,omitempty"`                  // Name
+	Description           string                                                                        `json:"description,omitempty"`           // Description
+	SubscriptionEndpoints *[]ResponseItemEventManagementGetEmailEventSubscriptionsSubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
+	Filter                *ResponseItemEventManagementGetEmailEventSubscriptionsFilter                  `json:"filter,omitempty"`                //
+	IsPrivate             *bool                                                                         `json:"isPrivate,omitempty"`             // Is Private
+	TenantID              string                                                                        `json:"tenantId,omitempty"`              // Tenant Id
 }
-type ResponseItemEventManagementGetEmailEventSubscriptionsV1SubscriptionEndpoints struct {
-	InstanceID          string                                                                                           `json:"instanceId,omitempty"`          // Instance Id
-	SubscriptionDetails *ResponseItemEventManagementGetEmailEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
-	ConnectorType       string                                                                                           `json:"connectorType,omitempty"`       // Connector Type
+type ResponseItemEventManagementGetEmailEventSubscriptionsSubscriptionEndpoints struct {
+	InstanceID          string                                                                                         `json:"instanceId,omitempty"`          // Instance Id
+	SubscriptionDetails *ResponseItemEventManagementGetEmailEventSubscriptionsSubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
+	ConnectorType       string                                                                                         `json:"connectorType,omitempty"`       // Connector Type
 }
-type ResponseItemEventManagementGetEmailEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetails struct {
+type ResponseItemEventManagementGetEmailEventSubscriptionsSubscriptionEndpointsSubscriptionDetails struct {
 	ConnectorType    string   `json:"connectorType,omitempty"`    // Connector Type
 	InstanceID       string   `json:"instanceId,omitempty"`       // Instance Id
 	Name             string   `json:"name,omitempty"`             // Name
@@ -549,112 +549,112 @@ type ResponseItemEventManagementGetEmailEventSubscriptionsV1SubscriptionEndpoint
 	ToEmailAddresses []string `json:"toEmailAddresses,omitempty"` // To Email Addresses
 	Subject          string   `json:"subject,omitempty"`          // Subject
 }
-type ResponseItemEventManagementGetEmailEventSubscriptionsV1Filter struct {
-	EventIDs          []string                                                                          `json:"eventIds,omitempty"`          // Event Ids
-	Others            []string                                                                          `json:"others,omitempty"`            // Others
-	DomainsSubdomains *[]ResponseItemEventManagementGetEmailEventSubscriptionsV1FilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
-	Types             []string                                                                          `json:"types,omitempty"`             // Types
-	Categories        []string                                                                          `json:"categories,omitempty"`        // Categories
-	Severities        []string                                                                          `json:"severities,omitempty"`        // Severities
-	Sources           []string                                                                          `json:"sources,omitempty"`           // Sources
-	SiteIDs           []string                                                                          `json:"siteIds,omitempty"`           // Site Ids
+type ResponseItemEventManagementGetEmailEventSubscriptionsFilter struct {
+	EventIDs          []string                                                                        `json:"eventIds,omitempty"`          // Event Ids
+	Others            []string                                                                        `json:"others,omitempty"`            // Others
+	DomainsSubdomains *[]ResponseItemEventManagementGetEmailEventSubscriptionsFilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
+	Types             []string                                                                        `json:"types,omitempty"`             // Types
+	Categories        []string                                                                        `json:"categories,omitempty"`        // Categories
+	Severities        []string                                                                        `json:"severities,omitempty"`        // Severities
+	Sources           []string                                                                        `json:"sources,omitempty"`           // Sources
+	SiteIDs           []string                                                                        `json:"siteIds,omitempty"`           // Site Ids
 }
-type ResponseItemEventManagementGetEmailEventSubscriptionsV1FilterDomainsSubdomains struct {
+type ResponseItemEventManagementGetEmailEventSubscriptionsFilterDomainsSubdomains struct {
 	Domain     string   `json:"domain,omitempty"`     // Domain
 	SubDomains []string `json:"subDomains,omitempty"` // Sub Domains
 }
-type ResponseEventManagementCreateRestWebhookEventSubscriptionV1 struct {
+type ResponseEventManagementCreateRestWebhookEventSubscription struct {
 	StatusURI string `json:"statusUri,omitempty"` // Status Uri
 }
-type ResponseEventManagementGetRestWebhookEventSubscriptionsV1 []ResponseItemEventManagementGetRestWebhookEventSubscriptionsV1 // Array of ResponseEventManagementGetRestWebhookEventSubscriptionsV1
-type ResponseItemEventManagementGetRestWebhookEventSubscriptionsV1 struct {
-	Version               string                                                                                `json:"version,omitempty"`               // Version
-	SubscriptionID        string                                                                                `json:"subscriptionId,omitempty"`        // Subscription Id
-	Name                  string                                                                                `json:"name,omitempty"`                  // Name
-	Description           string                                                                                `json:"description,omitempty"`           // Description
-	SubscriptionEndpoints *[]ResponseItemEventManagementGetRestWebhookEventSubscriptionsV1SubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
-	Filter                *ResponseItemEventManagementGetRestWebhookEventSubscriptionsV1Filter                  `json:"filter,omitempty"`                //
-	IsPrivate             string                                                                                `json:"isPrivate,omitempty"`             // Is Private
-	TenantID              string                                                                                `json:"tenantId,omitempty"`              // Tenant Id
+type ResponseEventManagementGetRestWebhookEventSubscriptions []ResponseItemEventManagementGetRestWebhookEventSubscriptions // Array of ResponseEventManagementGetRestWebhookEventSubscriptions
+type ResponseItemEventManagementGetRestWebhookEventSubscriptions struct {
+	Version               string                                                                              `json:"version,omitempty"`               // Version
+	SubscriptionID        string                                                                              `json:"subscriptionId,omitempty"`        // Subscription Id
+	Name                  string                                                                              `json:"name,omitempty"`                  // Name
+	Description           string                                                                              `json:"description,omitempty"`           // Description
+	SubscriptionEndpoints *[]ResponseItemEventManagementGetRestWebhookEventSubscriptionsSubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
+	Filter                *ResponseItemEventManagementGetRestWebhookEventSubscriptionsFilter                  `json:"filter,omitempty"`                //
+	IsPrivate             string                                                                              `json:"isPrivate,omitempty"`             // Is Private
+	TenantID              string                                                                              `json:"tenantId,omitempty"`              // Tenant Id
 }
-type ResponseItemEventManagementGetRestWebhookEventSubscriptionsV1SubscriptionEndpoints struct {
-	InstanceID          string                                                                                                 `json:"instanceId,omitempty"`          // Instance Id
-	SubscriptionDetails *ResponseItemEventManagementGetRestWebhookEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
-	ConnectorType       string                                                                                                 `json:"connectorType,omitempty"`       // Connector Type
+type ResponseItemEventManagementGetRestWebhookEventSubscriptionsSubscriptionEndpoints struct {
+	InstanceID          string                                                                                               `json:"instanceId,omitempty"`          // Instance Id
+	SubscriptionDetails *ResponseItemEventManagementGetRestWebhookEventSubscriptionsSubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
+	ConnectorType       string                                                                                               `json:"connectorType,omitempty"`       // Connector Type
 }
-type ResponseItemEventManagementGetRestWebhookEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetails struct {
-	ConnectorType  string                                                                                                              `json:"connectorType,omitempty"`  // Connector Type
-	InstanceID     string                                                                                                              `json:"instanceId,omitempty"`     // Instance Id
-	Name           string                                                                                                              `json:"name,omitempty"`           // Name
-	Description    string                                                                                                              `json:"description,omitempty"`    // Description
-	URL            string                                                                                                              `json:"url,omitempty"`            // Url
-	BasePath       string                                                                                                              `json:"basePath,omitempty"`       // Base Path
-	Resource       string                                                                                                              `json:"resource,omitempty"`       // Resource
-	Method         string                                                                                                              `json:"method,omitempty"`         // Method
-	TrustCert      string                                                                                                              `json:"trustCert,omitempty"`      // Trust Cert
-	Headers        *[]ResponseItemEventManagementGetRestWebhookEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetailsHeaders     `json:"headers,omitempty"`        //
-	QueryParams    *[]ResponseItemEventManagementGetRestWebhookEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetailsQueryParams `json:"queryParams,omitempty"`    //
-	PathParams     *[]ResponseItemEventManagementGetRestWebhookEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetailsPathParams  `json:"pathParams,omitempty"`     //
-	Body           string                                                                                                              `json:"body,omitempty"`           // Body
-	ConnectTimeout string                                                                                                              `json:"connectTimeout,omitempty"` // Connect Timeout
-	ReadTimeout    string                                                                                                              `json:"readTimeout,omitempty"`    // Read Timeout
+type ResponseItemEventManagementGetRestWebhookEventSubscriptionsSubscriptionEndpointsSubscriptionDetails struct {
+	ConnectorType  string                                                                                                            `json:"connectorType,omitempty"`  // Connector Type
+	InstanceID     string                                                                                                            `json:"instanceId,omitempty"`     // Instance Id
+	Name           string                                                                                                            `json:"name,omitempty"`           // Name
+	Description    string                                                                                                            `json:"description,omitempty"`    // Description
+	URL            string                                                                                                            `json:"url,omitempty"`            // Url
+	BasePath       string                                                                                                            `json:"basePath,omitempty"`       // Base Path
+	Resource       string                                                                                                            `json:"resource,omitempty"`       // Resource
+	Method         string                                                                                                            `json:"method,omitempty"`         // Method
+	TrustCert      string                                                                                                            `json:"trustCert,omitempty"`      // Trust Cert
+	Headers        *[]ResponseItemEventManagementGetRestWebhookEventSubscriptionsSubscriptionEndpointsSubscriptionDetailsHeaders     `json:"headers,omitempty"`        //
+	QueryParams    *[]ResponseItemEventManagementGetRestWebhookEventSubscriptionsSubscriptionEndpointsSubscriptionDetailsQueryParams `json:"queryParams,omitempty"`    //
+	PathParams     *[]ResponseItemEventManagementGetRestWebhookEventSubscriptionsSubscriptionEndpointsSubscriptionDetailsPathParams  `json:"pathParams,omitempty"`     //
+	Body           string                                                                                                            `json:"body,omitempty"`           // Body
+	ConnectTimeout string                                                                                                            `json:"connectTimeout,omitempty"` // Connect Timeout
+	ReadTimeout    string                                                                                                            `json:"readTimeout,omitempty"`    // Read Timeout
 }
-type ResponseItemEventManagementGetRestWebhookEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetailsHeaders struct {
+type ResponseItemEventManagementGetRestWebhookEventSubscriptionsSubscriptionEndpointsSubscriptionDetailsHeaders struct {
 	String string `json:"string,omitempty"` // String
 }
-type ResponseItemEventManagementGetRestWebhookEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetailsQueryParams struct {
+type ResponseItemEventManagementGetRestWebhookEventSubscriptionsSubscriptionEndpointsSubscriptionDetailsQueryParams struct {
 	String string `json:"string,omitempty"` // String
 }
-type ResponseItemEventManagementGetRestWebhookEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetailsPathParams struct {
+type ResponseItemEventManagementGetRestWebhookEventSubscriptionsSubscriptionEndpointsSubscriptionDetailsPathParams struct {
 	String string `json:"string,omitempty"` // String
 }
-type ResponseItemEventManagementGetRestWebhookEventSubscriptionsV1Filter struct {
-	EventIDs          []string                                                                                `json:"eventIds,omitempty"`          // Event Ids
-	Others            []string                                                                                `json:"others,omitempty"`            // Others
-	DomainsSubdomains *[]ResponseItemEventManagementGetRestWebhookEventSubscriptionsV1FilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
-	Types             []string                                                                                `json:"types,omitempty"`             // Types
-	Categories        []string                                                                                `json:"categories,omitempty"`        // Categories
-	Severities        []string                                                                                `json:"severities,omitempty"`        // Severities
-	Sources           []string                                                                                `json:"sources,omitempty"`           // Sources
-	SiteIDs           []string                                                                                `json:"siteIds,omitempty"`           // Site Ids
+type ResponseItemEventManagementGetRestWebhookEventSubscriptionsFilter struct {
+	EventIDs          []string                                                                              `json:"eventIds,omitempty"`          // Event Ids
+	Others            []string                                                                              `json:"others,omitempty"`            // Others
+	DomainsSubdomains *[]ResponseItemEventManagementGetRestWebhookEventSubscriptionsFilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
+	Types             []string                                                                              `json:"types,omitempty"`             // Types
+	Categories        []string                                                                              `json:"categories,omitempty"`        // Categories
+	Severities        []string                                                                              `json:"severities,omitempty"`        // Severities
+	Sources           []string                                                                              `json:"sources,omitempty"`           // Sources
+	SiteIDs           []string                                                                              `json:"siteIds,omitempty"`           // Site Ids
 }
-type ResponseItemEventManagementGetRestWebhookEventSubscriptionsV1FilterDomainsSubdomains struct {
+type ResponseItemEventManagementGetRestWebhookEventSubscriptionsFilterDomainsSubdomains struct {
 	Domain     string   `json:"domain,omitempty"`     // Domain
 	SubDomains []string `json:"subDomains,omitempty"` // Sub Domains
 }
-type ResponseEventManagementUpdateRestWebhookEventSubscriptionV1 struct {
+type ResponseEventManagementUpdateRestWebhookEventSubscription struct {
 	StatusURI string `json:"statusUri,omitempty"` // Status Uri
 }
-type ResponseEventManagementUpdateSyslogEventSubscriptionV1 struct {
+type ResponseEventManagementUpdateSyslogEventSubscription struct {
 	StatusURI string `json:"statusUri,omitempty"` // Status Uri
 }
-type ResponseEventManagementCreateSyslogEventSubscriptionV1 struct {
+type ResponseEventManagementCreateSyslogEventSubscription struct {
 	StatusURI string `json:"statusUri,omitempty"` // Status Uri
 }
-type ResponseEventManagementGetSyslogEventSubscriptionsV1 []ResponseItemEventManagementGetSyslogEventSubscriptionsV1 // Array of ResponseEventManagementGetSyslogEventSubscriptionsV1
-type ResponseItemEventManagementGetSyslogEventSubscriptionsV1 struct {
-	Version               string                                                                           `json:"version,omitempty"`               // Version
-	SubscriptionID        string                                                                           `json:"subscriptionId,omitempty"`        // Subscription Id
-	Name                  string                                                                           `json:"name,omitempty"`                  // Name
-	Description           string                                                                           `json:"description,omitempty"`           // Description
-	SubscriptionEndpoints *[]ResponseItemEventManagementGetSyslogEventSubscriptionsV1SubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
-	Filter                *ResponseItemEventManagementGetSyslogEventSubscriptionsV1Filter                  `json:"filter,omitempty"`                //
-	IsPrivate             *bool                                                                            `json:"isPrivate,omitempty"`             // Is Private
-	TenantID              string                                                                           `json:"tenantId,omitempty"`              // Tenant Id
+type ResponseEventManagementGetSyslogEventSubscriptions []ResponseItemEventManagementGetSyslogEventSubscriptions // Array of ResponseEventManagementGetSyslogEventSubscriptions
+type ResponseItemEventManagementGetSyslogEventSubscriptions struct {
+	Version               string                                                                         `json:"version,omitempty"`               // Version
+	SubscriptionID        string                                                                         `json:"subscriptionId,omitempty"`        // Subscription Id
+	Name                  string                                                                         `json:"name,omitempty"`                  // Name
+	Description           string                                                                         `json:"description,omitempty"`           // Description
+	SubscriptionEndpoints *[]ResponseItemEventManagementGetSyslogEventSubscriptionsSubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
+	Filter                *ResponseItemEventManagementGetSyslogEventSubscriptionsFilter                  `json:"filter,omitempty"`                //
+	IsPrivate             *bool                                                                          `json:"isPrivate,omitempty"`             // Is Private
+	TenantID              string                                                                         `json:"tenantId,omitempty"`              // Tenant Id
 }
-type ResponseItemEventManagementGetSyslogEventSubscriptionsV1SubscriptionEndpoints struct {
-	InstanceID          string                                                                                            `json:"instanceId,omitempty"`          // Instance Id
-	SubscriptionDetails *ResponseItemEventManagementGetSyslogEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
-	ConnectorType       string                                                                                            `json:"connectorType,omitempty"`       // Connector Type
+type ResponseItemEventManagementGetSyslogEventSubscriptionsSubscriptionEndpoints struct {
+	InstanceID          string                                                                                          `json:"instanceId,omitempty"`          // Instance Id
+	SubscriptionDetails *ResponseItemEventManagementGetSyslogEventSubscriptionsSubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
+	ConnectorType       string                                                                                          `json:"connectorType,omitempty"`       // Connector Type
 }
-type ResponseItemEventManagementGetSyslogEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetails struct {
-	ConnectorType string                                                                                                        `json:"connectorType,omitempty"` // Connector Type
-	InstanceID    string                                                                                                        `json:"instanceId,omitempty"`    // Instance Id
-	Name          string                                                                                                        `json:"name,omitempty"`          // Name
-	Description   string                                                                                                        `json:"description,omitempty"`   // Description
-	SyslogConfig  *ResponseItemEventManagementGetSyslogEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetailsSyslogConfig `json:"syslogConfig,omitempty"`  //
+type ResponseItemEventManagementGetSyslogEventSubscriptionsSubscriptionEndpointsSubscriptionDetails struct {
+	ConnectorType string                                                                                                      `json:"connectorType,omitempty"` // Connector Type
+	InstanceID    string                                                                                                      `json:"instanceId,omitempty"`    // Instance Id
+	Name          string                                                                                                      `json:"name,omitempty"`          // Name
+	Description   string                                                                                                      `json:"description,omitempty"`   // Description
+	SyslogConfig  *ResponseItemEventManagementGetSyslogEventSubscriptionsSubscriptionEndpointsSubscriptionDetailsSyslogConfig `json:"syslogConfig,omitempty"`  //
 }
-type ResponseItemEventManagementGetSyslogEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetailsSyslogConfig struct {
+type ResponseItemEventManagementGetSyslogEventSubscriptionsSubscriptionEndpointsSubscriptionDetailsSyslogConfig struct {
 	Version     string `json:"version,omitempty"`     // Version
 	TenantID    string `json:"tenantId,omitempty"`    // Tenant Id
 	ConfigID    string `json:"configId,omitempty"`    // Config Id
@@ -663,38 +663,38 @@ type ResponseItemEventManagementGetSyslogEventSubscriptionsV1SubscriptionEndpoin
 	Host        string `json:"host,omitempty"`        // Host
 	Port        *int   `json:"port,omitempty"`        // Port
 }
-type ResponseItemEventManagementGetSyslogEventSubscriptionsV1Filter struct {
-	EventIDs          []string                                                                           `json:"eventIds,omitempty"`          // Event Ids
-	Others            []string                                                                           `json:"others,omitempty"`            // Others
-	DomainsSubdomains *[]ResponseItemEventManagementGetSyslogEventSubscriptionsV1FilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
-	Types             []string                                                                           `json:"types,omitempty"`             // Types
-	Categories        []string                                                                           `json:"categories,omitempty"`        // Categories
-	Severities        *[]ResponseItemEventManagementGetSyslogEventSubscriptionsV1FilterSeverities        `json:"severities,omitempty"`        // Severities
-	Sources           []string                                                                           `json:"sources,omitempty"`           // Sources
-	SiteIDs           []string                                                                           `json:"siteIds,omitempty"`           // Site Ids
+type ResponseItemEventManagementGetSyslogEventSubscriptionsFilter struct {
+	EventIDs          []string                                                                         `json:"eventIds,omitempty"`          // Event Ids
+	Others            []string                                                                         `json:"others,omitempty"`            // Others
+	DomainsSubdomains *[]ResponseItemEventManagementGetSyslogEventSubscriptionsFilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
+	Types             []string                                                                         `json:"types,omitempty"`             // Types
+	Categories        []string                                                                         `json:"categories,omitempty"`        // Categories
+	Severities        *[]ResponseItemEventManagementGetSyslogEventSubscriptionsFilterSeverities        `json:"severities,omitempty"`        // Severities
+	Sources           []string                                                                         `json:"sources,omitempty"`           // Sources
+	SiteIDs           []string                                                                         `json:"siteIds,omitempty"`           // Site Ids
 }
-type ResponseItemEventManagementGetSyslogEventSubscriptionsV1FilterDomainsSubdomains struct {
+type ResponseItemEventManagementGetSyslogEventSubscriptionsFilterDomainsSubdomains struct {
 	Domain     string   `json:"domain,omitempty"`     // Domain
 	SubDomains []string `json:"subDomains,omitempty"` // Sub Domains
 }
-type ResponseItemEventManagementGetSyslogEventSubscriptionsV1FilterSeverities interface{}
-type ResponseEventManagementUpdateSyslogDestinationV1 struct {
-	ErrorMessage  *ResponseEventManagementUpdateSyslogDestinationV1ErrorMessage `json:"errorMessage,omitempty"`  //
-	APIStatus     string                                                        `json:"apiStatus,omitempty"`     // Api Status
-	StatusMessage string                                                        `json:"statusMessage,omitempty"` // Status Message
+type ResponseItemEventManagementGetSyslogEventSubscriptionsFilterSeverities interface{}
+type ResponseEventManagementUpdateSyslogDestination struct {
+	ErrorMessage  *ResponseEventManagementUpdateSyslogDestinationErrorMessage `json:"errorMessage,omitempty"`  //
+	APIStatus     string                                                      `json:"apiStatus,omitempty"`     // Api Status
+	StatusMessage string                                                      `json:"statusMessage,omitempty"` // Status Message
 }
-type ResponseEventManagementUpdateSyslogDestinationV1ErrorMessage struct {
+type ResponseEventManagementUpdateSyslogDestinationErrorMessage struct {
 	Errors []string `json:"errors,omitempty"` // Errors
 }
-type ResponseEventManagementGetSyslogDestinationV1 struct {
-	ErrorMessage  *ResponseEventManagementGetSyslogDestinationV1ErrorMessage    `json:"errorMessage,omitempty"`  //
-	APIStatus     string                                                        `json:"apiStatus,omitempty"`     // Status
-	StatusMessage *[]ResponseEventManagementGetSyslogDestinationV1StatusMessage `json:"statusMessage,omitempty"` //
+type ResponseEventManagementGetSyslogDestination struct {
+	ErrorMessage  *ResponseEventManagementGetSyslogDestinationErrorMessage    `json:"errorMessage,omitempty"`  //
+	APIStatus     string                                                      `json:"apiStatus,omitempty"`     // Status
+	StatusMessage *[]ResponseEventManagementGetSyslogDestinationStatusMessage `json:"statusMessage,omitempty"` //
 }
-type ResponseEventManagementGetSyslogDestinationV1ErrorMessage struct {
+type ResponseEventManagementGetSyslogDestinationErrorMessage struct {
 	Errors []string `json:"errors,omitempty"` // Errors
 }
-type ResponseEventManagementGetSyslogDestinationV1StatusMessage struct {
+type ResponseEventManagementGetSyslogDestinationStatusMessage struct {
 	Version     string `json:"version,omitempty"`     // Version
 	TenantID    string `json:"tenantId,omitempty"`    // Tenant Id
 	ConfigID    string `json:"configId,omitempty"`    // UUID
@@ -704,175 +704,174 @@ type ResponseEventManagementGetSyslogDestinationV1StatusMessage struct {
 	Port        *int   `json:"port,omitempty"`        // Port
 	Protocol    string `json:"protocol,omitempty"`    // Protocol
 }
-type ResponseEventManagementCreateSyslogDestinationV1 struct {
-	ErrorMessage  *ResponseEventManagementCreateSyslogDestinationV1ErrorMessage `json:"errorMessage,omitempty"`  //
-	APIStatus     string                                                        `json:"apiStatus,omitempty"`     // Api Status
-	StatusMessage string                                                        `json:"statusMessage,omitempty"` // Status Message
+type ResponseEventManagementCreateSyslogDestination struct {
+	ErrorMessage  *ResponseEventManagementCreateSyslogDestinationErrorMessage `json:"errorMessage,omitempty"`  //
+	APIStatus     string                                                      `json:"apiStatus,omitempty"`     // Api Status
+	StatusMessage string                                                      `json:"statusMessage,omitempty"` // Status Message
 }
-type ResponseEventManagementCreateSyslogDestinationV1ErrorMessage struct {
+type ResponseEventManagementCreateSyslogDestinationErrorMessage struct {
 	Errors []string `json:"errors,omitempty"` // Errors
 }
-type ResponseEventManagementCreateWebhookDestinationV1 struct {
-	ErrorMessage  *ResponseEventManagementCreateWebhookDestinationV1ErrorMessage `json:"errorMessage,omitempty"`  //
-	APIStatus     string                                                         `json:"apiStatus,omitempty"`     // Api Status
-	StatusMessage string                                                         `json:"statusMessage,omitempty"` // Status Message
+type ResponseEventManagementCreateWebhookDestination struct {
+	ErrorMessage  *ResponseEventManagementCreateWebhookDestinationErrorMessage `json:"errorMessage,omitempty"`  //
+	APIStatus     string                                                       `json:"apiStatus,omitempty"`     // Api Status
+	StatusMessage string                                                       `json:"statusMessage,omitempty"` // Status Message
 }
-type ResponseEventManagementCreateWebhookDestinationV1ErrorMessage struct {
+type ResponseEventManagementCreateWebhookDestinationErrorMessage struct {
 	Errors []string `json:"errors,omitempty"` // Errors
 }
-type ResponseEventManagementUpdateWebhookDestinationV1 struct {
-	ErrorMessage  *ResponseEventManagementUpdateWebhookDestinationV1ErrorMessage `json:"errorMessage,omitempty"`  //
-	APIStatus     string                                                         `json:"apiStatus,omitempty"`     // Api Status
-	StatusMessage string                                                         `json:"statusMessage,omitempty"` // Status Message
+type ResponseEventManagementUpdateWebhookDestination struct {
+	ErrorMessage  *ResponseEventManagementUpdateWebhookDestinationErrorMessage `json:"errorMessage,omitempty"`  //
+	APIStatus     string                                                       `json:"apiStatus,omitempty"`     // Api Status
+	StatusMessage string                                                       `json:"statusMessage,omitempty"` // Status Message
 }
-type ResponseEventManagementUpdateWebhookDestinationV1ErrorMessage struct {
+type ResponseEventManagementUpdateWebhookDestinationErrorMessage struct {
 	Errors []string `json:"errors,omitempty"` // Errors
 }
-type ResponseEventManagementGetWebhookDestinationV1 struct {
-	ErrorMessage  *ResponseEventManagementGetWebhookDestinationV1ErrorMessage    `json:"errorMessage,omitempty"`  //
-	APIStatus     string                                                         `json:"apiStatus,omitempty"`     // Status
-	StatusMessage *[]ResponseEventManagementGetWebhookDestinationV1StatusMessage `json:"statusMessage,omitempty"` //
+type ResponseEventManagementGetWebhookDestination struct {
+	ErrorMessage  *ResponseEventManagementGetWebhookDestinationErrorMessage    `json:"errorMessage,omitempty"`  //
+	APIStatus     string                                                       `json:"apiStatus,omitempty"`     // Status
+	StatusMessage *[]ResponseEventManagementGetWebhookDestinationStatusMessage `json:"statusMessage,omitempty"` //
 }
-type ResponseEventManagementGetWebhookDestinationV1ErrorMessage struct {
+type ResponseEventManagementGetWebhookDestinationErrorMessage struct {
 	Errors []string `json:"errors,omitempty"` // Errors
 }
-type ResponseEventManagementGetWebhookDestinationV1StatusMessage struct {
-	Version      string                                                                `json:"version,omitempty"`      // Version
-	TenantID     string                                                                `json:"tenantId,omitempty"`     // Tenant Id
-	WebhookID    string                                                                `json:"webhookId,omitempty"`    // Webhook Id
-	Name         string                                                                `json:"name,omitempty"`         // Name
-	Description  string                                                                `json:"description,omitempty"`  // Description
-	URL          string                                                                `json:"url,omitempty"`          // Url
-	Method       string                                                                `json:"method,omitempty"`       // Method
-	TrustCert    *bool                                                                 `json:"trustCert,omitempty"`    // Trust Cert
-	Headers      *[]ResponseEventManagementGetWebhookDestinationV1StatusMessageHeaders `json:"headers,omitempty"`      //
-	IsProxyRoute *bool                                                                 `json:"isProxyRoute,omitempty"` // Is Proxy Route
+type ResponseEventManagementGetWebhookDestinationStatusMessage struct {
+	Version      string                                                              `json:"version,omitempty"`      // Version
+	TenantID     string                                                              `json:"tenantId,omitempty"`     // Tenant Id
+	WebhookID    string                                                              `json:"webhookId,omitempty"`    // Webhook Id
+	Name         string                                                              `json:"name,omitempty"`         // Name
+	Description  string                                                              `json:"description,omitempty"`  // Description
+	URL          string                                                              `json:"url,omitempty"`          // Url
+	Method       string                                                              `json:"method,omitempty"`       // Method
+	TrustCert    *bool                                                               `json:"trustCert,omitempty"`    // Trust Cert
+	Headers      *[]ResponseEventManagementGetWebhookDestinationStatusMessageHeaders `json:"headers,omitempty"`      //
+	IsProxyRoute *bool                                                               `json:"isProxyRoute,omitempty"` // Is Proxy Route
 }
-type ResponseEventManagementGetWebhookDestinationV1StatusMessageHeaders struct {
+type ResponseEventManagementGetWebhookDestinationStatusMessageHeaders struct {
 	Name         string `json:"name,omitempty"`         // Name
 	Value        string `json:"value,omitempty"`        // Value
 	DefaultValue string `json:"defaultValue,omitempty"` // Default Value
 	Encrypt      *bool  `json:"encrypt,omitempty"`      // Encrypt
 }
-type ResponseEventManagementGetEventsV1 []ResponseItemEventManagementGetEventsV1 // Array of ResponseEventManagementGetEventsV1
-type ResponseItemEventManagementGetEventsV1 struct {
-	EventID           string                                         `json:"eventId,omitempty"`           // Event Id
-	NameSpace         string                                         `json:"nameSpace,omitempty"`         // Name Space
-	Name              string                                         `json:"name,omitempty"`              // Name
-	Description       string                                         `json:"description,omitempty"`       // Description
-	Version           string                                         `json:"version,omitempty"`           // Version
-	Category          string                                         `json:"category,omitempty"`          // Category
-	Domain            string                                         `json:"domain,omitempty"`            // Domain
-	SubDomain         string                                         `json:"subDomain,omitempty"`         // Sub Domain
-	Type              string                                         `json:"type,omitempty"`              // Type
-	Tags              []string                                       `json:"tags,omitempty"`              // Tags
-	Severity          *float64                                       `json:"severity,omitempty"`          // Severity
-	Details           *ResponseItemEventManagementGetEventsV1Details `json:"details,omitempty"`           // Details
-	SubscriptionTypes []string                                       `json:"subscriptionTypes,omitempty"` // Subscription Types
+type ResponseEventManagementGetEvents []ResponseItemEventManagementGetEvents // Array of ResponseEventManagementGetEvents
+type ResponseItemEventManagementGetEvents struct {
+	EventID           string                                       `json:"eventId,omitempty"`           // Event Id
+	NameSpace         string                                       `json:"nameSpace,omitempty"`         // Name Space
+	Name              string                                       `json:"name,omitempty"`              // Name
+	Description       string                                       `json:"description,omitempty"`       // Description
+	Version           string                                       `json:"version,omitempty"`           // Version
+	Category          string                                       `json:"category,omitempty"`          // Category
+	Domain            string                                       `json:"domain,omitempty"`            // Domain
+	SubDomain         string                                       `json:"subDomain,omitempty"`         // Sub Domain
+	Type              string                                       `json:"type,omitempty"`              // Type
+	Tags              []string                                     `json:"tags,omitempty"`              // Tags
+	Severity          *float64                                     `json:"severity,omitempty"`          // Severity
+	Details           *ResponseItemEventManagementGetEventsDetails `json:"details,omitempty"`           // Details
+	SubscriptionTypes []string                                     `json:"subscriptionTypes,omitempty"` // Subscription Types
 }
-type ResponseItemEventManagementGetEventsV1Details interface{}
-type ResponseEventManagementCountOfEventsV1 struct {
+type ResponseItemEventManagementGetEventsDetails interface{}
+type ResponseEventManagementCountOfEvents struct {
 	Response *float64 `json:"response,omitempty"` // Response
 }
-type ResponseEventManagementGetEventArtifactsV1 []ResponseItemEventManagementGetEventArtifactsV1 // Array of ResponseEventManagementGetEventArtifactsV1
-type ResponseItemEventManagementGetEventArtifactsV1 struct {
-	Version                 string                                                          `json:"version,omitempty"`                 // Version
-	ArtifactID              string                                                          `json:"artifactId,omitempty"`              // Artifact Id
-	Namespace               string                                                          `json:"namespace,omitempty"`               // Namespace
-	Name                    string                                                          `json:"name,omitempty"`                    // Name
-	Description             string                                                          `json:"description,omitempty"`             // Description
-	Domain                  string                                                          `json:"domain,omitempty"`                  // Domain
-	SubDomain               string                                                          `json:"subDomain,omitempty"`               // Sub Domain
-	DeprecationMessage      string                                                          `json:"deprecationMessage,omitempty"`      // Deprecation Message
-	Deprecated              *bool                                                           `json:"deprecated,omitempty"`              // Deprecated
-	Tags                    []string                                                        `json:"tags,omitempty"`                    // Tags
-	IsTemplateEnabled       *bool                                                           `json:"isTemplateEnabled,omitempty"`       // Is Template Enabled
-	CiscoDnaEventLink       string                                                          `json:"ciscoDNAEventLink,omitempty"`       // Cisco D N A Event Link
-	Note                    string                                                          `json:"note,omitempty"`                    // Note
-	IsPrivate               *bool                                                           `json:"isPrivate,omitempty"`               // Is Private
-	EventPayload            *ResponseItemEventManagementGetEventArtifactsV1EventPayload     `json:"eventPayload,omitempty"`            //
-	EventTemplates          *[]ResponseItemEventManagementGetEventArtifactsV1EventTemplates `json:"eventTemplates,omitempty"`          // Event Templates
-	IsTenantAware           *bool                                                           `json:"isTenantAware,omitempty"`           // Is Tenant Aware
-	SupportedConnectorTypes []string                                                        `json:"supportedConnectorTypes,omitempty"` // Supported Connector Types
-	Configs                 *ResponseItemEventManagementGetEventArtifactsV1Configs          `json:"configs,omitempty"`                 //
-	TenantID                string                                                          `json:"tenantId,omitempty"`                // Tenant Id
+type ResponseEventManagementGetEventArtifacts []ResponseItemEventManagementGetEventArtifacts // Array of ResponseEventManagementGetEventArtifacts
+type ResponseItemEventManagementGetEventArtifacts struct {
+	Version                 string                                                        `json:"version,omitempty"`                 // Version
+	ArtifactID              string                                                        `json:"artifactId,omitempty"`              // Artifact Id
+	Namespace               string                                                        `json:"namespace,omitempty"`               // Namespace
+	Name                    string                                                        `json:"name,omitempty"`                    // Name
+	Description             string                                                        `json:"description,omitempty"`             // Description
+	Domain                  string                                                        `json:"domain,omitempty"`                  // Domain
+	SubDomain               string                                                        `json:"subDomain,omitempty"`               // Sub Domain
+	DeprecationMessage      string                                                        `json:"deprecationMessage,omitempty"`      // Deprecation Message
+	Deprecated              *bool                                                         `json:"deprecated,omitempty"`              // Deprecated
+	Tags                    []string                                                      `json:"tags,omitempty"`                    // Tags
+	IsTemplateEnabled       *bool                                                         `json:"isTemplateEnabled,omitempty"`       // Is Template Enabled
+	CiscoDnaEventLink       string                                                        `json:"ciscoDNAEventLink,omitempty"`       // Cisco D N A Event Link
+	Note                    string                                                        `json:"note,omitempty"`                    // Note
+	IsPrivate               *bool                                                         `json:"isPrivate,omitempty"`               // Is Private
+	EventPayload            *ResponseItemEventManagementGetEventArtifactsEventPayload     `json:"eventPayload,omitempty"`            //
+	EventTemplates          *[]ResponseItemEventManagementGetEventArtifactsEventTemplates `json:"eventTemplates,omitempty"`          // Event Templates
+	IsTenantAware           *bool                                                         `json:"isTenantAware,omitempty"`           // Is Tenant Aware
+	SupportedConnectorTypes []string                                                      `json:"supportedConnectorTypes,omitempty"` // Supported Connector Types
+	Configs                 *ResponseItemEventManagementGetEventArtifactsConfigs          `json:"configs,omitempty"`                 //
+	TenantID                string                                                        `json:"tenantId,omitempty"`                // Tenant Id
 }
-type ResponseItemEventManagementGetEventArtifactsV1EventPayload struct {
-	EventID           string                                                                       `json:"eventId,omitempty"`           // Event Id
-	Version           string                                                                       `json:"version,omitempty"`           // Version
-	Category          string                                                                       `json:"category,omitempty"`          // Category
-	Type              string                                                                       `json:"type,omitempty"`              // Type
-	Source            string                                                                       `json:"source,omitempty"`            // Source
-	Severity          string                                                                       `json:"severity,omitempty"`          // Severity
-	Details           *ResponseItemEventManagementGetEventArtifactsV1EventPayloadDetails           `json:"details,omitempty"`           //
-	AdditionalDetails *ResponseItemEventManagementGetEventArtifactsV1EventPayloadAdditionalDetails `json:"additionalDetails,omitempty"` // Additional Details
+type ResponseItemEventManagementGetEventArtifactsEventPayload struct {
+	EventID           string                                                                     `json:"eventId,omitempty"`           // Event Id
+	Version           string                                                                     `json:"version,omitempty"`           // Version
+	Category          string                                                                     `json:"category,omitempty"`          // Category
+	Type              string                                                                     `json:"type,omitempty"`              // Type
+	Source            string                                                                     `json:"source,omitempty"`            // Source
+	Severity          string                                                                     `json:"severity,omitempty"`          // Severity
+	Details           *ResponseItemEventManagementGetEventArtifactsEventPayloadDetails           `json:"details,omitempty"`           //
+	AdditionalDetails *ResponseItemEventManagementGetEventArtifactsEventPayloadAdditionalDetails `json:"additionalDetails,omitempty"` // Additional Details
 }
-type ResponseItemEventManagementGetEventArtifactsV1EventPayloadDetails struct {
+type ResponseItemEventManagementGetEventArtifactsEventPayloadDetails struct {
 	DeviceIP string `json:"device_ip,omitempty"` // Device Ip
 	Message  string `json:"message,omitempty"`   // Message
 }
-type ResponseItemEventManagementGetEventArtifactsV1EventPayloadAdditionalDetails interface{}
-type ResponseItemEventManagementGetEventArtifactsV1EventTemplates interface{}
-type ResponseItemEventManagementGetEventArtifactsV1Configs struct {
-	IsAlert *bool `json:"isAlert,omitempty"` // Is Alert
-
+type ResponseItemEventManagementGetEventArtifactsEventPayloadAdditionalDetails interface{}
+type ResponseItemEventManagementGetEventArtifactsEventTemplates interface{}
+type ResponseItemEventManagementGetEventArtifactsConfigs struct {
+	IsAlert           *bool `json:"isAlert,omitempty"`           // Is Alert
 	IsACKnowledgeable *bool `json:"isACKnowledgeable,omitempty"` // Is A C Knowledgeable
 }
-type ResponseEventManagementEventArtifactCountV1 struct {
+type ResponseEventManagementEventArtifactCount struct {
 	Response *float64 `json:"response,omitempty"` // Response
 }
-type ResponseEventManagementGetConnectorTypesV1 []ResponseItemEventManagementGetConnectorTypesV1 // Array of ResponseEventManagementGetConnectorTypesV1
-type ResponseItemEventManagementGetConnectorTypesV1 struct {
+type ResponseEventManagementGetConnectorTypes []ResponseItemEventManagementGetConnectorTypes // Array of ResponseEventManagementGetConnectorTypes
+type ResponseItemEventManagementGetConnectorTypes struct {
 	ConnectorType      string `json:"connectorType,omitempty"`      // Connector Type
 	DisplayName        string `json:"displayName,omitempty"`        // Display Name
 	IsDefaultSupported *bool  `json:"isDefaultSupported,omitempty"` // Is Default Supported
 	IsCustomConnector  *bool  `json:"isCustomConnector,omitempty"`  // Is Custom Connector
 }
-type RequestEventManagementUpdateEmailDestinationV1 struct {
-	EmailConfigID       string                                                             `json:"emailConfigId,omitempty"`       // Required only for update email configuration
-	PrimarySmtpConfig   *RequestEventManagementUpdateEmailDestinationV1PrimarySmtpConfig   `json:"primarySMTPConfig,omitempty"`   //
-	SecondarySmtpConfig *RequestEventManagementUpdateEmailDestinationV1SecondarySmtpConfig `json:"secondarySMTPConfig,omitempty"` //
-	FromEmail           string                                                             `json:"fromEmail,omitempty"`           // From Email
-	ToEmail             string                                                             `json:"toEmail,omitempty"`             // To Email
-	Subject             string                                                             `json:"subject,omitempty"`             // Subject
+type RequestEventManagementUpdateEmailDestination struct {
+	EmailConfigID       string                                                           `json:"emailConfigId,omitempty"`       // Required only for update email configuration
+	PrimarySmtpConfig   *RequestEventManagementUpdateEmailDestinationPrimarySmtpConfig   `json:"primarySMTPConfig,omitempty"`   //
+	SecondarySmtpConfig *RequestEventManagementUpdateEmailDestinationSecondarySmtpConfig `json:"secondarySMTPConfig,omitempty"` //
+	FromEmail           string                                                           `json:"fromEmail,omitempty"`           // From Email
+	ToEmail             string                                                           `json:"toEmail,omitempty"`             // To Email
+	Subject             string                                                           `json:"subject,omitempty"`             // Subject
 }
-type RequestEventManagementUpdateEmailDestinationV1PrimarySmtpConfig struct {
+type RequestEventManagementUpdateEmailDestinationPrimarySmtpConfig struct {
 	HostName string `json:"hostName,omitempty"` // Host Name
 	Port     string `json:"port,omitempty"`     // Port
 	UserName string `json:"userName,omitempty"` // User Name
 	Password string `json:"password,omitempty"` // Password
 	SmtpType string `json:"smtpType,omitempty"` // smtpType
 }
-type RequestEventManagementUpdateEmailDestinationV1SecondarySmtpConfig struct {
+type RequestEventManagementUpdateEmailDestinationSecondarySmtpConfig struct {
 	HostName string `json:"hostName,omitempty"` // Host Name
 	Port     string `json:"port,omitempty"`     // Port
 	UserName string `json:"userName,omitempty"` // User Name
 	Password string `json:"password,omitempty"` // Password
 	SmtpType string `json:"smtpType,omitempty"` // smtpType
 }
-type RequestEventManagementCreateEmailDestinationV1 struct {
-	EmailConfigID       string                                                             `json:"emailConfigId,omitempty"`       // Required only for update email configuration
-	PrimarySmtpConfig   *RequestEventManagementCreateEmailDestinationV1PrimarySmtpConfig   `json:"primarySMTPConfig,omitempty"`   //
-	SecondarySmtpConfig *RequestEventManagementCreateEmailDestinationV1SecondarySmtpConfig `json:"secondarySMTPConfig,omitempty"` //
-	FromEmail           string                                                             `json:"fromEmail,omitempty"`           // From Email
-	ToEmail             string                                                             `json:"toEmail,omitempty"`             // To Email
-	Subject             string                                                             `json:"subject,omitempty"`             // Subject
+type RequestEventManagementCreateEmailDestination struct {
+	EmailConfigID       string                                                           `json:"emailConfigId,omitempty"`       // Required only for update email configuration
+	PrimarySmtpConfig   *RequestEventManagementCreateEmailDestinationPrimarySmtpConfig   `json:"primarySMTPConfig,omitempty"`   //
+	SecondarySmtpConfig *RequestEventManagementCreateEmailDestinationSecondarySmtpConfig `json:"secondarySMTPConfig,omitempty"` //
+	FromEmail           string                                                           `json:"fromEmail,omitempty"`           // From Email
+	ToEmail             string                                                           `json:"toEmail,omitempty"`             // To Email
+	Subject             string                                                           `json:"subject,omitempty"`             // Subject
 }
-type RequestEventManagementCreateEmailDestinationV1PrimarySmtpConfig struct {
+type RequestEventManagementCreateEmailDestinationPrimarySmtpConfig struct {
 	HostName string `json:"hostName,omitempty"` // Host Name
 	Port     string `json:"port,omitempty"`     // Port
 	UserName string `json:"userName,omitempty"` // User Name
 	Password string `json:"password,omitempty"` // Password
 	SmtpType string `json:"smtpType,omitempty"` // smtpType
 }
-type RequestEventManagementCreateEmailDestinationV1SecondarySmtpConfig struct {
+type RequestEventManagementCreateEmailDestinationSecondarySmtpConfig struct {
 	HostName string `json:"hostName,omitempty"` // Host Name
 	Port     string `json:"port,omitempty"`     // Port
 	UserName string `json:"userName,omitempty"` // User Name
 	Password string `json:"password,omitempty"` // Password
 	SmtpType string `json:"smtpType,omitempty"` // smtpType
 }
-type RequestEventManagementCreateSNMPDestinationV1 struct {
+type RequestEventManagementCreateSNMPDestination struct {
 	Name            string `json:"name,omitempty"`            // Name
 	Description     string `json:"description,omitempty"`     // Description
 	IPAddress       string `json:"ipAddress,omitempty"`       // Ip Address
@@ -886,7 +885,7 @@ type RequestEventManagementCreateSNMPDestinationV1 struct {
 	SNMPPrivacyType string `json:"snmpPrivacyType,omitempty"` // Snmp Privacy Type
 	PrivacyPassword string `json:"privacyPassword,omitempty"` // Privacy Password
 }
-type RequestEventManagementUpdateSNMPDestinationV1 struct {
+type RequestEventManagementUpdateSNMPDestination struct {
 	ConfigID        string `json:"configId,omitempty"`        // Config Id
 	Name            string `json:"name,omitempty"`            // Name
 	Description     string `json:"description,omitempty"`     //
@@ -901,78 +900,78 @@ type RequestEventManagementUpdateSNMPDestinationV1 struct {
 	SNMPPrivacyType string `json:"snmpPrivacyType,omitempty"` // Snmp Privacy Type
 	PrivacyPassword string `json:"privacyPassword,omitempty"` // Privacy Password
 }
-type RequestEventManagementUpdateEventSubscriptionsV1 []RequestItemEventManagementUpdateEventSubscriptionsV1 // Array of RequestEventManagementUpdateEventSubscriptionsV1
-type RequestItemEventManagementUpdateEventSubscriptionsV1 struct {
-	SubscriptionID        string                                                                       `json:"subscriptionId,omitempty"`        // Subscription Id (Unique UUID)
-	Version               string                                                                       `json:"version,omitempty"`               // Version
-	Name                  string                                                                       `json:"name,omitempty"`                  // Name
-	Description           string                                                                       `json:"description,omitempty"`           // Description
-	SubscriptionEndpoints *[]RequestItemEventManagementUpdateEventSubscriptionsV1SubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
-	Filter                *RequestItemEventManagementUpdateEventSubscriptionsV1Filter                  `json:"filter,omitempty"`                //
+type RequestEventManagementUpdateEventSubscriptions []RequestItemEventManagementUpdateEventSubscriptions // Array of RequestEventManagementUpdateEventSubscriptions
+type RequestItemEventManagementUpdateEventSubscriptions struct {
+	SubscriptionID        string                                                                     `json:"subscriptionId,omitempty"`        // Subscription Id (Unique UUID)
+	Version               string                                                                     `json:"version,omitempty"`               // Version
+	Name                  string                                                                     `json:"name,omitempty"`                  // Name
+	Description           string                                                                     `json:"description,omitempty"`           // Description
+	SubscriptionEndpoints *[]RequestItemEventManagementUpdateEventSubscriptionsSubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
+	Filter                *RequestItemEventManagementUpdateEventSubscriptionsFilter                  `json:"filter,omitempty"`                //
 }
-type RequestItemEventManagementUpdateEventSubscriptionsV1SubscriptionEndpoints struct {
-	InstanceID          string                                                                                        `json:"instanceId,omitempty"`          // (From 	Get Rest/Webhook Subscription Details --> pick instanceId)
-	SubscriptionDetails *RequestItemEventManagementUpdateEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
+type RequestItemEventManagementUpdateEventSubscriptionsSubscriptionEndpoints struct {
+	InstanceID          string                                                                                      `json:"instanceId,omitempty"`          // (From 	Get Rest/Webhook Subscription Details --> pick instanceId)
+	SubscriptionDetails *RequestItemEventManagementUpdateEventSubscriptionsSubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
 }
-type RequestItemEventManagementUpdateEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetails struct {
+type RequestItemEventManagementUpdateEventSubscriptionsSubscriptionEndpointsSubscriptionDetails struct {
 	ConnectorType string `json:"connectorType,omitempty"` // Connector Type (Must be REST)
 }
-type RequestItemEventManagementUpdateEventSubscriptionsV1Filter struct {
-	EventIDs          []string                                                                       `json:"eventIds,omitempty"`          // Event Ids (Comma separated event ids)
-	DomainsSubdomains *[]RequestItemEventManagementUpdateEventSubscriptionsV1FilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
-	Types             []string                                                                       `json:"types,omitempty"`             // Types
-	Categories        []string                                                                       `json:"categories,omitempty"`        // Categories
-	Severities        []string                                                                       `json:"severities,omitempty"`        // Severities
-	Sources           []string                                                                       `json:"sources,omitempty"`           // Sources
-	SiteIDs           []string                                                                       `json:"siteIds,omitempty"`           // Site Ids
+type RequestItemEventManagementUpdateEventSubscriptionsFilter struct {
+	EventIDs          []string                                                                     `json:"eventIds,omitempty"`          // Event Ids (Comma separated event ids)
+	DomainsSubdomains *[]RequestItemEventManagementUpdateEventSubscriptionsFilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
+	Types             []string                                                                     `json:"types,omitempty"`             // Types
+	Categories        []string                                                                     `json:"categories,omitempty"`        // Categories
+	Severities        []string                                                                     `json:"severities,omitempty"`        // Severities
+	Sources           []string                                                                     `json:"sources,omitempty"`           // Sources
+	SiteIDs           []string                                                                     `json:"siteIds,omitempty"`           // Site Ids
 }
-type RequestItemEventManagementUpdateEventSubscriptionsV1FilterDomainsSubdomains struct {
+type RequestItemEventManagementUpdateEventSubscriptionsFilterDomainsSubdomains struct {
 	Domain     string   `json:"domain,omitempty"`     // Domain
 	SubDomains []string `json:"subDomains,omitempty"` // Sub Domains
 }
-type RequestEventManagementCreateEventSubscriptionsV1 []RequestItemEventManagementCreateEventSubscriptionsV1 // Array of RequestEventManagementCreateEventSubscriptionsV1
-type RequestItemEventManagementCreateEventSubscriptionsV1 struct {
-	SubscriptionID        string                                                                       `json:"subscriptionId,omitempty"`        // Subscription Id (Unique UUID)
-	Version               string                                                                       `json:"version,omitempty"`               // Version
-	Name                  string                                                                       `json:"name,omitempty"`                  // Name
-	Description           string                                                                       `json:"description,omitempty"`           // Description
-	SubscriptionEndpoints *[]RequestItemEventManagementCreateEventSubscriptionsV1SubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
-	Filter                *RequestItemEventManagementCreateEventSubscriptionsV1Filter                  `json:"filter,omitempty"`                //
+type RequestEventManagementCreateEventSubscriptions []RequestItemEventManagementCreateEventSubscriptions // Array of RequestEventManagementCreateEventSubscriptions
+type RequestItemEventManagementCreateEventSubscriptions struct {
+	SubscriptionID        string                                                                     `json:"subscriptionId,omitempty"`        // Subscription Id (Unique UUID)
+	Version               string                                                                     `json:"version,omitempty"`               // Version
+	Name                  string                                                                     `json:"name,omitempty"`                  // Name
+	Description           string                                                                     `json:"description,omitempty"`           // Description
+	SubscriptionEndpoints *[]RequestItemEventManagementCreateEventSubscriptionsSubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
+	Filter                *RequestItemEventManagementCreateEventSubscriptionsFilter                  `json:"filter,omitempty"`                //
 }
-type RequestItemEventManagementCreateEventSubscriptionsV1SubscriptionEndpoints struct {
-	InstanceID          string                                                                                        `json:"instanceId,omitempty"`          // (From 	Get Rest/Webhook Subscription Details --> pick instanceId)
-	SubscriptionDetails *RequestItemEventManagementCreateEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
+type RequestItemEventManagementCreateEventSubscriptionsSubscriptionEndpoints struct {
+	InstanceID          string                                                                                      `json:"instanceId,omitempty"`          // (From 	Get Rest/Webhook Subscription Details --> pick instanceId)
+	SubscriptionDetails *RequestItemEventManagementCreateEventSubscriptionsSubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
 }
-type RequestItemEventManagementCreateEventSubscriptionsV1SubscriptionEndpointsSubscriptionDetails struct {
+type RequestItemEventManagementCreateEventSubscriptionsSubscriptionEndpointsSubscriptionDetails struct {
 	ConnectorType string `json:"connectorType,omitempty"` // Connector Type (Must be REST)
 }
-type RequestItemEventManagementCreateEventSubscriptionsV1Filter struct {
-	EventIDs          []string                                                                       `json:"eventIds,omitempty"`          // Event Ids (Comma separated event ids)
-	DomainsSubdomains *[]RequestItemEventManagementCreateEventSubscriptionsV1FilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
-	Types             []string                                                                       `json:"types,omitempty"`             // Types
-	Categories        []string                                                                       `json:"categories,omitempty"`        // Categories
-	Severities        []string                                                                       `json:"severities,omitempty"`        // Severities
-	Sources           []string                                                                       `json:"sources,omitempty"`           // Sources
-	SiteIDs           []string                                                                       `json:"siteIds,omitempty"`           // Site Ids
+type RequestItemEventManagementCreateEventSubscriptionsFilter struct {
+	EventIDs          []string                                                                     `json:"eventIds,omitempty"`          // Event Ids (Comma separated event ids)
+	DomainsSubdomains *[]RequestItemEventManagementCreateEventSubscriptionsFilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
+	Types             []string                                                                     `json:"types,omitempty"`             // Types
+	Categories        []string                                                                     `json:"categories,omitempty"`        // Categories
+	Severities        []string                                                                     `json:"severities,omitempty"`        // Severities
+	Sources           []string                                                                     `json:"sources,omitempty"`           // Sources
+	SiteIDs           []string                                                                     `json:"siteIds,omitempty"`           // Site Ids
 }
-type RequestItemEventManagementCreateEventSubscriptionsV1FilterDomainsSubdomains struct {
+type RequestItemEventManagementCreateEventSubscriptionsFilterDomainsSubdomains struct {
 	Domain     string   `json:"domain,omitempty"`     // Domain
 	SubDomains []string `json:"subDomains,omitempty"` // Sub Domains
 }
-type RequestEventManagementCreateEmailEventSubscriptionV1 []RequestItemEventManagementCreateEmailEventSubscriptionV1 // Array of RequestEventManagementCreateEmailEventSubscriptionV1
-type RequestItemEventManagementCreateEmailEventSubscriptionV1 struct {
-	SubscriptionID        string                                                                           `json:"subscriptionId,omitempty"`        // Subscription Id (Unique UUID)
-	Version               string                                                                           `json:"version,omitempty"`               // Version
-	Name                  string                                                                           `json:"name,omitempty"`                  // Name
-	Description           string                                                                           `json:"description,omitempty"`           // Description
-	SubscriptionEndpoints *[]RequestItemEventManagementCreateEmailEventSubscriptionV1SubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
-	Filter                *RequestItemEventManagementCreateEmailEventSubscriptionV1Filter                  `json:"filter,omitempty"`                //
+type RequestEventManagementCreateEmailEventSubscription []RequestItemEventManagementCreateEmailEventSubscription // Array of RequestEventManagementCreateEmailEventSubscription
+type RequestItemEventManagementCreateEmailEventSubscription struct {
+	SubscriptionID        string                                                                         `json:"subscriptionId,omitempty"`        // Subscription Id (Unique UUID)
+	Version               string                                                                         `json:"version,omitempty"`               // Version
+	Name                  string                                                                         `json:"name,omitempty"`                  // Name
+	Description           string                                                                         `json:"description,omitempty"`           // Description
+	SubscriptionEndpoints *[]RequestItemEventManagementCreateEmailEventSubscriptionSubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
+	Filter                *RequestItemEventManagementCreateEmailEventSubscriptionFilter                  `json:"filter,omitempty"`                //
 }
-type RequestItemEventManagementCreateEmailEventSubscriptionV1SubscriptionEndpoints struct {
-	InstanceID          string                                                                                            `json:"instanceId,omitempty"`          // (From Get Email Subscription Details --> pick InstanceId if available)
-	SubscriptionDetails *RequestItemEventManagementCreateEmailEventSubscriptionV1SubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
+type RequestItemEventManagementCreateEmailEventSubscriptionSubscriptionEndpoints struct {
+	InstanceID          string                                                                                          `json:"instanceId,omitempty"`          // (From Get Email Subscription Details --> pick InstanceId if available)
+	SubscriptionDetails *RequestItemEventManagementCreateEmailEventSubscriptionSubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
 }
-type RequestItemEventManagementCreateEmailEventSubscriptionV1SubscriptionEndpointsSubscriptionDetails struct {
+type RequestItemEventManagementCreateEmailEventSubscriptionSubscriptionEndpointsSubscriptionDetails struct {
 	ConnectorType    string   `json:"connectorType,omitempty"`    // Connector Type (Must be EMAIL)
 	FromEmailAddress string   `json:"fromEmailAddress,omitempty"` // Senders Email Address
 	ToEmailAddresses []string `json:"toEmailAddresses,omitempty"` // Recipient's Email Addresses (Comma separated)
@@ -980,33 +979,33 @@ type RequestItemEventManagementCreateEmailEventSubscriptionV1SubscriptionEndpoin
 	Name             string   `json:"name,omitempty"`             // Name
 	Description      string   `json:"description,omitempty"`      // Description
 }
-type RequestItemEventManagementCreateEmailEventSubscriptionV1Filter struct {
-	EventIDs          []string                                                                           `json:"eventIds,omitempty"`          // Event Ids
-	DomainsSubdomains *[]RequestItemEventManagementCreateEmailEventSubscriptionV1FilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
-	Types             []string                                                                           `json:"types,omitempty"`             // Types
-	Categories        []string                                                                           `json:"categories,omitempty"`        // Categories
-	Severities        *[]int                                                                             `json:"severities,omitempty"`        // Severities
-	Sources           []string                                                                           `json:"sources,omitempty"`           // Sources
-	SiteIDs           []string                                                                           `json:"siteIds,omitempty"`           // Site Ids
+type RequestItemEventManagementCreateEmailEventSubscriptionFilter struct {
+	EventIDs          []string                                                                         `json:"eventIds,omitempty"`          // Event Ids
+	DomainsSubdomains *[]RequestItemEventManagementCreateEmailEventSubscriptionFilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
+	Types             []string                                                                         `json:"types,omitempty"`             // Types
+	Categories        []string                                                                         `json:"categories,omitempty"`        // Categories
+	Severities        *[]int                                                                           `json:"severities,omitempty"`        // Severities
+	Sources           []string                                                                         `json:"sources,omitempty"`           // Sources
+	SiteIDs           []string                                                                         `json:"siteIds,omitempty"`           // Site Ids
 }
-type RequestItemEventManagementCreateEmailEventSubscriptionV1FilterDomainsSubdomains struct {
+type RequestItemEventManagementCreateEmailEventSubscriptionFilterDomainsSubdomains struct {
 	Domain     string   `json:"domain,omitempty"`     // Domain
 	SubDomains []string `json:"subDomains,omitempty"` // Sub Domains
 }
-type RequestEventManagementUpdateEmailEventSubscriptionV1 []RequestItemEventManagementUpdateEmailEventSubscriptionV1 // Array of RequestEventManagementUpdateEmailEventSubscriptionV1
-type RequestItemEventManagementUpdateEmailEventSubscriptionV1 struct {
-	SubscriptionID        string                                                                           `json:"subscriptionId,omitempty"`        // Subscription Id (Unique UUID)
-	Version               string                                                                           `json:"version,omitempty"`               // Version
-	Name                  string                                                                           `json:"name,omitempty"`                  // Name
-	Description           string                                                                           `json:"description,omitempty"`           // Description
-	SubscriptionEndpoints *[]RequestItemEventManagementUpdateEmailEventSubscriptionV1SubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
-	Filter                *RequestItemEventManagementUpdateEmailEventSubscriptionV1Filter                  `json:"filter,omitempty"`                //
+type RequestEventManagementUpdateEmailEventSubscription []RequestItemEventManagementUpdateEmailEventSubscription // Array of RequestEventManagementUpdateEmailEventSubscription
+type RequestItemEventManagementUpdateEmailEventSubscription struct {
+	SubscriptionID        string                                                                         `json:"subscriptionId,omitempty"`        // Subscription Id (Unique UUID)
+	Version               string                                                                         `json:"version,omitempty"`               // Version
+	Name                  string                                                                         `json:"name,omitempty"`                  // Name
+	Description           string                                                                         `json:"description,omitempty"`           // Description
+	SubscriptionEndpoints *[]RequestItemEventManagementUpdateEmailEventSubscriptionSubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
+	Filter                *RequestItemEventManagementUpdateEmailEventSubscriptionFilter                  `json:"filter,omitempty"`                //
 }
-type RequestItemEventManagementUpdateEmailEventSubscriptionV1SubscriptionEndpoints struct {
-	InstanceID          string                                                                                            `json:"instanceId,omitempty"`          // (From Get Email Subscription Details --> pick InstanceId)
-	SubscriptionDetails *RequestItemEventManagementUpdateEmailEventSubscriptionV1SubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
+type RequestItemEventManagementUpdateEmailEventSubscriptionSubscriptionEndpoints struct {
+	InstanceID          string                                                                                          `json:"instanceId,omitempty"`          // (From Get Email Subscription Details --> pick InstanceId)
+	SubscriptionDetails *RequestItemEventManagementUpdateEmailEventSubscriptionSubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
 }
-type RequestItemEventManagementUpdateEmailEventSubscriptionV1SubscriptionEndpointsSubscriptionDetails struct {
+type RequestItemEventManagementUpdateEmailEventSubscriptionSubscriptionEndpointsSubscriptionDetails struct {
 	ConnectorType    string   `json:"connectorType,omitempty"`    // Connector Type (Must be EMAIL)
 	FromEmailAddress string   `json:"fromEmailAddress,omitempty"` // Senders Email Address
 	ToEmailAddresses []string `json:"toEmailAddresses,omitempty"` // Recipient's Email Addresses (Comma separated)
@@ -1014,136 +1013,136 @@ type RequestItemEventManagementUpdateEmailEventSubscriptionV1SubscriptionEndpoin
 	Name             string   `json:"name,omitempty"`             // Name
 	Description      string   `json:"description,omitempty"`      // Description
 }
-type RequestItemEventManagementUpdateEmailEventSubscriptionV1Filter struct {
-	EventIDs          []string                                                                           `json:"eventIds,omitempty"`          // Event Ids
-	DomainsSubdomains *[]RequestItemEventManagementUpdateEmailEventSubscriptionV1FilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
-	Types             []string                                                                           `json:"types,omitempty"`             // Types
-	Categories        []string                                                                           `json:"categories,omitempty"`        // Categories
-	Severities        *[]int                                                                             `json:"severities,omitempty"`        // Severities
-	Sources           []string                                                                           `json:"sources,omitempty"`           // Sources
-	SiteIDs           []string                                                                           `json:"siteIds,omitempty"`           // Site Ids
+type RequestItemEventManagementUpdateEmailEventSubscriptionFilter struct {
+	EventIDs          []string                                                                         `json:"eventIds,omitempty"`          // Event Ids
+	DomainsSubdomains *[]RequestItemEventManagementUpdateEmailEventSubscriptionFilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
+	Types             []string                                                                         `json:"types,omitempty"`             // Types
+	Categories        []string                                                                         `json:"categories,omitempty"`        // Categories
+	Severities        *[]int                                                                           `json:"severities,omitempty"`        // Severities
+	Sources           []string                                                                         `json:"sources,omitempty"`           // Sources
+	SiteIDs           []string                                                                         `json:"siteIds,omitempty"`           // Site Ids
 }
-type RequestItemEventManagementUpdateEmailEventSubscriptionV1FilterDomainsSubdomains struct {
+type RequestItemEventManagementUpdateEmailEventSubscriptionFilterDomainsSubdomains struct {
 	Domain     string   `json:"domain,omitempty"`     // Domain
 	SubDomains []string `json:"subDomains,omitempty"` // Sub Domains
 }
-type RequestEventManagementCreateRestWebhookEventSubscriptionV1 []RequestItemEventManagementCreateRestWebhookEventSubscriptionV1 // Array of RequestEventManagementCreateRestWebhookEventSubscriptionV1
-type RequestItemEventManagementCreateRestWebhookEventSubscriptionV1 struct {
-	SubscriptionID        string                                                                                 `json:"subscriptionId,omitempty"`        // Subscription Id (Unique UUID)
-	Version               string                                                                                 `json:"version,omitempty"`               // Version
-	Name                  string                                                                                 `json:"name,omitempty"`                  // Name
-	Description           string                                                                                 `json:"description,omitempty"`           // Description
-	SubscriptionEndpoints *[]RequestItemEventManagementCreateRestWebhookEventSubscriptionV1SubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
-	Filter                *RequestItemEventManagementCreateRestWebhookEventSubscriptionV1Filter                  `json:"filter,omitempty"`                //
+type RequestEventManagementCreateRestWebhookEventSubscription []RequestItemEventManagementCreateRestWebhookEventSubscription // Array of RequestEventManagementCreateRestWebhookEventSubscription
+type RequestItemEventManagementCreateRestWebhookEventSubscription struct {
+	SubscriptionID        string                                                                               `json:"subscriptionId,omitempty"`        // Subscription Id (Unique UUID)
+	Version               string                                                                               `json:"version,omitempty"`               // Version
+	Name                  string                                                                               `json:"name,omitempty"`                  // Name
+	Description           string                                                                               `json:"description,omitempty"`           // Description
+	SubscriptionEndpoints *[]RequestItemEventManagementCreateRestWebhookEventSubscriptionSubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
+	Filter                *RequestItemEventManagementCreateRestWebhookEventSubscriptionFilter                  `json:"filter,omitempty"`                //
 }
-type RequestItemEventManagementCreateRestWebhookEventSubscriptionV1SubscriptionEndpoints struct {
-	InstanceID          string                                                                                                  `json:"instanceId,omitempty"`          // (From 	Get Rest/Webhook Subscription Details --> pick instanceId)
-	SubscriptionDetails *RequestItemEventManagementCreateRestWebhookEventSubscriptionV1SubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
+type RequestItemEventManagementCreateRestWebhookEventSubscriptionSubscriptionEndpoints struct {
+	InstanceID          string                                                                                                `json:"instanceId,omitempty"`          // (From 	Get Rest/Webhook Subscription Details --> pick instanceId)
+	SubscriptionDetails *RequestItemEventManagementCreateRestWebhookEventSubscriptionSubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
 }
-type RequestItemEventManagementCreateRestWebhookEventSubscriptionV1SubscriptionEndpointsSubscriptionDetails struct {
+type RequestItemEventManagementCreateRestWebhookEventSubscriptionSubscriptionEndpointsSubscriptionDetails struct {
 	ConnectorType string `json:"connectorType,omitempty"` // Connector Type (Must be REST)
 }
-type RequestItemEventManagementCreateRestWebhookEventSubscriptionV1Filter struct {
-	EventIDs          []string                                                                                 `json:"eventIds,omitempty"`          // Event Ids (Comma separated event ids)
-	DomainsSubdomains *[]RequestItemEventManagementCreateRestWebhookEventSubscriptionV1FilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
-	Types             []string                                                                                 `json:"types,omitempty"`             // Types
-	Categories        []string                                                                                 `json:"categories,omitempty"`        // Categories
-	Severities        []string                                                                                 `json:"severities,omitempty"`        // Severities
-	Sources           []string                                                                                 `json:"sources,omitempty"`           // Sources
-	SiteIDs           []string                                                                                 `json:"siteIds,omitempty"`           // Site Ids
+type RequestItemEventManagementCreateRestWebhookEventSubscriptionFilter struct {
+	EventIDs          []string                                                                               `json:"eventIds,omitempty"`          // Event Ids (Comma separated event ids)
+	DomainsSubdomains *[]RequestItemEventManagementCreateRestWebhookEventSubscriptionFilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
+	Types             []string                                                                               `json:"types,omitempty"`             // Types
+	Categories        []string                                                                               `json:"categories,omitempty"`        // Categories
+	Severities        []string                                                                               `json:"severities,omitempty"`        // Severities
+	Sources           []string                                                                               `json:"sources,omitempty"`           // Sources
+	SiteIDs           []string                                                                               `json:"siteIds,omitempty"`           // Site Ids
 }
-type RequestItemEventManagementCreateRestWebhookEventSubscriptionV1FilterDomainsSubdomains struct {
+type RequestItemEventManagementCreateRestWebhookEventSubscriptionFilterDomainsSubdomains struct {
 	Domain     string   `json:"domain,omitempty"`     // Domain
 	SubDomains []string `json:"subDomains,omitempty"` // Sub Domains
 }
-type RequestEventManagementUpdateRestWebhookEventSubscriptionV1 []RequestItemEventManagementUpdateRestWebhookEventSubscriptionV1 // Array of RequestEventManagementUpdateRestWebhookEventSubscriptionV1
-type RequestItemEventManagementUpdateRestWebhookEventSubscriptionV1 struct {
-	SubscriptionID        string                                                                                 `json:"subscriptionId,omitempty"`        // Subscription Id (Unique UUID)
-	Version               string                                                                                 `json:"version,omitempty"`               // Version
-	Name                  string                                                                                 `json:"name,omitempty"`                  // Name
-	Description           string                                                                                 `json:"description,omitempty"`           // Description
-	SubscriptionEndpoints *[]RequestItemEventManagementUpdateRestWebhookEventSubscriptionV1SubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
-	Filter                *RequestItemEventManagementUpdateRestWebhookEventSubscriptionV1Filter                  `json:"filter,omitempty"`                //
+type RequestEventManagementUpdateRestWebhookEventSubscription []RequestItemEventManagementUpdateRestWebhookEventSubscription // Array of RequestEventManagementUpdateRestWebhookEventSubscription
+type RequestItemEventManagementUpdateRestWebhookEventSubscription struct {
+	SubscriptionID        string                                                                               `json:"subscriptionId,omitempty"`        // Subscription Id (Unique UUID)
+	Version               string                                                                               `json:"version,omitempty"`               // Version
+	Name                  string                                                                               `json:"name,omitempty"`                  // Name
+	Description           string                                                                               `json:"description,omitempty"`           // Description
+	SubscriptionEndpoints *[]RequestItemEventManagementUpdateRestWebhookEventSubscriptionSubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
+	Filter                *RequestItemEventManagementUpdateRestWebhookEventSubscriptionFilter                  `json:"filter,omitempty"`                //
 }
-type RequestItemEventManagementUpdateRestWebhookEventSubscriptionV1SubscriptionEndpoints struct {
-	InstanceID          string                                                                                                  `json:"instanceId,omitempty"`          // (From 	Get Rest/Webhook Subscription Details --> pick instanceId)
-	SubscriptionDetails *RequestItemEventManagementUpdateRestWebhookEventSubscriptionV1SubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
+type RequestItemEventManagementUpdateRestWebhookEventSubscriptionSubscriptionEndpoints struct {
+	InstanceID          string                                                                                                `json:"instanceId,omitempty"`          // (From 	Get Rest/Webhook Subscription Details --> pick instanceId)
+	SubscriptionDetails *RequestItemEventManagementUpdateRestWebhookEventSubscriptionSubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
 }
-type RequestItemEventManagementUpdateRestWebhookEventSubscriptionV1SubscriptionEndpointsSubscriptionDetails struct {
+type RequestItemEventManagementUpdateRestWebhookEventSubscriptionSubscriptionEndpointsSubscriptionDetails struct {
 	ConnectorType string `json:"connectorType,omitempty"` // Connector Type (Must be REST)
 }
-type RequestItemEventManagementUpdateRestWebhookEventSubscriptionV1Filter struct {
-	EventIDs          []string                                                                                 `json:"eventIds,omitempty"`          // Event Ids (Comma separated event ids)
-	DomainsSubdomains *[]RequestItemEventManagementUpdateRestWebhookEventSubscriptionV1FilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
-	Types             []string                                                                                 `json:"types,omitempty"`             // Types
-	Categories        []string                                                                                 `json:"categories,omitempty"`        // Categories
-	Severities        []string                                                                                 `json:"severities,omitempty"`        // Severities
-	Sources           []string                                                                                 `json:"sources,omitempty"`           // Sources
-	SiteIDs           []string                                                                                 `json:"siteIds,omitempty"`           // Site Ids
+type RequestItemEventManagementUpdateRestWebhookEventSubscriptionFilter struct {
+	EventIDs          []string                                                                               `json:"eventIds,omitempty"`          // Event Ids (Comma separated event ids)
+	DomainsSubdomains *[]RequestItemEventManagementUpdateRestWebhookEventSubscriptionFilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
+	Types             []string                                                                               `json:"types,omitempty"`             // Types
+	Categories        []string                                                                               `json:"categories,omitempty"`        // Categories
+	Severities        []string                                                                               `json:"severities,omitempty"`        // Severities
+	Sources           []string                                                                               `json:"sources,omitempty"`           // Sources
+	SiteIDs           []string                                                                               `json:"siteIds,omitempty"`           // Site Ids
 }
-type RequestItemEventManagementUpdateRestWebhookEventSubscriptionV1FilterDomainsSubdomains struct {
+type RequestItemEventManagementUpdateRestWebhookEventSubscriptionFilterDomainsSubdomains struct {
 	Domain     string   `json:"domain,omitempty"`     // Domain
 	SubDomains []string `json:"subDomains,omitempty"` // Sub Domains
 }
-type RequestEventManagementUpdateSyslogEventSubscriptionV1 []RequestItemEventManagementUpdateSyslogEventSubscriptionV1 // Array of RequestEventManagementUpdateSyslogEventSubscriptionV1
-type RequestItemEventManagementUpdateSyslogEventSubscriptionV1 struct {
-	SubscriptionID        string                                                                            `json:"subscriptionId,omitempty"`        // Subscription Id (Unique UUID)
-	Version               string                                                                            `json:"version,omitempty"`               // Version
-	Name                  string                                                                            `json:"name,omitempty"`                  // Name
-	Description           string                                                                            `json:"description,omitempty"`           // Description
-	SubscriptionEndpoints *[]RequestItemEventManagementUpdateSyslogEventSubscriptionV1SubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
-	Filter                *RequestItemEventManagementUpdateSyslogEventSubscriptionV1Filter                  `json:"filter,omitempty"`                //
+type RequestEventManagementUpdateSyslogEventSubscription []RequestItemEventManagementUpdateSyslogEventSubscription // Array of RequestEventManagementUpdateSyslogEventSubscription
+type RequestItemEventManagementUpdateSyslogEventSubscription struct {
+	SubscriptionID        string                                                                          `json:"subscriptionId,omitempty"`        // Subscription Id (Unique UUID)
+	Version               string                                                                          `json:"version,omitempty"`               // Version
+	Name                  string                                                                          `json:"name,omitempty"`                  // Name
+	Description           string                                                                          `json:"description,omitempty"`           // Description
+	SubscriptionEndpoints *[]RequestItemEventManagementUpdateSyslogEventSubscriptionSubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
+	Filter                *RequestItemEventManagementUpdateSyslogEventSubscriptionFilter                  `json:"filter,omitempty"`                //
 }
-type RequestItemEventManagementUpdateSyslogEventSubscriptionV1SubscriptionEndpoints struct {
-	InstanceID          string                                                                                             `json:"instanceId,omitempty"`          // (From Get Syslog Subscription Details --> pick instanceId)
-	SubscriptionDetails *RequestItemEventManagementUpdateSyslogEventSubscriptionV1SubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
+type RequestItemEventManagementUpdateSyslogEventSubscriptionSubscriptionEndpoints struct {
+	InstanceID          string                                                                                           `json:"instanceId,omitempty"`          // (From Get Syslog Subscription Details --> pick instanceId)
+	SubscriptionDetails *RequestItemEventManagementUpdateSyslogEventSubscriptionSubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
 }
-type RequestItemEventManagementUpdateSyslogEventSubscriptionV1SubscriptionEndpointsSubscriptionDetails struct {
+type RequestItemEventManagementUpdateSyslogEventSubscriptionSubscriptionEndpointsSubscriptionDetails struct {
 	ConnectorType string `json:"connectorType,omitempty"` // Connector Type (Must be SYSLOG)
 }
-type RequestItemEventManagementUpdateSyslogEventSubscriptionV1Filter struct {
-	EventIDs          []string                                                                            `json:"eventIds,omitempty"`          // Event Ids (Comma separated event ids)
-	DomainsSubdomains *[]RequestItemEventManagementUpdateSyslogEventSubscriptionV1FilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
-	Types             []string                                                                            `json:"types,omitempty"`             // Types
-	Categories        []string                                                                            `json:"categories,omitempty"`        // Categories
-	Severities        []string                                                                            `json:"severities,omitempty"`        // Severities
-	Sources           []string                                                                            `json:"sources,omitempty"`           // Sources
-	SiteIDs           []string                                                                            `json:"siteIds,omitempty"`           // Site Ids
+type RequestItemEventManagementUpdateSyslogEventSubscriptionFilter struct {
+	EventIDs          []string                                                                          `json:"eventIds,omitempty"`          // Event Ids (Comma separated event ids)
+	DomainsSubdomains *[]RequestItemEventManagementUpdateSyslogEventSubscriptionFilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
+	Types             []string                                                                          `json:"types,omitempty"`             // Types
+	Categories        []string                                                                          `json:"categories,omitempty"`        // Categories
+	Severities        []string                                                                          `json:"severities,omitempty"`        // Severities
+	Sources           []string                                                                          `json:"sources,omitempty"`           // Sources
+	SiteIDs           []string                                                                          `json:"siteIds,omitempty"`           // Site Ids
 }
-type RequestItemEventManagementUpdateSyslogEventSubscriptionV1FilterDomainsSubdomains struct {
+type RequestItemEventManagementUpdateSyslogEventSubscriptionFilterDomainsSubdomains struct {
 	Domain     string   `json:"domain,omitempty"`     // Domain
 	SubDomains []string `json:"subDomains,omitempty"` // Sub Domains
 }
-type RequestEventManagementCreateSyslogEventSubscriptionV1 []RequestItemEventManagementCreateSyslogEventSubscriptionV1 // Array of RequestEventManagementCreateSyslogEventSubscriptionV1
-type RequestItemEventManagementCreateSyslogEventSubscriptionV1 struct {
-	SubscriptionID        string                                                                            `json:"subscriptionId,omitempty"`        // Subscription Id (Unique UUID)
-	Version               string                                                                            `json:"version,omitempty"`               // Version
-	Name                  string                                                                            `json:"name,omitempty"`                  // Name
-	Description           string                                                                            `json:"description,omitempty"`           // Description
-	SubscriptionEndpoints *[]RequestItemEventManagementCreateSyslogEventSubscriptionV1SubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
-	Filter                *RequestItemEventManagementCreateSyslogEventSubscriptionV1Filter                  `json:"filter,omitempty"`                //
+type RequestEventManagementCreateSyslogEventSubscription []RequestItemEventManagementCreateSyslogEventSubscription // Array of RequestEventManagementCreateSyslogEventSubscription
+type RequestItemEventManagementCreateSyslogEventSubscription struct {
+	SubscriptionID        string                                                                          `json:"subscriptionId,omitempty"`        // Subscription Id (Unique UUID)
+	Version               string                                                                          `json:"version,omitempty"`               // Version
+	Name                  string                                                                          `json:"name,omitempty"`                  // Name
+	Description           string                                                                          `json:"description,omitempty"`           // Description
+	SubscriptionEndpoints *[]RequestItemEventManagementCreateSyslogEventSubscriptionSubscriptionEndpoints `json:"subscriptionEndpoints,omitempty"` //
+	Filter                *RequestItemEventManagementCreateSyslogEventSubscriptionFilter                  `json:"filter,omitempty"`                //
 }
-type RequestItemEventManagementCreateSyslogEventSubscriptionV1SubscriptionEndpoints struct {
-	InstanceID          string                                                                                             `json:"instanceId,omitempty"`          // (From Get Syslog Subscription Details --> pick instanceId)
-	SubscriptionDetails *RequestItemEventManagementCreateSyslogEventSubscriptionV1SubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
+type RequestItemEventManagementCreateSyslogEventSubscriptionSubscriptionEndpoints struct {
+	InstanceID          string                                                                                           `json:"instanceId,omitempty"`          // (From Get Syslog Subscription Details --> pick instanceId)
+	SubscriptionDetails *RequestItemEventManagementCreateSyslogEventSubscriptionSubscriptionEndpointsSubscriptionDetails `json:"subscriptionDetails,omitempty"` //
 }
-type RequestItemEventManagementCreateSyslogEventSubscriptionV1SubscriptionEndpointsSubscriptionDetails struct {
+type RequestItemEventManagementCreateSyslogEventSubscriptionSubscriptionEndpointsSubscriptionDetails struct {
 	ConnectorType string `json:"connectorType,omitempty"` // Connector Type (Must be SYSLOG)
 }
-type RequestItemEventManagementCreateSyslogEventSubscriptionV1Filter struct {
-	EventIDs          []string                                                                            `json:"eventIds,omitempty"`          // Event Ids (Comma separated event ids)
-	DomainsSubdomains *[]RequestItemEventManagementCreateSyslogEventSubscriptionV1FilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
-	Types             []string                                                                            `json:"types,omitempty"`             // Types
-	Categories        []string                                                                            `json:"categories,omitempty"`        // Categories
-	Severities        []string                                                                            `json:"severities,omitempty"`        // Severities
-	Sources           []string                                                                            `json:"sources,omitempty"`           // Sources
-	SiteIDs           []string                                                                            `json:"siteIds,omitempty"`           // Site Ids
+type RequestItemEventManagementCreateSyslogEventSubscriptionFilter struct {
+	EventIDs          []string                                                                          `json:"eventIds,omitempty"`          // Event Ids (Comma separated event ids)
+	DomainsSubdomains *[]RequestItemEventManagementCreateSyslogEventSubscriptionFilterDomainsSubdomains `json:"domainsSubdomains,omitempty"` //
+	Types             []string                                                                          `json:"types,omitempty"`             // Types
+	Categories        []string                                                                          `json:"categories,omitempty"`        // Categories
+	Severities        []string                                                                          `json:"severities,omitempty"`        // Severities
+	Sources           []string                                                                          `json:"sources,omitempty"`           // Sources
+	SiteIDs           []string                                                                          `json:"siteIds,omitempty"`           // Site Ids
 }
-type RequestItemEventManagementCreateSyslogEventSubscriptionV1FilterDomainsSubdomains struct {
+type RequestItemEventManagementCreateSyslogEventSubscriptionFilterDomainsSubdomains struct {
 	Domain     string   `json:"domain,omitempty"`     // Domain
 	SubDomains []string `json:"subDomains,omitempty"` // Sub Domains
 }
-type RequestEventManagementUpdateSyslogDestinationV1 struct {
+type RequestEventManagementUpdateSyslogDestination struct {
 	ConfigID    string `json:"configId,omitempty"`    // Required only for update syslog configuration
 	Name        string `json:"name,omitempty"`        // Name
 	Description string `json:"description,omitempty"` // Description
@@ -1151,7 +1150,7 @@ type RequestEventManagementUpdateSyslogDestinationV1 struct {
 	Protocol    string `json:"protocol,omitempty"`    // Protocol
 	Port        *int   `json:"port,omitempty"`        // Port
 }
-type RequestEventManagementCreateSyslogDestinationV1 struct {
+type RequestEventManagementCreateSyslogDestination struct {
 	ConfigID    string `json:"configId,omitempty"`    // Required only for update syslog configuration
 	Name        string `json:"name,omitempty"`        // Name
 	Description string `json:"description,omitempty"` // Description
@@ -1159,56 +1158,56 @@ type RequestEventManagementCreateSyslogDestinationV1 struct {
 	Protocol    string `json:"protocol,omitempty"`    // Protocol
 	Port        *int   `json:"port,omitempty"`        // Port
 }
-type RequestEventManagementCreateWebhookDestinationV1 struct {
-	WebhookID    string                                                     `json:"webhookId,omitempty"`    // Required only for update webhook configuration
-	Name         string                                                     `json:"name,omitempty"`         // Name
-	Description  string                                                     `json:"description,omitempty"`  // Description
-	URL          string                                                     `json:"url,omitempty"`          // Url
-	Method       string                                                     `json:"method,omitempty"`       // Method
-	TrustCert    *bool                                                      `json:"trustCert,omitempty"`    // Trust Cert
-	Headers      *[]RequestEventManagementCreateWebhookDestinationV1Headers `json:"headers,omitempty"`      //
-	IsProxyRoute *bool                                                      `json:"isProxyRoute,omitempty"` // Is Proxy Route
+type RequestEventManagementCreateWebhookDestination struct {
+	WebhookID    string                                                   `json:"webhookId,omitempty"`    // Required only for update webhook configuration
+	Name         string                                                   `json:"name,omitempty"`         // Name
+	Description  string                                                   `json:"description,omitempty"`  // Description
+	URL          string                                                   `json:"url,omitempty"`          // Url
+	Method       string                                                   `json:"method,omitempty"`       // Method
+	TrustCert    *bool                                                    `json:"trustCert,omitempty"`    // Trust Cert
+	Headers      *[]RequestEventManagementCreateWebhookDestinationHeaders `json:"headers,omitempty"`      //
+	IsProxyRoute *bool                                                    `json:"isProxyRoute,omitempty"` // Is Proxy Route
 }
-type RequestEventManagementCreateWebhookDestinationV1Headers struct {
+type RequestEventManagementCreateWebhookDestinationHeaders struct {
 	Name         string `json:"name,omitempty"`         // Name
 	Value        string `json:"value,omitempty"`        // Value
 	DefaultValue string `json:"defaultValue,omitempty"` // Default Value
 	Encrypt      *bool  `json:"encrypt,omitempty"`      // Encrypt
 }
-type RequestEventManagementUpdateWebhookDestinationV1 struct {
-	WebhookID    string                                                     `json:"webhookId,omitempty"`    // Required only for update webhook configuration
-	Name         string                                                     `json:"name,omitempty"`         // Name
-	Description  string                                                     `json:"description,omitempty"`  // Description
-	URL          string                                                     `json:"url,omitempty"`          // Url
-	Method       string                                                     `json:"method,omitempty"`       // Method
-	TrustCert    *bool                                                      `json:"trustCert,omitempty"`    // Trust Cert
-	Headers      *[]RequestEventManagementUpdateWebhookDestinationV1Headers `json:"headers,omitempty"`      //
-	IsProxyRoute *bool                                                      `json:"isProxyRoute,omitempty"` // Is Proxy Route
+type RequestEventManagementUpdateWebhookDestination struct {
+	WebhookID    string                                                   `json:"webhookId,omitempty"`    // Required only for update webhook configuration
+	Name         string                                                   `json:"name,omitempty"`         // Name
+	Description  string                                                   `json:"description,omitempty"`  // Description
+	URL          string                                                   `json:"url,omitempty"`          // Url
+	Method       string                                                   `json:"method,omitempty"`       // Method
+	TrustCert    *bool                                                    `json:"trustCert,omitempty"`    // Trust Cert
+	Headers      *[]RequestEventManagementUpdateWebhookDestinationHeaders `json:"headers,omitempty"`      //
+	IsProxyRoute *bool                                                    `json:"isProxyRoute,omitempty"` // Is Proxy Route
 }
-type RequestEventManagementUpdateWebhookDestinationV1Headers struct {
+type RequestEventManagementUpdateWebhookDestinationHeaders struct {
 	Name         string `json:"name,omitempty"`         // Name
 	Value        string `json:"value,omitempty"`        // Value
 	DefaultValue string `json:"defaultValue,omitempty"` // Default Value
 	Encrypt      *bool  `json:"encrypt,omitempty"`      // Encrypt
 }
 
-//GetAuditLogParentRecordsV1 Get AuditLog Parent Records - 9590-7ae9-46ea-b1c6
+//GetAuditLogParentRecords Get AuditLog Parent Records - 9590-7ae9-46ea-b1c6
 /* Get Parent Audit Log Event instances from the Event-Hub
 
 
-@param GetAuditLogParentRecordsV1QueryParams Filtering parameter
+@param GetAuditLogParentRecordsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-audit-log-parent-records
 */
-func (s *EventManagementService) GetAuditLogParentRecordsV1(GetAuditLogParentRecordsV1QueryParams *GetAuditLogParentRecordsV1QueryParams) (*ResponseEventManagementGetAuditLogParentRecordsV1, *resty.Response, error) {
+func (s *EventManagementService) GetAuditLogParentRecords(GetAuditLogParentRecordsQueryParams *GetAuditLogParentRecordsQueryParams) (*ResponseEventManagementGetAuditLogParentRecords, *resty.Response, error) {
 	path := "/dna/data/api/v1/event/event-series/audit-log/parent-records"
 
-	queryString, _ := query.Values(GetAuditLogParentRecordsV1QueryParams)
+	queryString, _ := query.Values(GetAuditLogParentRecordsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetAuditLogParentRecordsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetAuditLogParentRecords{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1219,33 +1218,33 @@ func (s *EventManagementService) GetAuditLogParentRecordsV1(GetAuditLogParentRec
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetAuditLogParentRecordsV1(GetAuditLogParentRecordsV1QueryParams)
+			return s.GetAuditLogParentRecords(GetAuditLogParentRecordsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetAuditLogParentRecordsV1")
+		return nil, response, fmt.Errorf("error with operation GetAuditLogParentRecords")
 	}
 
-	result := response.Result().(*ResponseEventManagementGetAuditLogParentRecordsV1)
+	result := response.Result().(*ResponseEventManagementGetAuditLogParentRecords)
 	return result, response, err
 
 }
 
-//GetAuditLogSummaryV1 Get AuditLog Summary - 4a87-484a-4df9-819e
+//GetAuditLogSummary Get AuditLog Summary - 4a87-484a-4df9-819e
 /* Get Audit Log Summary from the Event-Hub
 
 
-@param GetAuditLogSummaryV1QueryParams Filtering parameter
+@param GetAuditLogSummaryQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-audit-log-summary
 */
-func (s *EventManagementService) GetAuditLogSummaryV1(GetAuditLogSummaryV1QueryParams *GetAuditLogSummaryV1QueryParams) (*ResponseEventManagementGetAuditLogSummaryV1, *resty.Response, error) {
+func (s *EventManagementService) GetAuditLogSummary(GetAuditLogSummaryQueryParams *GetAuditLogSummaryQueryParams) (*ResponseEventManagementGetAuditLogSummary, *resty.Response, error) {
 	path := "/dna/data/api/v1/event/event-series/audit-log/summary"
 
-	queryString, _ := query.Values(GetAuditLogSummaryV1QueryParams)
+	queryString, _ := query.Values(GetAuditLogSummaryQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetAuditLogSummaryV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetAuditLogSummary{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1256,33 +1255,33 @@ func (s *EventManagementService) GetAuditLogSummaryV1(GetAuditLogSummaryV1QueryP
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetAuditLogSummaryV1(GetAuditLogSummaryV1QueryParams)
+			return s.GetAuditLogSummary(GetAuditLogSummaryQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetAuditLogSummaryV1")
+		return nil, response, fmt.Errorf("error with operation GetAuditLogSummary")
 	}
 
-	result := response.Result().(*ResponseEventManagementGetAuditLogSummaryV1)
+	result := response.Result().(*ResponseEventManagementGetAuditLogSummary)
 	return result, response, err
 
 }
 
-//GetAuditLogRecordsV1 Get AuditLog Records - 89a9-fafb-4d49-bd86
+//GetAuditLogRecords Get AuditLog Records - 89a9-fafb-4d49-bd86
 /* Get Audit Log Event instances from the Event-Hub
 
 
-@param GetAuditLogRecordsV1QueryParams Filtering parameter
+@param GetAuditLogRecordsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-audit-log-records
 */
-func (s *EventManagementService) GetAuditLogRecordsV1(GetAuditLogRecordsV1QueryParams *GetAuditLogRecordsV1QueryParams) (*ResponseEventManagementGetAuditLogRecordsV1, *resty.Response, error) {
+func (s *EventManagementService) GetAuditLogRecords(GetAuditLogRecordsQueryParams *GetAuditLogRecordsQueryParams) (*ResponseEventManagementGetAuditLogRecords, *resty.Response, error) {
 	path := "/dna/data/api/v1/event/event-series/audit-logs"
 
-	queryString, _ := query.Values(GetAuditLogRecordsV1QueryParams)
+	queryString, _ := query.Values(GetAuditLogRecordsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetAuditLogRecordsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetAuditLogRecords{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1293,33 +1292,33 @@ func (s *EventManagementService) GetAuditLogRecordsV1(GetAuditLogRecordsV1QueryP
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetAuditLogRecordsV1(GetAuditLogRecordsV1QueryParams)
+			return s.GetAuditLogRecords(GetAuditLogRecordsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetAuditLogRecordsV1")
+		return nil, response, fmt.Errorf("error with operation GetAuditLogRecords")
 	}
 
-	result := response.Result().(*ResponseEventManagementGetAuditLogRecordsV1)
+	result := response.Result().(*ResponseEventManagementGetAuditLogRecords)
 	return result, response, err
 
 }
 
-//GetSNMPDestinationV1 Get SNMP Destination - ffbb-e92a-40e9-9ae6
+//GetSNMPDestination Get SNMP Destination - ffbb-e92a-40e9-9ae6
 /* Get SNMP Destination
 
 
-@param GetSNMPDestinationV1QueryParams Filtering parameter
+@param GetSNMPDestinationQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-snmp-destination
 */
-func (s *EventManagementService) GetSNMPDestinationV1(GetSNMPDestinationV1QueryParams *GetSNMPDestinationV1QueryParams) (*ResponseEventManagementGetSNMPDestinationV1, *resty.Response, error) {
+func (s *EventManagementService) GetSNMPDestination(GetSNMPDestinationQueryParams *GetSNMPDestinationQueryParams) (*ResponseEventManagementGetSNMPDestination, *resty.Response, error) {
 	path := "/dna/intent/api/v1/dna-event/snmp-config"
 
-	queryString, _ := query.Values(GetSNMPDestinationV1QueryParams)
+	queryString, _ := query.Values(GetSNMPDestinationQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetSNMPDestinationV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetSNMPDestination{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1330,17 +1329,17 @@ func (s *EventManagementService) GetSNMPDestinationV1(GetSNMPDestinationV1QueryP
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetSNMPDestinationV1(GetSNMPDestinationV1QueryParams)
+			return s.GetSNMPDestination(GetSNMPDestinationQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetSnmpDestinationV1")
+		return nil, response, fmt.Errorf("error with operation GetSnmpDestination")
 	}
 
-	result := response.Result().(*ResponseEventManagementGetSNMPDestinationV1)
+	result := response.Result().(*ResponseEventManagementGetSNMPDestination)
 	return result, response, err
 
 }
 
-//GetStatusAPIForEventsV1 Get Status API for Events - f9bd-99c7-4bba-8832
+//GetStatusAPIForEvents Get Status API for Events - f9bd-99c7-4bba-8832
 /* Get the Status of events API calls with provided executionId as mandatory path parameter
 
 
@@ -1349,14 +1348,14 @@ func (s *EventManagementService) GetSNMPDestinationV1(GetSNMPDestinationV1QueryP
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-status-api-for-events
 */
-func (s *EventManagementService) GetStatusAPIForEventsV1(executionID string) (*ResponseEventManagementGetStatusAPIForEventsV1, *resty.Response, error) {
+func (s *EventManagementService) GetStatusAPIForEvents(executionID string) (*ResponseEventManagementGetStatusAPIForEvents, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/api-status/{executionId}"
 	path = strings.Replace(path, "{executionId}", fmt.Sprintf("%v", executionID), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseEventManagementGetStatusAPIForEventsV1{}).
+		SetResult(&ResponseEventManagementGetStatusAPIForEvents{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1367,30 +1366,30 @@ func (s *EventManagementService) GetStatusAPIForEventsV1(executionID string) (*R
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetStatusAPIForEventsV1(executionID)
+			return s.GetStatusAPIForEvents(executionID)
 		}
-		return nil, response, fmt.Errorf("error with operation GetStatusApiForEventsV1")
+		return nil, response, fmt.Errorf("error with operation GetStatusApiForEvents")
 	}
 
-	result := response.Result().(*ResponseEventManagementGetStatusAPIForEventsV1)
+	result := response.Result().(*ResponseEventManagementGetStatusAPIForEvents)
 	return result, response, err
 
 }
 
-//GetEmailDestinationV1 Get Email Destination - aebc-3bec-4858-8488
+//GetEmailDestination Get Email Destination - aebc-3bec-4858-8488
 /* Get Email Destination
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-email-destination
 */
-func (s *EventManagementService) GetEmailDestinationV1() (*ResponseEventManagementGetEmailDestinationV1, *resty.Response, error) {
+func (s *EventManagementService) GetEmailDestination() (*ResponseEventManagementGetEmailDestination, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/email-config"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseEventManagementGetEmailDestinationV1{}).
+		SetResult(&ResponseEventManagementGetEmailDestination{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1401,33 +1400,33 @@ func (s *EventManagementService) GetEmailDestinationV1() (*ResponseEventManageme
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetEmailDestinationV1()
+			return s.GetEmailDestination()
 		}
-		return nil, response, fmt.Errorf("error with operation GetEmailDestinationV1")
+		return nil, response, fmt.Errorf("error with operation GetEmailDestination")
 	}
 
-	result := response.Result().(*ResponseEventManagementGetEmailDestinationV1)
+	result := response.Result().(*ResponseEventManagementGetEmailDestination)
 	return result, response, err
 
 }
 
-//GetNotificationsV1 Get Notifications - 8499-9b56-4afb-8657
+//GetNotifications Get Notifications - 8499-9b56-4afb-8657
 /* Get the list of Published Notifications
 
 
-@param GetNotificationsV1QueryParams Filtering parameter
+@param GetNotificationsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-notifications
 */
-func (s *EventManagementService) GetNotificationsV1(GetNotificationsV1QueryParams *GetNotificationsV1QueryParams) (*ResponseEventManagementGetNotificationsV1, *resty.Response, error) {
+func (s *EventManagementService) GetNotifications(GetNotificationsQueryParams *GetNotificationsQueryParams) (*ResponseEventManagementGetNotifications, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/event-series"
 
-	queryString, _ := query.Values(GetNotificationsV1QueryParams)
+	queryString, _ := query.Values(GetNotificationsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetNotificationsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetNotifications{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1438,33 +1437,33 @@ func (s *EventManagementService) GetNotificationsV1(GetNotificationsV1QueryParam
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetNotificationsV1(GetNotificationsV1QueryParams)
+			return s.GetNotifications(GetNotificationsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetNotificationsV1")
+		return nil, response, fmt.Errorf("error with operation GetNotifications")
 	}
 
-	result := response.Result().(*ResponseEventManagementGetNotificationsV1)
+	result := response.Result().(*ResponseEventManagementGetNotifications)
 	return result, response, err
 
 }
 
-//CountOfNotificationsV1 Count of Notifications - 0eb8-faf7-42aa-abb7
+//CountOfNotifications Count of Notifications - 0eb8-faf7-42aa-abb7
 /* Get the Count of Published Notifications
 
 
-@param CountOfNotificationsV1QueryParams Filtering parameter
+@param CountOfNotificationsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!count-of-notifications
 */
-func (s *EventManagementService) CountOfNotificationsV1(CountOfNotificationsV1QueryParams *CountOfNotificationsV1QueryParams) (*ResponseEventManagementCountOfNotificationsV1, *resty.Response, error) {
+func (s *EventManagementService) CountOfNotifications(CountOfNotificationsQueryParams *CountOfNotificationsQueryParams) (*ResponseEventManagementCountOfNotifications, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/event-series/count"
 
-	queryString, _ := query.Values(CountOfNotificationsV1QueryParams)
+	queryString, _ := query.Values(CountOfNotificationsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementCountOfNotificationsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementCountOfNotifications{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1475,33 +1474,33 @@ func (s *EventManagementService) CountOfNotificationsV1(CountOfNotificationsV1Qu
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CountOfNotificationsV1(CountOfNotificationsV1QueryParams)
+			return s.CountOfNotifications(CountOfNotificationsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation CountOfNotificationsV1")
+		return nil, response, fmt.Errorf("error with operation CountOfNotifications")
 	}
 
-	result := response.Result().(*ResponseEventManagementCountOfNotificationsV1)
+	result := response.Result().(*ResponseEventManagementCountOfNotifications)
 	return result, response, err
 
 }
 
-//GetEventSubscriptionsV1 Get Event Subscriptions - dcaa-6bde-4feb-9152
+//GetEventSubscriptions Get Event Subscriptions - dcaa-6bde-4feb-9152
 /* Gets the list of Subscriptions's based on provided offset and limit. Deprecated since Guardian release. Alternative: GET /intent/api/v1/event/subscription/rest
 
 
-@param GetEventSubscriptionsV1QueryParams Filtering parameter
+@param GetEventSubscriptionsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-event-subscriptions
 */
-func (s *EventManagementService) GetEventSubscriptionsV1(GetEventSubscriptionsV1QueryParams *GetEventSubscriptionsV1QueryParams) (*ResponseEventManagementGetEventSubscriptionsV1, *resty.Response, error) {
+func (s *EventManagementService) GetEventSubscriptions(GetEventSubscriptionsQueryParams *GetEventSubscriptionsQueryParams) (*ResponseEventManagementGetEventSubscriptions, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription"
 
-	queryString, _ := query.Values(GetEventSubscriptionsV1QueryParams)
+	queryString, _ := query.Values(GetEventSubscriptionsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetEventSubscriptionsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetEventSubscriptions{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1512,33 +1511,33 @@ func (s *EventManagementService) GetEventSubscriptionsV1(GetEventSubscriptionsV1
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetEventSubscriptionsV1(GetEventSubscriptionsV1QueryParams)
+			return s.GetEventSubscriptions(GetEventSubscriptionsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetEventSubscriptionsV1")
+		return nil, response, fmt.Errorf("error with operation GetEventSubscriptions")
 	}
 
-	result := response.Result().(*ResponseEventManagementGetEventSubscriptionsV1)
+	result := response.Result().(*ResponseEventManagementGetEventSubscriptions)
 	return result, response, err
 
 }
 
-//GetEmailSubscriptionDetailsV1 Get Email Subscription Details - 339f-d9f5-4719-a410
+//GetEmailSubscriptionDetails Get Email Subscription Details - 339f-d9f5-4719-a410
 /* Gets the list of subscription details for specified connectorType
 
 
-@param GetEmailSubscriptionDetailsV1QueryParams Filtering parameter
+@param GetEmailSubscriptionDetailsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-email-subscription-details
 */
-func (s *EventManagementService) GetEmailSubscriptionDetailsV1(GetEmailSubscriptionDetailsV1QueryParams *GetEmailSubscriptionDetailsV1QueryParams) (*ResponseEventManagementGetEmailSubscriptionDetailsV1, *resty.Response, error) {
+func (s *EventManagementService) GetEmailSubscriptionDetails(GetEmailSubscriptionDetailsQueryParams *GetEmailSubscriptionDetailsQueryParams) (*ResponseEventManagementGetEmailSubscriptionDetails, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription-details/email"
 
-	queryString, _ := query.Values(GetEmailSubscriptionDetailsV1QueryParams)
+	queryString, _ := query.Values(GetEmailSubscriptionDetailsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetEmailSubscriptionDetailsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetEmailSubscriptionDetails{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1549,33 +1548,33 @@ func (s *EventManagementService) GetEmailSubscriptionDetailsV1(GetEmailSubscript
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetEmailSubscriptionDetailsV1(GetEmailSubscriptionDetailsV1QueryParams)
+			return s.GetEmailSubscriptionDetails(GetEmailSubscriptionDetailsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetEmailSubscriptionDetailsV1")
+		return nil, response, fmt.Errorf("error with operation GetEmailSubscriptionDetails")
 	}
 
-	result := response.Result().(*ResponseEventManagementGetEmailSubscriptionDetailsV1)
+	result := response.Result().(*ResponseEventManagementGetEmailSubscriptionDetails)
 	return result, response, err
 
 }
 
-//GetRestWebhookSubscriptionDetailsV1 Get Rest/Webhook Subscription Details - eeb6-8baf-4338-bb23
+//GetRestWebhookSubscriptionDetails Get Rest/Webhook Subscription Details - eeb6-8baf-4338-bb23
 /* Gets the list of subscription details for specified connectorType
 
 
-@param GetRestWebhookSubscriptionDetailsV1QueryParams Filtering parameter
+@param GetRestWebhookSubscriptionDetailsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-rest-webhook-subscription-details
 */
-func (s *EventManagementService) GetRestWebhookSubscriptionDetailsV1(GetRestWebhookSubscriptionDetailsV1QueryParams *GetRestWebhookSubscriptionDetailsV1QueryParams) (*ResponseEventManagementGetRestWebhookSubscriptionDetailsV1, *resty.Response, error) {
+func (s *EventManagementService) GetRestWebhookSubscriptionDetails(GetRestWebhookSubscriptionDetailsQueryParams *GetRestWebhookSubscriptionDetailsQueryParams) (*ResponseEventManagementGetRestWebhookSubscriptionDetails, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription-details/rest"
 
-	queryString, _ := query.Values(GetRestWebhookSubscriptionDetailsV1QueryParams)
+	queryString, _ := query.Values(GetRestWebhookSubscriptionDetailsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetRestWebhookSubscriptionDetailsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetRestWebhookSubscriptionDetails{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1586,33 +1585,33 @@ func (s *EventManagementService) GetRestWebhookSubscriptionDetailsV1(GetRestWebh
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetRestWebhookSubscriptionDetailsV1(GetRestWebhookSubscriptionDetailsV1QueryParams)
+			return s.GetRestWebhookSubscriptionDetails(GetRestWebhookSubscriptionDetailsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetRestWebhookSubscriptionDetailsV1")
+		return nil, response, fmt.Errorf("error with operation GetRestWebhookSubscriptionDetails")
 	}
 
-	result := response.Result().(*ResponseEventManagementGetRestWebhookSubscriptionDetailsV1)
+	result := response.Result().(*ResponseEventManagementGetRestWebhookSubscriptionDetails)
 	return result, response, err
 
 }
 
-//GetSyslogSubscriptionDetailsV1 Get Syslog Subscription Details - 1785-5b4e-4e69-a497
+//GetSyslogSubscriptionDetails Get Syslog Subscription Details - 1785-5b4e-4e69-a497
 /* Gets the list of subscription details for specified connectorType
 
 
-@param GetSyslogSubscriptionDetailsV1QueryParams Filtering parameter
+@param GetSyslogSubscriptionDetailsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-syslog-subscription-details
 */
-func (s *EventManagementService) GetSyslogSubscriptionDetailsV1(GetSyslogSubscriptionDetailsV1QueryParams *GetSyslogSubscriptionDetailsV1QueryParams) (*ResponseEventManagementGetSyslogSubscriptionDetailsV1, *resty.Response, error) {
+func (s *EventManagementService) GetSyslogSubscriptionDetails(GetSyslogSubscriptionDetailsQueryParams *GetSyslogSubscriptionDetailsQueryParams) (*ResponseEventManagementGetSyslogSubscriptionDetails, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription-details/syslog"
 
-	queryString, _ := query.Values(GetSyslogSubscriptionDetailsV1QueryParams)
+	queryString, _ := query.Values(GetSyslogSubscriptionDetailsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetSyslogSubscriptionDetailsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetSyslogSubscriptionDetails{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1623,33 +1622,33 @@ func (s *EventManagementService) GetSyslogSubscriptionDetailsV1(GetSyslogSubscri
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetSyslogSubscriptionDetailsV1(GetSyslogSubscriptionDetailsV1QueryParams)
+			return s.GetSyslogSubscriptionDetails(GetSyslogSubscriptionDetailsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetSyslogSubscriptionDetailsV1")
+		return nil, response, fmt.Errorf("error with operation GetSyslogSubscriptionDetails")
 	}
 
-	result := response.Result().(*ResponseEventManagementGetSyslogSubscriptionDetailsV1)
+	result := response.Result().(*ResponseEventManagementGetSyslogSubscriptionDetails)
 	return result, response, err
 
 }
 
-//CountOfEventSubscriptionsV1 Count of Event Subscriptions - 149b-7ba0-4e58-90b2
+//CountOfEventSubscriptions Count of Event Subscriptions - 149b-7ba0-4e58-90b2
 /* Returns the Count of EventSubscriptions
 
 
-@param CountOfEventSubscriptionsV1QueryParams Filtering parameter
+@param CountOfEventSubscriptionsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!count-of-event-subscriptions
 */
-func (s *EventManagementService) CountOfEventSubscriptionsV1(CountOfEventSubscriptionsV1QueryParams *CountOfEventSubscriptionsV1QueryParams) (*ResponseEventManagementCountOfEventSubscriptionsV1, *resty.Response, error) {
+func (s *EventManagementService) CountOfEventSubscriptions(CountOfEventSubscriptionsQueryParams *CountOfEventSubscriptionsQueryParams) (*ResponseEventManagementCountOfEventSubscriptions, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription/count"
 
-	queryString, _ := query.Values(CountOfEventSubscriptionsV1QueryParams)
+	queryString, _ := query.Values(CountOfEventSubscriptionsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementCountOfEventSubscriptionsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementCountOfEventSubscriptions{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1660,33 +1659,33 @@ func (s *EventManagementService) CountOfEventSubscriptionsV1(CountOfEventSubscri
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CountOfEventSubscriptionsV1(CountOfEventSubscriptionsV1QueryParams)
+			return s.CountOfEventSubscriptions(CountOfEventSubscriptionsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation CountOfEventSubscriptionsV1")
+		return nil, response, fmt.Errorf("error with operation CountOfEventSubscriptions")
 	}
 
-	result := response.Result().(*ResponseEventManagementCountOfEventSubscriptionsV1)
+	result := response.Result().(*ResponseEventManagementCountOfEventSubscriptions)
 	return result, response, err
 
 }
 
-//GetEmailEventSubscriptionsV1 Get Email Event Subscriptions - 39b2-0851-4b39-837e
+//GetEmailEventSubscriptions Get Email Event Subscriptions - 39b2-0851-4b39-837e
 /* Gets the list of email Subscriptions's based on provided query params
 
 
-@param GetEmailEventSubscriptionsV1QueryParams Filtering parameter
+@param GetEmailEventSubscriptionsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-email-event-subscriptions
 */
-func (s *EventManagementService) GetEmailEventSubscriptionsV1(GetEmailEventSubscriptionsV1QueryParams *GetEmailEventSubscriptionsV1QueryParams) (*ResponseEventManagementGetEmailEventSubscriptionsV1, *resty.Response, error) {
+func (s *EventManagementService) GetEmailEventSubscriptions(GetEmailEventSubscriptionsQueryParams *GetEmailEventSubscriptionsQueryParams) (*ResponseEventManagementGetEmailEventSubscriptions, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription/email"
 
-	queryString, _ := query.Values(GetEmailEventSubscriptionsV1QueryParams)
+	queryString, _ := query.Values(GetEmailEventSubscriptionsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetEmailEventSubscriptionsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetEmailEventSubscriptions{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1697,33 +1696,33 @@ func (s *EventManagementService) GetEmailEventSubscriptionsV1(GetEmailEventSubsc
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetEmailEventSubscriptionsV1(GetEmailEventSubscriptionsV1QueryParams)
+			return s.GetEmailEventSubscriptions(GetEmailEventSubscriptionsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetEmailEventSubscriptionsV1")
+		return nil, response, fmt.Errorf("error with operation GetEmailEventSubscriptions")
 	}
 
-	result := response.Result().(*ResponseEventManagementGetEmailEventSubscriptionsV1)
+	result := response.Result().(*ResponseEventManagementGetEmailEventSubscriptions)
 	return result, response, err
 
 }
 
-//GetRestWebhookEventSubscriptionsV1 Get Rest/Webhook Event Subscriptions - dcaa-6bde-4feb-9153
+//GetRestWebhookEventSubscriptions Get Rest/Webhook Event Subscriptions - dcaa-6bde-4feb-9153
 /* Gets the list of Rest/Webhook Subscriptions's based on provided query params
 
 
-@param GetRestWebhookEventSubscriptionsV1QueryParams Filtering parameter
+@param GetRestWebhookEventSubscriptionsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-rest-webhook-event-subscriptions
 */
-func (s *EventManagementService) GetRestWebhookEventSubscriptionsV1(GetRestWebhookEventSubscriptionsV1QueryParams *GetRestWebhookEventSubscriptionsV1QueryParams) (*ResponseEventManagementGetRestWebhookEventSubscriptionsV1, *resty.Response, error) {
+func (s *EventManagementService) GetRestWebhookEventSubscriptions(GetRestWebhookEventSubscriptionsQueryParams *GetRestWebhookEventSubscriptionsQueryParams) (*ResponseEventManagementGetRestWebhookEventSubscriptions, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription/rest"
 
-	queryString, _ := query.Values(GetRestWebhookEventSubscriptionsV1QueryParams)
+	queryString, _ := query.Values(GetRestWebhookEventSubscriptionsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetRestWebhookEventSubscriptionsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetRestWebhookEventSubscriptions{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1734,33 +1733,33 @@ func (s *EventManagementService) GetRestWebhookEventSubscriptionsV1(GetRestWebho
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetRestWebhookEventSubscriptionsV1(GetRestWebhookEventSubscriptionsV1QueryParams)
+			return s.GetRestWebhookEventSubscriptions(GetRestWebhookEventSubscriptionsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetRestWebhookEventSubscriptionsV1")
+		return nil, response, fmt.Errorf("error with operation GetRestWebhookEventSubscriptions")
 	}
 
-	result := response.Result().(*ResponseEventManagementGetRestWebhookEventSubscriptionsV1)
+	result := response.Result().(*ResponseEventManagementGetRestWebhookEventSubscriptions)
 	return result, response, err
 
 }
 
-//GetSyslogEventSubscriptionsV1 Get Syslog Event Subscriptions - c5a9-2a5b-4e6a-852e
+//GetSyslogEventSubscriptions Get Syslog Event Subscriptions - c5a9-2a5b-4e6a-852e
 /* Gets the list of Syslog Subscriptions's based on provided offset and limit
 
 
-@param GetSyslogEventSubscriptionsV1QueryParams Filtering parameter
+@param GetSyslogEventSubscriptionsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-syslog-event-subscriptions
 */
-func (s *EventManagementService) GetSyslogEventSubscriptionsV1(GetSyslogEventSubscriptionsV1QueryParams *GetSyslogEventSubscriptionsV1QueryParams) (*ResponseEventManagementGetSyslogEventSubscriptionsV1, *resty.Response, error) {
+func (s *EventManagementService) GetSyslogEventSubscriptions(GetSyslogEventSubscriptionsQueryParams *GetSyslogEventSubscriptionsQueryParams) (*ResponseEventManagementGetSyslogEventSubscriptions, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription/syslog"
 
-	queryString, _ := query.Values(GetSyslogEventSubscriptionsV1QueryParams)
+	queryString, _ := query.Values(GetSyslogEventSubscriptionsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetSyslogEventSubscriptionsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetSyslogEventSubscriptions{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1771,33 +1770,33 @@ func (s *EventManagementService) GetSyslogEventSubscriptionsV1(GetSyslogEventSub
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetSyslogEventSubscriptionsV1(GetSyslogEventSubscriptionsV1QueryParams)
+			return s.GetSyslogEventSubscriptions(GetSyslogEventSubscriptionsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetSyslogEventSubscriptionsV1")
+		return nil, response, fmt.Errorf("error with operation GetSyslogEventSubscriptions")
 	}
 
-	result := response.Result().(*ResponseEventManagementGetSyslogEventSubscriptionsV1)
+	result := response.Result().(*ResponseEventManagementGetSyslogEventSubscriptions)
 	return result, response, err
 
 }
 
-//GetSyslogDestinationV1 Get Syslog Destination - 86a2-6b24-4828-b9dc
+//GetSyslogDestination Get Syslog Destination - 86a2-6b24-4828-b9dc
 /* Get Syslog Destination
 
 
-@param GetSyslogDestinationV1QueryParams Filtering parameter
+@param GetSyslogDestinationQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-syslog-destination
 */
-func (s *EventManagementService) GetSyslogDestinationV1(GetSyslogDestinationV1QueryParams *GetSyslogDestinationV1QueryParams) (*ResponseEventManagementGetSyslogDestinationV1, *resty.Response, error) {
+func (s *EventManagementService) GetSyslogDestination(GetSyslogDestinationQueryParams *GetSyslogDestinationQueryParams) (*ResponseEventManagementGetSyslogDestination, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/syslog-config"
 
-	queryString, _ := query.Values(GetSyslogDestinationV1QueryParams)
+	queryString, _ := query.Values(GetSyslogDestinationQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetSyslogDestinationV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetSyslogDestination{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1808,33 +1807,33 @@ func (s *EventManagementService) GetSyslogDestinationV1(GetSyslogDestinationV1Qu
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetSyslogDestinationV1(GetSyslogDestinationV1QueryParams)
+			return s.GetSyslogDestination(GetSyslogDestinationQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetSyslogDestinationV1")
+		return nil, response, fmt.Errorf("error with operation GetSyslogDestination")
 	}
 
-	result := response.Result().(*ResponseEventManagementGetSyslogDestinationV1)
+	result := response.Result().(*ResponseEventManagementGetSyslogDestination)
 	return result, response, err
 
 }
 
-//GetWebhookDestinationV1 Get Webhook Destination - 2395-8ba8-4a7b-bd72
+//GetWebhookDestination Get Webhook Destination - 2395-8ba8-4a7b-bd72
 /* Get Webhook Destination
 
 
-@param GetWebhookDestinationV1QueryParams Filtering parameter
+@param GetWebhookDestinationQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-webhook-destination
 */
-func (s *EventManagementService) GetWebhookDestinationV1(GetWebhookDestinationV1QueryParams *GetWebhookDestinationV1QueryParams) (*ResponseEventManagementGetWebhookDestinationV1, *resty.Response, error) {
+func (s *EventManagementService) GetWebhookDestination(GetWebhookDestinationQueryParams *GetWebhookDestinationQueryParams) (*ResponseEventManagementGetWebhookDestination, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/webhook"
 
-	queryString, _ := query.Values(GetWebhookDestinationV1QueryParams)
+	queryString, _ := query.Values(GetWebhookDestinationQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetWebhookDestinationV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetWebhookDestination{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1845,33 +1844,33 @@ func (s *EventManagementService) GetWebhookDestinationV1(GetWebhookDestinationV1
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetWebhookDestinationV1(GetWebhookDestinationV1QueryParams)
+			return s.GetWebhookDestination(GetWebhookDestinationQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetWebhookDestinationV1")
+		return nil, response, fmt.Errorf("error with operation GetWebhookDestination")
 	}
 
-	result := response.Result().(*ResponseEventManagementGetWebhookDestinationV1)
+	result := response.Result().(*ResponseEventManagementGetWebhookDestination)
 	return result, response, err
 
 }
 
-//GetEventsV1 Get Events - 44a3-9a07-4a6a-82a2
+//GetEvents Get Events - 44a3-9a07-4a6a-82a2
 /* Gets the list of registered Events with provided eventIds or tags as mandatory
 
 
-@param GetEventsV1QueryParams Filtering parameter
+@param GetEventsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-events
 */
-func (s *EventManagementService) GetEventsV1(GetEventsV1QueryParams *GetEventsV1QueryParams) (*ResponseEventManagementGetEventsV1, *resty.Response, error) {
+func (s *EventManagementService) GetEvents(GetEventsQueryParams *GetEventsQueryParams) (*ResponseEventManagementGetEvents, *resty.Response, error) {
 	path := "/dna/intent/api/v1/events"
 
-	queryString, _ := query.Values(GetEventsV1QueryParams)
+	queryString, _ := query.Values(GetEventsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetEventsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetEvents{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1882,33 +1881,33 @@ func (s *EventManagementService) GetEventsV1(GetEventsV1QueryParams *GetEventsV1
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetEventsV1(GetEventsV1QueryParams)
+			return s.GetEvents(GetEventsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetEventsV1")
+		return nil, response, fmt.Errorf("error with operation GetEvents")
 	}
 
-	result := response.Result().(*ResponseEventManagementGetEventsV1)
+	result := response.Result().(*ResponseEventManagementGetEvents)
 	return result, response, err
 
 }
 
-//CountOfEventsV1 Count of Events - 6a9e-dac1-49ba-86cf
+//CountOfEvents Count of Events - 6a9e-dac1-49ba-86cf
 /* Get the count of registered events with provided eventIds or tags as mandatory
 
 
-@param CountOfEventsV1QueryParams Filtering parameter
+@param CountOfEventsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!count-of-events
 */
-func (s *EventManagementService) CountOfEventsV1(CountOfEventsV1QueryParams *CountOfEventsV1QueryParams) (*ResponseEventManagementCountOfEventsV1, *resty.Response, error) {
+func (s *EventManagementService) CountOfEvents(CountOfEventsQueryParams *CountOfEventsQueryParams) (*ResponseEventManagementCountOfEvents, *resty.Response, error) {
 	path := "/dna/intent/api/v1/events/count"
 
-	queryString, _ := query.Values(CountOfEventsV1QueryParams)
+	queryString, _ := query.Values(CountOfEventsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementCountOfEventsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementCountOfEvents{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1919,33 +1918,33 @@ func (s *EventManagementService) CountOfEventsV1(CountOfEventsV1QueryParams *Cou
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CountOfEventsV1(CountOfEventsV1QueryParams)
+			return s.CountOfEvents(CountOfEventsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation CountOfEventsV1")
+		return nil, response, fmt.Errorf("error with operation CountOfEvents")
 	}
 
-	result := response.Result().(*ResponseEventManagementCountOfEventsV1)
+	result := response.Result().(*ResponseEventManagementCountOfEvents)
 	return result, response, err
 
 }
 
-//GetEventArtifactsV1 Get EventArtifacts - 73b1-d832-4c98-bc22
+//GetEventArtifacts Get EventArtifacts - 73b1-d832-4c98-bc22
 /* Gets the list of artifacts based on provided offset and limit
 
 
-@param GetEventArtifactsV1QueryParams Filtering parameter
+@param GetEventArtifactsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-event-artifacts
 */
-func (s *EventManagementService) GetEventArtifactsV1(GetEventArtifactsV1QueryParams *GetEventArtifactsV1QueryParams) (*ResponseEventManagementGetEventArtifactsV1, *resty.Response, error) {
+func (s *EventManagementService) GetEventArtifacts(GetEventArtifactsQueryParams *GetEventArtifactsQueryParams) (*ResponseEventManagementGetEventArtifacts, *resty.Response, error) {
 	path := "/dna/system/api/v1/event/artifact"
 
-	queryString, _ := query.Values(GetEventArtifactsV1QueryParams)
+	queryString, _ := query.Values(GetEventArtifactsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetEventArtifactsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementGetEventArtifacts{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1956,30 +1955,30 @@ func (s *EventManagementService) GetEventArtifactsV1(GetEventArtifactsV1QueryPar
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetEventArtifactsV1(GetEventArtifactsV1QueryParams)
+			return s.GetEventArtifacts(GetEventArtifactsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetEventArtifactsV1")
+		return nil, response, fmt.Errorf("error with operation GetEventArtifacts")
 	}
 
-	result := response.Result().(*ResponseEventManagementGetEventArtifactsV1)
+	result := response.Result().(*ResponseEventManagementGetEventArtifacts)
 	return result, response, err
 
 }
 
-//EventArtifactCountV1 EventArtifact Count - b78e-9bf7-4f8a-8321
+//EventArtifactCount EventArtifact Count - b78e-9bf7-4f8a-8321
 /* Get the count of registered event artifacts.
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!event-artifact-count
 */
-func (s *EventManagementService) EventArtifactCountV1() (*ResponseEventManagementEventArtifactCountV1, *resty.Response, error) {
+func (s *EventManagementService) EventArtifactCount() (*ResponseEventManagementEventArtifactCount, *resty.Response, error) {
 	path := "/dna/system/api/v1/event/artifact/count"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseEventManagementEventArtifactCountV1{}).
+		SetResult(&ResponseEventManagementEventArtifactCount{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1990,30 +1989,30 @@ func (s *EventManagementService) EventArtifactCountV1() (*ResponseEventManagemen
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.EventArtifactCountV1()
+			return s.EventArtifactCount()
 		}
-		return nil, response, fmt.Errorf("error with operation EventArtifactCountV1")
+		return nil, response, fmt.Errorf("error with operation EventArtifactCount")
 	}
 
-	result := response.Result().(*ResponseEventManagementEventArtifactCountV1)
+	result := response.Result().(*ResponseEventManagementEventArtifactCount)
 	return result, response, err
 
 }
 
-//GetConnectorTypesV1 Get Connector Types - c0be-2a2b-4dc9-8bfb
+//GetConnectorTypes Get Connector Types - c0be-2a2b-4dc9-8bfb
 /* Get the list of connector types
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-connector-types
 */
-func (s *EventManagementService) GetConnectorTypesV1() (*ResponseEventManagementGetConnectorTypesV1, *resty.Response, error) {
+func (s *EventManagementService) GetConnectorTypes() (*ResponseEventManagementGetConnectorTypes, *resty.Response, error) {
 	path := "/dna/system/api/v1/event/config/connector-types"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseEventManagementGetConnectorTypesV1{}).
+		SetResult(&ResponseEventManagementGetConnectorTypes{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2024,31 +2023,31 @@ func (s *EventManagementService) GetConnectorTypesV1() (*ResponseEventManagement
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetConnectorTypesV1()
+			return s.GetConnectorTypes()
 		}
-		return nil, response, fmt.Errorf("error with operation GetConnectorTypesV1")
+		return nil, response, fmt.Errorf("error with operation GetConnectorTypes")
 	}
 
-	result := response.Result().(*ResponseEventManagementGetConnectorTypesV1)
+	result := response.Result().(*ResponseEventManagementGetConnectorTypes)
 	return result, response, err
 
 }
 
-//CreateEmailDestinationV1 Create Email Destination - 84ab-8bff-4769-a7d6
+//CreateEmailDestination Create Email Destination - 84ab-8bff-4769-a7d6
 /* Create Email Destination
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-email-destination
 */
-func (s *EventManagementService) CreateEmailDestinationV1(requestEventManagementCreateEmailDestinationV1 *RequestEventManagementCreateEmailDestinationV1) (*ResponseEventManagementCreateEmailDestinationV1, *resty.Response, error) {
+func (s *EventManagementService) CreateEmailDestination(requestEventManagementCreateEmailDestination *RequestEventManagementCreateEmailDestination) (*ResponseEventManagementCreateEmailDestination, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/email-config"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestEventManagementCreateEmailDestinationV1).
-		SetResult(&ResponseEventManagementCreateEmailDestinationV1{}).
+		SetBody(requestEventManagementCreateEmailDestination).
+		SetResult(&ResponseEventManagementCreateEmailDestination{}).
 		SetError(&Error).
 		Post(path)
 
@@ -2060,32 +2059,32 @@ func (s *EventManagementService) CreateEmailDestinationV1(requestEventManagement
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateEmailDestinationV1(requestEventManagementCreateEmailDestinationV1)
+			return s.CreateEmailDestination(requestEventManagementCreateEmailDestination)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateEmailDestinationV1")
+		return nil, response, fmt.Errorf("error with operation CreateEmailDestination")
 	}
 
-	result := response.Result().(*ResponseEventManagementCreateEmailDestinationV1)
+	result := response.Result().(*ResponseEventManagementCreateEmailDestination)
 	return result, response, err
 
 }
 
-//CreateSNMPDestinationV1 Create SNMP Destination - 0e81-69c1-4a7a-965d
+//CreateSNMPDestination Create SNMP Destination - 0e81-69c1-4a7a-965d
 /* Create SNMP Destination
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-snmp-destination
 */
-func (s *EventManagementService) CreateSNMPDestinationV1(requestEventManagementCreateSNMPDestinationV1 *RequestEventManagementCreateSNMPDestinationV1) (*ResponseEventManagementCreateSNMPDestinationV1, *resty.Response, error) {
+func (s *EventManagementService) CreateSNMPDestination(requestEventManagementCreateSNMPDestination *RequestEventManagementCreateSNMPDestination) (*ResponseEventManagementCreateSNMPDestination, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/snmp-config"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestEventManagementCreateSNMPDestinationV1).
-		SetResult(&ResponseEventManagementCreateSNMPDestinationV1{}).
+		SetBody(requestEventManagementCreateSNMPDestination).
+		SetResult(&ResponseEventManagementCreateSNMPDestination{}).
 		SetError(&Error).
 		Post(path)
 
@@ -2097,32 +2096,32 @@ func (s *EventManagementService) CreateSNMPDestinationV1(requestEventManagementC
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateSNMPDestinationV1(requestEventManagementCreateSNMPDestinationV1)
+			return s.CreateSNMPDestination(requestEventManagementCreateSNMPDestination)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateSnmpDestinationV1")
+		return nil, response, fmt.Errorf("error with operation CreateSnmpDestination")
 	}
 
-	result := response.Result().(*ResponseEventManagementCreateSNMPDestinationV1)
+	result := response.Result().(*ResponseEventManagementCreateSNMPDestination)
 	return result, response, err
 
 }
 
-//CreateEventSubscriptionsV1 Create Event Subscriptions - 4f9f-7a7b-40f9-90de
+//CreateEventSubscriptions Create Event Subscriptions - 4f9f-7a7b-40f9-90de
 /* Subscribe SubscriptionEndpoint to list of registered events. Deprecated since Guardian release. Alternative: POST /intent/api/v1/event/subscription/rest
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-event-subscriptions
 */
-func (s *EventManagementService) CreateEventSubscriptionsV1(requestEventManagementCreateEventSubscriptionsV1 *RequestEventManagementCreateEventSubscriptionsV1) (*ResponseEventManagementCreateEventSubscriptionsV1, *resty.Response, error) {
+func (s *EventManagementService) CreateEventSubscriptions(requestEventManagementCreateEventSubscriptions *RequestEventManagementCreateEventSubscriptions) (*ResponseEventManagementCreateEventSubscriptions, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestEventManagementCreateEventSubscriptionsV1).
-		SetResult(&ResponseEventManagementCreateEventSubscriptionsV1{}).
+		SetBody(requestEventManagementCreateEventSubscriptions).
+		SetResult(&ResponseEventManagementCreateEventSubscriptions{}).
 		SetError(&Error).
 		Post(path)
 
@@ -2134,32 +2133,32 @@ func (s *EventManagementService) CreateEventSubscriptionsV1(requestEventManageme
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateEventSubscriptionsV1(requestEventManagementCreateEventSubscriptionsV1)
+			return s.CreateEventSubscriptions(requestEventManagementCreateEventSubscriptions)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateEventSubscriptionsV1")
+		return nil, response, fmt.Errorf("error with operation CreateEventSubscriptions")
 	}
 
-	result := response.Result().(*ResponseEventManagementCreateEventSubscriptionsV1)
+	result := response.Result().(*ResponseEventManagementCreateEventSubscriptions)
 	return result, response, err
 
 }
 
-//CreateEmailEventSubscriptionV1 Create Email Event Subscription - 7bbc-88c8-424a-840f
+//CreateEmailEventSubscription Create Email Event Subscription - 7bbc-88c8-424a-840f
 /* Create Email Subscription Endpoint for list of registered events.
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-email-event-subscription
 */
-func (s *EventManagementService) CreateEmailEventSubscriptionV1(requestEventManagementCreateEmailEventSubscriptionV1 *RequestEventManagementCreateEmailEventSubscriptionV1) (*ResponseEventManagementCreateEmailEventSubscriptionV1, *resty.Response, error) {
+func (s *EventManagementService) CreateEmailEventSubscription(requestEventManagementCreateEmailEventSubscription *RequestEventManagementCreateEmailEventSubscription) (*ResponseEventManagementCreateEmailEventSubscription, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription/email"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestEventManagementCreateEmailEventSubscriptionV1).
-		SetResult(&ResponseEventManagementCreateEmailEventSubscriptionV1{}).
+		SetBody(requestEventManagementCreateEmailEventSubscription).
+		SetResult(&ResponseEventManagementCreateEmailEventSubscription{}).
 		SetError(&Error).
 		Post(path)
 
@@ -2171,32 +2170,32 @@ func (s *EventManagementService) CreateEmailEventSubscriptionV1(requestEventMana
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateEmailEventSubscriptionV1(requestEventManagementCreateEmailEventSubscriptionV1)
+			return s.CreateEmailEventSubscription(requestEventManagementCreateEmailEventSubscription)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateEmailEventSubscriptionV1")
+		return nil, response, fmt.Errorf("error with operation CreateEmailEventSubscription")
 	}
 
-	result := response.Result().(*ResponseEventManagementCreateEmailEventSubscriptionV1)
+	result := response.Result().(*ResponseEventManagementCreateEmailEventSubscription)
 	return result, response, err
 
 }
 
-//CreateRestWebhookEventSubscriptionV1 Create Rest/Webhook Event Subscription - 9584-d988-45eb-b4b0
+//CreateRestWebhookEventSubscription Create Rest/Webhook Event Subscription - 9584-d988-45eb-b4b0
 /* Create Rest/Webhook Subscription Endpoint for list of registered events
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-rest-webhook-event-subscription
 */
-func (s *EventManagementService) CreateRestWebhookEventSubscriptionV1(requestEventManagementCreateRestWebhookEventSubscriptionV1 *RequestEventManagementCreateRestWebhookEventSubscriptionV1) (*ResponseEventManagementCreateRestWebhookEventSubscriptionV1, *resty.Response, error) {
+func (s *EventManagementService) CreateRestWebhookEventSubscription(requestEventManagementCreateRestWebhookEventSubscription *RequestEventManagementCreateRestWebhookEventSubscription) (*ResponseEventManagementCreateRestWebhookEventSubscription, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription/rest"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestEventManagementCreateRestWebhookEventSubscriptionV1).
-		SetResult(&ResponseEventManagementCreateRestWebhookEventSubscriptionV1{}).
+		SetBody(requestEventManagementCreateRestWebhookEventSubscription).
+		SetResult(&ResponseEventManagementCreateRestWebhookEventSubscription{}).
 		SetError(&Error).
 		Post(path)
 
@@ -2208,32 +2207,32 @@ func (s *EventManagementService) CreateRestWebhookEventSubscriptionV1(requestEve
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateRestWebhookEventSubscriptionV1(requestEventManagementCreateRestWebhookEventSubscriptionV1)
+			return s.CreateRestWebhookEventSubscription(requestEventManagementCreateRestWebhookEventSubscription)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateRestWebhookEventSubscriptionV1")
+		return nil, response, fmt.Errorf("error with operation CreateRestWebhookEventSubscription")
 	}
 
-	result := response.Result().(*ResponseEventManagementCreateRestWebhookEventSubscriptionV1)
+	result := response.Result().(*ResponseEventManagementCreateRestWebhookEventSubscription)
 	return result, response, err
 
 }
 
-//CreateSyslogEventSubscriptionV1 Create Syslog Event Subscription - 919a-8bb7-445a-88fe
+//CreateSyslogEventSubscription Create Syslog Event Subscription - 919a-8bb7-445a-88fe
 /* Create Syslog Subscription Endpoint for list of registered events
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-syslog-event-subscription
 */
-func (s *EventManagementService) CreateSyslogEventSubscriptionV1(requestEventManagementCreateSyslogEventSubscriptionV1 *RequestEventManagementCreateSyslogEventSubscriptionV1) (*ResponseEventManagementCreateSyslogEventSubscriptionV1, *resty.Response, error) {
+func (s *EventManagementService) CreateSyslogEventSubscription(requestEventManagementCreateSyslogEventSubscription *RequestEventManagementCreateSyslogEventSubscription) (*ResponseEventManagementCreateSyslogEventSubscription, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription/syslog"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestEventManagementCreateSyslogEventSubscriptionV1).
-		SetResult(&ResponseEventManagementCreateSyslogEventSubscriptionV1{}).
+		SetBody(requestEventManagementCreateSyslogEventSubscription).
+		SetResult(&ResponseEventManagementCreateSyslogEventSubscription{}).
 		SetError(&Error).
 		Post(path)
 
@@ -2245,32 +2244,32 @@ func (s *EventManagementService) CreateSyslogEventSubscriptionV1(requestEventMan
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateSyslogEventSubscriptionV1(requestEventManagementCreateSyslogEventSubscriptionV1)
+			return s.CreateSyslogEventSubscription(requestEventManagementCreateSyslogEventSubscription)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateSyslogEventSubscriptionV1")
+		return nil, response, fmt.Errorf("error with operation CreateSyslogEventSubscription")
 	}
 
-	result := response.Result().(*ResponseEventManagementCreateSyslogEventSubscriptionV1)
+	result := response.Result().(*ResponseEventManagementCreateSyslogEventSubscription)
 	return result, response, err
 
 }
 
-//CreateSyslogDestinationV1 Create Syslog Destination - 08ad-2bd5-47fa-9227
+//CreateSyslogDestination Create Syslog Destination - 08ad-2bd5-47fa-9227
 /* Create Syslog Destination
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-syslog-destination
 */
-func (s *EventManagementService) CreateSyslogDestinationV1(requestEventManagementCreateSyslogDestinationV1 *RequestEventManagementCreateSyslogDestinationV1) (*ResponseEventManagementCreateSyslogDestinationV1, *resty.Response, error) {
+func (s *EventManagementService) CreateSyslogDestination(requestEventManagementCreateSyslogDestination *RequestEventManagementCreateSyslogDestination) (*ResponseEventManagementCreateSyslogDestination, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/syslog-config"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestEventManagementCreateSyslogDestinationV1).
-		SetResult(&ResponseEventManagementCreateSyslogDestinationV1{}).
+		SetBody(requestEventManagementCreateSyslogDestination).
+		SetResult(&ResponseEventManagementCreateSyslogDestination{}).
 		SetError(&Error).
 		Post(path)
 
@@ -2282,32 +2281,32 @@ func (s *EventManagementService) CreateSyslogDestinationV1(requestEventManagemen
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateSyslogDestinationV1(requestEventManagementCreateSyslogDestinationV1)
+			return s.CreateSyslogDestination(requestEventManagementCreateSyslogDestination)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateSyslogDestinationV1")
+		return nil, response, fmt.Errorf("error with operation CreateSyslogDestination")
 	}
 
-	result := response.Result().(*ResponseEventManagementCreateSyslogDestinationV1)
+	result := response.Result().(*ResponseEventManagementCreateSyslogDestination)
 	return result, response, err
 
 }
 
-//CreateWebhookDestinationV1 Create Webhook Destination - 4bbd-580a-4bab-80b7
+//CreateWebhookDestination Create Webhook Destination - 4bbd-580a-4bab-80b7
 /* Create Webhook Destination
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-webhook-destination
 */
-func (s *EventManagementService) CreateWebhookDestinationV1(requestEventManagementCreateWebhookDestinationV1 *RequestEventManagementCreateWebhookDestinationV1) (*ResponseEventManagementCreateWebhookDestinationV1, *resty.Response, error) {
+func (s *EventManagementService) CreateWebhookDestination(requestEventManagementCreateWebhookDestination *RequestEventManagementCreateWebhookDestination) (*ResponseEventManagementCreateWebhookDestination, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/webhook"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestEventManagementCreateWebhookDestinationV1).
-		SetResult(&ResponseEventManagementCreateWebhookDestinationV1{}).
+		SetBody(requestEventManagementCreateWebhookDestination).
+		SetResult(&ResponseEventManagementCreateWebhookDestination{}).
 		SetError(&Error).
 		Post(path)
 
@@ -2319,30 +2318,30 @@ func (s *EventManagementService) CreateWebhookDestinationV1(requestEventManageme
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateWebhookDestinationV1(requestEventManagementCreateWebhookDestinationV1)
+			return s.CreateWebhookDestination(requestEventManagementCreateWebhookDestination)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateWebhookDestinationV1")
+		return nil, response, fmt.Errorf("error with operation CreateWebhookDestination")
 	}
 
-	result := response.Result().(*ResponseEventManagementCreateWebhookDestinationV1)
+	result := response.Result().(*ResponseEventManagementCreateWebhookDestination)
 	return result, response, err
 
 }
 
-//UpdateEmailDestinationV1 Update Email Destination - 8285-3bf9-4aba-a65f
+//UpdateEmailDestination Update Email Destination - 8285-3bf9-4aba-a65f
 /* Update Email Destination
 
 
  */
-func (s *EventManagementService) UpdateEmailDestinationV1(requestEventManagementUpdateEmailDestinationV1 *RequestEventManagementUpdateEmailDestinationV1) (*ResponseEventManagementUpdateEmailDestinationV1, *resty.Response, error) {
+func (s *EventManagementService) UpdateEmailDestination(requestEventManagementUpdateEmailDestination *RequestEventManagementUpdateEmailDestination) (*ResponseEventManagementUpdateEmailDestination, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/email-config"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestEventManagementUpdateEmailDestinationV1).
-		SetResult(&ResponseEventManagementUpdateEmailDestinationV1{}).
+		SetBody(requestEventManagementUpdateEmailDestination).
+		SetResult(&ResponseEventManagementUpdateEmailDestination{}).
 		SetError(&Error).
 		Put(path)
 
@@ -2353,29 +2352,29 @@ func (s *EventManagementService) UpdateEmailDestinationV1(requestEventManagement
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.UpdateEmailDestinationV1(requestEventManagementUpdateEmailDestinationV1)
+			return s.UpdateEmailDestination(requestEventManagementUpdateEmailDestination)
 		}
-		return nil, response, fmt.Errorf("error with operation UpdateEmailDestinationV1")
+		return nil, response, fmt.Errorf("error with operation UpdateEmailDestination")
 	}
 
-	result := response.Result().(*ResponseEventManagementUpdateEmailDestinationV1)
+	result := response.Result().(*ResponseEventManagementUpdateEmailDestination)
 	return result, response, err
 
 }
 
-//UpdateSNMPDestinationV1 Update SNMP Destination - 26b7-ab81-4c5a-811b
+//UpdateSNMPDestination Update SNMP Destination - 26b7-ab81-4c5a-811b
 /* Update SNMP Destination
 
 
  */
-func (s *EventManagementService) UpdateSNMPDestinationV1(requestEventManagementUpdateSNMPDestinationV1 *RequestEventManagementUpdateSNMPDestinationV1) (*ResponseEventManagementUpdateSNMPDestinationV1, *resty.Response, error) {
+func (s *EventManagementService) UpdateSNMPDestination(requestEventManagementUpdateSNMPDestination *RequestEventManagementUpdateSNMPDestination) (*ResponseEventManagementUpdateSNMPDestination, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/snmp-config"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestEventManagementUpdateSNMPDestinationV1).
-		SetResult(&ResponseEventManagementUpdateSNMPDestinationV1{}).
+		SetBody(requestEventManagementUpdateSNMPDestination).
+		SetResult(&ResponseEventManagementUpdateSNMPDestination{}).
 		SetError(&Error).
 		Put(path)
 
@@ -2386,29 +2385,29 @@ func (s *EventManagementService) UpdateSNMPDestinationV1(requestEventManagementU
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.UpdateSNMPDestinationV1(requestEventManagementUpdateSNMPDestinationV1)
+			return s.UpdateSNMPDestination(requestEventManagementUpdateSNMPDestination)
 		}
-		return nil, response, fmt.Errorf("error with operation UpdateSnmpDestinationV1")
+		return nil, response, fmt.Errorf("error with operation UpdateSnmpDestination")
 	}
 
-	result := response.Result().(*ResponseEventManagementUpdateSNMPDestinationV1)
+	result := response.Result().(*ResponseEventManagementUpdateSNMPDestination)
 	return result, response, err
 
 }
 
-//UpdateEventSubscriptionsV1 Update Event Subscriptions - 579a-6a72-48cb-94cf
+//UpdateEventSubscriptions Update Event Subscriptions - 579a-6a72-48cb-94cf
 /* Update SubscriptionEndpoint to list of registered events. Deprecated since Guardian release. Alternative: PUT /intent/api/v1/event/subscription/rest
 
 
  */
-func (s *EventManagementService) UpdateEventSubscriptionsV1(requestEventManagementUpdateEventSubscriptionsV1 *RequestEventManagementUpdateEventSubscriptionsV1) (*ResponseEventManagementUpdateEventSubscriptionsV1, *resty.Response, error) {
+func (s *EventManagementService) UpdateEventSubscriptions(requestEventManagementUpdateEventSubscriptions *RequestEventManagementUpdateEventSubscriptions) (*ResponseEventManagementUpdateEventSubscriptions, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestEventManagementUpdateEventSubscriptionsV1).
-		SetResult(&ResponseEventManagementUpdateEventSubscriptionsV1{}).
+		SetBody(requestEventManagementUpdateEventSubscriptions).
+		SetResult(&ResponseEventManagementUpdateEventSubscriptions{}).
 		SetError(&Error).
 		Put(path)
 
@@ -2419,29 +2418,29 @@ func (s *EventManagementService) UpdateEventSubscriptionsV1(requestEventManageme
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.UpdateEventSubscriptionsV1(requestEventManagementUpdateEventSubscriptionsV1)
+			return s.UpdateEventSubscriptions(requestEventManagementUpdateEventSubscriptions)
 		}
-		return nil, response, fmt.Errorf("error with operation UpdateEventSubscriptionsV1")
+		return nil, response, fmt.Errorf("error with operation UpdateEventSubscriptions")
 	}
 
-	result := response.Result().(*ResponseEventManagementUpdateEventSubscriptionsV1)
+	result := response.Result().(*ResponseEventManagementUpdateEventSubscriptions)
 	return result, response, err
 
 }
 
-//UpdateEmailEventSubscriptionV1 Update Email Event Subscription - 87b2-2b83-46bb-8983
+//UpdateEmailEventSubscription Update Email Event Subscription - 87b2-2b83-46bb-8983
 /* Update Email Subscription Endpoint for list of registered events
 
 
  */
-func (s *EventManagementService) UpdateEmailEventSubscriptionV1(requestEventManagementUpdateEmailEventSubscriptionV1 *RequestEventManagementUpdateEmailEventSubscriptionV1) (*ResponseEventManagementUpdateEmailEventSubscriptionV1, *resty.Response, error) {
+func (s *EventManagementService) UpdateEmailEventSubscription(requestEventManagementUpdateEmailEventSubscription *RequestEventManagementUpdateEmailEventSubscription) (*ResponseEventManagementUpdateEmailEventSubscription, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription/email"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestEventManagementUpdateEmailEventSubscriptionV1).
-		SetResult(&ResponseEventManagementUpdateEmailEventSubscriptionV1{}).
+		SetBody(requestEventManagementUpdateEmailEventSubscription).
+		SetResult(&ResponseEventManagementUpdateEmailEventSubscription{}).
 		SetError(&Error).
 		Put(path)
 
@@ -2452,29 +2451,29 @@ func (s *EventManagementService) UpdateEmailEventSubscriptionV1(requestEventMana
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.UpdateEmailEventSubscriptionV1(requestEventManagementUpdateEmailEventSubscriptionV1)
+			return s.UpdateEmailEventSubscription(requestEventManagementUpdateEmailEventSubscription)
 		}
-		return nil, response, fmt.Errorf("error with operation UpdateEmailEventSubscriptionV1")
+		return nil, response, fmt.Errorf("error with operation UpdateEmailEventSubscription")
 	}
 
-	result := response.Result().(*ResponseEventManagementUpdateEmailEventSubscriptionV1)
+	result := response.Result().(*ResponseEventManagementUpdateEmailEventSubscription)
 	return result, response, err
 
 }
 
-//UpdateRestWebhookEventSubscriptionV1 Update Rest/Webhook Event Subscription - ce81-f9c5-4fc8-b576
+//UpdateRestWebhookEventSubscription Update Rest/Webhook Event Subscription - ce81-f9c5-4fc8-b576
 /* Update Rest/Webhook Subscription Endpoint for list of registered events
 
 
  */
-func (s *EventManagementService) UpdateRestWebhookEventSubscriptionV1(requestEventManagementUpdateRestWebhookEventSubscriptionV1 *RequestEventManagementUpdateRestWebhookEventSubscriptionV1) (*ResponseEventManagementUpdateRestWebhookEventSubscriptionV1, *resty.Response, error) {
+func (s *EventManagementService) UpdateRestWebhookEventSubscription(requestEventManagementUpdateRestWebhookEventSubscription *RequestEventManagementUpdateRestWebhookEventSubscription) (*ResponseEventManagementUpdateRestWebhookEventSubscription, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription/rest"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestEventManagementUpdateRestWebhookEventSubscriptionV1).
-		SetResult(&ResponseEventManagementUpdateRestWebhookEventSubscriptionV1{}).
+		SetBody(requestEventManagementUpdateRestWebhookEventSubscription).
+		SetResult(&ResponseEventManagementUpdateRestWebhookEventSubscription{}).
 		SetError(&Error).
 		Put(path)
 
@@ -2485,29 +2484,29 @@ func (s *EventManagementService) UpdateRestWebhookEventSubscriptionV1(requestEve
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.UpdateRestWebhookEventSubscriptionV1(requestEventManagementUpdateRestWebhookEventSubscriptionV1)
+			return s.UpdateRestWebhookEventSubscription(requestEventManagementUpdateRestWebhookEventSubscription)
 		}
-		return nil, response, fmt.Errorf("error with operation UpdateRestWebhookEventSubscriptionV1")
+		return nil, response, fmt.Errorf("error with operation UpdateRestWebhookEventSubscription")
 	}
 
-	result := response.Result().(*ResponseEventManagementUpdateRestWebhookEventSubscriptionV1)
+	result := response.Result().(*ResponseEventManagementUpdateRestWebhookEventSubscription)
 	return result, response, err
 
 }
 
-//UpdateSyslogEventSubscriptionV1 Update Syslog Event Subscription - 6285-cbc1-4039-9ace
+//UpdateSyslogEventSubscription Update Syslog Event Subscription - 6285-cbc1-4039-9ace
 /* Update Syslog Subscription Endpoint for list of registered events
 
 
  */
-func (s *EventManagementService) UpdateSyslogEventSubscriptionV1(requestEventManagementUpdateSyslogEventSubscriptionV1 *RequestEventManagementUpdateSyslogEventSubscriptionV1) (*ResponseEventManagementUpdateSyslogEventSubscriptionV1, *resty.Response, error) {
+func (s *EventManagementService) UpdateSyslogEventSubscription(requestEventManagementUpdateSyslogEventSubscription *RequestEventManagementUpdateSyslogEventSubscription) (*ResponseEventManagementUpdateSyslogEventSubscription, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/subscription/syslog"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestEventManagementUpdateSyslogEventSubscriptionV1).
-		SetResult(&ResponseEventManagementUpdateSyslogEventSubscriptionV1{}).
+		SetBody(requestEventManagementUpdateSyslogEventSubscription).
+		SetResult(&ResponseEventManagementUpdateSyslogEventSubscription{}).
 		SetError(&Error).
 		Put(path)
 
@@ -2518,29 +2517,29 @@ func (s *EventManagementService) UpdateSyslogEventSubscriptionV1(requestEventMan
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.UpdateSyslogEventSubscriptionV1(requestEventManagementUpdateSyslogEventSubscriptionV1)
+			return s.UpdateSyslogEventSubscription(requestEventManagementUpdateSyslogEventSubscription)
 		}
-		return nil, response, fmt.Errorf("error with operation UpdateSyslogEventSubscriptionV1")
+		return nil, response, fmt.Errorf("error with operation UpdateSyslogEventSubscription")
 	}
 
-	result := response.Result().(*ResponseEventManagementUpdateSyslogEventSubscriptionV1)
+	result := response.Result().(*ResponseEventManagementUpdateSyslogEventSubscription)
 	return result, response, err
 
 }
 
-//UpdateSyslogDestinationV1 Update Syslog Destination - eeac-fbe9-4518-b3fb
+//UpdateSyslogDestination Update Syslog Destination - eeac-fbe9-4518-b3fb
 /* Update Syslog Destination
 
 
  */
-func (s *EventManagementService) UpdateSyslogDestinationV1(requestEventManagementUpdateSyslogDestinationV1 *RequestEventManagementUpdateSyslogDestinationV1) (*ResponseEventManagementUpdateSyslogDestinationV1, *resty.Response, error) {
+func (s *EventManagementService) UpdateSyslogDestination(requestEventManagementUpdateSyslogDestination *RequestEventManagementUpdateSyslogDestination) (*ResponseEventManagementUpdateSyslogDestination, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/syslog-config"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestEventManagementUpdateSyslogDestinationV1).
-		SetResult(&ResponseEventManagementUpdateSyslogDestinationV1{}).
+		SetBody(requestEventManagementUpdateSyslogDestination).
+		SetResult(&ResponseEventManagementUpdateSyslogDestination{}).
 		SetError(&Error).
 		Put(path)
 
@@ -2551,29 +2550,29 @@ func (s *EventManagementService) UpdateSyslogDestinationV1(requestEventManagemen
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.UpdateSyslogDestinationV1(requestEventManagementUpdateSyslogDestinationV1)
+			return s.UpdateSyslogDestination(requestEventManagementUpdateSyslogDestination)
 		}
-		return nil, response, fmt.Errorf("error with operation UpdateSyslogDestinationV1")
+		return nil, response, fmt.Errorf("error with operation UpdateSyslogDestination")
 	}
 
-	result := response.Result().(*ResponseEventManagementUpdateSyslogDestinationV1)
+	result := response.Result().(*ResponseEventManagementUpdateSyslogDestination)
 	return result, response, err
 
 }
 
-//UpdateWebhookDestinationV1 Update Webhook Destination - 06b5-da28-423a-9bf6
+//UpdateWebhookDestination Update Webhook Destination - 06b5-da28-423a-9bf6
 /* Update Webhook Destination
 
 
  */
-func (s *EventManagementService) UpdateWebhookDestinationV1(requestEventManagementUpdateWebhookDestinationV1 *RequestEventManagementUpdateWebhookDestinationV1) (*ResponseEventManagementUpdateWebhookDestinationV1, *resty.Response, error) {
+func (s *EventManagementService) UpdateWebhookDestination(requestEventManagementUpdateWebhookDestination *RequestEventManagementUpdateWebhookDestination) (*ResponseEventManagementUpdateWebhookDestination, *resty.Response, error) {
 	path := "/dna/intent/api/v1/event/webhook"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestEventManagementUpdateWebhookDestinationV1).
-		SetResult(&ResponseEventManagementUpdateWebhookDestinationV1{}).
+		SetBody(requestEventManagementUpdateWebhookDestination).
+		SetResult(&ResponseEventManagementUpdateWebhookDestination{}).
 		SetError(&Error).
 		Put(path)
 
@@ -2584,34 +2583,34 @@ func (s *EventManagementService) UpdateWebhookDestinationV1(requestEventManageme
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.UpdateWebhookDestinationV1(requestEventManagementUpdateWebhookDestinationV1)
+			return s.UpdateWebhookDestination(requestEventManagementUpdateWebhookDestination)
 		}
-		return nil, response, fmt.Errorf("error with operation UpdateWebhookDestinationV1")
+		return nil, response, fmt.Errorf("error with operation UpdateWebhookDestination")
 	}
 
-	result := response.Result().(*ResponseEventManagementUpdateWebhookDestinationV1)
+	result := response.Result().(*ResponseEventManagementUpdateWebhookDestination)
 	return result, response, err
 
 }
 
-//DeleteEventSubscriptionsV1 Delete Event Subscriptions - 9398-1baa-4079-9483
+//DeleteEventSubscriptions Delete Event Subscriptions - 9398-1baa-4079-9483
 /* Delete EventSubscriptions
 
 
-@param DeleteEventSubscriptionsV1QueryParams Filtering parameter
+@param DeleteEventSubscriptionsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-event-subscriptions
 */
-func (s *EventManagementService) DeleteEventSubscriptionsV1(DeleteEventSubscriptionsV1QueryParams *DeleteEventSubscriptionsV1QueryParams) (*ResponseEventManagementDeleteEventSubscriptionsV1, *resty.Response, error) {
-	//DeleteEventSubscriptionsV1QueryParams *DeleteEventSubscriptionsV1QueryParams
+func (s *EventManagementService) DeleteEventSubscriptions(DeleteEventSubscriptionsQueryParams *DeleteEventSubscriptionsQueryParams) (*ResponseEventManagementDeleteEventSubscriptions, *resty.Response, error) {
+	//DeleteEventSubscriptionsQueryParams *DeleteEventSubscriptionsQueryParams
 	path := "/dna/intent/api/v1/event/subscription"
 
-	queryString, _ := query.Values(DeleteEventSubscriptionsV1QueryParams)
+	queryString, _ := query.Values(DeleteEventSubscriptionsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementDeleteEventSubscriptionsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseEventManagementDeleteEventSubscriptions{}).
 		SetError(&Error).
 		Delete(path)
 
@@ -2622,332 +2621,13 @@ func (s *EventManagementService) DeleteEventSubscriptionsV1(DeleteEventSubscript
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeleteEventSubscriptionsV1(DeleteEventSubscriptionsV1QueryParams)
+			return s.DeleteEventSubscriptions(
+				DeleteEventSubscriptionsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation DeleteEventSubscriptionsV1")
+		return nil, response, fmt.Errorf("error with operation DeleteEventSubscriptions")
 	}
 
-	result := response.Result().(*ResponseEventManagementDeleteEventSubscriptionsV1)
+	result := response.Result().(*ResponseEventManagementDeleteEventSubscriptions)
 	return result, response, err
 
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetEventSubscriptionsV1`
-*/
-func (s *EventManagementService) GetEventSubscriptions(GetEventSubscriptionsV1QueryParams *GetEventSubscriptionsV1QueryParams) (*ResponseEventManagementGetEventSubscriptionsV1, *resty.Response, error) {
-	return s.GetEventSubscriptionsV1(GetEventSubscriptionsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `UpdateSyslogDestinationV1`
-*/
-func (s *EventManagementService) UpdateSyslogDestination(requestEventManagementUpdateSyslogDestinationV1 *RequestEventManagementUpdateSyslogDestinationV1) (*ResponseEventManagementUpdateSyslogDestinationV1, *resty.Response, error) {
-	return s.UpdateSyslogDestinationV1(requestEventManagementUpdateSyslogDestinationV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CreateRestWebhookEventSubscriptionV1`
-*/
-func (s *EventManagementService) CreateRestWebhookEventSubscription(requestEventManagementCreateRestWebhookEventSubscriptionV1 *RequestEventManagementCreateRestWebhookEventSubscriptionV1) (*ResponseEventManagementCreateRestWebhookEventSubscriptionV1, *resty.Response, error) {
-	return s.CreateRestWebhookEventSubscriptionV1(requestEventManagementCreateRestWebhookEventSubscriptionV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `UpdateEmailDestinationV1`
-*/
-func (s *EventManagementService) UpdateEmailDestination(requestEventManagementUpdateEmailDestinationV1 *RequestEventManagementUpdateEmailDestinationV1) (*ResponseEventManagementUpdateEmailDestinationV1, *resty.Response, error) {
-	return s.UpdateEmailDestinationV1(requestEventManagementUpdateEmailDestinationV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetRestWebhookSubscriptionDetailsV1`
-*/
-func (s *EventManagementService) GetRestWebhookSubscriptionDetails(GetRestWebhookSubscriptionDetailsV1QueryParams *GetRestWebhookSubscriptionDetailsV1QueryParams) (*ResponseEventManagementGetRestWebhookSubscriptionDetailsV1, *resty.Response, error) {
-	return s.GetRestWebhookSubscriptionDetailsV1(GetRestWebhookSubscriptionDetailsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetRestWebhookEventSubscriptionsV1`
-*/
-func (s *EventManagementService) GetRestWebhookEventSubscriptions(GetRestWebhookEventSubscriptionsV1QueryParams *GetRestWebhookEventSubscriptionsV1QueryParams) (*ResponseEventManagementGetRestWebhookEventSubscriptionsV1, *resty.Response, error) {
-	return s.GetRestWebhookEventSubscriptionsV1(GetRestWebhookEventSubscriptionsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `DeleteEventSubscriptionsV1`
-*/
-func (s *EventManagementService) DeleteEventSubscriptions(DeleteEventSubscriptionsV1QueryParams *DeleteEventSubscriptionsV1QueryParams) (*ResponseEventManagementDeleteEventSubscriptionsV1, *resty.Response, error) {
-	return s.DeleteEventSubscriptionsV1(DeleteEventSubscriptionsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetEmailDestinationV1`
-*/
-func (s *EventManagementService) GetEmailDestination() (*ResponseEventManagementGetEmailDestinationV1, *resty.Response, error) {
-	return s.GetEmailDestinationV1()
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CreateSNMPDestinationV1`
-*/
-func (s *EventManagementService) CreateSNMPDestination(requestEventManagementCreateSNMPDestinationV1 *RequestEventManagementCreateSNMPDestinationV1) (*ResponseEventManagementCreateSNMPDestinationV1, *resty.Response, error) {
-	return s.CreateSNMPDestinationV1(requestEventManagementCreateSNMPDestinationV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `UpdateEventSubscriptionsV1`
-*/
-func (s *EventManagementService) UpdateEventSubscriptions(requestEventManagementUpdateEventSubscriptionsV1 *RequestEventManagementUpdateEventSubscriptionsV1) (*ResponseEventManagementUpdateEventSubscriptionsV1, *resty.Response, error) {
-	return s.UpdateEventSubscriptionsV1(requestEventManagementUpdateEventSubscriptionsV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `EventArtifactCountV1`
-*/
-func (s *EventManagementService) EventArtifactCount() (*ResponseEventManagementEventArtifactCountV1, *resty.Response, error) {
-	return s.EventArtifactCountV1()
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetSNMPDestinationV1`
-*/
-func (s *EventManagementService) GetSNMPDestination(GetSNMPDestinationV1QueryParams *GetSNMPDestinationV1QueryParams) (*ResponseEventManagementGetSNMPDestinationV1, *resty.Response, error) {
-	return s.GetSNMPDestinationV1(GetSNMPDestinationV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CreateEmailEventSubscriptionV1`
-*/
-func (s *EventManagementService) CreateEmailEventSubscription(requestEventManagementCreateEmailEventSubscriptionV1 *RequestEventManagementCreateEmailEventSubscriptionV1) (*ResponseEventManagementCreateEmailEventSubscriptionV1, *resty.Response, error) {
-	return s.CreateEmailEventSubscriptionV1(requestEventManagementCreateEmailEventSubscriptionV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CountOfEventSubscriptionsV1`
-*/
-func (s *EventManagementService) CountOfEventSubscriptions(CountOfEventSubscriptionsV1QueryParams *CountOfEventSubscriptionsV1QueryParams) (*ResponseEventManagementCountOfEventSubscriptionsV1, *resty.Response, error) {
-	return s.CountOfEventSubscriptionsV1(CountOfEventSubscriptionsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CreateWebhookDestinationV1`
-*/
-func (s *EventManagementService) CreateWebhookDestination(requestEventManagementCreateWebhookDestinationV1 *RequestEventManagementCreateWebhookDestinationV1) (*ResponseEventManagementCreateWebhookDestinationV1, *resty.Response, error) {
-	return s.CreateWebhookDestinationV1(requestEventManagementCreateWebhookDestinationV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetEmailSubscriptionDetailsV1`
-*/
-func (s *EventManagementService) GetEmailSubscriptionDetails(GetEmailSubscriptionDetailsV1QueryParams *GetEmailSubscriptionDetailsV1QueryParams) (*ResponseEventManagementGetEmailSubscriptionDetailsV1, *resty.Response, error) {
-	return s.GetEmailSubscriptionDetailsV1(GetEmailSubscriptionDetailsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetStatusAPIForEventsV1`
-*/
-func (s *EventManagementService) GetStatusAPIForEvents(executionID string) (*ResponseEventManagementGetStatusAPIForEventsV1, *resty.Response, error) {
-	return s.GetStatusAPIForEventsV1(executionID)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetEventsV1`
-*/
-func (s *EventManagementService) GetEvents(GetEventsV1QueryParams *GetEventsV1QueryParams) (*ResponseEventManagementGetEventsV1, *resty.Response, error) {
-	return s.GetEventsV1(GetEventsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `UpdateSNMPDestinationV1`
-*/
-func (s *EventManagementService) UpdateSNMPDestination(requestEventManagementUpdateSNMPDestinationV1 *RequestEventManagementUpdateSNMPDestinationV1) (*ResponseEventManagementUpdateSNMPDestinationV1, *resty.Response, error) {
-	return s.UpdateSNMPDestinationV1(requestEventManagementUpdateSNMPDestinationV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `UpdateSyslogEventSubscriptionV1`
-*/
-func (s *EventManagementService) UpdateSyslogEventSubscription(requestEventManagementUpdateSyslogEventSubscriptionV1 *RequestEventManagementUpdateSyslogEventSubscriptionV1) (*ResponseEventManagementUpdateSyslogEventSubscriptionV1, *resty.Response, error) {
-	return s.UpdateSyslogEventSubscriptionV1(requestEventManagementUpdateSyslogEventSubscriptionV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CreateEmailDestinationV1`
-*/
-func (s *EventManagementService) CreateEmailDestination(requestEventManagementCreateEmailDestinationV1 *RequestEventManagementCreateEmailDestinationV1) (*ResponseEventManagementCreateEmailDestinationV1, *resty.Response, error) {
-	return s.CreateEmailDestinationV1(requestEventManagementCreateEmailDestinationV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CreateSyslogEventSubscriptionV1`
-*/
-func (s *EventManagementService) CreateSyslogEventSubscription(requestEventManagementCreateSyslogEventSubscriptionV1 *RequestEventManagementCreateSyslogEventSubscriptionV1) (*ResponseEventManagementCreateSyslogEventSubscriptionV1, *resty.Response, error) {
-	return s.CreateSyslogEventSubscriptionV1(requestEventManagementCreateSyslogEventSubscriptionV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `UpdateEmailEventSubscriptionV1`
-*/
-func (s *EventManagementService) UpdateEmailEventSubscription(requestEventManagementUpdateEmailEventSubscriptionV1 *RequestEventManagementUpdateEmailEventSubscriptionV1) (*ResponseEventManagementUpdateEmailEventSubscriptionV1, *resty.Response, error) {
-	return s.UpdateEmailEventSubscriptionV1(requestEventManagementUpdateEmailEventSubscriptionV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `UpdateWebhookDestinationV1`
-*/
-func (s *EventManagementService) UpdateWebhookDestination(requestEventManagementUpdateWebhookDestinationV1 *RequestEventManagementUpdateWebhookDestinationV1) (*ResponseEventManagementUpdateWebhookDestinationV1, *resty.Response, error) {
-	return s.UpdateWebhookDestinationV1(requestEventManagementUpdateWebhookDestinationV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetSyslogDestinationV1`
-*/
-func (s *EventManagementService) GetSyslogDestination(GetSyslogDestinationV1QueryParams *GetSyslogDestinationV1QueryParams) (*ResponseEventManagementGetSyslogDestinationV1, *resty.Response, error) {
-	return s.GetSyslogDestinationV1(GetSyslogDestinationV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CreateEventSubscriptionsV1`
-*/
-func (s *EventManagementService) CreateEventSubscriptions(requestEventManagementCreateEventSubscriptionsV1 *RequestEventManagementCreateEventSubscriptionsV1) (*ResponseEventManagementCreateEventSubscriptionsV1, *resty.Response, error) {
-	return s.CreateEventSubscriptionsV1(requestEventManagementCreateEventSubscriptionsV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetNotificationsV1`
-*/
-func (s *EventManagementService) GetNotifications(GetNotificationsV1QueryParams *GetNotificationsV1QueryParams) (*ResponseEventManagementGetNotificationsV1, *resty.Response, error) {
-	return s.GetNotificationsV1(GetNotificationsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetSyslogSubscriptionDetailsV1`
-*/
-func (s *EventManagementService) GetSyslogSubscriptionDetails(GetSyslogSubscriptionDetailsV1QueryParams *GetSyslogSubscriptionDetailsV1QueryParams) (*ResponseEventManagementGetSyslogSubscriptionDetailsV1, *resty.Response, error) {
-	return s.GetSyslogSubscriptionDetailsV1(GetSyslogSubscriptionDetailsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetConnectorTypesV1`
-*/
-func (s *EventManagementService) GetConnectorTypes() (*ResponseEventManagementGetConnectorTypesV1, *resty.Response, error) {
-	return s.GetConnectorTypesV1()
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetEmailEventSubscriptionsV1`
-*/
-func (s *EventManagementService) GetEmailEventSubscriptions(GetEmailEventSubscriptionsV1QueryParams *GetEmailEventSubscriptionsV1QueryParams) (*ResponseEventManagementGetEmailEventSubscriptionsV1, *resty.Response, error) {
-	return s.GetEmailEventSubscriptionsV1(GetEmailEventSubscriptionsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetAuditLogRecordsV1`
-*/
-func (s *EventManagementService) GetAuditLogRecords(GetAuditLogRecordsV1QueryParams *GetAuditLogRecordsV1QueryParams) (*ResponseEventManagementGetAuditLogRecordsV1, *resty.Response, error) {
-	return s.GetAuditLogRecordsV1(GetAuditLogRecordsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `UpdateRestWebhookEventSubscriptionV1`
-*/
-func (s *EventManagementService) UpdateRestWebhookEventSubscription(requestEventManagementUpdateRestWebhookEventSubscriptionV1 *RequestEventManagementUpdateRestWebhookEventSubscriptionV1) (*ResponseEventManagementUpdateRestWebhookEventSubscriptionV1, *resty.Response, error) {
-	return s.UpdateRestWebhookEventSubscriptionV1(requestEventManagementUpdateRestWebhookEventSubscriptionV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CountOfNotificationsV1`
-*/
-func (s *EventManagementService) CountOfNotifications(CountOfNotificationsV1QueryParams *CountOfNotificationsV1QueryParams) (*ResponseEventManagementCountOfNotificationsV1, *resty.Response, error) {
-	return s.CountOfNotificationsV1(CountOfNotificationsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CreateSyslogDestinationV1`
-*/
-func (s *EventManagementService) CreateSyslogDestination(requestEventManagementCreateSyslogDestinationV1 *RequestEventManagementCreateSyslogDestinationV1) (*ResponseEventManagementCreateSyslogDestinationV1, *resty.Response, error) {
-	return s.CreateSyslogDestinationV1(requestEventManagementCreateSyslogDestinationV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetSyslogEventSubscriptionsV1`
-*/
-func (s *EventManagementService) GetSyslogEventSubscriptions(GetSyslogEventSubscriptionsV1QueryParams *GetSyslogEventSubscriptionsV1QueryParams) (*ResponseEventManagementGetSyslogEventSubscriptionsV1, *resty.Response, error) {
-	return s.GetSyslogEventSubscriptionsV1(GetSyslogEventSubscriptionsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetAuditLogSummaryV1`
-*/
-func (s *EventManagementService) GetAuditLogSummary(GetAuditLogSummaryV1QueryParams *GetAuditLogSummaryV1QueryParams) (*ResponseEventManagementGetAuditLogSummaryV1, *resty.Response, error) {
-	return s.GetAuditLogSummaryV1(GetAuditLogSummaryV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetEventArtifactsV1`
-*/
-func (s *EventManagementService) GetEventArtifacts(GetEventArtifactsV1QueryParams *GetEventArtifactsV1QueryParams) (*ResponseEventManagementGetEventArtifactsV1, *resty.Response, error) {
-	return s.GetEventArtifactsV1(GetEventArtifactsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetAuditLogParentRecordsV1`
-*/
-func (s *EventManagementService) GetAuditLogParentRecords(GetAuditLogParentRecordsV1QueryParams *GetAuditLogParentRecordsV1QueryParams) (*ResponseEventManagementGetAuditLogParentRecordsV1, *resty.Response, error) {
-	return s.GetAuditLogParentRecordsV1(GetAuditLogParentRecordsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CountOfEventsV1`
-*/
-func (s *EventManagementService) CountOfEvents(CountOfEventsV1QueryParams *CountOfEventsV1QueryParams) (*ResponseEventManagementCountOfEventsV1, *resty.Response, error) {
-	return s.CountOfEventsV1(CountOfEventsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetWebhookDestinationV1`
-*/
-func (s *EventManagementService) GetWebhookDestination(GetWebhookDestinationV1QueryParams *GetWebhookDestinationV1QueryParams) (*ResponseEventManagementGetWebhookDestinationV1, *resty.Response, error) {
-	return s.GetWebhookDestinationV1(GetWebhookDestinationV1QueryParams)
 }

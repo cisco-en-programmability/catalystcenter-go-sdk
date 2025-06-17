@@ -11,34 +11,34 @@ import (
 
 type ComplianceService service
 
-type GetComplianceStatusV1QueryParams struct {
+type GetComplianceStatusQueryParams struct {
 	ComplianceStatus string  `url:"complianceStatus,omitempty"` //Specify "Compliance status(es)" separated by commas. The Compliance status can be 'COMPLIANT', 'NON_COMPLIANT', 'IN_PROGRESS', 'NOT_AVAILABLE', 'NOT_APPLICABLE', 'ERROR'.
 	DeviceUUID       string  `url:"deviceUuid,omitempty"`       //Comma separated 'Device Ids'
 	Offset           float64 `url:"offset,omitempty"`           //offset/starting row	number
 	Limit            float64 `url:"limit,omitempty"`            //The number of records to be retrieved defaults to 500 if not specified, with a maximum allowed limit of 500.
 }
-type GetComplianceStatusCountV1QueryParams struct {
+type GetComplianceStatusCountQueryParams struct {
 	ComplianceStatus string `url:"complianceStatus,omitempty"` //Specify "Compliance status(es)" separated by commas. The Compliance status can be 'COMPLIANT', 'NON_COMPLIANT', 'IN_PROGRESS', 'NOT_AVAILABLE', 'NOT_APPLICABLE', 'ERROR'.
 }
-type GetComplianceDetailV1QueryParams struct {
-	ComplianceType   string  `url:"complianceType,omitempty"`   //Specify "Compliance type(s)" in commas. The Compliance type can be 'NETWORK_PROFILE', 'IMAGE', 'FABRIC', 'APPLICATION_VISIBILITY', 'FABRIC', RUNNING_CONFIG', 'NETWORK_SETTINGS', 'WORKFLOW' , 'EoX'.
+type GetComplianceDetailQueryParams struct {
+	ComplianceType   string  `url:"complianceType,omitempty"`   //Specify "Compliance type(s)" in commas. The Compliance type can be 'NETWORK_PROFILE', 'IMAGE', 'FABRIC', 'APPLICATION_VISIBILITY', 'FABRIC', RUNNING_CONFIG', 'NETWORK_SETTINGS', 'WORKFLOW' , 'EOX'.
 	ComplianceStatus string  `url:"complianceStatus,omitempty"` //Specify "Compliance status(es)" in commas. The Compliance status can be 'COMPLIANT', 'NON_COMPLIANT', 'IN_PROGRESS', 'NOT_AVAILABLE', 'NOT_APPLICABLE', 'ERROR'.
 	DeviceUUID       string  `url:"deviceUuid,omitempty"`       //Comma separated "Device Id(s)"
 	Offset           float64 `url:"offset,omitempty"`           //offset/starting row
 	Limit            float64 `url:"limit,omitempty"`            //The number of records to be retrieved defaults to 500 if not specified, with a maximum allowed limit of 500.
 }
-type GetComplianceDetailCountV1QueryParams struct {
-	ComplianceType   string `url:"complianceType,omitempty"`   //Specify "Compliance type(s)" separated by commas. The Compliance type can be 'APPLICATION_VISIBILITY', 'EoX', 'FABRIC', 'IMAGE', 'NETWORK_PROFILE', 'NETWORK_SETTINGS', 'PSIRT', 'RUNNING_CONFIG', 'WORKFLOW'.
+type GetComplianceDetailCountQueryParams struct {
+	ComplianceType   string `url:"complianceType,omitempty"`   //Specify "Compliance type(s)" separated by commas. The Compliance type can be 'APPLICATION_VISIBILITY', 'EOX', 'FABRIC', 'IMAGE', 'NETWORK_PROFILE', 'NETWORK_SETTINGS', 'PSIRT', 'RUNNING_CONFIG', 'WORKFLOW'.
 	ComplianceStatus string `url:"complianceStatus,omitempty"` //Specify "Compliance status(es)" separated by commas. The Compliance status can be 'COMPLIANT', 'NON_COMPLIANT', 'IN_PROGRESS', 'NOT_AVAILABLE', 'NOT_APPLICABLE', 'ERROR'.
 }
-type ComplianceDetailsOfDeviceV1QueryParams struct {
+type ComplianceDetailsOfDeviceQueryParams struct {
 	Category             string `url:"category,omitempty"`             //category can have any value among 'INTENT', 'RUNNING_CONFIG' , 'IMAGE' , 'PSIRT' , 'DESIGN_OOD' , 'EOX' , 'NETWORK_SETTINGS'
 	ComplianceType       string `url:"complianceType,omitempty"`       //Specify "Compliance type(s)" separated by commas. The Compliance type can be 'APPLICATION_VISIBILITY', 'EOX', 'FABRIC', 'IMAGE', 'NETWORK_PROFILE', 'NETWORK_SETTINGS', 'PSIRT', 'RUNNING_CONFIG', 'WORKFLOW'.
 	DiffList             bool   `url:"diffList,omitempty"`             //diff list [ pass true to fetch the diff list ]
 	Status               string `url:"status,omitempty"`               //'COMPLIANT', 'NON_COMPLIANT', 'ERROR', 'IN_PROGRESS', 'NOT_APPLICABLE', 'NOT_AVAILABLE', 'WARNING', 'REMEDIATION_IN_PROGRESS' can be the value of the compliance 'status' parameter. [COMPLIANT: Device currently meets the compliance requirements.  NON_COMPLIANT: One of the compliance requirements like Software Image, PSIRT, Network Profile, Startup vs Running, etc. are not met. ERROR: Compliance is unable to compute status due to underlying errors. IN_PROGRESS: Compliance check is in progress for the device. NOT_APPLICABLE: Device is not supported for compliance, or minimum license requirement is not met. NOT_AVAILABLE: Compliance is not available for the device. COMPLIANT_WARNING: The device is compliant with warning if the last date of support is nearing. REMEDIATION_IN_PROGRESS: Compliance remediation is in progress for the device.]
 	RemediationSupported bool   `url:"remediationSupported,omitempty"` //The 'remediationSupported' parameter can be set to 'true' or 'false'. The result will be a combination of both values if it is not provided.
 }
-type GetFieldNoticeNetworkDevicesV1QueryParams struct {
+type GetFieldNoticeNetworkDevicesQueryParams struct {
 	NetworkDeviceID string  `url:"networkDeviceId,omitempty"` //Id of the network device
 	ScanStatus      string  `url:"scanStatus,omitempty"`      //Status of the scan on the network device. Available values : NOT_SCANNED, IN_PROGRESS, SUCCESS, FAILED.
 	NoticeCount     float64 `url:"noticeCount,omitempty"`     //Return network devices with noticeCount greater than this noticeCount
@@ -47,12 +47,12 @@ type GetFieldNoticeNetworkDevicesV1QueryParams struct {
 	SortBy          string  `url:"sortBy,omitempty"`          //A property within the response to sort by.
 	Order           string  `url:"order,omitempty"`           //Whether ascending or descending order should be used to sort the response. Available values : asc, desc. Default value is asc.
 }
-type GetCountOfFieldNoticeNetworkDevicesV1QueryParams struct {
+type GetCountOfFieldNoticeNetworkDevicesQueryParams struct {
 	NetworkDeviceID string  `url:"networkDeviceId,omitempty"` //Id of the network device
 	ScanStatus      string  `url:"scanStatus,omitempty"`      //Status of the scan on the network device. Available values : NOT_SCANNED, IN_PROGRESS, SUCCESS, FAILED.
 	NoticeCount     float64 `url:"noticeCount,omitempty"`     //Return network devices with noticeCount greater than this noticeCount
 }
-type GetFieldNoticesAffectingTheNetworkDeviceV1QueryParams struct {
+type GetFieldNoticesAffectingTheNetworkDeviceQueryParams struct {
 	ID     string  `url:"id,omitempty"`     //Id of the field notice
 	Type   string  `url:"type,omitempty"`   //Return field notices with this type. Available values : SOFTWARE, HARDWARE.
 	Offset float64 `url:"offset,omitempty"` //The first record to show for this page; the first record is numbered 1. Default value is 1.
@@ -60,11 +60,11 @@ type GetFieldNoticesAffectingTheNetworkDeviceV1QueryParams struct {
 	SortBy string  `url:"sortBy,omitempty"` //A property within the response to sort by.
 	Order  string  `url:"order,omitempty"`  //Whether ascending or descending order should be used to sort the response. Available values : asc, desc. Default value is asc.
 }
-type GetCountOfFieldNoticesAffectingTheNetworkDeviceV1QueryParams struct {
+type GetCountOfFieldNoticesAffectingTheNetworkDeviceQueryParams struct {
 	ID   string `url:"id,omitempty"`   //Id of the field notice
 	Type string `url:"type,omitempty"` //Return field notices with this type. Available values : SOFTWARE, HARDWARE
 }
-type GetFieldNoticesV1QueryParams struct {
+type GetFieldNoticesQueryParams struct {
 	ID          string  `url:"id,omitempty"`          //Id of the field notice
 	DeviceCount float64 `url:"deviceCount,omitempty"` //Return field notices with deviceCount greater than this deviceCount
 	Type        string  `url:"type,omitempty"`        //Return field notices with this type. Available values : SOFTWARE, HARDWARE.
@@ -73,12 +73,12 @@ type GetFieldNoticesV1QueryParams struct {
 	SortBy      string  `url:"sortBy,omitempty"`      //A property within the response to sort by.
 	Order       string  `url:"order,omitempty"`       //Whether ascending or descending order should be used to sort the response. Available values : asc, desc. Default value is asc.
 }
-type GetCountOfFieldNoticesV1QueryParams struct {
+type GetCountOfFieldNoticesQueryParams struct {
 	ID          string  `url:"id,omitempty"`          //Id of the field notice
 	DeviceCount float64 `url:"deviceCount,omitempty"` //Return field notices with deviceCount greater than this deviceCount
 	Type        string  `url:"type,omitempty"`        //Return field notices with this type. Available values : SOFTWARE, HARDWARE
 }
-type GetFieldNoticeNetworkDevicesForTheNoticeV1QueryParams struct {
+type GetFieldNoticeNetworkDevicesForTheNoticeQueryParams struct {
 	NetworkDeviceID string  `url:"networkDeviceId,omitempty"` //Id of the network device
 	ScanStatus      string  `url:"scanStatus,omitempty"`      //Status of the scan on the network device. Available values : NOT_SCANNED, IN_PROGRESS, SUCCESS, FAILED.
 	Offset          float64 `url:"offset,omitempty"`          //The first record to show for this page; the first record is numbered 1. Default value is 1.
@@ -86,25 +86,25 @@ type GetFieldNoticeNetworkDevicesForTheNoticeV1QueryParams struct {
 	SortBy          string  `url:"sortBy,omitempty"`          //A property within the response to sort by.
 	Order           string  `url:"order,omitempty"`           //Whether ascending or descending order should be used to sort the response. Available values : asc, desc. Default value is asc.
 }
-type GetCountOfFieldNoticeNetworkDevicesForTheNoticeV1QueryParams struct {
+type GetCountOfFieldNoticeNetworkDevicesForTheNoticeQueryParams struct {
 	NetworkDeviceID string `url:"networkDeviceId,omitempty"` //id of the network device
 	ScanStatus      string `url:"scanStatus,omitempty"`      //status of the scan on the network device. Available values : NOT_SCANNED, IN_PROGRESS, SUCCESS, FAILED.
 }
-type GetFieldNoticesResultsTrendOverTimeV1QueryParams struct {
+type GetFieldNoticesResultsTrendOverTimeQueryParams struct {
 	ScanTime float64 `url:"scanTime,omitempty"` //Return field notices trend with scanTime greater than this scanTime
 	Offset   float64 `url:"offset,omitempty"`   //The first record to show for this page; the first record is numbered 1. Default value is 1.
 	Limit    float64 `url:"limit,omitempty"`    //The number of records to show for this page. Minimum value is 1. Maximum value is 500. Default value is 500.
 }
-type GetCountOfFieldNoticesResultsTrendOverTimeV1QueryParams struct {
+type GetCountOfFieldNoticesResultsTrendOverTimeQueryParams struct {
 	ScanTime float64 `url:"scanTime,omitempty"` //Return field notices trend with scanTime greater than this scanTime
 }
-type TriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1QueryParams struct {
+type TriggersAFieldNoticesScanForTheSupportedNetworkDevicesQueryParams struct {
 	FailedDevicesOnly bool `url:"failedDevicesOnly,omitempty"` //Used to specify if the scan should run only for the network devices that failed during the previous scan. If not specified, this parameter defaults to false.
 }
-type GetConfigTaskDetailsV1QueryParams struct {
+type GetConfigTaskDetailsQueryParams struct {
 	ParentTaskID string `url:"parentTaskId,omitempty"` //task Id
 }
-type GetNetworkBugsV1QueryParams struct {
+type GetNetworkBugsQueryParams struct {
 	ID          string  `url:"id,omitempty"`          //The id of the network bug
 	DeviceCount float64 `url:"deviceCount,omitempty"` //Return network bugs with deviceCount greater than this deviceCount
 	Severity    string  `url:"severity,omitempty"`    //Return network bugs with this severity. Available values : CATASTROPHIC, SEVERE, MODERATE
@@ -113,12 +113,12 @@ type GetNetworkBugsV1QueryParams struct {
 	SortBy      string  `url:"sortBy,omitempty"`      //A property within the response to sort by.
 	Order       string  `url:"order,omitempty"`       //Whether ascending or descending order should be used to sort the response. Available values : asc, desc. Default value is asc
 }
-type GetCountOfNetworkBugsV1QueryParams struct {
+type GetCountOfNetworkBugsQueryParams struct {
 	ID          string  `url:"id,omitempty"`          //Id of the network bug
 	DeviceCount float64 `url:"deviceCount,omitempty"` //Return network bugs with deviceCount greater than this deviceCount
 	Severity    string  `url:"severity,omitempty"`    //Return network bugs with this severity. Available values : CATASTROPHIC, SEVERE, MODERATE
 }
-type GetNetworkBugDevicesForTheBugV1QueryParams struct {
+type GetNetworkBugDevicesForTheBugQueryParams struct {
 	NetworkDeviceID string  `url:"networkDeviceId,omitempty"` //Id of the network device
 	ScanMode        string  `url:"scanMode,omitempty"`        //Mode or the criteria using which the network device was scanned. Available values : ESSENTIALS, ADVANTAGE, CX_CLOUD, NOT_AVAILABLE
 	ScanStatus      string  `url:"scanStatus,omitempty"`      //Status of the scan on the network device. Available values : NOT_SCANNED, IN_PROGRESS, SUCCESS, FAILED, FALL_BACK
@@ -127,12 +127,12 @@ type GetNetworkBugDevicesForTheBugV1QueryParams struct {
 	SortBy          string  `url:"sortBy,omitempty"`          //A property within the response to sort by.
 	Order           string  `url:"order,omitempty"`           //Whether ascending or descending order should be used to sort the response. Available values : asc, desc. Default value is asc
 }
-type GetCountOfNetworkBugDevicesForTheBugV1QueryParams struct {
+type GetCountOfNetworkBugDevicesForTheBugQueryParams struct {
 	NetworkDeviceID string `url:"networkDeviceId,omitempty"` //Id of the network device
 	ScanMode        string `url:"scanMode,omitempty"`        //Mode or the criteria using which the network device was scanned. Available values : ESSENTIALS, ADVANTAGE, CX_CLOUD, NOT_AVAILABLE
 	ScanStatus      string `url:"scanStatus,omitempty"`      //Status of the scan on the network device. Available values : NOT_SCANNED, IN_PROGRESS, SUCCESS, FAILED, FALL_BACK
 }
-type GetNetworkBugDevicesV1QueryParams struct {
+type GetNetworkBugDevicesQueryParams struct {
 	NetworkDeviceID string  `url:"networkDeviceId,omitempty"` //Id of the network device
 	ScanMode        string  `url:"scanMode,omitempty"`        //Mode or the criteria using which the network device was scanned. Available values : ESSENTIALS, ADVANTAGE, CX_CLOUD, NOT_AVAILABLE
 	ScanStatus      string  `url:"scanStatus,omitempty"`      //Status of the scan on the network device. Available values : NOT_SCANNED, IN_PROGRESS, SUCCESS, FAILED, FALL_BACK
@@ -142,13 +142,13 @@ type GetNetworkBugDevicesV1QueryParams struct {
 	SortBy          string  `url:"sortBy,omitempty"`          //A property within the response to sort by.
 	Order           string  `url:"order,omitempty"`           //Whether ascending or descending order should be used to sort the response. Available values : asc, desc. Default value is asc
 }
-type GetCountOfNetworkBugDevicesV1QueryParams struct {
+type GetCountOfNetworkBugDevicesQueryParams struct {
 	NetworkDeviceID string  `url:"networkDeviceId,omitempty"` //Id of the network device
 	ScanMode        string  `url:"scanMode,omitempty"`        //Mode or the criteria using which the network device was scanned. Available values : ESSENTIALS, ADVANTAGE, CX_CLOUD, NOT_AVAILABLE
 	ScanStatus      string  `url:"scanStatus,omitempty"`      //Status of the scan on the network device. Available values : NOT_SCANNED, IN_PROGRESS, SUCCESS, FAILED, FALL_BACK
 	BugCount        float64 `url:"bugCount,omitempty"`        //Return network devices with bugCount greater than this bugCount
 }
-type GetBugsAffectingTheNetworkDeviceV1QueryParams struct {
+type GetBugsAffectingTheNetworkDeviceQueryParams struct {
 	ID       string  `url:"id,omitempty"`       //Id of the network bug
 	Severity string  `url:"severity,omitempty"` //Return network bugs with this severity. Available values : CATASTROPHIC, SEVERE, MODERATE.
 	Offset   float64 `url:"offset,omitempty"`   //The first record to show for this page; the first record is numbered 1. Default value is 1.
@@ -156,22 +156,22 @@ type GetBugsAffectingTheNetworkDeviceV1QueryParams struct {
 	SortBy   string  `url:"sortBy,omitempty"`   //A property within the response to sort by.
 	Order    string  `url:"order,omitempty"`    //Whether ascending or descending order should be used to sort the response. Available values : asc, desc. Default value is asc.
 }
-type GetCountOfBugsAffectingTheNetworkDeviceV1QueryParams struct {
+type GetCountOfBugsAffectingTheNetworkDeviceQueryParams struct {
 	ID       string `url:"id,omitempty"`       //Id of the network bug
 	Severity string `url:"severity,omitempty"` //Return network bugs with this severity. Available values : CATASTROPHIC, SEVERE, MODERATE
 }
-type GetNetworkBugsResultsTrendOverTimeV1QueryParams struct {
+type GetNetworkBugsResultsTrendOverTimeQueryParams struct {
 	ScanTime float64 `url:"scanTime,omitempty"` //Return bugs trend with scanTime greater than this scanTime
 	Offset   float64 `url:"offset,omitempty"`   //The first record to show for this page; the first record is numbered 1. Default value is 1.
 	Limit    float64 `url:"limit,omitempty"`    //The number of records to show for this page. Minimum value is 1. Maximum value is 500. Default value is 500.
 }
-type GetCountOfNetworkBugsResultsTrendOverTimeV1QueryParams struct {
+type GetCountOfNetworkBugsResultsTrendOverTimeQueryParams struct {
 	ScanTime float64 `url:"scanTime,omitempty"` //Return bugs trend with scanTime greater than this scanTime
 }
-type TriggersABugsScanForTheSupportedNetworkDevicesV1QueryParams struct {
+type TriggersABugsScanForTheSupportedNetworkDevicesQueryParams struct {
 	FailedDevicesOnly bool `url:"failedDevicesOnly,omitempty"` //Used to specify if the scan should run only for the network devices that failed during the previous scan. If not specified, this parameter defaults to false.
 }
-type GetSecurityAdvisoriesAffectingTheNetworkDevicesV1QueryParams struct {
+type GetSecurityAdvisoriesAffectingTheNetworkDevicesQueryParams struct {
 	ID                   string  `url:"id,omitempty"`                   //Id of the advisory
 	DeviceCount          float64 `url:"deviceCount,omitempty"`          //Return advisories with deviceCount greater than this deviceCount
 	CvssBaseScore        string  `url:"cvssBaseScore,omitempty"`        //Return advisories with cvssBaseScore greater than this cvssBaseScore. E.g. : 8.5
@@ -181,13 +181,13 @@ type GetSecurityAdvisoriesAffectingTheNetworkDevicesV1QueryParams struct {
 	SortBy               string  `url:"sortBy,omitempty"`               //A property within the response to sort by.
 	Order                string  `url:"order,omitempty"`                //Whether ascending or descending order should be used to sort the response. Available values : asc, desc. Default value is asc.
 }
-type GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1QueryParams struct {
+type GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesQueryParams struct {
 	ID                   string  `url:"id,omitempty"`                   //Id of the security advisory
 	DeviceCount          float64 `url:"deviceCount,omitempty"`          //Return advisories with deviceCount greater than this deviceCount
 	CvssBaseScore        string  `url:"cvssBaseScore,omitempty"`        //Return advisories with cvssBaseScore greater than this cvssBaseScore. E.g. : 8.5
 	SecurityImpactRating string  `url:"securityImpactRating,omitempty"` //Return advisories with this securityImpactRating. Available values : CRITICAL, HIGH.
 }
-type GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1QueryParams struct {
+type GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryQueryParams struct {
 	NetworkDeviceID string  `url:"networkDeviceId,omitempty"` //Id of the network device
 	ScanMode        string  `url:"scanMode,omitempty"`        //Mode or the criteria using which the network device was scanned. Available values : ESSENTIALS, ADVANTAGE, CX_CLOUD, NOT_AVAILABLE
 	ScanStatus      string  `url:"scanStatus,omitempty"`      //Status of the scan on the network device. Available values : NOT_SCANNED, IN_PROGRESS, SUCCESS, FAILED, FALL_BACK.
@@ -196,12 +196,12 @@ type GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1QueryParams struct
 	SortBy          string  `url:"sortBy,omitempty"`          //A property within the response to sort by.
 	Order           string  `url:"order,omitempty"`           //Whether ascending or descending order should be used to sort the response. Available values : asc, desc. Default value is asc.
 }
-type GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1QueryParams struct {
+type GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryQueryParams struct {
 	NetworkDeviceID string `url:"networkDeviceId,omitempty"` //Id of the network device
 	ScanMode        string `url:"scanMode,omitempty"`        //Mode or the criteria using which the network device was scanned. Available values : ESSENTIALS, ADVANTAGE, CX_CLOUD, NOT_AVAILABLE
 	ScanStatus      string `url:"scanStatus,omitempty"`      //Status of the scan on the network device. Available values : NOT_SCANNED, IN_PROGRESS, SUCCESS, FAILED, FALL_BACK.
 }
-type GetSecurityAdvisoryNetworkDevicesV1QueryParams struct {
+type GetSecurityAdvisoryNetworkDevicesQueryParams struct {
 	NetworkDeviceID string  `url:"networkDeviceId,omitempty"` //Id of the network device
 	ScanMode        string  `url:"scanMode,omitempty"`        //Mode or the criteria using which the network device was scanned. Available values : ESSENTIALS, ADVANTAGE, CX_CLOUD, NOT_AVAILABLE
 	ScanStatus      string  `url:"scanStatus,omitempty"`      //Status of the scan on the network device. Available values : NOT_SCANNED, IN_PROGRESS, SUCCESS, FAILED, FALL_BACK.
@@ -211,13 +211,13 @@ type GetSecurityAdvisoryNetworkDevicesV1QueryParams struct {
 	SortBy          string  `url:"sortBy,omitempty"`          //A property within the response to sort by.
 	Order           string  `url:"order,omitempty"`           //Whether ascending or descending order should be used to sort the response. Available values : asc, desc. Default value is asc.
 }
-type GetCountOfSecurityAdvisoryNetworkDevicesV1QueryParams struct {
+type GetCountOfSecurityAdvisoryNetworkDevicesQueryParams struct {
 	NetworkDeviceID string  `url:"networkDeviceId,omitempty"` //Id of the network device
 	ScanMode        string  `url:"scanMode,omitempty"`        //Mode or the criteria using which the network device was scanned. Available values : ESSENTIALS, ADVANTAGE, CX_CLOUD, NOT_AVAILABLE
 	ScanStatus      string  `url:"scanStatus,omitempty"`      //Status of the scan on the network device. Available values : NOT_SCANNED, IN_PROGRESS, SUCCESS, FAILED, FALL_BACK.
 	AdvisoryCount   float64 `url:"advisoryCount,omitempty"`   //Return network devices with advisoryCount greater than this advisoryCount
 }
-type GetSecurityAdvisoriesAffectingTheNetworkDeviceV1QueryParams struct {
+type GetSecurityAdvisoriesAffectingTheNetworkDeviceQueryParams struct {
 	ID                   string  `url:"id,omitempty"`                   //Id of the security advisory
 	CvssBaseScore        string  `url:"cvssBaseScore,omitempty"`        //Return advisories with cvssBaseScore greater than this cvssBaseScore. E.g. : 8.5
 	SecurityImpactRating string  `url:"securityImpactRating,omitempty"` //Return advisories with this securityImpactRating. Available values : CRITICAL, HIGH.
@@ -226,150 +226,151 @@ type GetSecurityAdvisoriesAffectingTheNetworkDeviceV1QueryParams struct {
 	SortBy               string  `url:"sortBy,omitempty"`               //A property within the response to sort by.
 	Order                string  `url:"order,omitempty"`                //Whether ascending or descending order should be used to sort the response. Available values : asc, desc. Default value is asc.
 }
-type GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1QueryParams struct {
+type GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceQueryParams struct {
 	ID                   string `url:"id,omitempty"`                   //Id of the security advisory
 	CvssBaseScore        string `url:"cvssBaseScore,omitempty"`        //Return advisories with cvssBaseScore greater than this cvssBaseScore. E.g. : 8.5
 	SecurityImpactRating string `url:"securityImpactRating,omitempty"` //Return advisories with this securityImpactRating. Available values : CRITICAL, HIGH.
 }
-type GetSecurityAdvisoriesResultsTrendOverTimeV1QueryParams struct {
+type GetSecurityAdvisoriesResultsTrendOverTimeQueryParams struct {
 	ScanTime float64 `url:"scanTime,omitempty"` //Return advisories trend with scanTime greater than this scanTime
 	Offset   float64 `url:"offset,omitempty"`   //The first record to show for this page; the first record is numbered 1. Default value is 1.
 	Limit    float64 `url:"limit,omitempty"`    //The number of records to show for this page. Minimum value is 1. Maximum value is 500. Default value is 500.
 }
-type GetCountOfSecurityAdvisoriesResultsTrendOverTimeV1QueryParams struct {
+type GetCountOfSecurityAdvisoriesResultsTrendOverTimeQueryParams struct {
 	ScanTime float64 `url:"scanTime,omitempty"` //Return advisories trend with scanTime greater than this scanTime
 }
-type TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1QueryParams struct {
+type TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesQueryParams struct {
 	FailedDevicesOnly bool `url:"failedDevicesOnly,omitempty"` //Used to specify if the scan should run only for the network devices that failed during the previous scan. If not specified, this parameter defaults to false.
 }
 
-type ResponseComplianceGetComplianceStatusV1 struct {
-	Version  string                                             `json:"version,omitempty"`  // Version of the API.
-	Response *[]ResponseComplianceGetComplianceStatusV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetComplianceStatus struct {
+	Version  string                                           `json:"version,omitempty"`  // Version of the API.
+	Response *[]ResponseComplianceGetComplianceStatusResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceGetComplianceStatusV1Response struct {
+type ResponseComplianceGetComplianceStatusResponse struct {
 	DeviceUUID       string   `json:"deviceUuid,omitempty"`       // UUID of the device.
 	ComplianceStatus string   `json:"complianceStatus,omitempty"` // Current compliance status for the compliance type that will be one of COMPLIANT, NON_COMPLIANT, ERROR, IN_PROGRESS, NOT_APPLICABLE, NOT_AVAILABLE, COMPLIANT_WARNING, REMEDIATION_IN_PROGRESS, or ABORTED.
 	Message          string   `json:"message,omitempty"`          // Additional message of compliance status for the compliance type.
 	ScheduleTime     *float64 `json:"scheduleTime,omitempty"`     // Timestamp when compliance is scheduled to run.
 	LastUpdateTime   *float64 `json:"lastUpdateTime,omitempty"`   // Timestamp when the latest compliance checks ran.
 }
-type ResponseComplianceRunComplianceV1 struct {
-	Version  string                                     `json:"version,omitempty"`  // Version of the API.
-	Response *ResponseComplianceRunComplianceV1Response `json:"response,omitempty"` //
+type ResponseComplianceRunCompliance struct {
+	Version  string                                   `json:"version,omitempty"`  // Version of the API.
+	Response *ResponseComplianceRunComplianceResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceRunComplianceV1Response struct {
+type ResponseComplianceRunComplianceResponse struct {
 	TaskID string `json:"taskId,omitempty"` // Task id.
 	URL    string `json:"url,omitempty"`    // Additional url for task id.
 }
-type ResponseComplianceGetComplianceStatusCountV1 struct {
+type ResponseComplianceGetComplianceStatusCount struct {
 	Version  string   `json:"version,omitempty"`  // Version of the API.
 	Response *float64 `json:"response,omitempty"` // Returns count of compliant status
 }
-type ResponseComplianceGetComplianceDetailV1 struct {
-	Version  string                                             `json:"version,omitempty"`  // Version of the API.
-	Response *[]ResponseComplianceGetComplianceDetailV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetComplianceDetail struct {
+	Version  string                                           `json:"version,omitempty"`  // Version of the API.
+	Response *[]ResponseComplianceGetComplianceDetailResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceGetComplianceDetailV1Response struct {
-	ComplianceType       string   `json:"complianceType,omitempty"`       // Compliance type corresponds to a tile on the UI. Will be one of NETWORK_PROFILE, IMAGE, APPLICATION_VISIBILITY, FABRIC, PSIRT, RUNNING_CONFIG, NETWORK_SETTINGS, WORKFLOW, or EoX.
+type ResponseComplianceGetComplianceDetailResponse struct {
+	ComplianceType       string   `json:"complianceType,omitempty"`       // Compliance type corresponds to a tile on the UI. Will be one of NETWORK_PROFILE, IMAGE, APPLICATION_VISIBILITY, FABRIC, PSIRT, RUNNING_CONFIG, NETWORK_SETTINGS, WORKFLOW, or EOX.
 	LastSyncTime         *float64 `json:"lastSyncTime,omitempty"`         // Timestamp when the status changed from different value to the current value.
 	DeviceUUID           string   `json:"deviceUuid,omitempty"`           // UUID of the device.
 	DisplayName          string   `json:"displayName,omitempty"`          // User friendly name for the configuration.
 	Status               string   `json:"status,omitempty"`               // Current status of compliance for the complianceType. Will be one of COMPLIANT, NON_COMPLIANT, ERROR, IN_PROGRESS, NOT_APPLICABLE, NOT_AVAILABLE, COMPLIANT_WARNING, REMEDIATION_IN_PROGRESS, or ABORTED.
-	Category             string   `json:"category,omitempty"`             // category can have any value among 'INTENT'(mapped to compliance types: NETWORK_SETTINGS,NETWORK_PROFILE,WORKFLOW,FABRIC,APPLICATION_VISIBILITY), 'RUNNING_CONFIG' , 'IMAGE' , 'PSIRT' , 'EoX' , 'NETWORK_SETTINGS'.
+	Category             string   `json:"category,omitempty"`             // category can have any value among 'INTENT'(mapped to compliance types: NETWORK_SETTINGS,NETWORK_PROFILE,WORKFLOW,FABRIC,APPLICATION_VISIBILITY), 'RUNNING_CONFIG' , 'IMAGE' , 'PSIRT' , 'EOX' , 'NETWORK_SETTINGS'.
 	LastUpdateTime       *float64 `json:"lastUpdateTime,omitempty"`       // Timestamp when the latest compliance checks ran.
 	State                string   `json:"state,omitempty"`                // State of latest compliance check for the complianceType. Will be one of SUCCESS, FAILED, or IN_PROGRESS.
 	RemediationSupported *bool    `json:"remediationSupported,omitempty"` // Indicates whether remediation is supported for this compliance type or not
 }
-type ResponseComplianceGetComplianceDetailCountV1 struct {
+type ResponseComplianceGetComplianceDetailCount struct {
 	Version  string   `json:"version,omitempty"`  // Version of API.
 	Response *float64 `json:"response,omitempty"` // Count of all devices or devices that match the query parameters.
 }
-type ResponseComplianceComplianceRemediationV1 struct {
-	Response *ResponseComplianceComplianceRemediationV1Response `json:"response,omitempty"` //
-	Version  string                                             `json:"version,omitempty"`  // Version of API.
+type ResponseComplianceComplianceRemediation struct {
+	Response *ResponseComplianceComplianceRemediationResponse `json:"response,omitempty"` //
+	Version  string                                           `json:"version,omitempty"`  // Version of API.
 }
-type ResponseComplianceComplianceRemediationV1Response struct {
+type ResponseComplianceComplianceRemediationResponse struct {
 	TaskID string `json:"taskId,omitempty"` // The UUID of the task.
 	URL    string `json:"url,omitempty"`    // The path to the API endpoint to GET for information on the task.
 }
-type ResponseComplianceDeviceComplianceStatusV1 struct {
-	Response *ResponseComplianceDeviceComplianceStatusV1Response `json:"response,omitempty"` //
-	Version  string                                              `json:"version,omitempty"`  // Version of the API.
+type ResponseComplianceDeviceComplianceStatus struct {
+	Response *ResponseComplianceDeviceComplianceStatusResponse `json:"response,omitempty"` //
+	Version  string                                            `json:"version,omitempty"`  // Version of the API.
 }
-type ResponseComplianceDeviceComplianceStatusV1Response struct {
+type ResponseComplianceDeviceComplianceStatusResponse struct {
 	DeviceUUID       string   `json:"deviceUuid,omitempty"`       // UUID of the device.
 	ComplianceStatus string   `json:"complianceStatus,omitempty"` // Current compliance status of the device that will be one of COMPLIANT, NON_COMPLIANT, ERROR, IN_PROGRESS, NOT_APPLICABLE, NOT_AVAILABLE, COMPLIANT_WARNING, REMEDIATION_IN_PROGRESS, or ABORTED.
 	LastUpdateTime   *float64 `json:"lastUpdateTime,omitempty"`   // Timestamp when the latest compliance checks ran.
 	ScheduleTime     string   `json:"scheduleTime,omitempty"`     // Timestamp when the next compliance checks will run.
 }
-type ResponseComplianceComplianceDetailsOfDeviceV1 struct {
-	Response   *[]ResponseComplianceComplianceDetailsOfDeviceV1Response `json:"response,omitempty"`   //
-	DeviceUUID string                                                   `json:"deviceUuid,omitempty"` // UUID of the device.
+type ResponseComplianceComplianceDetailsOfDevice struct {
+	Response   *[]ResponseComplianceComplianceDetailsOfDeviceResponse `json:"response,omitempty"`   //
+	DeviceUUID string                                                 `json:"deviceUuid,omitempty"` // UUID of the device.
 }
-type ResponseComplianceComplianceDetailsOfDeviceV1Response struct {
-	DeviceUUID     string                                                                 `json:"deviceUuid,omitempty"`     // UUID of the device.
-	ComplianceType string                                                                 `json:"complianceType,omitempty"` // Compliance type corresponds to a tile on the UI that will be one of NETWORK_PROFILE, IMAGE, APPLICATION_VISIBILITY, FABRIC, PSIRT, RUNNING_CONFIG, NETWORK_SETTINGS, WORKFLOW, or EoX.
-	Status         string                                                                 `json:"status,omitempty"`         // Status of compliance for the compliance type, will be one of COMPLIANT, NON_COMPLIANT, ERROR, IN_PROGRESS, NOT_APPLICABLE, NOT_AVAILABLE, COMPLIANT_WARNING, REMEDIATION_IN_PROGRESS, or ABORTED.
-	State          string                                                                 `json:"state,omitempty"`          // State of the compliance check for the compliance type, will be one of SUCCESS, FAILED, or IN_PROGRESS.
-	LastSyncTime   *float64                                                               `json:"lastSyncTime,omitempty"`   // Timestamp when the status changed from a different value to the current value.
-	LastUpdateTime *float64                                                               `json:"lastUpdateTime,omitempty"` // Timestamp of the latest compliance check that was run.
-	SourceInfoList *[]ResponseComplianceComplianceDetailsOfDeviceV1ResponseSourceInfoList `json:"sourceInfoList,omitempty"` //
-	AckStatus      string                                                                 `json:"ackStatus,omitempty"`      // Acknowledgment status of the compliance type. UNACKNOWLEDGED if none of the violations under the compliance type are acknowledged. Otherwise it will be ACKNOWLEDGED.
-	Version        string                                                                 `json:"version,omitempty"`        // Version of the API.
+type ResponseComplianceComplianceDetailsOfDeviceResponse struct {
+	DeviceUUID           string                                                               `json:"deviceUuid,omitempty"`           // UUID of the device.
+	ComplianceType       string                                                               `json:"complianceType,omitempty"`       // Compliance type corresponds to a tile on the UI that will be one of NETWORK_PROFILE, IMAGE, APPLICATION_VISIBILITY, FABRIC, PSIRT, RUNNING_CONFIG, NETWORK_SETTINGS, WORKFLOW, or EOX.
+	Status               string                                                               `json:"status,omitempty"`               // Status of compliance for the compliance type, will be one of COMPLIANT, NON_COMPLIANT, ERROR, IN_PROGRESS, NOT_APPLICABLE, NOT_AVAILABLE, WARNING, REMEDIATION_IN_PROGRESS can be the value of the compliance status parameter. [COMPLIANT: Device currently meets the compliance requirements.  NON_COMPLIANT: One of the compliance requirements like Software Image, PSIRT, Network Profile, Startup vs Running, etc. are not met. ERROR: Compliance is unable to compute status due to underlying errors. IN_PROGRESS: Compliance check is in progress for the device. NOT_APPLICABLE: Device is not supported for compliance, or minimum license requirement is not met. NOT_AVAILABLE: Compliance is not available for the device. COMPLIANT_WARNING: The device is compliant with warning if the last date of support is nearing. REMEDIATION_IN_PROGRESS: Compliance remediation is in progress for the device.]
+	State                string                                                               `json:"state,omitempty"`                // State of the compliance check for the compliance type, will be one of SUCCESS, FAILED, or IN_PROGRESS.
+	LastSyncTime         *float64                                                             `json:"lastSyncTime,omitempty"`         // Timestamp when the status changed from a different value to the current value.
+	LastUpdateTime       *float64                                                             `json:"lastUpdateTime,omitempty"`       // Timestamp of the latest compliance check that was run.
+	SourceInfoList       *[]ResponseComplianceComplianceDetailsOfDeviceResponseSourceInfoList `json:"sourceInfoList,omitempty"`       //
+	AckStatus            string                                                               `json:"ackStatus,omitempty"`            // Acknowledgment status of the compliance type. UNACKNOWLEDGED if none of the violations under the compliance type are acknowledged. Otherwise it will be ACKNOWLEDGED.
+	Version              string                                                               `json:"version,omitempty"`              // Version of the API.
+	RemediationSupported *bool                                                                `json:"remediationSupported,omitempty"` // Indicates whether remediation is supported for this compliance type or not.
 }
-type ResponseComplianceComplianceDetailsOfDeviceV1ResponseSourceInfoList struct {
-	Name                string                                                                          `json:"name,omitempty"`                // Name of the type of top level configuration.
-	NameWithBusinessKey string                                                                          `json:"nameWithBusinessKey,omitempty"` // Name With Business Key
-	SourceEnum          string                                                                          `json:"sourceEnum,omitempty"`          // Will be same as compliance type.
-	Type                string                                                                          `json:"type,omitempty"`                // Type of the top level configuration.
-	AppName             string                                                                          `json:"appName,omitempty"`             // Application name that is used to club the violations.
-	Count               *float64                                                                        `json:"count,omitempty"`               // Number of violations present.
-	AckStatus           string                                                                          `json:"ackStatus,omitempty"`           // Acknowledgment status of violations. UNACKNOWLEDGED if none of the violations are acknowledged. Otherwise it will be ACKNOWLEDGED.
-	BusinessKey         *ResponseComplianceComplianceDetailsOfDeviceV1ResponseSourceInfoListBusinessKey `json:"businessKey,omitempty"`         //
-	DiffList            *[]ResponseComplianceComplianceDetailsOfDeviceV1ResponseSourceInfoListDiffList  `json:"diffList,omitempty"`            //
-	DisplayName         string                                                                          `json:"displayName,omitempty"`         // Model display name.
+type ResponseComplianceComplianceDetailsOfDeviceResponseSourceInfoList struct {
+	Name                string                                                                        `json:"name,omitempty"`                // Name of the type of top level configuration.
+	NameWithBusinessKey string                                                                        `json:"nameWithBusinessKey,omitempty"` // Name With Business Key
+	SourceEnum          string                                                                        `json:"sourceEnum,omitempty"`          // Will be same as compliance type.
+	Type                string                                                                        `json:"type,omitempty"`                // Type of the top level configuration.
+	AppName             string                                                                        `json:"appName,omitempty"`             // Application name that is used to club the violations.
+	Count               *float64                                                                      `json:"count,omitempty"`               // Number of violations present.
+	AckStatus           string                                                                        `json:"ackStatus,omitempty"`           // Acknowledgment status of violations. UNACKNOWLEDGED if none of the violations are acknowledged. Otherwise it will be ACKNOWLEDGED.
+	BusinessKey         *ResponseComplianceComplianceDetailsOfDeviceResponseSourceInfoListBusinessKey `json:"businessKey,omitempty"`         //
+	DiffList            *[]ResponseComplianceComplianceDetailsOfDeviceResponseSourceInfoListDiffList  `json:"diffList,omitempty"`            //
+	DisplayName         string                                                                        `json:"displayName,omitempty"`         // Model display name.
 }
-type ResponseComplianceComplianceDetailsOfDeviceV1ResponseSourceInfoListBusinessKey struct {
-	ResourceName          string                                                                                               `json:"resourceName,omitempty"`          // Name of the top level resource. Same as name above.
-	BusinessKeyAttributes *ResponseComplianceComplianceDetailsOfDeviceV1ResponseSourceInfoListBusinessKeyBusinessKeyAttributes `json:"businessKeyAttributes,omitempty"` // Attributes that together uniquely identify the configuration instance.
-	OtherAttributes       *ResponseComplianceComplianceDetailsOfDeviceV1ResponseSourceInfoListBusinessKeyOtherAttributes       `json:"otherAttributes,omitempty"`       //
+type ResponseComplianceComplianceDetailsOfDeviceResponseSourceInfoListBusinessKey struct {
+	ResourceName          string                                                                                             `json:"resourceName,omitempty"`          // Name of the top level resource. Same as name above.
+	BusinessKeyAttributes *ResponseComplianceComplianceDetailsOfDeviceResponseSourceInfoListBusinessKeyBusinessKeyAttributes `json:"businessKeyAttributes,omitempty"` // Attributes that together uniquely identify the configuration instance.
+	OtherAttributes       *ResponseComplianceComplianceDetailsOfDeviceResponseSourceInfoListBusinessKeyOtherAttributes       `json:"otherAttributes,omitempty"`       //
 }
-type ResponseComplianceComplianceDetailsOfDeviceV1ResponseSourceInfoListBusinessKeyBusinessKeyAttributes interface{}
-type ResponseComplianceComplianceDetailsOfDeviceV1ResponseSourceInfoListBusinessKeyOtherAttributes struct {
-	Name          string                                                                                                      `json:"name,omitempty"`          // Name of the attributes.
-	CfsAttributes *ResponseComplianceComplianceDetailsOfDeviceV1ResponseSourceInfoListBusinessKeyOtherAttributesCfsAttributes `json:"cfsAttributes,omitempty"` //
+type ResponseComplianceComplianceDetailsOfDeviceResponseSourceInfoListBusinessKeyBusinessKeyAttributes interface{}
+type ResponseComplianceComplianceDetailsOfDeviceResponseSourceInfoListBusinessKeyOtherAttributes struct {
+	Name          string                                                                                                    `json:"name,omitempty"`          // Name of the attributes.
+	CfsAttributes *ResponseComplianceComplianceDetailsOfDeviceResponseSourceInfoListBusinessKeyOtherAttributesCfsAttributes `json:"cfsAttributes,omitempty"` //
 }
-type ResponseComplianceComplianceDetailsOfDeviceV1ResponseSourceInfoListBusinessKeyOtherAttributesCfsAttributes struct {
+type ResponseComplianceComplianceDetailsOfDeviceResponseSourceInfoListBusinessKeyOtherAttributesCfsAttributes struct {
 	DisplayName string `json:"displayName,omitempty"` // User friendly name for the configuration.
 	AppName     string `json:"appName,omitempty"`     // Same as appName above.
 	Description string `json:"description,omitempty"` // Description for the configuration, if available.
 	Source      string `json:"source,omitempty"`      // Will be same as compliance type.
 	Type        string `json:"type,omitempty"`        // The type of this attribute (for example, type can be Intent).
 }
-type ResponseComplianceComplianceDetailsOfDeviceV1ResponseSourceInfoListDiffList struct {
-	Op                 string                                                                                         `json:"op,omitempty"`                 // Type of change (add, remove, or update).
-	ConfiguredValue    string                                                                                         `json:"configuredValue,omitempty"`    // Configured value i.e. running / current value. It will be empty for the template violations due to potentially large size of the template. Use a dedicated API to get the template data.
-	IntendedValue      string                                                                                         `json:"intendedValue,omitempty"`      // Enable", Intended value. It will be empty for the template violations due to potentially large size of the template. Use a dedicated API to get the template data.
-	MoveFromPath       string                                                                                         `json:"moveFromPath,omitempty"`       // Additional URI to fetch more details, if available.
-	BusinessKey        string                                                                                         `json:"businessKey,omitempty"`        // The Unique key of the individual violation does not change after every compliance check, as long as the deployment data doesn't change.
-	Path               string                                                                                         `json:"path,omitempty"`               // Path of the configuration relative to the top-level configuration. Use it along with a name to identify certain set of violations.
-	ExtendedAttributes *ResponseComplianceComplianceDetailsOfDeviceV1ResponseSourceInfoListDiffListExtendedAttributes `json:"extendedAttributes,omitempty"` //
-	AckStatus          string                                                                                         `json:"ackStatus,omitempty"`          // Acknowledgment status of the violation. ACKNOWLEDGED if the violation is acknowledged or at the top-level configuration. Otherwise it will be UNACKNOWLEDGED.
-	InstanceUUID       string                                                                                         `json:"instanceUUID,omitempty"`       // UUID of the individual violation. Changes after every compliance check.
-	DisplayName        string                                                                                         `json:"displayName,omitempty"`        // Display name for attribute in ui .If business key is null or of type owning entity type.
+type ResponseComplianceComplianceDetailsOfDeviceResponseSourceInfoListDiffList struct {
+	Op                 string                                                                                       `json:"op,omitempty"`                 // Type of change (add, remove, or update).
+	ConfiguredValue    string                                                                                       `json:"configuredValue,omitempty"`    // Configured value i.e. running / current value. It will be empty for the template violations due to potentially large size of the template. Use a dedicated API to get the template data.
+	IntendedValue      string                                                                                       `json:"intendedValue,omitempty"`      // Enable", Intended value. It will be empty for the template violations due to potentially large size of the template. Use a dedicated API to get the template data.
+	MoveFromPath       string                                                                                       `json:"moveFromPath,omitempty"`       // Additional URI to fetch more details, if available.
+	BusinessKey        string                                                                                       `json:"businessKey,omitempty"`        // The Unique key of the individual violation does not change after every compliance check, as long as the deployment data doesn't change.
+	Path               string                                                                                       `json:"path,omitempty"`               // Path of the configuration relative to the top-level configuration. Use it along with a name to identify certain set of violations.
+	ExtendedAttributes *ResponseComplianceComplianceDetailsOfDeviceResponseSourceInfoListDiffListExtendedAttributes `json:"extendedAttributes,omitempty"` //
+	AckStatus          string                                                                                       `json:"ackStatus,omitempty"`          // Acknowledgment status of the violation. ACKNOWLEDGED if the violation is acknowledged or at the top-level configuration. Otherwise it will be UNACKNOWLEDGED.
+	InstanceUUID       string                                                                                       `json:"instanceUUID,omitempty"`       // UUID of the individual violation. Changes after every compliance check.
+	DisplayName        string                                                                                       `json:"displayName,omitempty"`        // Display name for attribute in ui .If business key is null or of type owning entity type.
 }
-type ResponseComplianceComplianceDetailsOfDeviceV1ResponseSourceInfoListDiffListExtendedAttributes struct {
+type ResponseComplianceComplianceDetailsOfDeviceResponseSourceInfoListDiffListExtendedAttributes struct {
 	AttributeDisplayName string `json:"attributeDisplayName,omitempty"` // Display name for attribute in ui .if business key is null or only owning entity type.
 	Path                 string `json:"path,omitempty"`                 // Path to be displayed on the UI, instead of the above path, if available.
 	DataConverter        string `json:"dataConverter,omitempty"`        // Name of the converter used to display configurations in user-friendly format, if available.
 	Type                 string `json:"type,omitempty"`                 // Type of this attribute.(example type can be Intent)
 }
-type ResponseComplianceGetFieldNoticeNetworkDevicesV1 struct {
-	Response *[]ResponseComplianceGetFieldNoticeNetworkDevicesV1Response `json:"response,omitempty"` //
-	Version  string                                                      `json:"version,omitempty"`  // Version
+type ResponseComplianceGetFieldNoticeNetworkDevices struct {
+	Response *[]ResponseComplianceGetFieldNoticeNetworkDevicesResponse `json:"response,omitempty"` //
+	Version  string                                                    `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetFieldNoticeNetworkDevicesV1Response struct {
+type ResponseComplianceGetFieldNoticeNetworkDevicesResponse struct {
 	NetworkDeviceID      string `json:"networkDeviceId,omitempty"`      // Id of the device
 	NoticeCount          *int   `json:"noticeCount,omitempty"`          // Number of field notices to which the network device is vulnerable
 	PotentialNoticeCount *int   `json:"potentialNoticeCount,omitempty"` // Number of potential field notices to which the network device is vulnerable
@@ -377,18 +378,18 @@ type ResponseComplianceGetFieldNoticeNetworkDevicesV1Response struct {
 	Comments             string `json:"comments,omitempty"`             // More details about the scan status. ie:- if the scan status is failed, comments will give the reason for failure
 	LastScanTime         *int   `json:"lastScanTime,omitempty"`         // Time at which the device was scanned
 }
-type ResponseComplianceGetCountOfFieldNoticeNetworkDevicesV1 struct {
-	Version  string                                                           `json:"version,omitempty"`  // Version
-	Response *ResponseComplianceGetCountOfFieldNoticeNetworkDevicesV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetCountOfFieldNoticeNetworkDevices struct {
+	Version  string                                                         `json:"version,omitempty"`  // Version
+	Response *ResponseComplianceGetCountOfFieldNoticeNetworkDevicesResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceGetCountOfFieldNoticeNetworkDevicesV1Response struct {
+type ResponseComplianceGetCountOfFieldNoticeNetworkDevicesResponse struct {
 	Count *int `json:"count,omitempty"` // Count
 }
-type ResponseComplianceGetFieldNoticeNetworkDeviceByDeviceIDV1 struct {
-	Response *ResponseComplianceGetFieldNoticeNetworkDeviceByDeviceIDV1Response `json:"response,omitempty"` //
-	Version  string                                                             `json:"version,omitempty"`  // Version
+type ResponseComplianceGetFieldNoticeNetworkDeviceByDeviceID struct {
+	Response *ResponseComplianceGetFieldNoticeNetworkDeviceByDeviceIDResponse `json:"response,omitempty"` //
+	Version  string                                                           `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetFieldNoticeNetworkDeviceByDeviceIDV1Response struct {
+type ResponseComplianceGetFieldNoticeNetworkDeviceByDeviceIDResponse struct {
 	NetworkDeviceID      string `json:"networkDeviceId,omitempty"`      // Id of the device
 	NoticeCount          *int   `json:"noticeCount,omitempty"`          // Number of field notices to which the network device is vulnerable
 	PotentialNoticeCount *int   `json:"potentialNoticeCount,omitempty"` // Number of potential field notices to which the network device is vulnerable
@@ -396,11 +397,11 @@ type ResponseComplianceGetFieldNoticeNetworkDeviceByDeviceIDV1Response struct {
 	Comments             string `json:"comments,omitempty"`             // More details about the scan status. ie:- if the scan status is failed, comments will give the reason for failure
 	LastScanTime         *int   `json:"lastScanTime,omitempty"`         // Time at which the device was scanned
 }
-type ResponseComplianceGetFieldNoticesAffectingTheNetworkDeviceV1 struct {
-	Response *[]ResponseComplianceGetFieldNoticesAffectingTheNetworkDeviceV1Response `json:"response,omitempty"` //
-	Version  string                                                                  `json:"version,omitempty"`  // Version
+type ResponseComplianceGetFieldNoticesAffectingTheNetworkDevice struct {
+	Response *[]ResponseComplianceGetFieldNoticesAffectingTheNetworkDeviceResponse `json:"response,omitempty"` //
+	Version  string                                                                `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetFieldNoticesAffectingTheNetworkDeviceV1Response struct {
+type ResponseComplianceGetFieldNoticesAffectingTheNetworkDeviceResponse struct {
 	ID                   string `json:"id,omitempty"`                   // Id of the field notice
 	Name                 string `json:"name,omitempty"`                 // Name of the field notice
 	PublicationURL       *int   `json:"publicationUrl,omitempty"`       // Url for getting field notice details on cisco website
@@ -413,18 +414,18 @@ type ResponseComplianceGetFieldNoticesAffectingTheNetworkDeviceV1Response struct
 	MatchReason          string `json:"matchReason,omitempty"`          // If the MatchConfidence is POTENTIALLY_VULNERABLE, this gives more details such as what was matched and if additional manual verifications are needed.
 	NetworkDeviceID      string `json:"networkDeviceId,omitempty"`      // Id of the device
 }
-type ResponseComplianceGetCountOfFieldNoticesAffectingTheNetworkDeviceV1 struct {
-	Version  string                                                                       `json:"version,omitempty"`  // Version
-	Response *ResponseComplianceGetCountOfFieldNoticesAffectingTheNetworkDeviceV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetCountOfFieldNoticesAffectingTheNetworkDevice struct {
+	Version  string                                                                     `json:"version,omitempty"`  // Version
+	Response *ResponseComplianceGetCountOfFieldNoticesAffectingTheNetworkDeviceResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceGetCountOfFieldNoticesAffectingTheNetworkDeviceV1Response struct {
+type ResponseComplianceGetCountOfFieldNoticesAffectingTheNetworkDeviceResponse struct {
 	Count *int `json:"count,omitempty"` // Count
 }
-type ResponseComplianceGetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeIDV1 struct {
-	Response *ResponseComplianceGetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeIDV1Response `json:"response,omitempty"` //
-	Version  string                                                                                    `json:"version,omitempty"`  // Version
+type ResponseComplianceGetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeID struct {
+	Response *ResponseComplianceGetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeIDResponse `json:"response,omitempty"` //
+	Version  string                                                                                  `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeIDV1Response struct {
+type ResponseComplianceGetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeIDResponse struct {
 	ID                   string `json:"id,omitempty"`                   // Id of the field notice
 	Name                 string `json:"name,omitempty"`                 // Name of the field notice
 	PublicationURL       string `json:"publicationUrl,omitempty"`       // Url for getting field notice details on cisco website
@@ -437,11 +438,11 @@ type ResponseComplianceGetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNotic
 	MatchReason          string `json:"matchReason,omitempty"`          // If the MatchConfidence is POTENTIALLY_VULNERABLE, this gives more details such as what was matched and if additional manual verifications are needed.
 	NetworkDeviceID      string `json:"networkDeviceId,omitempty"`      // Id of the device
 }
-type ResponseComplianceGetFieldNoticesV1 struct {
-	Response *[]ResponseComplianceGetFieldNoticesV1Response `json:"response,omitempty"` //
-	Version  string                                         `json:"version,omitempty"`  // Version
+type ResponseComplianceGetFieldNotices struct {
+	Response *[]ResponseComplianceGetFieldNoticesResponse `json:"response,omitempty"` //
+	Version  string                                       `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetFieldNoticesV1Response struct {
+type ResponseComplianceGetFieldNoticesResponse struct {
 	ID                   string `json:"id,omitempty"`                   // Id of the field notice
 	Name                 string `json:"name,omitempty"`                 // Name of the field notice
 	PublicationURL       string `json:"publicationUrl,omitempty"`       // Url for getting field notice details on cisco website
@@ -451,18 +452,18 @@ type ResponseComplianceGetFieldNoticesV1Response struct {
 	FirstPublishDate     *int   `json:"firstPublishDate,omitempty"`     // Time at which the field notice was published
 	LastUpdatedDate      *int   `json:"lastUpdatedDate,omitempty"`      // Time at which the field notice was last updated
 }
-type ResponseComplianceGetCountOfFieldNoticesV1 struct {
-	Version  string                                              `json:"version,omitempty"`  // Version
-	Response *ResponseComplianceGetCountOfFieldNoticesV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetCountOfFieldNotices struct {
+	Version  string                                            `json:"version,omitempty"`  // Version
+	Response *ResponseComplianceGetCountOfFieldNoticesResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceGetCountOfFieldNoticesV1Response struct {
+type ResponseComplianceGetCountOfFieldNoticesResponse struct {
 	Count *int `json:"count,omitempty"` // Count
 }
-type ResponseComplianceGetFieldNoticeByIDV1 struct {
-	Response *ResponseComplianceGetFieldNoticeByIDV1Response `json:"response,omitempty"` //
-	Version  string                                          `json:"version,omitempty"`  // Version
+type ResponseComplianceGetFieldNoticeByID struct {
+	Response *ResponseComplianceGetFieldNoticeByIDResponse `json:"response,omitempty"` //
+	Version  string                                        `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetFieldNoticeByIDV1Response struct {
+type ResponseComplianceGetFieldNoticeByIDResponse struct {
 	ID                   string `json:"id,omitempty"`                   // Id of the field notice
 	Name                 string `json:"name,omitempty"`                 // Name of the field notice
 	PublicationURL       string `json:"publicationUrl,omitempty"`       // Url for getting field notice details on cisco website
@@ -472,11 +473,11 @@ type ResponseComplianceGetFieldNoticeByIDV1Response struct {
 	FirstPublishDate     *int   `json:"firstPublishDate,omitempty"`     // Time at which the field notice was published
 	LastUpdatedDate      *int   `json:"lastUpdatedDate,omitempty"`      // Time at which the field notice was last updated
 }
-type ResponseComplianceGetFieldNoticeNetworkDevicesForTheNoticeV1 struct {
-	Response *[]ResponseComplianceGetFieldNoticeNetworkDevicesForTheNoticeV1Response `json:"response,omitempty"` //
-	Version  string                                                                  `json:"version,omitempty"`  // Version
+type ResponseComplianceGetFieldNoticeNetworkDevicesForTheNotice struct {
+	Response *[]ResponseComplianceGetFieldNoticeNetworkDevicesForTheNoticeResponse `json:"response,omitempty"` //
+	Version  string                                                                `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetFieldNoticeNetworkDevicesForTheNoticeV1Response struct {
+type ResponseComplianceGetFieldNoticeNetworkDevicesForTheNoticeResponse struct {
 	NetworkDeviceID      string `json:"networkDeviceId,omitempty"`      // Id of the device
 	NoticeCount          *int   `json:"noticeCount,omitempty"`          // Number of field notices to which the network device is vulnerable
 	PotentialNoticeCount *int   `json:"potentialNoticeCount,omitempty"` // Number of potential field notices to which the network device is vulnerable
@@ -484,18 +485,18 @@ type ResponseComplianceGetFieldNoticeNetworkDevicesForTheNoticeV1Response struct
 	Comments             string `json:"comments,omitempty"`             // More details about the scan status. ie:- if the scan status is failed, comments will give the reason for failure
 	LastScanTime         *int   `json:"lastScanTime,omitempty"`         // Time at which the device was scanned
 }
-type ResponseComplianceGetCountOfFieldNoticeNetworkDevicesForTheNoticeV1 struct {
-	Version  string                                                                       `json:"version,omitempty"`  // Version
-	Response *ResponseComplianceGetCountOfFieldNoticeNetworkDevicesForTheNoticeV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetCountOfFieldNoticeNetworkDevicesForTheNotice struct {
+	Version  string                                                                     `json:"version,omitempty"`  // Version
+	Response *ResponseComplianceGetCountOfFieldNoticeNetworkDevicesForTheNoticeResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceGetCountOfFieldNoticeNetworkDevicesForTheNoticeV1Response struct {
+type ResponseComplianceGetCountOfFieldNoticeNetworkDevicesForTheNoticeResponse struct {
 	Count *int `json:"count,omitempty"` // Count
 }
-type ResponseComplianceGetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceIDV1 struct {
-	Response *ResponseComplianceGetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceIDV1Response `json:"response,omitempty"` //
-	Version  string                                                                                `json:"version,omitempty"`  // Version
+type ResponseComplianceGetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceID struct {
+	Response *ResponseComplianceGetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceIDResponse `json:"response,omitempty"` //
+	Version  string                                                                              `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceIDV1Response struct {
+type ResponseComplianceGetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceIDResponse struct {
 	NetworkDeviceID      string `json:"networkDeviceId,omitempty"`      // Id of the device
 	NoticeCount          *int   `json:"noticeCount,omitempty"`          // Number of field notices to which the network device is vulnerable
 	PotentialNoticeCount *int   `json:"potentialNoticeCount,omitempty"` // Number of potential field notices to which the network device is vulnerable
@@ -503,35 +504,35 @@ type ResponseComplianceGetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceIDV
 	Comments             string `json:"comments,omitempty"`             // More details about the scan status. ie:- if the scan status is failed, comments will give the reason for failure
 	LastScanTime         *int   `json:"lastScanTime,omitempty"`         // Time at which the device was scanned
 }
-type ResponseComplianceGetFieldNoticesResultsTrendOverTimeV1 struct {
-	Response *[]ResponseComplianceGetFieldNoticesResultsTrendOverTimeV1Response `json:"response,omitempty"` //
-	Version  string                                                             `json:"version,omitempty"`  // Version
+type ResponseComplianceGetFieldNoticesResultsTrendOverTime struct {
+	Response *[]ResponseComplianceGetFieldNoticesResultsTrendOverTimeResponse `json:"response,omitempty"` //
+	Version  string                                                           `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetFieldNoticesResultsTrendOverTimeV1Response struct {
+type ResponseComplianceGetFieldNoticesResultsTrendOverTimeResponse struct {
 	ScanTime                  *int `json:"scanTime,omitempty"`                  // End time for the scan
 	SoftwareFieldNoticesCount *int `json:"softwareFieldNoticesCount,omitempty"` // Number of field notices of type SOFTWARE
 	HardwareFieldNoticesCount *int `json:"hardwareFieldNoticesCount,omitempty"` // Number of field notices of type HARDWARE
 }
-type ResponseComplianceGetCountOfFieldNoticesResultsTrendOverTimeV1 struct {
-	Version  string                                                                  `json:"version,omitempty"`  // Version
-	Response *ResponseComplianceGetCountOfFieldNoticesResultsTrendOverTimeV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetCountOfFieldNoticesResultsTrendOverTime struct {
+	Version  string                                                                `json:"version,omitempty"`  // Version
+	Response *ResponseComplianceGetCountOfFieldNoticesResultsTrendOverTimeResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceGetCountOfFieldNoticesResultsTrendOverTimeV1Response struct {
+type ResponseComplianceGetCountOfFieldNoticesResultsTrendOverTimeResponse struct {
 	Count *int `json:"count,omitempty"` // Count
 }
-type ResponseComplianceCreatesATrialForFieldNoticesDetectionOnNetworkDevicesV1 struct {
-	Version  string                                                                             `json:"version,omitempty"`  // Response Version e.g. : 1.0
-	Response *ResponseComplianceCreatesATrialForFieldNoticesDetectionOnNetworkDevicesV1Response `json:"response,omitempty"` //
+type ResponseComplianceCreatesATrialForFieldNoticesDetectionOnNetworkDevices struct {
+	Version  string                                                                           `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Response *ResponseComplianceCreatesATrialForFieldNoticesDetectionOnNetworkDevicesResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceCreatesATrialForFieldNoticesDetectionOnNetworkDevicesV1Response struct {
+type ResponseComplianceCreatesATrialForFieldNoticesDetectionOnNetworkDevicesResponse struct {
 	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
-type ResponseComplianceGetTrialDetailsForFieldNoticesDetectionOnNetworkDevicesV1 struct {
-	Version  string                                                                               `json:"version,omitempty"`  // Version
-	Response *ResponseComplianceGetTrialDetailsForFieldNoticesDetectionOnNetworkDevicesV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetTrialDetailsForFieldNoticesDetectionOnNetworkDevices struct {
+	Version  string                                                                             `json:"version,omitempty"`  // Version
+	Response *ResponseComplianceGetTrialDetailsForFieldNoticesDetectionOnNetworkDevicesResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceGetTrialDetailsForFieldNoticesDetectionOnNetworkDevicesV1Response struct {
+type ResponseComplianceGetTrialDetailsForFieldNoticesDetectionOnNetworkDevicesResponse struct {
 	Type                     string `json:"type,omitempty"`                     // Type of trial: * 'feature - the trial is of type feature. this is the currently supported type. * 'contract' - the trial is of type contract. this was used in older versions and exists only for compatibility.
 	Feature                  string `json:"feature,omitempty"`                  // Name of the feature for which trial was created. for older versions that created contract type trials, this field will be absent.
 	ContractLevel            string `json:"contractLevel,omitempty"`            // Contract level for which trial was created. this was used in older versions and exists only for compatibility.
@@ -541,19 +542,19 @@ type ResponseComplianceGetTrialDetailsForFieldNoticesDetectionOnNetworkDevicesV1
 	SecondsRemainingToExpiry *int   `json:"secondsRemainingToExpiry,omitempty"` // Seconds remaining in the trial before it expires. for expired trials this will be 0.
 	SecondsSinceExpired      *int   `json:"secondsSinceExpired,omitempty"`      // Seconds elapsed after the trial has expired. for active trials this will be 0.
 }
-type ResponseComplianceTriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1 struct {
-	Version  string                                                                              `json:"version,omitempty"`  // Response Version e.g. : 1.0
-	Response *ResponseComplianceTriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1Response `json:"response,omitempty"` //
+type ResponseComplianceTriggersAFieldNoticesScanForTheSupportedNetworkDevices struct {
+	Version  string                                                                            `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Response *ResponseComplianceTriggersAFieldNoticesScanForTheSupportedNetworkDevicesResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceTriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1Response struct {
+type ResponseComplianceTriggersAFieldNoticesScanForTheSupportedNetworkDevicesResponse struct {
 	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
-type ResponseComplianceGetConfigTaskDetailsV1 struct {
-	Version  string                                              `json:"version,omitempty"`  // Version of the API.
-	Response *[]ResponseComplianceGetConfigTaskDetailsV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetConfigTaskDetails struct {
+	Version  string                                            `json:"version,omitempty"`  // Version of the API.
+	Response *[]ResponseComplianceGetConfigTaskDetailsResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceGetConfigTaskDetailsV1Response struct {
+type ResponseComplianceGetConfigTaskDetailsResponse struct {
 	StartTime       *int   `json:"startTime,omitempty"`       // Timestamp when the task started.
 	ErrorCode       string `json:"errorCode,omitempty"`       // Error code if the task failed.
 	DeviceID        string `json:"deviceId,omitempty"`        // UUID of the device.
@@ -567,19 +568,19 @@ type ResponseComplianceGetConfigTaskDetailsV1Response struct {
 	CompletionTime  *int   `json:"completionTime,omitempty"`  // Timestamp when the task was completed.
 	HostName        string `json:"hostName,omitempty"`        // Host name of the device.
 }
-type ResponseComplianceCommitDeviceConfigurationV1 struct {
-	Version  string                                                 `json:"version,omitempty"`  // Version of the API.
-	Response *ResponseComplianceCommitDeviceConfigurationV1Response `json:"response,omitempty"` //
+type ResponseComplianceCommitDeviceConfiguration struct {
+	Version  string                                               `json:"version,omitempty"`  // Version of the API.
+	Response *ResponseComplianceCommitDeviceConfigurationResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceCommitDeviceConfigurationV1Response struct {
+type ResponseComplianceCommitDeviceConfigurationResponse struct {
 	URL    string `json:"url,omitempty"`    // Task Id url.
 	TaskID string `json:"taskId,omitempty"` // Unique Id of task.
 }
-type ResponseComplianceGetNetworkBugsV1 struct {
-	Response *[]ResponseComplianceGetNetworkBugsV1Response `json:"response,omitempty"` //
-	Version  string                                        `json:"version,omitempty"`  // Version
+type ResponseComplianceGetNetworkBugs struct {
+	Response *[]ResponseComplianceGetNetworkBugsResponse `json:"response,omitempty"` //
+	Version  string                                      `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetNetworkBugsV1Response struct {
+type ResponseComplianceGetNetworkBugsResponse struct {
 	ID                 string   `json:"id,omitempty"`                 // Id of the network bug
 	Headline           string   `json:"headline,omitempty"`           // Title of the network bug
 	PublicationURL     string   `json:"publicationUrl,omitempty"`     // Url for getting network bug details on cisco website
@@ -590,18 +591,18 @@ type ResponseComplianceGetNetworkBugsV1Response struct {
 	AffectedVersions   []string `json:"affectedVersions,omitempty"`   // Versions that are affected by the network bug
 	IntegratedReleases []string `json:"integratedReleases,omitempty"` // Versions that have the fix for the network bug
 }
-type ResponseComplianceGetCountOfNetworkBugsV1 struct {
-	Version  string                                             `json:"version,omitempty"`  // Version
-	Response *ResponseComplianceGetCountOfNetworkBugsV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetCountOfNetworkBugs struct {
+	Version  string                                           `json:"version,omitempty"`  // Version
+	Response *ResponseComplianceGetCountOfNetworkBugsResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceGetCountOfNetworkBugsV1Response struct {
+type ResponseComplianceGetCountOfNetworkBugsResponse struct {
 	Count *int `json:"count,omitempty"` // Count
 }
-type ResponseComplianceGetNetworkBugByIDV1 struct {
-	Version  string                                         `json:"version,omitempty"`  // Version
-	Response *ResponseComplianceGetNetworkBugByIDV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetNetworkBugByID struct {
+	Version  string                                       `json:"version,omitempty"`  // Version
+	Response *ResponseComplianceGetNetworkBugByIDResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceGetNetworkBugByIDV1Response struct {
+type ResponseComplianceGetNetworkBugByIDResponse struct {
 	ID                 string   `json:"id,omitempty"`                 // Id of the network bug
 	Headline           string   `json:"headline,omitempty"`           // Title of the network bug
 	PublicationURL     string   `json:"publicationUrl,omitempty"`     // Url for getting network bug details on cisco website
@@ -612,11 +613,63 @@ type ResponseComplianceGetNetworkBugByIDV1Response struct {
 	AffectedVersions   []string `json:"affectedVersions,omitempty"`   // Versions that are affected by the network bug
 	IntegratedReleases []string `json:"integratedReleases,omitempty"` // Versions that have the fix for the network bug
 }
-type ResponseComplianceGetNetworkBugDevicesForTheBugV1 struct {
-	Response *[]ResponseComplianceGetNetworkBugDevicesForTheBugV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetNetworkBugDevicesForTheBug struct {
+	Response *[]ResponseComplianceGetNetworkBugDevicesForTheBugResponse `json:"response,omitempty"` //
+	Version  string                                                     `json:"version,omitempty"`  // Version
+}
+type ResponseComplianceGetNetworkBugDevicesForTheBugResponse struct {
+	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Id of the device
+	BugCount        *int   `json:"bugCount,omitempty"`        // Number of bugs to which the network device is vulnerable
+	ScanMode        string `json:"scanMode,omitempty"`        // 'ESSENTIALS' - the device was scanned using a version based match criteria. 'CX_CLOUD' - the device was scanned using CX cloud engine which uses advanced matching criteria which eliminates false positives. 'ADVANTAGE' - the device was scanned using a version based match and user provided config match criteria. ‘NOT_AVAILABLE’ - scan mode is not available. e.g. when the device is not scanned
+	ScanStatus      string `json:"scanStatus,omitempty"`      // 'NOT_SCANNED' - the device was not scanned. 'IN_PROGRESS' - a scan is in progress for the device. 'SUCCESS' - device scan was successful. 'FAILED' - device scan failed. 'FALL_BACK' - the device was supposed to be scanned using CX_CLOUD but because of connectivity issues fell back to a ESSENTIALS scan
+	Comments        string `json:"comments,omitempty"`        // More details about the scan status. ie:- if the scan status is failed, comments will give the reason for failure
+	LastScanTime    *int   `json:"lastScanTime,omitempty"`    // Time at which the device was scanned
+}
+type ResponseComplianceGetCountOfNetworkBugDevicesForTheBug struct {
+	Version  string                                                          `json:"version,omitempty"`  // Version
+	Response *ResponseComplianceGetCountOfNetworkBugDevicesForTheBugResponse `json:"response,omitempty"` //
+}
+type ResponseComplianceGetCountOfNetworkBugDevicesForTheBugResponse struct {
+	Count *int `json:"count,omitempty"` // Count
+}
+type ResponseComplianceGetNetworkBugDeviceForTheBugByNetworkDeviceID []ResponseItemComplianceGetNetworkBugDeviceForTheBugByNetworkDeviceID // Array of ResponseComplianceGetNetworkBugDeviceForTheBugByNetworkDeviceId
+type ResponseItemComplianceGetNetworkBugDeviceForTheBugByNetworkDeviceID struct {
+	Response *ResponseItemComplianceGetNetworkBugDeviceForTheBugByNetworkDeviceIDResponse `json:"response,omitempty"` //
+	Version  string                                                                       `json:"version,omitempty"`  // Version
+}
+type ResponseItemComplianceGetNetworkBugDeviceForTheBugByNetworkDeviceIDResponse struct {
+	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Id of the device
+	BugCount        *int   `json:"bugCount,omitempty"`        // Number of bugs to which the network device is vulnerable
+	ScanMode        string `json:"scanMode,omitempty"`        // 'ESSENTIALS' - the device was scanned using a version based match criteria. 'CX_CLOUD' - the device was scanned using CX cloud engine which uses advanced matching criteria which eliminates false positives. 'ADVANTAGE' - the device was scanned using a version based match and user provided config match criteria. ‘NOT_AVAILABLE’ - scan mode is not available. e.g. when the device is not scanned
+	ScanStatus      string `json:"scanStatus,omitempty"`      // 'NOT_SCANNED' - the device was not scanned. 'IN_PROGRESS' - a scan is in progress for the device. 'SUCCESS' - device scan was successful. 'FAILED' - device scan failed. 'FALL_BACK' - the device was supposed to be scanned using CX_CLOUD but because of connectivity issues fell back to a ESSENTIALS scan
+	Comments        string `json:"comments,omitempty"`        // More details about the scan status. ie:- if the scan status is failed, comments will give the reason for failure
+	LastScanTime    *int   `json:"lastScanTime,omitempty"`    // Time at which the device was scanned
+}
+type ResponseComplianceGetNetworkBugDevices struct {
+	Response *[]ResponseComplianceGetNetworkBugDevicesResponse `json:"response,omitempty"` //
+	Version  string                                            `json:"version,omitempty"`  // Version
+}
+type ResponseComplianceGetNetworkBugDevicesResponse struct {
+	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Id of the device
+	BugCount        *int   `json:"bugCount,omitempty"`        // Number of bugs to which the network device is vulnerable
+	ScanMode        string `json:"scanMode,omitempty"`        // 'ESSENTIALS' - the device was scanned using a version based match criteria. 'CX_CLOUD' - the device was scanned using CX cloud engine which uses advanced matching criteria which eliminates false positives. 'ADVANTAGE' - the device was scanned using a version based match and user provided config match criteria. ‘NOT_AVAILABLE’ - scan mode is not available. e.g. when the device is not scanned
+	ScanStatus      string `json:"scanStatus,omitempty"`      // 'NOT_SCANNED' - the device was not scanned. 'IN_PROGRESS' - a scan is in progress for the device. 'SUCCESS' - device scan was successful. 'FAILED' - device scan failed. 'FALL_BACK' - the device was supposed to be scanned using CX_CLOUD but because of connectivity issues fell back to a ESSENTIALS scan
+	Comments        string `json:"comments,omitempty"`        // More details about the scan status. ie:- if the scan status is failed, comments will give the reason for failure
+	LastScanTime    *int   `json:"lastScanTime,omitempty"`    // Time at which the device was scanned
+}
+type ResponseComplianceGetCountOfNetworkBugDevices struct {
+	Version  string                                                 `json:"version,omitempty"`  // Version
+	Response *ResponseComplianceGetCountOfNetworkBugDevicesResponse `json:"response,omitempty"` //
+}
+type ResponseComplianceGetCountOfNetworkBugDevicesResponse struct {
+	Count *int `json:"count,omitempty"` // Count
+}
+type ResponseComplianceGetNetworkBugDeviceByDeviceID []ResponseItemComplianceGetNetworkBugDeviceByDeviceID // Array of ResponseComplianceGetNetworkBugDeviceByDeviceId
+type ResponseItemComplianceGetNetworkBugDeviceByDeviceID struct {
+	Response *ResponseItemComplianceGetNetworkBugDeviceByDeviceIDResponse `json:"response,omitempty"` //
 	Version  string                                                       `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetNetworkBugDevicesForTheBugV1Response struct {
+type ResponseItemComplianceGetNetworkBugDeviceByDeviceIDResponse struct {
 	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Id of the device
 	BugCount        *int   `json:"bugCount,omitempty"`        // Number of bugs to which the network device is vulnerable
 	ScanMode        string `json:"scanMode,omitempty"`        // 'ESSENTIALS' - the device was scanned using a version based match criteria. 'CX_CLOUD' - the device was scanned using CX cloud engine which uses advanced matching criteria which eliminates false positives. 'ADVANTAGE' - the device was scanned using a version based match and user provided config match criteria. ‘NOT_AVAILABLE’ - scan mode is not available. e.g. when the device is not scanned
@@ -624,125 +677,73 @@ type ResponseComplianceGetNetworkBugDevicesForTheBugV1Response struct {
 	Comments        string `json:"comments,omitempty"`        // More details about the scan status. ie:- if the scan status is failed, comments will give the reason for failure
 	LastScanTime    *int   `json:"lastScanTime,omitempty"`    // Time at which the device was scanned
 }
-type ResponseComplianceGetCountOfNetworkBugDevicesForTheBugV1 struct {
-	Version  string                                                            `json:"version,omitempty"`  // Version
-	Response *ResponseComplianceGetCountOfNetworkBugDevicesForTheBugV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetBugsAffectingTheNetworkDevice struct {
+	Response *[]ResponseComplianceGetBugsAffectingTheNetworkDeviceResponse `json:"response,omitempty"` //
+	Version  string                                                        `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetCountOfNetworkBugDevicesForTheBugV1Response struct {
+type ResponseComplianceGetBugsAffectingTheNetworkDeviceResponse struct {
+	ID                 string   `json:"id,omitempty"`                 // Id of the network bug
+	Headline           string   `json:"headline,omitempty"`           // Title of the network bug
+	PublicationURL     string   `json:"publicationUrl,omitempty"`     // Url for getting network bug details on cisco website
+	DeviceCount        *int     `json:"deviceCount,omitempty"`        // Number of devices which are vulnerable to this network bug
+	Severity           string   `json:"severity,omitempty"`           // 'CATASTROPHIC' - Reasonably common circumstances cause the entire system to fail, or a major subsystem to stop working. 'SEVERE' - Important functions are unusable. 'MODERATE' - Failures occur in unusual circumstances, or minor features do not work at all.
+	HasWorkaround      *bool    `json:"hasWorkaround,omitempty"`      // Indicates if the network bug has a workaround
+	Workaround         string   `json:"workaround,omitempty"`         // Workaround if any that exists for the network bug
+	AffectedVersions   []string `json:"affectedVersions,omitempty"`   // Versions that are affected by the network bug
+	IntegratedReleases []string `json:"integratedReleases,omitempty"` // Versions that have the fix for the network bug
+}
+type ResponseComplianceGetCountOfBugsAffectingTheNetworkDevice struct {
+	Version  string                                                             `json:"version,omitempty"`  // Version
+	Response *ResponseComplianceGetCountOfBugsAffectingTheNetworkDeviceResponse `json:"response,omitempty"` //
+}
+type ResponseComplianceGetCountOfBugsAffectingTheNetworkDeviceResponse struct {
 	Count *int `json:"count,omitempty"` // Count
 }
-type ResponseComplianceGetNetworkBugDeviceForTheBugByNetworkDeviceIDV1 []ResponseItemComplianceGetNetworkBugDeviceForTheBugByNetworkDeviceIDV1 // Array of ResponseComplianceGetNetworkBugDeviceForTheBugByNetworkDeviceIdV1
-type ResponseItemComplianceGetNetworkBugDeviceForTheBugByNetworkDeviceIDV1 struct {
-	Response *ResponseItemComplianceGetNetworkBugDeviceForTheBugByNetworkDeviceIDV1Response `json:"response,omitempty"` //
-	Version  string                                                                         `json:"version,omitempty"`  // Version
+type ResponseComplianceGetBugAffectingTheNetworkDeviceByDeviceIDAndBugID struct {
+	Version  string                                                                       `json:"version,omitempty"`  // Version
+	Response *ResponseComplianceGetBugAffectingTheNetworkDeviceByDeviceIDAndBugIDResponse `json:"response,omitempty"` //
 }
-type ResponseItemComplianceGetNetworkBugDeviceForTheBugByNetworkDeviceIDV1Response struct {
-	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Id of the device
-	BugCount        *int   `json:"bugCount,omitempty"`        // Number of bugs to which the network device is vulnerable
-	ScanMode        string `json:"scanMode,omitempty"`        // 'ESSENTIALS' - the device was scanned using a version based match criteria. 'CX_CLOUD' - the device was scanned using CX cloud engine which uses advanced matching criteria which eliminates false positives. 'ADVANTAGE' - the device was scanned using a version based match and user provided config match criteria. ‘NOT_AVAILABLE’ - scan mode is not available. e.g. when the device is not scanned
-	ScanStatus      string `json:"scanStatus,omitempty"`      // 'NOT_SCANNED' - the device was not scanned. 'IN_PROGRESS' - a scan is in progress for the device. 'SUCCESS' - device scan was successful. 'FAILED' - device scan failed. 'FALL_BACK' - the device was supposed to be scanned using CX_CLOUD but because of connectivity issues fell back to a ESSENTIALS scan
-	Comments        string `json:"comments,omitempty"`        // More details about the scan status. ie:- if the scan status is failed, comments will give the reason for failure
-	LastScanTime    *int   `json:"lastScanTime,omitempty"`    // Time at which the device was scanned
+type ResponseComplianceGetBugAffectingTheNetworkDeviceByDeviceIDAndBugIDResponse struct {
+	ID                 string   `json:"id,omitempty"`                 // Id of the network bug
+	Headline           string   `json:"headline,omitempty"`           // Title of the network bug
+	PublicationURL     string   `json:"publicationUrl,omitempty"`     // Url for getting network bug details on cisco website
+	DeviceCount        *int     `json:"deviceCount,omitempty"`        // Number of devices which are vulnerable to this network bug
+	Severity           string   `json:"severity,omitempty"`           // 'CATASTROPHIC' - Reasonably common circumstances cause the entire system to fail, or a major subsystem to stop working. 'SEVERE' - Important functions are unusable. 'MODERATE' - Failures occur in unusual circumstances, or minor features do not work at all.
+	HasWorkaround      *bool    `json:"hasWorkaround,omitempty"`      // Indicates if the network bug has a workaround
+	Workaround         string   `json:"workaround,omitempty"`         // Workaround if any that exists for the network bug
+	AffectedVersions   []string `json:"affectedVersions,omitempty"`   // Versions that are affected by the network bug
+	IntegratedReleases []string `json:"integratedReleases,omitempty"` // Versions that have the fix for the network bug
 }
-type ResponseComplianceGetNetworkBugDevicesV1 struct {
-	Response *[]ResponseComplianceGetNetworkBugDevicesV1Response `json:"response,omitempty"` //
-	Version  string                                              `json:"version,omitempty"`  // Version
-}
-type ResponseComplianceGetNetworkBugDevicesV1Response struct {
-	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Id of the device
-	BugCount        *int   `json:"bugCount,omitempty"`        // Number of bugs to which the network device is vulnerable
-	ScanMode        string `json:"scanMode,omitempty"`        // 'ESSENTIALS' - the device was scanned using a version based match criteria. 'CX_CLOUD' - the device was scanned using CX cloud engine which uses advanced matching criteria which eliminates false positives. 'ADVANTAGE' - the device was scanned using a version based match and user provided config match criteria. ‘NOT_AVAILABLE’ - scan mode is not available. e.g. when the device is not scanned
-	ScanStatus      string `json:"scanStatus,omitempty"`      // 'NOT_SCANNED' - the device was not scanned. 'IN_PROGRESS' - a scan is in progress for the device. 'SUCCESS' - device scan was successful. 'FAILED' - device scan failed. 'FALL_BACK' - the device was supposed to be scanned using CX_CLOUD but because of connectivity issues fell back to a ESSENTIALS scan
-	Comments        string `json:"comments,omitempty"`        // More details about the scan status. ie:- if the scan status is failed, comments will give the reason for failure
-	LastScanTime    *int   `json:"lastScanTime,omitempty"`    // Time at which the device was scanned
-}
-type ResponseComplianceGetCountOfNetworkBugDevicesV1 struct {
-	Version  string                                                   `json:"version,omitempty"`  // Version
-	Response *ResponseComplianceGetCountOfNetworkBugDevicesV1Response `json:"response,omitempty"` //
-}
-type ResponseComplianceGetCountOfNetworkBugDevicesV1Response struct {
-	Count *int `json:"count,omitempty"` // Count
-}
-type ResponseComplianceGetNetworkBugDeviceByDeviceIDV1 []ResponseItemComplianceGetNetworkBugDeviceByDeviceIDV1 // Array of ResponseComplianceGetNetworkBugDeviceByDeviceIdV1
-type ResponseItemComplianceGetNetworkBugDeviceByDeviceIDV1 struct {
-	Response *ResponseItemComplianceGetNetworkBugDeviceByDeviceIDV1Response `json:"response,omitempty"` //
-	Version  string                                                         `json:"version,omitempty"`  // Version
-}
-type ResponseItemComplianceGetNetworkBugDeviceByDeviceIDV1Response struct {
-	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Id of the device
-	BugCount        *int   `json:"bugCount,omitempty"`        // Number of bugs to which the network device is vulnerable
-	ScanMode        string `json:"scanMode,omitempty"`        // 'ESSENTIALS' - the device was scanned using a version based match criteria. 'CX_CLOUD' - the device was scanned using CX cloud engine which uses advanced matching criteria which eliminates false positives. 'ADVANTAGE' - the device was scanned using a version based match and user provided config match criteria. ‘NOT_AVAILABLE’ - scan mode is not available. e.g. when the device is not scanned
-	ScanStatus      string `json:"scanStatus,omitempty"`      // 'NOT_SCANNED' - the device was not scanned. 'IN_PROGRESS' - a scan is in progress for the device. 'SUCCESS' - device scan was successful. 'FAILED' - device scan failed. 'FALL_BACK' - the device was supposed to be scanned using CX_CLOUD but because of connectivity issues fell back to a ESSENTIALS scan
-	Comments        string `json:"comments,omitempty"`        // More details about the scan status. ie:- if the scan status is failed, comments will give the reason for failure
-	LastScanTime    *int   `json:"lastScanTime,omitempty"`    // Time at which the device was scanned
-}
-type ResponseComplianceGetBugsAffectingTheNetworkDeviceV1 struct {
-	Response *[]ResponseComplianceGetBugsAffectingTheNetworkDeviceV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetNetworkBugsResultsTrendOverTime struct {
+	Response *[]ResponseComplianceGetNetworkBugsResultsTrendOverTimeResponse `json:"response,omitempty"` //
 	Version  string                                                          `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetBugsAffectingTheNetworkDeviceV1Response struct {
-	ID                 string   `json:"id,omitempty"`                 // Id of the network bug
-	Headline           string   `json:"headline,omitempty"`           // Title of the network bug
-	PublicationURL     string   `json:"publicationUrl,omitempty"`     // Url for getting network bug details on cisco website
-	DeviceCount        *int     `json:"deviceCount,omitempty"`        // Number of devices which are vulnerable to this network bug
-	Severity           string   `json:"severity,omitempty"`           // 'CATASTROPHIC' - Reasonably common circumstances cause the entire system to fail, or a major subsystem to stop working. 'SEVERE' - Important functions are unusable. 'MODERATE' - Failures occur in unusual circumstances, or minor features do not work at all.
-	HasWorkaround      *bool    `json:"hasWorkaround,omitempty"`      // Indicates if the network bug has a workaround
-	Workaround         string   `json:"workaround,omitempty"`         // Workaround if any that exists for the network bug
-	AffectedVersions   []string `json:"affectedVersions,omitempty"`   // Versions that are affected by the network bug
-	IntegratedReleases []string `json:"integratedReleases,omitempty"` // Versions that have the fix for the network bug
-}
-type ResponseComplianceGetCountOfBugsAffectingTheNetworkDeviceV1 struct {
-	Version  string                                                               `json:"version,omitempty"`  // Version
-	Response *ResponseComplianceGetCountOfBugsAffectingTheNetworkDeviceV1Response `json:"response,omitempty"` //
-}
-type ResponseComplianceGetCountOfBugsAffectingTheNetworkDeviceV1Response struct {
-	Count *int `json:"count,omitempty"` // Count
-}
-type ResponseComplianceGetBugAffectingTheNetworkDeviceByDeviceIDAndBugIDV1 struct {
-	Version  string                                                                         `json:"version,omitempty"`  // Version
-	Response *ResponseComplianceGetBugAffectingTheNetworkDeviceByDeviceIDAndBugIDV1Response `json:"response,omitempty"` //
-}
-type ResponseComplianceGetBugAffectingTheNetworkDeviceByDeviceIDAndBugIDV1Response struct {
-	ID                 string   `json:"id,omitempty"`                 // Id of the network bug
-	Headline           string   `json:"headline,omitempty"`           // Title of the network bug
-	PublicationURL     string   `json:"publicationUrl,omitempty"`     // Url for getting network bug details on cisco website
-	DeviceCount        *int     `json:"deviceCount,omitempty"`        // Number of devices which are vulnerable to this network bug
-	Severity           string   `json:"severity,omitempty"`           // 'CATASTROPHIC' - Reasonably common circumstances cause the entire system to fail, or a major subsystem to stop working. 'SEVERE' - Important functions are unusable. 'MODERATE' - Failures occur in unusual circumstances, or minor features do not work at all.
-	HasWorkaround      *bool    `json:"hasWorkaround,omitempty"`      // Indicates if the network bug has a workaround
-	Workaround         string   `json:"workaround,omitempty"`         // Workaround if any that exists for the network bug
-	AffectedVersions   []string `json:"affectedVersions,omitempty"`   // Versions that are affected by the network bug
-	IntegratedReleases []string `json:"integratedReleases,omitempty"` // Versions that have the fix for the network bug
-}
-type ResponseComplianceGetNetworkBugsResultsTrendOverTimeV1 struct {
-	Response *[]ResponseComplianceGetNetworkBugsResultsTrendOverTimeV1Response `json:"response,omitempty"` //
-	Version  string                                                            `json:"version,omitempty"`  // Version
-}
-type ResponseComplianceGetNetworkBugsResultsTrendOverTimeV1Response struct {
+type ResponseComplianceGetNetworkBugsResultsTrendOverTimeResponse struct {
 	CatastrophicBugsCount *int `json:"catastrophicBugsCount,omitempty"` // Number of network bugs which have a severity of CATASTROPHIC
 	SevereBugsCount       *int `json:"severeBugsCount,omitempty"`       // Number of network bugs which have a severity of SEVERE
 	ModerateBugsCount     *int `json:"moderateBugsCount,omitempty"`     // Number of network bugs which have a severity of MODERATE
 	ScanTime              *int `json:"scanTime,omitempty"`              // End time for the scan
 }
-type ResponseComplianceGetCountOfNetworkBugsResultsTrendOverTimeV1 struct {
-	Version  string                                                                 `json:"version,omitempty"`  // Version
-	Response *ResponseComplianceGetCountOfNetworkBugsResultsTrendOverTimeV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetCountOfNetworkBugsResultsTrendOverTime struct {
+	Version  string                                                               `json:"version,omitempty"`  // Version
+	Response *ResponseComplianceGetCountOfNetworkBugsResultsTrendOverTimeResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceGetCountOfNetworkBugsResultsTrendOverTimeV1Response struct {
+type ResponseComplianceGetCountOfNetworkBugsResultsTrendOverTimeResponse struct {
 	Count *int `json:"count,omitempty"` // Count
 }
-type ResponseComplianceCreatesATrialForBugsDetectionOnNetworkDevicesV1 struct {
-	Version  string                                                                     `json:"version,omitempty"`  // Response Version e.g. : 1.0
-	Response *ResponseComplianceCreatesATrialForBugsDetectionOnNetworkDevicesV1Response `json:"response,omitempty"` //
+type ResponseComplianceCreatesATrialForBugsDetectionOnNetworkDevices struct {
+	Version  string                                                                   `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Response *ResponseComplianceCreatesATrialForBugsDetectionOnNetworkDevicesResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceCreatesATrialForBugsDetectionOnNetworkDevicesV1Response struct {
+type ResponseComplianceCreatesATrialForBugsDetectionOnNetworkDevicesResponse struct {
 	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
-type ResponseComplianceGetTrialDetailsForBugsDetectionOnNetworkDevicesV1 struct {
-	Version  string                                                                       `json:"version,omitempty"`  // Version
-	Response *ResponseComplianceGetTrialDetailsForBugsDetectionOnNetworkDevicesV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetTrialDetailsForBugsDetectionOnNetworkDevices struct {
+	Version  string                                                                     `json:"version,omitempty"`  // Version
+	Response *ResponseComplianceGetTrialDetailsForBugsDetectionOnNetworkDevicesResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceGetTrialDetailsForBugsDetectionOnNetworkDevicesV1Response struct {
+type ResponseComplianceGetTrialDetailsForBugsDetectionOnNetworkDevicesResponse struct {
 	Type                     string `json:"type,omitempty"`                     // Type of trial: * 'feature - the trial is of type feature. this is the currently supported type. * 'contract' - the trial is of type contract. this was used in older versions and exists only for compatibility.
 	Feature                  string `json:"feature,omitempty"`                  // Name of the feature for which trial was created. for older versions that created contract type trials, this field will be absent.
 	ContractLevel            string `json:"contractLevel,omitempty"`            // Contract level for which trial was created. this was used in older versions and exists only for compatibility.
@@ -752,60 +753,60 @@ type ResponseComplianceGetTrialDetailsForBugsDetectionOnNetworkDevicesV1Response
 	SecondsRemainingToExpiry *int   `json:"secondsRemainingToExpiry,omitempty"` // Seconds remaining in the trial before it expires. for expired trials this will be 0.
 	SecondsSinceExpired      *int   `json:"secondsSinceExpired,omitempty"`      // Seconds elapsed after the trial has expired. for active trials this will be 0.
 }
-type ResponseComplianceTriggersABugsScanForTheSupportedNetworkDevicesV1 struct {
-	Version  string                                                                      `json:"version,omitempty"`  // Response Version e.g. : 1.0
-	Response *ResponseComplianceTriggersABugsScanForTheSupportedNetworkDevicesV1Response `json:"response,omitempty"` //
+type ResponseComplianceTriggersABugsScanForTheSupportedNetworkDevices struct {
+	Version  string                                                                    `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Response *ResponseComplianceTriggersABugsScanForTheSupportedNetworkDevicesResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceTriggersABugsScanForTheSupportedNetworkDevicesV1Response struct {
+type ResponseComplianceTriggersABugsScanForTheSupportedNetworkDevicesResponse struct {
 	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
-type ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevicesV1 struct {
-	Response *[]ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevicesV1Response `json:"response,omitempty"` //
-	Version  string                                                                         `json:"version,omitempty"`  // Version
+type ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevices struct {
+	Response *[]ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevicesResponse `json:"response,omitempty"` //
+	Version  string                                                                       `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevicesV1Response struct {
+type ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevicesResponse struct {
+	ID                     string                                                                                             `json:"id,omitempty"`                     // Id of the security advisory
+	DeviceCount            *int                                                                                               `json:"deviceCount,omitempty"`            // Number of devices which are vulnerable to this advisory
+	CveIDs                 []string                                                                                           `json:"cveIds,omitempty"`                 // CVE (Common Vulnerabilities and Exposures) ID of the advisory
+	PublicationURL         string                                                                                             `json:"publicationUrl,omitempty"`         // Url for getting advisory details on cisco website
+	CvssBaseScore          *float64                                                                                           `json:"cvssBaseScore,omitempty"`          // Common Vulnerability Scoring System(CVSS) base score
+	SecurityImpactRating   string                                                                                             `json:"securityImpactRating,omitempty"`   // 'CRITICAL' - the advisory requires immediate mitigation. 'HIGH' - the advisory requires priority mitigation
+	FirstFixedVersionsList *[]ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevicesResponseFirstFixedVersionsList `json:"firstFixedVersionsList,omitempty"` //
+}
+type ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevicesResponseFirstFixedVersionsList struct {
+	VulnerableVersion string   `json:"vulnerableVersion,omitempty"` // Version that is vulnerable to the advisory
+	FixedVersions     []string `json:"fixedVersions,omitempty"`     // First versions that have the fix for the advisory
+}
+type ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDevices struct {
+	Version  string                                                                            `json:"version,omitempty"`  // Version
+	Response *ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesResponse `json:"response,omitempty"` //
+}
+type ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesResponse struct {
+	Count *int `json:"count,omitempty"` // Count
+}
+type ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDevicesByID struct {
+	Response *ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDevicesByIDResponse `json:"response,omitempty"` //
+	Version  string                                                                       `json:"version,omitempty"`  // Version
+}
+type ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDevicesByIDResponse struct {
 	ID                     string                                                                                               `json:"id,omitempty"`                     // Id of the security advisory
 	DeviceCount            *int                                                                                                 `json:"deviceCount,omitempty"`            // Number of devices which are vulnerable to this advisory
 	CveIDs                 []string                                                                                             `json:"cveIds,omitempty"`                 // CVE (Common Vulnerabilities and Exposures) ID of the advisory
 	PublicationURL         string                                                                                               `json:"publicationUrl,omitempty"`         // Url for getting advisory details on cisco website
 	CvssBaseScore          *float64                                                                                             `json:"cvssBaseScore,omitempty"`          // Common Vulnerability Scoring System(CVSS) base score
 	SecurityImpactRating   string                                                                                               `json:"securityImpactRating,omitempty"`   // 'CRITICAL' - the advisory requires immediate mitigation. 'HIGH' - the advisory requires priority mitigation
-	FirstFixedVersionsList *[]ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevicesV1ResponseFirstFixedVersionsList `json:"firstFixedVersionsList,omitempty"` //
+	FirstFixedVersionsList *[]ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDevicesByIDResponseFirstFixedVersionsList `json:"firstFixedVersionsList,omitempty"` //
 }
-type ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevicesV1ResponseFirstFixedVersionsList struct {
+type ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDevicesByIDResponseFirstFixedVersionsList struct {
 	VulnerableVersion string   `json:"vulnerableVersion,omitempty"` // Version that is vulnerable to the advisory
 	FixedVersions     []string `json:"fixedVersions,omitempty"`     // First versions that have the fix for the advisory
 }
-type ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1 struct {
-	Version  string                                                                              `json:"version,omitempty"`  // Version
-	Response *ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisory struct {
+	Response *[]ResponseComplianceGetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryResponse `json:"response,omitempty"` //
+	Version  string                                                                               `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1Response struct {
-	Count *int `json:"count,omitempty"` // Count
-}
-type ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDevicesByIDV1 struct {
-	Response *ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDevicesByIDV1Response `json:"response,omitempty"` //
-	Version  string                                                                         `json:"version,omitempty"`  // Version
-}
-type ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDevicesByIDV1Response struct {
-	ID                     string                                                                                                 `json:"id,omitempty"`                     // Id of the security advisory
-	DeviceCount            *int                                                                                                   `json:"deviceCount,omitempty"`            // Number of devices which are vulnerable to this advisory
-	CveIDs                 []string                                                                                               `json:"cveIds,omitempty"`                 // CVE (Common Vulnerabilities and Exposures) ID of the advisory
-	PublicationURL         string                                                                                                 `json:"publicationUrl,omitempty"`         // Url for getting advisory details on cisco website
-	CvssBaseScore          *float64                                                                                               `json:"cvssBaseScore,omitempty"`          // Common Vulnerability Scoring System(CVSS) base score
-	SecurityImpactRating   string                                                                                                 `json:"securityImpactRating,omitempty"`   // 'CRITICAL' - the advisory requires immediate mitigation. 'HIGH' - the advisory requires priority mitigation
-	FirstFixedVersionsList *[]ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDevicesByIDV1ResponseFirstFixedVersionsList `json:"firstFixedVersionsList,omitempty"` //
-}
-type ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDevicesByIDV1ResponseFirstFixedVersionsList struct {
-	VulnerableVersion string   `json:"vulnerableVersion,omitempty"` // Version that is vulnerable to the advisory
-	FixedVersions     []string `json:"fixedVersions,omitempty"`     // First versions that have the fix for the advisory
-}
-type ResponseComplianceGetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1 struct {
-	Response *[]ResponseComplianceGetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1Response `json:"response,omitempty"` //
-	Version  string                                                                                 `json:"version,omitempty"`  // Version
-}
-type ResponseComplianceGetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1Response struct {
+type ResponseComplianceGetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryResponse struct {
 	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Id of the device
 	AdvisoryCount   *int   `json:"advisoryCount,omitempty"`   // Number of advisories to which the network device is vulnerable
 	ScanMode        string `json:"scanMode,omitempty"`        // 'ESSENTIALS' - the device was scanned using a version based match criteria. 'ADVANTAGE' - the device was scanned using a version based match and user provided config match criteria. 'CX_CLOUD' - the device was scanned using CX cloud engine which uses advanced matching criteria which eliminates false positives.  ‘NOT_AVAILABLE’ - scan mode is not available. e.g. when the device is not scanned
@@ -813,18 +814,18 @@ type ResponseComplianceGetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1
 	Comments        string `json:"comments,omitempty"`        // More details about the scan status. ie:- if the scan status is failed, comments will give the reason for failure
 	LastScanTime    *int   `json:"lastScanTime,omitempty"`    // Time at which the device was scanned
 }
-type ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1 struct {
-	Version  string                                                                                      `json:"version,omitempty"`  // Version
-	Response *ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisory struct {
+	Version  string                                                                                    `json:"version,omitempty"`  // Version
+	Response *ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1Response struct {
+type ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryResponse struct {
 	Count *int `json:"count,omitempty"` // Count
 }
-type ResponseComplianceGetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceIDV1 struct {
-	Response *ResponseComplianceGetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceIDV1Response `json:"response,omitempty"` //
-	Version  string                                                                                               `json:"version,omitempty"`  // Version
+type ResponseComplianceGetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceID struct {
+	Response *ResponseComplianceGetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceIDResponse `json:"response,omitempty"` //
+	Version  string                                                                                             `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceIDV1Response struct {
+type ResponseComplianceGetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceIDResponse struct {
 	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Id of the device
 	AdvisoryCount   *int   `json:"advisoryCount,omitempty"`   // Number of advisories to which the network device is vulnerable
 	ScanMode        string `json:"scanMode,omitempty"`        // 'ESSENTIALS' - the device was scanned using a version based match criteria. 'ADVANTAGE' - the device was scanned using a version based match and user provided config match criteria. 'CX_CLOUD' - the device was scanned using CX cloud engine which uses advanced matching criteria which eliminates false positives.  ‘NOT_AVAILABLE’ - scan mode is not available. e.g. when the device is not scanned
@@ -832,11 +833,11 @@ type ResponseComplianceGetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByN
 	Comments        string `json:"comments,omitempty"`        // More details about the scan status. ie:- if the scan status is failed, comments will give the reason for failure
 	LastScanTime    *int   `json:"lastScanTime,omitempty"`    // Time at which the device was scanned
 }
-type ResponseComplianceGetSecurityAdvisoryNetworkDevicesV1 struct {
-	Response *[]ResponseComplianceGetSecurityAdvisoryNetworkDevicesV1Response `json:"response,omitempty"` //
-	Version  string                                                           `json:"version,omitempty"`  // Version
+type ResponseComplianceGetSecurityAdvisoryNetworkDevices struct {
+	Response *[]ResponseComplianceGetSecurityAdvisoryNetworkDevicesResponse `json:"response,omitempty"` //
+	Version  string                                                         `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetSecurityAdvisoryNetworkDevicesV1Response struct {
+type ResponseComplianceGetSecurityAdvisoryNetworkDevicesResponse struct {
 	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Id of the device
 	AdvisoryCount   *int   `json:"advisoryCount,omitempty"`   // Number of advisories to which the network device is vulnerable
 	ScanMode        string `json:"scanMode,omitempty"`        // 'ESSENTIALS' - the device was scanned using a version based match criteria. 'ADVANTAGE' - the device was scanned using a version based match and user provided config match criteria. 'CX_CLOUD' - the device was scanned using CX cloud engine which uses advanced matching criteria which eliminates false positives.  ‘NOT_AVAILABLE’ - scan mode is not available. e.g. when the device is not scanned
@@ -844,18 +845,18 @@ type ResponseComplianceGetSecurityAdvisoryNetworkDevicesV1Response struct {
 	Comments        string `json:"comments,omitempty"`        // More details about the scan status. ie:- if the scan status is failed, comments will give the reason for failure
 	LastScanTime    *int   `json:"lastScanTime,omitempty"`    // Time at which the device was scanned
 }
-type ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesV1 struct {
-	Version  string                                                                `json:"version,omitempty"`  // Version
-	Response *ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevices struct {
+	Version  string                                                              `json:"version,omitempty"`  // Version
+	Response *ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesV1Response struct {
+type ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesResponse struct {
 	Count *int `json:"count,omitempty"` // Count
 }
-type ResponseComplianceGetSecurityAdvisoryNetworkDeviceByNetworkDeviceIDV1 struct {
-	Response *ResponseComplianceGetSecurityAdvisoryNetworkDeviceByNetworkDeviceIDV1Response `json:"response,omitempty"` //
-	Version  string                                                                         `json:"version,omitempty"`  // Version
+type ResponseComplianceGetSecurityAdvisoryNetworkDeviceByNetworkDeviceID struct {
+	Response *ResponseComplianceGetSecurityAdvisoryNetworkDeviceByNetworkDeviceIDResponse `json:"response,omitempty"` //
+	Version  string                                                                       `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetSecurityAdvisoryNetworkDeviceByNetworkDeviceIDV1Response struct {
+type ResponseComplianceGetSecurityAdvisoryNetworkDeviceByNetworkDeviceIDResponse struct {
 	NetworkDeviceID string `json:"networkDeviceId,omitempty"` // Id of the device
 	AdvisoryCount   *int   `json:"advisoryCount,omitempty"`   // Number of advisories to which the network device is vulnerable
 	ScanMode        string `json:"scanMode,omitempty"`        // 'ESSENTIALS' - the device was scanned using a version based match criteria. 'ADVANTAGE' - the device was scanned using a version based match and user provided config match criteria. 'CX_CLOUD' - the device was scanned using CX cloud engine which uses advanced matching criteria which eliminates false positives.  ‘NOT_AVAILABLE’ - scan mode is not available. e.g. when the device is not scanned
@@ -863,68 +864,68 @@ type ResponseComplianceGetSecurityAdvisoryNetworkDeviceByNetworkDeviceIDV1Respon
 	Comments        string `json:"comments,omitempty"`        // More details about the scan status. ie:- if the scan status is failed, comments will give the reason for failure
 	LastScanTime    *int   `json:"lastScanTime,omitempty"`    // Time at which the device was scanned
 }
-type ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDeviceV1 struct {
-	Response *[]ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDeviceV1Response `json:"response,omitempty"` //
-	Version  string                                                                        `json:"version,omitempty"`  // Version
+type ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevice struct {
+	Response *[]ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDeviceResponse `json:"response,omitempty"` //
+	Version  string                                                                      `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDeviceV1Response struct {
-	ID                     string                                                                                              `json:"id,omitempty"`                     // Id of the security advisory
-	DeviceCount            *int                                                                                                `json:"deviceCount,omitempty"`            // Number of devices which are vulnerable to this advisory
-	CveIDs                 []string                                                                                            `json:"cveIds,omitempty"`                 // CVE (Common Vulnerabilities and Exposures) ID of the advisory
-	PublicationURL         string                                                                                              `json:"publicationUrl,omitempty"`         // Url for getting advisory details on cisco website
-	CvssBaseScore          *float64                                                                                            `json:"cvssBaseScore,omitempty"`          // Common Vulnerability Scoring System(CVSS) base score
-	SecurityImpactRating   string                                                                                              `json:"securityImpactRating,omitempty"`   // 'CRITICAL' - the advisory requires immediate mitigation. 'HIGH' - the advisory requires priority mitigation
-	FirstFixedVersionsList *[]ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDeviceV1ResponseFirstFixedVersionsList `json:"firstFixedVersionsList,omitempty"` //
+type ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDeviceResponse struct {
+	ID                     string                                                                                            `json:"id,omitempty"`                     // Id of the security advisory
+	DeviceCount            *int                                                                                              `json:"deviceCount,omitempty"`            // Number of devices which are vulnerable to this advisory
+	CveIDs                 []string                                                                                          `json:"cveIds,omitempty"`                 // CVE (Common Vulnerabilities and Exposures) ID of the advisory
+	PublicationURL         string                                                                                            `json:"publicationUrl,omitempty"`         // Url for getting advisory details on cisco website
+	CvssBaseScore          *float64                                                                                          `json:"cvssBaseScore,omitempty"`          // Common Vulnerability Scoring System(CVSS) base score
+	SecurityImpactRating   string                                                                                            `json:"securityImpactRating,omitempty"`   // 'CRITICAL' - the advisory requires immediate mitigation. 'HIGH' - the advisory requires priority mitigation
+	FirstFixedVersionsList *[]ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDeviceResponseFirstFixedVersionsList `json:"firstFixedVersionsList,omitempty"` //
 }
-type ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDeviceV1ResponseFirstFixedVersionsList struct {
+type ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDeviceResponseFirstFixedVersionsList struct {
 	VulnerableVersion string   `json:"vulnerableVersion,omitempty"` // Version that is vulnerable to the advisory
 	FixedVersions     []string `json:"fixedVersions,omitempty"`     // First versions that have the fix for the advisory
 }
-type ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1 struct {
-	Version  string                                                                             `json:"version,omitempty"`  // Version
-	Response *ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDevice struct {
+	Version  string                                                                           `json:"version,omitempty"`  // Version
+	Response *ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1Response struct {
+type ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceResponse struct {
 	Count *int `json:"count,omitempty"` // Count
 }
-type ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryIDV1 struct {
-	Response *ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryIDV1Response `json:"response,omitempty"` //
-	Version  string                                                                                           `json:"version,omitempty"`  // Version
+type ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryID struct {
+	Response *ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryIDResponse `json:"response,omitempty"` //
+	Version  string                                                                                         `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryIDV1Response struct {
-	ID                     string                                                                                                                   `json:"id,omitempty"`                     // Id of the security advisory
-	DeviceCount            *int                                                                                                                     `json:"deviceCount,omitempty"`            // Number of devices which are vulnerable to this advisory
-	CveIDs                 []string                                                                                                                 `json:"cveIds,omitempty"`                 // CVE (Common Vulnerabilities and Exposures) ID of the advisory
-	PublicationURL         string                                                                                                                   `json:"publicationUrl,omitempty"`         // Url for getting advisory details on cisco website
-	CvssBaseScore          *float64                                                                                                                 `json:"cvssBaseScore,omitempty"`          // Common Vulnerability Scoring System(CVSS) base score
-	SecurityImpactRating   string                                                                                                                   `json:"securityImpactRating,omitempty"`   // 'CRITICAL' - the advisory requires immediate mitigation. 'HIGH' - the advisory requires priority mitigation
-	FirstFixedVersionsList *[]ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryIDV1ResponseFirstFixedVersionsList `json:"firstFixedVersionsList,omitempty"` //
+type ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryIDResponse struct {
+	ID                     string                                                                                                                 `json:"id,omitempty"`                     // Id of the security advisory
+	DeviceCount            *int                                                                                                                   `json:"deviceCount,omitempty"`            // Number of devices which are vulnerable to this advisory
+	CveIDs                 []string                                                                                                               `json:"cveIds,omitempty"`                 // CVE (Common Vulnerabilities and Exposures) ID of the advisory
+	PublicationURL         string                                                                                                                 `json:"publicationUrl,omitempty"`         // Url for getting advisory details on cisco website
+	CvssBaseScore          *float64                                                                                                               `json:"cvssBaseScore,omitempty"`          // Common Vulnerability Scoring System(CVSS) base score
+	SecurityImpactRating   string                                                                                                                 `json:"securityImpactRating,omitempty"`   // 'CRITICAL' - the advisory requires immediate mitigation. 'HIGH' - the advisory requires priority mitigation
+	FirstFixedVersionsList *[]ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryIDResponseFirstFixedVersionsList `json:"firstFixedVersionsList,omitempty"` //
 }
-type ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryIDV1ResponseFirstFixedVersionsList struct {
+type ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryIDResponseFirstFixedVersionsList struct {
 	VulnerableVersion string   `json:"vulnerableVersion,omitempty"` // Version that is vulnerable to the advisory
 	FixedVersions     []string `json:"fixedVersions,omitempty"`     // First versions that have the fix for the advisory
 }
-type ResponseComplianceGetSecurityAdvisoriesResultsTrendOverTimeV1 struct {
-	Response *[]ResponseComplianceGetSecurityAdvisoriesResultsTrendOverTimeV1Response `json:"response,omitempty"` //
-	Version  string                                                                   `json:"version,omitempty"`  // Version
+type ResponseComplianceGetSecurityAdvisoriesResultsTrendOverTime struct {
+	Response *[]ResponseComplianceGetSecurityAdvisoriesResultsTrendOverTimeResponse `json:"response,omitempty"` //
+	Version  string                                                                 `json:"version,omitempty"`  // Version
 }
-type ResponseComplianceGetSecurityAdvisoriesResultsTrendOverTimeV1Response struct {
+type ResponseComplianceGetSecurityAdvisoriesResultsTrendOverTimeResponse struct {
 	CriticalSecurityImpactRatingAdvisoriesCount *int `json:"criticalSecurityImpactRatingAdvisoriesCount,omitempty"` // Number of advisories which have a security impact rating of critical
 	HighSecurityImpactRatingAdvisoriesCount     *int `json:"highSecurityImpactRatingAdvisoriesCount,omitempty"`     // Number of advisories which have a security impact rating of high
 	ScanTime                                    *int `json:"scanTime,omitempty"`                                    // End time for the scan
 }
-type ResponseComplianceGetCountOfSecurityAdvisoriesResultsTrendOverTimeV1 struct {
-	Version  string                                                                        `json:"version,omitempty"`  // Version
-	Response *ResponseComplianceGetCountOfSecurityAdvisoriesResultsTrendOverTimeV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetCountOfSecurityAdvisoriesResultsTrendOverTime struct {
+	Version  string                                                                      `json:"version,omitempty"`  // Version
+	Response *ResponseComplianceGetCountOfSecurityAdvisoriesResultsTrendOverTimeResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceGetCountOfSecurityAdvisoriesResultsTrendOverTimeV1Response struct {
+type ResponseComplianceGetCountOfSecurityAdvisoriesResultsTrendOverTimeResponse struct {
 	Count *int `json:"count,omitempty"` // Count
 }
-type ResponseComplianceGetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevicesV1 struct {
-	Version  string                                                                                     `json:"version,omitempty"`  // Version
-	Response *ResponseComplianceGetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevicesV1Response `json:"response,omitempty"` //
+type ResponseComplianceGetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevices struct {
+	Version  string                                                                                   `json:"version,omitempty"`  // Version
+	Response *ResponseComplianceGetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevicesResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceGetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevicesV1Response struct {
+type ResponseComplianceGetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevicesResponse struct {
 	Type                     string `json:"type,omitempty"`                     // Type of trial: * 'feature - the trial is of type feature. this is the currently supported type. * 'contract' - the trial is of type contract. this was used in older versions and exists only for compatibility.
 	Feature                  string `json:"feature,omitempty"`                  // Name of the feature for which trial was created. for older versions that created contract type trials, this field will be absent.
 	ContractLevel            string `json:"contractLevel,omitempty"`            // Contract level for which trial was created. this was used in older versions and exists only for compatibility.
@@ -934,48 +935,48 @@ type ResponseComplianceGetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDev
 	SecondsRemainingToExpiry *int   `json:"secondsRemainingToExpiry,omitempty"` // Seconds remaining in the trial before it expires. for expired trials this will be 0.
 	SecondsSinceExpired      *int   `json:"secondsSinceExpired,omitempty"`      // Seconds elapsed after the trial has expired. for active trials this will be 0.
 }
-type ResponseComplianceCreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevicesV1 struct {
-	Version  string                                                                                   `json:"version,omitempty"`  // Response Version e.g. : 1.0
-	Response *ResponseComplianceCreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevicesV1Response `json:"response,omitempty"` //
+type ResponseComplianceCreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevices struct {
+	Version  string                                                                                 `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Response *ResponseComplianceCreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevicesResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceCreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevicesV1Response struct {
+type ResponseComplianceCreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevicesResponse struct {
 	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
-type ResponseComplianceTriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1 struct {
-	Version  string                                                                                    `json:"version,omitempty"`  // Response Version e.g. : 1.0
-	Response *ResponseComplianceTriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1Response `json:"response,omitempty"` //
+type ResponseComplianceTriggersASecurityAdvisoriesScanForTheSupportedNetworkDevices struct {
+	Version  string                                                                                  `json:"version,omitempty"`  // Response Version e.g. : 1.0
+	Response *ResponseComplianceTriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesResponse `json:"response,omitempty"` //
 }
-type ResponseComplianceTriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1Response struct {
+type ResponseComplianceTriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesResponse struct {
 	URL    string `json:"url,omitempty"`    // URL to get task details e.g. : /api/v1/task/3200a44a-9186-4caf-8c32-419cd1f3d3f5
 	TaskID string `json:"taskId,omitempty"` // Task Id in uuid format. e.g. : 3200a44a-9186-4caf-8c32-419cd1f3d3f5
 }
-type RequestComplianceRunComplianceV1 struct {
+type RequestComplianceRunCompliance struct {
 	TriggerFull *bool    `json:"triggerFull,omitempty"` // if it is true then compliance will be triggered for all categories. If it is false then compliance will be triggered for categories mentioned in categories section .
-	Categories  []string `json:"categories,omitempty"`  // Category can have any value among 'INTENT'(mapped to compliance types: NETWORK_SETTINGS,NETWORK_PROFILE,WORKFLOW,FABRIC,APPLICATION_VISIBILITY), 'RUNNING_CONFIG' , 'IMAGE' , 'PSIRT' , 'EoX' , 'NETWORK_SETTINGS'
+	Categories  []string `json:"categories,omitempty"`  // Category can have any value among 'INTENT'(mapped to compliance types: NETWORK_SETTINGS,NETWORK_PROFILE,WORKFLOW,FABRIC,APPLICATION_VISIBILITY), 'RUNNING_CONFIG' , 'IMAGE' , 'PSIRT' , 'EOX'
 	DeviceUUIDs []string `json:"deviceUuids,omitempty"` // UUID of the device.
 }
-type RequestComplianceCommitDeviceConfigurationV1 struct {
+type RequestComplianceCommitDeviceConfiguration struct {
 	DeviceID []string `json:"deviceId,omitempty"` // UUID of the device.
 }
 
-//GetComplianceStatusV1 Get Compliance Status  - dda5-cb9a-49aa-aef6
+//GetComplianceStatus Get Compliance Status  - dda5-cb9a-49aa-aef6
 /* Return compliance status of device(s).
 
 
-@param GetComplianceStatusV1QueryParams Filtering parameter
+@param GetComplianceStatusQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-compliance-status
 */
-func (s *ComplianceService) GetComplianceStatusV1(GetComplianceStatusV1QueryParams *GetComplianceStatusV1QueryParams) (*ResponseComplianceGetComplianceStatusV1, *resty.Response, error) {
+func (s *ComplianceService) GetComplianceStatus(GetComplianceStatusQueryParams *GetComplianceStatusQueryParams) (*ResponseComplianceGetComplianceStatus, *resty.Response, error) {
 	path := "/dna/intent/api/v1/compliance"
 
-	queryString, _ := query.Values(GetComplianceStatusV1QueryParams)
+	queryString, _ := query.Values(GetComplianceStatusQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetComplianceStatusV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetComplianceStatus{}).
 		SetError(&Error).
 		Get(path)
 
@@ -986,33 +987,33 @@ func (s *ComplianceService) GetComplianceStatusV1(GetComplianceStatusV1QueryPara
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetComplianceStatusV1(GetComplianceStatusV1QueryParams)
+			return s.GetComplianceStatus(GetComplianceStatusQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetComplianceStatusV1")
+		return nil, response, fmt.Errorf("error with operation GetComplianceStatus")
 	}
 
-	result := response.Result().(*ResponseComplianceGetComplianceStatusV1)
+	result := response.Result().(*ResponseComplianceGetComplianceStatus)
 	return result, response, err
 
 }
 
-//GetComplianceStatusCountV1 Get Compliance Status Count - db99-f919-424a-9f83
+//GetComplianceStatusCount Get Compliance Status Count - db99-f919-424a-9f83
 /* Return Compliance Status Count
 
 
-@param GetComplianceStatusCountV1QueryParams Filtering parameter
+@param GetComplianceStatusCountQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-compliance-status-count
 */
-func (s *ComplianceService) GetComplianceStatusCountV1(GetComplianceStatusCountV1QueryParams *GetComplianceStatusCountV1QueryParams) (*ResponseComplianceGetComplianceStatusCountV1, *resty.Response, error) {
+func (s *ComplianceService) GetComplianceStatusCount(GetComplianceStatusCountQueryParams *GetComplianceStatusCountQueryParams) (*ResponseComplianceGetComplianceStatusCount, *resty.Response, error) {
 	path := "/dna/intent/api/v1/compliance/count"
 
-	queryString, _ := query.Values(GetComplianceStatusCountV1QueryParams)
+	queryString, _ := query.Values(GetComplianceStatusCountQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetComplianceStatusCountV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetComplianceStatusCount{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1023,33 +1024,33 @@ func (s *ComplianceService) GetComplianceStatusCountV1(GetComplianceStatusCountV
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetComplianceStatusCountV1(GetComplianceStatusCountV1QueryParams)
+			return s.GetComplianceStatusCount(GetComplianceStatusCountQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetComplianceStatusCountV1")
+		return nil, response, fmt.Errorf("error with operation GetComplianceStatusCount")
 	}
 
-	result := response.Result().(*ResponseComplianceGetComplianceStatusCountV1)
+	result := response.Result().(*ResponseComplianceGetComplianceStatusCount)
 	return result, response, err
 
 }
 
-//GetComplianceDetailV1 Get Compliance Detail  - dda1-1ae7-4788-9d49
+//GetComplianceDetail Get Compliance Detail  - dda1-1ae7-4788-9d49
 /* Return Compliance Detail
 
 
-@param GetComplianceDetailV1QueryParams Filtering parameter
+@param GetComplianceDetailQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-compliance-detail
 */
-func (s *ComplianceService) GetComplianceDetailV1(GetComplianceDetailV1QueryParams *GetComplianceDetailV1QueryParams) (*ResponseComplianceGetComplianceDetailV1, *resty.Response, error) {
+func (s *ComplianceService) GetComplianceDetail(GetComplianceDetailQueryParams *GetComplianceDetailQueryParams) (*ResponseComplianceGetComplianceDetail, *resty.Response, error) {
 	path := "/dna/intent/api/v1/compliance/detail"
 
-	queryString, _ := query.Values(GetComplianceDetailV1QueryParams)
+	queryString, _ := query.Values(GetComplianceDetailQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetComplianceDetailV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetComplianceDetail{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1060,33 +1061,33 @@ func (s *ComplianceService) GetComplianceDetailV1(GetComplianceDetailV1QueryPara
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetComplianceDetailV1(GetComplianceDetailV1QueryParams)
+			return s.GetComplianceDetail(GetComplianceDetailQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetComplianceDetailV1")
+		return nil, response, fmt.Errorf("error with operation GetComplianceDetail")
 	}
 
-	result := response.Result().(*ResponseComplianceGetComplianceDetailV1)
+	result := response.Result().(*ResponseComplianceGetComplianceDetail)
 	return result, response, err
 
 }
 
-//GetComplianceDetailCountV1 Get Compliance Detail Count - 3eb6-58c3-4549-94df
+//GetComplianceDetailCount Get Compliance Detail Count - 3eb6-58c3-4549-94df
 /* Return  Compliance Count Detail
 
 
-@param GetComplianceDetailCountV1QueryParams Filtering parameter
+@param GetComplianceDetailCountQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-compliance-detail-count
 */
-func (s *ComplianceService) GetComplianceDetailCountV1(GetComplianceDetailCountV1QueryParams *GetComplianceDetailCountV1QueryParams) (*ResponseComplianceGetComplianceDetailCountV1, *resty.Response, error) {
+func (s *ComplianceService) GetComplianceDetailCount(GetComplianceDetailCountQueryParams *GetComplianceDetailCountQueryParams) (*ResponseComplianceGetComplianceDetailCount, *resty.Response, error) {
 	path := "/dna/intent/api/v1/compliance/detail/count"
 
-	queryString, _ := query.Values(GetComplianceDetailCountV1QueryParams)
+	queryString, _ := query.Values(GetComplianceDetailCountQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetComplianceDetailCountV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetComplianceDetailCount{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1097,17 +1098,17 @@ func (s *ComplianceService) GetComplianceDetailCountV1(GetComplianceDetailCountV
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetComplianceDetailCountV1(GetComplianceDetailCountV1QueryParams)
+			return s.GetComplianceDetailCount(GetComplianceDetailCountQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetComplianceDetailCountV1")
+		return nil, response, fmt.Errorf("error with operation GetComplianceDetailCount")
 	}
 
-	result := response.Result().(*ResponseComplianceGetComplianceDetailCountV1)
+	result := response.Result().(*ResponseComplianceGetComplianceDetailCount)
 	return result, response, err
 
 }
 
-//DeviceComplianceStatusV1 Device Compliance Status - 7aa8-5ad5-48ea-94a7
+//DeviceComplianceStatus Device Compliance Status - 7aa8-5ad5-48ea-94a7
 /* Return compliance status of a device.
 
 
@@ -1116,14 +1117,14 @@ func (s *ComplianceService) GetComplianceDetailCountV1(GetComplianceDetailCountV
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!device-compliance-status
 */
-func (s *ComplianceService) DeviceComplianceStatusV1(deviceUUID string) (*ResponseComplianceDeviceComplianceStatusV1, *resty.Response, error) {
+func (s *ComplianceService) DeviceComplianceStatus(deviceUUID string) (*ResponseComplianceDeviceComplianceStatus, *resty.Response, error) {
 	path := "/dna/intent/api/v1/compliance/{deviceUuid}"
 	path = strings.Replace(path, "{deviceUuid}", fmt.Sprintf("%v", deviceUUID), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseComplianceDeviceComplianceStatusV1{}).
+		SetResult(&ResponseComplianceDeviceComplianceStatus{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1134,36 +1135,36 @@ func (s *ComplianceService) DeviceComplianceStatusV1(deviceUUID string) (*Respon
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeviceComplianceStatusV1(deviceUUID)
+			return s.DeviceComplianceStatus(deviceUUID)
 		}
-		return nil, response, fmt.Errorf("error with operation DeviceComplianceStatusV1")
+		return nil, response, fmt.Errorf("error with operation DeviceComplianceStatus")
 	}
 
-	result := response.Result().(*ResponseComplianceDeviceComplianceStatusV1)
+	result := response.Result().(*ResponseComplianceDeviceComplianceStatus)
 	return result, response, err
 
 }
 
-//ComplianceDetailsOfDeviceV1 Compliance Details of Device - 52bf-e904-45aa-b017
+//ComplianceDetailsOfDevice Compliance Details of Device - 52bf-e904-45aa-b017
 /* Return compliance detailed report for a device.
 
 
 @param deviceUUID deviceUuid path parameter. Device Id
 
-@param ComplianceDetailsOfDeviceV1QueryParams Filtering parameter
+@param ComplianceDetailsOfDeviceQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!compliance-details-of-device
 */
-func (s *ComplianceService) ComplianceDetailsOfDeviceV1(deviceUUID string, ComplianceDetailsOfDeviceV1QueryParams *ComplianceDetailsOfDeviceV1QueryParams) (*ResponseComplianceComplianceDetailsOfDeviceV1, *resty.Response, error) {
+func (s *ComplianceService) ComplianceDetailsOfDevice(deviceUUID string, ComplianceDetailsOfDeviceQueryParams *ComplianceDetailsOfDeviceQueryParams) (*ResponseComplianceComplianceDetailsOfDevice, *resty.Response, error) {
 	path := "/dna/intent/api/v1/compliance/{deviceUuid}/detail"
 	path = strings.Replace(path, "{deviceUuid}", fmt.Sprintf("%v", deviceUUID), -1)
 
-	queryString, _ := query.Values(ComplianceDetailsOfDeviceV1QueryParams)
+	queryString, _ := query.Values(ComplianceDetailsOfDeviceQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceComplianceDetailsOfDeviceV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceComplianceDetailsOfDevice{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1174,33 +1175,33 @@ func (s *ComplianceService) ComplianceDetailsOfDeviceV1(deviceUUID string, Compl
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.ComplianceDetailsOfDeviceV1(deviceUUID, ComplianceDetailsOfDeviceV1QueryParams)
+			return s.ComplianceDetailsOfDevice(deviceUUID, ComplianceDetailsOfDeviceQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation ComplianceDetailsOfDeviceV1")
+		return nil, response, fmt.Errorf("error with operation ComplianceDetailsOfDevice")
 	}
 
-	result := response.Result().(*ResponseComplianceComplianceDetailsOfDeviceV1)
+	result := response.Result().(*ResponseComplianceComplianceDetailsOfDevice)
 	return result, response, err
 
 }
 
-//GetFieldNoticeNetworkDevicesV1 Get field notice network devices - e8b3-68d9-483b-8e07
+//GetFieldNoticeNetworkDevices Get field notice network devices - e8b3-68d9-483b-8e07
 /* Get field notice network devices
 
 
-@param GetFieldNoticeNetworkDevicesV1QueryParams Filtering parameter
+@param GetFieldNoticeNetworkDevicesQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-field-notice-network-devices
 */
-func (s *ComplianceService) GetFieldNoticeNetworkDevicesV1(GetFieldNoticeNetworkDevicesV1QueryParams *GetFieldNoticeNetworkDevicesV1QueryParams) (*ResponseComplianceGetFieldNoticeNetworkDevicesV1, *resty.Response, error) {
+func (s *ComplianceService) GetFieldNoticeNetworkDevices(GetFieldNoticeNetworkDevicesQueryParams *GetFieldNoticeNetworkDevicesQueryParams) (*ResponseComplianceGetFieldNoticeNetworkDevices, *resty.Response, error) {
 	path := "/dna/intent/api/v1/fieldNotices/results/networkDevices"
 
-	queryString, _ := query.Values(GetFieldNoticeNetworkDevicesV1QueryParams)
+	queryString, _ := query.Values(GetFieldNoticeNetworkDevicesQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetFieldNoticeNetworkDevicesV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetFieldNoticeNetworkDevices{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1211,33 +1212,33 @@ func (s *ComplianceService) GetFieldNoticeNetworkDevicesV1(GetFieldNoticeNetwork
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetFieldNoticeNetworkDevicesV1(GetFieldNoticeNetworkDevicesV1QueryParams)
+			return s.GetFieldNoticeNetworkDevices(GetFieldNoticeNetworkDevicesQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetFieldNoticeNetworkDevicesV1")
+		return nil, response, fmt.Errorf("error with operation GetFieldNoticeNetworkDevices")
 	}
 
-	result := response.Result().(*ResponseComplianceGetFieldNoticeNetworkDevicesV1)
+	result := response.Result().(*ResponseComplianceGetFieldNoticeNetworkDevices)
 	return result, response, err
 
 }
 
-//GetCountOfFieldNoticeNetworkDevicesV1 Get count of field notice network devices - 23bd-3911-4cc9-987c
+//GetCountOfFieldNoticeNetworkDevices Get count of field notice network devices - 23bd-3911-4cc9-987c
 /* Get count of field notice network devices
 
 
-@param GetCountOfFieldNoticeNetworkDevicesV1QueryParams Filtering parameter
+@param GetCountOfFieldNoticeNetworkDevicesQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-count-of-field-notice-network-devices
 */
-func (s *ComplianceService) GetCountOfFieldNoticeNetworkDevicesV1(GetCountOfFieldNoticeNetworkDevicesV1QueryParams *GetCountOfFieldNoticeNetworkDevicesV1QueryParams) (*ResponseComplianceGetCountOfFieldNoticeNetworkDevicesV1, *resty.Response, error) {
+func (s *ComplianceService) GetCountOfFieldNoticeNetworkDevices(GetCountOfFieldNoticeNetworkDevicesQueryParams *GetCountOfFieldNoticeNetworkDevicesQueryParams) (*ResponseComplianceGetCountOfFieldNoticeNetworkDevices, *resty.Response, error) {
 	path := "/dna/intent/api/v1/fieldNotices/results/networkDevices/count"
 
-	queryString, _ := query.Values(GetCountOfFieldNoticeNetworkDevicesV1QueryParams)
+	queryString, _ := query.Values(GetCountOfFieldNoticeNetworkDevicesQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfFieldNoticeNetworkDevicesV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfFieldNoticeNetworkDevices{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1248,17 +1249,17 @@ func (s *ComplianceService) GetCountOfFieldNoticeNetworkDevicesV1(GetCountOfFiel
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetCountOfFieldNoticeNetworkDevicesV1(GetCountOfFieldNoticeNetworkDevicesV1QueryParams)
+			return s.GetCountOfFieldNoticeNetworkDevices(GetCountOfFieldNoticeNetworkDevicesQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetCountOfFieldNoticeNetworkDevicesV1")
+		return nil, response, fmt.Errorf("error with operation GetCountOfFieldNoticeNetworkDevices")
 	}
 
-	result := response.Result().(*ResponseComplianceGetCountOfFieldNoticeNetworkDevicesV1)
+	result := response.Result().(*ResponseComplianceGetCountOfFieldNoticeNetworkDevices)
 	return result, response, err
 
 }
 
-//GetFieldNoticeNetworkDeviceByDeviceIDV1 Get field notice network device by device id - db80-68db-4b1b-976d
+//GetFieldNoticeNetworkDeviceByDeviceID Get field notice network device by device id - db80-68db-4b1b-976d
 /* Get field notice network device by device id
 
 
@@ -1267,14 +1268,14 @@ func (s *ComplianceService) GetCountOfFieldNoticeNetworkDevicesV1(GetCountOfFiel
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-field-notice-network-device-by-device-id
 */
-func (s *ComplianceService) GetFieldNoticeNetworkDeviceByDeviceIDV1(networkDeviceID string) (*ResponseComplianceGetFieldNoticeNetworkDeviceByDeviceIDV1, *resty.Response, error) {
+func (s *ComplianceService) GetFieldNoticeNetworkDeviceByDeviceID(networkDeviceID string) (*ResponseComplianceGetFieldNoticeNetworkDeviceByDeviceID, *resty.Response, error) {
 	path := "/dna/intent/api/v1/fieldNotices/results/networkDevices/{networkDeviceId}"
 	path = strings.Replace(path, "{networkDeviceId}", fmt.Sprintf("%v", networkDeviceID), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseComplianceGetFieldNoticeNetworkDeviceByDeviceIDV1{}).
+		SetResult(&ResponseComplianceGetFieldNoticeNetworkDeviceByDeviceID{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1285,36 +1286,36 @@ func (s *ComplianceService) GetFieldNoticeNetworkDeviceByDeviceIDV1(networkDevic
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetFieldNoticeNetworkDeviceByDeviceIDV1(networkDeviceID)
+			return s.GetFieldNoticeNetworkDeviceByDeviceID(networkDeviceID)
 		}
-		return nil, response, fmt.Errorf("error with operation GetFieldNoticeNetworkDeviceByDeviceIdV1")
+		return nil, response, fmt.Errorf("error with operation GetFieldNoticeNetworkDeviceByDeviceId")
 	}
 
-	result := response.Result().(*ResponseComplianceGetFieldNoticeNetworkDeviceByDeviceIDV1)
+	result := response.Result().(*ResponseComplianceGetFieldNoticeNetworkDeviceByDeviceID)
 	return result, response, err
 
 }
 
-//GetFieldNoticesAffectingTheNetworkDeviceV1 Get field notices affecting the network device - e5a6-3887-44c9-95d6
+//GetFieldNoticesAffectingTheNetworkDevice Get field notices affecting the network device - e5a6-3887-44c9-95d6
 /* Get field notices affecting the network device
 
 
 @param networkDeviceID networkDeviceId path parameter. Id of the network device
 
-@param GetFieldNoticesAffectingTheNetworkDeviceV1QueryParams Filtering parameter
+@param GetFieldNoticesAffectingTheNetworkDeviceQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-field-notices-affecting-the-network-device
 */
-func (s *ComplianceService) GetFieldNoticesAffectingTheNetworkDeviceV1(networkDeviceID string, GetFieldNoticesAffectingTheNetworkDeviceV1QueryParams *GetFieldNoticesAffectingTheNetworkDeviceV1QueryParams) (*ResponseComplianceGetFieldNoticesAffectingTheNetworkDeviceV1, *resty.Response, error) {
+func (s *ComplianceService) GetFieldNoticesAffectingTheNetworkDevice(networkDeviceID string, GetFieldNoticesAffectingTheNetworkDeviceQueryParams *GetFieldNoticesAffectingTheNetworkDeviceQueryParams) (*ResponseComplianceGetFieldNoticesAffectingTheNetworkDevice, *resty.Response, error) {
 	path := "/dna/intent/api/v1/fieldNotices/results/networkDevices/{networkDeviceId}/notices"
 	path = strings.Replace(path, "{networkDeviceId}", fmt.Sprintf("%v", networkDeviceID), -1)
 
-	queryString, _ := query.Values(GetFieldNoticesAffectingTheNetworkDeviceV1QueryParams)
+	queryString, _ := query.Values(GetFieldNoticesAffectingTheNetworkDeviceQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetFieldNoticesAffectingTheNetworkDeviceV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetFieldNoticesAffectingTheNetworkDevice{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1325,36 +1326,36 @@ func (s *ComplianceService) GetFieldNoticesAffectingTheNetworkDeviceV1(networkDe
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetFieldNoticesAffectingTheNetworkDeviceV1(networkDeviceID, GetFieldNoticesAffectingTheNetworkDeviceV1QueryParams)
+			return s.GetFieldNoticesAffectingTheNetworkDevice(networkDeviceID, GetFieldNoticesAffectingTheNetworkDeviceQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetFieldNoticesAffectingTheNetworkDeviceV1")
+		return nil, response, fmt.Errorf("error with operation GetFieldNoticesAffectingTheNetworkDevice")
 	}
 
-	result := response.Result().(*ResponseComplianceGetFieldNoticesAffectingTheNetworkDeviceV1)
+	result := response.Result().(*ResponseComplianceGetFieldNoticesAffectingTheNetworkDevice)
 	return result, response, err
 
 }
 
-//GetCountOfFieldNoticesAffectingTheNetworkDeviceV1 Get count of field notices affecting the network device - 5494-098c-414b-bf34
+//GetCountOfFieldNoticesAffectingTheNetworkDevice Get count of field notices affecting the network device - 5494-098c-414b-bf34
 /* Get count of field notices affecting the network device
 
 
 @param networkDeviceID networkDeviceId path parameter. Id of the network device
 
-@param GetCountOfFieldNoticesAffectingTheNetworkDeviceV1QueryParams Filtering parameter
+@param GetCountOfFieldNoticesAffectingTheNetworkDeviceQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-count-of-field-notices-affecting-the-network-device
 */
-func (s *ComplianceService) GetCountOfFieldNoticesAffectingTheNetworkDeviceV1(networkDeviceID string, GetCountOfFieldNoticesAffectingTheNetworkDeviceV1QueryParams *GetCountOfFieldNoticesAffectingTheNetworkDeviceV1QueryParams) (*ResponseComplianceGetCountOfFieldNoticesAffectingTheNetworkDeviceV1, *resty.Response, error) {
+func (s *ComplianceService) GetCountOfFieldNoticesAffectingTheNetworkDevice(networkDeviceID string, GetCountOfFieldNoticesAffectingTheNetworkDeviceQueryParams *GetCountOfFieldNoticesAffectingTheNetworkDeviceQueryParams) (*ResponseComplianceGetCountOfFieldNoticesAffectingTheNetworkDevice, *resty.Response, error) {
 	path := "/dna/intent/api/v1/fieldNotices/results/networkDevices/{networkDeviceId}/notices/count"
 	path = strings.Replace(path, "{networkDeviceId}", fmt.Sprintf("%v", networkDeviceID), -1)
 
-	queryString, _ := query.Values(GetCountOfFieldNoticesAffectingTheNetworkDeviceV1QueryParams)
+	queryString, _ := query.Values(GetCountOfFieldNoticesAffectingTheNetworkDeviceQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfFieldNoticesAffectingTheNetworkDeviceV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfFieldNoticesAffectingTheNetworkDevice{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1365,17 +1366,17 @@ func (s *ComplianceService) GetCountOfFieldNoticesAffectingTheNetworkDeviceV1(ne
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetCountOfFieldNoticesAffectingTheNetworkDeviceV1(networkDeviceID, GetCountOfFieldNoticesAffectingTheNetworkDeviceV1QueryParams)
+			return s.GetCountOfFieldNoticesAffectingTheNetworkDevice(networkDeviceID, GetCountOfFieldNoticesAffectingTheNetworkDeviceQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetCountOfFieldNoticesAffectingTheNetworkDeviceV1")
+		return nil, response, fmt.Errorf("error with operation GetCountOfFieldNoticesAffectingTheNetworkDevice")
 	}
 
-	result := response.Result().(*ResponseComplianceGetCountOfFieldNoticesAffectingTheNetworkDeviceV1)
+	result := response.Result().(*ResponseComplianceGetCountOfFieldNoticesAffectingTheNetworkDevice)
 	return result, response, err
 
 }
 
-//GetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeIDV1 Get field notice affecting the network device by device Id and notice id - 86a9-2ad8-436a-9299
+//GetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeID Get field notice affecting the network device by device Id and notice id - 86a9-2ad8-436a-9299
 /* Get field notice affecting the network device by device Id and notice id
 
 
@@ -1386,7 +1387,7 @@ func (s *ComplianceService) GetCountOfFieldNoticesAffectingTheNetworkDeviceV1(ne
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-field-notice-affecting-the-network-device-by-device-id-and-notice-id
 */
-func (s *ComplianceService) GetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeIDV1(networkDeviceID string, id string) (*ResponseComplianceGetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeIDV1, *resty.Response, error) {
+func (s *ComplianceService) GetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeID(networkDeviceID string, id string) (*ResponseComplianceGetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeID, *resty.Response, error) {
 	path := "/dna/intent/api/v1/fieldNotices/results/networkDevices/{networkDeviceId}/notices/{id}"
 	path = strings.Replace(path, "{networkDeviceId}", fmt.Sprintf("%v", networkDeviceID), -1)
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
@@ -1394,7 +1395,7 @@ func (s *ComplianceService) GetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAnd
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseComplianceGetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeIDV1{}).
+		SetResult(&ResponseComplianceGetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeID{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1405,33 +1406,33 @@ func (s *ComplianceService) GetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAnd
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeIDV1(networkDeviceID, id)
+			return s.GetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeID(networkDeviceID, id)
 		}
-		return nil, response, fmt.Errorf("error with operation GetFieldNoticeAffectingTheNetworkDeviceByDeviceIdAndNoticeIdV1")
+		return nil, response, fmt.Errorf("error with operation GetFieldNoticeAffectingTheNetworkDeviceByDeviceIdAndNoticeId")
 	}
 
-	result := response.Result().(*ResponseComplianceGetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeIDV1)
+	result := response.Result().(*ResponseComplianceGetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeID)
 	return result, response, err
 
 }
 
-//GetFieldNoticesV1 Get field notices - 6989-39f3-4279-ae61
+//GetFieldNotices Get field notices - 6989-39f3-4279-ae61
 /* Get field notices
 
 
-@param GetFieldNoticesV1QueryParams Filtering parameter
+@param GetFieldNoticesQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-field-notices
 */
-func (s *ComplianceService) GetFieldNoticesV1(GetFieldNoticesV1QueryParams *GetFieldNoticesV1QueryParams) (*ResponseComplianceGetFieldNoticesV1, *resty.Response, error) {
+func (s *ComplianceService) GetFieldNotices(GetFieldNoticesQueryParams *GetFieldNoticesQueryParams) (*ResponseComplianceGetFieldNotices, *resty.Response, error) {
 	path := "/dna/intent/api/v1/fieldNotices/results/notices"
 
-	queryString, _ := query.Values(GetFieldNoticesV1QueryParams)
+	queryString, _ := query.Values(GetFieldNoticesQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetFieldNoticesV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetFieldNotices{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1442,33 +1443,33 @@ func (s *ComplianceService) GetFieldNoticesV1(GetFieldNoticesV1QueryParams *GetF
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetFieldNoticesV1(GetFieldNoticesV1QueryParams)
+			return s.GetFieldNotices(GetFieldNoticesQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetFieldNoticesV1")
+		return nil, response, fmt.Errorf("error with operation GetFieldNotices")
 	}
 
-	result := response.Result().(*ResponseComplianceGetFieldNoticesV1)
+	result := response.Result().(*ResponseComplianceGetFieldNotices)
 	return result, response, err
 
 }
 
-//GetCountOfFieldNoticesV1 Get count of field notices - ba99-e9ba-40cb-99e1
+//GetCountOfFieldNotices Get count of field notices - ba99-e9ba-40cb-99e1
 /* Get count of field notices
 
 
-@param GetCountOfFieldNoticesV1QueryParams Filtering parameter
+@param GetCountOfFieldNoticesQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-count-of-field-notices
 */
-func (s *ComplianceService) GetCountOfFieldNoticesV1(GetCountOfFieldNoticesV1QueryParams *GetCountOfFieldNoticesV1QueryParams) (*ResponseComplianceGetCountOfFieldNoticesV1, *resty.Response, error) {
+func (s *ComplianceService) GetCountOfFieldNotices(GetCountOfFieldNoticesQueryParams *GetCountOfFieldNoticesQueryParams) (*ResponseComplianceGetCountOfFieldNotices, *resty.Response, error) {
 	path := "/dna/intent/api/v1/fieldNotices/results/notices/count"
 
-	queryString, _ := query.Values(GetCountOfFieldNoticesV1QueryParams)
+	queryString, _ := query.Values(GetCountOfFieldNoticesQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfFieldNoticesV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfFieldNotices{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1479,17 +1480,17 @@ func (s *ComplianceService) GetCountOfFieldNoticesV1(GetCountOfFieldNoticesV1Que
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetCountOfFieldNoticesV1(GetCountOfFieldNoticesV1QueryParams)
+			return s.GetCountOfFieldNotices(GetCountOfFieldNoticesQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetCountOfFieldNoticesV1")
+		return nil, response, fmt.Errorf("error with operation GetCountOfFieldNotices")
 	}
 
-	result := response.Result().(*ResponseComplianceGetCountOfFieldNoticesV1)
+	result := response.Result().(*ResponseComplianceGetCountOfFieldNotices)
 	return result, response, err
 
 }
 
-//GetFieldNoticeByIDV1 Get field notice by Id - 7c90-9909-4a19-8d77
+//GetFieldNoticeByID Get field notice by Id - 7c90-9909-4a19-8d77
 /* Get field notice by Id
 
 
@@ -1498,14 +1499,14 @@ func (s *ComplianceService) GetCountOfFieldNoticesV1(GetCountOfFieldNoticesV1Que
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-field-notice-by-id
 */
-func (s *ComplianceService) GetFieldNoticeByIDV1(id string) (*ResponseComplianceGetFieldNoticeByIDV1, *resty.Response, error) {
+func (s *ComplianceService) GetFieldNoticeByID(id string) (*ResponseComplianceGetFieldNoticeByID, *resty.Response, error) {
 	path := "/dna/intent/api/v1/fieldNotices/results/notices/{id}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseComplianceGetFieldNoticeByIDV1{}).
+		SetResult(&ResponseComplianceGetFieldNoticeByID{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1516,36 +1517,36 @@ func (s *ComplianceService) GetFieldNoticeByIDV1(id string) (*ResponseCompliance
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetFieldNoticeByIDV1(id)
+			return s.GetFieldNoticeByID(id)
 		}
-		return nil, response, fmt.Errorf("error with operation GetFieldNoticeByIdV1")
+		return nil, response, fmt.Errorf("error with operation GetFieldNoticeById")
 	}
 
-	result := response.Result().(*ResponseComplianceGetFieldNoticeByIDV1)
+	result := response.Result().(*ResponseComplianceGetFieldNoticeByID)
 	return result, response, err
 
 }
 
-//GetFieldNoticeNetworkDevicesForTheNoticeV1 Get field notice network devices for the notice - ddaa-9b91-4cfa-8943
+//GetFieldNoticeNetworkDevicesForTheNotice Get field notice network devices for the notice - ddaa-9b91-4cfa-8943
 /* Get field notice network devices for the notice
 
 
 @param id id path parameter. Id of the field notice
 
-@param GetFieldNoticeNetworkDevicesForTheNoticeV1QueryParams Filtering parameter
+@param GetFieldNoticeNetworkDevicesForTheNoticeQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-field-notice-network-devices-for-the-notice
 */
-func (s *ComplianceService) GetFieldNoticeNetworkDevicesForTheNoticeV1(id string, GetFieldNoticeNetworkDevicesForTheNoticeV1QueryParams *GetFieldNoticeNetworkDevicesForTheNoticeV1QueryParams) (*ResponseComplianceGetFieldNoticeNetworkDevicesForTheNoticeV1, *resty.Response, error) {
+func (s *ComplianceService) GetFieldNoticeNetworkDevicesForTheNotice(id string, GetFieldNoticeNetworkDevicesForTheNoticeQueryParams *GetFieldNoticeNetworkDevicesForTheNoticeQueryParams) (*ResponseComplianceGetFieldNoticeNetworkDevicesForTheNotice, *resty.Response, error) {
 	path := "/dna/intent/api/v1/fieldNotices/results/notices/{id}/networkDevices"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
-	queryString, _ := query.Values(GetFieldNoticeNetworkDevicesForTheNoticeV1QueryParams)
+	queryString, _ := query.Values(GetFieldNoticeNetworkDevicesForTheNoticeQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetFieldNoticeNetworkDevicesForTheNoticeV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetFieldNoticeNetworkDevicesForTheNotice{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1556,36 +1557,36 @@ func (s *ComplianceService) GetFieldNoticeNetworkDevicesForTheNoticeV1(id string
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetFieldNoticeNetworkDevicesForTheNoticeV1(id, GetFieldNoticeNetworkDevicesForTheNoticeV1QueryParams)
+			return s.GetFieldNoticeNetworkDevicesForTheNotice(id, GetFieldNoticeNetworkDevicesForTheNoticeQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetFieldNoticeNetworkDevicesForTheNoticeV1")
+		return nil, response, fmt.Errorf("error with operation GetFieldNoticeNetworkDevicesForTheNotice")
 	}
 
-	result := response.Result().(*ResponseComplianceGetFieldNoticeNetworkDevicesForTheNoticeV1)
+	result := response.Result().(*ResponseComplianceGetFieldNoticeNetworkDevicesForTheNotice)
 	return result, response, err
 
 }
 
-//GetCountOfFieldNoticeNetworkDevicesForTheNoticeV1 Get count of field notice network devices for the notice - 4a9e-d86a-421b-890a
+//GetCountOfFieldNoticeNetworkDevicesForTheNotice Get count of field notice network devices for the notice - 4a9e-d86a-421b-890a
 /* Get count of field notice network devices for the notice
 
 
 @param id id path parameter. Id of the field notice
 
-@param GetCountOfFieldNoticeNetworkDevicesForTheNoticeV1QueryParams Filtering parameter
+@param GetCountOfFieldNoticeNetworkDevicesForTheNoticeQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-count-of-field-notice-network-devices-for-the-notice
 */
-func (s *ComplianceService) GetCountOfFieldNoticeNetworkDevicesForTheNoticeV1(id string, GetCountOfFieldNoticeNetworkDevicesForTheNoticeV1QueryParams *GetCountOfFieldNoticeNetworkDevicesForTheNoticeV1QueryParams) (*ResponseComplianceGetCountOfFieldNoticeNetworkDevicesForTheNoticeV1, *resty.Response, error) {
+func (s *ComplianceService) GetCountOfFieldNoticeNetworkDevicesForTheNotice(id string, GetCountOfFieldNoticeNetworkDevicesForTheNoticeQueryParams *GetCountOfFieldNoticeNetworkDevicesForTheNoticeQueryParams) (*ResponseComplianceGetCountOfFieldNoticeNetworkDevicesForTheNotice, *resty.Response, error) {
 	path := "/dna/intent/api/v1/fieldNotices/results/notices/{id}/networkDevices/count"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
-	queryString, _ := query.Values(GetCountOfFieldNoticeNetworkDevicesForTheNoticeV1QueryParams)
+	queryString, _ := query.Values(GetCountOfFieldNoticeNetworkDevicesForTheNoticeQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfFieldNoticeNetworkDevicesForTheNoticeV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfFieldNoticeNetworkDevicesForTheNotice{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1596,17 +1597,17 @@ func (s *ComplianceService) GetCountOfFieldNoticeNetworkDevicesForTheNoticeV1(id
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetCountOfFieldNoticeNetworkDevicesForTheNoticeV1(id, GetCountOfFieldNoticeNetworkDevicesForTheNoticeV1QueryParams)
+			return s.GetCountOfFieldNoticeNetworkDevicesForTheNotice(id, GetCountOfFieldNoticeNetworkDevicesForTheNoticeQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetCountOfFieldNoticeNetworkDevicesForTheNoticeV1")
+		return nil, response, fmt.Errorf("error with operation GetCountOfFieldNoticeNetworkDevicesForTheNotice")
 	}
 
-	result := response.Result().(*ResponseComplianceGetCountOfFieldNoticeNetworkDevicesForTheNoticeV1)
+	result := response.Result().(*ResponseComplianceGetCountOfFieldNoticeNetworkDevicesForTheNotice)
 	return result, response, err
 
 }
 
-//GetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceIDV1 Get field notice network device for the notice by network device id - e4b4-cb51-46cb-9925
+//GetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceID Get field notice network device for the notice by network device id - e4b4-cb51-46cb-9925
 /* Get field notice network device for the notice by network device id
 
 
@@ -1617,7 +1618,7 @@ func (s *ComplianceService) GetCountOfFieldNoticeNetworkDevicesForTheNoticeV1(id
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-field-notice-network-device-for-the-notice-by-network-device-id
 */
-func (s *ComplianceService) GetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceIDV1(id string, networkDeviceID string) (*ResponseComplianceGetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceIDV1, *resty.Response, error) {
+func (s *ComplianceService) GetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceID(id string, networkDeviceID string) (*ResponseComplianceGetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceID, *resty.Response, error) {
 	path := "/dna/intent/api/v1/fieldNotices/results/notices/{id}/networkDevices/{networkDeviceId}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 	path = strings.Replace(path, "{networkDeviceId}", fmt.Sprintf("%v", networkDeviceID), -1)
@@ -1625,7 +1626,7 @@ func (s *ComplianceService) GetFieldNoticeNetworkDeviceForTheNoticeByNetworkDevi
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseComplianceGetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceIDV1{}).
+		SetResult(&ResponseComplianceGetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceID{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1636,33 +1637,33 @@ func (s *ComplianceService) GetFieldNoticeNetworkDeviceForTheNoticeByNetworkDevi
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceIDV1(id, networkDeviceID)
+			return s.GetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceID(id, networkDeviceID)
 		}
-		return nil, response, fmt.Errorf("error with operation GetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceIdV1")
+		return nil, response, fmt.Errorf("error with operation GetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceId")
 	}
 
-	result := response.Result().(*ResponseComplianceGetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceIDV1)
+	result := response.Result().(*ResponseComplianceGetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceID)
 	return result, response, err
 
 }
 
-//GetFieldNoticesResultsTrendOverTimeV1 Get field notices results trend over time - 6690-8bd1-4b58-ba8e
+//GetFieldNoticesResultsTrendOverTime Get field notices results trend over time - 6690-8bd1-4b58-ba8e
 /* Get field notices results trend over time. The default sort is by scan time descending.
 
 
-@param GetFieldNoticesResultsTrendOverTimeV1QueryParams Filtering parameter
+@param GetFieldNoticesResultsTrendOverTimeQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-field-notices-results-trend-over-time
 */
-func (s *ComplianceService) GetFieldNoticesResultsTrendOverTimeV1(GetFieldNoticesResultsTrendOverTimeV1QueryParams *GetFieldNoticesResultsTrendOverTimeV1QueryParams) (*ResponseComplianceGetFieldNoticesResultsTrendOverTimeV1, *resty.Response, error) {
+func (s *ComplianceService) GetFieldNoticesResultsTrendOverTime(GetFieldNoticesResultsTrendOverTimeQueryParams *GetFieldNoticesResultsTrendOverTimeQueryParams) (*ResponseComplianceGetFieldNoticesResultsTrendOverTime, *resty.Response, error) {
 	path := "/dna/intent/api/v1/fieldNotices/resultsTrend"
 
-	queryString, _ := query.Values(GetFieldNoticesResultsTrendOverTimeV1QueryParams)
+	queryString, _ := query.Values(GetFieldNoticesResultsTrendOverTimeQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetFieldNoticesResultsTrendOverTimeV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetFieldNoticesResultsTrendOverTime{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1673,33 +1674,33 @@ func (s *ComplianceService) GetFieldNoticesResultsTrendOverTimeV1(GetFieldNotice
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetFieldNoticesResultsTrendOverTimeV1(GetFieldNoticesResultsTrendOverTimeV1QueryParams)
+			return s.GetFieldNoticesResultsTrendOverTime(GetFieldNoticesResultsTrendOverTimeQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetFieldNoticesResultsTrendOverTimeV1")
+		return nil, response, fmt.Errorf("error with operation GetFieldNoticesResultsTrendOverTime")
 	}
 
-	result := response.Result().(*ResponseComplianceGetFieldNoticesResultsTrendOverTimeV1)
+	result := response.Result().(*ResponseComplianceGetFieldNoticesResultsTrendOverTime)
 	return result, response, err
 
 }
 
-//GetCountOfFieldNoticesResultsTrendOverTimeV1 Get count of field notices results trend over time - d285-c901-46b9-a120
+//GetCountOfFieldNoticesResultsTrendOverTime Get count of field notices results trend over time - d285-c901-46b9-a120
 /* Get count of field notices results trend over time
 
 
-@param GetCountOfFieldNoticesResultsTrendOverTimeV1QueryParams Filtering parameter
+@param GetCountOfFieldNoticesResultsTrendOverTimeQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-count-of-field-notices-results-trend-over-time
 */
-func (s *ComplianceService) GetCountOfFieldNoticesResultsTrendOverTimeV1(GetCountOfFieldNoticesResultsTrendOverTimeV1QueryParams *GetCountOfFieldNoticesResultsTrendOverTimeV1QueryParams) (*ResponseComplianceGetCountOfFieldNoticesResultsTrendOverTimeV1, *resty.Response, error) {
+func (s *ComplianceService) GetCountOfFieldNoticesResultsTrendOverTime(GetCountOfFieldNoticesResultsTrendOverTimeQueryParams *GetCountOfFieldNoticesResultsTrendOverTimeQueryParams) (*ResponseComplianceGetCountOfFieldNoticesResultsTrendOverTime, *resty.Response, error) {
 	path := "/dna/intent/api/v1/fieldNotices/resultsTrend/count"
 
-	queryString, _ := query.Values(GetCountOfFieldNoticesResultsTrendOverTimeV1QueryParams)
+	queryString, _ := query.Values(GetCountOfFieldNoticesResultsTrendOverTimeQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfFieldNoticesResultsTrendOverTimeV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfFieldNoticesResultsTrendOverTime{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1710,30 +1711,30 @@ func (s *ComplianceService) GetCountOfFieldNoticesResultsTrendOverTimeV1(GetCoun
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetCountOfFieldNoticesResultsTrendOverTimeV1(GetCountOfFieldNoticesResultsTrendOverTimeV1QueryParams)
+			return s.GetCountOfFieldNoticesResultsTrendOverTime(GetCountOfFieldNoticesResultsTrendOverTimeQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetCountOfFieldNoticesResultsTrendOverTimeV1")
+		return nil, response, fmt.Errorf("error with operation GetCountOfFieldNoticesResultsTrendOverTime")
 	}
 
-	result := response.Result().(*ResponseComplianceGetCountOfFieldNoticesResultsTrendOverTimeV1)
+	result := response.Result().(*ResponseComplianceGetCountOfFieldNoticesResultsTrendOverTime)
 	return result, response, err
 
 }
 
-//GetTrialDetailsForFieldNoticesDetectionOnNetworkDevicesV1 Get trial details for field notices detection on network devices - 92b9-d9a8-4a09-ad05
+//GetTrialDetailsForFieldNoticesDetectionOnNetworkDevices Get trial details for field notices detection on network devices - 92b9-d9a8-4a09-ad05
 /* Get trial details for field notices detection on network devices
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-trial-details-for-field-notices-detection-on-network-devices
 */
-func (s *ComplianceService) GetTrialDetailsForFieldNoticesDetectionOnNetworkDevicesV1() (*ResponseComplianceGetTrialDetailsForFieldNoticesDetectionOnNetworkDevicesV1, *resty.Response, error) {
+func (s *ComplianceService) GetTrialDetailsForFieldNoticesDetectionOnNetworkDevices() (*ResponseComplianceGetTrialDetailsForFieldNoticesDetectionOnNetworkDevices, *resty.Response, error) {
 	path := "/dna/intent/api/v1/fieldNotices/trials"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseComplianceGetTrialDetailsForFieldNoticesDetectionOnNetworkDevicesV1{}).
+		SetResult(&ResponseComplianceGetTrialDetailsForFieldNoticesDetectionOnNetworkDevices{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1744,33 +1745,33 @@ func (s *ComplianceService) GetTrialDetailsForFieldNoticesDetectionOnNetworkDevi
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetTrialDetailsForFieldNoticesDetectionOnNetworkDevicesV1()
+			return s.GetTrialDetailsForFieldNoticesDetectionOnNetworkDevices()
 		}
-		return nil, response, fmt.Errorf("error with operation GetTrialDetailsForFieldNoticesDetectionOnNetworkDevicesV1")
+		return nil, response, fmt.Errorf("error with operation GetTrialDetailsForFieldNoticesDetectionOnNetworkDevices")
 	}
 
-	result := response.Result().(*ResponseComplianceGetTrialDetailsForFieldNoticesDetectionOnNetworkDevicesV1)
+	result := response.Result().(*ResponseComplianceGetTrialDetailsForFieldNoticesDetectionOnNetworkDevices)
 	return result, response, err
 
 }
 
-//GetConfigTaskDetailsV1 Get config task details - 8183-1a90-4788-b8c5
+//GetConfigTaskDetails Get config task details - 8183-1a90-4788-b8c5
 /* Returns a config task result details by specified id
 
 
-@param GetConfigTaskDetailsV1QueryParams Filtering parameter
+@param GetConfigTaskDetailsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-config-task-details
 */
-func (s *ComplianceService) GetConfigTaskDetailsV1(GetConfigTaskDetailsV1QueryParams *GetConfigTaskDetailsV1QueryParams) (*ResponseComplianceGetConfigTaskDetailsV1, *resty.Response, error) {
+func (s *ComplianceService) GetConfigTaskDetails(GetConfigTaskDetailsQueryParams *GetConfigTaskDetailsQueryParams) (*ResponseComplianceGetConfigTaskDetails, *resty.Response, error) {
 	path := "/dna/intent/api/v1/network-device-config/task"
 
-	queryString, _ := query.Values(GetConfigTaskDetailsV1QueryParams)
+	queryString, _ := query.Values(GetConfigTaskDetailsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetConfigTaskDetailsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetConfigTaskDetails{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1781,33 +1782,33 @@ func (s *ComplianceService) GetConfigTaskDetailsV1(GetConfigTaskDetailsV1QueryPa
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetConfigTaskDetailsV1(GetConfigTaskDetailsV1QueryParams)
+			return s.GetConfigTaskDetails(GetConfigTaskDetailsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetConfigTaskDetailsV1")
+		return nil, response, fmt.Errorf("error with operation GetConfigTaskDetails")
 	}
 
-	result := response.Result().(*ResponseComplianceGetConfigTaskDetailsV1)
+	result := response.Result().(*ResponseComplianceGetConfigTaskDetails)
 	return result, response, err
 
 }
 
-//GetNetworkBugsV1 Get network bugs - 3e8a-0a51-423a-968f
+//GetNetworkBugs Get network bugs - 3e8a-0a51-423a-968f
 /* Get network bugs
 
 
-@param GetNetworkBugsV1QueryParams Filtering parameter
+@param GetNetworkBugsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-bugs
 */
-func (s *ComplianceService) GetNetworkBugsV1(GetNetworkBugsV1QueryParams *GetNetworkBugsV1QueryParams) (*ResponseComplianceGetNetworkBugsV1, *resty.Response, error) {
+func (s *ComplianceService) GetNetworkBugs(GetNetworkBugsQueryParams *GetNetworkBugsQueryParams) (*ResponseComplianceGetNetworkBugs, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkBugs/results/bugs"
 
-	queryString, _ := query.Values(GetNetworkBugsV1QueryParams)
+	queryString, _ := query.Values(GetNetworkBugsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetNetworkBugsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetNetworkBugs{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1818,33 +1819,33 @@ func (s *ComplianceService) GetNetworkBugsV1(GetNetworkBugsV1QueryParams *GetNet
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetNetworkBugsV1(GetNetworkBugsV1QueryParams)
+			return s.GetNetworkBugs(GetNetworkBugsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetNetworkBugsV1")
+		return nil, response, fmt.Errorf("error with operation GetNetworkBugs")
 	}
 
-	result := response.Result().(*ResponseComplianceGetNetworkBugsV1)
+	result := response.Result().(*ResponseComplianceGetNetworkBugs)
 	return result, response, err
 
 }
 
-//GetCountOfNetworkBugsV1 Get count of network bugs - 3cad-684d-4508-aa15
+//GetCountOfNetworkBugs Get count of network bugs - 3cad-684d-4508-aa15
 /* Get count of network bugs
 
 
-@param GetCountOfNetworkBugsV1QueryParams Filtering parameter
+@param GetCountOfNetworkBugsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-count-of-network-bugs
 */
-func (s *ComplianceService) GetCountOfNetworkBugsV1(GetCountOfNetworkBugsV1QueryParams *GetCountOfNetworkBugsV1QueryParams) (*ResponseComplianceGetCountOfNetworkBugsV1, *resty.Response, error) {
+func (s *ComplianceService) GetCountOfNetworkBugs(GetCountOfNetworkBugsQueryParams *GetCountOfNetworkBugsQueryParams) (*ResponseComplianceGetCountOfNetworkBugs, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkBugs/results/bugs/count"
 
-	queryString, _ := query.Values(GetCountOfNetworkBugsV1QueryParams)
+	queryString, _ := query.Values(GetCountOfNetworkBugsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfNetworkBugsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfNetworkBugs{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1855,17 +1856,17 @@ func (s *ComplianceService) GetCountOfNetworkBugsV1(GetCountOfNetworkBugsV1Query
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetCountOfNetworkBugsV1(GetCountOfNetworkBugsV1QueryParams)
+			return s.GetCountOfNetworkBugs(GetCountOfNetworkBugsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetCountOfNetworkBugsV1")
+		return nil, response, fmt.Errorf("error with operation GetCountOfNetworkBugs")
 	}
 
-	result := response.Result().(*ResponseComplianceGetCountOfNetworkBugsV1)
+	result := response.Result().(*ResponseComplianceGetCountOfNetworkBugs)
 	return result, response, err
 
 }
 
-//GetNetworkBugByIDV1 Get network bug by Id - ec93-a9c6-48d9-9050
+//GetNetworkBugByID Get network bug by Id - ec93-a9c6-48d9-9050
 /* Get network bug by Id
 
 
@@ -1874,14 +1875,14 @@ func (s *ComplianceService) GetCountOfNetworkBugsV1(GetCountOfNetworkBugsV1Query
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-bug-by-id
 */
-func (s *ComplianceService) GetNetworkBugByIDV1(id string) (*ResponseComplianceGetNetworkBugByIDV1, *resty.Response, error) {
+func (s *ComplianceService) GetNetworkBugByID(id string) (*ResponseComplianceGetNetworkBugByID, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkBugs/results/bugs/{id}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseComplianceGetNetworkBugByIDV1{}).
+		SetResult(&ResponseComplianceGetNetworkBugByID{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1892,36 +1893,36 @@ func (s *ComplianceService) GetNetworkBugByIDV1(id string) (*ResponseComplianceG
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetNetworkBugByIDV1(id)
+			return s.GetNetworkBugByID(id)
 		}
-		return nil, response, fmt.Errorf("error with operation GetNetworkBugByIdV1")
+		return nil, response, fmt.Errorf("error with operation GetNetworkBugById")
 	}
 
-	result := response.Result().(*ResponseComplianceGetNetworkBugByIDV1)
+	result := response.Result().(*ResponseComplianceGetNetworkBugByID)
 	return result, response, err
 
 }
 
-//GetNetworkBugDevicesForTheBugV1 Get network bug devices for the bug - a18c-2be4-4a1b-bbf7
+//GetNetworkBugDevicesForTheBug Get network bug devices for the bug - a18c-2be4-4a1b-bbf7
 /* Get network bug devices for the bug
 
 
 @param id id path parameter. Id of the network bug
 
-@param GetNetworkBugDevicesForTheBugV1QueryParams Filtering parameter
+@param GetNetworkBugDevicesForTheBugQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-bug-devices-for-the-bug
 */
-func (s *ComplianceService) GetNetworkBugDevicesForTheBugV1(id string, GetNetworkBugDevicesForTheBugV1QueryParams *GetNetworkBugDevicesForTheBugV1QueryParams) (*ResponseComplianceGetNetworkBugDevicesForTheBugV1, *resty.Response, error) {
+func (s *ComplianceService) GetNetworkBugDevicesForTheBug(id string, GetNetworkBugDevicesForTheBugQueryParams *GetNetworkBugDevicesForTheBugQueryParams) (*ResponseComplianceGetNetworkBugDevicesForTheBug, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkBugs/results/bugs/{id}/networkDevices"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
-	queryString, _ := query.Values(GetNetworkBugDevicesForTheBugV1QueryParams)
+	queryString, _ := query.Values(GetNetworkBugDevicesForTheBugQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetNetworkBugDevicesForTheBugV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetNetworkBugDevicesForTheBug{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1932,36 +1933,36 @@ func (s *ComplianceService) GetNetworkBugDevicesForTheBugV1(id string, GetNetwor
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetNetworkBugDevicesForTheBugV1(id, GetNetworkBugDevicesForTheBugV1QueryParams)
+			return s.GetNetworkBugDevicesForTheBug(id, GetNetworkBugDevicesForTheBugQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetNetworkBugDevicesForTheBugV1")
+		return nil, response, fmt.Errorf("error with operation GetNetworkBugDevicesForTheBug")
 	}
 
-	result := response.Result().(*ResponseComplianceGetNetworkBugDevicesForTheBugV1)
+	result := response.Result().(*ResponseComplianceGetNetworkBugDevicesForTheBug)
 	return result, response, err
 
 }
 
-//GetCountOfNetworkBugDevicesForTheBugV1 Get count of network bug devices for the bug - 269a-d906-4e5b-aad1
+//GetCountOfNetworkBugDevicesForTheBug Get count of network bug devices for the bug - 269a-d906-4e5b-aad1
 /* Get count of network bug devices for the bug
 
 
 @param id id path parameter. Id of the network bug
 
-@param GetCountOfNetworkBugDevicesForTheBugV1QueryParams Filtering parameter
+@param GetCountOfNetworkBugDevicesForTheBugQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-count-of-network-bug-devices-for-the-bug
 */
-func (s *ComplianceService) GetCountOfNetworkBugDevicesForTheBugV1(id string, GetCountOfNetworkBugDevicesForTheBugV1QueryParams *GetCountOfNetworkBugDevicesForTheBugV1QueryParams) (*ResponseComplianceGetCountOfNetworkBugDevicesForTheBugV1, *resty.Response, error) {
+func (s *ComplianceService) GetCountOfNetworkBugDevicesForTheBug(id string, GetCountOfNetworkBugDevicesForTheBugQueryParams *GetCountOfNetworkBugDevicesForTheBugQueryParams) (*ResponseComplianceGetCountOfNetworkBugDevicesForTheBug, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkBugs/results/bugs/{id}/networkDevices/count"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
-	queryString, _ := query.Values(GetCountOfNetworkBugDevicesForTheBugV1QueryParams)
+	queryString, _ := query.Values(GetCountOfNetworkBugDevicesForTheBugQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfNetworkBugDevicesForTheBugV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfNetworkBugDevicesForTheBug{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1972,17 +1973,17 @@ func (s *ComplianceService) GetCountOfNetworkBugDevicesForTheBugV1(id string, Ge
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetCountOfNetworkBugDevicesForTheBugV1(id, GetCountOfNetworkBugDevicesForTheBugV1QueryParams)
+			return s.GetCountOfNetworkBugDevicesForTheBug(id, GetCountOfNetworkBugDevicesForTheBugQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetCountOfNetworkBugDevicesForTheBugV1")
+		return nil, response, fmt.Errorf("error with operation GetCountOfNetworkBugDevicesForTheBug")
 	}
 
-	result := response.Result().(*ResponseComplianceGetCountOfNetworkBugDevicesForTheBugV1)
+	result := response.Result().(*ResponseComplianceGetCountOfNetworkBugDevicesForTheBug)
 	return result, response, err
 
 }
 
-//GetNetworkBugDeviceForTheBugByNetworkDeviceIDV1 Get network bug device for the bug by network device id - 7594-39b9-4d78-8144
+//GetNetworkBugDeviceForTheBugByNetworkDeviceID Get network bug device for the bug by network device id - 7594-39b9-4d78-8144
 /* Get network bug device for the bug by network device id
 
 
@@ -1993,7 +1994,7 @@ func (s *ComplianceService) GetCountOfNetworkBugDevicesForTheBugV1(id string, Ge
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-bug-device-for-the-bug-by-network-device-id
 */
-func (s *ComplianceService) GetNetworkBugDeviceForTheBugByNetworkDeviceIDV1(id string, networkDeviceID string) (*ResponseComplianceGetNetworkBugDeviceForTheBugByNetworkDeviceIDV1, *resty.Response, error) {
+func (s *ComplianceService) GetNetworkBugDeviceForTheBugByNetworkDeviceID(id string, networkDeviceID string) (*ResponseComplianceGetNetworkBugDeviceForTheBugByNetworkDeviceID, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkBugs/results/bugs/{id}/networkDevices/{networkDeviceId}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 	path = strings.Replace(path, "{networkDeviceId}", fmt.Sprintf("%v", networkDeviceID), -1)
@@ -2001,7 +2002,7 @@ func (s *ComplianceService) GetNetworkBugDeviceForTheBugByNetworkDeviceIDV1(id s
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseComplianceGetNetworkBugDeviceForTheBugByNetworkDeviceIDV1{}).
+		SetResult(&ResponseComplianceGetNetworkBugDeviceForTheBugByNetworkDeviceID{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2012,33 +2013,33 @@ func (s *ComplianceService) GetNetworkBugDeviceForTheBugByNetworkDeviceIDV1(id s
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetNetworkBugDeviceForTheBugByNetworkDeviceIDV1(id, networkDeviceID)
+			return s.GetNetworkBugDeviceForTheBugByNetworkDeviceID(id, networkDeviceID)
 		}
-		return nil, response, fmt.Errorf("error with operation GetNetworkBugDeviceForTheBugByNetworkDeviceIdV1")
+		return nil, response, fmt.Errorf("error with operation GetNetworkBugDeviceForTheBugByNetworkDeviceId")
 	}
 
-	result := response.Result().(*ResponseComplianceGetNetworkBugDeviceForTheBugByNetworkDeviceIDV1)
+	result := response.Result().(*ResponseComplianceGetNetworkBugDeviceForTheBugByNetworkDeviceID)
 	return result, response, err
 
 }
 
-//GetNetworkBugDevicesV1 Get network bug devices - f9ad-f991-4c0a-9248
+//GetNetworkBugDevices Get network bug devices - f9ad-f991-4c0a-9248
 /* Get network bug devices
 
 
-@param GetNetworkBugDevicesV1QueryParams Filtering parameter
+@param GetNetworkBugDevicesQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-bug-devices
 */
-func (s *ComplianceService) GetNetworkBugDevicesV1(GetNetworkBugDevicesV1QueryParams *GetNetworkBugDevicesV1QueryParams) (*ResponseComplianceGetNetworkBugDevicesV1, *resty.Response, error) {
+func (s *ComplianceService) GetNetworkBugDevices(GetNetworkBugDevicesQueryParams *GetNetworkBugDevicesQueryParams) (*ResponseComplianceGetNetworkBugDevices, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkBugs/results/networkDevices"
 
-	queryString, _ := query.Values(GetNetworkBugDevicesV1QueryParams)
+	queryString, _ := query.Values(GetNetworkBugDevicesQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetNetworkBugDevicesV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetNetworkBugDevices{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2049,33 +2050,33 @@ func (s *ComplianceService) GetNetworkBugDevicesV1(GetNetworkBugDevicesV1QueryPa
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetNetworkBugDevicesV1(GetNetworkBugDevicesV1QueryParams)
+			return s.GetNetworkBugDevices(GetNetworkBugDevicesQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetNetworkBugDevicesV1")
+		return nil, response, fmt.Errorf("error with operation GetNetworkBugDevices")
 	}
 
-	result := response.Result().(*ResponseComplianceGetNetworkBugDevicesV1)
+	result := response.Result().(*ResponseComplianceGetNetworkBugDevices)
 	return result, response, err
 
 }
 
-//GetCountOfNetworkBugDevicesV1 Get count of network bug devices - e583-ba39-4a4b-b8bd
+//GetCountOfNetworkBugDevices Get count of network bug devices - e583-ba39-4a4b-b8bd
 /* Get count of network bug devices
 
 
-@param GetCountOfNetworkBugDevicesV1QueryParams Filtering parameter
+@param GetCountOfNetworkBugDevicesQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-count-of-network-bug-devices
 */
-func (s *ComplianceService) GetCountOfNetworkBugDevicesV1(GetCountOfNetworkBugDevicesV1QueryParams *GetCountOfNetworkBugDevicesV1QueryParams) (*ResponseComplianceGetCountOfNetworkBugDevicesV1, *resty.Response, error) {
+func (s *ComplianceService) GetCountOfNetworkBugDevices(GetCountOfNetworkBugDevicesQueryParams *GetCountOfNetworkBugDevicesQueryParams) (*ResponseComplianceGetCountOfNetworkBugDevices, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkBugs/results/networkDevices/count"
 
-	queryString, _ := query.Values(GetCountOfNetworkBugDevicesV1QueryParams)
+	queryString, _ := query.Values(GetCountOfNetworkBugDevicesQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfNetworkBugDevicesV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfNetworkBugDevices{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2086,17 +2087,17 @@ func (s *ComplianceService) GetCountOfNetworkBugDevicesV1(GetCountOfNetworkBugDe
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetCountOfNetworkBugDevicesV1(GetCountOfNetworkBugDevicesV1QueryParams)
+			return s.GetCountOfNetworkBugDevices(GetCountOfNetworkBugDevicesQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetCountOfNetworkBugDevicesV1")
+		return nil, response, fmt.Errorf("error with operation GetCountOfNetworkBugDevices")
 	}
 
-	result := response.Result().(*ResponseComplianceGetCountOfNetworkBugDevicesV1)
+	result := response.Result().(*ResponseComplianceGetCountOfNetworkBugDevices)
 	return result, response, err
 
 }
 
-//GetNetworkBugDeviceByDeviceIDV1 Get network bug device by device id - 3eae-5b2d-43eb-b61f
+//GetNetworkBugDeviceByDeviceID Get network bug device by device id - 3eae-5b2d-43eb-b61f
 /* Get network bug device by device id
 
 
@@ -2105,14 +2106,14 @@ func (s *ComplianceService) GetCountOfNetworkBugDevicesV1(GetCountOfNetworkBugDe
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-bug-device-by-device-id
 */
-func (s *ComplianceService) GetNetworkBugDeviceByDeviceIDV1(networkDeviceID string) (*ResponseComplianceGetNetworkBugDeviceByDeviceIDV1, *resty.Response, error) {
+func (s *ComplianceService) GetNetworkBugDeviceByDeviceID(networkDeviceID string) (*ResponseComplianceGetNetworkBugDeviceByDeviceID, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkBugs/results/networkDevices/{networkDeviceId}"
 	path = strings.Replace(path, "{networkDeviceId}", fmt.Sprintf("%v", networkDeviceID), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseComplianceGetNetworkBugDeviceByDeviceIDV1{}).
+		SetResult(&ResponseComplianceGetNetworkBugDeviceByDeviceID{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2123,36 +2124,36 @@ func (s *ComplianceService) GetNetworkBugDeviceByDeviceIDV1(networkDeviceID stri
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetNetworkBugDeviceByDeviceIDV1(networkDeviceID)
+			return s.GetNetworkBugDeviceByDeviceID(networkDeviceID)
 		}
-		return nil, response, fmt.Errorf("error with operation GetNetworkBugDeviceByDeviceIdV1")
+		return nil, response, fmt.Errorf("error with operation GetNetworkBugDeviceByDeviceId")
 	}
 
-	result := response.Result().(*ResponseComplianceGetNetworkBugDeviceByDeviceIDV1)
+	result := response.Result().(*ResponseComplianceGetNetworkBugDeviceByDeviceID)
 	return result, response, err
 
 }
 
-//GetBugsAffectingTheNetworkDeviceV1 Get bugs affecting the network device - 199a-c80d-4138-8853
+//GetBugsAffectingTheNetworkDevice Get bugs affecting the network device - 199a-c80d-4138-8853
 /* Get bugs affecting the network device
 
 
 @param networkDeviceID networkDeviceId path parameter. Id of the network device
 
-@param GetBugsAffectingTheNetworkDeviceV1QueryParams Filtering parameter
+@param GetBugsAffectingTheNetworkDeviceQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-bugs-affecting-the-network-device
 */
-func (s *ComplianceService) GetBugsAffectingTheNetworkDeviceV1(networkDeviceID string, GetBugsAffectingTheNetworkDeviceV1QueryParams *GetBugsAffectingTheNetworkDeviceV1QueryParams) (*ResponseComplianceGetBugsAffectingTheNetworkDeviceV1, *resty.Response, error) {
+func (s *ComplianceService) GetBugsAffectingTheNetworkDevice(networkDeviceID string, GetBugsAffectingTheNetworkDeviceQueryParams *GetBugsAffectingTheNetworkDeviceQueryParams) (*ResponseComplianceGetBugsAffectingTheNetworkDevice, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkBugs/results/networkDevices/{networkDeviceId}/bugs"
 	path = strings.Replace(path, "{networkDeviceId}", fmt.Sprintf("%v", networkDeviceID), -1)
 
-	queryString, _ := query.Values(GetBugsAffectingTheNetworkDeviceV1QueryParams)
+	queryString, _ := query.Values(GetBugsAffectingTheNetworkDeviceQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetBugsAffectingTheNetworkDeviceV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetBugsAffectingTheNetworkDevice{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2163,36 +2164,36 @@ func (s *ComplianceService) GetBugsAffectingTheNetworkDeviceV1(networkDeviceID s
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetBugsAffectingTheNetworkDeviceV1(networkDeviceID, GetBugsAffectingTheNetworkDeviceV1QueryParams)
+			return s.GetBugsAffectingTheNetworkDevice(networkDeviceID, GetBugsAffectingTheNetworkDeviceQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetBugsAffectingTheNetworkDeviceV1")
+		return nil, response, fmt.Errorf("error with operation GetBugsAffectingTheNetworkDevice")
 	}
 
-	result := response.Result().(*ResponseComplianceGetBugsAffectingTheNetworkDeviceV1)
+	result := response.Result().(*ResponseComplianceGetBugsAffectingTheNetworkDevice)
 	return result, response, err
 
 }
 
-//GetCountOfBugsAffectingTheNetworkDeviceV1 Get count of bugs affecting the network device - 86a4-d898-466a-a7e0
+//GetCountOfBugsAffectingTheNetworkDevice Get count of bugs affecting the network device - 86a4-d898-466a-a7e0
 /* Get count of bugs affecting the network device
 
 
 @param networkDeviceID networkDeviceId path parameter. Id of the network device
 
-@param GetCountOfBugsAffectingTheNetworkDeviceV1QueryParams Filtering parameter
+@param GetCountOfBugsAffectingTheNetworkDeviceQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-count-of-bugs-affecting-the-network-device
 */
-func (s *ComplianceService) GetCountOfBugsAffectingTheNetworkDeviceV1(networkDeviceID string, GetCountOfBugsAffectingTheNetworkDeviceV1QueryParams *GetCountOfBugsAffectingTheNetworkDeviceV1QueryParams) (*ResponseComplianceGetCountOfBugsAffectingTheNetworkDeviceV1, *resty.Response, error) {
+func (s *ComplianceService) GetCountOfBugsAffectingTheNetworkDevice(networkDeviceID string, GetCountOfBugsAffectingTheNetworkDeviceQueryParams *GetCountOfBugsAffectingTheNetworkDeviceQueryParams) (*ResponseComplianceGetCountOfBugsAffectingTheNetworkDevice, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkBugs/results/networkDevices/{networkDeviceId}/bugs/count"
 	path = strings.Replace(path, "{networkDeviceId}", fmt.Sprintf("%v", networkDeviceID), -1)
 
-	queryString, _ := query.Values(GetCountOfBugsAffectingTheNetworkDeviceV1QueryParams)
+	queryString, _ := query.Values(GetCountOfBugsAffectingTheNetworkDeviceQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfBugsAffectingTheNetworkDeviceV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfBugsAffectingTheNetworkDevice{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2203,17 +2204,17 @@ func (s *ComplianceService) GetCountOfBugsAffectingTheNetworkDeviceV1(networkDev
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetCountOfBugsAffectingTheNetworkDeviceV1(networkDeviceID, GetCountOfBugsAffectingTheNetworkDeviceV1QueryParams)
+			return s.GetCountOfBugsAffectingTheNetworkDevice(networkDeviceID, GetCountOfBugsAffectingTheNetworkDeviceQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetCountOfBugsAffectingTheNetworkDeviceV1")
+		return nil, response, fmt.Errorf("error with operation GetCountOfBugsAffectingTheNetworkDevice")
 	}
 
-	result := response.Result().(*ResponseComplianceGetCountOfBugsAffectingTheNetworkDeviceV1)
+	result := response.Result().(*ResponseComplianceGetCountOfBugsAffectingTheNetworkDevice)
 	return result, response, err
 
 }
 
-//GetBugAffectingTheNetworkDeviceByDeviceIDAndBugIDV1 Get bug affecting the network device by device Id and bug id - e293-6b08-49c9-b715
+//GetBugAffectingTheNetworkDeviceByDeviceIDAndBugID Get bug affecting the network device by device Id and bug id - e293-6b08-49c9-b715
 /* Get bug affecting the network device by device Id and bug id
 
 
@@ -2224,7 +2225,7 @@ func (s *ComplianceService) GetCountOfBugsAffectingTheNetworkDeviceV1(networkDev
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-bug-affecting-the-network-device-by-device-id-and-bug-id
 */
-func (s *ComplianceService) GetBugAffectingTheNetworkDeviceByDeviceIDAndBugIDV1(networkDeviceID string, id string) (*ResponseComplianceGetBugAffectingTheNetworkDeviceByDeviceIDAndBugIDV1, *resty.Response, error) {
+func (s *ComplianceService) GetBugAffectingTheNetworkDeviceByDeviceIDAndBugID(networkDeviceID string, id string) (*ResponseComplianceGetBugAffectingTheNetworkDeviceByDeviceIDAndBugID, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkBugs/results/networkDevices/{networkDeviceId}/bugs/{id}"
 	path = strings.Replace(path, "{networkDeviceId}", fmt.Sprintf("%v", networkDeviceID), -1)
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
@@ -2232,7 +2233,7 @@ func (s *ComplianceService) GetBugAffectingTheNetworkDeviceByDeviceIDAndBugIDV1(
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseComplianceGetBugAffectingTheNetworkDeviceByDeviceIDAndBugIDV1{}).
+		SetResult(&ResponseComplianceGetBugAffectingTheNetworkDeviceByDeviceIDAndBugID{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2243,33 +2244,33 @@ func (s *ComplianceService) GetBugAffectingTheNetworkDeviceByDeviceIDAndBugIDV1(
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetBugAffectingTheNetworkDeviceByDeviceIDAndBugIDV1(networkDeviceID, id)
+			return s.GetBugAffectingTheNetworkDeviceByDeviceIDAndBugID(networkDeviceID, id)
 		}
-		return nil, response, fmt.Errorf("error with operation GetBugAffectingTheNetworkDeviceByDeviceIdAndBugIdV1")
+		return nil, response, fmt.Errorf("error with operation GetBugAffectingTheNetworkDeviceByDeviceIdAndBugId")
 	}
 
-	result := response.Result().(*ResponseComplianceGetBugAffectingTheNetworkDeviceByDeviceIDAndBugIDV1)
+	result := response.Result().(*ResponseComplianceGetBugAffectingTheNetworkDeviceByDeviceIDAndBugID)
 	return result, response, err
 
 }
 
-//GetNetworkBugsResultsTrendOverTimeV1 Get network bugs results trend over time - 708d-2bc8-42da-b062
+//GetNetworkBugsResultsTrendOverTime Get network bugs results trend over time - 708d-2bc8-42da-b062
 /* Get network bugs results trend over time. The default sort is by scan time descending.
 
 
-@param GetNetworkBugsResultsTrendOverTimeV1QueryParams Filtering parameter
+@param GetNetworkBugsResultsTrendOverTimeQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-bugs-results-trend-over-time
 */
-func (s *ComplianceService) GetNetworkBugsResultsTrendOverTimeV1(GetNetworkBugsResultsTrendOverTimeV1QueryParams *GetNetworkBugsResultsTrendOverTimeV1QueryParams) (*ResponseComplianceGetNetworkBugsResultsTrendOverTimeV1, *resty.Response, error) {
+func (s *ComplianceService) GetNetworkBugsResultsTrendOverTime(GetNetworkBugsResultsTrendOverTimeQueryParams *GetNetworkBugsResultsTrendOverTimeQueryParams) (*ResponseComplianceGetNetworkBugsResultsTrendOverTime, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkBugs/resultsTrend"
 
-	queryString, _ := query.Values(GetNetworkBugsResultsTrendOverTimeV1QueryParams)
+	queryString, _ := query.Values(GetNetworkBugsResultsTrendOverTimeQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetNetworkBugsResultsTrendOverTimeV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetNetworkBugsResultsTrendOverTime{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2280,33 +2281,33 @@ func (s *ComplianceService) GetNetworkBugsResultsTrendOverTimeV1(GetNetworkBugsR
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetNetworkBugsResultsTrendOverTimeV1(GetNetworkBugsResultsTrendOverTimeV1QueryParams)
+			return s.GetNetworkBugsResultsTrendOverTime(GetNetworkBugsResultsTrendOverTimeQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetNetworkBugsResultsTrendOverTimeV1")
+		return nil, response, fmt.Errorf("error with operation GetNetworkBugsResultsTrendOverTime")
 	}
 
-	result := response.Result().(*ResponseComplianceGetNetworkBugsResultsTrendOverTimeV1)
+	result := response.Result().(*ResponseComplianceGetNetworkBugsResultsTrendOverTime)
 	return result, response, err
 
 }
 
-//GetCountOfNetworkBugsResultsTrendOverTimeV1 Get count of network bugs results trend over time - 6791-696c-4199-86e1
+//GetCountOfNetworkBugsResultsTrendOverTime Get count of network bugs results trend over time - 6791-696c-4199-86e1
 /* Get count of network bugs results trend over time
 
 
-@param GetCountOfNetworkBugsResultsTrendOverTimeV1QueryParams Filtering parameter
+@param GetCountOfNetworkBugsResultsTrendOverTimeQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-count-of-network-bugs-results-trend-over-time
 */
-func (s *ComplianceService) GetCountOfNetworkBugsResultsTrendOverTimeV1(GetCountOfNetworkBugsResultsTrendOverTimeV1QueryParams *GetCountOfNetworkBugsResultsTrendOverTimeV1QueryParams) (*ResponseComplianceGetCountOfNetworkBugsResultsTrendOverTimeV1, *resty.Response, error) {
+func (s *ComplianceService) GetCountOfNetworkBugsResultsTrendOverTime(GetCountOfNetworkBugsResultsTrendOverTimeQueryParams *GetCountOfNetworkBugsResultsTrendOverTimeQueryParams) (*ResponseComplianceGetCountOfNetworkBugsResultsTrendOverTime, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkBugs/resultsTrend/count"
 
-	queryString, _ := query.Values(GetCountOfNetworkBugsResultsTrendOverTimeV1QueryParams)
+	queryString, _ := query.Values(GetCountOfNetworkBugsResultsTrendOverTimeQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfNetworkBugsResultsTrendOverTimeV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfNetworkBugsResultsTrendOverTime{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2317,30 +2318,30 @@ func (s *ComplianceService) GetCountOfNetworkBugsResultsTrendOverTimeV1(GetCount
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetCountOfNetworkBugsResultsTrendOverTimeV1(GetCountOfNetworkBugsResultsTrendOverTimeV1QueryParams)
+			return s.GetCountOfNetworkBugsResultsTrendOverTime(GetCountOfNetworkBugsResultsTrendOverTimeQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetCountOfNetworkBugsResultsTrendOverTimeV1")
+		return nil, response, fmt.Errorf("error with operation GetCountOfNetworkBugsResultsTrendOverTime")
 	}
 
-	result := response.Result().(*ResponseComplianceGetCountOfNetworkBugsResultsTrendOverTimeV1)
+	result := response.Result().(*ResponseComplianceGetCountOfNetworkBugsResultsTrendOverTime)
 	return result, response, err
 
 }
 
-//GetTrialDetailsForBugsDetectionOnNetworkDevicesV1 Get trial details for bugs detection on network devices - 11a4-a89b-430b-93cd
+//GetTrialDetailsForBugsDetectionOnNetworkDevices Get trial details for bugs detection on network devices - 11a4-a89b-430b-93cd
 /* Get trial details for bugs detection on network devices
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-trial-details-for-bugs-detection-on-network-devices
 */
-func (s *ComplianceService) GetTrialDetailsForBugsDetectionOnNetworkDevicesV1() (*ResponseComplianceGetTrialDetailsForBugsDetectionOnNetworkDevicesV1, *resty.Response, error) {
+func (s *ComplianceService) GetTrialDetailsForBugsDetectionOnNetworkDevices() (*ResponseComplianceGetTrialDetailsForBugsDetectionOnNetworkDevices, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkBugs/trials"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseComplianceGetTrialDetailsForBugsDetectionOnNetworkDevicesV1{}).
+		SetResult(&ResponseComplianceGetTrialDetailsForBugsDetectionOnNetworkDevices{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2351,33 +2352,33 @@ func (s *ComplianceService) GetTrialDetailsForBugsDetectionOnNetworkDevicesV1() 
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetTrialDetailsForBugsDetectionOnNetworkDevicesV1()
+			return s.GetTrialDetailsForBugsDetectionOnNetworkDevices()
 		}
-		return nil, response, fmt.Errorf("error with operation GetTrialDetailsForBugsDetectionOnNetworkDevicesV1")
+		return nil, response, fmt.Errorf("error with operation GetTrialDetailsForBugsDetectionOnNetworkDevices")
 	}
 
-	result := response.Result().(*ResponseComplianceGetTrialDetailsForBugsDetectionOnNetworkDevicesV1)
+	result := response.Result().(*ResponseComplianceGetTrialDetailsForBugsDetectionOnNetworkDevices)
 	return result, response, err
 
 }
 
-//GetSecurityAdvisoriesAffectingTheNetworkDevicesV1 Get security advisories affecting the network devices - ef91-f8be-47d8-8fbf
+//GetSecurityAdvisoriesAffectingTheNetworkDevices Get security advisories affecting the network devices - ef91-f8be-47d8-8fbf
 /* Get security advisories affecting the network devices
 
 
-@param GetSecurityAdvisoriesAffectingTheNetworkDevicesV1QueryParams Filtering parameter
+@param GetSecurityAdvisoriesAffectingTheNetworkDevicesQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-security-advisories-affecting-the-network-devices
 */
-func (s *ComplianceService) GetSecurityAdvisoriesAffectingTheNetworkDevicesV1(GetSecurityAdvisoriesAffectingTheNetworkDevicesV1QueryParams *GetSecurityAdvisoriesAffectingTheNetworkDevicesV1QueryParams) (*ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevicesV1, *resty.Response, error) {
+func (s *ComplianceService) GetSecurityAdvisoriesAffectingTheNetworkDevices(GetSecurityAdvisoriesAffectingTheNetworkDevicesQueryParams *GetSecurityAdvisoriesAffectingTheNetworkDevicesQueryParams) (*ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevices, *resty.Response, error) {
 	path := "/dna/intent/api/v1/securityAdvisories/results/advisories"
 
-	queryString, _ := query.Values(GetSecurityAdvisoriesAffectingTheNetworkDevicesV1QueryParams)
+	queryString, _ := query.Values(GetSecurityAdvisoriesAffectingTheNetworkDevicesQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevicesV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevices{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2388,33 +2389,33 @@ func (s *ComplianceService) GetSecurityAdvisoriesAffectingTheNetworkDevicesV1(Ge
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetSecurityAdvisoriesAffectingTheNetworkDevicesV1(GetSecurityAdvisoriesAffectingTheNetworkDevicesV1QueryParams)
+			return s.GetSecurityAdvisoriesAffectingTheNetworkDevices(GetSecurityAdvisoriesAffectingTheNetworkDevicesQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetSecurityAdvisoriesAffectingTheNetworkDevicesV1")
+		return nil, response, fmt.Errorf("error with operation GetSecurityAdvisoriesAffectingTheNetworkDevices")
 	}
 
-	result := response.Result().(*ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevicesV1)
+	result := response.Result().(*ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevices)
 	return result, response, err
 
 }
 
-//GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1 Get count of security advisories affecting the network devices - 129c-9b1f-4dd8-9173
+//GetCountOfSecurityAdvisoriesAffectingTheNetworkDevices Get count of security advisories affecting the network devices - 129c-9b1f-4dd8-9173
 /* Get count of security advisories affecting the network devices
 
 
-@param GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1QueryParams Filtering parameter
+@param GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-count-of-security-advisories-affecting-the-network-devices
 */
-func (s *ComplianceService) GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1(GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1QueryParams *GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1QueryParams) (*ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1, *resty.Response, error) {
+func (s *ComplianceService) GetCountOfSecurityAdvisoriesAffectingTheNetworkDevices(GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesQueryParams *GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesQueryParams) (*ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDevices, *resty.Response, error) {
 	path := "/dna/intent/api/v1/securityAdvisories/results/advisories/count"
 
-	queryString, _ := query.Values(GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1QueryParams)
+	queryString, _ := query.Values(GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDevices{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2425,17 +2426,17 @@ func (s *ComplianceService) GetCountOfSecurityAdvisoriesAffectingTheNetworkDevic
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1(GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1QueryParams)
+			return s.GetCountOfSecurityAdvisoriesAffectingTheNetworkDevices(GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1")
+		return nil, response, fmt.Errorf("error with operation GetCountOfSecurityAdvisoriesAffectingTheNetworkDevices")
 	}
 
-	result := response.Result().(*ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1)
+	result := response.Result().(*ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDevices)
 	return result, response, err
 
 }
 
-//GetSecurityAdvisoryAffectingTheNetworkDevicesByIDV1 Get security advisory affecting the network devices by Id - 51aa-ea19-4c88-bea6
+//GetSecurityAdvisoryAffectingTheNetworkDevicesByID Get security advisory affecting the network devices by Id - 51aa-ea19-4c88-bea6
 /* Get security advisory affecting the network devices by Id
 
 
@@ -2444,14 +2445,14 @@ func (s *ComplianceService) GetCountOfSecurityAdvisoriesAffectingTheNetworkDevic
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-security-advisory-affecting-the-network-devices-by-id
 */
-func (s *ComplianceService) GetSecurityAdvisoryAffectingTheNetworkDevicesByIDV1(id string) (*ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDevicesByIDV1, *resty.Response, error) {
+func (s *ComplianceService) GetSecurityAdvisoryAffectingTheNetworkDevicesByID(id string) (*ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDevicesByID, *resty.Response, error) {
 	path := "/dna/intent/api/v1/securityAdvisories/results/advisories/{id}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDevicesByIDV1{}).
+		SetResult(&ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDevicesByID{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2462,36 +2463,36 @@ func (s *ComplianceService) GetSecurityAdvisoryAffectingTheNetworkDevicesByIDV1(
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetSecurityAdvisoryAffectingTheNetworkDevicesByIDV1(id)
+			return s.GetSecurityAdvisoryAffectingTheNetworkDevicesByID(id)
 		}
-		return nil, response, fmt.Errorf("error with operation GetSecurityAdvisoryAffectingTheNetworkDevicesByIdV1")
+		return nil, response, fmt.Errorf("error with operation GetSecurityAdvisoryAffectingTheNetworkDevicesById")
 	}
 
-	result := response.Result().(*ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDevicesByIDV1)
+	result := response.Result().(*ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDevicesByID)
 	return result, response, err
 
 }
 
-//GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1 Get security advisory network devices for the security advisory - ee81-e9ad-40bb-b3d1
+//GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisory Get security advisory network devices for the security advisory - ee81-e9ad-40bb-b3d1
 /* Get security advisory network devices for the security advisory
 
 
 @param id id path parameter. Id of the security advisory
 
-@param GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1QueryParams Filtering parameter
+@param GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-security-advisory-network-devices-for-the-security-advisory
 */
-func (s *ComplianceService) GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1(id string, GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1QueryParams *GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1QueryParams) (*ResponseComplianceGetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1, *resty.Response, error) {
+func (s *ComplianceService) GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisory(id string, GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryQueryParams *GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryQueryParams) (*ResponseComplianceGetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisory, *resty.Response, error) {
 	path := "/dna/intent/api/v1/securityAdvisories/results/advisories/{id}/networkDevices"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
-	queryString, _ := query.Values(GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1QueryParams)
+	queryString, _ := query.Values(GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisory{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2502,36 +2503,36 @@ func (s *ComplianceService) GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvis
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1(id, GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1QueryParams)
+			return s.GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisory(id, GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1")
+		return nil, response, fmt.Errorf("error with operation GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisory")
 	}
 
-	result := response.Result().(*ResponseComplianceGetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1)
+	result := response.Result().(*ResponseComplianceGetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisory)
 	return result, response, err
 
 }
 
-//GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1 Get count of security advisory network devices for the security advisory - 969b-bb96-404b-b905
+//GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisory Get count of security advisory network devices for the security advisory - 969b-bb96-404b-b905
 /* Get count of security advisory network devices for the security advisory
 
 
 @param id id path parameter. Id of the security advisory
 
-@param GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1QueryParams Filtering parameter
+@param GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-count-of-security-advisory-network-devices-for-the-security-advisory
 */
-func (s *ComplianceService) GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1(id string, GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1QueryParams *GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1QueryParams) (*ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1, *resty.Response, error) {
+func (s *ComplianceService) GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisory(id string, GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryQueryParams *GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryQueryParams) (*ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisory, *resty.Response, error) {
 	path := "/dna/intent/api/v1/securityAdvisories/results/advisories/{id}/networkDevices/count"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
-	queryString, _ := query.Values(GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1QueryParams)
+	queryString, _ := query.Values(GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisory{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2542,17 +2543,17 @@ func (s *ComplianceService) GetCountOfSecurityAdvisoryNetworkDevicesForTheSecuri
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1(id, GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1QueryParams)
+			return s.GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisory(id, GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1")
+		return nil, response, fmt.Errorf("error with operation GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisory")
 	}
 
-	result := response.Result().(*ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1)
+	result := response.Result().(*ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisory)
 	return result, response, err
 
 }
 
-//GetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceIDV1 Get security advisory network device for the security advisory by network device id - 15ac-59b6-4668-a848
+//GetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceID Get security advisory network device for the security advisory by network device id - 15ac-59b6-4668-a848
 /* Get security advisory network device for the security advisory by network device id
 
 
@@ -2563,7 +2564,7 @@ func (s *ComplianceService) GetCountOfSecurityAdvisoryNetworkDevicesForTheSecuri
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-security-advisory-network-device-for-the-security-advisory-by-network-device-id
 */
-func (s *ComplianceService) GetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceIDV1(id string, networkDeviceID string) (*ResponseComplianceGetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceIDV1, *resty.Response, error) {
+func (s *ComplianceService) GetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceID(id string, networkDeviceID string) (*ResponseComplianceGetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceID, *resty.Response, error) {
 	path := "/dna/intent/api/v1/securityAdvisories/results/advisories/{id}/networkDevices/{networkDeviceId}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 	path = strings.Replace(path, "{networkDeviceId}", fmt.Sprintf("%v", networkDeviceID), -1)
@@ -2571,7 +2572,7 @@ func (s *ComplianceService) GetSecurityAdvisoryNetworkDeviceForTheSecurityAdviso
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseComplianceGetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceIDV1{}).
+		SetResult(&ResponseComplianceGetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceID{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2582,33 +2583,33 @@ func (s *ComplianceService) GetSecurityAdvisoryNetworkDeviceForTheSecurityAdviso
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceIDV1(id, networkDeviceID)
+			return s.GetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceID(id, networkDeviceID)
 		}
-		return nil, response, fmt.Errorf("error with operation GetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceIdV1")
+		return nil, response, fmt.Errorf("error with operation GetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceId")
 	}
 
-	result := response.Result().(*ResponseComplianceGetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceIDV1)
+	result := response.Result().(*ResponseComplianceGetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceID)
 	return result, response, err
 
 }
 
-//GetSecurityAdvisoryNetworkDevicesV1 Get security advisory network devices - af83-89a1-43da-9337
+//GetSecurityAdvisoryNetworkDevices Get security advisory network devices - af83-89a1-43da-9337
 /* Get security advisory network devices
 
 
-@param GetSecurityAdvisoryNetworkDevicesV1QueryParams Filtering parameter
+@param GetSecurityAdvisoryNetworkDevicesQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-security-advisory-network-devices
 */
-func (s *ComplianceService) GetSecurityAdvisoryNetworkDevicesV1(GetSecurityAdvisoryNetworkDevicesV1QueryParams *GetSecurityAdvisoryNetworkDevicesV1QueryParams) (*ResponseComplianceGetSecurityAdvisoryNetworkDevicesV1, *resty.Response, error) {
+func (s *ComplianceService) GetSecurityAdvisoryNetworkDevices(GetSecurityAdvisoryNetworkDevicesQueryParams *GetSecurityAdvisoryNetworkDevicesQueryParams) (*ResponseComplianceGetSecurityAdvisoryNetworkDevices, *resty.Response, error) {
 	path := "/dna/intent/api/v1/securityAdvisories/results/networkDevices"
 
-	queryString, _ := query.Values(GetSecurityAdvisoryNetworkDevicesV1QueryParams)
+	queryString, _ := query.Values(GetSecurityAdvisoryNetworkDevicesQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetSecurityAdvisoryNetworkDevicesV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetSecurityAdvisoryNetworkDevices{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2619,33 +2620,33 @@ func (s *ComplianceService) GetSecurityAdvisoryNetworkDevicesV1(GetSecurityAdvis
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetSecurityAdvisoryNetworkDevicesV1(GetSecurityAdvisoryNetworkDevicesV1QueryParams)
+			return s.GetSecurityAdvisoryNetworkDevices(GetSecurityAdvisoryNetworkDevicesQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetSecurityAdvisoryNetworkDevicesV1")
+		return nil, response, fmt.Errorf("error with operation GetSecurityAdvisoryNetworkDevices")
 	}
 
-	result := response.Result().(*ResponseComplianceGetSecurityAdvisoryNetworkDevicesV1)
+	result := response.Result().(*ResponseComplianceGetSecurityAdvisoryNetworkDevices)
 	return result, response, err
 
 }
 
-//GetCountOfSecurityAdvisoryNetworkDevicesV1 Get count of security advisory network devices - 93a6-8af1-438a-8f39
+//GetCountOfSecurityAdvisoryNetworkDevices Get count of security advisory network devices - 93a6-8af1-438a-8f39
 /* Get count of security advisory network devices
 
 
-@param GetCountOfSecurityAdvisoryNetworkDevicesV1QueryParams Filtering parameter
+@param GetCountOfSecurityAdvisoryNetworkDevicesQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-count-of-security-advisory-network-devices
 */
-func (s *ComplianceService) GetCountOfSecurityAdvisoryNetworkDevicesV1(GetCountOfSecurityAdvisoryNetworkDevicesV1QueryParams *GetCountOfSecurityAdvisoryNetworkDevicesV1QueryParams) (*ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesV1, *resty.Response, error) {
+func (s *ComplianceService) GetCountOfSecurityAdvisoryNetworkDevices(GetCountOfSecurityAdvisoryNetworkDevicesQueryParams *GetCountOfSecurityAdvisoryNetworkDevicesQueryParams) (*ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevices, *resty.Response, error) {
 	path := "/dna/intent/api/v1/securityAdvisories/results/networkDevices/count"
 
-	queryString, _ := query.Values(GetCountOfSecurityAdvisoryNetworkDevicesV1QueryParams)
+	queryString, _ := query.Values(GetCountOfSecurityAdvisoryNetworkDevicesQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevices{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2656,17 +2657,17 @@ func (s *ComplianceService) GetCountOfSecurityAdvisoryNetworkDevicesV1(GetCountO
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetCountOfSecurityAdvisoryNetworkDevicesV1(GetCountOfSecurityAdvisoryNetworkDevicesV1QueryParams)
+			return s.GetCountOfSecurityAdvisoryNetworkDevices(GetCountOfSecurityAdvisoryNetworkDevicesQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetCountOfSecurityAdvisoryNetworkDevicesV1")
+		return nil, response, fmt.Errorf("error with operation GetCountOfSecurityAdvisoryNetworkDevices")
 	}
 
-	result := response.Result().(*ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesV1)
+	result := response.Result().(*ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevices)
 	return result, response, err
 
 }
 
-//GetSecurityAdvisoryNetworkDeviceByNetworkDeviceIDV1 Get security advisory network device by network device id - a5bb-ca1a-4abb-8a7f
+//GetSecurityAdvisoryNetworkDeviceByNetworkDeviceID Get security advisory network device by network device id - a5bb-ca1a-4abb-8a7f
 /* Get security advisory network device by network device id
 
 
@@ -2675,14 +2676,14 @@ func (s *ComplianceService) GetCountOfSecurityAdvisoryNetworkDevicesV1(GetCountO
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-security-advisory-network-device-by-network-device-id
 */
-func (s *ComplianceService) GetSecurityAdvisoryNetworkDeviceByNetworkDeviceIDV1(networkDeviceID string) (*ResponseComplianceGetSecurityAdvisoryNetworkDeviceByNetworkDeviceIDV1, *resty.Response, error) {
+func (s *ComplianceService) GetSecurityAdvisoryNetworkDeviceByNetworkDeviceID(networkDeviceID string) (*ResponseComplianceGetSecurityAdvisoryNetworkDeviceByNetworkDeviceID, *resty.Response, error) {
 	path := "/dna/intent/api/v1/securityAdvisories/results/networkDevices/{networkDeviceId}"
 	path = strings.Replace(path, "{networkDeviceId}", fmt.Sprintf("%v", networkDeviceID), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseComplianceGetSecurityAdvisoryNetworkDeviceByNetworkDeviceIDV1{}).
+		SetResult(&ResponseComplianceGetSecurityAdvisoryNetworkDeviceByNetworkDeviceID{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2693,36 +2694,36 @@ func (s *ComplianceService) GetSecurityAdvisoryNetworkDeviceByNetworkDeviceIDV1(
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetSecurityAdvisoryNetworkDeviceByNetworkDeviceIDV1(networkDeviceID)
+			return s.GetSecurityAdvisoryNetworkDeviceByNetworkDeviceID(networkDeviceID)
 		}
-		return nil, response, fmt.Errorf("error with operation GetSecurityAdvisoryNetworkDeviceByNetworkDeviceIdV1")
+		return nil, response, fmt.Errorf("error with operation GetSecurityAdvisoryNetworkDeviceByNetworkDeviceId")
 	}
 
-	result := response.Result().(*ResponseComplianceGetSecurityAdvisoryNetworkDeviceByNetworkDeviceIDV1)
+	result := response.Result().(*ResponseComplianceGetSecurityAdvisoryNetworkDeviceByNetworkDeviceID)
 	return result, response, err
 
 }
 
-//GetSecurityAdvisoriesAffectingTheNetworkDeviceV1 Get security advisories affecting the network device - 20a9-3b0d-4769-8091
+//GetSecurityAdvisoriesAffectingTheNetworkDevice Get security advisories affecting the network device - 20a9-3b0d-4769-8091
 /* Get security advisories affecting the network device
 
 
 @param networkDeviceID networkDeviceId path parameter. Id of the network device
 
-@param GetSecurityAdvisoriesAffectingTheNetworkDeviceV1QueryParams Filtering parameter
+@param GetSecurityAdvisoriesAffectingTheNetworkDeviceQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-security-advisories-affecting-the-network-device
 */
-func (s *ComplianceService) GetSecurityAdvisoriesAffectingTheNetworkDeviceV1(networkDeviceID string, GetSecurityAdvisoriesAffectingTheNetworkDeviceV1QueryParams *GetSecurityAdvisoriesAffectingTheNetworkDeviceV1QueryParams) (*ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDeviceV1, *resty.Response, error) {
+func (s *ComplianceService) GetSecurityAdvisoriesAffectingTheNetworkDevice(networkDeviceID string, GetSecurityAdvisoriesAffectingTheNetworkDeviceQueryParams *GetSecurityAdvisoriesAffectingTheNetworkDeviceQueryParams) (*ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevice, *resty.Response, error) {
 	path := "/dna/intent/api/v1/securityAdvisories/results/networkDevices/{networkDeviceId}/advisories"
 	path = strings.Replace(path, "{networkDeviceId}", fmt.Sprintf("%v", networkDeviceID), -1)
 
-	queryString, _ := query.Values(GetSecurityAdvisoriesAffectingTheNetworkDeviceV1QueryParams)
+	queryString, _ := query.Values(GetSecurityAdvisoriesAffectingTheNetworkDeviceQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDeviceV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevice{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2733,36 +2734,36 @@ func (s *ComplianceService) GetSecurityAdvisoriesAffectingTheNetworkDeviceV1(net
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetSecurityAdvisoriesAffectingTheNetworkDeviceV1(networkDeviceID, GetSecurityAdvisoriesAffectingTheNetworkDeviceV1QueryParams)
+			return s.GetSecurityAdvisoriesAffectingTheNetworkDevice(networkDeviceID, GetSecurityAdvisoriesAffectingTheNetworkDeviceQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetSecurityAdvisoriesAffectingTheNetworkDeviceV1")
+		return nil, response, fmt.Errorf("error with operation GetSecurityAdvisoriesAffectingTheNetworkDevice")
 	}
 
-	result := response.Result().(*ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDeviceV1)
+	result := response.Result().(*ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevice)
 	return result, response, err
 
 }
 
-//GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1 Get count of security advisories affecting the network device - d4ba-db3a-4488-9d47
+//GetCountOfSecurityAdvisoriesAffectingTheNetworkDevice Get count of security advisories affecting the network device - d4ba-db3a-4488-9d47
 /* Get count of security advisories affecting the network device
 
 
 @param networkDeviceID networkDeviceId path parameter. Id of the network device
 
-@param GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1QueryParams Filtering parameter
+@param GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-count-of-security-advisories-affecting-the-network-device
 */
-func (s *ComplianceService) GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1(networkDeviceID string, GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1QueryParams *GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1QueryParams) (*ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1, *resty.Response, error) {
+func (s *ComplianceService) GetCountOfSecurityAdvisoriesAffectingTheNetworkDevice(networkDeviceID string, GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceQueryParams *GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceQueryParams) (*ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDevice, *resty.Response, error) {
 	path := "/dna/intent/api/v1/securityAdvisories/results/networkDevices/{networkDeviceId}/advisories/count"
 	path = strings.Replace(path, "{networkDeviceId}", fmt.Sprintf("%v", networkDeviceID), -1)
 
-	queryString, _ := query.Values(GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1QueryParams)
+	queryString, _ := query.Values(GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDevice{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2773,17 +2774,17 @@ func (s *ComplianceService) GetCountOfSecurityAdvisoriesAffectingTheNetworkDevic
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1(networkDeviceID, GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1QueryParams)
+			return s.GetCountOfSecurityAdvisoriesAffectingTheNetworkDevice(networkDeviceID, GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1")
+		return nil, response, fmt.Errorf("error with operation GetCountOfSecurityAdvisoriesAffectingTheNetworkDevice")
 	}
 
-	result := response.Result().(*ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1)
+	result := response.Result().(*ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDevice)
 	return result, response, err
 
 }
 
-//GetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryIDV1 Get security advisory affecting the network device by device Id and advisory id - c9a3-d93e-4fe8-959d
+//GetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryID Get security advisory affecting the network device by device Id and advisory id - c9a3-d93e-4fe8-959d
 /* Get security advisory affecting the network device by device Id and advisory id
 
 
@@ -2794,7 +2795,7 @@ func (s *ComplianceService) GetCountOfSecurityAdvisoriesAffectingTheNetworkDevic
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-security-advisory-affecting-the-network-device-by-device-id-and-advisory-id
 */
-func (s *ComplianceService) GetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryIDV1(networkDeviceID string, id string) (*ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryIDV1, *resty.Response, error) {
+func (s *ComplianceService) GetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryID(networkDeviceID string, id string) (*ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryID, *resty.Response, error) {
 	path := "/dna/intent/api/v1/securityAdvisories/results/networkDevices/{networkDeviceId}/advisories/{id}"
 	path = strings.Replace(path, "{networkDeviceId}", fmt.Sprintf("%v", networkDeviceID), -1)
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
@@ -2802,7 +2803,7 @@ func (s *ComplianceService) GetSecurityAdvisoryAffectingTheNetworkDeviceByDevice
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryIDV1{}).
+		SetResult(&ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryID{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2813,33 +2814,33 @@ func (s *ComplianceService) GetSecurityAdvisoryAffectingTheNetworkDeviceByDevice
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryIDV1(networkDeviceID, id)
+			return s.GetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryID(networkDeviceID, id)
 		}
-		return nil, response, fmt.Errorf("error with operation GetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIdAndAdvisoryIdV1")
+		return nil, response, fmt.Errorf("error with operation GetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIdAndAdvisoryId")
 	}
 
-	result := response.Result().(*ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryIDV1)
+	result := response.Result().(*ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryID)
 	return result, response, err
 
 }
 
-//GetSecurityAdvisoriesResultsTrendOverTimeV1 Get security advisories results trend over time - b584-aa2b-4158-bc5a
+//GetSecurityAdvisoriesResultsTrendOverTime Get security advisories results trend over time - b584-aa2b-4158-bc5a
 /* Get security advisories results trend over time. The default sort is by scan time descending.
 
 
-@param GetSecurityAdvisoriesResultsTrendOverTimeV1QueryParams Filtering parameter
+@param GetSecurityAdvisoriesResultsTrendOverTimeQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-security-advisories-results-trend-over-time
 */
-func (s *ComplianceService) GetSecurityAdvisoriesResultsTrendOverTimeV1(GetSecurityAdvisoriesResultsTrendOverTimeV1QueryParams *GetSecurityAdvisoriesResultsTrendOverTimeV1QueryParams) (*ResponseComplianceGetSecurityAdvisoriesResultsTrendOverTimeV1, *resty.Response, error) {
+func (s *ComplianceService) GetSecurityAdvisoriesResultsTrendOverTime(GetSecurityAdvisoriesResultsTrendOverTimeQueryParams *GetSecurityAdvisoriesResultsTrendOverTimeQueryParams) (*ResponseComplianceGetSecurityAdvisoriesResultsTrendOverTime, *resty.Response, error) {
 	path := "/dna/intent/api/v1/securityAdvisories/resultsTrend"
 
-	queryString, _ := query.Values(GetSecurityAdvisoriesResultsTrendOverTimeV1QueryParams)
+	queryString, _ := query.Values(GetSecurityAdvisoriesResultsTrendOverTimeQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetSecurityAdvisoriesResultsTrendOverTimeV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetSecurityAdvisoriesResultsTrendOverTime{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2850,33 +2851,33 @@ func (s *ComplianceService) GetSecurityAdvisoriesResultsTrendOverTimeV1(GetSecur
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetSecurityAdvisoriesResultsTrendOverTimeV1(GetSecurityAdvisoriesResultsTrendOverTimeV1QueryParams)
+			return s.GetSecurityAdvisoriesResultsTrendOverTime(GetSecurityAdvisoriesResultsTrendOverTimeQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetSecurityAdvisoriesResultsTrendOverTimeV1")
+		return nil, response, fmt.Errorf("error with operation GetSecurityAdvisoriesResultsTrendOverTime")
 	}
 
-	result := response.Result().(*ResponseComplianceGetSecurityAdvisoriesResultsTrendOverTimeV1)
+	result := response.Result().(*ResponseComplianceGetSecurityAdvisoriesResultsTrendOverTime)
 	return result, response, err
 
 }
 
-//GetCountOfSecurityAdvisoriesResultsTrendOverTimeV1 Get count of security advisories results trend over time - a9af-78ef-46aa-8534
+//GetCountOfSecurityAdvisoriesResultsTrendOverTime Get count of security advisories results trend over time - a9af-78ef-46aa-8534
 /* Get count of security advisories results trend over time.
 
 
-@param GetCountOfSecurityAdvisoriesResultsTrendOverTimeV1QueryParams Filtering parameter
+@param GetCountOfSecurityAdvisoriesResultsTrendOverTimeQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-count-of-security-advisories-results-trend-over-time
 */
-func (s *ComplianceService) GetCountOfSecurityAdvisoriesResultsTrendOverTimeV1(GetCountOfSecurityAdvisoriesResultsTrendOverTimeV1QueryParams *GetCountOfSecurityAdvisoriesResultsTrendOverTimeV1QueryParams) (*ResponseComplianceGetCountOfSecurityAdvisoriesResultsTrendOverTimeV1, *resty.Response, error) {
+func (s *ComplianceService) GetCountOfSecurityAdvisoriesResultsTrendOverTime(GetCountOfSecurityAdvisoriesResultsTrendOverTimeQueryParams *GetCountOfSecurityAdvisoriesResultsTrendOverTimeQueryParams) (*ResponseComplianceGetCountOfSecurityAdvisoriesResultsTrendOverTime, *resty.Response, error) {
 	path := "/dna/intent/api/v1/securityAdvisories/resultsTrend/count"
 
-	queryString, _ := query.Values(GetCountOfSecurityAdvisoriesResultsTrendOverTimeV1QueryParams)
+	queryString, _ := query.Values(GetCountOfSecurityAdvisoriesResultsTrendOverTimeQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfSecurityAdvisoriesResultsTrendOverTimeV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseComplianceGetCountOfSecurityAdvisoriesResultsTrendOverTime{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2887,30 +2888,30 @@ func (s *ComplianceService) GetCountOfSecurityAdvisoriesResultsTrendOverTimeV1(G
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetCountOfSecurityAdvisoriesResultsTrendOverTimeV1(GetCountOfSecurityAdvisoriesResultsTrendOverTimeV1QueryParams)
+			return s.GetCountOfSecurityAdvisoriesResultsTrendOverTime(GetCountOfSecurityAdvisoriesResultsTrendOverTimeQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetCountOfSecurityAdvisoriesResultsTrendOverTimeV1")
+		return nil, response, fmt.Errorf("error with operation GetCountOfSecurityAdvisoriesResultsTrendOverTime")
 	}
 
-	result := response.Result().(*ResponseComplianceGetCountOfSecurityAdvisoriesResultsTrendOverTimeV1)
+	result := response.Result().(*ResponseComplianceGetCountOfSecurityAdvisoriesResultsTrendOverTime)
 	return result, response, err
 
 }
 
-//GetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevicesV1 Get trial details for security advisories detection on network devices - f6ba-8a34-4c4a-ba48
+//GetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevices Get trial details for security advisories detection on network devices - f6ba-8a34-4c4a-ba48
 /* Get trial details for security advisories detection on network devices
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-trial-details-for-security-advisories-detection-on-network-devices
 */
-func (s *ComplianceService) GetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevicesV1() (*ResponseComplianceGetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevicesV1, *resty.Response, error) {
+func (s *ComplianceService) GetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevices() (*ResponseComplianceGetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevices, *resty.Response, error) {
 	path := "/dna/intent/api/v1/securityAdvisories/trials"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseComplianceGetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevicesV1{}).
+		SetResult(&ResponseComplianceGetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevices{}).
 		SetError(&Error).
 		Get(path)
 
@@ -2921,31 +2922,31 @@ func (s *ComplianceService) GetTrialDetailsForSecurityAdvisoriesDetectionOnNetwo
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevicesV1()
+			return s.GetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevices()
 		}
-		return nil, response, fmt.Errorf("error with operation GetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevicesV1")
+		return nil, response, fmt.Errorf("error with operation GetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevices")
 	}
 
-	result := response.Result().(*ResponseComplianceGetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevicesV1)
+	result := response.Result().(*ResponseComplianceGetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevices)
 	return result, response, err
 
 }
 
-//RunComplianceV1 Run Compliance - f6ae-c8a7-4428-a9ff
+//RunCompliance Run Compliance - f6ae-c8a7-4428-a9ff
 /* Run compliance check for device(s).
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!run-compliance
 */
-func (s *ComplianceService) RunComplianceV1(requestComplianceRunComplianceV1 *RequestComplianceRunComplianceV1) (*ResponseComplianceRunComplianceV1, *resty.Response, error) {
+func (s *ComplianceService) RunCompliance(requestComplianceRunCompliance *RequestComplianceRunCompliance) (*ResponseComplianceRunCompliance, *resty.Response, error) {
 	path := "/dna/intent/api/v1/compliance/"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestComplianceRunComplianceV1).
-		SetResult(&ResponseComplianceRunComplianceV1{}).
+		SetBody(requestComplianceRunCompliance).
+		SetResult(&ResponseComplianceRunCompliance{}).
 		SetError(&Error).
 		Post(path)
 
@@ -2957,18 +2958,18 @@ func (s *ComplianceService) RunComplianceV1(requestComplianceRunComplianceV1 *Re
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.RunComplianceV1(requestComplianceRunComplianceV1)
+			return s.RunCompliance(requestComplianceRunCompliance)
 		}
 
-		return nil, response, fmt.Errorf("error with operation RunComplianceV1")
+		return nil, response, fmt.Errorf("error with operation RunCompliance")
 	}
 
-	result := response.Result().(*ResponseComplianceRunComplianceV1)
+	result := response.Result().(*ResponseComplianceRunCompliance)
 	return result, response, err
 
 }
 
-//ComplianceRemediationV1 Compliance Remediation - 7d80-2867-4179-8488
+//ComplianceRemediation Compliance Remediation - 7d80-2867-4179-8488
 /* Remediates configuration compliance issues. Compliance issues related to 'Routing', 'HA Remediation', 'Software Image', 'Securities Advisories', 'SD-Access Unsupported Configuration', 'Workflow', etc. will not be addressed by this API.
 Warning: Fixing compliance mismatches could result in a possible network flap.
 
@@ -2978,14 +2979,14 @@ Warning: Fixing compliance mismatches could result in a possible network flap.
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!compliance-remediation
 */
-func (s *ComplianceService) ComplianceRemediationV1(id string) (*ResponseComplianceComplianceRemediationV1, *resty.Response, error) {
+func (s *ComplianceService) ComplianceRemediation(id string) (*ResponseComplianceComplianceRemediation, *resty.Response, error) {
 	path := "/dna/intent/api/v1/compliance/networkDevices/{id}/issues/remediation/provision"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseComplianceComplianceRemediationV1{}).
+		SetResult(&ResponseComplianceComplianceRemediation{}).
 		SetError(&Error).
 		Post(path)
 
@@ -2997,18 +2998,18 @@ func (s *ComplianceService) ComplianceRemediationV1(id string) (*ResponseComplia
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.ComplianceRemediationV1(id)
+			return s.ComplianceRemediation(id)
 		}
 
-		return nil, response, fmt.Errorf("error with operation ComplianceRemediationV1")
+		return nil, response, fmt.Errorf("error with operation ComplianceRemediation")
 	}
 
-	result := response.Result().(*ResponseComplianceComplianceRemediationV1)
+	result := response.Result().(*ResponseComplianceComplianceRemediation)
 	return result, response, err
 
 }
 
-//CreatesATrialForFieldNoticesDetectionOnNetworkDevicesV1 Creates a trial for field notices detection on network devices - 3a9a-88e2-4c3a-9db8
+//CreatesATrialForFieldNoticesDetectionOnNetworkDevices Creates a trial for field notices detection on network devices - 3a9a-88e2-4c3a-9db8
 /* Creates a trial for field notices detection on network devices. The consent to connect agreement must have been accepted in the UI for this to succeed. Please refer to the user guide at
  for more details on consent to connect.
 
@@ -3016,13 +3017,13 @@ func (s *ComplianceService) ComplianceRemediationV1(id string) (*ResponseComplia
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!creates-a-trial-for-field-notices-detection-on-network-devices
 */
-func (s *ComplianceService) CreatesATrialForFieldNoticesDetectionOnNetworkDevicesV1() (*ResponseComplianceCreatesATrialForFieldNoticesDetectionOnNetworkDevicesV1, *resty.Response, error) {
+func (s *ComplianceService) CreatesATrialForFieldNoticesDetectionOnNetworkDevices() (*ResponseComplianceCreatesATrialForFieldNoticesDetectionOnNetworkDevices, *resty.Response, error) {
 	path := "/dna/intent/api/v1/fieldNotices/trials"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseComplianceCreatesATrialForFieldNoticesDetectionOnNetworkDevicesV1{}).
+		SetResult(&ResponseComplianceCreatesATrialForFieldNoticesDetectionOnNetworkDevices{}).
 		SetError(&Error).
 		Post(path)
 
@@ -3034,36 +3035,36 @@ func (s *ComplianceService) CreatesATrialForFieldNoticesDetectionOnNetworkDevice
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreatesATrialForFieldNoticesDetectionOnNetworkDevicesV1()
+			return s.CreatesATrialForFieldNoticesDetectionOnNetworkDevices()
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreatesATrialForFieldNoticesDetectionOnNetworkDevicesV1")
+		return nil, response, fmt.Errorf("error with operation CreatesATrialForFieldNoticesDetectionOnNetworkDevices")
 	}
 
-	result := response.Result().(*ResponseComplianceCreatesATrialForFieldNoticesDetectionOnNetworkDevicesV1)
+	result := response.Result().(*ResponseComplianceCreatesATrialForFieldNoticesDetectionOnNetworkDevices)
 	return result, response, err
 
 }
 
-//TriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1 Triggers a field notices scan for the supported network devices - d4b4-5ae2-4e68-bb04
+//TriggersAFieldNoticesScanForTheSupportedNetworkDevices Triggers a field notices scan for the supported network devices - d4b4-5ae2-4e68-bb04
 /* Triggers a field notices scan for the supported network devices. The supported devices are switches, routers and wireless controllers. If a device is not supported, the FieldNoticeNetworkDevice scanStatus will be Failed with appropriate comments. The consent to connect agreement must have been accepted in the UI for this to succeed. Please refer to the user guide at
  for more details on consent to connect.
 
 
-@param TriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1QueryParams Filtering parameter
+@param TriggersAFieldNoticesScanForTheSupportedNetworkDevicesQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!triggers-a-field-notices-scan-for-the-supported-network-devices
 */
-func (s *ComplianceService) TriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1(TriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1QueryParams *TriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1QueryParams) (*ResponseComplianceTriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1, *resty.Response, error) {
+func (s *ComplianceService) TriggersAFieldNoticesScanForTheSupportedNetworkDevices(TriggersAFieldNoticesScanForTheSupportedNetworkDevicesQueryParams *TriggersAFieldNoticesScanForTheSupportedNetworkDevicesQueryParams) (*ResponseComplianceTriggersAFieldNoticesScanForTheSupportedNetworkDevices, *resty.Response, error) {
 	path := "/dna/intent/api/v1/fieldNotices/triggerScan"
 
-	queryString, _ := query.Values(TriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1QueryParams)
+	queryString, _ := query.Values(TriggersAFieldNoticesScanForTheSupportedNetworkDevicesQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
 		SetQueryString(queryString.Encode()).
-		SetResult(&ResponseComplianceTriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1{}).
+		SetResult(&ResponseComplianceTriggersAFieldNoticesScanForTheSupportedNetworkDevices{}).
 		SetError(&Error).
 		Post(path)
 
@@ -3075,32 +3076,32 @@ func (s *ComplianceService) TriggersAFieldNoticesScanForTheSupportedNetworkDevic
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.TriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1(TriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1QueryParams)
+			return s.TriggersAFieldNoticesScanForTheSupportedNetworkDevices(TriggersAFieldNoticesScanForTheSupportedNetworkDevicesQueryParams)
 		}
 
-		return nil, response, fmt.Errorf("error with operation TriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1")
+		return nil, response, fmt.Errorf("error with operation TriggersAFieldNoticesScanForTheSupportedNetworkDevices")
 	}
 
-	result := response.Result().(*ResponseComplianceTriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1)
+	result := response.Result().(*ResponseComplianceTriggersAFieldNoticesScanForTheSupportedNetworkDevices)
 	return result, response, err
 
 }
 
-//CommitDeviceConfigurationV1 Commit device configuration - 53a3-5a70-4e3b-87b5
+//CommitDeviceConfiguration Commit device configuration - 53a3-5a70-4e3b-87b5
 /* This operation would commit device running configuration to startup by issuing "write memory" to device
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!commit-device-configuration
 */
-func (s *ComplianceService) CommitDeviceConfigurationV1(requestComplianceCommitDeviceConfigurationV1 *RequestComplianceCommitDeviceConfigurationV1) (*ResponseComplianceCommitDeviceConfigurationV1, *resty.Response, error) {
+func (s *ComplianceService) CommitDeviceConfiguration(requestComplianceCommitDeviceConfiguration *RequestComplianceCommitDeviceConfiguration) (*ResponseComplianceCommitDeviceConfiguration, *resty.Response, error) {
 	path := "/dna/intent/api/v1/network-device-config/write-memory"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestComplianceCommitDeviceConfigurationV1).
-		SetResult(&ResponseComplianceCommitDeviceConfigurationV1{}).
+		SetBody(requestComplianceCommitDeviceConfiguration).
+		SetResult(&ResponseComplianceCommitDeviceConfiguration{}).
 		SetError(&Error).
 		Post(path)
 
@@ -3112,18 +3113,18 @@ func (s *ComplianceService) CommitDeviceConfigurationV1(requestComplianceCommitD
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CommitDeviceConfigurationV1(requestComplianceCommitDeviceConfigurationV1)
+			return s.CommitDeviceConfiguration(requestComplianceCommitDeviceConfiguration)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CommitDeviceConfigurationV1")
+		return nil, response, fmt.Errorf("error with operation CommitDeviceConfiguration")
 	}
 
-	result := response.Result().(*ResponseComplianceCommitDeviceConfigurationV1)
+	result := response.Result().(*ResponseComplianceCommitDeviceConfiguration)
 	return result, response, err
 
 }
 
-//CreatesATrialForBugsDetectionOnNetworkDevicesV1 Creates a trial for bugs detection on network devices - b080-6bcf-402b-ad8e
+//CreatesATrialForBugsDetectionOnNetworkDevices Creates a trial for bugs detection on network devices - b080-6bcf-402b-ad8e
 /* Creates a trial for bugs detection on network devices. The consent to connect agreement must have been accepted in the UI for this to succeed. Please refer to the user guide at
  for more details on consent to connect.
 
@@ -3131,13 +3132,13 @@ func (s *ComplianceService) CommitDeviceConfigurationV1(requestComplianceCommitD
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!creates-a-trial-for-bugs-detection-on-network-devices
 */
-func (s *ComplianceService) CreatesATrialForBugsDetectionOnNetworkDevicesV1() (*ResponseComplianceCreatesATrialForBugsDetectionOnNetworkDevicesV1, *resty.Response, error) {
+func (s *ComplianceService) CreatesATrialForBugsDetectionOnNetworkDevices() (*ResponseComplianceCreatesATrialForBugsDetectionOnNetworkDevices, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkBugs/trials"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseComplianceCreatesATrialForBugsDetectionOnNetworkDevicesV1{}).
+		SetResult(&ResponseComplianceCreatesATrialForBugsDetectionOnNetworkDevices{}).
 		SetError(&Error).
 		Post(path)
 
@@ -3149,35 +3150,35 @@ func (s *ComplianceService) CreatesATrialForBugsDetectionOnNetworkDevicesV1() (*
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreatesATrialForBugsDetectionOnNetworkDevicesV1()
+			return s.CreatesATrialForBugsDetectionOnNetworkDevices()
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreatesATrialForBugsDetectionOnNetworkDevicesV1")
+		return nil, response, fmt.Errorf("error with operation CreatesATrialForBugsDetectionOnNetworkDevices")
 	}
 
-	result := response.Result().(*ResponseComplianceCreatesATrialForBugsDetectionOnNetworkDevicesV1)
+	result := response.Result().(*ResponseComplianceCreatesATrialForBugsDetectionOnNetworkDevices)
 	return result, response, err
 
 }
 
-//TriggersABugsScanForTheSupportedNetworkDevicesV1 Triggers a bugs scan for the supported network devices - 5296-db34-457b-b233
+//TriggersABugsScanForTheSupportedNetworkDevices Triggers a bugs scan for the supported network devices - 5296-db34-457b-b233
 /* Triggers a bugs scan for the supported network devices. The supported devices are switches and routers. If a device is not supported, the NetworkBugsDevice scanStatus will be Failed with appropriate comments.
 
 
-@param TriggersABugsScanForTheSupportedNetworkDevicesV1QueryParams Filtering parameter
+@param TriggersABugsScanForTheSupportedNetworkDevicesQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!triggers-a-bugs-scan-for-the-supported-network-devices
 */
-func (s *ComplianceService) TriggersABugsScanForTheSupportedNetworkDevicesV1(TriggersABugsScanForTheSupportedNetworkDevicesV1QueryParams *TriggersABugsScanForTheSupportedNetworkDevicesV1QueryParams) (*ResponseComplianceTriggersABugsScanForTheSupportedNetworkDevicesV1, *resty.Response, error) {
+func (s *ComplianceService) TriggersABugsScanForTheSupportedNetworkDevices(TriggersABugsScanForTheSupportedNetworkDevicesQueryParams *TriggersABugsScanForTheSupportedNetworkDevicesQueryParams) (*ResponseComplianceTriggersABugsScanForTheSupportedNetworkDevices, *resty.Response, error) {
 	path := "/dna/intent/api/v1/networkBugs/triggerScan"
 
-	queryString, _ := query.Values(TriggersABugsScanForTheSupportedNetworkDevicesV1QueryParams)
+	queryString, _ := query.Values(TriggersABugsScanForTheSupportedNetworkDevicesQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
 		SetQueryString(queryString.Encode()).
-		SetResult(&ResponseComplianceTriggersABugsScanForTheSupportedNetworkDevicesV1{}).
+		SetResult(&ResponseComplianceTriggersABugsScanForTheSupportedNetworkDevices{}).
 		SetError(&Error).
 		Post(path)
 
@@ -3189,18 +3190,18 @@ func (s *ComplianceService) TriggersABugsScanForTheSupportedNetworkDevicesV1(Tri
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.TriggersABugsScanForTheSupportedNetworkDevicesV1(TriggersABugsScanForTheSupportedNetworkDevicesV1QueryParams)
+			return s.TriggersABugsScanForTheSupportedNetworkDevices(TriggersABugsScanForTheSupportedNetworkDevicesQueryParams)
 		}
 
-		return nil, response, fmt.Errorf("error with operation TriggersABugsScanForTheSupportedNetworkDevicesV1")
+		return nil, response, fmt.Errorf("error with operation TriggersABugsScanForTheSupportedNetworkDevices")
 	}
 
-	result := response.Result().(*ResponseComplianceTriggersABugsScanForTheSupportedNetworkDevicesV1)
+	result := response.Result().(*ResponseComplianceTriggersABugsScanForTheSupportedNetworkDevices)
 	return result, response, err
 
 }
 
-//CreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevicesV1 Creates a trial for security advisories detection on network devices - 0190-1b7a-4edb-91d8
+//CreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevices Creates a trial for security advisories detection on network devices - 0190-1b7a-4edb-91d8
 /* Creates a trial for security advisories detection on network devices. The consent to connect agreement must have been accepted in the UI for this to succeed. Please refer to the user guide at
  for more details on consent to connect.
 
@@ -3208,13 +3209,13 @@ func (s *ComplianceService) TriggersABugsScanForTheSupportedNetworkDevicesV1(Tri
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!creates-a-trial-for-security-advisories-detection-on-network-devices
 */
-func (s *ComplianceService) CreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevicesV1() (*ResponseComplianceCreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevicesV1, *resty.Response, error) {
+func (s *ComplianceService) CreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevices() (*ResponseComplianceCreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevices, *resty.Response, error) {
 	path := "/dna/intent/api/v1/securityAdvisories/trials"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseComplianceCreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevicesV1{}).
+		SetResult(&ResponseComplianceCreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevices{}).
 		SetError(&Error).
 		Post(path)
 
@@ -3226,35 +3227,35 @@ func (s *ComplianceService) CreatesATrialForSecurityAdvisoriesDetectionOnNetwork
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevicesV1()
+			return s.CreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevices()
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevicesV1")
+		return nil, response, fmt.Errorf("error with operation CreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevices")
 	}
 
-	result := response.Result().(*ResponseComplianceCreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevicesV1)
+	result := response.Result().(*ResponseComplianceCreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevices)
 	return result, response, err
 
 }
 
-//TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1 Triggers a security advisories scan for the supported network devices - a1a1-7b93-481b-9e03
+//TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevices Triggers a security advisories scan for the supported network devices - a1a1-7b93-481b-9e03
 /* Triggers a security advisories scan for the supported network devices. The supported devices are switches, routers and wireless controllers with IOS and IOS-XE. If a device is not supported, the SecurityAdvisoryNetworkDevice scanStatus will be Failed with appropriate comments.
 
 
-@param TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1QueryParams Filtering parameter
+@param TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!triggers-a-security-advisories-scan-for-the-supported-network-devices
 */
-func (s *ComplianceService) TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1(TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1QueryParams *TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1QueryParams) (*ResponseComplianceTriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1, *resty.Response, error) {
+func (s *ComplianceService) TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevices(TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesQueryParams *TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesQueryParams) (*ResponseComplianceTriggersASecurityAdvisoriesScanForTheSupportedNetworkDevices, *resty.Response, error) {
 	path := "/dna/intent/api/v1/securityAdvisories/triggerScan"
 
-	queryString, _ := query.Values(TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1QueryParams)
+	queryString, _ := query.Values(TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
 		SetQueryString(queryString.Encode()).
-		SetResult(&ResponseComplianceTriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1{}).
+		SetResult(&ResponseComplianceTriggersASecurityAdvisoriesScanForTheSupportedNetworkDevices{}).
 		SetError(&Error).
 		Post(path)
 
@@ -3266,501 +3267,13 @@ func (s *ComplianceService) TriggersASecurityAdvisoriesScanForTheSupportedNetwor
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1(TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1QueryParams)
+			return s.TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevices(TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesQueryParams)
 		}
 
-		return nil, response, fmt.Errorf("error with operation TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1")
+		return nil, response, fmt.Errorf("error with operation TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevices")
 	}
 
-	result := response.Result().(*ResponseComplianceTriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1)
+	result := response.Result().(*ResponseComplianceTriggersASecurityAdvisoriesScanForTheSupportedNetworkDevices)
 	return result, response, err
 
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetComplianceDetailCountV1`
-*/
-func (s *ComplianceService) GetComplianceDetailCount(GetComplianceDetailCountV1QueryParams *GetComplianceDetailCountV1QueryParams) (*ResponseComplianceGetComplianceDetailCountV1, *resty.Response, error) {
-	return s.GetComplianceDetailCountV1(GetComplianceDetailCountV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetCountOfFieldNoticesAffectingTheNetworkDeviceV1`
-*/
-func (s *ComplianceService) GetCountOfFieldNoticesAffectingTheNetworkDevice(networkDeviceID string, GetCountOfFieldNoticesAffectingTheNetworkDeviceV1QueryParams *GetCountOfFieldNoticesAffectingTheNetworkDeviceV1QueryParams) (*ResponseComplianceGetCountOfFieldNoticesAffectingTheNetworkDeviceV1, *resty.Response, error) {
-	return s.GetCountOfFieldNoticesAffectingTheNetworkDeviceV1(networkDeviceID, GetCountOfFieldNoticesAffectingTheNetworkDeviceV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetCountOfNetworkBugsV1`
-*/
-func (s *ComplianceService) GetCountOfNetworkBugs(GetCountOfNetworkBugsV1QueryParams *GetCountOfNetworkBugsV1QueryParams) (*ResponseComplianceGetCountOfNetworkBugsV1, *resty.Response, error) {
-	return s.GetCountOfNetworkBugsV1(GetCountOfNetworkBugsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `ComplianceRemediationV1`
-*/
-func (s *ComplianceService) ComplianceRemediation(id string) (*ResponseComplianceComplianceRemediationV1, *resty.Response, error) {
-	return s.ComplianceRemediationV1(id)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetComplianceDetailV1`
-*/
-func (s *ComplianceService) GetComplianceDetail(GetComplianceDetailV1QueryParams *GetComplianceDetailV1QueryParams) (*ResponseComplianceGetComplianceDetailV1, *resty.Response, error) {
-	return s.GetComplianceDetailV1(GetComplianceDetailV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetFieldNoticeByIDV1`
-*/
-func (s *ComplianceService) GetFieldNoticeByID(id string) (*ResponseComplianceGetFieldNoticeByIDV1, *resty.Response, error) {
-	return s.GetFieldNoticeByIDV1(id)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetNetworkBugDeviceByDeviceIDV1`
-*/
-func (s *ComplianceService) GetNetworkBugDeviceByDeviceID(networkDeviceID string) (*ResponseComplianceGetNetworkBugDeviceByDeviceIDV1, *resty.Response, error) {
-	return s.GetNetworkBugDeviceByDeviceIDV1(networkDeviceID)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetSecurityAdvisoryNetworkDeviceByNetworkDeviceIDV1`
-*/
-func (s *ComplianceService) GetSecurityAdvisoryNetworkDeviceByNetworkDeviceID(networkDeviceID string) (*ResponseComplianceGetSecurityAdvisoryNetworkDeviceByNetworkDeviceIDV1, *resty.Response, error) {
-	return s.GetSecurityAdvisoryNetworkDeviceByNetworkDeviceIDV1(networkDeviceID)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetCountOfSecurityAdvisoryNetworkDevicesV1`
-*/
-func (s *ComplianceService) GetCountOfSecurityAdvisoryNetworkDevices(GetCountOfSecurityAdvisoryNetworkDevicesV1QueryParams *GetCountOfSecurityAdvisoryNetworkDevicesV1QueryParams) (*ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesV1, *resty.Response, error) {
-	return s.GetCountOfSecurityAdvisoryNetworkDevicesV1(GetCountOfSecurityAdvisoryNetworkDevicesV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetCountOfFieldNoticeNetworkDevicesForTheNoticeV1`
-*/
-func (s *ComplianceService) GetCountOfFieldNoticeNetworkDevicesForTheNotice(id string, GetCountOfFieldNoticeNetworkDevicesForTheNoticeV1QueryParams *GetCountOfFieldNoticeNetworkDevicesForTheNoticeV1QueryParams) (*ResponseComplianceGetCountOfFieldNoticeNetworkDevicesForTheNoticeV1, *resty.Response, error) {
-	return s.GetCountOfFieldNoticeNetworkDevicesForTheNoticeV1(id, GetCountOfFieldNoticeNetworkDevicesForTheNoticeV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetNetworkBugByIDV1`
-*/
-func (s *ComplianceService) GetNetworkBugByID(id string) (*ResponseComplianceGetNetworkBugByIDV1, *resty.Response, error) {
-	return s.GetNetworkBugByIDV1(id)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetCountOfNetworkBugDevicesV1`
-*/
-func (s *ComplianceService) GetCountOfNetworkBugDevices(GetCountOfNetworkBugDevicesV1QueryParams *GetCountOfNetworkBugDevicesV1QueryParams) (*ResponseComplianceGetCountOfNetworkBugDevicesV1, *resty.Response, error) {
-	return s.GetCountOfNetworkBugDevicesV1(GetCountOfNetworkBugDevicesV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetConfigTaskDetailsV1`
-*/
-func (s *ComplianceService) GetConfigTaskDetails(GetConfigTaskDetailsV1QueryParams *GetConfigTaskDetailsV1QueryParams) (*ResponseComplianceGetConfigTaskDetailsV1, *resty.Response, error) {
-	return s.GetConfigTaskDetailsV1(GetConfigTaskDetailsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetComplianceStatusV1`
-*/
-func (s *ComplianceService) GetComplianceStatus(GetComplianceStatusV1QueryParams *GetComplianceStatusV1QueryParams) (*ResponseComplianceGetComplianceStatusV1, *resty.Response, error) {
-	return s.GetComplianceStatusV1(GetComplianceStatusV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1`
-*/
-func (s *ComplianceService) GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisory(id string, GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1QueryParams *GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1QueryParams) (*ResponseComplianceGetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1, *resty.Response, error) {
-	return s.GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1(id, GetSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetCountOfBugsAffectingTheNetworkDeviceV1`
-*/
-func (s *ComplianceService) GetCountOfBugsAffectingTheNetworkDevice(networkDeviceID string, GetCountOfBugsAffectingTheNetworkDeviceV1QueryParams *GetCountOfBugsAffectingTheNetworkDeviceV1QueryParams) (*ResponseComplianceGetCountOfBugsAffectingTheNetworkDeviceV1, *resty.Response, error) {
-	return s.GetCountOfBugsAffectingTheNetworkDeviceV1(networkDeviceID, GetCountOfBugsAffectingTheNetworkDeviceV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetCountOfFieldNoticeNetworkDevicesV1`
-*/
-func (s *ComplianceService) GetCountOfFieldNoticeNetworkDevices(GetCountOfFieldNoticeNetworkDevicesV1QueryParams *GetCountOfFieldNoticeNetworkDevicesV1QueryParams) (*ResponseComplianceGetCountOfFieldNoticeNetworkDevicesV1, *resty.Response, error) {
-	return s.GetCountOfFieldNoticeNetworkDevicesV1(GetCountOfFieldNoticeNetworkDevicesV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1`
-*/
-func (s *ComplianceService) GetCountOfSecurityAdvisoriesAffectingTheNetworkDevices(GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1QueryParams *GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1QueryParams) (*ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1, *resty.Response, error) {
-	return s.GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1(GetCountOfSecurityAdvisoriesAffectingTheNetworkDevicesV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetSecurityAdvisoriesAffectingTheNetworkDeviceV1`
-*/
-func (s *ComplianceService) GetSecurityAdvisoriesAffectingTheNetworkDevice(networkDeviceID string, GetSecurityAdvisoriesAffectingTheNetworkDeviceV1QueryParams *GetSecurityAdvisoriesAffectingTheNetworkDeviceV1QueryParams) (*ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDeviceV1, *resty.Response, error) {
-	return s.GetSecurityAdvisoriesAffectingTheNetworkDeviceV1(networkDeviceID, GetSecurityAdvisoriesAffectingTheNetworkDeviceV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `TriggersABugsScanForTheSupportedNetworkDevicesV1`
-*/
-func (s *ComplianceService) TriggersABugsScanForTheSupportedNetworkDevices(TriggersABugsScanForTheSupportedNetworkDevicesV1QueryParams *TriggersABugsScanForTheSupportedNetworkDevicesV1QueryParams) (*ResponseComplianceTriggersABugsScanForTheSupportedNetworkDevicesV1, *resty.Response, error) {
-	return s.TriggersABugsScanForTheSupportedNetworkDevicesV1(TriggersABugsScanForTheSupportedNetworkDevicesV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryIDV1`
-*/
-func (s *ComplianceService) GetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryID(networkDeviceID string, id string) (*ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryIDV1, *resty.Response, error) {
-	return s.GetSecurityAdvisoryAffectingTheNetworkDeviceByDeviceIDAndAdvisoryIDV1(networkDeviceID, id)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CreatesATrialForBugsDetectionOnNetworkDevicesV1`
-*/
-func (s *ComplianceService) CreatesATrialForBugsDetectionOnNetworkDevices() (*ResponseComplianceCreatesATrialForBugsDetectionOnNetworkDevicesV1, *resty.Response, error) {
-	return s.CreatesATrialForBugsDetectionOnNetworkDevicesV1()
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1`
-*/
-func (s *ComplianceService) GetCountOfSecurityAdvisoriesAffectingTheNetworkDevice(networkDeviceID string, GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1QueryParams *GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1QueryParams) (*ResponseComplianceGetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1, *resty.Response, error) {
-	return s.GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1(networkDeviceID, GetCountOfSecurityAdvisoriesAffectingTheNetworkDeviceV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetSecurityAdvisoriesResultsTrendOverTimeV1`
-*/
-func (s *ComplianceService) GetSecurityAdvisoriesResultsTrendOverTime(GetSecurityAdvisoriesResultsTrendOverTimeV1QueryParams *GetSecurityAdvisoriesResultsTrendOverTimeV1QueryParams) (*ResponseComplianceGetSecurityAdvisoriesResultsTrendOverTimeV1, *resty.Response, error) {
-	return s.GetSecurityAdvisoriesResultsTrendOverTimeV1(GetSecurityAdvisoriesResultsTrendOverTimeV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetNetworkBugsV1`
-*/
-func (s *ComplianceService) GetNetworkBugs(GetNetworkBugsV1QueryParams *GetNetworkBugsV1QueryParams) (*ResponseComplianceGetNetworkBugsV1, *resty.Response, error) {
-	return s.GetNetworkBugsV1(GetNetworkBugsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetCountOfFieldNoticesV1`
-*/
-func (s *ComplianceService) GetCountOfFieldNotices(GetCountOfFieldNoticesV1QueryParams *GetCountOfFieldNoticesV1QueryParams) (*ResponseComplianceGetCountOfFieldNoticesV1, *resty.Response, error) {
-	return s.GetCountOfFieldNoticesV1(GetCountOfFieldNoticesV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevicesV1`
-*/
-func (s *ComplianceService) GetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevices() (*ResponseComplianceGetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevicesV1, *resty.Response, error) {
-	return s.GetTrialDetailsForSecurityAdvisoriesDetectionOnNetworkDevicesV1()
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1`
-*/
-func (s *ComplianceService) GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisory(id string, GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1QueryParams *GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1QueryParams) (*ResponseComplianceGetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1, *resty.Response, error) {
-	return s.GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1(id, GetCountOfSecurityAdvisoryNetworkDevicesForTheSecurityAdvisoryV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetFieldNoticesV1`
-*/
-func (s *ComplianceService) GetFieldNotices(GetFieldNoticesV1QueryParams *GetFieldNoticesV1QueryParams) (*ResponseComplianceGetFieldNoticesV1, *resty.Response, error) {
-	return s.GetFieldNoticesV1(GetFieldNoticesV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetCountOfSecurityAdvisoriesResultsTrendOverTimeV1`
-*/
-func (s *ComplianceService) GetCountOfSecurityAdvisoriesResultsTrendOverTime(GetCountOfSecurityAdvisoriesResultsTrendOverTimeV1QueryParams *GetCountOfSecurityAdvisoriesResultsTrendOverTimeV1QueryParams) (*ResponseComplianceGetCountOfSecurityAdvisoriesResultsTrendOverTimeV1, *resty.Response, error) {
-	return s.GetCountOfSecurityAdvisoriesResultsTrendOverTimeV1(GetCountOfSecurityAdvisoriesResultsTrendOverTimeV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetNetworkBugDevicesForTheBugV1`
-*/
-func (s *ComplianceService) GetNetworkBugDevicesForTheBug(id string, GetNetworkBugDevicesForTheBugV1QueryParams *GetNetworkBugDevicesForTheBugV1QueryParams) (*ResponseComplianceGetNetworkBugDevicesForTheBugV1, *resty.Response, error) {
-	return s.GetNetworkBugDevicesForTheBugV1(id, GetNetworkBugDevicesForTheBugV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetFieldNoticesAffectingTheNetworkDeviceV1`
-*/
-func (s *ComplianceService) GetFieldNoticesAffectingTheNetworkDevice(networkDeviceID string, GetFieldNoticesAffectingTheNetworkDeviceV1QueryParams *GetFieldNoticesAffectingTheNetworkDeviceV1QueryParams) (*ResponseComplianceGetFieldNoticesAffectingTheNetworkDeviceV1, *resty.Response, error) {
-	return s.GetFieldNoticesAffectingTheNetworkDeviceV1(networkDeviceID, GetFieldNoticesAffectingTheNetworkDeviceV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetCountOfNetworkBugsResultsTrendOverTimeV1`
-*/
-func (s *ComplianceService) GetCountOfNetworkBugsResultsTrendOverTime(GetCountOfNetworkBugsResultsTrendOverTimeV1QueryParams *GetCountOfNetworkBugsResultsTrendOverTimeV1QueryParams) (*ResponseComplianceGetCountOfNetworkBugsResultsTrendOverTimeV1, *resty.Response, error) {
-	return s.GetCountOfNetworkBugsResultsTrendOverTimeV1(GetCountOfNetworkBugsResultsTrendOverTimeV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetTrialDetailsForBugsDetectionOnNetworkDevicesV1`
-*/
-func (s *ComplianceService) GetTrialDetailsForBugsDetectionOnNetworkDevices() (*ResponseComplianceGetTrialDetailsForBugsDetectionOnNetworkDevicesV1, *resty.Response, error) {
-	return s.GetTrialDetailsForBugsDetectionOnNetworkDevicesV1()
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetFieldNoticeNetworkDeviceByDeviceIDV1`
-*/
-func (s *ComplianceService) GetFieldNoticeNetworkDeviceByDeviceID(networkDeviceID string) (*ResponseComplianceGetFieldNoticeNetworkDeviceByDeviceIDV1, *resty.Response, error) {
-	return s.GetFieldNoticeNetworkDeviceByDeviceIDV1(networkDeviceID)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetBugsAffectingTheNetworkDeviceV1`
-*/
-func (s *ComplianceService) GetBugsAffectingTheNetworkDevice(networkDeviceID string, GetBugsAffectingTheNetworkDeviceV1QueryParams *GetBugsAffectingTheNetworkDeviceV1QueryParams) (*ResponseComplianceGetBugsAffectingTheNetworkDeviceV1, *resty.Response, error) {
-	return s.GetBugsAffectingTheNetworkDeviceV1(networkDeviceID, GetBugsAffectingTheNetworkDeviceV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `DeviceComplianceStatusV1`
-*/
-func (s *ComplianceService) DeviceComplianceStatus(deviceUUID string) (*ResponseComplianceDeviceComplianceStatusV1, *resty.Response, error) {
-	return s.DeviceComplianceStatusV1(deviceUUID)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetCountOfFieldNoticesResultsTrendOverTimeV1`
-*/
-func (s *ComplianceService) GetCountOfFieldNoticesResultsTrendOverTime(GetCountOfFieldNoticesResultsTrendOverTimeV1QueryParams *GetCountOfFieldNoticesResultsTrendOverTimeV1QueryParams) (*ResponseComplianceGetCountOfFieldNoticesResultsTrendOverTimeV1, *resty.Response, error) {
-	return s.GetCountOfFieldNoticesResultsTrendOverTimeV1(GetCountOfFieldNoticesResultsTrendOverTimeV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CommitDeviceConfigurationV1`
-*/
-func (s *ComplianceService) CommitDeviceConfiguration(requestComplianceCommitDeviceConfigurationV1 *RequestComplianceCommitDeviceConfigurationV1) (*ResponseComplianceCommitDeviceConfigurationV1, *resty.Response, error) {
-	return s.CommitDeviceConfigurationV1(requestComplianceCommitDeviceConfigurationV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetSecurityAdvisoryAffectingTheNetworkDevicesByIDV1`
-*/
-func (s *ComplianceService) GetSecurityAdvisoryAffectingTheNetworkDevicesByID(id string) (*ResponseComplianceGetSecurityAdvisoryAffectingTheNetworkDevicesByIDV1, *resty.Response, error) {
-	return s.GetSecurityAdvisoryAffectingTheNetworkDevicesByIDV1(id)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetNetworkBugDevicesV1`
-*/
-func (s *ComplianceService) GetNetworkBugDevices(GetNetworkBugDevicesV1QueryParams *GetNetworkBugDevicesV1QueryParams) (*ResponseComplianceGetNetworkBugDevicesV1, *resty.Response, error) {
-	return s.GetNetworkBugDevicesV1(GetNetworkBugDevicesV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `ComplianceDetailsOfDeviceV1`
-*/
-func (s *ComplianceService) ComplianceDetailsOfDevice(deviceUUID string, ComplianceDetailsOfDeviceV1QueryParams *ComplianceDetailsOfDeviceV1QueryParams) (*ResponseComplianceComplianceDetailsOfDeviceV1, *resty.Response, error) {
-	return s.ComplianceDetailsOfDeviceV1(deviceUUID, ComplianceDetailsOfDeviceV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetCountOfNetworkBugDevicesForTheBugV1`
-*/
-func (s *ComplianceService) GetCountOfNetworkBugDevicesForTheBug(id string, GetCountOfNetworkBugDevicesForTheBugV1QueryParams *GetCountOfNetworkBugDevicesForTheBugV1QueryParams) (*ResponseComplianceGetCountOfNetworkBugDevicesForTheBugV1, *resty.Response, error) {
-	return s.GetCountOfNetworkBugDevicesForTheBugV1(id, GetCountOfNetworkBugDevicesForTheBugV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetFieldNoticesResultsTrendOverTimeV1`
-*/
-func (s *ComplianceService) GetFieldNoticesResultsTrendOverTime(GetFieldNoticesResultsTrendOverTimeV1QueryParams *GetFieldNoticesResultsTrendOverTimeV1QueryParams) (*ResponseComplianceGetFieldNoticesResultsTrendOverTimeV1, *resty.Response, error) {
-	return s.GetFieldNoticesResultsTrendOverTimeV1(GetFieldNoticesResultsTrendOverTimeV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetFieldNoticeNetworkDevicesForTheNoticeV1`
-*/
-func (s *ComplianceService) GetFieldNoticeNetworkDevicesForTheNotice(id string, GetFieldNoticeNetworkDevicesForTheNoticeV1QueryParams *GetFieldNoticeNetworkDevicesForTheNoticeV1QueryParams) (*ResponseComplianceGetFieldNoticeNetworkDevicesForTheNoticeV1, *resty.Response, error) {
-	return s.GetFieldNoticeNetworkDevicesForTheNoticeV1(id, GetFieldNoticeNetworkDevicesForTheNoticeV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceIDV1`
-*/
-func (s *ComplianceService) GetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceID(id string, networkDeviceID string) (*ResponseComplianceGetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceIDV1, *resty.Response, error) {
-	return s.GetSecurityAdvisoryNetworkDeviceForTheSecurityAdvisoryByNetworkDeviceIDV1(id, networkDeviceID)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeIDV1`
-*/
-func (s *ComplianceService) GetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeID(networkDeviceID string, id string) (*ResponseComplianceGetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeIDV1, *resty.Response, error) {
-	return s.GetFieldNoticeAffectingTheNetworkDeviceByDeviceIDAndNoticeIDV1(networkDeviceID, id)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetSecurityAdvisoriesAffectingTheNetworkDevicesV1`
-*/
-func (s *ComplianceService) GetSecurityAdvisoriesAffectingTheNetworkDevices(GetSecurityAdvisoriesAffectingTheNetworkDevicesV1QueryParams *GetSecurityAdvisoriesAffectingTheNetworkDevicesV1QueryParams) (*ResponseComplianceGetSecurityAdvisoriesAffectingTheNetworkDevicesV1, *resty.Response, error) {
-	return s.GetSecurityAdvisoriesAffectingTheNetworkDevicesV1(GetSecurityAdvisoriesAffectingTheNetworkDevicesV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1`
-*/
-func (s *ComplianceService) TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevices(TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1QueryParams *TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1QueryParams) (*ResponseComplianceTriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1, *resty.Response, error) {
-	return s.TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1(TriggersASecurityAdvisoriesScanForTheSupportedNetworkDevicesV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetComplianceStatusCountV1`
-*/
-func (s *ComplianceService) GetComplianceStatusCount(GetComplianceStatusCountV1QueryParams *GetComplianceStatusCountV1QueryParams) (*ResponseComplianceGetComplianceStatusCountV1, *resty.Response, error) {
-	return s.GetComplianceStatusCountV1(GetComplianceStatusCountV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetNetworkBugDeviceForTheBugByNetworkDeviceIDV1`
-*/
-func (s *ComplianceService) GetNetworkBugDeviceForTheBugByNetworkDeviceID(id string, networkDeviceID string) (*ResponseComplianceGetNetworkBugDeviceForTheBugByNetworkDeviceIDV1, *resty.Response, error) {
-	return s.GetNetworkBugDeviceForTheBugByNetworkDeviceIDV1(id, networkDeviceID)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetNetworkBugsResultsTrendOverTimeV1`
-*/
-func (s *ComplianceService) GetNetworkBugsResultsTrendOverTime(GetNetworkBugsResultsTrendOverTimeV1QueryParams *GetNetworkBugsResultsTrendOverTimeV1QueryParams) (*ResponseComplianceGetNetworkBugsResultsTrendOverTimeV1, *resty.Response, error) {
-	return s.GetNetworkBugsResultsTrendOverTimeV1(GetNetworkBugsResultsTrendOverTimeV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetBugAffectingTheNetworkDeviceByDeviceIDAndBugIDV1`
-*/
-func (s *ComplianceService) GetBugAffectingTheNetworkDeviceByDeviceIDAndBugID(networkDeviceID string, id string) (*ResponseComplianceGetBugAffectingTheNetworkDeviceByDeviceIDAndBugIDV1, *resty.Response, error) {
-	return s.GetBugAffectingTheNetworkDeviceByDeviceIDAndBugIDV1(networkDeviceID, id)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `RunComplianceV1`
-*/
-func (s *ComplianceService) RunCompliance(requestComplianceRunComplianceV1 *RequestComplianceRunComplianceV1) (*ResponseComplianceRunComplianceV1, *resty.Response, error) {
-	return s.RunComplianceV1(requestComplianceRunComplianceV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetFieldNoticeNetworkDevicesV1`
-*/
-func (s *ComplianceService) GetFieldNoticeNetworkDevices(GetFieldNoticeNetworkDevicesV1QueryParams *GetFieldNoticeNetworkDevicesV1QueryParams) (*ResponseComplianceGetFieldNoticeNetworkDevicesV1, *resty.Response, error) {
-	return s.GetFieldNoticeNetworkDevicesV1(GetFieldNoticeNetworkDevicesV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CreatesATrialForFieldNoticesDetectionOnNetworkDevicesV1`
-*/
-func (s *ComplianceService) CreatesATrialForFieldNoticesDetectionOnNetworkDevices() (*ResponseComplianceCreatesATrialForFieldNoticesDetectionOnNetworkDevicesV1, *resty.Response, error) {
-	return s.CreatesATrialForFieldNoticesDetectionOnNetworkDevicesV1()
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevicesV1`
-*/
-func (s *ComplianceService) CreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevices() (*ResponseComplianceCreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevicesV1, *resty.Response, error) {
-	return s.CreatesATrialForSecurityAdvisoriesDetectionOnNetworkDevicesV1()
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetSecurityAdvisoryNetworkDevicesV1`
-*/
-func (s *ComplianceService) GetSecurityAdvisoryNetworkDevices(GetSecurityAdvisoryNetworkDevicesV1QueryParams *GetSecurityAdvisoryNetworkDevicesV1QueryParams) (*ResponseComplianceGetSecurityAdvisoryNetworkDevicesV1, *resty.Response, error) {
-	return s.GetSecurityAdvisoryNetworkDevicesV1(GetSecurityAdvisoryNetworkDevicesV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `TriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1`
-*/
-func (s *ComplianceService) TriggersAFieldNoticesScanForTheSupportedNetworkDevices(TriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1QueryParams *TriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1QueryParams) (*ResponseComplianceTriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1, *resty.Response, error) {
-	return s.TriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1(TriggersAFieldNoticesScanForTheSupportedNetworkDevicesV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetTrialDetailsForFieldNoticesDetectionOnNetworkDevicesV1`
-*/
-func (s *ComplianceService) GetTrialDetailsForFieldNoticesDetectionOnNetworkDevices() (*ResponseComplianceGetTrialDetailsForFieldNoticesDetectionOnNetworkDevicesV1, *resty.Response, error) {
-	return s.GetTrialDetailsForFieldNoticesDetectionOnNetworkDevicesV1()
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceIDV1`
-*/
-func (s *ComplianceService) GetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceID(id string, networkDeviceID string) (*ResponseComplianceGetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceIDV1, *resty.Response, error) {
-	return s.GetFieldNoticeNetworkDeviceForTheNoticeByNetworkDeviceIDV1(id, networkDeviceID)
 }
