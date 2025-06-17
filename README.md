@@ -5,7 +5,7 @@ catalystcenter-go-sdk is a Go client library for [Catalyst Center Platform](http
 ## Usage
 
 ```go
-import catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v2/sdk"
+import catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v3/sdk"
 ```
 
 ## Introduction

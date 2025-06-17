@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v2/sdk"
+	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v3/sdk"
 )
 
 // client is Catalyst Center API client
@@ -22,7 +22,7 @@ func main() {
 	}
 
 	fmt.Println("Printing ComplianceDetails")
-	getComplianceDetailQueryParams := &catalyst.GetComplianceDetailV1QueryParams{}
+	getComplianceDetailQueryParams := &catalyst.GetComplianceDetailQueryParams{}
 	respComplianceDetail, _, err := client.Compliance.GetComplianceDetail(getComplianceDetailQueryParams)
 	if err != nil {
 		fmt.Println(err)
@@ -38,8 +38,8 @@ func main() {
 	}
 
 	fmt.Println("Post ConfArchive")
-	reqBody := &catalyst.RequestConfigurationArchiveExportDeviceConfigurationsV1{
-		DeviceID: deviceUUID,
+	reqBody := &catalyst.RequestConfigurationArchiveExportDeviceConfigurations{
+		DeviceID: []string{deviceUUID},
 		Password: "C1sco123!",
 	}
 

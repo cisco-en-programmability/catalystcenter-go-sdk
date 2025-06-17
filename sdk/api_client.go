@@ -25,8 +25,8 @@ const CATALYST_DEBUG = "CATALYST_DEBUG"
 const CATALYST_SSL_VERIFY = "CATALYST_SSL_VERIFY"
 const CATALYST_WAIT_TIME = "CATALYST_WAIT_TIME"
 
-var VERSION = "2.3.7.9"
-var CATALYST_USER_STRING = "CATALYST_USER_STRING"
+var VERSION = "3.1.3.0"
+var USER_STRING = "CATALYST_USER_STRING"
 var USER_AGENT = "go-cisco-catalystsdk/" + VERSION
 
 type FileDownload struct {
@@ -39,16 +39,17 @@ func (f *FileDownload) SaveDownload(path string) error {
 	return ioutil.WriteFile(fpath, f.FileData, 0664)
 }
 
-// Client manages communication with the Cisco Catalyst Center API
+// Client manages communication with the Cisco DNA Center API
 type Client struct {
 	common service // Reuse a single struct instead of allocating one for each service on the heap.
 
 	// API Services
 	Authentication              *AuthenticationService
-	AIEndpointAnalytics         *AIEndpointAnalyticsService
+	AiEndpointAnalytics         *AiEndpointAnalyticsService
 	ApplicationPolicy           *ApplicationPolicyService
 	Applications                *ApplicationsService
 	AuthenticationManagement    *AuthenticationManagementService
+	Backup                      *BackupService
 	CiscoIMC                    *CiscoIMCService
 	CiscoTrustedCertificates    *CiscoTrustedCertificatesService
 	Clients                     *ClientsService
@@ -61,20 +62,23 @@ type Client struct {
 	Devices                     *DevicesService
 	DisasterRecovery            *DisasterRecoveryService
 	Discovery                   *DiscoveryService
-	EoX                         *EoXService
+	Eox                         *EoxService
 	EventManagement             *EventManagementService
 	FabricWireless              *FabricWirelessService
 	File                        *FileService
 	HealthAndPerformance        *HealthAndPerformanceService
 	Itsm                        *ItsmService
 	ItsmIntegration             *ItsmIntegrationService
+	IndustrialConfiguration     *IndustrialConfigurationService
 	Issues                      *IssuesService
+	KnowYourNetwork             *KnowYourNetworkService
 	LanAutomation               *LanAutomationService
 	Licenses                    *LicensesService
 	NetworkSettings             *NetworkSettingsService
 	PathTrace                   *PathTraceService
 	Platform                    *PlatformService
 	Reports                     *ReportsService
+	Restore                     *RestoreService
 	Sda                         *SdaService
 	SecurityAdvisories          *SecurityAdvisoriesService
 	Sensors                     *SensorsService
@@ -87,6 +91,7 @@ type Client struct {
 	Topology                    *TopologyService
 	UserandRoles                *UserandRolesService
 	Users                       *UsersService
+	Wired                       *WiredService
 	Wireless                    *WirelessService
 	CustomCall                  *CustomCallService
 }
@@ -100,7 +105,7 @@ func (s *Client) SetAuthToken(accessToken string) {
 	s.common.client.SetHeader("X-Auth-Token", accessToken)
 }
 
-// Error indicates an error from the invocation of a Cisco Catalyst Center API.
+// Error indicates an error from the invocation of a Cisco DNA Center API.
 var Error map[string]interface{}
 
 // NewClient creates a new API client. Requires a userAgent string describing your application.
@@ -130,6 +135,7 @@ func NewClientWithOptions(baseURL string, username string, password string, debu
 	} else {
 		user = " "
 	}
+
 	err = SetOptions(baseURL, username, password, debug, sslVerify, waitTimeToManyRequest, user)
 	if err != nil {
 		return nil, err
@@ -161,7 +167,7 @@ func SetOptions(baseURL string, username string, password string, debug string, 
 	if err != nil {
 		return err
 	}
-	err = os.Setenv(CATALYST_USER_STRING, userString)
+	err = os.Setenv(USER_STRING, userString)
 	if err != nil {
 		return err
 	}
@@ -180,7 +186,7 @@ func SetOptions(baseURL string, username string, password string, debug string, 
 }
 
 func GetUserAgent() string {
-	return USER_AGENT + os.Getenv(CATALYST_USER_STRING)
+	return USER_AGENT + os.Getenv(USER_STRING)
 }
 
 // NewClientNoAuth returns the client object without trying to authenticate
@@ -188,6 +194,7 @@ func NewClientNoAuth() (*Client, error) {
 	var err error
 
 	client := resty.New()
+
 	client.SetHeader("User-Agent", GetUserAgent())
 	c := &Client{}
 	c.common.client = client
@@ -222,7 +229,7 @@ func NewClientNoAuth() (*Client, error) {
 			retry := false
 			if r.StatusCode() == http.StatusUnauthorized {
 				cl := resty.New()
-				cl.SetHeader("User-Agent", GetUserAgent())
+				cl.SetHeader("User-Agent", USER_AGENT)
 
 				username := os.Getenv("CATALYST_USERNAME")
 				password := os.Getenv("CATALYST_PASSWORD")
@@ -249,7 +256,7 @@ func NewClientNoAuth() (*Client, error) {
 				r.Request.SetHeader("X-auth-token", result.Token)
 			}
 			if strings.Contains(r.Request.URL, "/dna/intent/api/v1/dnacaap/management/execution-status/") {
-				if strings.Contains(r.Request.Result.(*ResponseTaskGetBusinessAPIExecutionDetailsV1).BapiError, "Rate Limit") && statusIsFailure(r.Request.Result.(*ResponseTaskGetBusinessAPIExecutionDetailsV1).Status) {
+				if strings.Contains(r.Request.Result.(*ResponseTaskGetBusinessAPIExecutionDetails).BapiError, "Rate Limit") && statusIsFailure(r.Request.Result.(*ResponseTaskGetBusinessAPIExecutionDetails).Status) {
 					retry = true
 				}
 			}
@@ -271,10 +278,11 @@ func NewClientNoAuth() (*Client, error) {
 	}
 
 	c.Authentication = (*AuthenticationService)(&c.common)
-	c.AIEndpointAnalytics = (*AIEndpointAnalyticsService)(&c.common)
+	c.AiEndpointAnalytics = (*AiEndpointAnalyticsService)(&c.common)
 	c.ApplicationPolicy = (*ApplicationPolicyService)(&c.common)
 	c.Applications = (*ApplicationsService)(&c.common)
 	c.AuthenticationManagement = (*AuthenticationManagementService)(&c.common)
+	c.Backup = (*BackupService)(&c.common)
 	c.CiscoIMC = (*CiscoIMCService)(&c.common)
 	c.CiscoTrustedCertificates = (*CiscoTrustedCertificatesService)(&c.common)
 	c.Clients = (*ClientsService)(&c.common)
@@ -287,20 +295,23 @@ func NewClientNoAuth() (*Client, error) {
 	c.Devices = (*DevicesService)(&c.common)
 	c.DisasterRecovery = (*DisasterRecoveryService)(&c.common)
 	c.Discovery = (*DiscoveryService)(&c.common)
-	c.EoX = (*EoXService)(&c.common)
+	c.Eox = (*EoxService)(&c.common)
 	c.EventManagement = (*EventManagementService)(&c.common)
 	c.FabricWireless = (*FabricWirelessService)(&c.common)
 	c.File = (*FileService)(&c.common)
 	c.HealthAndPerformance = (*HealthAndPerformanceService)(&c.common)
 	c.Itsm = (*ItsmService)(&c.common)
 	c.ItsmIntegration = (*ItsmIntegrationService)(&c.common)
+	c.IndustrialConfiguration = (*IndustrialConfigurationService)(&c.common)
 	c.Issues = (*IssuesService)(&c.common)
+	c.KnowYourNetwork = (*KnowYourNetworkService)(&c.common)
 	c.LanAutomation = (*LanAutomationService)(&c.common)
 	c.Licenses = (*LicensesService)(&c.common)
 	c.NetworkSettings = (*NetworkSettingsService)(&c.common)
 	c.PathTrace = (*PathTraceService)(&c.common)
 	c.Platform = (*PlatformService)(&c.common)
 	c.Reports = (*ReportsService)(&c.common)
+	c.Restore = (*RestoreService)(&c.common)
 	c.Sda = (*SdaService)(&c.common)
 	c.SecurityAdvisories = (*SecurityAdvisoriesService)(&c.common)
 	c.Sensors = (*SensorsService)(&c.common)
@@ -313,6 +324,7 @@ func NewClientNoAuth() (*Client, error) {
 	c.Topology = (*TopologyService)(&c.common)
 	c.UserandRoles = (*UserandRolesService)(&c.common)
 	c.Users = (*UsersService)(&c.common)
+	c.Wired = (*WiredService)(&c.common)
 	c.Wireless = (*WirelessService)(&c.common)
 	c.CustomCall = (*CustomCallService)(&c.common)
 
@@ -327,7 +339,7 @@ func NewClientWithOptionsNoAuth(baseURL string, username string, password string
 	if len(userString) > 0 {
 		user = "-" + userString[0]
 	} else {
-		user = ""
+		user = " "
 	}
 
 	err = SetOptions(baseURL, username, password, debug, sslVerify, waitTimeToManyRequest, user)
@@ -375,7 +387,7 @@ func (s *Client) AuthClient() error {
 
 // RestyClient returns the resty.Client used by the sdk
 func (s *Client) RestyClient() *resty.Client {
-	s.common.client.SetHeader("User-Agent", GetUserAgent())
+	s.common.client.SetHeader("User-Agent", USER_AGENT)
 	return s.common.client
 }
 

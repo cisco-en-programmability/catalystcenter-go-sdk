@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.0]
+### Changes
+- New services for Cisco Catalyst Center 3.1.0.3's API
+
 ## [2.0.3] - 2025-02-25
 ### Changes
 - Response modification of the UpdateInterfaceDetailsV1 function

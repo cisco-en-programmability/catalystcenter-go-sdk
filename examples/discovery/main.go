@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v2/sdk"
+	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v3/sdk"
 )
 
 // Client is Catalyst Center API client
@@ -19,7 +19,7 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-	queryParams1 := catalyst.GetGlobalCredentialsV1QueryParams{}
+	queryParams1 := catalyst.GetGlobalCredentialsQueryParams{}
 
 	queryParams1.CredentialSubType = "HTTP_WRITE"
 	nResponse, _, err := client.Discovery.GetGlobalCredentials(&queryParams1)

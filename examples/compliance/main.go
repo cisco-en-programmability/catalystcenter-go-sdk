@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v2/sdk"
+	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v3/sdk"
 )
 
 // client is Catalyst Center API client
@@ -22,7 +22,7 @@ func main() {
 	}
 
 	fmt.Println("Printing ComplianceDetailCount")
-	getComplianceDetailCountQueryParams := &catalyst.GetComplianceDetailCountV1QueryParams{}
+	getComplianceDetailCountQueryParams := &catalyst.GetComplianceDetailCountQueryParams{}
 
 	respComplianceDetailCount, _, err := client.Compliance.GetComplianceDetailCount(getComplianceDetailCountQueryParams)
 	if err != nil {
@@ -39,7 +39,7 @@ func main() {
 
 	fmt.Println("Printing ComplianceStatus")
 
-	getGetComplianceStatusQueryParams := &catalyst.GetComplianceStatusV1QueryParams{}
+	getGetComplianceStatusQueryParams := &catalyst.GetComplianceStatusQueryParams{}
 	respComplianceStatus, _, err := client.Compliance.GetComplianceStatus(getGetComplianceStatusQueryParams)
 	if err != nil {
 		fmt.Println(err)
@@ -54,7 +54,7 @@ func main() {
 	}
 
 	fmt.Println("Printing ComplianceDetails")
-	getComplianceDetailQueryParams := &catalyst.GetComplianceDetailV1QueryParams{}
+	getComplianceDetailQueryParams := &catalyst.GetComplianceDetailQueryParams{}
 	respComplianceDetail, _, err := client.Compliance.GetComplianceDetail(getComplianceDetailQueryParams)
 	if err != nil {
 		fmt.Println(err)
@@ -70,7 +70,7 @@ func main() {
 	}
 
 	fmt.Println("Printing ComplianceDetailsCount")
-	getComplianceStatusCountQueryParams := &catalyst.GetComplianceStatusCountV1QueryParams{}
+	getComplianceStatusCountQueryParams := &catalyst.GetComplianceStatusCountQueryParams{}
 	respComplianceStatusCount, _, err := client.Compliance.GetComplianceStatusCount(getComplianceStatusCountQueryParams)
 	if err != nil {
 		fmt.Println(err)
@@ -85,7 +85,7 @@ func main() {
 	}
 
 	fmt.Println("Printing ComplianceDetailsOfDevice")
-	getComplianceDetailsOfDeviceQueryParams := &catalyst.ComplianceDetailsOfDeviceV1QueryParams{}
+	getComplianceDetailsOfDeviceQueryParams := &catalyst.ComplianceDetailsOfDeviceQueryParams{}
 	respComplianceDetailsOfDevice, _, err := client.Compliance.ComplianceDetailsOfDevice(deviceUUID, getComplianceDetailsOfDeviceQueryParams)
 	if err != nil {
 		fmt.Println(err)
@@ -101,7 +101,7 @@ func main() {
 
 	fmt.Println("POST RunCompiliance")
 	triggerFull := true
-	reqBody := &catalyst.RequestComplianceRunComplianceV1{
+	reqBody := &catalyst.RequestComplianceRunCompliance{
 		TriggerFull: &triggerFull,
 		Categories:  []string{"PSIRT"},
 		DeviceUUIDs: []string{deviceUUID},

@@ -11,27 +11,27 @@ import (
 
 type DiscoveryService service
 
-type GetDiscoveryJobsByIPV1QueryParams struct {
+type GetDiscoveryJobsByIPQueryParams struct {
 	Offset    int    `url:"offset,omitempty"`    //offset
-	Limit     int    `url:"limit,omitempty"`     //limit
+	Limit     int    `url:"limit,omitempty"`     //The number of records to show for this page. Min: 1, Max: 500
 	IPAddress string `url:"ipAddress,omitempty"` //ipAddress
 	Name      string `url:"name,omitempty"`      //name
 }
-type GetListOfDiscoveriesByDiscoveryIDV1QueryParams struct {
+type GetListOfDiscoveriesByDiscoveryIDQueryParams struct {
 	Offset    int    `url:"offset,omitempty"`    //Starting index for the records
 	Limit     int    `url:"limit,omitempty"`     //Number of records to fetch from the starting index. Min: 1, Max: 500
 	IPAddress string `url:"ipAddress,omitempty"` //Filter records based on IP address
 }
-type GetDiscoveredNetworkDevicesByDiscoveryIDV1QueryParams struct {
+type GetDiscoveredNetworkDevicesByDiscoveryIDQueryParams struct {
 	TaskID string `url:"taskId,omitempty"` //taskId
 }
-type GetDevicesDiscoveredByIDV1QueryParams struct {
+type GetDevicesDiscoveredByIDQueryParams struct {
 	TaskID string `url:"taskId,omitempty"` //taskId
 }
-type GetDiscoveredDevicesByRangeV1QueryParams struct {
+type GetDiscoveredDevicesByRangeQueryParams struct {
 	TaskID string `url:"taskId,omitempty"` //taskId
 }
-type GetNetworkDevicesFromDiscoveryV1QueryParams struct {
+type GetNetworkDevicesFromDiscoveryQueryParams struct {
 	TaskID        string   `url:"taskId,omitempty"`        //taskId
 	SortBy        string   `url:"sortBy,omitempty"`        //Sort by field. Available values are pingStatus, cliStatus,snmpStatus, httpStatus and netconfStatus
 	SortOrder     string   `url:"sortOrder,omitempty"`     //Order of sorting based on sortBy. Available values are 'asc' and 'des'
@@ -42,115 +42,115 @@ type GetNetworkDevicesFromDiscoveryV1QueryParams struct {
 	NetconfStatus []string `url:"netconfStatus,omitempty"` //NETCONF status for the IP during the job run. Available values are 'SUCCESS', 'FAILURE', 'NOT-PROVIDED' and 'NOT-VALIDATED'
 	HTTPStatus    []string `url:"httpStatus,omitempty"`    //HTTP staus for the IP during the job run. Available values are 'SUCCESS', 'FAILURE', 'NOT-PROVIDED' and 'NOT-VALIDATED'
 }
-type GetGlobalCredentialsV1QueryParams struct {
+type GetGlobalCredentialsQueryParams struct {
 	CredentialSubType string `url:"credentialSubType,omitempty"` //Credential type as CLI / SNMPV2_READ_COMMUNITY / SNMPV2_WRITE_COMMUNITY / SNMPV3 / HTTP_WRITE / HTTP_READ / NETCONF
 	SortBy            string `url:"sortBy,omitempty"`            //Field to sort the results by. Sorts by 'instanceId' if no value is provided
 	Order             string `url:"order,omitempty"`             //Order of sorting. 'asc' or 'des'
 }
 
-type ResponseDiscoveryDeleteAllDiscoveryV1 struct {
-	Response *ResponseDiscoveryDeleteAllDiscoveryV1Response `json:"response,omitempty"` //
-	Version  string                                         `json:"version,omitempty"`  //
+type ResponseDiscoveryDeleteAllDiscovery struct {
+	Response *ResponseDiscoveryDeleteAllDiscoveryResponse `json:"response,omitempty"` //
+	Version  string                                       `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryDeleteAllDiscoveryV1Response struct {
+type ResponseDiscoveryDeleteAllDiscoveryResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
 	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1 struct {
-	Response *ResponseDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1Response `json:"response,omitempty"` //
-	Version  string                                                              `json:"version,omitempty"`  //
+type ResponseDiscoveryUpdatesAnExistingDiscoveryBySpecifiedID struct {
+	Response *ResponseDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDResponse `json:"response,omitempty"` //
+	Version  string                                                            `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1Response struct {
+type ResponseDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
 	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryStartDiscoveryV1 struct {
-	Response *ResponseDiscoveryStartDiscoveryV1Response `json:"response,omitempty"` //
-	Version  string                                     `json:"version,omitempty"`  //
+type ResponseDiscoveryStartDiscovery struct {
+	Response *ResponseDiscoveryStartDiscoveryResponse `json:"response,omitempty"` //
+	Version  string                                   `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryStartDiscoveryV1Response struct {
+type ResponseDiscoveryStartDiscoveryResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
 	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryGetCountOfAllDiscoveryJobsV1 struct {
+type ResponseDiscoveryGetCountOfAllDiscoveryJobs struct {
 	Response *int   `json:"response,omitempty"` // The count of all available discovery jobs
 	Version  string `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryGetDiscoveryJobsByIPV1 struct {
-	Response *[]ResponseDiscoveryGetDiscoveryJobsByIPV1Response `json:"response,omitempty"` //
-	Version  string                                             `json:"version,omitempty"`  //
+type ResponseDiscoveryGetDiscoveryJobsByIP struct {
+	Response *[]ResponseDiscoveryGetDiscoveryJobsByIPResponse `json:"response,omitempty"` //
+	Version  string                                           `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryGetDiscoveryJobsByIPV1Response struct {
-	AttributeInfo               *ResponseDiscoveryGetDiscoveryJobsByIPV1ResponseAttributeInfo `json:"attributeInfo,omitempty"`               //
-	Clistatus                   string                                                        `json:"cliStatus,omitempty"`                   //
-	DiscoveryStatus             string                                                        `json:"discoveryStatus,omitempty"`             //
-	EndTime                     string                                                        `json:"endTime,omitempty"`                     //
-	HTTPStatus                  string                                                        `json:"httpStatus,omitempty"`                  //
-	ID                          string                                                        `json:"id,omitempty"`                          //
-	InventoryCollectionStatus   string                                                        `json:"inventoryCollectionStatus,omitempty"`   //
-	InventoryReachabilityStatus string                                                        `json:"inventoryReachabilityStatus,omitempty"` //
-	IPAddress                   string                                                        `json:"ipAddress,omitempty"`                   //
-	JobStatus                   string                                                        `json:"jobStatus,omitempty"`                   //
-	Name                        string                                                        `json:"name,omitempty"`                        //
-	NetconfStatus               string                                                        `json:"netconfStatus,omitempty"`               //
-	PingStatus                  string                                                        `json:"pingStatus,omitempty"`                  //
-	SNMPStatus                  string                                                        `json:"snmpStatus,omitempty"`                  //
-	StartTime                   string                                                        `json:"startTime,omitempty"`                   //
-	TaskID                      string                                                        `json:"taskId,omitempty"`                      //
+type ResponseDiscoveryGetDiscoveryJobsByIPResponse struct {
+	AttributeInfo               *ResponseDiscoveryGetDiscoveryJobsByIPResponseAttributeInfo `json:"attributeInfo,omitempty"`               //
+	Clistatus                   string                                                      `json:"cliStatus,omitempty"`                   //
+	DiscoveryStatus             string                                                      `json:"discoveryStatus,omitempty"`             //
+	EndTime                     string                                                      `json:"endTime,omitempty"`                     //
+	HTTPStatus                  string                                                      `json:"httpStatus,omitempty"`                  //
+	ID                          string                                                      `json:"id,omitempty"`                          //
+	InventoryCollectionStatus   string                                                      `json:"inventoryCollectionStatus,omitempty"`   //
+	InventoryReachabilityStatus string                                                      `json:"inventoryReachabilityStatus,omitempty"` //
+	IPAddress                   string                                                      `json:"ipAddress,omitempty"`                   //
+	JobStatus                   string                                                      `json:"jobStatus,omitempty"`                   //
+	Name                        string                                                      `json:"name,omitempty"`                        //
+	NetconfStatus               string                                                      `json:"netconfStatus,omitempty"`               //
+	PingStatus                  string                                                      `json:"pingStatus,omitempty"`                  //
+	SNMPStatus                  string                                                      `json:"snmpStatus,omitempty"`                  //
+	StartTime                   string                                                      `json:"startTime,omitempty"`                   //
+	TaskID                      string                                                      `json:"taskId,omitempty"`                      //
 }
-type ResponseDiscoveryGetDiscoveryJobsByIPV1ResponseAttributeInfo interface{}
-type ResponseDiscoveryDeleteDiscoveryByIDV1 struct {
-	Response *ResponseDiscoveryDeleteDiscoveryByIDV1Response `json:"response,omitempty"` //
-	Version  string                                          `json:"version,omitempty"`  //
+type ResponseDiscoveryGetDiscoveryJobsByIPResponseAttributeInfo interface{}
+type ResponseDiscoveryDeleteDiscoveryByID struct {
+	Response *ResponseDiscoveryDeleteDiscoveryByIDResponse `json:"response,omitempty"` //
+	Version  string                                        `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryDeleteDiscoveryByIDV1Response struct {
+type ResponseDiscoveryDeleteDiscoveryByIDResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
 	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryGetDiscoveryByIDV1 struct {
-	Response *ResponseDiscoveryGetDiscoveryByIDV1Response `json:"response,omitempty"` //
-	Version  string                                       `json:"version,omitempty"`  //
+type ResponseDiscoveryGetDiscoveryByID struct {
+	Response *ResponseDiscoveryGetDiscoveryByIDResponse `json:"response,omitempty"` //
+	Version  string                                     `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryGetDiscoveryByIDV1Response struct {
-	AttributeInfo          *ResponseDiscoveryGetDiscoveryByIDV1ResponseAttributeInfo       `json:"attributeInfo,omitempty"`          // Deprecated
-	CdpLevel               *int                                                            `json:"cdpLevel,omitempty"`               // CDP level to which neighbor devices to be discovered
-	DeviceIDs              string                                                          `json:"deviceIds,omitempty"`              // Ids of the devices discovered in a discovery
-	DiscoveryCondition     string                                                          `json:"discoveryCondition,omitempty"`     // To indicate the discovery status. Available options: Complete or In Progress
-	DiscoveryStatus        string                                                          `json:"discoveryStatus,omitempty"`        // Status of the discovery. Available options are: Active, Inactive, Edit
-	DiscoveryType          string                                                          `json:"discoveryType,omitempty"`          // Type of the discovery. Available types are: 'Single', 'Range', 'CDP', 'LLDP', 'CIDR'
-	EnablePasswordList     string                                                          `json:"enablePasswordList,omitempty"`     // Enable Password of the devices to be discovered
-	GlobalCredentialIDList []string                                                        `json:"globalCredentialIdList,omitempty"` // List of global credential ids to be used
-	HTTPReadCredential     *ResponseDiscoveryGetDiscoveryByIDV1ResponseHTTPReadCredential  `json:"httpReadCredential,omitempty"`     //
-	HTTPWriteCredential    *ResponseDiscoveryGetDiscoveryByIDV1ResponseHTTPWriteCredential `json:"httpWriteCredential,omitempty"`    //
-	ID                     string                                                          `json:"id,omitempty"`                     // Unique Discovery Id
-	IPAddressList          string                                                          `json:"ipAddressList,omitempty"`          // List of IP address of the devices to be discovered
-	IPFilterList           string                                                          `json:"ipFilterList,omitempty"`           // IP addresses of the devices to be filtered
-	IsAutoCdp              *bool                                                           `json:"isAutoCdp,omitempty"`              // Flag to mention if CDP discovery or not
-	LldpLevel              *int                                                            `json:"lldpLevel,omitempty"`              // LLDP level to which neighbor devices to be discovered
-	Name                   string                                                          `json:"name,omitempty"`                   // Name for the discovery
-	NetconfPort            string                                                          `json:"netconfPort,omitempty"`            // Netconf port on the device. Netconf will need valid sshv2 credentials for it to work
-	NumDevices             *int                                                            `json:"numDevices,omitempty"`             // Number of devices discovered in the discovery
-	ParentDiscoveryID      string                                                          `json:"parentDiscoveryId,omitempty"`      // Parent Discovery Id from which the discovery was initiated
-	PasswordList           string                                                          `json:"passwordList,omitempty"`           // Password of the devices to be discovered
-	PreferredMgmtIPMethod  string                                                          `json:"preferredMgmtIPMethod,omitempty"`  // Preferred management IP method. Available options are '' and 'UseLoopBack'
-	ProtocolOrder          string                                                          `json:"protocolOrder,omitempty"`          // Order of protocol (ssh/telnet) in which device connection will be tried. Ex: 'telnet': only telnet; 'ssh,telnet': ssh with higher order than telnet
-	RetryCount             *int                                                            `json:"retryCount,omitempty"`             // Number of times to try establishing connection to device
-	SNMPAuthPassphrase     string                                                          `json:"snmpAuthPassphrase,omitempty"`     // Auth passphrase for SNMP
-	SNMPAuthProtocol       string                                                          `json:"snmpAuthProtocol,omitempty"`       // SNMP auth protocol. SHA' or 'MD5'
-	SNMPMode               string                                                          `json:"snmpMode,omitempty"`               // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
-	SNMPPrivPassphrase     string                                                          `json:"snmpPrivPassphrase,omitempty"`     // Passphrase for SNMP privacy
-	SNMPPrivProtocol       string                                                          `json:"snmpPrivProtocol,omitempty"`       // SNMP privacy protocol. 'AES128'
-	SNMPRoCommunity        string                                                          `json:"snmpRoCommunity,omitempty"`        // SNMP RO community of the devices to be discovered
-	SNMPRoCommunityDesc    string                                                          `json:"snmpRoCommunityDesc,omitempty"`    // Description for SNMP RO community
-	SNMPRwCommunity        string                                                          `json:"snmpRwCommunity,omitempty"`        // SNMP RW community of the devices to be discovered
-	SNMPRwCommunityDesc    string                                                          `json:"snmpRwCommunityDesc,omitempty"`    // Description for SNMP RW community
-	SNMPUserName           string                                                          `json:"snmpUserName,omitempty"`           // SNMP username of the device
-	TimeOut                *int                                                            `json:"timeOut,omitempty"`                // Time to wait for device response.
-	UpdateMgmtIP           *bool                                                           `json:"updateMgmtIp,omitempty"`           // Updates Maganement IP if multiple IPs are available for a device. If set to true, when a device is rediscovered with a different IP, the management IP is updated. Default value is false
-	UserNameList           string                                                          `json:"userNameList,omitempty"`           // Username of the devices to be discovered
+type ResponseDiscoveryGetDiscoveryByIDResponse struct {
+	AttributeInfo          *ResponseDiscoveryGetDiscoveryByIDResponseAttributeInfo       `json:"attributeInfo,omitempty"`          // Deprecated
+	CdpLevel               *int                                                          `json:"cdpLevel,omitempty"`               // CDP level to which neighbor devices to be discovered
+	DeviceIDs              string                                                        `json:"deviceIds,omitempty"`              // Ids of the devices discovered in a discovery
+	DiscoveryCondition     string                                                        `json:"discoveryCondition,omitempty"`     // To indicate the discovery status. Available options: Complete or In Progress
+	DiscoveryStatus        string                                                        `json:"discoveryStatus,omitempty"`        // Status of the discovery. Available options are: Active, Inactive, Edit
+	DiscoveryType          string                                                        `json:"discoveryType,omitempty"`          // Type of the discovery. Available types are: 'Single', 'Range', 'CDP', 'LLDP', 'CIDR'
+	EnablePasswordList     string                                                        `json:"enablePasswordList,omitempty"`     // Enable Password of the devices to be discovered
+	GlobalCredentialIDList []string                                                      `json:"globalCredentialIdList,omitempty"` // List of global credential ids to be used
+	HTTPReadCredential     *ResponseDiscoveryGetDiscoveryByIDResponseHTTPReadCredential  `json:"httpReadCredential,omitempty"`     //
+	HTTPWriteCredential    *ResponseDiscoveryGetDiscoveryByIDResponseHTTPWriteCredential `json:"httpWriteCredential,omitempty"`    //
+	ID                     string                                                        `json:"id,omitempty"`                     // Unique Discovery Id
+	IPAddressList          string                                                        `json:"ipAddressList,omitempty"`          // List of IP address of the devices to be discovered
+	IPFilterList           string                                                        `json:"ipFilterList,omitempty"`           // IP addresses of the devices to be filtered
+	IsAutoCdp              *bool                                                         `json:"isAutoCdp,omitempty"`              // Flag to mention if CDP discovery or not
+	LldpLevel              *int                                                          `json:"lldpLevel,omitempty"`              // LLDP level to which neighbor devices to be discovered
+	Name                   string                                                        `json:"name,omitempty"`                   // Name for the discovery
+	NetconfPort            string                                                        `json:"netconfPort,omitempty"`            // Netconf port on the device. Netconf will need valid sshv2 credentials for it to work
+	NumDevices             *int                                                          `json:"numDevices,omitempty"`             // Number of devices discovered in the discovery
+	ParentDiscoveryID      string                                                        `json:"parentDiscoveryId,omitempty"`      // Parent Discovery Id from which the discovery was initiated
+	PasswordList           string                                                        `json:"passwordList,omitempty"`           // Password of the devices to be discovered
+	PreferredMgmtIPMethod  string                                                        `json:"preferredMgmtIPMethod,omitempty"`  // Preferred management IP method. Available options are '' and 'UseLoopBack'
+	ProtocolOrder          string                                                        `json:"protocolOrder,omitempty"`          // Order of protocol (ssh/telnet) in which device connection will be tried. Ex: 'telnet': only telnet; 'ssh,telnet': ssh with higher order than telnet
+	RetryCount             *int                                                          `json:"retryCount,omitempty"`             // Number of times to try establishing connection to device
+	SNMPAuthPassphrase     string                                                        `json:"snmpAuthPassphrase,omitempty"`     // Auth passphrase for SNMP
+	SNMPAuthProtocol       string                                                        `json:"snmpAuthProtocol,omitempty"`       // SNMP auth protocol. SHA' or 'MD5'
+	SNMPMode               string                                                        `json:"snmpMode,omitempty"`               // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
+	SNMPPrivPassphrase     string                                                        `json:"snmpPrivPassphrase,omitempty"`     // Passphrase for SNMP privacy
+	SNMPPrivProtocol       string                                                        `json:"snmpPrivProtocol,omitempty"`       // SNMP privacy protocol. 'AES128'
+	SNMPRoCommunity        string                                                        `json:"snmpRoCommunity,omitempty"`        // SNMP RO community of the devices to be discovered
+	SNMPRoCommunityDesc    string                                                        `json:"snmpRoCommunityDesc,omitempty"`    // Description for SNMP RO community
+	SNMPRwCommunity        string                                                        `json:"snmpRwCommunity,omitempty"`        // SNMP RW community of the devices to be discovered
+	SNMPRwCommunityDesc    string                                                        `json:"snmpRwCommunityDesc,omitempty"`    // Description for SNMP RW community
+	SNMPUserName           string                                                        `json:"snmpUserName,omitempty"`           // SNMP username of the device
+	TimeOut                *int                                                          `json:"timeOut,omitempty"`                // Time to wait for device response.
+	UpdateMgmtIP           *bool                                                         `json:"updateMgmtIp,omitempty"`           // Updates Maganement IP if multiple IPs are available for a device. If set to true, when a device is rediscovered with a different IP, the management IP is updated. Default value is false
+	UserNameList           string                                                        `json:"userNameList,omitempty"`           // Username of the devices to be discovered
 }
-type ResponseDiscoveryGetDiscoveryByIDV1ResponseAttributeInfo interface{}
-type ResponseDiscoveryGetDiscoveryByIDV1ResponseHTTPReadCredential struct {
+type ResponseDiscoveryGetDiscoveryByIDResponseAttributeInfo interface{}
+type ResponseDiscoveryGetDiscoveryByIDResponseHTTPReadCredential struct {
 	Comments         string `json:"comments,omitempty"`         // Comments to identify the credential
 	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the credential
 	Description      string `json:"description,omitempty"`      // Description of the credential
@@ -162,7 +162,7 @@ type ResponseDiscoveryGetDiscoveryByIDV1ResponseHTTPReadCredential struct {
 	Secure           *bool  `json:"secure,omitempty"`           // Flag for HTTPS
 	Username         string `json:"username,omitempty"`         // HTTP(S) username
 }
-type ResponseDiscoveryGetDiscoveryByIDV1ResponseHTTPWriteCredential struct {
+type ResponseDiscoveryGetDiscoveryByIDResponseHTTPWriteCredential struct {
 	Comments         string `json:"comments,omitempty"`         // Comments to identify the credential
 	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the credential
 	Description      string `json:"description,omitempty"`      // Description of the credential
@@ -174,34 +174,34 @@ type ResponseDiscoveryGetDiscoveryByIDV1ResponseHTTPWriteCredential struct {
 	Secure           *bool  `json:"secure,omitempty"`           // Flag for HTTPS
 	Username         string `json:"username,omitempty"`         // HTTP(S) username
 }
-type ResponseDiscoveryGetListOfDiscoveriesByDiscoveryIDV1 struct {
-	Response *[]ResponseDiscoveryGetListOfDiscoveriesByDiscoveryIDV1Response `json:"response,omitempty"` //
-	Version  string                                                          `json:"version,omitempty"`  //
+type ResponseDiscoveryGetListOfDiscoveriesByDiscoveryID struct {
+	Response *[]ResponseDiscoveryGetListOfDiscoveriesByDiscoveryIDResponse `json:"response,omitempty"` //
+	Version  string                                                        `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryGetListOfDiscoveriesByDiscoveryIDV1Response struct {
-	AttributeInfo               *ResponseDiscoveryGetListOfDiscoveriesByDiscoveryIDV1ResponseAttributeInfo `json:"attributeInfo,omitempty"`               // Deprecated
-	Clistatus                   string                                                                     `json:"cliStatus,omitempty"`                   // CLI status for the IP during the job run. Available values are 'SUCCESS', 'FAILURE', 'NOT-PROVIDED' and 'NOT-VALIDATED'
-	DiscoveryStatus             string                                                                     `json:"discoveryStatus,omitempty"`             // Status of the discovery. Available options are: MANAGED_DEVICES, UNMANAGED_DEVICES, DISCARDED_DEVICES
-	EndTime                     string                                                                     `json:"endTime,omitempty"`                     // End time for the discovery job
-	HTTPStatus                  string                                                                     `json:"httpStatus,omitempty"`                  // HTTP status for the IP during the job run. Available values are 'SUCCESS', 'FAILURE', 'NOT-PROVIDED' and 'NOT-VALIDATED'
-	ID                          string                                                                     `json:"id,omitempty"`                          // Discovery Id
-	InventoryCollectionStatus   string                                                                     `json:"inventoryCollectionStatus,omitempty"`   // Last known inventory collection status of the device. Available values are 'MANAGED', 'ABORTED', 'FAILED', 'PARTIAL COLLECTION FAILURE' and 'NOT-AVAILABLE'
-	InventoryReachabilityStatus string                                                                     `json:"inventoryReachabilityStatus,omitempty"` // Last known reachability status of the device. Available values are : 'Reachable', 'Unreachable', 'PingReachable' and 'NOT-AVAILABLE'
-	IPAddress                   string                                                                     `json:"ipAddress,omitempty"`                   // IP Address of the device
-	JobStatus                   string                                                                     `json:"jobStatus,omitempty"`                   // Status of the job
-	Name                        string                                                                     `json:"name,omitempty"`                        // Discovery name
-	NetconfStatus               string                                                                     `json:"netconfStatus,omitempty"`               // NETCONF status for the IP during the job run. Available values are 'SUCCESS', 'FAILURE', 'NOT-PROVIDED' and 'NOT-VALIDATED'
-	PingStatus                  string                                                                     `json:"pingStatus,omitempty"`                  // Ping status for the IP during the job run. Available values are 'SUCCESS', 'FAILURE', 'NOT-PROVIDED' and 'NOT-VALIDATED
-	SNMPStatus                  string                                                                     `json:"snmpStatus,omitempty"`                  // SNMP status for the IP during the job run. Available values are 'SUCCESS', 'FAILURE', 'NOT-PROVIDED' and 'NOT-VALIDATED'
-	StartTime                   string                                                                     `json:"startTime,omitempty"`                   // Discovery job start time
-	TaskID                      string                                                                     `json:"taskId,omitempty"`                      // Discovery job task id
+type ResponseDiscoveryGetListOfDiscoveriesByDiscoveryIDResponse struct {
+	AttributeInfo               *ResponseDiscoveryGetListOfDiscoveriesByDiscoveryIDResponseAttributeInfo `json:"attributeInfo,omitempty"`               // Deprecated
+	Clistatus                   string                                                                   `json:"cliStatus,omitempty"`                   // CLI status for the IP during the job run. Available values are 'SUCCESS', 'FAILURE', 'NOT-PROVIDED' and 'NOT-VALIDATED'
+	DiscoveryStatus             string                                                                   `json:"discoveryStatus,omitempty"`             // Status of the discovery. Available options are: MANAGED_DEVICES, UNMANAGED_DEVICES, DISCARDED_DEVICES
+	EndTime                     string                                                                   `json:"endTime,omitempty"`                     // End time for the discovery job
+	HTTPStatus                  string                                                                   `json:"httpStatus,omitempty"`                  // HTTP status for the IP during the job run. Available values are 'SUCCESS', 'FAILURE', 'NOT-PROVIDED' and 'NOT-VALIDATED'
+	ID                          string                                                                   `json:"id,omitempty"`                          // Discovery Id
+	InventoryCollectionStatus   string                                                                   `json:"inventoryCollectionStatus,omitempty"`   // Last known inventory collection status of the device. Available values are 'MANAGED', 'ABORTED', 'FAILED', 'PARTIAL COLLECTION FAILURE' and 'NOT-AVAILABLE'
+	InventoryReachabilityStatus string                                                                   `json:"inventoryReachabilityStatus,omitempty"` // Last known reachability status of the device. Available values are : 'Reachable', 'Unreachable', 'PingReachable' and 'NOT-AVAILABLE'
+	IPAddress                   string                                                                   `json:"ipAddress,omitempty"`                   // IP Address of the device
+	JobStatus                   string                                                                   `json:"jobStatus,omitempty"`                   // Status of the job
+	Name                        string                                                                   `json:"name,omitempty"`                        // Discovery name
+	NetconfStatus               string                                                                   `json:"netconfStatus,omitempty"`               // NETCONF status for the IP during the job run. Available values are 'SUCCESS', 'FAILURE', 'NOT-PROVIDED' and 'NOT-VALIDATED'
+	PingStatus                  string                                                                   `json:"pingStatus,omitempty"`                  // Ping status for the IP during the job run. Available values are 'SUCCESS', 'FAILURE', 'NOT-PROVIDED' and 'NOT-VALIDATED
+	SNMPStatus                  string                                                                   `json:"snmpStatus,omitempty"`                  // SNMP status for the IP during the job run. Available values are 'SUCCESS', 'FAILURE', 'NOT-PROVIDED' and 'NOT-VALIDATED'
+	StartTime                   string                                                                   `json:"startTime,omitempty"`                   // Discovery job start time
+	TaskID                      string                                                                   `json:"taskId,omitempty"`                      // Discovery job task id
 }
-type ResponseDiscoveryGetListOfDiscoveriesByDiscoveryIDV1ResponseAttributeInfo interface{}
-type ResponseDiscoveryGetDiscoveredNetworkDevicesByDiscoveryIDV1 struct {
-	Response *[]ResponseDiscoveryGetDiscoveredNetworkDevicesByDiscoveryIDV1Response `json:"response,omitempty"` //
-	Version  string                                                                 `json:"version,omitempty"`  //
+type ResponseDiscoveryGetListOfDiscoveriesByDiscoveryIDResponseAttributeInfo interface{}
+type ResponseDiscoveryGetDiscoveredNetworkDevicesByDiscoveryID struct {
+	Response *[]ResponseDiscoveryGetDiscoveredNetworkDevicesByDiscoveryIDResponse `json:"response,omitempty"` //
+	Version  string                                                               `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryGetDiscoveredNetworkDevicesByDiscoveryIDV1Response struct {
+type ResponseDiscoveryGetDiscoveredNetworkDevicesByDiscoveryIDResponse struct {
 	AnchorWlcForAp              string `json:"anchorWlcForAp,omitempty"`              // Connected WLC device for AP
 	AuthModelID                 string `json:"authModelId,omitempty"`                 // Authentication model Id on device
 	AvgUpdateFrequency          *int   `json:"avgUpdateFrequency,omitempty"`          // Frequency in which interface info gets updated
@@ -249,15 +249,15 @@ type ResponseDiscoveryGetDiscoveredNetworkDevicesByDiscoveryIDV1Response struct 
 	Vendor                      string `json:"vendor,omitempty"`                      // Vendor information of the device
 	WlcApDeviceStatus           string `json:"wlcApDeviceStatus,omitempty"`           // Collection status of AP devices
 }
-type ResponseDiscoveryGetDevicesDiscoveredByIDV1 struct {
+type ResponseDiscoveryGetDevicesDiscoveredByID struct {
 	Response *int   `json:"response,omitempty"` // The count of network devices discovered in the given discovery
 	Version  string `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryGetDiscoveredDevicesByRangeV1 struct {
-	Response *[]ResponseDiscoveryGetDiscoveredDevicesByRangeV1Response `json:"response,omitempty"` //
-	Version  string                                                    `json:"version,omitempty"`  //
+type ResponseDiscoveryGetDiscoveredDevicesByRange struct {
+	Response *[]ResponseDiscoveryGetDiscoveredDevicesByRangeResponse `json:"response,omitempty"` //
+	Version  string                                                  `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryGetDiscoveredDevicesByRangeV1Response struct {
+type ResponseDiscoveryGetDiscoveredDevicesByRangeResponse struct {
 	AnchorWlcForAp              string `json:"anchorWlcForAp,omitempty"`              // Connected WLC device for AP
 	AuthModelID                 string `json:"authModelId,omitempty"`                 // Authentication model Id on device
 	AvgUpdateFrequency          *int   `json:"avgUpdateFrequency,omitempty"`          // Frequency in which interface info gets updated
@@ -305,62 +305,62 @@ type ResponseDiscoveryGetDiscoveredDevicesByRangeV1Response struct {
 	Vendor                      string `json:"vendor,omitempty"`                      // Vendor information of the device
 	WlcApDeviceStatus           string `json:"wlcApDeviceStatus,omitempty"`           // Collection status of AP devices
 }
-type ResponseDiscoveryGetNetworkDevicesFromDiscoveryV1 struct {
+type ResponseDiscoveryGetNetworkDevicesFromDiscovery struct {
 	Response *int   `json:"response,omitempty"` // The number of network devices from the discovery job based on the given filters
 	Version  string `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryDeleteDiscoveryBySpecifiedRangeV1 struct {
-	Response *ResponseDiscoveryDeleteDiscoveryBySpecifiedRangeV1Response `json:"response,omitempty"` //
-	Version  string                                                      `json:"version,omitempty"`  //
+type ResponseDiscoveryDeleteDiscoveryBySpecifiedRange struct {
+	Response *ResponseDiscoveryDeleteDiscoveryBySpecifiedRangeResponse `json:"response,omitempty"` //
+	Version  string                                                    `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryDeleteDiscoveryBySpecifiedRangeV1Response struct {
+type ResponseDiscoveryDeleteDiscoveryBySpecifiedRangeResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
 	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryGetDiscoveriesByRangeV1 struct {
-	Response *[]ResponseDiscoveryGetDiscoveriesByRangeV1Response `json:"response,omitempty"` //
-	Version  string                                              `json:"version,omitempty"`  //
+type ResponseDiscoveryGetDiscoveriesByRange struct {
+	Response *[]ResponseDiscoveryGetDiscoveriesByRangeResponse `json:"response,omitempty"` //
+	Version  string                                            `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryGetDiscoveriesByRangeV1Response struct {
-	AttributeInfo          *ResponseDiscoveryGetDiscoveriesByRangeV1ResponseAttributeInfo       `json:"attributeInfo,omitempty"`          // Deprecated
-	CdpLevel               *int                                                                 `json:"cdpLevel,omitempty"`               // CDP level to which neighbor devices to be discovered
-	DeviceIDs              string                                                               `json:"deviceIds,omitempty"`              // Ids of the devices discovered in a discovery
-	DiscoveryCondition     string                                                               `json:"discoveryCondition,omitempty"`     // To indicate the discovery status. Available options: Complete or In Progress
-	DiscoveryStatus        string                                                               `json:"discoveryStatus,omitempty"`        // Status of the discovery. Available options are: Active, Inactive, Edit
-	DiscoveryType          string                                                               `json:"discoveryType,omitempty"`          // Type of the discovery. 'Single', 'Range', 'CDP', 'LLDP', 'CIDR'
-	EnablePasswordList     string                                                               `json:"enablePasswordList,omitempty"`     // Enable Password of the devices to be discovered
-	GlobalCredentialIDList []string                                                             `json:"globalCredentialIdList,omitempty"` // List of global credential ids to be used
-	HTTPReadCredential     *ResponseDiscoveryGetDiscoveriesByRangeV1ResponseHTTPReadCredential  `json:"httpReadCredential,omitempty"`     //
-	HTTPWriteCredential    *ResponseDiscoveryGetDiscoveriesByRangeV1ResponseHTTPWriteCredential `json:"httpWriteCredential,omitempty"`    //
-	ID                     string                                                               `json:"id,omitempty"`                     // Unique Discovery Id
-	IPAddressList          string                                                               `json:"ipAddressList,omitempty"`          // List of IP address of the devices to be discovered
-	IPFilterList           string                                                               `json:"ipFilterList,omitempty"`           // IP addresses of the devices to be filtered
-	IsAutoCdp              *bool                                                                `json:"isAutoCdp,omitempty"`              // Flag to mention if CDP discovery or not
-	LldpLevel              *int                                                                 `json:"lldpLevel,omitempty"`              // LLDP level to which neighbor devices to be discovered
-	Name                   string                                                               `json:"name,omitempty"`                   // Name for the discovery
-	NetconfPort            string                                                               `json:"netconfPort,omitempty"`            // Netconf port on the device. Netconf will need valid sshv2 credentials for it to work
-	NumDevices             *int                                                                 `json:"numDevices,omitempty"`             // Number of devices discovered in the discovery
-	ParentDiscoveryID      string                                                               `json:"parentDiscoveryId,omitempty"`      // Parent Discovery Id from which the discovery was initiated
-	PasswordList           string                                                               `json:"passwordList,omitempty"`           // Password of the devices to be discovered
-	PreferredMgmtIPMethod  string                                                               `json:"preferredMgmtIPMethod,omitempty"`  // Preferred management IP method. Available options are '' and 'UseLoopBack'
-	ProtocolOrder          string                                                               `json:"protocolOrder,omitempty"`          // Order of protocol (ssh/telnet) in which device connection will be tried. Ex: 'telnet': only telnet; 'ssh,telnet': ssh with higher order than telnet
-	RetryCount             *int                                                                 `json:"retryCount,omitempty"`             // Number of times to try establishing connection to device
-	SNMPAuthPassphrase     string                                                               `json:"snmpAuthPassphrase,omitempty"`     // Auth passphrase for SNMP
-	SNMPAuthProtocol       string                                                               `json:"snmpAuthProtocol,omitempty"`       // SNMP auth protocol. SHA' or 'MD5'
-	SNMPMode               string                                                               `json:"snmpMode,omitempty"`               // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
-	SNMPPrivPassphrase     string                                                               `json:"snmpPrivPassphrase,omitempty"`     // Passphrase for SNMP privacy
-	SNMPPrivProtocol       string                                                               `json:"snmpPrivProtocol,omitempty"`       // SNMP privacy protocol. 'AES128'
-	SNMPRoCommunity        string                                                               `json:"snmpRoCommunity,omitempty"`        // SNMP RO community of the devices to be discovered
-	SNMPRoCommunityDesc    string                                                               `json:"snmpRoCommunityDesc,omitempty"`    // Description for SNMP RO community
-	SNMPRwCommunity        string                                                               `json:"snmpRwCommunity,omitempty"`        // SNMP RW community of the devices to be discovered
-	SNMPRwCommunityDesc    string                                                               `json:"snmpRwCommunityDesc,omitempty"`    // Description for SNMP RW community
-	SNMPUserName           string                                                               `json:"snmpUserName,omitempty"`           // SNMP username of the device
-	TimeOut                *int                                                                 `json:"timeOut,omitempty"`                // Time to wait for device response.
-	UpdateMgmtIP           *bool                                                                `json:"updateMgmtIp,omitempty"`           // Updates Management IP if multiple IPs are available for a device. If set to true, when a device is rediscovered with a different IP, the management IP is updated. Default value is false
-	UserNameList           string                                                               `json:"userNameList,omitempty"`           // Username of the devices to be discovered
+type ResponseDiscoveryGetDiscoveriesByRangeResponse struct {
+	AttributeInfo          *ResponseDiscoveryGetDiscoveriesByRangeResponseAttributeInfo       `json:"attributeInfo,omitempty"`          // Deprecated
+	CdpLevel               *int                                                               `json:"cdpLevel,omitempty"`               // CDP level to which neighbor devices to be discovered
+	DeviceIDs              string                                                             `json:"deviceIds,omitempty"`              // Ids of the devices discovered in a discovery
+	DiscoveryCondition     string                                                             `json:"discoveryCondition,omitempty"`     // To indicate the discovery status. Available options: Complete or In Progress
+	DiscoveryStatus        string                                                             `json:"discoveryStatus,omitempty"`        // Status of the discovery. Available options are: Active, Inactive, Edit
+	DiscoveryType          string                                                             `json:"discoveryType,omitempty"`          // Type of the discovery. 'Single', 'Range', 'CDP', 'LLDP', 'CIDR'
+	EnablePasswordList     string                                                             `json:"enablePasswordList,omitempty"`     // Enable Password of the devices to be discovered
+	GlobalCredentialIDList []string                                                           `json:"globalCredentialIdList,omitempty"` // List of global credential ids to be used
+	HTTPReadCredential     *ResponseDiscoveryGetDiscoveriesByRangeResponseHTTPReadCredential  `json:"httpReadCredential,omitempty"`     //
+	HTTPWriteCredential    *ResponseDiscoveryGetDiscoveriesByRangeResponseHTTPWriteCredential `json:"httpWriteCredential,omitempty"`    //
+	ID                     string                                                             `json:"id,omitempty"`                     // Unique Discovery Id
+	IPAddressList          string                                                             `json:"ipAddressList,omitempty"`          // List of IP address of the devices to be discovered
+	IPFilterList           string                                                             `json:"ipFilterList,omitempty"`           // IP addresses of the devices to be filtered
+	IsAutoCdp              *bool                                                              `json:"isAutoCdp,omitempty"`              // Flag to mention if CDP discovery or not
+	LldpLevel              *int                                                               `json:"lldpLevel,omitempty"`              // LLDP level to which neighbor devices to be discovered
+	Name                   string                                                             `json:"name,omitempty"`                   // Name for the discovery
+	NetconfPort            string                                                             `json:"netconfPort,omitempty"`            // Netconf port on the device. Netconf will need valid sshv2 credentials for it to work
+	NumDevices             *int                                                               `json:"numDevices,omitempty"`             // Number of devices discovered in the discovery
+	ParentDiscoveryID      string                                                             `json:"parentDiscoveryId,omitempty"`      // Parent Discovery Id from which the discovery was initiated
+	PasswordList           string                                                             `json:"passwordList,omitempty"`           // Password of the devices to be discovered
+	PreferredMgmtIPMethod  string                                                             `json:"preferredMgmtIPMethod,omitempty"`  // Preferred management IP method. Available options are '' and 'UseLoopBack'
+	ProtocolOrder          string                                                             `json:"protocolOrder,omitempty"`          // Order of protocol (ssh/telnet) in which device connection will be tried. Ex: 'telnet': only telnet; 'ssh,telnet': ssh with higher order than telnet
+	RetryCount             *int                                                               `json:"retryCount,omitempty"`             // Number of times to try establishing connection to device
+	SNMPAuthPassphrase     string                                                             `json:"snmpAuthPassphrase,omitempty"`     // Auth passphrase for SNMP
+	SNMPAuthProtocol       string                                                             `json:"snmpAuthProtocol,omitempty"`       // SNMP auth protocol. SHA' or 'MD5'
+	SNMPMode               string                                                             `json:"snmpMode,omitempty"`               // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
+	SNMPPrivPassphrase     string                                                             `json:"snmpPrivPassphrase,omitempty"`     // Passphrase for SNMP privacy
+	SNMPPrivProtocol       string                                                             `json:"snmpPrivProtocol,omitempty"`       // SNMP privacy protocol. 'AES128'
+	SNMPRoCommunity        string                                                             `json:"snmpRoCommunity,omitempty"`        // SNMP RO community of the devices to be discovered
+	SNMPRoCommunityDesc    string                                                             `json:"snmpRoCommunityDesc,omitempty"`    // Description for SNMP RO community
+	SNMPRwCommunity        string                                                             `json:"snmpRwCommunity,omitempty"`        // SNMP RW community of the devices to be discovered
+	SNMPRwCommunityDesc    string                                                             `json:"snmpRwCommunityDesc,omitempty"`    // Description for SNMP RW community
+	SNMPUserName           string                                                             `json:"snmpUserName,omitempty"`           // SNMP username of the device
+	TimeOut                *int                                                               `json:"timeOut,omitempty"`                // Time to wait for device response.
+	UpdateMgmtIP           *bool                                                              `json:"updateMgmtIp,omitempty"`           // Updates Management IP if multiple IPs are available for a device. If set to true, when a device is rediscovered with a different IP, the management IP is updated. Default value is false
+	UserNameList           string                                                             `json:"userNameList,omitempty"`           // Username of the devices to be discovered
 }
-type ResponseDiscoveryGetDiscoveriesByRangeV1ResponseAttributeInfo interface{}
-type ResponseDiscoveryGetDiscoveriesByRangeV1ResponseHTTPReadCredential struct {
+type ResponseDiscoveryGetDiscoveriesByRangeResponseAttributeInfo interface{}
+type ResponseDiscoveryGetDiscoveriesByRangeResponseHTTPReadCredential struct {
 	Comments         string `json:"comments,omitempty"`         // Comments to identify the credential
 	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the credential
 	Description      string `json:"description,omitempty"`      // Description of the credential
@@ -372,7 +372,7 @@ type ResponseDiscoveryGetDiscoveriesByRangeV1ResponseHTTPReadCredential struct {
 	Secure           *bool  `json:"secure,omitempty"`           // Flag for HTTPS
 	Username         string `json:"username,omitempty"`         // HTTP(S) username
 }
-type ResponseDiscoveryGetDiscoveriesByRangeV1ResponseHTTPWriteCredential struct {
+type ResponseDiscoveryGetDiscoveriesByRangeResponseHTTPWriteCredential struct {
 	Comments         string `json:"comments,omitempty"`         // Comments to identify the credential
 	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the credential
 	Description      string `json:"description,omitempty"`      // Description of the credential
@@ -384,11 +384,11 @@ type ResponseDiscoveryGetDiscoveriesByRangeV1ResponseHTTPWriteCredential struct 
 	Secure           *bool  `json:"secure,omitempty"`           // Flag for HTTPS
 	Username         string `json:"username,omitempty"`         // HTTP(S) username
 }
-type ResponseDiscoveryGetGlobalCredentialsV1 struct {
-	Response *[]ResponseDiscoveryGetGlobalCredentialsV1Response `json:"response,omitempty"` //
-	Version  string                                             `json:"version,omitempty"`  //
+type ResponseDiscoveryGetGlobalCredentials struct {
+	Response *[]ResponseDiscoveryGetGlobalCredentialsResponse `json:"response,omitempty"` //
+	Version  string                                           `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryGetGlobalCredentialsV1Response struct {
+type ResponseDiscoveryGetGlobalCredentialsResponse struct {
 	Username         string `json:"username,omitempty"`         // CLI Username
 	EnablePassword   string `json:"enablePassword,omitempty"`   // CLI Enable Password
 	Password         string `json:"password,omitempty"`         // CLI Password
@@ -409,969 +409,632 @@ type ResponseDiscoveryGetGlobalCredentialsV1Response struct {
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Instance Tenant Id of the Global Credential
 	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Instance Uuid of the Global Credential
 }
-type ResponseDiscoveryUpdateCliCredentialsV1 struct {
-	Response *ResponseDiscoveryUpdateCliCredentialsV1Response `json:"response,omitempty"` //
-	Version  string                                           `json:"version,omitempty"`  //
+type ResponseDiscoveryUpdateCliCredentials struct {
+	Response *ResponseDiscoveryUpdateCliCredentialsResponse `json:"response,omitempty"` //
+	Version  string                                         `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryUpdateCliCredentialsV1Response struct {
+type ResponseDiscoveryUpdateCliCredentialsResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
 	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryCreateCliCredentialsV1 struct {
-	Response *ResponseDiscoveryCreateCliCredentialsV1Response `json:"response,omitempty"` //
-	Version  string                                           `json:"version,omitempty"`  //
+type ResponseDiscoveryCreateCliCredentials struct {
+	Response *ResponseDiscoveryCreateCliCredentialsResponse `json:"response,omitempty"` //
+	Version  string                                         `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryCreateCliCredentialsV1Response struct {
+type ResponseDiscoveryCreateCliCredentialsResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
 	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryCreateHTTPReadCredentialsV1 struct {
-	Response *ResponseDiscoveryCreateHTTPReadCredentialsV1Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` //
+type ResponseDiscoveryCreateHTTPReadCredentials struct {
+	Response *ResponseDiscoveryCreateHTTPReadCredentialsResponse `json:"response,omitempty"` //
+	Version  string                                              `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryCreateHTTPReadCredentialsV1Response struct {
+type ResponseDiscoveryCreateHTTPReadCredentialsResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
-
-	URL string `json:"url,omitempty"` //
+	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryUpdateHTTPReadCredentialV1 struct {
-	Response *ResponseDiscoveryUpdateHTTPReadCredentialV1Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` //
+type ResponseDiscoveryUpdateHTTPReadCredential struct {
+	Response *ResponseDiscoveryUpdateHTTPReadCredentialResponse `json:"response,omitempty"` //
+	Version  string                                             `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryUpdateHTTPReadCredentialV1Response struct {
+type ResponseDiscoveryUpdateHTTPReadCredentialResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
-
-	URL string `json:"url,omitempty"` //
+	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryUpdateHTTPWriteCredentialsV1 struct {
-	Response *ResponseDiscoveryUpdateHTTPWriteCredentialsV1Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` //
+type ResponseDiscoveryUpdateHTTPWriteCredentials struct {
+	Response *ResponseDiscoveryUpdateHTTPWriteCredentialsResponse `json:"response,omitempty"` //
+	Version  string                                               `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryUpdateHTTPWriteCredentialsV1Response struct {
+type ResponseDiscoveryUpdateHTTPWriteCredentialsResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
-
-	URL string `json:"url,omitempty"` //
+	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryCreateHTTPWriteCredentialsV1 struct {
-	Response *ResponseDiscoveryCreateHTTPWriteCredentialsV1Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` //
+type ResponseDiscoveryCreateHTTPWriteCredentials struct {
+	Response *ResponseDiscoveryCreateHTTPWriteCredentialsResponse `json:"response,omitempty"` //
+	Version  string                                               `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryCreateHTTPWriteCredentialsV1Response struct {
+type ResponseDiscoveryCreateHTTPWriteCredentialsResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
-
-	URL string `json:"url,omitempty"` //
+	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryUpdateNetconfCredentialsV1 struct {
-	Response *ResponseDiscoveryUpdateNetconfCredentialsV1Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` //
+type ResponseDiscoveryUpdateNetconfCredentials struct {
+	Response *ResponseDiscoveryUpdateNetconfCredentialsResponse `json:"response,omitempty"` //
+	Version  string                                             `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryUpdateNetconfCredentialsV1Response struct {
+type ResponseDiscoveryUpdateNetconfCredentialsResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
-
-	URL string `json:"url,omitempty"` //
+	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryCreateNetconfCredentialsV1 struct {
-	Response *ResponseDiscoveryCreateNetconfCredentialsV1Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` //
+type ResponseDiscoveryCreateNetconfCredentials struct {
+	Response *ResponseDiscoveryCreateNetconfCredentialsResponse `json:"response,omitempty"` //
+	Version  string                                             `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryCreateNetconfCredentialsV1Response struct {
+type ResponseDiscoveryCreateNetconfCredentialsResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
-
-	URL string `json:"url,omitempty"` //
+	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryUpdateSNMPReadCommunityV1 struct {
-	Response *ResponseDiscoveryUpdateSNMPReadCommunityV1Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` //
+type ResponseDiscoveryUpdateSNMPReadCommunity struct {
+	Response *ResponseDiscoveryUpdateSNMPReadCommunityResponse `json:"response,omitempty"` //
+	Version  string                                            `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryUpdateSNMPReadCommunityV1Response struct {
+type ResponseDiscoveryUpdateSNMPReadCommunityResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
-
-	URL string `json:"url,omitempty"` //
+	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryCreateSNMPReadCommunityV1 struct {
-	Response *ResponseDiscoveryCreateSNMPReadCommunityV1Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` //
+type ResponseDiscoveryCreateSNMPReadCommunity struct {
+	Response *ResponseDiscoveryCreateSNMPReadCommunityResponse `json:"response,omitempty"` //
+	Version  string                                            `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryCreateSNMPReadCommunityV1Response struct {
+type ResponseDiscoveryCreateSNMPReadCommunityResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
-
-	URL string `json:"url,omitempty"` //
+	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryCreateSNMPWriteCommunityV1 struct {
-	Response *ResponseDiscoveryCreateSNMPWriteCommunityV1Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` //
+type ResponseDiscoveryCreateSNMPWriteCommunity struct {
+	Response *ResponseDiscoveryCreateSNMPWriteCommunityResponse `json:"response,omitempty"` //
+	Version  string                                             `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryCreateSNMPWriteCommunityV1Response struct {
+type ResponseDiscoveryCreateSNMPWriteCommunityResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
-
-	URL string `json:"url,omitempty"` //
+	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryUpdateSNMPWriteCommunityV1 struct {
-	Response *ResponseDiscoveryUpdateSNMPWriteCommunityV1Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` //
+type ResponseDiscoveryUpdateSNMPWriteCommunity struct {
+	Response *ResponseDiscoveryUpdateSNMPWriteCommunityResponse `json:"response,omitempty"` //
+	Version  string                                             `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryUpdateSNMPWriteCommunityV1Response struct {
+type ResponseDiscoveryUpdateSNMPWriteCommunityResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
-
-	URL string `json:"url,omitempty"` //
+	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryUpdateSNMPv3CredentialsV1 struct {
-	Response *ResponseDiscoveryUpdateSNMPv3CredentialsV1Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` //
+type ResponseDiscoveryUpdateSNMPv3Credentials struct {
+	Response *ResponseDiscoveryUpdateSNMPv3CredentialsResponse `json:"response,omitempty"` //
+	Version  string                                            `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryUpdateSNMPv3CredentialsV1Response struct {
+type ResponseDiscoveryUpdateSNMPv3CredentialsResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
-
-	URL string `json:"url,omitempty"` //
+	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryCreateSNMPv3CredentialsV1 struct {
-	Response *ResponseDiscoveryCreateSNMPv3CredentialsV1Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` //
+type ResponseDiscoveryCreateSNMPv3Credentials struct {
+	Response *ResponseDiscoveryCreateSNMPv3CredentialsResponse `json:"response,omitempty"` //
+	Version  string                                            `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryCreateSNMPv3CredentialsV1Response struct {
+type ResponseDiscoveryCreateSNMPv3CredentialsResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
-
-	URL string `json:"url,omitempty"` //
+	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryDeleteGlobalCredentialsByIDV1 struct {
-	Response *ResponseDiscoveryDeleteGlobalCredentialsByIDV1Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` //
+type ResponseDiscoveryDeleteGlobalCredentialsByID struct {
+	Response *ResponseDiscoveryDeleteGlobalCredentialsByIDResponse `json:"response,omitempty"` //
+	Version  string                                                `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryDeleteGlobalCredentialsByIDV1Response struct {
+type ResponseDiscoveryDeleteGlobalCredentialsByIDResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
-
-	URL string `json:"url,omitempty"` //
+	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryUpdateGlobalCredentialsV1 struct {
-	Response *ResponseDiscoveryUpdateGlobalCredentialsV1Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` //
+type ResponseDiscoveryUpdateGlobalCredentials struct {
+	Response *ResponseDiscoveryUpdateGlobalCredentialsResponse `json:"response,omitempty"` //
+	Version  string                                            `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryUpdateGlobalCredentialsV1Response struct {
+type ResponseDiscoveryUpdateGlobalCredentialsResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
-
-	URL string `json:"url,omitempty"` //
+	URL    string `json:"url,omitempty"`    //
 }
-type ResponseDiscoveryGetCredentialSubTypeByCredentialIDV1 struct {
+type ResponseDiscoveryGetCredentialSubTypeByCredentialID struct {
 	Response string `json:"response,omitempty"` // Credential type as 'CLICredential', 'HTTPReadCredential', 'HTTPWriteCredential', 'NetconfCredential', 'SNMPv2ReadCommunity', 'SNMPv2WriteCommunity', 'SNMPv3Credential'
-
-	Version string `json:"version,omitempty"` //
+	Version  string `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryGetSNMPPropertiesV1 struct {
-	Response *[]ResponseDiscoveryGetSNMPPropertiesV1Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` //
+type ResponseDiscoveryGetSNMPProperties struct {
+	Response *[]ResponseDiscoveryGetSNMPPropertiesResponse `json:"response,omitempty"` //
+	Version  string                                        `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryGetSNMPPropertiesV1Response struct {
-	ID string `json:"id,omitempty"` // Id of the SNMP Property
-
-	InstanceTenantID string `json:"instanceTenantId,omitempty"` // [Deprecated] InstanceTenantId of the SNMP Property
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // Instance Uuid of the SNMP Property. It is the same as the id. It will be deprecated in future version.
-
-	IntValue *int `json:"intValue,omitempty"` // Integer Value of the SNMP 'Retry' or 'Timeout' property
-
+type ResponseDiscoveryGetSNMPPropertiesResponse struct {
+	ID                 string `json:"id,omitempty"`                 // Id of the SNMP Property
+	InstanceTenantID   string `json:"instanceTenantId,omitempty"`   // [Deprecated] InstanceTenantId of the SNMP Property
+	InstanceUUID       string `json:"instanceUuid,omitempty"`       // Instance Uuid of the SNMP Property. It is the same as the id. It will be deprecated in future version.
+	IntValue           *int   `json:"intValue,omitempty"`           // Integer Value of the SNMP 'Retry' or 'Timeout' property
 	SystemPropertyName string `json:"systemPropertyName,omitempty"` // Name of the SNMP Property as 'Retry' or 'Timeout'
 }
-type ResponseDiscoveryCreateUpdateSNMPPropertiesV1 struct {
-	Response *ResponseDiscoveryCreateUpdateSNMPPropertiesV1Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` //
+type ResponseDiscoveryCreateUpdateSNMPProperties struct {
+	Response *ResponseDiscoveryCreateUpdateSNMPPropertiesResponse `json:"response,omitempty"` //
+	Version  string                                               `json:"version,omitempty"`  //
 }
-type ResponseDiscoveryCreateUpdateSNMPPropertiesV1Response struct {
+type ResponseDiscoveryCreateUpdateSNMPPropertiesResponse struct {
 	TaskID string `json:"taskId,omitempty"` //
-
-	URL string `json:"url,omitempty"` //
+	URL    string `json:"url,omitempty"`    //
 }
 type ResponseDiscoveryUpdateGlobalCredentialsV2 struct {
 	Response *ResponseDiscoveryUpdateGlobalCredentialsV2Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` // Version
+	Version  string                                              `json:"version,omitempty"`  // Version
 }
 type ResponseDiscoveryUpdateGlobalCredentialsV2Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task Id
-
-	URL string `json:"url,omitempty"` // Url
+	URL    string `json:"url,omitempty"`    // Url
 }
 type ResponseDiscoveryCreateGlobalCredentialsV2 struct {
 	Response *ResponseDiscoveryCreateGlobalCredentialsV2Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` // Version
+	Version  string                                              `json:"version,omitempty"`  // Version
 }
 type ResponseDiscoveryCreateGlobalCredentialsV2Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task Id
-
-	URL string `json:"url,omitempty"` // Url
+	URL    string `json:"url,omitempty"`    // Url
 }
 type ResponseDiscoveryGetAllGlobalCredentialsV2 struct {
 	Response *ResponseDiscoveryGetAllGlobalCredentialsV2Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` // Version
+	Version  string                                              `json:"version,omitempty"`  // Version
 }
 type ResponseDiscoveryGetAllGlobalCredentialsV2Response struct {
 	CliCredential *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseCliCredential `json:"cliCredential,omitempty"` //
-
-	SNMPV2CRead *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseSNMPV2CRead `json:"snmpV2cRead,omitempty"` //
-
-	SNMPV2CWrite *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseSNMPV2CWrite `json:"snmpV2cWrite,omitempty"` //
-
-	HTTPSRead *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseHTTPSRead `json:"httpsRead,omitempty"` //
-
-	HTTPSWrite *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseHTTPSWrite `json:"httpsWrite,omitempty"` //
-
-	SNMPV3 *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseSNMPV3 `json:"snmpV3,omitempty"` //
+	SNMPV2CRead   *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseSNMPV2CRead   `json:"snmpV2cRead,omitempty"`   //
+	SNMPV2CWrite  *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseSNMPV2CWrite  `json:"snmpV2cWrite,omitempty"`  //
+	HTTPSRead     *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseHTTPSRead     `json:"httpsRead,omitempty"`     //
+	HTTPSWrite    *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseHTTPSWrite    `json:"httpsWrite,omitempty"`    //
+	SNMPV3        *[]ResponseDiscoveryGetAllGlobalCredentialsV2ResponseSNMPV3        `json:"snmpV3,omitempty"`        //
 }
 type ResponseDiscoveryGetAllGlobalCredentialsV2ResponseCliCredential struct {
-	Password string `json:"password,omitempty"` // CLI Password
-
-	Username string `json:"username,omitempty"` // CLI Username
-
-	EnablePassword string `json:"enablePassword,omitempty"` // CLI Enable Password
-
-	Description string `json:"description,omitempty"` // Description of the CLI credential
-
-	Comments string `json:"comments,omitempty"` // Comments to identify the CLI credential
-
-	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the CLI credential
-
+	Password         string `json:"password,omitempty"`         // CLI Password
+	Username         string `json:"username,omitempty"`         // CLI Username
+	EnablePassword   string `json:"enablePassword,omitempty"`   // CLI Enable Password
+	Description      string `json:"description,omitempty"`      // Description of the CLI credential
+	Comments         string `json:"comments,omitempty"`         // Comments to identify the CLI credential
+	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the CLI credential
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Instance Tenant Id of CLI Credential
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // Instance Uuid of CLI Credential
-
-	ID string `json:"id,omitempty"` // Id of the CLI Credential
+	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Instance Uuid of CLI Credential
+	ID               string `json:"id,omitempty"`               // Id of the CLI Credential
 }
 type ResponseDiscoveryGetAllGlobalCredentialsV2ResponseSNMPV2CRead struct {
-	ReadCommunity string `json:"readCommunity,omitempty"` // Snmp RO community
-
-	Description string `json:"description,omitempty"` // Description for Snmp RO community
-
-	Comments string `json:"comments,omitempty"` // Comments to identify the SNMP Read credential
-
-	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the SNMP Read credential
-
+	ReadCommunity    string `json:"readCommunity,omitempty"`    // Snmp RO community
+	Description      string `json:"description,omitempty"`      // Description for Snmp RO community
+	Comments         string `json:"comments,omitempty"`         // Comments to identify the SNMP Read credential
+	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the SNMP Read credential
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Instance Tenant Id of SNMP Read Credential
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // Instance Uuid of SNMP Read Credential
-
-	ID string `json:"id,omitempty"` // Id of the SNMP Read Credential
+	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Instance Uuid of SNMP Read Credential
+	ID               string `json:"id,omitempty"`               // Id of the SNMP Read Credential
 }
 type ResponseDiscoveryGetAllGlobalCredentialsV2ResponseSNMPV2CWrite struct {
-	WriteCommunity string `json:"writeCommunity,omitempty"` // Snmp RW community
-
-	Description string `json:"description,omitempty"` // Description for Snmp RW community
-
-	Comments string `json:"comments,omitempty"` // Comments to identify the SNMP Write credential
-
-	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the SNMP Write credential
-
+	WriteCommunity   string `json:"writeCommunity,omitempty"`   // Snmp RW community
+	Description      string `json:"description,omitempty"`      // Description for Snmp RW community
+	Comments         string `json:"comments,omitempty"`         // Comments to identify the SNMP Write credential
+	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the SNMP Write credential
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Instance Tenant Id of SNMP Write Credential
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // Instance Uuid of SNMP Write Credential
-
-	ID string `json:"id,omitempty"` // Id of SNMP Write Credential
+	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Instance Uuid of SNMP Write Credential
+	ID               string `json:"id,omitempty"`               // Id of SNMP Write Credential
 }
 type ResponseDiscoveryGetAllGlobalCredentialsV2ResponseHTTPSRead struct {
-	Password string `json:"password,omitempty"` // HTTP(S) Read Password
-
-	Port *int `json:"port,omitempty"` // HTTP(S) Port
-
-	Username string `json:"username,omitempty"` // HTTP(S) Read Username
-
-	Secure *bool `json:"secure,omitempty"` // Flag for HTTP(S) Read
-
-	Description string `json:"description,omitempty"` // Description for HTTP(S) Read Credential
-
-	Comments string `json:"comments,omitempty"` // Comments to identify the HTTP(S) Read credential
-
-	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the HTTP(S) Read credential
-
+	Password         string `json:"password,omitempty"`         // HTTP(S) Read Password
+	Port             *int   `json:"port,omitempty"`             // HTTP(S) Port
+	Username         string `json:"username,omitempty"`         // HTTP(S) Read Username
+	Secure           *bool  `json:"secure,omitempty"`           // Flag for HTTP(S) Read
+	Description      string `json:"description,omitempty"`      // Description for HTTP(S) Read Credential
+	Comments         string `json:"comments,omitempty"`         // Comments to identify the HTTP(S) Read credential
+	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the HTTP(S) Read credential
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Instance Tenant Id of HTTP(S) Read Credential
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // Instance Uuid of HTTP(S) Read Credential
-
-	ID string `json:"id,omitempty"` // Id of the HTTP(S) Read Credential
+	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Instance Uuid of HTTP(S) Read Credential
+	ID               string `json:"id,omitempty"`               // Id of the HTTP(S) Read Credential
 }
 type ResponseDiscoveryGetAllGlobalCredentialsV2ResponseHTTPSWrite struct {
-	Password string `json:"password,omitempty"` // HTTP(S) Write Password
-
-	Port *int `json:"port,omitempty"` // HTTP(S) Port
-
-	Username string `json:"username,omitempty"` // HTTP(S) Write Username
-
-	Secure *bool `json:"secure,omitempty"` // Flag for HTTP(S) Write
-
-	Description string `json:"description,omitempty"` // Description for HTTP(S) Write Credetntials
-
-	Comments string `json:"comments,omitempty"` // Comments to identify the HTTP(S) Write credential
-
-	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the HTTP(S) Write credential
-
+	Password         string `json:"password,omitempty"`         // HTTP(S) Write Password
+	Port             *int   `json:"port,omitempty"`             // HTTP(S) Port
+	Username         string `json:"username,omitempty"`         // HTTP(S) Write Username
+	Secure           *bool  `json:"secure,omitempty"`           // Flag for HTTP(S) Write
+	Description      string `json:"description,omitempty"`      // Description for HTTP(S) Write Credetntials
+	Comments         string `json:"comments,omitempty"`         // Comments to identify the HTTP(S) Write credential
+	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the HTTP(S) Write credential
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Instance Tenant Id of HTTP(S) Write Credential
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // Instance Uuid of HTTP(S) Write Credential
-
-	ID string `json:"id,omitempty"` // Id of the HTTP(S) Write Credential
+	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Instance Uuid of HTTP(S) Write Credential
+	ID               string `json:"id,omitempty"`               // Id of the HTTP(S) Write Credential
 }
 type ResponseDiscoveryGetAllGlobalCredentialsV2ResponseSNMPV3 struct {
-	Username string `json:"username,omitempty"` // SNMP V3 Username
-
-	AuthPassword string `json:"authPassword,omitempty"` // Auth Password for SNMP V3
-
-	AuthType string `json:"authType,omitempty"` // SNMP auth protocol. SHA' or 'MD5'
-
-	PrivacyPassword string `json:"privacyPassword,omitempty"` // Privacy Password for SNMP privacy
-
-	PrivacyType string `json:"privacyType,omitempty"` // SNMP privacy protocol. 'AES128','AES192','AES256'
-
-	SNMPMode string `json:"snmpMode,omitempty"` // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
-
-	Description string `json:"description,omitempty"` // Description for Snmp V3 Credential
-
-	Comments string `json:"comments,omitempty"` // Comments to identify the SNMP V3 credential
-
-	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the SNMP V3 credential
-
+	Username         string `json:"username,omitempty"`         // SNMP V3 Username
+	AuthPassword     string `json:"authPassword,omitempty"`     // Auth Password for SNMP V3
+	AuthType         string `json:"authType,omitempty"`         // SNMP auth protocol. SHA' or 'MD5'
+	PrivacyPassword  string `json:"privacyPassword,omitempty"`  // Privacy Password for SNMP privacy
+	PrivacyType      string `json:"privacyType,omitempty"`      // SNMP privacy protocol. 'AES128','AES192','AES256'
+	SNMPMode         string `json:"snmpMode,omitempty"`         // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
+	Description      string `json:"description,omitempty"`      // Description for Snmp V3 Credential
+	Comments         string `json:"comments,omitempty"`         // Comments to identify the SNMP V3 credential
+	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the SNMP V3 credential
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Instance Tenant Id of SNMP V3 Credential
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // Instance Tenant Id of SNMP V3 Credential
-
-	ID string `json:"id,omitempty"` // Id of the SNMP V3 Credential
+	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Instance Tenant Id of SNMP V3 Credential
+	ID               string `json:"id,omitempty"`               // Id of the SNMP V3 Credential
 }
 type ResponseDiscoveryDeleteGlobalCredentialV2 struct {
 	Response *ResponseDiscoveryDeleteGlobalCredentialV2Response `json:"response,omitempty"` //
-
-	Version string `json:"version,omitempty"` // Version
+	Version  string                                             `json:"version,omitempty"`  // Version
 }
 type ResponseDiscoveryDeleteGlobalCredentialV2Response struct {
 	TaskID string `json:"taskId,omitempty"` // Task Id
-
-	URL string `json:"url,omitempty"` // Url
+	URL    string `json:"url,omitempty"`    // Url
 }
-type RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1 struct {
-	AttributeInfo *RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1AttributeInfo `json:"attributeInfo,omitempty"` // Deprecated
-
-	CdpLevel *int `json:"cdpLevel,omitempty"` // CDP level to which neighbor devices to be discovered
-
-	DeviceIDs string `json:"deviceIds,omitempty"` // Ids of the devices discovered in a discovery
-
-	DiscoveryCondition string `json:"discoveryCondition,omitempty"` // To indicate the discovery status. Available options: Complete or In Progress
-
-	DiscoveryStatus string `json:"discoveryStatus,omitempty"` // Status of the discovery. Available options are: Active, Inactive, Edit
-
-	DiscoveryType string `json:"discoveryType,omitempty"` // Type of the discovery. 'Single', 'Range', 'Multi Range', 'CDP', 'LLDP', 'CIDR'
-
-	EnablePasswordList string `json:"enablePasswordList,omitempty"` // Enable Password of the devices to be discovered
-
-	GlobalCredentialIDList []string `json:"globalCredentialIdList,omitempty"` // List of global credential ids to be used
-
-	HTTPReadCredential *RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1HTTPReadCredential `json:"httpReadCredential,omitempty"` //
-
-	HTTPWriteCredential *RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1HTTPWriteCredential `json:"httpWriteCredential,omitempty"` //
-
-	ID string `json:"id,omitempty"` // Unique Discovery Id
-
-	IPAddressList string `json:"ipAddressList,omitempty"` // List of IP address of the devices to be discovered
-
-	IPFilterList string `json:"ipFilterList,omitempty"` // IP addresses of the devices to be filtered
-
-	IsAutoCdp *bool `json:"isAutoCdp,omitempty"` // Flag to mention if CDP discovery or not
-
-	LldpLevel *int `json:"lldpLevel,omitempty"` // LLDP level to which neighbor devices to be discovered
-
-	Name string `json:"name,omitempty"` // Name for the discovery
-
-	NetconfPort string `json:"netconfPort,omitempty"` // Netconf port on the device. Netconf will need valid sshv2 credentials for it to work
-
-	NumDevices *int `json:"numDevices,omitempty"` // Number of devices discovered in the discovery
-
-	ParentDiscoveryID string `json:"parentDiscoveryId,omitempty"` // Parent Discovery Id from which the discovery was initiated
-
-	PasswordList string `json:"passwordList,omitempty"` // Password of the devices to be discovered
-
-	PreferredMgmtIPMethod string `json:"preferredMgmtIPMethod,omitempty"` // Preferred management IP method. Available options are '' and 'UseLoopBack'
-
-	ProtocolOrder string `json:"protocolOrder,omitempty"` // Order of protocol (ssh/telnet) in which device connection will be tried. Ex: 'telnet': only telnet; 'ssh,telnet': ssh with higher order than telnet
-
-	RetryCount *int `json:"retryCount,omitempty"` // Number of times to try establishing connection to device
-
-	SNMPAuthPassphrase string `json:"snmpAuthPassphrase,omitempty"` // Auth passphrase for SNMP
-
-	SNMPAuthProtocol string `json:"snmpAuthProtocol,omitempty"` // SNMP auth protocol. SHA' or 'MD5'
-
-	SNMPMode string `json:"snmpMode,omitempty"` // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
-
-	SNMPPrivPassphrase string `json:"snmpPrivPassphrase,omitempty"` // Passphrase for SNMP privacy
-
-	SNMPPrivProtocol string `json:"snmpPrivProtocol,omitempty"` // SNMP privacy protocol. 'AES128'
-
-	SNMPRoCommunity string `json:"snmpRoCommunity,omitempty"` // SNMP RO community of the devices to be discovered
-
-	SNMPRoCommunityDesc string `json:"snmpRoCommunityDesc,omitempty"` // Description for SNMP RO community
-
-	SNMPRwCommunity string `json:"snmpRwCommunity,omitempty"` // SNMP RW community of the devices to be discovered
-
-	SNMPRwCommunityDesc string `json:"snmpRwCommunityDesc,omitempty"` // Description for SNMP RW community
-
-	SNMPUserName string `json:"snmpUserName,omitempty"` // SNMP username of the device
-
-	TimeOut *int `json:"timeOut,omitempty"` // Time to wait for device response.
-
-	UpdateMgmtIP *bool `json:"updateMgmtIp,omitempty"` // Updates Management IP if multiple IPs are available for a device. If set to true, when a device is rediscovered with a different IP, the management IP is updated. Default value is false
-
-	UserNameList string `json:"userNameList,omitempty"` // Username of the devices to be discovered
+type RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedID struct {
+	AttributeInfo          *RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDAttributeInfo       `json:"attributeInfo,omitempty"`          // Deprecated
+	CdpLevel               *int                                                                        `json:"cdpLevel,omitempty"`               // CDP level to which neighbor devices to be discovered
+	DeviceIDs              string                                                                      `json:"deviceIds,omitempty"`              // Ids of the devices discovered in a discovery
+	DiscoveryCondition     string                                                                      `json:"discoveryCondition,omitempty"`     // To indicate the discovery status. Available options: Complete or In Progress
+	DiscoveryStatus        string                                                                      `json:"discoveryStatus,omitempty"`        // Status of the discovery. Available options are: Active, Inactive, Edit
+	DiscoveryType          string                                                                      `json:"discoveryType,omitempty"`          // Type of the discovery. 'Single', 'Range', 'Multi Range', 'CDP', 'LLDP', 'CIDR'
+	EnablePasswordList     string                                                                      `json:"enablePasswordList,omitempty"`     // Enable Password of the devices to be discovered
+	GlobalCredentialIDList []string                                                                    `json:"globalCredentialIdList,omitempty"` // List of global credential ids to be used
+	HTTPReadCredential     *RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDHTTPReadCredential  `json:"httpReadCredential,omitempty"`     //
+	HTTPWriteCredential    *RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDHTTPWriteCredential `json:"httpWriteCredential,omitempty"`    //
+	ID                     string                                                                      `json:"id,omitempty"`                     // Unique Discovery Id
+	IPAddressList          string                                                                      `json:"ipAddressList,omitempty"`          // List of IP address of the devices to be discovered
+	IPFilterList           string                                                                      `json:"ipFilterList,omitempty"`           // IP addresses of the devices to be filtered
+	IsAutoCdp              *bool                                                                       `json:"isAutoCdp,omitempty"`              // Flag to mention if CDP discovery or not
+	LldpLevel              *int                                                                        `json:"lldpLevel,omitempty"`              // LLDP level to which neighbor devices to be discovered
+	Name                   string                                                                      `json:"name,omitempty"`                   // Name for the discovery
+	NetconfPort            string                                                                      `json:"netconfPort,omitempty"`            // Netconf port on the device. Netconf will need valid sshv2 credentials for it to work
+	NumDevices             *int                                                                        `json:"numDevices,omitempty"`             // Number of devices discovered in the discovery
+	ParentDiscoveryID      string                                                                      `json:"parentDiscoveryId,omitempty"`      // Parent Discovery Id from which the discovery was initiated
+	PasswordList           string                                                                      `json:"passwordList,omitempty"`           // Password of the devices to be discovered
+	PreferredMgmtIPMethod  string                                                                      `json:"preferredMgmtIPMethod,omitempty"`  // Preferred management IP method. Available options are '' and 'UseLoopBack'
+	ProtocolOrder          string                                                                      `json:"protocolOrder,omitempty"`          // Order of protocol (ssh/telnet) in which device connection will be tried. Ex: 'telnet': only telnet; 'ssh,telnet': ssh with higher order than telnet
+	RetryCount             *int                                                                        `json:"retryCount,omitempty"`             // Number of times to try establishing connection to device
+	SNMPAuthPassphrase     string                                                                      `json:"snmpAuthPassphrase,omitempty"`     // Auth passphrase for SNMP
+	SNMPAuthProtocol       string                                                                      `json:"snmpAuthProtocol,omitempty"`       // SNMP auth protocol. SHA' or 'MD5'
+	SNMPMode               string                                                                      `json:"snmpMode,omitempty"`               // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
+	SNMPPrivPassphrase     string                                                                      `json:"snmpPrivPassphrase,omitempty"`     // Passphrase for SNMP privacy
+	SNMPPrivProtocol       string                                                                      `json:"snmpPrivProtocol,omitempty"`       // SNMP privacy protocol. 'AES128'
+	SNMPRoCommunity        string                                                                      `json:"snmpRoCommunity,omitempty"`        // SNMP RO community of the devices to be discovered
+	SNMPRoCommunityDesc    string                                                                      `json:"snmpRoCommunityDesc,omitempty"`    // Description for SNMP RO community
+	SNMPRwCommunity        string                                                                      `json:"snmpRwCommunity,omitempty"`        // SNMP RW community of the devices to be discovered
+	SNMPRwCommunityDesc    string                                                                      `json:"snmpRwCommunityDesc,omitempty"`    // Description for SNMP RW community
+	SNMPUserName           string                                                                      `json:"snmpUserName,omitempty"`           // SNMP username of the device
+	TimeOut                *int                                                                        `json:"timeOut,omitempty"`                // Time to wait for device response.
+	UpdateMgmtIP           *bool                                                                       `json:"updateMgmtIp,omitempty"`           // Updates Management IP if multiple IPs are available for a device. If set to true, when a device is rediscovered with a different IP, the management IP is updated. Default value is false
+	UserNameList           string                                                                      `json:"userNameList,omitempty"`           // Username of the devices to be discovered
 }
-type RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1AttributeInfo interface{}
-type RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1HTTPReadCredential struct {
-	Comments string `json:"comments,omitempty"` // Comments to identify the credential
-
-	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the credential
-
-	Description string `json:"description,omitempty"` // Description of the credential
-
-	ID string `json:"id,omitempty"` // Credential Id
-
+type RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDAttributeInfo interface{}
+type RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDHTTPReadCredential struct {
+	Comments         string `json:"comments,omitempty"`         // Comments to identify the credential
+	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the credential
+	Description      string `json:"description,omitempty"`      // Description of the credential
+	ID               string `json:"id,omitempty"`               // Credential Id
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Credential Tenant Id
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // Credential Id
-
-	Password string `json:"password,omitempty"` // HTTP(S) password
-
-	Port *int `json:"port,omitempty"` // HTTP(S) port
-
-	Secure *bool `json:"secure,omitempty"` // Flag for HTTPS
-
-	Username string `json:"username,omitempty"` // HTTP(S) username
+	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Credential Id
+	Password         string `json:"password,omitempty"`         // HTTP(S) password
+	Port             *int   `json:"port,omitempty"`             // HTTP(S) port
+	Secure           *bool  `json:"secure,omitempty"`           // Flag for HTTPS
+	Username         string `json:"username,omitempty"`         // HTTP(S) username
 }
-type RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1HTTPWriteCredential struct {
-	Comments string `json:"comments,omitempty"` // Comments to identify the credential
-
-	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the credential
-
-	Description string `json:"description,omitempty"` // Description of the credential
-
-	ID string `json:"id,omitempty"` // Credential Id
-
+type RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDHTTPWriteCredential struct {
+	Comments         string `json:"comments,omitempty"`         // Comments to identify the credential
+	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the credential
+	Description      string `json:"description,omitempty"`      // Description of the credential
+	ID               string `json:"id,omitempty"`               // Credential Id
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Credential Tenant Id
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // Credential Id
-
+	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Credential Id
+	Password         string `json:"password,omitempty"`         // HTTP(S) password
+	Port             *int   `json:"port,omitempty"`             // HTTP(S) port
+	Secure           *bool  `json:"secure,omitempty"`           // Flag for HTTPS
+	Username         string `json:"username,omitempty"`         // HTTP(S) username
+}
+type RequestDiscoveryStartDiscovery struct {
+	CdpLevel               *int                                               `json:"cdpLevel,omitempty"`               // CDP level to which neighbor devices are to be discovered
+	DiscoveryType          string                                             `json:"discoveryType,omitempty"`          // Type of the discovery. 'Single', 'Range', 'Multi Range', 'CDP', 'LLDP', 'CIDR'
+	EnablePasswordList     []string                                           `json:"enablePasswordList,omitempty"`     // Enable Password of the devices to be discovered
+	GlobalCredentialIDList []string                                           `json:"globalCredentialIdList,omitempty"` // Global Credential Ids to be used for discovery
+	HTTPReadCredential     *RequestDiscoveryStartDiscoveryHTTPReadCredential  `json:"httpReadCredential,omitempty"`     //
+	HTTPWriteCredential    *RequestDiscoveryStartDiscoveryHTTPWriteCredential `json:"httpWriteCredential,omitempty"`    //
+	IPAddressList          string                                             `json:"ipAddressList,omitempty"`          // IP Address of devices to be discovered. Ex: '172.30.0.1' for SINGLE, CDP and LLDP; '72.30.0.1-172.30.0.4' for RANGE; '72.30.0.1-172.30.0.4,172.31.0.1-172.31.0.4' for MULTI RANGE; '172.30.0.1/20' for CIDR
+	IPFilterList           []string                                           `json:"ipFilterList,omitempty"`           // IP Addresses of the devices to be filtered out during discovery
+	LldpLevel              *int                                               `json:"lldpLevel,omitempty"`              // LLDP level to which neighbor devices to be discovered
+	Name                   string                                             `json:"name,omitempty"`                   // Name of the discovery
+	NetconfPort            string                                             `json:"netconfPort,omitempty"`            // Netconf Port. It will need valid SSH credentials to work
+	PasswordList           []string                                           `json:"passwordList,omitempty"`           // Password of the devices to be discovered
+	PreferredMgmtIPMethod  string                                             `json:"preferredMgmtIPMethod,omitempty"`  // Preferred Management IP Method.'' or 'UseLoopBack'. Default is ''
+	ProtocolOrder          string                                             `json:"protocolOrder,omitempty"`          // Order of protocol (ssh/telnet) in which device connection will be tried. Ex: 'telnet': only telnet; 'ssh,telnet': ssh with higher order than telnet
+	Retry                  *int                                               `json:"retry,omitempty"`                  // Number of times to try establishing connection to device
+	SNMPAuthPassphrase     string                                             `json:"snmpAuthPassphrase,omitempty"`     // Auth passphrase for SNMP
+	SNMPAuthProtocol       string                                             `json:"snmpAuthProtocol,omitempty"`       // SNMP auth protocol. SHA' or 'MD5'
+	SNMPMode               string                                             `json:"snmpMode,omitempty"`               // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
+	SNMPPrivPassphrase     string                                             `json:"snmpPrivPassphrase,omitempty"`     // Pass phrase for SNMP privacy
+	SNMPPrivProtocol       string                                             `json:"snmpPrivProtocol,omitempty"`       // SNMP privacy protocol. 'AES128'
+	SNMPROCommunity        string                                             `json:"snmpROCommunity,omitempty"`        // SNMP RO community of the devices to be discovered
+	SNMPROCommunityDesc    string                                             `json:"snmpROCommunityDesc,omitempty"`    // Description for SNMP RO community
+	SNMPRWCommunity        string                                             `json:"snmpRWCommunity,omitempty"`        // SNMP RW community of the devices to be discovered
+	SNMPRWCommunityDesc    string                                             `json:"snmpRWCommunityDesc,omitempty"`    // Description for SNMP RW community
+	SNMPUserName           string                                             `json:"snmpUserName,omitempty"`           // SNMP username of the device
+	SNMPVersion            string                                             `json:"snmpVersion,omitempty"`            // Version of SNMP. v2 or v3
+	Timeout                *int                                               `json:"timeout,omitempty"`                // Time to wait for device response in seconds
+	UserNameList           []string                                           `json:"userNameList,omitempty"`           // Username of the devices to be discovered
+}
+type RequestDiscoveryStartDiscoveryHTTPReadCredential struct {
 	Password string `json:"password,omitempty"` // HTTP(S) password
-
-	Port *int `json:"port,omitempty"` // HTTP(S) port
-
-	Secure *bool `json:"secure,omitempty"` // Flag for HTTPS
-
+	Port     *int   `json:"port,omitempty"`     // HTTP(S) port
+	Secure   *bool  `json:"secure,omitempty"`   // Flag for HTTPS
 	Username string `json:"username,omitempty"` // HTTP(S) username
 }
-type RequestDiscoveryStartDiscoveryV1 struct {
-	CdpLevel *int `json:"cdpLevel,omitempty"` // CDP level to which neighbor devices are to be discovered
-
-	DiscoveryType string `json:"discoveryType,omitempty"` // Type of the discovery. 'Single', 'Range', 'Multi Range', 'CDP', 'LLDP', 'CIDR'
-
-	EnablePasswordList []string `json:"enablePasswordList,omitempty"` // Enable Password of the devices to be discovered
-
-	GlobalCredentialIDList []string `json:"globalCredentialIdList,omitempty"` // Global Credential Ids to be used for discovery
-
-	HTTPReadCredential *RequestDiscoveryStartDiscoveryV1HTTPReadCredential `json:"httpReadCredential,omitempty"` //
-
-	HTTPWriteCredential *RequestDiscoveryStartDiscoveryV1HTTPWriteCredential `json:"httpWriteCredential,omitempty"` //
-
-	IPAddressList string `json:"ipAddressList,omitempty"` // IP Address of devices to be discovered. Ex: '172.30.0.1' for SINGLE, CDP and LLDP; '72.30.0.1-172.30.0.4' for RANGE; '72.30.0.1-172.30.0.4,172.31.0.1-172.31.0.4' for MULTI RANGE; '172.30.0.1/20' for CIDR
-
-	IPFilterList []string `json:"ipFilterList,omitempty"` // IP Addresses of the devices to be filtered out during discovery
-
-	LldpLevel *int `json:"lldpLevel,omitempty"` // LLDP level to which neighbor devices to be discovered
-
-	Name string `json:"name,omitempty"` // Name of the discovery
-
-	NetconfPort string `json:"netconfPort,omitempty"` // Netconf Port. It will need valid SSH credentials to work
-
-	PasswordList []string `json:"passwordList,omitempty"` // Password of the devices to be discovered
-
-	PreferredMgmtIPMethod string `json:"preferredMgmtIPMethod,omitempty"` // Preferred Management IP Method.'' or 'UseLoopBack'. Default is ''
-
-	ProtocolOrder string `json:"protocolOrder,omitempty"` // Order of protocol (ssh/telnet) in which device connection will be tried. Ex: 'telnet': only telnet; 'ssh,telnet': ssh with higher order than telnet
-
-	Retry *int `json:"retry,omitempty"` // Number of times to try establishing connection to device
-
-	SNMPAuthPassphrase string `json:"snmpAuthPassphrase,omitempty"` // Auth passphrase for SNMP
-
-	SNMPAuthProtocol string `json:"snmpAuthProtocol,omitempty"` // SNMP auth protocol. SHA' or 'MD5'
-
-	SNMPMode string `json:"snmpMode,omitempty"` // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
-
-	SNMPPrivPassphrase string `json:"snmpPrivPassphrase,omitempty"` // Pass phrase for SNMP privacy
-
-	SNMPPrivProtocol string `json:"snmpPrivProtocol,omitempty"` // SNMP privacy protocol. 'AES128'
-
-	SNMPROCommunity string `json:"snmpROCommunity,omitempty"` // SNMP RO community of the devices to be discovered
-
-	SNMPROCommunityDesc string `json:"snmpROCommunityDesc,omitempty"` // Description for SNMP RO community
-
-	SNMPRWCommunity string `json:"snmpRWCommunity,omitempty"` // SNMP RW community of the devices to be discovered
-
-	SNMPRWCommunityDesc string `json:"snmpRWCommunityDesc,omitempty"` // Description for SNMP RW community
-
-	SNMPUserName string `json:"snmpUserName,omitempty"` // SNMP username of the device
-
-	SNMPVersion string `json:"snmpVersion,omitempty"` // Version of SNMP. v2 or v3
-
-	Timeout *int `json:"timeout,omitempty"` // Time to wait for device response in seconds
-
-	UserNameList []string `json:"userNameList,omitempty"` // Username of the devices to be discovered
-}
-type RequestDiscoveryStartDiscoveryV1HTTPReadCredential struct {
+type RequestDiscoveryStartDiscoveryHTTPWriteCredential struct {
 	Password string `json:"password,omitempty"` // HTTP(S) password
-
-	Port *int `json:"port,omitempty"` // HTTP(S) port
-
-	Secure *bool `json:"secure,omitempty"` // Flag for HTTPS
-
+	Port     *int   `json:"port,omitempty"`     // HTTP(S) port
+	Secure   *bool  `json:"secure,omitempty"`   // Flag for HTTPS
 	Username string `json:"username,omitempty"` // HTTP(S) username
 }
-type RequestDiscoveryStartDiscoveryV1HTTPWriteCredential struct {
-	Password string `json:"password,omitempty"` // HTTP(S) password
-
-	Port *int `json:"port,omitempty"` // HTTP(S) port
-
-	Secure *bool `json:"secure,omitempty"` // Flag for HTTPS
-
-	Username string `json:"username,omitempty"` // HTTP(S) username
-}
-type RequestDiscoveryUpdateCliCredentialsV1 struct {
-	Comments string `json:"comments,omitempty"` // Comments to identify the CLI credential
-
-	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the CLI credential
-
-	Description string `json:"description,omitempty"` // Description for CLI Credentials
-
-	EnablePassword string `json:"enablePassword,omitempty"` // CLI Enable Password
-
-	ID string `json:"id,omitempty"` // Id of the CLI Credential in UUID format
-
+type RequestDiscoveryUpdateCliCredentials struct {
+	Comments         string `json:"comments,omitempty"`         // Comments to identify the CLI credential
+	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the CLI credential
+	Description      string `json:"description,omitempty"`      // Description for CLI Credentials
+	EnablePassword   string `json:"enablePassword,omitempty"`   // CLI Enable Password
+	ID               string `json:"id,omitempty"`               // Id of the CLI Credential in UUID format
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // Deprecated
-
-	Password string `json:"password,omitempty"` // CLI Password
-
-	Username string `json:"username,omitempty"` // CLI Username
+	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Deprecated
+	Password         string `json:"password,omitempty"`         // CLI Password
+	Username         string `json:"username,omitempty"`         // CLI Username
 }
-type RequestDiscoveryCreateCliCredentialsV1 []RequestItemDiscoveryCreateCliCredentialsV1 // Array of RequestDiscoveryCreateCLICredentialsV1
-type RequestItemDiscoveryCreateCliCredentialsV1 struct {
-	Comments string `json:"comments,omitempty"` // Comments to identify the CLI credential
-
-	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the CLI credential
-
-	Description string `json:"description,omitempty"` // Description for CLI Credentials
-
-	EnablePassword string `json:"enablePassword,omitempty"` // CLI Enable Password
-
-	ID string `json:"id,omitempty"` // Deprecated
-
+type RequestDiscoveryCreateCliCredentials []RequestItemDiscoveryCreateCliCredentials // Array of RequestDiscoveryCreateCLICredentials
+type RequestItemDiscoveryCreateCliCredentials struct {
+	Comments         string `json:"comments,omitempty"`         // Comments to identify the CLI credential
+	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the CLI credential
+	Description      string `json:"description,omitempty"`      // Description for CLI Credentials
+	EnablePassword   string `json:"enablePassword,omitempty"`   // CLI Enable Password
+	ID               string `json:"id,omitempty"`               // Deprecated
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // Deprecated
-
-	Password string `json:"password,omitempty"` // CLI Password
-
-	Username string `json:"username,omitempty"` // CLI Username
+	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Deprecated
+	Password         string `json:"password,omitempty"`         // CLI Password
+	Username         string `json:"username,omitempty"`         // CLI Username
 }
-type RequestDiscoveryCreateHTTPReadCredentialsV1 []RequestItemDiscoveryCreateHTTPReadCredentialsV1 // Array of RequestDiscoveryCreateHTTPReadCredentialsV1
-type RequestItemDiscoveryCreateHTTPReadCredentialsV1 struct {
-	Comments string `json:"comments,omitempty"` // Comments to identify the HTTP(S) Read credential
-
-	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the HTTP(S) Read credential
-
-	Description string `json:"description,omitempty"` // Description for HTTP(S) Read Credential
-
-	ID string `json:"id,omitempty"` // Deprecated
-
+type RequestDiscoveryCreateHTTPReadCredentials []RequestItemDiscoveryCreateHTTPReadCredentials // Array of RequestDiscoveryCreateHTTPReadCredentials
+type RequestItemDiscoveryCreateHTTPReadCredentials struct {
+	Comments         string `json:"comments,omitempty"`         // Comments to identify the HTTP(S) Read credential
+	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the HTTP(S) Read credential
+	Description      string `json:"description,omitempty"`      // Description for HTTP(S) Read Credential
+	ID               string `json:"id,omitempty"`               // Deprecated
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // Deprecated
-
-	Password string `json:"password,omitempty"` // HTTP(S) Read Password
-
-	Port *int `json:"port,omitempty"` // HTTP(S) Port. Valid port should be in the range of 1 to 65535.
-
-	Secure *bool `json:"secure,omitempty"` // Flag for HTTPS Read
-
-	Username string `json:"username,omitempty"` // HTTP(S) Read Username
+	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Deprecated
+	Password         string `json:"password,omitempty"`         // HTTP(S) Read Password
+	Port             *int   `json:"port,omitempty"`             // HTTP(S) Port. Valid port should be in the range of 1 to 65535.
+	Secure           *bool  `json:"secure,omitempty"`           // Flag for HTTPS Read
+	Username         string `json:"username,omitempty"`         // HTTP(S) Read Username
 }
-type RequestDiscoveryUpdateHTTPReadCredentialV1 struct {
-	Comments string `json:"comments,omitempty"` // Comments to identify the HTTP(S) Read credential
-
-	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the HTTP(S) Read credential
-
-	Description string `json:"description,omitempty"` // Description for HTTP(S) Read Credential
-
-	ID string `json:"id,omitempty"` // Id of the HTTP(S) Read Credential in UUID format
-
+type RequestDiscoveryUpdateHTTPReadCredential struct {
+	Comments         string `json:"comments,omitempty"`         // Comments to identify the HTTP(S) Read credential
+	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the HTTP(S) Read credential
+	Description      string `json:"description,omitempty"`      // Description for HTTP(S) Read Credential
+	ID               string `json:"id,omitempty"`               // Id of the HTTP(S) Read Credential in UUID format
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // Deprecated
-
-	Password string `json:"password,omitempty"` // HTTP(S) Read Password
-
-	Port *int `json:"port,omitempty"` // HTTP(S) Port. Valid port should be in the range of 1 to 65535.
-
-	Secure *bool `json:"secure,omitempty"` // Flag for HTTPS Read
-
-	Username string `json:"username,omitempty"` // HTTP(S) Read Username
+	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Deprecated
+	Password         string `json:"password,omitempty"`         // HTTP(S) Read Password
+	Port             *int   `json:"port,omitempty"`             // HTTP(S) Port. Valid port should be in the range of 1 to 65535.
+	Secure           *bool  `json:"secure,omitempty"`           // Flag for HTTPS Read
+	Username         string `json:"username,omitempty"`         // HTTP(S) Read Username
 }
-type RequestDiscoveryUpdateHTTPWriteCredentialsV1 struct {
-	Comments string `json:"comments,omitempty"` // Comments to identify the HTTP(S) Write credential
-
-	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the HTTP(S) Write credential
-
-	Description string `json:"description,omitempty"` // Description for HTTP(S) Write Credential
-
-	ID string `json:"id,omitempty"` // Id of the HTTP(S) Write Credential in UUID format
-
+type RequestDiscoveryUpdateHTTPWriteCredentials struct {
+	Comments         string `json:"comments,omitempty"`         // Comments to identify the HTTP(S) Write credential
+	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the HTTP(S) Write credential
+	Description      string `json:"description,omitempty"`      // Description for HTTP(S) Write Credential
+	ID               string `json:"id,omitempty"`               // Id of the HTTP(S) Write Credential in UUID format
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // Deprecated
-
-	Password string `json:"password,omitempty"` // HTTP(S) Write Password
-
-	Port *int `json:"port,omitempty"` // HTTP(S) Port. Valid port should be in the range of 1 to 65535.
-
-	Secure *bool `json:"secure,omitempty"` // Flag for HTTPS Write
-
-	Username string `json:"username,omitempty"` // HTTP(S) Write Username
+	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Deprecated
+	Password         string `json:"password,omitempty"`         // HTTP(S) Write Password
+	Port             *int   `json:"port,omitempty"`             // HTTP(S) Port. Valid port should be in the range of 1 to 65535.
+	Secure           *bool  `json:"secure,omitempty"`           // Flag for HTTPS Write
+	Username         string `json:"username,omitempty"`         // HTTP(S) Write Username
 }
-type RequestDiscoveryCreateHTTPWriteCredentialsV1 []RequestItemDiscoveryCreateHTTPWriteCredentialsV1 // Array of RequestDiscoveryCreateHTTPWriteCredentialsV1
-type RequestItemDiscoveryCreateHTTPWriteCredentialsV1 struct {
-	Comments string `json:"comments,omitempty"` // Comments to identify the HTTP(S) Write credential
-
-	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the HTTP(S) Write credential
-
-	Description string `json:"description,omitempty"` // Description for HTTP(S) Write Credential
-
-	ID string `json:"id,omitempty"` // Deprecated
-
+type RequestDiscoveryCreateHTTPWriteCredentials []RequestItemDiscoveryCreateHTTPWriteCredentials // Array of RequestDiscoveryCreateHTTPWriteCredentials
+type RequestItemDiscoveryCreateHTTPWriteCredentials struct {
+	Comments         string `json:"comments,omitempty"`         // Comments to identify the HTTP(S) Write credential
+	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the HTTP(S) Write credential
+	Description      string `json:"description,omitempty"`      // Description for HTTP(S) Write Credential
+	ID               string `json:"id,omitempty"`               // Deprecated
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // Deprecated
-
-	Password string `json:"password,omitempty"` // HTTP(S) Write Password
-
-	Port *int `json:"port,omitempty"` // HTTP(S) Port. Valid port should be in the range of 1 to 65535.
-
-	Secure *bool `json:"secure,omitempty"` // Flag for HTTPS Write
-
-	Username string `json:"username,omitempty"` // HTTP(S) Write Username
+	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Deprecated
+	Password         string `json:"password,omitempty"`         // HTTP(S) Write Password
+	Port             *int   `json:"port,omitempty"`             // HTTP(S) Port. Valid port should be in the range of 1 to 65535.
+	Secure           *bool  `json:"secure,omitempty"`           // Flag for HTTPS Write
+	Username         string `json:"username,omitempty"`         // HTTP(S) Write Username
 }
-type RequestDiscoveryUpdateNetconfCredentialsV1 struct {
-	Comments string `json:"comments,omitempty"` // Comments to identify the netconf credential
-
-	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the netconf credential
-
-	Description string `json:"description,omitempty"` // Description for Netconf Credentials
-
-	ID string `json:"id,omitempty"` // Id of the Netconf Credential in UUID format
-
+type RequestDiscoveryUpdateNetconfCredentials struct {
+	Comments         string `json:"comments,omitempty"`         // Comments to identify the netconf credential
+	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the netconf credential
+	Description      string `json:"description,omitempty"`      // Description for Netconf Credentials
+	ID               string `json:"id,omitempty"`               // Id of the Netconf Credential in UUID format
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // Deprecated
-
-	NetconfPort string `json:"netconfPort,omitempty"` // Netconf port on the device. Valid port should be in the range of 1 to 65535.
+	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Deprecated
+	NetconfPort      string `json:"netconfPort,omitempty"`      // Netconf port on the device. Valid port should be in the range of 1 to 65535.
 }
-type RequestDiscoveryCreateNetconfCredentialsV1 []RequestItemDiscoveryCreateNetconfCredentialsV1 // Array of RequestDiscoveryCreateNetconfCredentialsV1
-type RequestItemDiscoveryCreateNetconfCredentialsV1 struct {
-	Comments string `json:"comments,omitempty"` // Comments to identify the netconf credential
-
+type RequestDiscoveryCreateNetconfCredentials []RequestItemDiscoveryCreateNetconfCredentials // Array of RequestDiscoveryCreateNetconfCredentials
+type RequestItemDiscoveryCreateNetconfCredentials struct {
+	Comments         string `json:"comments,omitempty"`         // Comments to identify the netconf credential
+	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the credential
+	Description      string `json:"description,omitempty"`      // Description for Netconf Credentials
+	ID               string `json:"id,omitempty"`               // Deprecated
+	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated
+	InstanceUUID     string `json:"instanceUuid,omitempty"`     // deprecated
+	NetconfPort      string `json:"netconfPort,omitempty"`      // Netconf port on the device. Valid port should be in the range of 1 to 65535.
+}
+type RequestDiscoveryUpdateSNMPReadCommunity struct {
+	Comments       string `json:"comments,omitempty"`       // Comments to identify the credential
 	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the credential
-
-	Description string `json:"description,omitempty"` // Description for Netconf Credentials
-
-	ID string `json:"id,omitempty"` // Deprecated
-
-	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // deprecated
-
-	NetconfPort string `json:"netconfPort,omitempty"` // Netconf port on the device. Valid port should be in the range of 1 to 65535.
+	Description    string `json:"description,omitempty"`    // Name/Description of the credential
+	InstanceUUID   string `json:"instanceUuid,omitempty"`   // Credential UUID
+	ReadCommunity  string `json:"readCommunity,omitempty"`  // SNMP read community. NO!$DATA!$ for no value change
 }
-type RequestDiscoveryUpdateSNMPReadCommunityV1 struct {
-	Comments string `json:"comments,omitempty"` // Comments to identify the credential
-
+type RequestDiscoveryCreateSNMPReadCommunity []RequestItemDiscoveryCreateSNMPReadCommunity // Array of RequestDiscoveryCreateSNMPReadCommunity
+type RequestItemDiscoveryCreateSNMPReadCommunity struct {
+	Comments       string `json:"comments,omitempty"`       // Comments to identify the credential
 	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the credential
-
-	Description string `json:"description,omitempty"` // Name/Description of the credential
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // Credential UUID
-
-	ReadCommunity string `json:"readCommunity,omitempty"` // SNMP read community. NO!$DATA!$ for no value change
+	Description    string `json:"description,omitempty"`    // Name/Description of the credential
+	ReadCommunity  string `json:"readCommunity,omitempty"`  // SNMP read community
 }
-type RequestDiscoveryCreateSNMPReadCommunityV1 []RequestItemDiscoveryCreateSNMPReadCommunityV1 // Array of RequestDiscoveryCreateSNMPReadCommunityV1
-type RequestItemDiscoveryCreateSNMPReadCommunityV1 struct {
-	Comments string `json:"comments,omitempty"` // Comments to identify the credential
-
+type RequestDiscoveryCreateSNMPWriteCommunity []RequestItemDiscoveryCreateSNMPWriteCommunity // Array of RequestDiscoveryCreateSNMPWriteCommunity
+type RequestItemDiscoveryCreateSNMPWriteCommunity struct {
+	Comments       string `json:"comments,omitempty"`       // Comments to identify the credential
 	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the credential
-
-	Description string `json:"description,omitempty"` // Name/Description of the credential
-
-	ReadCommunity string `json:"readCommunity,omitempty"` // SNMP read community
-}
-type RequestDiscoveryCreateSNMPWriteCommunityV1 []RequestItemDiscoveryCreateSNMPWriteCommunityV1 // Array of RequestDiscoveryCreateSNMPWriteCommunityV1
-type RequestItemDiscoveryCreateSNMPWriteCommunityV1 struct {
-	Comments string `json:"comments,omitempty"` // Comments to identify the credential
-
-	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the credential
-
-	Description string `json:"description,omitempty"` // Name/Description of the credential
-
+	Description    string `json:"description,omitempty"`    // Name/Description of the credential
 	WriteCommunity string `json:"writeCommunity,omitempty"` // SNMP write community
 }
-type RequestDiscoveryUpdateSNMPWriteCommunityV1 struct {
-	Comments string `json:"comments,omitempty"` // Comments to identify the credential
-
+type RequestDiscoveryUpdateSNMPWriteCommunity struct {
+	Comments       string `json:"comments,omitempty"`       // Comments to identify the credential
 	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the credential
-
-	Description string `json:"description,omitempty"` // Name/Description of the credential
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // Credential UUID
-
+	Description    string `json:"description,omitempty"`    // Name/Description of the credential
+	InstanceUUID   string `json:"instanceUuid,omitempty"`   // Credential UUID
 	WriteCommunity string `json:"writeCommunity,omitempty"` // SNMP write community. NO!$DATA!$ for no value change
 }
-type RequestDiscoveryUpdateSNMPv3CredentialsV1 struct {
-	AuthPassword string `json:"authPassword,omitempty"` // Auth password for SNMPv3. Required if snmpMode is 'AUTHPRIV' or 'AUTHNOPRIV'. Use 'NO!$DATA!$' if no change required.
-
-	AuthType string `json:"authType,omitempty"` // SNMPv3 auth protocol. 'SHA' or 'MD5'. Required if snmpMode is 'AUTHPRIV' or 'AUTHNOPRIV'.
-
-	Comments string `json:"comments,omitempty"` // Comments to identify the SNMPv3 credential
-
-	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the SNMPv3 credential
-
-	Description string `json:"description,omitempty"` // Description for SNMPv3 Credential
-
-	ID string `json:"id,omitempty"` // Id of the SNMPv3 Credential
-
+type RequestDiscoveryUpdateSNMPv3Credentials struct {
+	AuthPassword     string `json:"authPassword,omitempty"`     // Auth password for SNMPv3. Required if snmpMode is 'AUTHPRIV' or 'AUTHNOPRIV'. Use 'NO!$DATA!$' if no change required.
+	AuthType         string `json:"authType,omitempty"`         // SNMPv3 auth protocol. 'SHA' or 'MD5'. Required if snmpMode is 'AUTHPRIV' or 'AUTHNOPRIV'.
+	Comments         string `json:"comments,omitempty"`         // Comments to identify the SNMPv3 credential
+	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the SNMPv3 credential
+	Description      string `json:"description,omitempty"`      // Description for SNMPv3 Credential
+	ID               string `json:"id,omitempty"`               // Id of the SNMPv3 Credential
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated. This attribute will be removed in a future release, should not be used, and any value supplied will be ignored.
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // Deprecated. This attribute will be removed in a future release, should not be used, and any value supplied will be ignored.
-
-	PrivacyPassword string `json:"privacyPassword,omitempty"` // Privacy password for SNMPv3 privacy. Required if snmpMode is 'AUTHPRIV'. Use 'NO!$DATA!$' if no change required.
-
-	PrivacyType string `json:"privacyType,omitempty"` // SNMPv3 privacy protocol. Required is snmpMode is 'AUTHPRIV'.
-
-	SNMPMode string `json:"snmpMode,omitempty"` // Mode of SNMPv3. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
-
-	Username string `json:"username,omitempty"` // SNMPv3 username
+	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Deprecated. This attribute will be removed in a future release, should not be used, and any value supplied will be ignored.
+	PrivacyPassword  string `json:"privacyPassword,omitempty"`  // Privacy password for SNMPv3 privacy. Required if snmpMode is 'AUTHPRIV'. Use 'NO!$DATA!$' if no change required.
+	PrivacyType      string `json:"privacyType,omitempty"`      // SNMPv3 privacy protocol. Required is snmpMode is 'AUTHPRIV'.
+	SNMPMode         string `json:"snmpMode,omitempty"`         // Mode of SNMPv3. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
+	Username         string `json:"username,omitempty"`         // SNMPv3 username
 }
-type RequestDiscoveryCreateSNMPv3CredentialsV1 []RequestItemDiscoveryCreateSNMPv3CredentialsV1 // Array of RequestDiscoveryCreateSNMPv3CredentialsV1
-type RequestItemDiscoveryCreateSNMPv3CredentialsV1 struct {
-	AuthPassword string `json:"authPassword,omitempty"` // Auth password for SNMPv3. Required if snmpMode is 'AUTHPRIV' or 'AUTHNOPRIV'.
-
-	AuthType string `json:"authType,omitempty"` // SNMPv3 auth protocol. 'SHA' or 'MD5'. Required if snmpMode is 'AUTHPRIV' or 'AUTHNOPRIV'.
-
-	Comments string `json:"comments,omitempty"` // Comments to identify the SNMPv3 credential
-
-	CredentialType string `json:"credentialType,omitempty"` // Credential type to identify the application that uses the SNMPv3 credential
-
-	Description string `json:"description,omitempty"` // Description for the SNMPv3 credential
-
-	ID string `json:"id,omitempty"` // Deprecated. This attribute will be removed in a future release, should not be used, and any value supplied will be ignored.
-
+type RequestDiscoveryCreateSNMPv3Credentials []RequestItemDiscoveryCreateSNMPv3Credentials // Array of RequestDiscoveryCreateSNMPv3Credentials
+type RequestItemDiscoveryCreateSNMPv3Credentials struct {
+	AuthPassword     string `json:"authPassword,omitempty"`     // Auth password for SNMPv3. Required if snmpMode is 'AUTHPRIV' or 'AUTHNOPRIV'.
+	AuthType         string `json:"authType,omitempty"`         // SNMPv3 auth protocol. 'SHA' or 'MD5'. Required if snmpMode is 'AUTHPRIV' or 'AUTHNOPRIV'.
+	Comments         string `json:"comments,omitempty"`         // Comments to identify the SNMPv3 credential
+	CredentialType   string `json:"credentialType,omitempty"`   // Credential type to identify the application that uses the SNMPv3 credential
+	Description      string `json:"description,omitempty"`      // Description for the SNMPv3 credential
+	ID               string `json:"id,omitempty"`               // Deprecated. This attribute will be removed in a future release, should not be used, and any value supplied will be ignored.
 	InstanceTenantID string `json:"instanceTenantId,omitempty"` // Deprecated. This attribute will be removed in a future release, should not be used, and any value supplied will be ignored.
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` // Deprecated. This attribute will be removed in a future release, should not be used, and any value supplied will be ignored.
-
-	PrivacyPassword string `json:"privacyPassword,omitempty"` // Privacy password for SNMPv3 privacy. Required if snmpMode is 'AUTHPRIV'.
-
-	PrivacyType string `json:"privacyType,omitempty"` // SNMPv3 privacy protocol. Required is snmpMode is 'AUTHPRIV'.
-
-	SNMPMode string `json:"snmpMode,omitempty"` // Mode of SNMPv3. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'.
-
-	Username string `json:"username,omitempty"` // SNMPv3 username
+	InstanceUUID     string `json:"instanceUuid,omitempty"`     // Deprecated. This attribute will be removed in a future release, should not be used, and any value supplied will be ignored.
+	PrivacyPassword  string `json:"privacyPassword,omitempty"`  // Privacy password for SNMPv3 privacy. Required if snmpMode is 'AUTHPRIV'.
+	PrivacyType      string `json:"privacyType,omitempty"`      // SNMPv3 privacy protocol. Required is snmpMode is 'AUTHPRIV'.
+	SNMPMode         string `json:"snmpMode,omitempty"`         // Mode of SNMPv3. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'.
+	Username         string `json:"username,omitempty"`         // SNMPv3 username
 }
-type RequestDiscoveryUpdateGlobalCredentialsV1 struct {
+type RequestDiscoveryUpdateGlobalCredentials struct {
 	SiteUUIDs []string `json:"siteUuids,omitempty"` // List of siteUuids where credential is to be updated
 }
-type RequestDiscoveryCreateUpdateSNMPPropertiesV1 []RequestItemDiscoveryCreateUpdateSNMPPropertiesV1 // Array of RequestDiscoveryCreateUpdateSNMPPropertiesV1
-type RequestItemDiscoveryCreateUpdateSNMPPropertiesV1 struct {
-	ID string `json:"id,omitempty"` //
-
-	InstanceTenantID string `json:"instanceTenantId,omitempty"` //
-
-	InstanceUUID string `json:"instanceUuid,omitempty"` //
-
-	IntValue *int `json:"intValue,omitempty"` //
-
+type RequestDiscoveryCreateUpdateSNMPProperties []RequestItemDiscoveryCreateUpdateSNMPProperties // Array of RequestDiscoveryCreateUpdateSNMPProperties
+type RequestItemDiscoveryCreateUpdateSNMPProperties struct {
+	ID                 string `json:"id,omitempty"`                 //
+	InstanceTenantID   string `json:"instanceTenantId,omitempty"`   //
+	InstanceUUID       string `json:"instanceUuid,omitempty"`       //
+	IntValue           *int   `json:"intValue,omitempty"`           //
 	SystemPropertyName string `json:"systemPropertyName,omitempty"` //
 }
 type RequestDiscoveryUpdateGlobalCredentialsV2 struct {
 	CliCredential *RequestDiscoveryUpdateGlobalCredentialsV2CliCredential `json:"cliCredential,omitempty"` //
-
-	SNMPV2CRead *RequestDiscoveryUpdateGlobalCredentialsV2SNMPV2CRead `json:"snmpV2cRead,omitempty"` //
-
-	SNMPV2CWrite *RequestDiscoveryUpdateGlobalCredentialsV2SNMPV2CWrite `json:"snmpV2cWrite,omitempty"` //
-
-	SNMPV3 *RequestDiscoveryUpdateGlobalCredentialsV2SNMPV3 `json:"snmpV3,omitempty"` //
-
-	HTTPSRead *RequestDiscoveryUpdateGlobalCredentialsV2HTTPSRead `json:"httpsRead,omitempty"` //
-
-	HTTPSWrite *RequestDiscoveryUpdateGlobalCredentialsV2HTTPSWrite `json:"httpsWrite,omitempty"` //
+	SNMPV2CRead   *RequestDiscoveryUpdateGlobalCredentialsV2SNMPV2CRead   `json:"snmpV2cRead,omitempty"`   //
+	SNMPV2CWrite  *RequestDiscoveryUpdateGlobalCredentialsV2SNMPV2CWrite  `json:"snmpV2cWrite,omitempty"`  //
+	SNMPV3        *RequestDiscoveryUpdateGlobalCredentialsV2SNMPV3        `json:"snmpV3,omitempty"`        //
+	HTTPSRead     *RequestDiscoveryUpdateGlobalCredentialsV2HTTPSRead     `json:"httpsRead,omitempty"`     //
+	HTTPSWrite    *RequestDiscoveryUpdateGlobalCredentialsV2HTTPSWrite    `json:"httpsWrite,omitempty"`    //
 }
 type RequestDiscoveryUpdateGlobalCredentialsV2CliCredential struct {
-	Description string `json:"description,omitempty"` // Description for CLI credential
-
-	Username string `json:"username,omitempty"` // CLI Username
-
-	Password string `json:"password,omitempty"` // CLI Password
-
+	Description    string `json:"description,omitempty"`    // Description for CLI credential
+	Username       string `json:"username,omitempty"`       // CLI Username
+	Password       string `json:"password,omitempty"`       // CLI Password
 	EnablePassword string `json:"enablePassword,omitempty"` // CLI Enable Password
-
-	ID string `json:"id,omitempty"` // Id of the CLI Credential in UUID format
+	ID             string `json:"id,omitempty"`             // Id of the CLI Credential in UUID format
 }
 type RequestDiscoveryUpdateGlobalCredentialsV2SNMPV2CRead struct {
-	Description string `json:"description,omitempty"` // Description for Snmp RO community
-
+	Description   string `json:"description,omitempty"`   // Description for Snmp RO community
 	ReadCommunity string `json:"readCommunity,omitempty"` // Snmp RO community
-
-	ID string `json:"id,omitempty"` // Id of the SNMP Read Credential in UUID format
+	ID            string `json:"id,omitempty"`            // Id of the SNMP Read Credential in UUID format
 }
 type RequestDiscoveryUpdateGlobalCredentialsV2SNMPV2CWrite struct {
-	Description string `json:"description,omitempty"` // Description for Snmp RW community
-
+	Description    string `json:"description,omitempty"`    // Description for Snmp RW community
 	WriteCommunity string `json:"writeCommunity,omitempty"` // Snmp RW community
-
-	ID string `json:"id,omitempty"` // Id of the SNMP Write Credential in UUID format
+	ID             string `json:"id,omitempty"`             // Id of the SNMP Write Credential in UUID format
 }
 type RequestDiscoveryUpdateGlobalCredentialsV2SNMPV3 struct {
-	AuthPassword string `json:"authPassword,omitempty"` // Auth Password for SNMP V3
-
-	AuthType string `json:"authType,omitempty"` // SNMP auth protocol. SHA' or 'MD5'
-
-	SNMPMode string `json:"snmpMode,omitempty"` // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
-
+	AuthPassword    string `json:"authPassword,omitempty"`    // Auth Password for SNMP V3
+	AuthType        string `json:"authType,omitempty"`        // SNMP auth protocol. SHA' or 'MD5'
+	SNMPMode        string `json:"snmpMode,omitempty"`        // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
 	PrivacyPassword string `json:"privacyPassword,omitempty"` // Privacy Password for SNMP privacy
-
-	PrivacyType string `json:"privacyType,omitempty"` // SNMP privacy protocol. 'AES128','AES192','AES256'
-
-	Username string `json:"username,omitempty"` // SNMP V3 Username
-
-	Description string `json:"description,omitempty"` // Description for Snmp V3 Credential
-
-	ID string `json:"id,omitempty"` // Id of the SNMP V3 Credential in UUID format
+	PrivacyType     string `json:"privacyType,omitempty"`     // SNMP privacy protocol. 'AES128','AES192','AES256'
+	Username        string `json:"username,omitempty"`        // SNMP V3 Username
+	Description     string `json:"description,omitempty"`     // Description for Snmp V3 Credential
+	ID              string `json:"id,omitempty"`              // Id of the SNMP V3 Credential in UUID format
 }
 type RequestDiscoveryUpdateGlobalCredentialsV2HTTPSRead struct {
 	Description string `json:"description,omitempty"` // Description for HTTP(S) Read Credentials
-
-	Username string `json:"username,omitempty"` // HTTP(S) Read Username
-
-	Password string `json:"password,omitempty"` // HTTP(S) Read Password
-
-	Port *int `json:"port,omitempty"` // HTTP(S) Port
-
-	ID string `json:"id,omitempty"` // Id of the HTTP(S) Read Credential in UUID format
+	Username    string `json:"username,omitempty"`    // HTTP(S) Read Username
+	Password    string `json:"password,omitempty"`    // HTTP(S) Read Password
+	Port        *int   `json:"port,omitempty"`        // HTTP(S) Port
+	ID          string `json:"id,omitempty"`          // Id of the HTTP(S) Read Credential in UUID format
 }
 type RequestDiscoveryUpdateGlobalCredentialsV2HTTPSWrite struct {
 	Description string `json:"description,omitempty"` // Description for HTTP(S) Write Credentials
-
-	Username string `json:"username,omitempty"` // HTTP(S) Write Username
-
-	Password string `json:"password,omitempty"` // HTTP(S) Write Password
-
-	Port *int `json:"port,omitempty"` // HTTP(S) Port
-
-	ID string `json:"id,omitempty"` // Id of the HTTP(S) Read Credential in UUID format
+	Username    string `json:"username,omitempty"`    // HTTP(S) Write Username
+	Password    string `json:"password,omitempty"`    // HTTP(S) Write Password
+	Port        *int   `json:"port,omitempty"`        // HTTP(S) Port
+	ID          string `json:"id,omitempty"`          // Id of the HTTP(S) Read Credential in UUID format
 }
 type RequestDiscoveryCreateGlobalCredentialsV2 struct {
 	CliCredential *[]RequestDiscoveryCreateGlobalCredentialsV2CliCredential `json:"cliCredential,omitempty"` //
-
-	SNMPV2CRead *[]RequestDiscoveryCreateGlobalCredentialsV2SNMPV2CRead `json:"snmpV2cRead,omitempty"` //
-
-	SNMPV2CWrite *[]RequestDiscoveryCreateGlobalCredentialsV2SNMPV2CWrite `json:"snmpV2cWrite,omitempty"` //
-
-	SNMPV3 *[]RequestDiscoveryCreateGlobalCredentialsV2SNMPV3 `json:"snmpV3,omitempty"` //
-
-	HTTPSRead *[]RequestDiscoveryCreateGlobalCredentialsV2HTTPSRead `json:"httpsRead,omitempty"` //
-
-	HTTPSWrite *[]RequestDiscoveryCreateGlobalCredentialsV2HTTPSWrite `json:"httpsWrite,omitempty"` //
+	SNMPV2CRead   *[]RequestDiscoveryCreateGlobalCredentialsV2SNMPV2CRead   `json:"snmpV2cRead,omitempty"`   //
+	SNMPV2CWrite  *[]RequestDiscoveryCreateGlobalCredentialsV2SNMPV2CWrite  `json:"snmpV2cWrite,omitempty"`  //
+	SNMPV3        *[]RequestDiscoveryCreateGlobalCredentialsV2SNMPV3        `json:"snmpV3,omitempty"`        //
+	HTTPSRead     *[]RequestDiscoveryCreateGlobalCredentialsV2HTTPSRead     `json:"httpsRead,omitempty"`     //
+	HTTPSWrite    *[]RequestDiscoveryCreateGlobalCredentialsV2HTTPSWrite    `json:"httpsWrite,omitempty"`    //
 }
 type RequestDiscoveryCreateGlobalCredentialsV2CliCredential struct {
-	Description string `json:"description,omitempty"` // Description for CLI credential
-
-	Username string `json:"username,omitempty"` // CLI Username
-
-	Password string `json:"password,omitempty"` // CLI Password
-
+	Description    string `json:"description,omitempty"`    // Description for CLI credential
+	Username       string `json:"username,omitempty"`       // CLI Username
+	Password       string `json:"password,omitempty"`       // CLI Password
 	EnablePassword string `json:"enablePassword,omitempty"` // CLI Enable Password
 }
 type RequestDiscoveryCreateGlobalCredentialsV2SNMPV2CRead struct {
-	Description string `json:"description,omitempty"` // Description for Snmp RO community
-
+	Description   string `json:"description,omitempty"`   // Description for Snmp RO community
 	ReadCommunity string `json:"readCommunity,omitempty"` // Snmp RO community
 }
 type RequestDiscoveryCreateGlobalCredentialsV2SNMPV2CWrite struct {
-	Description string `json:"description,omitempty"` // Description for Snmp RW community
-
+	Description    string `json:"description,omitempty"`    // Description for Snmp RW community
 	WriteCommunity string `json:"writeCommunity,omitempty"` // Snmp RW community
 }
 type RequestDiscoveryCreateGlobalCredentialsV2SNMPV3 struct {
-	Description string `json:"description,omitempty"` // Description for Snmp V3 Credential
-
-	Username string `json:"username,omitempty"` // SNMP V3 Username
-
-	PrivacyType string `json:"privacyType,omitempty"` // SNMP privacy protocol. 'AES128','AES192','AES256'
-
+	Description     string `json:"description,omitempty"`     // Description for Snmp V3 Credential
+	Username        string `json:"username,omitempty"`        // SNMP V3 Username
+	PrivacyType     string `json:"privacyType,omitempty"`     // SNMP privacy protocol. 'AES128','AES192','AES256'
 	PrivacyPassword string `json:"privacyPassword,omitempty"` // Privacy Password for SNMP privacy
-
-	AuthType string `json:"authType,omitempty"` // SNMP auth protocol. SHA' or 'MD5'
-
-	AuthPassword string `json:"authPassword,omitempty"` // Auth Password for SNMP
-
-	SNMPMode string `json:"snmpMode,omitempty"` // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
+	AuthType        string `json:"authType,omitempty"`        // SNMP auth protocol. SHA' or 'MD5'
+	AuthPassword    string `json:"authPassword,omitempty"`    // Auth Password for SNMP
+	SNMPMode        string `json:"snmpMode,omitempty"`        // Mode of SNMP. 'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'
 }
 type RequestDiscoveryCreateGlobalCredentialsV2HTTPSRead struct {
 	Description string `json:"description,omitempty"` // Description for HTTP(S) Read Credentials
-
-	Username string `json:"username,omitempty"` // HTTP(S) Read Username
-
-	Password string `json:"password,omitempty"` // HTTP(S) Read Password
-
-	Port *int `json:"port,omitempty"` // HTTP(S) Port
+	Username    string `json:"username,omitempty"`    // HTTP(S) Read Username
+	Password    string `json:"password,omitempty"`    // HTTP(S) Read Password
+	Port        *int   `json:"port,omitempty"`        // HTTP(S) Port
 }
 type RequestDiscoveryCreateGlobalCredentialsV2HTTPSWrite struct {
 	Description string `json:"description,omitempty"` // Description for HTTP(S) Write Credentials
-
-	Username string `json:"username,omitempty"` // HTTP(S) Write Username
-
-	Password string `json:"password,omitempty"` // HTTP(S) Write Password
-
-	Port *int `json:"port,omitempty"` // HTTP(S) Port
+	Username    string `json:"username,omitempty"`    // HTTP(S) Write Username
+	Password    string `json:"password,omitempty"`    // HTTP(S) Write Password
+	Port        *int   `json:"port,omitempty"`        // HTTP(S) Port
 }
 
-//GetCountOfAllDiscoveryJobsV1 Get count of all discovery jobs - 069d-9823-451b-892d
+//GetCountOfAllDiscoveryJobs Get count of all discovery jobs - 069d-9823-451b-892d
 /* Returns the count of all available discovery jobs
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-count-of-all-discovery-jobs
 */
-func (s *DiscoveryService) GetCountOfAllDiscoveryJobsV1() (*ResponseDiscoveryGetCountOfAllDiscoveryJobsV1, *resty.Response, error) {
+func (s *DiscoveryService) GetCountOfAllDiscoveryJobs() (*ResponseDiscoveryGetCountOfAllDiscoveryJobs, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery/count"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseDiscoveryGetCountOfAllDiscoveryJobsV1{}).
+		SetResult(&ResponseDiscoveryGetCountOfAllDiscoveryJobs{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1382,33 +1045,33 @@ func (s *DiscoveryService) GetCountOfAllDiscoveryJobsV1() (*ResponseDiscoveryGet
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetCountOfAllDiscoveryJobsV1()
+			return s.GetCountOfAllDiscoveryJobs()
 		}
-		return nil, response, fmt.Errorf("error with operation GetCountOfAllDiscoveryJobsV1")
+		return nil, response, fmt.Errorf("error with operation GetCountOfAllDiscoveryJobs")
 	}
 
-	result := response.Result().(*ResponseDiscoveryGetCountOfAllDiscoveryJobsV1)
+	result := response.Result().(*ResponseDiscoveryGetCountOfAllDiscoveryJobs)
 	return result, response, err
 
 }
 
-//GetDiscoveryJobsByIPV1 Get Discovery jobs by IP - a496-7be6-4dfa-aa1a
+//GetDiscoveryJobsByIP Get Discovery jobs by IP - a496-7be6-4dfa-aa1a
 /* Returns the list of discovery jobs for the given IP
 
 
-@param GetDiscoveryJobsByIPV1QueryParams Filtering parameter
+@param GetDiscoveryJobsByIPQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-discovery-jobs-by-ip
 */
-func (s *DiscoveryService) GetDiscoveryJobsByIPV1(GetDiscoveryJobsByIPV1QueryParams *GetDiscoveryJobsByIPV1QueryParams) (*ResponseDiscoveryGetDiscoveryJobsByIPV1, *resty.Response, error) {
+func (s *DiscoveryService) GetDiscoveryJobsByIP(GetDiscoveryJobsByIPQueryParams *GetDiscoveryJobsByIPQueryParams) (*ResponseDiscoveryGetDiscoveryJobsByIP, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery/job"
 
-	queryString, _ := query.Values(GetDiscoveryJobsByIPV1QueryParams)
+	queryString, _ := query.Values(GetDiscoveryJobsByIPQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseDiscoveryGetDiscoveryJobsByIPV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseDiscoveryGetDiscoveryJobsByIP{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1419,17 +1082,17 @@ func (s *DiscoveryService) GetDiscoveryJobsByIPV1(GetDiscoveryJobsByIPV1QueryPar
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetDiscoveryJobsByIPV1(GetDiscoveryJobsByIPV1QueryParams)
+			return s.GetDiscoveryJobsByIP(GetDiscoveryJobsByIPQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetDiscoveryJobsByIpV1")
+		return nil, response, fmt.Errorf("error with operation GetDiscoveryJobsByIp")
 	}
 
-	result := response.Result().(*ResponseDiscoveryGetDiscoveryJobsByIPV1)
+	result := response.Result().(*ResponseDiscoveryGetDiscoveryJobsByIP)
 	return result, response, err
 
 }
 
-//GetDiscoveryByIDV1 Get Discovery by Id - 63bb-88b7-4f59-aa17
+//GetDiscoveryByID Get Discovery by Id - 63bb-88b7-4f59-aa17
 /* Returns discovery by Discovery ID. Discovery ID can be obtained using the "Get Discoveries by range" API.
 
 
@@ -1438,14 +1101,14 @@ func (s *DiscoveryService) GetDiscoveryJobsByIPV1(GetDiscoveryJobsByIPV1QueryPar
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-discovery-by-id
 */
-func (s *DiscoveryService) GetDiscoveryByIDV1(id string) (*ResponseDiscoveryGetDiscoveryByIDV1, *resty.Response, error) {
+func (s *DiscoveryService) GetDiscoveryByID(id string) (*ResponseDiscoveryGetDiscoveryByID, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery/{id}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseDiscoveryGetDiscoveryByIDV1{}).
+		SetResult(&ResponseDiscoveryGetDiscoveryByID{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1456,36 +1119,36 @@ func (s *DiscoveryService) GetDiscoveryByIDV1(id string) (*ResponseDiscoveryGetD
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetDiscoveryByIDV1(id)
+			return s.GetDiscoveryByID(id)
 		}
-		return nil, response, fmt.Errorf("error with operation GetDiscoveryByIdV1")
+		return nil, response, fmt.Errorf("error with operation GetDiscoveryById")
 	}
 
-	result := response.Result().(*ResponseDiscoveryGetDiscoveryByIDV1)
+	result := response.Result().(*ResponseDiscoveryGetDiscoveryByID)
 	return result, response, err
 
 }
 
-//GetListOfDiscoveriesByDiscoveryIDV1 Get list of discoveries by discovery Id - 9987-2a13-4d0a-9fb4
+//GetListOfDiscoveriesByDiscoveryID Get list of discoveries by discovery Id - 9987-2a13-4d0a-9fb4
 /* Returns the list of discovery jobs for the given Discovery ID. The results can be optionally filtered based on IP. Discovery ID can be obtained using the "Get Discoveries by range" API.
 
 
 @param id id path parameter. Discovery ID
 
-@param GetListOfDiscoveriesByDiscoveryIdV1QueryParams Filtering parameter
+@param GetListOfDiscoveriesByDiscoveryIdQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-list-of-discoveries-by-discovery-id
 */
-func (s *DiscoveryService) GetListOfDiscoveriesByDiscoveryIDV1(id string, GetListOfDiscoveriesByDiscoveryIdV1QueryParams *GetListOfDiscoveriesByDiscoveryIDV1QueryParams) (*ResponseDiscoveryGetListOfDiscoveriesByDiscoveryIDV1, *resty.Response, error) {
+func (s *DiscoveryService) GetListOfDiscoveriesByDiscoveryID(id string, GetListOfDiscoveriesByDiscoveryIdQueryParams *GetListOfDiscoveriesByDiscoveryIDQueryParams) (*ResponseDiscoveryGetListOfDiscoveriesByDiscoveryID, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery/{id}/job"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
-	queryString, _ := query.Values(GetListOfDiscoveriesByDiscoveryIdV1QueryParams)
+	queryString, _ := query.Values(GetListOfDiscoveriesByDiscoveryIdQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseDiscoveryGetListOfDiscoveriesByDiscoveryIDV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseDiscoveryGetListOfDiscoveriesByDiscoveryID{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1496,36 +1159,36 @@ func (s *DiscoveryService) GetListOfDiscoveriesByDiscoveryIDV1(id string, GetLis
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetListOfDiscoveriesByDiscoveryIDV1(id, GetListOfDiscoveriesByDiscoveryIdV1QueryParams)
+			return s.GetListOfDiscoveriesByDiscoveryID(id, GetListOfDiscoveriesByDiscoveryIdQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetListOfDiscoveriesByDiscoveryIdV1")
+		return nil, response, fmt.Errorf("error with operation GetListOfDiscoveriesByDiscoveryId")
 	}
 
-	result := response.Result().(*ResponseDiscoveryGetListOfDiscoveriesByDiscoveryIDV1)
+	result := response.Result().(*ResponseDiscoveryGetListOfDiscoveriesByDiscoveryID)
 	return result, response, err
 
 }
 
-//GetDiscoveredNetworkDevicesByDiscoveryIDV1 Get Discovered network devices by discovery Id - f6ac-994f-451b-a011
+//GetDiscoveredNetworkDevicesByDiscoveryID Get Discovered network devices by discovery Id - f6ac-994f-451b-a011
 /* Returns the network devices discovered for the given Discovery ID. Discovery ID can be obtained using the "Get Discoveries by range" API.
 
 
 @param id id path parameter. Discovery ID
 
-@param GetDiscoveredNetworkDevicesByDiscoveryIdV1QueryParams Filtering parameter
+@param GetDiscoveredNetworkDevicesByDiscoveryIdQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-discovered-network-devices-by-discovery-id
 */
-func (s *DiscoveryService) GetDiscoveredNetworkDevicesByDiscoveryIDV1(id string, GetDiscoveredNetworkDevicesByDiscoveryIdV1QueryParams *GetDiscoveredNetworkDevicesByDiscoveryIDV1QueryParams) (*ResponseDiscoveryGetDiscoveredNetworkDevicesByDiscoveryIDV1, *resty.Response, error) {
+func (s *DiscoveryService) GetDiscoveredNetworkDevicesByDiscoveryID(id string, GetDiscoveredNetworkDevicesByDiscoveryIdQueryParams *GetDiscoveredNetworkDevicesByDiscoveryIDQueryParams) (*ResponseDiscoveryGetDiscoveredNetworkDevicesByDiscoveryID, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery/{id}/network-device"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
-	queryString, _ := query.Values(GetDiscoveredNetworkDevicesByDiscoveryIdV1QueryParams)
+	queryString, _ := query.Values(GetDiscoveredNetworkDevicesByDiscoveryIdQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseDiscoveryGetDiscoveredNetworkDevicesByDiscoveryIDV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseDiscoveryGetDiscoveredNetworkDevicesByDiscoveryID{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1536,36 +1199,36 @@ func (s *DiscoveryService) GetDiscoveredNetworkDevicesByDiscoveryIDV1(id string,
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetDiscoveredNetworkDevicesByDiscoveryIDV1(id, GetDiscoveredNetworkDevicesByDiscoveryIdV1QueryParams)
+			return s.GetDiscoveredNetworkDevicesByDiscoveryID(id, GetDiscoveredNetworkDevicesByDiscoveryIdQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetDiscoveredNetworkDevicesByDiscoveryIdV1")
+		return nil, response, fmt.Errorf("error with operation GetDiscoveredNetworkDevicesByDiscoveryId")
 	}
 
-	result := response.Result().(*ResponseDiscoveryGetDiscoveredNetworkDevicesByDiscoveryIDV1)
+	result := response.Result().(*ResponseDiscoveryGetDiscoveredNetworkDevicesByDiscoveryID)
 	return result, response, err
 
 }
 
-//GetDevicesDiscoveredByIDV1 Get Devices discovered by Id - a696-5b45-4c9a-8663
+//GetDevicesDiscoveredByID Get Devices discovered by Id - a696-5b45-4c9a-8663
 /* Returns the count of network devices discovered in the given discovery. Discovery ID can be obtained using the "Get Discoveries by range" API.
 
 
 @param id id path parameter. Discovery ID
 
-@param GetDevicesDiscoveredByIdV1QueryParams Filtering parameter
+@param GetDevicesDiscoveredByIdQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-devices-discovered-by-id
 */
-func (s *DiscoveryService) GetDevicesDiscoveredByIDV1(id string, GetDevicesDiscoveredByIdV1QueryParams *GetDevicesDiscoveredByIDV1QueryParams) (*ResponseDiscoveryGetDevicesDiscoveredByIDV1, *resty.Response, error) {
+func (s *DiscoveryService) GetDevicesDiscoveredByID(id string, GetDevicesDiscoveredByIdQueryParams *GetDevicesDiscoveredByIDQueryParams) (*ResponseDiscoveryGetDevicesDiscoveredByID, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery/{id}/network-device/count"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
-	queryString, _ := query.Values(GetDevicesDiscoveredByIdV1QueryParams)
+	queryString, _ := query.Values(GetDevicesDiscoveredByIdQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseDiscoveryGetDevicesDiscoveredByIDV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseDiscoveryGetDevicesDiscoveredByID{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1576,17 +1239,17 @@ func (s *DiscoveryService) GetDevicesDiscoveredByIDV1(id string, GetDevicesDisco
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetDevicesDiscoveredByIDV1(id, GetDevicesDiscoveredByIdV1QueryParams)
+			return s.GetDevicesDiscoveredByID(id, GetDevicesDiscoveredByIdQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetDevicesDiscoveredByIdV1")
+		return nil, response, fmt.Errorf("error with operation GetDevicesDiscoveredById")
 	}
 
-	result := response.Result().(*ResponseDiscoveryGetDevicesDiscoveredByIDV1)
+	result := response.Result().(*ResponseDiscoveryGetDevicesDiscoveredByID)
 	return result, response, err
 
 }
 
-//GetDiscoveredDevicesByRangeV1 Get Discovered devices by range - a6b7-98ab-4aca-a34e
+//GetDiscoveredDevicesByRange Get Discovered devices by range - a6b7-98ab-4aca-a34e
 /* Returns the network devices discovered for the given discovery and for the given range. The maximum number of records that can be retrieved is 500. Discovery ID can be obtained using the "Get Discoveries by range" API.
 
 
@@ -1596,22 +1259,22 @@ func (s *DiscoveryService) GetDevicesDiscoveredByIDV1(id string, GetDevicesDisco
 
 @param recordsToReturn recordsToReturn path parameter. Number of records to fetch from the start index
 
-@param GetDiscoveredDevicesByRangeV1QueryParams Filtering parameter
+@param GetDiscoveredDevicesByRangeQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-discovered-devices-by-range
 */
-func (s *DiscoveryService) GetDiscoveredDevicesByRangeV1(id string, startIndex int, recordsToReturn int, GetDiscoveredDevicesByRangeV1QueryParams *GetDiscoveredDevicesByRangeV1QueryParams) (*ResponseDiscoveryGetDiscoveredDevicesByRangeV1, *resty.Response, error) {
+func (s *DiscoveryService) GetDiscoveredDevicesByRange(id string, startIndex int, recordsToReturn int, GetDiscoveredDevicesByRangeQueryParams *GetDiscoveredDevicesByRangeQueryParams) (*ResponseDiscoveryGetDiscoveredDevicesByRange, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery/{id}/network-device/{startIndex}/{recordsToReturn}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 	path = strings.Replace(path, "{startIndex}", fmt.Sprintf("%v", startIndex), -1)
 	path = strings.Replace(path, "{recordsToReturn}", fmt.Sprintf("%v", recordsToReturn), -1)
 
-	queryString, _ := query.Values(GetDiscoveredDevicesByRangeV1QueryParams)
+	queryString, _ := query.Values(GetDiscoveredDevicesByRangeQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseDiscoveryGetDiscoveredDevicesByRangeV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseDiscoveryGetDiscoveredDevicesByRange{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1622,36 +1285,36 @@ func (s *DiscoveryService) GetDiscoveredDevicesByRangeV1(id string, startIndex i
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetDiscoveredDevicesByRangeV1(id, startIndex, recordsToReturn, GetDiscoveredDevicesByRangeV1QueryParams)
+			return s.GetDiscoveredDevicesByRange(id, startIndex, recordsToReturn, GetDiscoveredDevicesByRangeQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetDiscoveredDevicesByRangeV1")
+		return nil, response, fmt.Errorf("error with operation GetDiscoveredDevicesByRange")
 	}
 
-	result := response.Result().(*ResponseDiscoveryGetDiscoveredDevicesByRangeV1)
+	result := response.Result().(*ResponseDiscoveryGetDiscoveredDevicesByRange)
 	return result, response, err
 
 }
 
-//GetNetworkDevicesFromDiscoveryV1 Get network devices from Discovery - 3d9b-99c3-4339-8a27
+//GetNetworkDevicesFromDiscovery Get network devices from Discovery - 3d9b-99c3-4339-8a27
 /* Returns the devices discovered in the given discovery based on given filters. Discovery ID can be obtained using the "Get Discoveries by range" API.
 
 
 @param id id path parameter. Discovery ID
 
-@param GetNetworkDevicesFromDiscoveryV1QueryParams Filtering parameter
+@param GetNetworkDevicesFromDiscoveryQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-devices-from-discovery
 */
-func (s *DiscoveryService) GetNetworkDevicesFromDiscoveryV1(id string, GetNetworkDevicesFromDiscoveryV1QueryParams *GetNetworkDevicesFromDiscoveryV1QueryParams) (*ResponseDiscoveryGetNetworkDevicesFromDiscoveryV1, *resty.Response, error) {
+func (s *DiscoveryService) GetNetworkDevicesFromDiscovery(id string, GetNetworkDevicesFromDiscoveryQueryParams *GetNetworkDevicesFromDiscoveryQueryParams) (*ResponseDiscoveryGetNetworkDevicesFromDiscovery, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery/{id}/summary"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
-	queryString, _ := query.Values(GetNetworkDevicesFromDiscoveryV1QueryParams)
+	queryString, _ := query.Values(GetNetworkDevicesFromDiscoveryQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseDiscoveryGetNetworkDevicesFromDiscoveryV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseDiscoveryGetNetworkDevicesFromDiscovery{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1662,17 +1325,17 @@ func (s *DiscoveryService) GetNetworkDevicesFromDiscoveryV1(id string, GetNetwor
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetNetworkDevicesFromDiscoveryV1(id, GetNetworkDevicesFromDiscoveryV1QueryParams)
+			return s.GetNetworkDevicesFromDiscovery(id, GetNetworkDevicesFromDiscoveryQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetNetworkDevicesFromDiscoveryV1")
+		return nil, response, fmt.Errorf("error with operation GetNetworkDevicesFromDiscovery")
 	}
 
-	result := response.Result().(*ResponseDiscoveryGetNetworkDevicesFromDiscoveryV1)
+	result := response.Result().(*ResponseDiscoveryGetNetworkDevicesFromDiscovery)
 	return result, response, err
 
 }
 
-//GetDiscoveriesByRangeV1 Get Discoveries by range - 33b7-99d0-4d0a-8907
+//GetDiscoveriesByRange Get Discoveries by range - 33b7-99d0-4d0a-8907
 /* Returns the discoveries by specified range
 
 
@@ -1683,7 +1346,7 @@ func (s *DiscoveryService) GetNetworkDevicesFromDiscoveryV1(id string, GetNetwor
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-discoveries-by-range
 */
-func (s *DiscoveryService) GetDiscoveriesByRangeV1(startIndex int, recordsToReturn int) (*ResponseDiscoveryGetDiscoveriesByRangeV1, *resty.Response, error) {
+func (s *DiscoveryService) GetDiscoveriesByRange(startIndex int, recordsToReturn int) (*ResponseDiscoveryGetDiscoveriesByRange, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery/{startIndex}/{recordsToReturn}"
 	path = strings.Replace(path, "{startIndex}", fmt.Sprintf("%v", startIndex), -1)
 	path = strings.Replace(path, "{recordsToReturn}", fmt.Sprintf("%v", recordsToReturn), -1)
@@ -1691,7 +1354,7 @@ func (s *DiscoveryService) GetDiscoveriesByRangeV1(startIndex int, recordsToRetu
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseDiscoveryGetDiscoveriesByRangeV1{}).
+		SetResult(&ResponseDiscoveryGetDiscoveriesByRange{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1702,33 +1365,33 @@ func (s *DiscoveryService) GetDiscoveriesByRangeV1(startIndex int, recordsToRetu
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetDiscoveriesByRangeV1(startIndex, recordsToReturn)
+			return s.GetDiscoveriesByRange(startIndex, recordsToReturn)
 		}
-		return nil, response, fmt.Errorf("error with operation GetDiscoveriesByRangeV1")
+		return nil, response, fmt.Errorf("error with operation GetDiscoveriesByRange")
 	}
 
-	result := response.Result().(*ResponseDiscoveryGetDiscoveriesByRangeV1)
+	result := response.Result().(*ResponseDiscoveryGetDiscoveriesByRange)
 	return result, response, err
 
 }
 
-//GetGlobalCredentialsV1 Get Global credentials - ff81-6b8e-4358-97eb
+//GetGlobalCredentials Get Global credentials - ff81-6b8e-4358-97eb
 /* Returns global credential for the given credential sub type
 
 
-@param GetGlobalCredentialsV1QueryParams Filtering parameter
+@param GetGlobalCredentialsQueryParams Filtering parameter
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-global-credentials
 */
-func (s *DiscoveryService) GetGlobalCredentialsV1(GetGlobalCredentialsV1QueryParams *GetGlobalCredentialsV1QueryParams) (*ResponseDiscoveryGetGlobalCredentialsV1, *resty.Response, error) {
+func (s *DiscoveryService) GetGlobalCredentials(GetGlobalCredentialsQueryParams *GetGlobalCredentialsQueryParams) (*ResponseDiscoveryGetGlobalCredentials, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential"
 
-	queryString, _ := query.Values(GetGlobalCredentialsV1QueryParams)
+	queryString, _ := query.Values(GetGlobalCredentialsQueryParams)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetQueryString(queryString.Encode()).SetResult(&ResponseDiscoveryGetGlobalCredentialsV1{}).
+		SetQueryString(queryString.Encode()).SetResult(&ResponseDiscoveryGetGlobalCredentials{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1739,17 +1402,17 @@ func (s *DiscoveryService) GetGlobalCredentialsV1(GetGlobalCredentialsV1QueryPar
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetGlobalCredentialsV1(GetGlobalCredentialsV1QueryParams)
+			return s.GetGlobalCredentials(GetGlobalCredentialsQueryParams)
 		}
-		return nil, response, fmt.Errorf("error with operation GetGlobalCredentialsV1")
+		return nil, response, fmt.Errorf("error with operation GetGlobalCredentials")
 	}
 
-	result := response.Result().(*ResponseDiscoveryGetGlobalCredentialsV1)
+	result := response.Result().(*ResponseDiscoveryGetGlobalCredentials)
 	return result, response, err
 
 }
 
-//GetCredentialSubTypeByCredentialIDV1 Get Credential sub type by credential Id - 58a3-699e-489b-9529
+//GetCredentialSubTypeByCredentialID Get Credential sub type by credential Id - 58a3-699e-489b-9529
 /* Returns the credential sub type for the given Id
 
 
@@ -1758,14 +1421,14 @@ func (s *DiscoveryService) GetGlobalCredentialsV1(GetGlobalCredentialsV1QueryPar
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-credential-sub-type-by-credential-id
 */
-func (s *DiscoveryService) GetCredentialSubTypeByCredentialIDV1(id string) (*ResponseDiscoveryGetCredentialSubTypeByCredentialIDV1, *resty.Response, error) {
+func (s *DiscoveryService) GetCredentialSubTypeByCredentialID(id string) (*ResponseDiscoveryGetCredentialSubTypeByCredentialID, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/{id}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseDiscoveryGetCredentialSubTypeByCredentialIDV1{}).
+		SetResult(&ResponseDiscoveryGetCredentialSubTypeByCredentialID{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1776,30 +1439,30 @@ func (s *DiscoveryService) GetCredentialSubTypeByCredentialIDV1(id string) (*Res
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetCredentialSubTypeByCredentialIDV1(id)
+			return s.GetCredentialSubTypeByCredentialID(id)
 		}
-		return nil, response, fmt.Errorf("error with operation GetCredentialSubTypeByCredentialIdV1")
+		return nil, response, fmt.Errorf("error with operation GetCredentialSubTypeByCredentialId")
 	}
 
-	result := response.Result().(*ResponseDiscoveryGetCredentialSubTypeByCredentialIDV1)
+	result := response.Result().(*ResponseDiscoveryGetCredentialSubTypeByCredentialID)
 	return result, response, err
 
 }
 
-//GetSNMPPropertiesV1 Get SNMP properties - 4497-4ba5-435a-801d
+//GetSNMPProperties Get SNMP properties - 4497-4ba5-435a-801d
 /* Returns SNMP properties
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-snmp-properties
 */
-func (s *DiscoveryService) GetSNMPPropertiesV1() (*ResponseDiscoveryGetSNMPPropertiesV1, *resty.Response, error) {
+func (s *DiscoveryService) GetSNMPProperties() (*ResponseDiscoveryGetSNMPProperties, *resty.Response, error) {
 	path := "/dna/intent/api/v1/snmp-property"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseDiscoveryGetSNMPPropertiesV1{}).
+		SetResult(&ResponseDiscoveryGetSNMPProperties{}).
 		SetError(&Error).
 		Get(path)
 
@@ -1810,12 +1473,12 @@ func (s *DiscoveryService) GetSNMPPropertiesV1() (*ResponseDiscoveryGetSNMPPrope
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.GetSNMPPropertiesV1()
+			return s.GetSNMPProperties()
 		}
-		return nil, response, fmt.Errorf("error with operation GetSnmpPropertiesV1")
+		return nil, response, fmt.Errorf("error with operation GetSnmpProperties")
 	}
 
-	result := response.Result().(*ResponseDiscoveryGetSNMPPropertiesV1)
+	result := response.Result().(*ResponseDiscoveryGetSNMPProperties)
 	return result, response, err
 
 }
@@ -1854,21 +1517,21 @@ func (s *DiscoveryService) GetAllGlobalCredentialsV2() (*ResponseDiscoveryGetAll
 
 }
 
-//StartDiscoveryV1 Start discovery - 55b4-39dc-4239-b140
+//StartDiscovery Start discovery - 55b4-39dc-4239-b140
 /* Initiates discovery with the given parameters
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!start-discovery
 */
-func (s *DiscoveryService) StartDiscoveryV1(requestDiscoveryStartDiscoveryV1 *RequestDiscoveryStartDiscoveryV1) (*ResponseDiscoveryStartDiscoveryV1, *resty.Response, error) {
+func (s *DiscoveryService) StartDiscovery(requestDiscoveryStartDiscovery *RequestDiscoveryStartDiscovery) (*ResponseDiscoveryStartDiscovery, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDiscoveryStartDiscoveryV1).
-		SetResult(&ResponseDiscoveryStartDiscoveryV1{}).
+		SetBody(requestDiscoveryStartDiscovery).
+		SetResult(&ResponseDiscoveryStartDiscovery{}).
 		SetError(&Error).
 		Post(path)
 
@@ -1880,32 +1543,32 @@ func (s *DiscoveryService) StartDiscoveryV1(requestDiscoveryStartDiscoveryV1 *Re
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.StartDiscoveryV1(requestDiscoveryStartDiscoveryV1)
+			return s.StartDiscovery(requestDiscoveryStartDiscovery)
 		}
 
-		return nil, response, fmt.Errorf("error with operation StartDiscoveryV1")
+		return nil, response, fmt.Errorf("error with operation StartDiscovery")
 	}
 
-	result := response.Result().(*ResponseDiscoveryStartDiscoveryV1)
+	result := response.Result().(*ResponseDiscoveryStartDiscovery)
 	return result, response, err
 
 }
 
-//CreateCliCredentialsV1 Create CLI credentials - 948e-a819-4348-bc0b
+//CreateCliCredentials Create CLI credentials - 948e-a819-4348-bc0b
 /* Adds global CLI credential
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-cli-credentials
 */
-func (s *DiscoveryService) CreateCliCredentialsV1(requestDiscoveryCreateCLICredentialsV1 *RequestDiscoveryCreateCliCredentialsV1) (*ResponseDiscoveryCreateCliCredentialsV1, *resty.Response, error) {
+func (s *DiscoveryService) CreateCliCredentials(requestDiscoveryCreateCLICredentials *RequestDiscoveryCreateCliCredentials) (*ResponseDiscoveryCreateCliCredentials, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/cli"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDiscoveryCreateCLICredentialsV1).
-		SetResult(&ResponseDiscoveryCreateCliCredentialsV1{}).
+		SetBody(requestDiscoveryCreateCLICredentials).
+		SetResult(&ResponseDiscoveryCreateCliCredentials{}).
 		SetError(&Error).
 		Post(path)
 
@@ -1917,32 +1580,32 @@ func (s *DiscoveryService) CreateCliCredentialsV1(requestDiscoveryCreateCLICrede
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateCliCredentialsV1(requestDiscoveryCreateCLICredentialsV1)
+			return s.CreateCliCredentials(requestDiscoveryCreateCLICredentials)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateCliCredentialsV1")
+		return nil, response, fmt.Errorf("error with operation CreateCliCredentials")
 	}
 
-	result := response.Result().(*ResponseDiscoveryCreateCliCredentialsV1)
+	result := response.Result().(*ResponseDiscoveryCreateCliCredentials)
 	return result, response, err
 
 }
 
-//CreateHTTPReadCredentialsV1 Create HTTP read credentials - bf85-9ac6-4a0b-a19c
+//CreateHTTPReadCredentials Create HTTP read credentials - bf85-9ac6-4a0b-a19c
 /* Adds HTTP read credentials
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-http-read-credentials
 */
-func (s *DiscoveryService) CreateHTTPReadCredentialsV1(requestDiscoveryCreateHTTPReadCredentialsV1 *RequestDiscoveryCreateHTTPReadCredentialsV1) (*ResponseDiscoveryCreateHTTPReadCredentialsV1, *resty.Response, error) {
+func (s *DiscoveryService) CreateHTTPReadCredentials(requestDiscoveryCreateHTTPReadCredentials *RequestDiscoveryCreateHTTPReadCredentials) (*ResponseDiscoveryCreateHTTPReadCredentials, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/http-read"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDiscoveryCreateHTTPReadCredentialsV1).
-		SetResult(&ResponseDiscoveryCreateHTTPReadCredentialsV1{}).
+		SetBody(requestDiscoveryCreateHTTPReadCredentials).
+		SetResult(&ResponseDiscoveryCreateHTTPReadCredentials{}).
 		SetError(&Error).
 		Post(path)
 
@@ -1954,32 +1617,32 @@ func (s *DiscoveryService) CreateHTTPReadCredentialsV1(requestDiscoveryCreateHTT
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateHTTPReadCredentialsV1(requestDiscoveryCreateHTTPReadCredentialsV1)
+			return s.CreateHTTPReadCredentials(requestDiscoveryCreateHTTPReadCredentials)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateHttpReadCredentialsV1")
+		return nil, response, fmt.Errorf("error with operation CreateHttpReadCredentials")
 	}
 
-	result := response.Result().(*ResponseDiscoveryCreateHTTPReadCredentialsV1)
+	result := response.Result().(*ResponseDiscoveryCreateHTTPReadCredentials)
 	return result, response, err
 
 }
 
-//CreateHTTPWriteCredentialsV1 Create HTTP write credentials - 4d9c-a8e2-431a-8a24
+//CreateHTTPWriteCredentials Create HTTP write credentials - 4d9c-a8e2-431a-8a24
 /* Adds global HTTP write credentials
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-http-write-credentials
 */
-func (s *DiscoveryService) CreateHTTPWriteCredentialsV1(requestDiscoveryCreateHTTPWriteCredentialsV1 *RequestDiscoveryCreateHTTPWriteCredentialsV1) (*ResponseDiscoveryCreateHTTPWriteCredentialsV1, *resty.Response, error) {
+func (s *DiscoveryService) CreateHTTPWriteCredentials(requestDiscoveryCreateHTTPWriteCredentials *RequestDiscoveryCreateHTTPWriteCredentials) (*ResponseDiscoveryCreateHTTPWriteCredentials, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/http-write"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDiscoveryCreateHTTPWriteCredentialsV1).
-		SetResult(&ResponseDiscoveryCreateHTTPWriteCredentialsV1{}).
+		SetBody(requestDiscoveryCreateHTTPWriteCredentials).
+		SetResult(&ResponseDiscoveryCreateHTTPWriteCredentials{}).
 		SetError(&Error).
 		Post(path)
 
@@ -1991,32 +1654,32 @@ func (s *DiscoveryService) CreateHTTPWriteCredentialsV1(requestDiscoveryCreateHT
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateHTTPWriteCredentialsV1(requestDiscoveryCreateHTTPWriteCredentialsV1)
+			return s.CreateHTTPWriteCredentials(requestDiscoveryCreateHTTPWriteCredentials)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateHttpWriteCredentialsV1")
+		return nil, response, fmt.Errorf("error with operation CreateHttpWriteCredentials")
 	}
 
-	result := response.Result().(*ResponseDiscoveryCreateHTTPWriteCredentialsV1)
+	result := response.Result().(*ResponseDiscoveryCreateHTTPWriteCredentials)
 	return result, response, err
 
 }
 
-//CreateNetconfCredentialsV1 Create Netconf credentials - 1792-9bc7-465b-b564
+//CreateNetconfCredentials Create Netconf credentials - 1792-9bc7-465b-b564
 /* Adds global netconf credentials
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-netconf-credentials
 */
-func (s *DiscoveryService) CreateNetconfCredentialsV1(requestDiscoveryCreateNetconfCredentialsV1 *RequestDiscoveryCreateNetconfCredentialsV1) (*ResponseDiscoveryCreateNetconfCredentialsV1, *resty.Response, error) {
+func (s *DiscoveryService) CreateNetconfCredentials(requestDiscoveryCreateNetconfCredentials *RequestDiscoveryCreateNetconfCredentials) (*ResponseDiscoveryCreateNetconfCredentials, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/netconf"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDiscoveryCreateNetconfCredentialsV1).
-		SetResult(&ResponseDiscoveryCreateNetconfCredentialsV1{}).
+		SetBody(requestDiscoveryCreateNetconfCredentials).
+		SetResult(&ResponseDiscoveryCreateNetconfCredentials{}).
 		SetError(&Error).
 		Post(path)
 
@@ -2028,32 +1691,32 @@ func (s *DiscoveryService) CreateNetconfCredentialsV1(requestDiscoveryCreateNetc
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateNetconfCredentialsV1(requestDiscoveryCreateNetconfCredentialsV1)
+			return s.CreateNetconfCredentials(requestDiscoveryCreateNetconfCredentials)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateNetconfCredentialsV1")
+		return nil, response, fmt.Errorf("error with operation CreateNetconfCredentials")
 	}
 
-	result := response.Result().(*ResponseDiscoveryCreateNetconfCredentialsV1)
+	result := response.Result().(*ResponseDiscoveryCreateNetconfCredentials)
 	return result, response, err
 
 }
 
-//CreateSNMPReadCommunityV1 Create SNMP read community - 7aa3-da9d-4e09-8ef2
+//CreateSNMPReadCommunity Create SNMP read community - 7aa3-da9d-4e09-8ef2
 /* Adds global SNMP read community
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-snmp-read-community
 */
-func (s *DiscoveryService) CreateSNMPReadCommunityV1(requestDiscoveryCreateSNMPReadCommunityV1 *RequestDiscoveryCreateSNMPReadCommunityV1) (*ResponseDiscoveryCreateSNMPReadCommunityV1, *resty.Response, error) {
+func (s *DiscoveryService) CreateSNMPReadCommunity(requestDiscoveryCreateSNMPReadCommunity *RequestDiscoveryCreateSNMPReadCommunity) (*ResponseDiscoveryCreateSNMPReadCommunity, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/snmpv2-read-community"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDiscoveryCreateSNMPReadCommunityV1).
-		SetResult(&ResponseDiscoveryCreateSNMPReadCommunityV1{}).
+		SetBody(requestDiscoveryCreateSNMPReadCommunity).
+		SetResult(&ResponseDiscoveryCreateSNMPReadCommunity{}).
 		SetError(&Error).
 		Post(path)
 
@@ -2065,32 +1728,32 @@ func (s *DiscoveryService) CreateSNMPReadCommunityV1(requestDiscoveryCreateSNMPR
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateSNMPReadCommunityV1(requestDiscoveryCreateSNMPReadCommunityV1)
+			return s.CreateSNMPReadCommunity(requestDiscoveryCreateSNMPReadCommunity)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateSnmpReadCommunityV1")
+		return nil, response, fmt.Errorf("error with operation CreateSnmpReadCommunity")
 	}
 
-	result := response.Result().(*ResponseDiscoveryCreateSNMPReadCommunityV1)
+	result := response.Result().(*ResponseDiscoveryCreateSNMPReadCommunity)
 	return result, response, err
 
 }
 
-//CreateSNMPWriteCommunityV1 Create SNMP write community - 6bac-b8d1-4639-bdc7
+//CreateSNMPWriteCommunity Create SNMP write community - 6bac-b8d1-4639-bdc7
 /* Adds global SNMP write community
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-snmp-write-community
 */
-func (s *DiscoveryService) CreateSNMPWriteCommunityV1(requestDiscoveryCreateSNMPWriteCommunityV1 *RequestDiscoveryCreateSNMPWriteCommunityV1) (*ResponseDiscoveryCreateSNMPWriteCommunityV1, *resty.Response, error) {
+func (s *DiscoveryService) CreateSNMPWriteCommunity(requestDiscoveryCreateSNMPWriteCommunity *RequestDiscoveryCreateSNMPWriteCommunity) (*ResponseDiscoveryCreateSNMPWriteCommunity, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/snmpv2-write-community"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDiscoveryCreateSNMPWriteCommunityV1).
-		SetResult(&ResponseDiscoveryCreateSNMPWriteCommunityV1{}).
+		SetBody(requestDiscoveryCreateSNMPWriteCommunity).
+		SetResult(&ResponseDiscoveryCreateSNMPWriteCommunity{}).
 		SetError(&Error).
 		Post(path)
 
@@ -2102,32 +1765,32 @@ func (s *DiscoveryService) CreateSNMPWriteCommunityV1(requestDiscoveryCreateSNMP
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateSNMPWriteCommunityV1(requestDiscoveryCreateSNMPWriteCommunityV1)
+			return s.CreateSNMPWriteCommunity(requestDiscoveryCreateSNMPWriteCommunity)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateSnmpWriteCommunityV1")
+		return nil, response, fmt.Errorf("error with operation CreateSnmpWriteCommunity")
 	}
 
-	result := response.Result().(*ResponseDiscoveryCreateSNMPWriteCommunityV1)
+	result := response.Result().(*ResponseDiscoveryCreateSNMPWriteCommunity)
 	return result, response, err
 
 }
 
-//CreateSNMPv3CredentialsV1 Create SNMPv3 credentials - 9796-8808-4b7b-a60d
+//CreateSNMPv3Credentials Create SNMPv3 credentials - 9796-8808-4b7b-a60d
 /* Adds global SNMPv3 credentials
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-snmpv3-credentials
 */
-func (s *DiscoveryService) CreateSNMPv3CredentialsV1(requestDiscoveryCreateSNMPv3CredentialsV1 *RequestDiscoveryCreateSNMPv3CredentialsV1) (*ResponseDiscoveryCreateSNMPv3CredentialsV1, *resty.Response, error) {
+func (s *DiscoveryService) CreateSNMPv3Credentials(requestDiscoveryCreateSNMPv3Credentials *RequestDiscoveryCreateSNMPv3Credentials) (*ResponseDiscoveryCreateSNMPv3Credentials, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/snmpv3"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDiscoveryCreateSNMPv3CredentialsV1).
-		SetResult(&ResponseDiscoveryCreateSNMPv3CredentialsV1{}).
+		SetBody(requestDiscoveryCreateSNMPv3Credentials).
+		SetResult(&ResponseDiscoveryCreateSNMPv3Credentials{}).
 		SetError(&Error).
 		Post(path)
 
@@ -2139,32 +1802,32 @@ func (s *DiscoveryService) CreateSNMPv3CredentialsV1(requestDiscoveryCreateSNMPv
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateSNMPv3CredentialsV1(requestDiscoveryCreateSNMPv3CredentialsV1)
+			return s.CreateSNMPv3Credentials(requestDiscoveryCreateSNMPv3Credentials)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateSnmpv3CredentialsV1")
+		return nil, response, fmt.Errorf("error with operation CreateSnmpv3Credentials")
 	}
 
-	result := response.Result().(*ResponseDiscoveryCreateSNMPv3CredentialsV1)
+	result := response.Result().(*ResponseDiscoveryCreateSNMPv3Credentials)
 	return result, response, err
 
 }
 
-//CreateUpdateSNMPPropertiesV1 Create/Update SNMP properties - a5ac-9977-4c6b-b541
+//CreateUpdateSNMPProperties Create/Update SNMP properties - a5ac-9977-4c6b-b541
 /* Adds SNMP properties
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-update-snmp-properties
 */
-func (s *DiscoveryService) CreateUpdateSNMPPropertiesV1(requestDiscoveryCreateUpdateSNMPPropertiesV1 *RequestDiscoveryCreateUpdateSNMPPropertiesV1) (*ResponseDiscoveryCreateUpdateSNMPPropertiesV1, *resty.Response, error) {
+func (s *DiscoveryService) CreateUpdateSNMPProperties(requestDiscoveryCreateUpdateSNMPProperties *RequestDiscoveryCreateUpdateSNMPProperties) (*ResponseDiscoveryCreateUpdateSNMPProperties, *resty.Response, error) {
 	path := "/dna/intent/api/v1/snmp-property"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDiscoveryCreateUpdateSNMPPropertiesV1).
-		SetResult(&ResponseDiscoveryCreateUpdateSNMPPropertiesV1{}).
+		SetBody(requestDiscoveryCreateUpdateSNMPProperties).
+		SetResult(&ResponseDiscoveryCreateUpdateSNMPProperties{}).
 		SetError(&Error).
 		Post(path)
 
@@ -2176,13 +1839,13 @@ func (s *DiscoveryService) CreateUpdateSNMPPropertiesV1(requestDiscoveryCreateUp
 	if response.IsError() {
 
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.CreateUpdateSNMPPropertiesV1(requestDiscoveryCreateUpdateSNMPPropertiesV1)
+			return s.CreateUpdateSNMPProperties(requestDiscoveryCreateUpdateSNMPProperties)
 		}
 
-		return nil, response, fmt.Errorf("error with operation CreateUpdateSnmpPropertiesV1")
+		return nil, response, fmt.Errorf("error with operation CreateUpdateSnmpProperties")
 	}
 
-	result := response.Result().(*ResponseDiscoveryCreateUpdateSNMPPropertiesV1)
+	result := response.Result().(*ResponseDiscoveryCreateUpdateSNMPProperties)
 	return result, response, err
 
 }
@@ -2224,19 +1887,19 @@ func (s *DiscoveryService) CreateGlobalCredentialsV2(requestDiscoveryCreateGloba
 
 }
 
-//UpdatesAnExistingDiscoveryBySpecifiedIDV1 Updates an existing discovery by specified Id - 9788-b8fc-4418-831d
+//UpdatesAnExistingDiscoveryBySpecifiedID Updates an existing discovery by specified Id - 9788-b8fc-4418-831d
 /* Stops or starts an existing discovery
 
 
  */
-func (s *DiscoveryService) UpdatesAnExistingDiscoveryBySpecifiedIDV1(requestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIdV1 *RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1) (*ResponseDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1, *resty.Response, error) {
+func (s *DiscoveryService) UpdatesAnExistingDiscoveryBySpecifiedID(requestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedId *RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedID) (*ResponseDiscoveryUpdatesAnExistingDiscoveryBySpecifiedID, *resty.Response, error) {
 	path := "/dna/intent/api/v1/discovery"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIdV1).
-		SetResult(&ResponseDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1{}).
+		SetBody(requestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedId).
+		SetResult(&ResponseDiscoveryUpdatesAnExistingDiscoveryBySpecifiedID{}).
 		SetError(&Error).
 		Put(path)
 
@@ -2247,29 +1910,29 @@ func (s *DiscoveryService) UpdatesAnExistingDiscoveryBySpecifiedIDV1(requestDisc
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.UpdatesAnExistingDiscoveryBySpecifiedIDV1(requestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIdV1)
+			return s.UpdatesAnExistingDiscoveryBySpecifiedID(requestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedId)
 		}
-		return nil, response, fmt.Errorf("error with operation UpdatesAnExistingDiscoveryBySpecifiedIdV1")
+		return nil, response, fmt.Errorf("error with operation UpdatesAnExistingDiscoveryBySpecifiedId")
 	}
 
-	result := response.Result().(*ResponseDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1)
+	result := response.Result().(*ResponseDiscoveryUpdatesAnExistingDiscoveryBySpecifiedID)
 	return result, response, err
 
 }
 
-//UpdateCliCredentialsV1 Update CLI credentials - fba0-d807-47eb-82e8
+//UpdateCliCredentials Update CLI credentials - fba0-d807-47eb-82e8
 /* Updates global CLI credentials
 
 
  */
-func (s *DiscoveryService) UpdateCliCredentialsV1(requestDiscoveryUpdateCLICredentialsV1 *RequestDiscoveryUpdateCliCredentialsV1) (*ResponseDiscoveryUpdateCliCredentialsV1, *resty.Response, error) {
+func (s *DiscoveryService) UpdateCliCredentials(requestDiscoveryUpdateCLICredentials *RequestDiscoveryUpdateCliCredentials) (*ResponseDiscoveryUpdateCliCredentials, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/cli"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDiscoveryUpdateCLICredentialsV1).
-		SetResult(&ResponseDiscoveryUpdateCliCredentialsV1{}).
+		SetBody(requestDiscoveryUpdateCLICredentials).
+		SetResult(&ResponseDiscoveryUpdateCliCredentials{}).
 		SetError(&Error).
 		Put(path)
 
@@ -2280,29 +1943,29 @@ func (s *DiscoveryService) UpdateCliCredentialsV1(requestDiscoveryUpdateCLICrede
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.UpdateCliCredentialsV1(requestDiscoveryUpdateCLICredentialsV1)
+			return s.UpdateCliCredentials(requestDiscoveryUpdateCLICredentials)
 		}
-		return nil, response, fmt.Errorf("error with operation UpdateCliCredentialsV1")
+		return nil, response, fmt.Errorf("error with operation UpdateCliCredentials")
 	}
 
-	result := response.Result().(*ResponseDiscoveryUpdateCliCredentialsV1)
+	result := response.Result().(*ResponseDiscoveryUpdateCliCredentials)
 	return result, response, err
 
 }
 
-//UpdateHTTPReadCredentialV1 Update HTTP read credential - 89b3-6b46-4999-9d81
+//UpdateHTTPReadCredential Update HTTP read credential - 89b3-6b46-4999-9d81
 /* Updates global HTTP Read credential
 
 
  */
-func (s *DiscoveryService) UpdateHTTPReadCredentialV1(requestDiscoveryUpdateHTTPReadCredentialV1 *RequestDiscoveryUpdateHTTPReadCredentialV1) (*ResponseDiscoveryUpdateHTTPReadCredentialV1, *resty.Response, error) {
+func (s *DiscoveryService) UpdateHTTPReadCredential(requestDiscoveryUpdateHTTPReadCredential *RequestDiscoveryUpdateHTTPReadCredential) (*ResponseDiscoveryUpdateHTTPReadCredential, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/http-read"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDiscoveryUpdateHTTPReadCredentialV1).
-		SetResult(&ResponseDiscoveryUpdateHTTPReadCredentialV1{}).
+		SetBody(requestDiscoveryUpdateHTTPReadCredential).
+		SetResult(&ResponseDiscoveryUpdateHTTPReadCredential{}).
 		SetError(&Error).
 		Put(path)
 
@@ -2313,29 +1976,29 @@ func (s *DiscoveryService) UpdateHTTPReadCredentialV1(requestDiscoveryUpdateHTTP
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.UpdateHTTPReadCredentialV1(requestDiscoveryUpdateHTTPReadCredentialV1)
+			return s.UpdateHTTPReadCredential(requestDiscoveryUpdateHTTPReadCredential)
 		}
-		return nil, response, fmt.Errorf("error with operation UpdateHttpReadCredentialV1")
+		return nil, response, fmt.Errorf("error with operation UpdateHttpReadCredential")
 	}
 
-	result := response.Result().(*ResponseDiscoveryUpdateHTTPReadCredentialV1)
+	result := response.Result().(*ResponseDiscoveryUpdateHTTPReadCredential)
 	return result, response, err
 
 }
 
-//UpdateHTTPWriteCredentialsV1 Update HTTP write credentials - b68a-6bd8-473a-9a25
+//UpdateHTTPWriteCredentials Update HTTP write credentials - b68a-6bd8-473a-9a25
 /* Updates global HTTP write credentials
 
 
  */
-func (s *DiscoveryService) UpdateHTTPWriteCredentialsV1(requestDiscoveryUpdateHTTPWriteCredentialsV1 *RequestDiscoveryUpdateHTTPWriteCredentialsV1) (*ResponseDiscoveryUpdateHTTPWriteCredentialsV1, *resty.Response, error) {
+func (s *DiscoveryService) UpdateHTTPWriteCredentials(requestDiscoveryUpdateHTTPWriteCredentials *RequestDiscoveryUpdateHTTPWriteCredentials) (*ResponseDiscoveryUpdateHTTPWriteCredentials, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/http-write"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDiscoveryUpdateHTTPWriteCredentialsV1).
-		SetResult(&ResponseDiscoveryUpdateHTTPWriteCredentialsV1{}).
+		SetBody(requestDiscoveryUpdateHTTPWriteCredentials).
+		SetResult(&ResponseDiscoveryUpdateHTTPWriteCredentials{}).
 		SetError(&Error).
 		Put(path)
 
@@ -2346,29 +2009,29 @@ func (s *DiscoveryService) UpdateHTTPWriteCredentialsV1(requestDiscoveryUpdateHT
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.UpdateHTTPWriteCredentialsV1(requestDiscoveryUpdateHTTPWriteCredentialsV1)
+			return s.UpdateHTTPWriteCredentials(requestDiscoveryUpdateHTTPWriteCredentials)
 		}
-		return nil, response, fmt.Errorf("error with operation UpdateHttpWriteCredentialsV1")
+		return nil, response, fmt.Errorf("error with operation UpdateHttpWriteCredentials")
 	}
 
-	result := response.Result().(*ResponseDiscoveryUpdateHTTPWriteCredentialsV1)
+	result := response.Result().(*ResponseDiscoveryUpdateHTTPWriteCredentials)
 	return result, response, err
 
 }
 
-//UpdateNetconfCredentialsV1 Update Netconf credentials - c5ac-d9fa-4c1a-8abc
+//UpdateNetconfCredentials Update Netconf credentials - c5ac-d9fa-4c1a-8abc
 /* Updates global netconf credentials
 
 
  */
-func (s *DiscoveryService) UpdateNetconfCredentialsV1(requestDiscoveryUpdateNetconfCredentialsV1 *RequestDiscoveryUpdateNetconfCredentialsV1) (*ResponseDiscoveryUpdateNetconfCredentialsV1, *resty.Response, error) {
+func (s *DiscoveryService) UpdateNetconfCredentials(requestDiscoveryUpdateNetconfCredentials *RequestDiscoveryUpdateNetconfCredentials) (*ResponseDiscoveryUpdateNetconfCredentials, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/netconf"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDiscoveryUpdateNetconfCredentialsV1).
-		SetResult(&ResponseDiscoveryUpdateNetconfCredentialsV1{}).
+		SetBody(requestDiscoveryUpdateNetconfCredentials).
+		SetResult(&ResponseDiscoveryUpdateNetconfCredentials{}).
 		SetError(&Error).
 		Put(path)
 
@@ -2379,29 +2042,29 @@ func (s *DiscoveryService) UpdateNetconfCredentialsV1(requestDiscoveryUpdateNetc
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.UpdateNetconfCredentialsV1(requestDiscoveryUpdateNetconfCredentialsV1)
+			return s.UpdateNetconfCredentials(requestDiscoveryUpdateNetconfCredentials)
 		}
-		return nil, response, fmt.Errorf("error with operation UpdateNetconfCredentialsV1")
+		return nil, response, fmt.Errorf("error with operation UpdateNetconfCredentials")
 	}
 
-	result := response.Result().(*ResponseDiscoveryUpdateNetconfCredentialsV1)
+	result := response.Result().(*ResponseDiscoveryUpdateNetconfCredentials)
 	return result, response, err
 
 }
 
-//UpdateSNMPReadCommunityV1 Update SNMP read community - 47a1-b84b-4e1b-8044
+//UpdateSNMPReadCommunity Update SNMP read community - 47a1-b84b-4e1b-8044
 /* Updates global SNMP read community
 
 
  */
-func (s *DiscoveryService) UpdateSNMPReadCommunityV1(requestDiscoveryUpdateSNMPReadCommunityV1 *RequestDiscoveryUpdateSNMPReadCommunityV1) (*ResponseDiscoveryUpdateSNMPReadCommunityV1, *resty.Response, error) {
+func (s *DiscoveryService) UpdateSNMPReadCommunity(requestDiscoveryUpdateSNMPReadCommunity *RequestDiscoveryUpdateSNMPReadCommunity) (*ResponseDiscoveryUpdateSNMPReadCommunity, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/snmpv2-read-community"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDiscoveryUpdateSNMPReadCommunityV1).
-		SetResult(&ResponseDiscoveryUpdateSNMPReadCommunityV1{}).
+		SetBody(requestDiscoveryUpdateSNMPReadCommunity).
+		SetResult(&ResponseDiscoveryUpdateSNMPReadCommunity{}).
 		SetError(&Error).
 		Put(path)
 
@@ -2412,29 +2075,29 @@ func (s *DiscoveryService) UpdateSNMPReadCommunityV1(requestDiscoveryUpdateSNMPR
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.UpdateSNMPReadCommunityV1(requestDiscoveryUpdateSNMPReadCommunityV1)
+			return s.UpdateSNMPReadCommunity(requestDiscoveryUpdateSNMPReadCommunity)
 		}
-		return nil, response, fmt.Errorf("error with operation UpdateSnmpReadCommunityV1")
+		return nil, response, fmt.Errorf("error with operation UpdateSnmpReadCommunity")
 	}
 
-	result := response.Result().(*ResponseDiscoveryUpdateSNMPReadCommunityV1)
+	result := response.Result().(*ResponseDiscoveryUpdateSNMPReadCommunity)
 	return result, response, err
 
 }
 
-//UpdateSNMPWriteCommunityV1 Update SNMP write community - 10b0-6a6a-4f7b-b3cb
+//UpdateSNMPWriteCommunity Update SNMP write community - 10b0-6a6a-4f7b-b3cb
 /* Updates global SNMP write community
 
 
  */
-func (s *DiscoveryService) UpdateSNMPWriteCommunityV1(requestDiscoveryUpdateSNMPWriteCommunityV1 *RequestDiscoveryUpdateSNMPWriteCommunityV1) (*ResponseDiscoveryUpdateSNMPWriteCommunityV1, *resty.Response, error) {
+func (s *DiscoveryService) UpdateSNMPWriteCommunity(requestDiscoveryUpdateSNMPWriteCommunity *RequestDiscoveryUpdateSNMPWriteCommunity) (*ResponseDiscoveryUpdateSNMPWriteCommunity, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/snmpv2-write-community"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDiscoveryUpdateSNMPWriteCommunityV1).
-		SetResult(&ResponseDiscoveryUpdateSNMPWriteCommunityV1{}).
+		SetBody(requestDiscoveryUpdateSNMPWriteCommunity).
+		SetResult(&ResponseDiscoveryUpdateSNMPWriteCommunity{}).
 		SetError(&Error).
 		Put(path)
 
@@ -2445,29 +2108,29 @@ func (s *DiscoveryService) UpdateSNMPWriteCommunityV1(requestDiscoveryUpdateSNMP
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.UpdateSNMPWriteCommunityV1(requestDiscoveryUpdateSNMPWriteCommunityV1)
+			return s.UpdateSNMPWriteCommunity(requestDiscoveryUpdateSNMPWriteCommunity)
 		}
-		return nil, response, fmt.Errorf("error with operation UpdateSnmpWriteCommunityV1")
+		return nil, response, fmt.Errorf("error with operation UpdateSnmpWriteCommunity")
 	}
 
-	result := response.Result().(*ResponseDiscoveryUpdateSNMPWriteCommunityV1)
+	result := response.Result().(*ResponseDiscoveryUpdateSNMPWriteCommunity)
 	return result, response, err
 
 }
 
-//UpdateSNMPv3CredentialsV1 Update SNMPv3 credentials - 1da5-ebdd-434a-acfe
+//UpdateSNMPv3Credentials Update SNMPv3 credentials - 1da5-ebdd-434a-acfe
 /* Updates global SNMPv3 credential
 
 
  */
-func (s *DiscoveryService) UpdateSNMPv3CredentialsV1(requestDiscoveryUpdateSNMPv3CredentialsV1 *RequestDiscoveryUpdateSNMPv3CredentialsV1) (*ResponseDiscoveryUpdateSNMPv3CredentialsV1, *resty.Response, error) {
+func (s *DiscoveryService) UpdateSNMPv3Credentials(requestDiscoveryUpdateSNMPv3Credentials *RequestDiscoveryUpdateSNMPv3Credentials) (*ResponseDiscoveryUpdateSNMPv3Credentials, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/snmpv3"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDiscoveryUpdateSNMPv3CredentialsV1).
-		SetResult(&ResponseDiscoveryUpdateSNMPv3CredentialsV1{}).
+		SetBody(requestDiscoveryUpdateSNMPv3Credentials).
+		SetResult(&ResponseDiscoveryUpdateSNMPv3Credentials{}).
 		SetError(&Error).
 		Put(path)
 
@@ -2478,32 +2141,32 @@ func (s *DiscoveryService) UpdateSNMPv3CredentialsV1(requestDiscoveryUpdateSNMPv
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.UpdateSNMPv3CredentialsV1(requestDiscoveryUpdateSNMPv3CredentialsV1)
+			return s.UpdateSNMPv3Credentials(requestDiscoveryUpdateSNMPv3Credentials)
 		}
-		return nil, response, fmt.Errorf("error with operation UpdateSnmpv3CredentialsV1")
+		return nil, response, fmt.Errorf("error with operation UpdateSnmpv3Credentials")
 	}
 
-	result := response.Result().(*ResponseDiscoveryUpdateSNMPv3CredentialsV1)
+	result := response.Result().(*ResponseDiscoveryUpdateSNMPv3Credentials)
 	return result, response, err
 
 }
 
-//UpdateGlobalCredentialsV1 Update global credentials - 709f-da3c-42b8-877a
+//UpdateGlobalCredentials Update global credentials - 709f-da3c-42b8-877a
 /* Update global credential for network devices in site(s)
 
 
 @param globalCredentialID globalCredentialId path parameter. Global credential Uuid
 
 */
-func (s *DiscoveryService) UpdateGlobalCredentialsV1(globalCredentialID string, requestDiscoveryUpdateGlobalCredentialsV1 *RequestDiscoveryUpdateGlobalCredentialsV1) (*ResponseDiscoveryUpdateGlobalCredentialsV1, *resty.Response, error) {
+func (s *DiscoveryService) UpdateGlobalCredentials(globalCredentialID string, requestDiscoveryUpdateGlobalCredentials *RequestDiscoveryUpdateGlobalCredentials) (*ResponseDiscoveryUpdateGlobalCredentials, *resty.Response, error) {
 	path := "/dna/intent/api/v1/global-credential/{globalCredentialId}"
 	path = strings.Replace(path, "{globalCredentialId}", fmt.Sprintf("%v", globalCredentialID), -1)
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetBody(requestDiscoveryUpdateGlobalCredentialsV1).
-		SetResult(&ResponseDiscoveryUpdateGlobalCredentialsV1{}).
+		SetBody(requestDiscoveryUpdateGlobalCredentials).
+		SetResult(&ResponseDiscoveryUpdateGlobalCredentials{}).
 		SetError(&Error).
 		Put(path)
 
@@ -2514,12 +2177,12 @@ func (s *DiscoveryService) UpdateGlobalCredentialsV1(globalCredentialID string, 
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.UpdateGlobalCredentialsV1(globalCredentialID, requestDiscoveryUpdateGlobalCredentialsV1)
+			return s.UpdateGlobalCredentials(globalCredentialID, requestDiscoveryUpdateGlobalCredentials)
 		}
-		return nil, response, fmt.Errorf("error with operation UpdateGlobalCredentialsV1")
+		return nil, response, fmt.Errorf("error with operation UpdateGlobalCredentials")
 	}
 
-	result := response.Result().(*ResponseDiscoveryUpdateGlobalCredentialsV1)
+	result := response.Result().(*ResponseDiscoveryUpdateGlobalCredentials)
 	return result, response, err
 
 }
@@ -2557,21 +2220,21 @@ func (s *DiscoveryService) UpdateGlobalCredentialsV2(requestDiscoveryUpdateGloba
 
 }
 
-//DeleteAllDiscoveryV1 Delete all discovery - db8e-0923-4a98-8bab
+//DeleteAllDiscovery Delete all discovery - db8e-0923-4a98-8bab
 /* Stops all the discoveries and removes them.
 
 
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-all-discovery
 */
-func (s *DiscoveryService) DeleteAllDiscoveryV1() (*ResponseDiscoveryDeleteAllDiscoveryV1, *resty.Response, error) {
+func (s *DiscoveryService) DeleteAllDiscovery() (*ResponseDiscoveryDeleteAllDiscovery, *resty.Response, error) {
 	//
 	path := "/dna/intent/api/v1/discovery"
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseDiscoveryDeleteAllDiscoveryV1{}).
+		SetResult(&ResponseDiscoveryDeleteAllDiscovery{}).
 		SetError(&Error).
 		Delete(path)
 
@@ -2582,17 +2245,17 @@ func (s *DiscoveryService) DeleteAllDiscoveryV1() (*ResponseDiscoveryDeleteAllDi
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeleteAllDiscoveryV1()
+			return s.DeleteAllDiscovery()
 		}
-		return nil, response, fmt.Errorf("error with operation DeleteAllDiscoveryV1")
+		return nil, response, fmt.Errorf("error with operation DeleteAllDiscovery")
 	}
 
-	result := response.Result().(*ResponseDiscoveryDeleteAllDiscoveryV1)
+	result := response.Result().(*ResponseDiscoveryDeleteAllDiscovery)
 	return result, response, err
 
 }
 
-//DeleteDiscoveryByIDV1 Delete discovery by Id - 4c8c-ab5f-435a-80f4
+//DeleteDiscoveryByID Delete discovery by Id - 4c8c-ab5f-435a-80f4
 /* Stops the discovery for the given Discovery ID and removes it. Discovery ID can be obtained using the "Get Discoveries by range" API.
 
 
@@ -2601,7 +2264,7 @@ func (s *DiscoveryService) DeleteAllDiscoveryV1() (*ResponseDiscoveryDeleteAllDi
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-discovery-by-id
 */
-func (s *DiscoveryService) DeleteDiscoveryByIDV1(id string) (*ResponseDiscoveryDeleteDiscoveryByIDV1, *resty.Response, error) {
+func (s *DiscoveryService) DeleteDiscoveryByID(id string) (*ResponseDiscoveryDeleteDiscoveryByID, *resty.Response, error) {
 	//id string
 	path := "/dna/intent/api/v1/discovery/{id}"
 	path = strings.Replace(path, "{id}", fmt.Sprintf("%v", id), -1)
@@ -2609,7 +2272,7 @@ func (s *DiscoveryService) DeleteDiscoveryByIDV1(id string) (*ResponseDiscoveryD
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseDiscoveryDeleteDiscoveryByIDV1{}).
+		SetResult(&ResponseDiscoveryDeleteDiscoveryByID{}).
 		SetError(&Error).
 		Delete(path)
 
@@ -2620,17 +2283,18 @@ func (s *DiscoveryService) DeleteDiscoveryByIDV1(id string) (*ResponseDiscoveryD
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeleteDiscoveryByIDV1(id)
+			return s.DeleteDiscoveryByID(
+				id)
 		}
-		return nil, response, fmt.Errorf("error with operation DeleteDiscoveryByIdV1")
+		return nil, response, fmt.Errorf("error with operation DeleteDiscoveryById")
 	}
 
-	result := response.Result().(*ResponseDiscoveryDeleteDiscoveryByIDV1)
+	result := response.Result().(*ResponseDiscoveryDeleteDiscoveryByID)
 	return result, response, err
 
 }
 
-//DeleteDiscoveryBySpecifiedRangeV1 Delete discovery by specified range - c1ba-9a42-4c08-a01b
+//DeleteDiscoveryBySpecifiedRange Delete discovery by specified range - c1ba-9a42-4c08-a01b
 /* Stops discovery for the given range and removes them
 
 
@@ -2641,7 +2305,7 @@ func (s *DiscoveryService) DeleteDiscoveryByIDV1(id string) (*ResponseDiscoveryD
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-discovery-by-specified-range
 */
-func (s *DiscoveryService) DeleteDiscoveryBySpecifiedRangeV1(startIndex int, recordsToDelete int) (*ResponseDiscoveryDeleteDiscoveryBySpecifiedRangeV1, *resty.Response, error) {
+func (s *DiscoveryService) DeleteDiscoveryBySpecifiedRange(startIndex int, recordsToDelete int) (*ResponseDiscoveryDeleteDiscoveryBySpecifiedRange, *resty.Response, error) {
 	//startIndex int,recordsToDelete int
 	path := "/dna/intent/api/v1/discovery/{startIndex}/{recordsToDelete}"
 	path = strings.Replace(path, "{startIndex}", fmt.Sprintf("%v", startIndex), -1)
@@ -2650,7 +2314,7 @@ func (s *DiscoveryService) DeleteDiscoveryBySpecifiedRangeV1(startIndex int, rec
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseDiscoveryDeleteDiscoveryBySpecifiedRangeV1{}).
+		SetResult(&ResponseDiscoveryDeleteDiscoveryBySpecifiedRange{}).
 		SetError(&Error).
 		Delete(path)
 
@@ -2661,17 +2325,18 @@ func (s *DiscoveryService) DeleteDiscoveryBySpecifiedRangeV1(startIndex int, rec
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeleteDiscoveryBySpecifiedRangeV1(startIndex, recordsToDelete)
+			return s.DeleteDiscoveryBySpecifiedRange(
+				startIndex, recordsToDelete)
 		}
-		return nil, response, fmt.Errorf("error with operation DeleteDiscoveryBySpecifiedRangeV1")
+		return nil, response, fmt.Errorf("error with operation DeleteDiscoveryBySpecifiedRange")
 	}
 
-	result := response.Result().(*ResponseDiscoveryDeleteDiscoveryBySpecifiedRangeV1)
+	result := response.Result().(*ResponseDiscoveryDeleteDiscoveryBySpecifiedRange)
 	return result, response, err
 
 }
 
-//DeleteGlobalCredentialsByIDV1 Delete global credentials by Id - f5ac-590c-4ca9-975a
+//DeleteGlobalCredentialsByID Delete global credentials by Id - f5ac-590c-4ca9-975a
 /* Deletes global credential for the given ID
 
 
@@ -2680,7 +2345,7 @@ func (s *DiscoveryService) DeleteDiscoveryBySpecifiedRangeV1(startIndex int, rec
 
 Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-global-credentials-by-id
 */
-func (s *DiscoveryService) DeleteGlobalCredentialsByIDV1(globalCredentialID string) (*ResponseDiscoveryDeleteGlobalCredentialsByIDV1, *resty.Response, error) {
+func (s *DiscoveryService) DeleteGlobalCredentialsByID(globalCredentialID string) (*ResponseDiscoveryDeleteGlobalCredentialsByID, *resty.Response, error) {
 	//globalCredentialID string
 	path := "/dna/intent/api/v1/global-credential/{globalCredentialId}"
 	path = strings.Replace(path, "{globalCredentialId}", fmt.Sprintf("%v", globalCredentialID), -1)
@@ -2688,7 +2353,7 @@ func (s *DiscoveryService) DeleteGlobalCredentialsByIDV1(globalCredentialID stri
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
-		SetResult(&ResponseDiscoveryDeleteGlobalCredentialsByIDV1{}).
+		SetResult(&ResponseDiscoveryDeleteGlobalCredentialsByID{}).
 		SetError(&Error).
 		Delete(path)
 
@@ -2699,12 +2364,13 @@ func (s *DiscoveryService) DeleteGlobalCredentialsByIDV1(globalCredentialID stri
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeleteGlobalCredentialsByIDV1(globalCredentialID)
+			return s.DeleteGlobalCredentialsByID(
+				globalCredentialID)
 		}
-		return nil, response, fmt.Errorf("error with operation DeleteGlobalCredentialsByIdV1")
+		return nil, response, fmt.Errorf("error with operation DeleteGlobalCredentialsById")
 	}
 
-	result := response.Result().(*ResponseDiscoveryDeleteGlobalCredentialsByIDV1)
+	result := response.Result().(*ResponseDiscoveryDeleteGlobalCredentialsByID)
 	return result, response, err
 
 }
@@ -2737,7 +2403,8 @@ func (s *DiscoveryService) DeleteGlobalCredentialV2(id string) (*ResponseDiscove
 
 	if response.IsError() {
 		if response.StatusCode() == http.StatusUnauthorized {
-			return s.DeleteGlobalCredentialV2(id)
+			return s.DeleteGlobalCredentialV2(
+				id)
 		}
 		return nil, response, fmt.Errorf("error with operation DeleteGlobalCredentialV2")
 	}
@@ -2745,300 +2412,4 @@ func (s *DiscoveryService) DeleteGlobalCredentialV2(id string) (*ResponseDiscove
 	result := response.Result().(*ResponseDiscoveryDeleteGlobalCredentialV2)
 	return result, response, err
 
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CreateSNMPWriteCommunityV1`
-*/
-func (s *DiscoveryService) CreateSNMPWriteCommunity(requestDiscoveryCreateSNMPWriteCommunityV1 *RequestDiscoveryCreateSNMPWriteCommunityV1) (*ResponseDiscoveryCreateSNMPWriteCommunityV1, *resty.Response, error) {
-	return s.CreateSNMPWriteCommunityV1(requestDiscoveryCreateSNMPWriteCommunityV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetDiscoveriesByRangeV1`
-*/
-func (s *DiscoveryService) GetDiscoveriesByRange(startIndex int, recordsToReturn int) (*ResponseDiscoveryGetDiscoveriesByRangeV1, *resty.Response, error) {
-	return s.GetDiscoveriesByRangeV1(startIndex, recordsToReturn)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetCountOfAllDiscoveryJobsV1`
-*/
-func (s *DiscoveryService) GetCountOfAllDiscoveryJobs() (*ResponseDiscoveryGetCountOfAllDiscoveryJobsV1, *resty.Response, error) {
-	return s.GetCountOfAllDiscoveryJobsV1()
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetSNMPPropertiesV1`
-*/
-func (s *DiscoveryService) GetSNMPProperties() (*ResponseDiscoveryGetSNMPPropertiesV1, *resty.Response, error) {
-	return s.GetSNMPPropertiesV1()
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetDiscoveredNetworkDevicesByDiscoveryIDV1`
-*/
-func (s *DiscoveryService) GetDiscoveredNetworkDevicesByDiscoveryID(id string, GetDiscoveredNetworkDevicesByDiscoveryIdV1QueryParams *GetDiscoveredNetworkDevicesByDiscoveryIDV1QueryParams) (*ResponseDiscoveryGetDiscoveredNetworkDevicesByDiscoveryIDV1, *resty.Response, error) {
-	return s.GetDiscoveredNetworkDevicesByDiscoveryIDV1(id, GetDiscoveredNetworkDevicesByDiscoveryIdV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetGlobalCredentialsV1`
-*/
-func (s *DiscoveryService) GetGlobalCredentials(GetGlobalCredentialsV1QueryParams *GetGlobalCredentialsV1QueryParams) (*ResponseDiscoveryGetGlobalCredentialsV1, *resty.Response, error) {
-	return s.GetGlobalCredentialsV1(GetGlobalCredentialsV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetDevicesDiscoveredByIDV1`
-*/
-func (s *DiscoveryService) GetDevicesDiscoveredByID(id string, GetDevicesDiscoveredByIdV1QueryParams *GetDevicesDiscoveredByIDV1QueryParams) (*ResponseDiscoveryGetDevicesDiscoveredByIDV1, *resty.Response, error) {
-	return s.GetDevicesDiscoveredByIDV1(id, GetDevicesDiscoveredByIdV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `DeleteDiscoveryBySpecifiedRangeV1`
-*/
-func (s *DiscoveryService) DeleteDiscoveryBySpecifiedRange(startIndex int, recordsToDelete int) (*ResponseDiscoveryDeleteDiscoveryBySpecifiedRangeV1, *resty.Response, error) {
-	return s.DeleteDiscoveryBySpecifiedRangeV1(startIndex, recordsToDelete)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `UpdateNetconfCredentialsV1`
-*/
-func (s *DiscoveryService) UpdateNetconfCredentials(requestDiscoveryUpdateNetconfCredentialsV1 *RequestDiscoveryUpdateNetconfCredentialsV1) (*ResponseDiscoveryUpdateNetconfCredentialsV1, *resty.Response, error) {
-	return s.UpdateNetconfCredentialsV1(requestDiscoveryUpdateNetconfCredentialsV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetDiscoveredDevicesByRangeV1`
-*/
-func (s *DiscoveryService) GetDiscoveredDevicesByRange(id string, startIndex int, recordsToReturn int, GetDiscoveredDevicesByRangeV1QueryParams *GetDiscoveredDevicesByRangeV1QueryParams) (*ResponseDiscoveryGetDiscoveredDevicesByRangeV1, *resty.Response, error) {
-	return s.GetDiscoveredDevicesByRangeV1(id, startIndex, recordsToReturn, GetDiscoveredDevicesByRangeV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `DeleteAllDiscoveryV1`
-*/
-func (s *DiscoveryService) DeleteAllDiscovery() (*ResponseDiscoveryDeleteAllDiscoveryV1, *resty.Response, error) {
-	return s.DeleteAllDiscoveryV1()
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `UpdatesAnExistingDiscoveryBySpecifiedIDV1`
-*/
-func (s *DiscoveryService) UpdatesAnExistingDiscoveryBySpecifiedID(requestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIdV1 *RequestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1) (*ResponseDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIDV1, *resty.Response, error) {
-	return s.UpdatesAnExistingDiscoveryBySpecifiedIDV1(requestDiscoveryUpdatesAnExistingDiscoveryBySpecifiedIdV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `UpdateSNMPReadCommunityV1`
-*/
-func (s *DiscoveryService) UpdateSNMPReadCommunity(requestDiscoveryUpdateSNMPReadCommunityV1 *RequestDiscoveryUpdateSNMPReadCommunityV1) (*ResponseDiscoveryUpdateSNMPReadCommunityV1, *resty.Response, error) {
-	return s.UpdateSNMPReadCommunityV1(requestDiscoveryUpdateSNMPReadCommunityV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `UpdateSNMPv3CredentialsV1`
-*/
-func (s *DiscoveryService) UpdateSNMPv3Credentials(requestDiscoveryUpdateSNMPv3CredentialsV1 *RequestDiscoveryUpdateSNMPv3CredentialsV1) (*ResponseDiscoveryUpdateSNMPv3CredentialsV1, *resty.Response, error) {
-	return s.UpdateSNMPv3CredentialsV1(requestDiscoveryUpdateSNMPv3CredentialsV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `DeleteGlobalCredentialsByIDV1`
-*/
-func (s *DiscoveryService) DeleteGlobalCredentialsByID(globalCredentialID string) (*ResponseDiscoveryDeleteGlobalCredentialsByIDV1, *resty.Response, error) {
-	return s.DeleteGlobalCredentialsByIDV1(globalCredentialID)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetListOfDiscoveriesByDiscoveryIDV1`
-*/
-func (s *DiscoveryService) GetListOfDiscoveriesByDiscoveryID(id string, GetListOfDiscoveriesByDiscoveryIdV1QueryParams *GetListOfDiscoveriesByDiscoveryIDV1QueryParams) (*ResponseDiscoveryGetListOfDiscoveriesByDiscoveryIDV1, *resty.Response, error) {
-	return s.GetListOfDiscoveriesByDiscoveryIDV1(id, GetListOfDiscoveriesByDiscoveryIdV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `DeleteDiscoveryByIDV1`
-*/
-func (s *DiscoveryService) DeleteDiscoveryByID(id string) (*ResponseDiscoveryDeleteDiscoveryByIDV1, *resty.Response, error) {
-	return s.DeleteDiscoveryByIDV1(id)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `UpdateGlobalCredentialsV1`
-*/
-func (s *DiscoveryService) UpdateGlobalCredentials(globalCredentialID string, requestDiscoveryUpdateGlobalCredentialsV1 *RequestDiscoveryUpdateGlobalCredentialsV1) (*ResponseDiscoveryUpdateGlobalCredentialsV1, *resty.Response, error) {
-	return s.UpdateGlobalCredentialsV1(globalCredentialID, requestDiscoveryUpdateGlobalCredentialsV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetCredentialSubTypeByCredentialIDV1`
-*/
-func (s *DiscoveryService) GetCredentialSubTypeByCredentialID(id string) (*ResponseDiscoveryGetCredentialSubTypeByCredentialIDV1, *resty.Response, error) {
-	return s.GetCredentialSubTypeByCredentialIDV1(id)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CreateGlobalCredentialsV2`
-*/
-func (s *DiscoveryService) CreateGlobalCredentials(requestDiscoveryCreateGlobalCredentialsV2 *RequestDiscoveryCreateGlobalCredentialsV2) (*ResponseDiscoveryCreateGlobalCredentialsV2, *resty.Response, error) {
-	return s.CreateGlobalCredentialsV2(requestDiscoveryCreateGlobalCredentialsV2)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetAllGlobalCredentialsV2`
-*/
-func (s *DiscoveryService) GetAllGlobalCredentials() (*ResponseDiscoveryGetAllGlobalCredentialsV2, *resty.Response, error) {
-	return s.GetAllGlobalCredentialsV2()
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CreateHTTPReadCredentialsV1`
-*/
-func (s *DiscoveryService) CreateHTTPReadCredentials(requestDiscoveryCreateHTTPReadCredentialsV1 *RequestDiscoveryCreateHTTPReadCredentialsV1) (*ResponseDiscoveryCreateHTTPReadCredentialsV1, *resty.Response, error) {
-	return s.CreateHTTPReadCredentialsV1(requestDiscoveryCreateHTTPReadCredentialsV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetNetworkDevicesFromDiscoveryV1`
-*/
-func (s *DiscoveryService) GetNetworkDevicesFromDiscovery(id string, GetNetworkDevicesFromDiscoveryV1QueryParams *GetNetworkDevicesFromDiscoveryV1QueryParams) (*ResponseDiscoveryGetNetworkDevicesFromDiscoveryV1, *resty.Response, error) {
-	return s.GetNetworkDevicesFromDiscoveryV1(id, GetNetworkDevicesFromDiscoveryV1QueryParams)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `UpdateCliCredentialsV1`
-*/
-func (s *DiscoveryService) UpdateCliCredentials(requestDiscoveryUpdateCLICredentialsV1 *RequestDiscoveryUpdateCliCredentialsV1) (*ResponseDiscoveryUpdateCliCredentialsV1, *resty.Response, error) {
-	return s.UpdateCliCredentialsV1(requestDiscoveryUpdateCLICredentialsV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `StartDiscoveryV1`
-*/
-func (s *DiscoveryService) StartDiscovery(requestDiscoveryStartDiscoveryV1 *RequestDiscoveryStartDiscoveryV1) (*ResponseDiscoveryStartDiscoveryV1, *resty.Response, error) {
-	return s.StartDiscoveryV1(requestDiscoveryStartDiscoveryV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CreateSNMPReadCommunityV1`
-*/
-func (s *DiscoveryService) CreateSNMPReadCommunity(requestDiscoveryCreateSNMPReadCommunityV1 *RequestDiscoveryCreateSNMPReadCommunityV1) (*ResponseDiscoveryCreateSNMPReadCommunityV1, *resty.Response, error) {
-	return s.CreateSNMPReadCommunityV1(requestDiscoveryCreateSNMPReadCommunityV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CreateCliCredentialsV1`
-*/
-func (s *DiscoveryService) CreateCliCredentials(requestDiscoveryCreateCLICredentialsV1 *RequestDiscoveryCreateCliCredentialsV1) (*ResponseDiscoveryCreateCliCredentialsV1, *resty.Response, error) {
-	return s.CreateCliCredentialsV1(requestDiscoveryCreateCLICredentialsV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `UpdateHTTPReadCredentialV1`
-*/
-func (s *DiscoveryService) UpdateHTTPReadCredential(requestDiscoveryUpdateHTTPReadCredentialV1 *RequestDiscoveryUpdateHTTPReadCredentialV1) (*ResponseDiscoveryUpdateHTTPReadCredentialV1, *resty.Response, error) {
-	return s.UpdateHTTPReadCredentialV1(requestDiscoveryUpdateHTTPReadCredentialV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `UpdateHTTPWriteCredentialsV1`
-*/
-func (s *DiscoveryService) UpdateHTTPWriteCredentials(requestDiscoveryUpdateHTTPWriteCredentialsV1 *RequestDiscoveryUpdateHTTPWriteCredentialsV1) (*ResponseDiscoveryUpdateHTTPWriteCredentialsV1, *resty.Response, error) {
-	return s.UpdateHTTPWriteCredentialsV1(requestDiscoveryUpdateHTTPWriteCredentialsV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `DeleteGlobalCredentialV2`
-*/
-func (s *DiscoveryService) DeleteGlobalCredential(id string) (*ResponseDiscoveryDeleteGlobalCredentialV2, *resty.Response, error) {
-	return s.DeleteGlobalCredentialV2(id)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CreateHTTPWriteCredentialsV1`
-*/
-func (s *DiscoveryService) CreateHTTPWriteCredentials(requestDiscoveryCreateHTTPWriteCredentialsV1 *RequestDiscoveryCreateHTTPWriteCredentialsV1) (*ResponseDiscoveryCreateHTTPWriteCredentialsV1, *resty.Response, error) {
-	return s.CreateHTTPWriteCredentialsV1(requestDiscoveryCreateHTTPWriteCredentialsV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetDiscoveryByIDV1`
-*/
-func (s *DiscoveryService) GetDiscoveryByID(id string) (*ResponseDiscoveryGetDiscoveryByIDV1, *resty.Response, error) {
-	return s.GetDiscoveryByIDV1(id)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CreateUpdateSNMPPropertiesV1`
-*/
-func (s *DiscoveryService) CreateUpdateSNMPProperties(requestDiscoveryCreateUpdateSNMPPropertiesV1 *RequestDiscoveryCreateUpdateSNMPPropertiesV1) (*ResponseDiscoveryCreateUpdateSNMPPropertiesV1, *resty.Response, error) {
-	return s.CreateUpdateSNMPPropertiesV1(requestDiscoveryCreateUpdateSNMPPropertiesV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CreateSNMPv3CredentialsV1`
-*/
-func (s *DiscoveryService) CreateSNMPv3Credentials(requestDiscoveryCreateSNMPv3CredentialsV1 *RequestDiscoveryCreateSNMPv3CredentialsV1) (*ResponseDiscoveryCreateSNMPv3CredentialsV1, *resty.Response, error) {
-	return s.CreateSNMPv3CredentialsV1(requestDiscoveryCreateSNMPv3CredentialsV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `CreateNetconfCredentialsV1`
-*/
-func (s *DiscoveryService) CreateNetconfCredentials(requestDiscoveryCreateNetconfCredentialsV1 *RequestDiscoveryCreateNetconfCredentialsV1) (*ResponseDiscoveryCreateNetconfCredentialsV1, *resty.Response, error) {
-	return s.CreateNetconfCredentialsV1(requestDiscoveryCreateNetconfCredentialsV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `UpdateSNMPWriteCommunityV1`
-*/
-func (s *DiscoveryService) UpdateSNMPWriteCommunity(requestDiscoveryUpdateSNMPWriteCommunityV1 *RequestDiscoveryUpdateSNMPWriteCommunityV1) (*ResponseDiscoveryUpdateSNMPWriteCommunityV1, *resty.Response, error) {
-	return s.UpdateSNMPWriteCommunityV1(requestDiscoveryUpdateSNMPWriteCommunityV1)
-}
-
-// Alias Function
-/*
-This method acts as an alias for the method `GetDiscoveryJobsByIPV1`
-*/
-func (s *DiscoveryService) GetDiscoveryJobsByIP(GetDiscoveryJobsByIPV1QueryParams *GetDiscoveryJobsByIPV1QueryParams) (*ResponseDiscoveryGetDiscoveryJobsByIPV1, *resty.Response, error) {
-	return s.GetDiscoveryJobsByIPV1(GetDiscoveryJobsByIPV1QueryParams)
 }

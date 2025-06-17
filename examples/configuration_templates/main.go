@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v2/sdk"
+	catalyst "github.com/cisco-en-programmability/catalystcenter-go-sdk/v3/sdk"
 )
 
 // client is Catalyst Center API client
@@ -93,7 +93,7 @@ func main() {
 	// 	return
 	// }
 
-	resp, _, err := client.ConfigurationTemplates.GetProjectsDetails(&catalyst.GetProjectsDetailsV2QueryParams{
+	resp, _, err := client.ConfigurationTemplates.GetProjectsDetailsV2(&catalyst.GetProjectsDetailsV2QueryParams{
 		Name: "Onboarding Configuration",
 	})
 
